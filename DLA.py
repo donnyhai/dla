@@ -41,9 +41,7 @@ class DLAProcess:
         for i in range(atomsMax):
             startPosition = random.choice(startPositions)
             self.doAtomWalk(startPosition, withDiagonals)
-            
-dla = DLAProcess()
-dla.runProcess()
+        
             
             
             
