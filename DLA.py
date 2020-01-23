@@ -1,7 +1,7 @@
 import random
 
 class DLAProcess:
-    def __init__(self, spaceSize = [200,200]):
+    def __init__(self, spaceSize = (100,100)):
         self.spaceSize = spaceSize
         self.startAtom = (self.spaceSize[0]//2, self.spaceSize[1]//2)
         self.atoms = [self.startAtom]
@@ -20,19 +20,30 @@ class DLAProcess:
         if withDiagonals:
             return [neigh for neigh in [(x+1,y), (x+1,y-1), (x+1,y+1), (x-1,y), (x-1,y-1), (x-1,y+1),(x,y+1), (x,y-1)] if self.isInsideWorld(neigh)]
         else: 
-            [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1)] if self.isInsideWorld(neigh)]
+            return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1)] if self.isInsideWorld(neigh)]
             
     #neighbours, default without diagonal neighbours
     def isTouching(self, atom, withDiagonals = False):
-        return len(set(self.getNeighbours(atom, withDiagonals) and self.atoms)) > 0
+        return len(set(self.getNeighbours(atom, withDiagonals)).intersection(set(self.atoms))) > 0
     
     #atom random walk, default no walk onto diagonal fields
-    def startAtomWalk(self, startPosition, withDiagonals = False):
-        isWalking = True
+    def doAtomWalk(self, startPosition, withDiagonals = False):
         position = startPosition
-        while isWalking:
+        while True:
+            if self.isTouching(position):
+                self.addAtom(position)
+                break
             nextNeighbours = self.getNeighbours(position, withDiagonals)
             position = random.choice(nextNeighbours)
+    
+    def runProcess(self, atomsMax = 20, withDiagonals = False):
+        startPositions = [(0, 0), (0, self.spaceSize[1]//2), (0, self.spaceSize[1]-1), (self.spaceSize[0]-1, 0), (self.spaceSize[0]//2, 0), (self.spaceSize[0]//2, self.spaceSize[1]-1), (self.spaceSize[0]-1, self.spaceSize[1]//2), (self.spaceSize[0]-1, self.spaceSize[1]-1)]
+        for i in range(atomsMax):
+            startPosition = random.choice(startPositions)
+            self.doAtomWalk(startPosition, withDiagonals)
+            
+dla = DLAProcess()
+dla.runProcess()
             
             
             
