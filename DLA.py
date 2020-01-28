@@ -34,11 +34,7 @@ class DLA:
             if self.isTouching(position):
                 self.addAtom(position)
                 break
-            try:
-                position = random.choice(self.getNeighbours(position))
-            except Exception:
-                print(position)
-                print("maybe empty neighbours sequence problem")
+            position = random.choice(self.getNeighbours(position))
     
     def runProcess(self, atomsMax = 500, render = False, surface = None):
         counter = 0

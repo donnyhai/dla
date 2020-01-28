@@ -8,8 +8,8 @@ import math
 pygame.init()
 pygame.display.init()
 
-windowSize = (100, 100)
-atomsMax = 400
+windowSize = (1000, 1000)
+atomsMax = 3000
 
 dlaStandard = DLA.DLA(windowSize)
 dlaRectangle = DLA_Rectangle.DLA_Rectangle(windowSize)
