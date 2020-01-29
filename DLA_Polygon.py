@@ -10,24 +10,29 @@ class DLA_Polygon(DLA.DLA):
         self.minX, self.maxX = self.startAtom[0],self.startAtom[0]
         self.minY, self.maxY = self.startAtom[1],self.startAtom[1]
         
-        self.helpSpaceDelta = 30 #how far shall be the helpSpace be away of the outest atoms ?
+        self.helpSpaceDelta = 4 #how far shall be the helpSpace be away of the outest atoms ?
         
-        self.polygonSize = 10 #number of polygon points, must be even
+        self.polygonSize = 20 #number of polygon points, must be even
+        self.middleAngle = 2 * math.pi / self.polygonSize #Mittelpunktswinkel
         self.polygonPoints = self.calculatePolygonPoints((self.startAtom[0] - self.helpSpaceDelta, self.startAtom[1]), (self.startAtom[0] + self.helpSpaceDelta, self.startAtom[1]))
         
         random.seed()
         
     #you have two points p1, p2. calculate the n polygon with these two points as opposite laying points (n has to be even)
-    def calculatePolygonPoints(self, p1, p2):
+    def calculatePolygonPoints(self, p1, p2, addRotation = False):
+        if p1[0] > p2[0]:
+            c = p2
+            p2 = p1
+            p1 = c
         r = math.sqrt(math.pow(p1[0] - p2[0], 2) + math.pow(p1[1] - p2[1], 2)) / 2 #radius
-        middleAngle = 2 * math.pi / self.polygonSize #Mittelpunktswinkel
-        if p2[0] - p1[0] == 0: rotationAngle = math.pi / 2
-        elif p2[1] - p1[1] == 0: rotationAngle = 0
-        else: rotationAngle = math.atan(abs((p2[1] - p1[1])/(p2[0] - p1[0]))) #Verdrehungswinkel des polygons
+        if p2[0] == p1[0]: rotationAngle = math.pi / 2
+        else: rotationAngle = math.atan((p2[1] - p1[1])/abs(p2[0] - p1[0])) #Verdrehungswinkel des polygons
+        if addRotation:
+            rotationAngle += self.middleAngle / 2
         center = ((p1[0] + p2[0])/2, (p1[1] + p2[1])/2)
         polygonPoints = []
         for i in range(self.polygonSize):
-            beta = i * middleAngle + rotationAngle
+            beta = i * self.middleAngle + rotationAngle
             polygonPoints.append((round(r * math.cos(beta) + center[0]), round(-r * math.sin(beta) + center[1])))
         return polygonPoints
     
@@ -48,7 +53,6 @@ class DLA_Polygon(DLA.DLA):
                 return False
         return True
         
-    #three helpSpace modes: rectangle, simple and polygon
     def calculateStartPositions(self):
         return self.polygonPoints
     
@@ -60,29 +64,32 @@ class DLA_Polygon(DLA.DLA):
         return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)] if self.isInsideWorld(neigh)]
         #return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1)] if self.isInsideWorld(neigh) and self.isInsidePolygon(neigh)]
             
-    def actualizeHelpSpace(self):
+    def actualizeHelpSpace(self, addRotation = False):
         dx = self.maxX - self.minX
         dy = self.maxY - self.minY
         r = math.sqrt(dx*dx + dy*dy) / self.helpSpaceDelta
         p1, p2 = (round(self.minX - dx/r), round(self.minY - dy/r)), (round(self.maxX + dx/r), round(self.maxY + dy/r))
-        self.polygon = self.calculatePolygonPoints(p1, p2)
+        self.polygonPoints = self.calculatePolygonPoints(p1, p2, addRotation)
     
     #atom random walk
     def doAtomWalk(self, position):
+        position0 = position
         counter = 0
         while True:
             if self.isTouching(position):
                 self.addAtom(position)
                 break
-            if counter == 20:
+            if counter == 10:
                 if not self.isInsidePolygon(position):
-                    position = random.choice(self.calculateStartPositions())
+                    position = position0
                 counter = 0
             counter += 1    
             position = random.choice(self.getNeighbours(position))
     
-    def runProcess(self, atomsMax = 500, mode = "rectangle", render = False, surface = None):
+    def runProcess(self, atomsMax = 500, render = False, surface = None):
         counter = 0
+        counter2 = 0
+        addRotation = False
         for i in range(atomsMax):
             self.doAtomWalk(random.choice(self.calculateStartPositions()))
             
@@ -93,14 +100,18 @@ class DLA_Polygon(DLA.DLA):
             self.minY = min(self.minY, y)
             self.maxY = max(self.maxY, y)
             
-            self.actualizeHelpSpace()
+            if counter2 == 5:
+                addRotation = not addRotation
+                counter2 = 0
+            self.actualizeHelpSpace(addRotation)
             
-            counter += 1
             if counter == 7:
                 if render and surface is not None:
                     self.render(surface)
                 counter = 0
             
+            counter += 1
+            counter2 += 1
             print(i)
             
     def render(self, surface):

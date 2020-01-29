@@ -49,11 +49,14 @@ def testPoly():
     
     #you have two points p1, p2. calculate the n polygon with these two points as opposite laying points (n has to be even)
     def calculatePolygonPoints(p1, p2):
+        if p1[0] > p2[0]:
+            c = p2
+            p2 = p1
+            p1 = c
         r = math.sqrt(math.pow(p1[0] - p2[0], 2) + math.pow(p1[1] - p2[1], 2)) / 2 #radius
         innerAngle = 2 * math.pi / n #Innenwinkel am Mittelpunkt
         if p2[0] - p1[0] == 0: rotationAngle = math.pi / 2
-        elif p2[1] - p1[1] == 0: rotationAngle = 0
-        else: rotationAngle = math.atan(abs((p2[1] - p1[1])/(p2[0] - p1[0]))) #Verdrehungswinkel des polygons
+        else: rotationAngle = math.atan((p2[1] - p1[1])/abs(p2[0] - p1[0])) #Verdrehungswinkel des polygons
         center = ((p1[0] + p2[0])/2, (p1[1] + p2[1])/2)
         polygonPoints = []
         for i in range(n):
