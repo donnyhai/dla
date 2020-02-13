@@ -12,14 +12,14 @@ class DLA_Polygon(DLA.DLA):
         
         self.helpSpaceDelta = 4 #how far shall be the helpSpace be away of the outest atoms ?
         
-        self.polygonSize = 20 #number of polygon points, must be even
+        self.polygonSize = 12 #number of polygon points, must be even
         self.middleAngle = 2 * math.pi / self.polygonSize #Mittelpunktswinkel
         self.polygonPoints = self.calculatePolygonPoints((self.startAtom[0] - self.helpSpaceDelta, self.startAtom[1]), (self.startAtom[0] + self.helpSpaceDelta, self.startAtom[1]))
         
         random.seed()
         
     #you have two points p1, p2. calculate the n polygon with these two points as opposite laying points (n has to be even)
-    def calculatePolygonPoints(self, p1, p2, addRotation = False):
+    def calculatePolygonPoints(self, p1, p2, randomRotation = 0):
         if p1[0] > p2[0]:
             c = p2
             p2 = p1
@@ -27,12 +27,10 @@ class DLA_Polygon(DLA.DLA):
         r = math.sqrt(math.pow(p1[0] - p2[0], 2) + math.pow(p1[1] - p2[1], 2)) / 2 #radius
         if p2[0] == p1[0]: rotationAngle = math.pi / 2
         else: rotationAngle = math.atan((p2[1] - p1[1])/abs(p2[0] - p1[0])) #Verdrehungswinkel des polygons
-        if addRotation:
-            rotationAngle += self.middleAngle / 2
         center = ((p1[0] + p2[0])/2, (p1[1] + p2[1])/2)
         polygonPoints = []
         for i in range(self.polygonSize):
-            beta = i * self.middleAngle + rotationAngle
+            beta = i * self.middleAngle + rotationAngle + randomRotation
             polygonPoints.append((round(r * math.cos(beta) + center[0]), round(-r * math.sin(beta) + center[1])))
         return polygonPoints
     
@@ -89,7 +87,7 @@ class DLA_Polygon(DLA.DLA):
     def runProcess(self, atomsMax = 500, render = False, surface = None):
         counter = 0
         counter2 = 0
-        addRotation = False
+        randomRotation = 0
         for i in range(atomsMax):
             self.doAtomWalk(random.choice(self.calculateStartPositions()))
             
@@ -101,9 +99,9 @@ class DLA_Polygon(DLA.DLA):
             self.maxY = max(self.maxY, y)
             
             if counter2 == 5:
-                addRotation = not addRotation
+                randomRotation = random.choice([0,1,2,3,4,5]) * self.middleAngle / 6
                 counter2 = 0
-            self.actualizeHelpSpace(addRotation)
+            self.actualizeHelpSpace(randomRotation)
             
             if counter == 7:
                 if render and surface is not None:
@@ -120,6 +118,11 @@ class DLA_Polygon(DLA.DLA):
             surface.set_at(pos, (255,0,0,0))
         for atom in self.atoms:
             surface.set_at(atom, (150, 215, 182, 255))
+        pygame.display.flip()
+        
+    def render2(self, surface):
+        for pos in self.calculateStartPositions():
+            surface.set_at(pos, (255,0,0,0))
         pygame.display.flip()
             
     
