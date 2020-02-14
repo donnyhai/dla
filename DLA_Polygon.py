@@ -73,6 +73,7 @@ class DLA_Polygon(DLA.DLA):
     def doAtomWalk(self, position):
         position0 = position
         counter = 0
+        value = 0
         while True:
             if self.isTouching(position):
                 self.addAtom(position)
@@ -84,11 +85,11 @@ class DLA_Polygon(DLA.DLA):
             counter += 1    
             position = random.choice(self.getNeighbours(position))
     
-    def runProcess(self, atomsMax = 500, render = False, surface = None):
+    def runProcess(self, atomsMax = 500):
         counter = 0
-        counter2 = 0
         randomRotation = 0
         for i in range(atomsMax):
+            #self.doAtomWalk(random.choice(self.calculateStartPositions()), render, surface)
             self.doAtomWalk(random.choice(self.calculateStartPositions()))
             
             #actualizce atomRectangle depending on the last added atom 
@@ -98,31 +99,12 @@ class DLA_Polygon(DLA.DLA):
             self.minY = min(self.minY, y)
             self.maxY = max(self.maxY, y)
             
-            if counter2 == 5:
+            if counter == 5:
                 randomRotation = random.choice([0,1,2,3,4,5]) * self.middleAngle / 6
-                counter2 = 0
+                counter = 0
             self.actualizeHelpSpace(randomRotation)
             
-            if counter == 7:
-                if render and surface is not None:
-                    self.render(surface)
-                counter = 0
-            
             counter += 1
-            counter2 += 1
             print(i)
-            
-    def render(self, surface):
-        surface.fill((0,0,0,0))
-        for pos in self.calculateStartPositions():
-            surface.set_at(pos, (255,0,0,0))
-        for atom in self.atoms:
-            surface.set_at(atom, (150, 215, 182, 255))
-        pygame.display.flip()
-        
-    def render2(self, surface):
-        for pos in self.calculateStartPositions():
-            surface.set_at(pos, (255,0,0,0))
-        pygame.display.flip()
             
     

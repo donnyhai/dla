@@ -2,7 +2,8 @@ import pygame, sys
 import saveObjects as so
 import DLA
 import DLA_Rectangle
-import DLA_Polygon      
+import DLA_Polygon   
+import DLA_Polygon_GUI   
 import math          
   
 pygame.init()
@@ -11,25 +12,29 @@ pygame.display.init()
 windowSize = (1000, 1000)
 atomsMax = 3000
 
-dlaStandard = DLA.DLA(windowSize)
-dlaRectangle = DLA_Rectangle.DLA_Rectangle(windowSize)
-dlaPolygon = DLA_Polygon.DLA_Polygon(windowSize)
+ds = DLA.DLA(windowSize)
+dr = DLA_Rectangle.DLA_Rectangle(windowSize)
+dp = DLA_Polygon.DLA_Polygon(windowSize)
+dpg = DLA_Polygon_GUI.DLA_Polygon_GUI(windowSize)
 
-def printProcess(dla, live = False, atomsMax = None):
+
+def printProcess(dla, atomsMax = None):
     surface = pygame.display.set_mode(windowSize,0,32)
+    surface.fill((0,0,0,0))
     pygame.display.update()
     counter = 0
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                    running = False
                     pygame.quit()
                     sys.exit()
             
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if counter == 0:
-                    if live and atomsMax is not None:
-                        dla.runProcess(atomsMax, render = True, surface = surface)
+                    if atomsMax is not None:
+                        dla.runProcess(atomsMax, surface = surface)
                     else:
                         dla.render(surface)
                     counter += 1
@@ -39,6 +44,34 @@ def printProcess(dla, live = False, atomsMax = None):
     
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################### Test functions ############################
 
 
 def testPoly():

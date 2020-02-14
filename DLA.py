@@ -36,25 +36,16 @@ class DLA:
                 break
             position = random.choice(self.getNeighbours(position))
     
-    def runProcess(self, atomsMax = 500, render = False, surface = None):
-        counter = 0
+    def runProcess(self, atomsMax = 500):
         for i in range(atomsMax):
             self.doAtomWalk(random.choice(self.calculateStartPositions()))
-            
-            counter += 1
-            if counter == 7:
-                if render and surface is not None:
-                    self.render(surface)
-                counter = 0
-            
             print(i)
-            
+
     def render(self, surface):
         surface.fill((0,0,0,0))
         for pos in self.calculateStartPositions():
-            surface.set_at(pos, (150, 215, 182, 255))
+            surface.set_at(pos, (255,0,0,0))
         for atom in self.atoms:
             surface.set_at(atom, (150, 215, 182, 255))
-        pygame.display.flip()
-            
+        pygame.display.flip()            
     
