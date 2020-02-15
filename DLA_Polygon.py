@@ -1,6 +1,5 @@
 import random
 import math
-import pygame
 import DLA
 
 class DLA_Polygon(DLA.DLA):
@@ -73,7 +72,6 @@ class DLA_Polygon(DLA.DLA):
     def doAtomWalk(self, position):
         position0 = position
         counter = 0
-        value = 0
         while True:
             if self.isTouching(position):
                 self.addAtom(position)
