@@ -2,7 +2,7 @@ import pygame, sys
 import saveObjects as so
 import DLA
 import DLA_Rectangle
-import DLA_Polygon   
+import EXT_DLA_Polygon   
 import DLA_Polygon_GUI   
 import math          
   
@@ -14,7 +14,7 @@ atomsMax = 3000
 
 ds = DLA.DLA(windowSize)
 dr = DLA_Rectangle.DLA_Rectangle(windowSize)
-dp = DLA_Polygon.DLA_Polygon(windowSize)
+dp = EXT_DLA_Polygon.EXT_DLA_Polygon(windowSize)
 dpg = DLA_Polygon_GUI.DLA_Polygon_GUI(windowSize)
 
 
