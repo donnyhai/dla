@@ -14,13 +14,10 @@ class EXT_DLA(DLA.DLA):
     def addAtom(self, atom):
         self.atoms.append(atom)
     
-    #three helpSpace modes: rectangle, simple and polygon
-    def calculateStartPositions(self):
-        return [(0,0), (0, self.spaceSize[1] - 1), (self.spaceSize[0] - 1, 0), (self.spaceSize[0] - 1, self.spaceSize[1] - 1)]
-    
     def getNeighbours(self, atom):
         x,y = atom
-        return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)] if self.isInsideWorld(neigh)]
+        return [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)]
+        #return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)] if self.isInsideWorld(neigh)]
 
     def isTouching(self, atom):
         return len(set(self.getNeighbours(atom)).intersection(set(self.atoms))) > 0
@@ -40,8 +37,6 @@ class EXT_DLA(DLA.DLA):
 
     def render(self, surface):
         surface.fill((0,0,0,0))
-        for pos in self.calculateStartPositions():
-            surface.set_at(pos, (255,0,0,0))
         for atom in self.atoms:
             surface.set_at(atom, (150, 215, 182, 255))
         pygame.display.flip()            
