@@ -3,7 +3,9 @@ import saveObjects as so
 import DLA
 import DLA_Rectangle
 import EXT_DLA_Polygon   
-import DLA_Polygon_GUI   
+import DLA_Polygon_GUI  
+import EXT_DLA_Circle 
+import EXT_DLA_Circle_GUI
 import math          
   
 pygame.init()
@@ -16,6 +18,8 @@ ds = DLA.DLA(windowSize)
 dr = DLA_Rectangle.DLA_Rectangle(windowSize)
 dp = EXT_DLA_Polygon.EXT_DLA_Polygon(windowSize)
 dpg = DLA_Polygon_GUI.DLA_Polygon_GUI(windowSize)
+dcg = EXT_DLA_Circle_GUI.EXT_DLA_Circle_GUI(windowSize)
+dc = EXT_DLA_Circle .EXT_DLA_Circle(windowSize)
 
 
 def printProcess(dla, atomsMax = None):

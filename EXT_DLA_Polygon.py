@@ -53,13 +53,10 @@ class EXT_DLA_Polygon(EXT_DLA.EXT_DLA):
     def calculateStartPositions(self):
         return self.polygonPoints
     
-    #diagonal neighbours not considered
     def getNeighbours(self, atom):
         x,y = atom
-        #diagonal neighbours or not ?
-        #return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)] if self.isInsideWorld(neigh) and self.isInsidePolygon(neigh)]
         return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)] if self.isInsideWorld(neigh)]
-        #return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1)] if self.isInsideWorld(neigh) and self.isInsidePolygon(neigh)]
+        #return [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)]
             
     def actualizeHelpSpace(self, addRotation = False):
         dx = self.maxX - self.minX
