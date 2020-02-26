@@ -1,8 +1,8 @@
 import random
 import math
-import DLA
+import EXT_DLA
 
-class DLA_Polygon(DLA.DLA):
+class EXT_DLA_Polygon(EXT_DLA.EXT_DLA):
     def __init__(self, spaceSize = (100,100)):
         super().__init__(spaceSize)
         

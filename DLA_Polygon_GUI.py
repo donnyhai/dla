@@ -1,10 +1,10 @@
-import DLA_Polygon as dp
+import EXT_DLA_Polygon as dp
 import random
 import pygame
 
 
 
-class DLA_Polygon_GUI(dp.DLA_Polygon):
+class DLA_Polygon_GUI(dp.EXT_DLA_Polygon):
     
     #atom random walk
     def doAtomWalk(self, position, surface = None):
