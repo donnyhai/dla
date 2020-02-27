@@ -8,12 +8,6 @@ class EXT_DLA(DLA.DLA):
         
         random.seed()
         
-    def isInsideWorld(self, atom):
-        return 0 <= atom[0] < self.spaceSize[0] and 0 <= atom[1] < self.spaceSize[1]
-    
-    def addAtom(self, atom):
-        self.atoms.append(atom)
-    
     def getNeighbours(self, atom):
         x,y = atom
         return [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)]

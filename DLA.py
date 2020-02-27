@@ -15,7 +15,6 @@ class DLA:
         x,y = atom
         return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)] if self.isInsideWorld(neigh)]
 
-    #atom random walk
     def doAtomWalk(self, position):
         pass
     

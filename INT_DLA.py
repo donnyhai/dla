@@ -9,30 +9,24 @@ class INT_DLA(DLA.DLA):
         
         random.seed()
         
-    def isInsideWorld(self, atom):
-        return 0 <= atom[0] < self.spaceSize[0] and 0 <= atom[1] < self.spaceSize[1]
-    
-    def addAtom(self, atom):
-        self.atoms.append(atom)
-    
     def getNeighbours(self, atom):
         x,y = atom
-        return [neigh for neigh in [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)] if self.isInsideWorld(neigh)]
+        return [(x+1,y), (x-1,y), (x,y+1), (x,y-1), (x-1,y-1), (x-1,y+1), (x+1,y-1), (x+1,y+1)]
 
-    def isOutside(self, atom):
-        return len(set(self.getNeighbours(atom)).intersection(set(self.atoms))) > 0
+    def isInside(self, atom):
+        return atom in self.atoms
     
     #atom random walk
     def doAtomWalk(self, position):
         while True:
-            if self.isTouching(position):
+            if not self.isInside(position):
                 self.addAtom(position)
                 break
             position = random.choice(self.getNeighbours(position))
     
     def runProcess(self, atomsMax = 500):
         for i in range(atomsMax):
-            self.doAtomWalk(random.choice(self.calculateStartPositions()))
+            self.doAtomWalk(self.startPosition)
             print(i)
 
     def render(self, surface):
