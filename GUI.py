@@ -9,6 +9,8 @@ import EXT_DLA_Circle_GUI
 import INT_DLA
 import INT_DLA_GUI
 import math          
+import DLA_approx1
+import DLA_approx1_GUI
   
 pygame.init()
 pygame.display.init()
@@ -16,13 +18,15 @@ pygame.display.init()
 windowSize = (1000, 1000)
 atomsMax = 3000
 
-ds = DLA.DLA(windowSize)
-dr = DLA_Rectangle.DLA_Rectangle(windowSize)
-dp = EXT_DLA_Polygon.EXT_DLA_Polygon(windowSize)
-dpg = DLA_Polygon_GUI.DLA_Polygon_GUI(windowSize)
-dcg = EXT_DLA_Circle_GUI.EXT_DLA_Circle_GUI(windowSize)
-dc = EXT_DLA_Circle.EXT_DLA_Circle(windowSize)
-idg = INT_DLA_GUI.INT_DLA_GUI(windowSize)
+d = DLA.DLA(windowSize)
+ec = EXT_DLA_Circle.EXT_DLA_Circle(windowSize)
+ecg = EXT_DLA_Circle_GUI.EXT_DLA_Circle_GUI(windowSize)
+i = INT_DLA.INT_DLA(windowSize)
+ig = INT_DLA_GUI.INT_DLA_GUI(windowSize)
+
+#approx1: very bad approximation
+a1 = DLA_approx1.DLA_approx1(windowSize)
+a1g = DLA_approx1_GUI.DLA_approx1_GUI(windowSize)
 
 
 def printProcess(dla, atomsMax = None):

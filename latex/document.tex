@@ -1,0 +1,45 @@
+\documentclass[12pt,a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm}
+\allowdisplaybreaks
+\usepackage{dsfont}
+\usepackage{pifont}
+\usepackage{nicefrac}
+\usepackage{textcomp}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+\begin{document}
+	\pagestyle{empty}
+	\theoremstyle{definition}
+	\newtheorem{exmp}{Example}[section]
+	\newtheorem{theorem}{Theorem}[section]
+	\newtheorem{corollary}{Corollary}[theorem]
+	\newtheorem{lemma}[theorem]{Lemma}
+	\newtheorem{definition}[theorem]{Definition} 
+	\newtheorem{proposition}[theorem]{Proposition}
+
+\section{approx1}
+Suppose we have neighbour atoms of the cluster with distances $0$ to $n$ to the middle point. For this approximation we want probability areas $A_i,i\in \{0,\dots,n\}$ in $[0,1]$, such that $A_k = pA_{k-1}$ for all $k\leq 1$ for some $p>1$ and $\sum_{k=0}^n A_k = 1$. We therefore get 
+\begin{align*}
+	\sum_{k=0}^n A_k = A_0\sum_{k=0}^n p^k = A_0 \frac{p^{k+1} - 1}{p - 1} = 1
+\end{align*}
+and therefore have to set $A_0 = \frac{p-1}{p^{k+1}-1}$. Finally for a neighbour $x$ of the cluster and its distance $d$ to the middle point, we calculate the number $D$ of neighbours with distance $d$ and set the probability for $x$ being the next added atom as $P=A_d / D$. \\
+\\
+$\boldsymbol{Fazit}$ The simulation shows, that this is a very bad approximation for external DLA. The probabilities for neighbours grows exponentially with their distance, which is a much too strong growth. What this approximation does not consider, is whether a neighbour is lying "free", that means in the direction middlepoint -> neighbour there isnt any other atom anymore after the neighbour. In this case the neighbour is much more likely to be hit compared to how this approximation calculates it, even if his distance to the middle point is small. 
+
+\section{approx2}
+
+
+
+
+
+
+	
+\end{document}

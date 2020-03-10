@@ -1,9 +1,12 @@
 
 class DLA:
-    def __init__(self, spaceSize = (100,100)):
+    def __init__(self, spaceSize = (100,100), startAtoms = None):
         self.spaceSize = spaceSize
         self.startAtom = (self.spaceSize[0]//2, self.spaceSize[1]//2)
-        self.atoms = [self.startAtom]
+        if not startAtoms is None:
+            self.atoms = startAtoms
+        else:
+            self.atoms = [self.startAtom]
         
     def isInsideWorld(self, atom):
         return 0 <= atom[0] < self.spaceSize[0] and 0 <= atom[1] < self.spaceSize[1]
