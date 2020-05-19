@@ -51,7 +51,7 @@ class DLA_approx2(DLA.DLA):
     
     #return is a dict with keys the possible distances, and values the probability area accroding to the calculation in approx1, see latex
     def calculateDistribution(self):
-        A = {} #probability areas of [0,1] (see latex document at approx1)
+        A = {} #probability areas of [0,1] (see latex document at approx1)5
         A[0] = (self.p_value - 1) / (self.p_value**(self.maxDistance + 1) - 1)
         for i in range(1, self.maxDistance + 1):
             A[i] = self.p_value * A[i-1]
