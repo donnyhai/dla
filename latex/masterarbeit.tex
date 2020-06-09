@@ -16,15 +16,7 @@
 \usepackage{lmodern}
 
 % Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
-\setlength{\topmargin}{-15mm}
-
-
-% Umgebungen für Definitionen, Sätze, usw.
-% Es werden Sätze, Definitionen etc innerhalb einer Section mit
-% 1.1, 1.2 etc durchnummeriert, ebenso die Gleichungen mit (1.1), (1.2) ..
-\newtheorem{Satz}{Satz}[section]
-\newtheorem{Definition}[Satz]{Definition} 
-\newtheorem{Lemma}[Satz]{Lemma}		   
+\setlength{\topmargin}{-15mm}	   
                   
 \numberwithin{equation}{section} 
 
@@ -34,8 +26,18 @@
 \newcommand{\Q}{\mathbb{Q}} % rationale
 \newcommand{\Z}{\mathbb{Z}} % ganze
 \newcommand{\N}{\mathbb{N}} % natuerliche
+\newcommand{\PP}{\mathbb{P}} % Probability
+\newcommand{\E}{\mathcal{E}} % big Epsilon
 
 \numberwithin{equation}{section}%
+
+\theoremstyle{definition}
+\newtheorem{exmp}{Example}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition} 
+\newtheorem{proposition}[theorem]{Proposition}
 
 \newtheorem{thm}{Theorem}[section]%
 \newtheorem{lem}[thm]{Lemma}%
@@ -47,12 +49,13 @@
 \theoremstyle{definition}
 \newtheorem{dfn}[thm]{Definition}%
 \newtheorem{bem}[thm]{Bemerkung}%
+\newtheorem{com}[thm]{Comment}
 \newtheorem{exa}[thm]{Example}%
 \newtheorem{bew}[thm]{Beweis}%
 
 
 \begin{document}
-  \pagestyle{empty}
+	\pagestyle{empty}
 
 \begin{titlepage}
 
@@ -60,7 +63,7 @@
     \vspace*{2cm} 
 \begin{center} \large 
     
-   Masterarbeit
+   Masterthesis
     \vspace*{2cm}
 
     {\huge External DLA}\\
@@ -69,26 +72,25 @@
     Tillmann Tristan Bosch
     \vspace*{1.5cm}
 
-    10. März 2020
+    10. March 2020
     \vspace*{3.5cm}
 
 
-    Betreuung: Prof. Dr. Steffen Winter \\[1cm]
-    Fakultät für Mathematik \\[1cm]
-		Karlsruher Institut für Technologie
+    Supervisor: Prof. Dr. Steffen Winter \\[1cm]
+    Mathematics Faculty\\[1cm]
+	Karlsruhe Institute of Technology
 \end{center}
 \end{titlepage}
 
-\ \\
 \newpage
-
-\tableofcontents %Inhaltsverzeichnis
 
 \newpage
 \phantom \\
 \newpage
 
-  \pagestyle{headings}
+\tableofcontents %Inhaltsverzeichnis
+
+ 	\pagestyle{headings}
 
 \setcounter{page}{1}
 \section{Einleitung}
@@ -99,6 +101,82 @@ External DLA beschreibt einen stochastischen Prozess, welcher zumindest in ähnl
 \includegraphics[scale=0.091]{display2.jpg} 
 
 \newpage
+
+
+\section{Preliminaries}
+
+We prepare this script with the following preliminaries. \\
+\\
+$\boldsymbol{Graphs}.\quad$ Let $G$ be an infinite graph. Denote $deg(x)$ the degree of a vertex $x\in G$. $G$ shall be additionally locally finite, i.e. $deg(x)<\infty$ for all $x\in G$. Let $o\in G$ be a distinguished vertex which we call $origin$ or $root$. Define the distance between two vertices $x,y\in G$ as 
+\begin{align*}
+	d(x,y):=\min \{n\geq 1\ |\ \exists\ x_1,\dots, x_{n-1}\in G:\ (x,x_1), (x_1,x_2),\dots, (x_{n-1},y) \in E(G)\},
+\end{align*}
+thus the distance between two vertices is the minimal length of paths connecting the two vertices. For $n\in \mathbb{N}$ and $x\in G$ $balls$ are defined as $B_n(x):=\{y\in G|d(x,y)\leq n\}$, and for the special case $B_n:=B_n(o)$. Let $A\subset G$ a subgraph, then we define the boundary of $A$ as
+\begin{align*}
+	\partial A := \{y\in G\setminus A\ |\ \exists\ x\in A: (x,y)\in E(G)\}.
+\end{align*}
+
+\noindent $\boldsymbol{Random\ Walks}.\quad$ Let $(S_n)_n$ be a random walk on $G$ and denote $\mathbb{P}_x$ the probability measure of the random walk started at $x$. That means precisely 
+\begin{align*}
+	\mathbb{P}_x(A) := \mathbb{P}_{S_n}(A|S_0=x) = \mathbb{P}(S_n\in A|S_0=x)
+\end{align*}
+for any subset $A\subset G$. We define the $hitting\ time$ of A as 
+\begin{align*}
+	T(A) := \min \{n\geq 0\ |\ S_n\in A\},
+\end{align*}
+and for the special case $T(\{x\})=:T(x)$ for every $x\in G$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
+\begin{align*}
+	p_n(x,y):=\mathbb{P}_x(S_n=y)
+\end{align*}
+and following the $Green\ function$ as 
+\begin{align*}
+	G(x,y) := \sum_{n\geq 0} p_n(x,y).
+\end{align*}
+Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green\ function$ is defined as
+\begin{align*}
+	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T(A) > n).
+\end{align*} 
+\noindent The $hitting\ distribution$ of elements in $A$ with $hitting\ position$ $S_{T(A)}$ is then
+\begin{align*}
+	H_A(x,y) := p_{T(A)}(x,y),\quad y\in A, 
+\end{align*}
+and for the special case $x=o$ we define
+\begin{align*}
+	h_A(y) := H_A(o,y) = \mathbb{P}_o(S_{T(A)}=y),\quad y\in A.
+\end{align*}
+Thus, $h_A(y)$ is the probability of hitting $A$ for the first time at $y$ starting from $o$. $h_A$ is called the $harmonic\ measure\ (from\ o)$.
+
+\newpage
+\section{External DLA}
+
+External DLA is a model building a sequence of random growing sets $(\mathcal{E}_n)_{n\geq 0}$ starting with one particle $\mathcal{E}_0=\{o\}$ at the origin. At each timestep $n+1$ a new particle starts a random walk $(S_k)_k$ from "far away" (infinity) until it hits the boundary $\partial \mathcal{E}_n$ of the current exting cluster for the first time. The union of this vertex and the already exting cluster then form the new cluster. Lets see the formal definition.
+
+\begin{definition}
+	Let $G$ be an infinite graph and $(S_n)_n$ a random walk on it. $External\ DLA$ on $G$ is a Markov chain $(\mathcal{E}_n)_{n\geq 0}$ on finite subsets of $G$ which evolve in the following way. We start with a single vertex at the origin, thus $\mathcal{E}_0 := \{o\}$. Then given the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random vertex in $\partial \mathcal{E}_n$ chosen according to the harmonic measure (from infinity) of $\partial \mathcal{E}_n$. Precisely that is
+	\begin{align*}
+		\mathbb{P}(y_{n+1}=y\ |\ \mathcal{E}_n) = \mu_{\partial \mathcal{E}_n}(y),\quad y\in \partial \mathcal{E}_n.
+	\end{align*}
+	We then set $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$.	
+	
+\end{definition}
+
+\begin{com}
+	Given the definition above, how does a realization of the process mathematcially look like? We start with a constant $\mathcal{E}_0 = \{o\}$. Now we want to realize a vertex $y_1$ in $\partial \mathcal{E}_0$. For this choose $\omega_1\in \Omega$ and realize a random walk $(S(\omega_1)_n)_n$ at $\omega_1$ (starting from infinity). $y_1(\omega_1)$ is the hitting vertex of the random walk and $\partial \mathcal{E}_0$. We can then can set a realization of $\mathcal{E}_1$, which is $\mathcal{E}_1(\omega_1)=\{o,y_1(\omega_1)\}$. 
+\end{com}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
 
 \begin{thebibliography}{Lam00}
 \thispagestyle{empty}
