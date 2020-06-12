@@ -5,3 +5,5 @@ def saveObject(obj, filename = "file.obj"): #format filename: "filename.obj"
     
 def getObject(filename = ""): 
     return pickle.load(open(filename, "rb"))
+
+

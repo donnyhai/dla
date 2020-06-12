@@ -13,6 +13,8 @@ class EXT_DLA_Circle(EXT_DLA.EXT_DLA):
         self.helpSpaceDelta = 1 #how far shall be the helpSpace be away of the outest atoms ?
         self.circleRadius = self.helpSpaceDelta
         
+        self.circleparameter = 0.85
+        
         random.seed()
     
     def actualizeExtremeCoordinates(self):
@@ -28,7 +30,7 @@ class EXT_DLA_Circle(EXT_DLA.EXT_DLA):
     def actualizeCircleRadius(self):
         dx = self.maxX - self.minX
         dy = self.maxY - self.minY
-        self.circleRadius = int(math.sqrt(dx*dx + dy*dy) // 2 + self.helpSpaceDelta)
+        self.circleRadius = int(self.circleparameter * math.sqrt(dx*dx + dy*dy) // 2 + self.helpSpaceDelta)
         
     def isNear(self, pos):
         return math.sqrt((pos[0] - self.middlePoint[0])**2 + (pos[1] - self.middlePoint[1])**2) < self.circleRadius
@@ -39,26 +41,49 @@ class EXT_DLA_Circle(EXT_DLA.EXT_DLA):
         dx, dy = math.cos(alpha) * self.circleRadius, math.sin(alpha) * self.circleRadius
         return (self.middlePoint[0] + round(dx), self.middlePoint[1] + round(dy))
     
-    #atom random walk
-    def doAtomWalk(self, position):
-        #position0 = position
-        counter = 0
+    
+    
+    #atom walk with noise reduction
+    def doAtomWalk(self, position, bogoya = False):
+        init_position = position
+        isnear_counter = 0
+        noise_counter = self.multiple_steps 
+        move_direction = (0,0)
+        aggregate_cond = True #decides whether neighbouring atom will be added to the cluster (in case of sticking probabilites like in bogoya MR2212061)
+        bogoya_power = 2
         while True:
             if self.isTouching(position):
-                self.addAtom(position)
-                break
-            if counter == 10:
-                #check, if atom is still near enough to the clusters center
+                if bogoya:
+                    if random.random() < pow(self.numberOfNeighboursWithParticles(position) / len(self.getNeighbours(position)), bogoya_power):
+                        aggregate_cond = True
+                    else:
+                        aggregate_cond = False
+                
+                if aggregate_cond:
+                    self.addAtom(position)
+                    break
+                else:
+                    position = self.calculateRandomStartPosition()
+            
+            if isnear_counter == 10:
                 if not self.isNear(position):
-                    #position = position0 #reput on original starting position postion0 ? 
-                    position = self.calculateRandomStartPosition() #reput on a new random start position ?
-                counter = 0
-            counter += 1    
-            position = random.choice(self.getNeighbours(position))
+                    position = self.calculateRandomStartPosition()
+                isnear_counter = 0
+            isnear_counter += 1
+            
+            if noise_counter == self.multiple_steps:
+                new_position = random.choice(self.getNeighbours(position))
+                move_direction = (new_position[0] - position[0], new_position[1] - position[1])
+                position = new_position
+                noise_counter = 0
+            else:
+                position = (position[0] + move_direction[0], position[1] + move_direction[1])
+                noise_counter += 1
+    
     
     def runProcess(self, atomsMax = 500):
         for i in range(atomsMax):
-            self.doAtomWalk(self.calculateRandomStartPosition())
+            self.doAtomWalk(self.calculateRandomStartPosition(), True)
             
             #actualize values
             self.actualizeExtremeCoordinates()

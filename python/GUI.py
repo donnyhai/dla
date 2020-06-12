@@ -11,6 +11,7 @@ import INT_DLA_GUI
 import math          
 import DLA_approx1
 import DLA_approx1_GUI
+import Reverse_DLA
   
 pygame.init()
 pygame.display.init()
@@ -23,6 +24,8 @@ ec = EXT_DLA_Circle.EXT_DLA_Circle(windowSize)
 ecg = EXT_DLA_Circle_GUI.EXT_DLA_Circle_GUI(windowSize)
 i = INT_DLA.INT_DLA(windowSize)
 ig = INT_DLA_GUI.INT_DLA_GUI(windowSize)
+
+rd = Reverse_DLA.Reverse_DLA(windowSize)
 
 #approx1: very bad approximation
 a1 = DLA_approx1.DLA_approx1(windowSize)
@@ -45,6 +48,7 @@ def printProcess(dla, atomsMax = None):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if counter == 0:
                     if atomsMax is not None:
+                        #dla.runProcess2(atomsMax, surface = surface) #nice coloring
                         dla.runProcess(atomsMax, surface = surface)
                     else:
                         dla.render(surface)
@@ -180,9 +184,9 @@ def printPoints(points):
 
 
 
-#newfile = "objects/dla2.p"
-#so.saveObject(dla, newfile)
-#getdla = so.getObject("objects/")
+#newfile = "objects/reverse_dla_radius250_particles7879.p"
+#so.saveObject(rd, newfile)
+#getdla = so.getObject(newfile)
 
 
 
