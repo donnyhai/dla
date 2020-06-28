@@ -1,17 +1,26 @@
 import pygame, sys
-import saveObjects as so
+#import saveObjects as so
 import DLA
-import DLA_Rectangle
-import EXT_DLA_Polygon   
-import DLA_Polygon_GUI  
-import EXT_DLA_Circle 
-import EXT_DLA_Circle_GUI
-import INT_DLA
-import INT_DLA_GUI
-import math          
-import DLA_approx1
-import DLA_approx1_GUI
-import Reverse_DLA
+#import DLA_Rectangle
+#import EXT_DLA_Polygon   
+#import DLA_Polygon_GUI  
+#import EXT_DLA_Circle 
+#import EXT_DLA_Circle_GUI
+#import INT_DLA
+#import INT_DLA_GUI
+import math, cmath
+#import DLA_approx1
+#import DLA_approx1_GUI
+#import Reverse_DLA
+#import DLA_approx3
+import DLA_GUI
+import DLA_External_Circle as dec
+import DLA_External_Circle_GUI as decg
+import DLA_Reverse_Circle as drc
+import DLA_Reverse_Circle_GUI as drcg
+import DLA_Reverse_Rect as drr
+import DLA_Reverse_Rect_GUI as drrg
+import DLA_Approx3_GUI as dag
   
 pygame.init()
 pygame.display.init()
@@ -19,18 +28,35 @@ pygame.display.init()
 windowSize = (1000, 1000)
 atomsMax = 3000
 
-d = DLA.DLA(windowSize)
-ec = EXT_DLA_Circle.EXT_DLA_Circle(windowSize)
-ecg = EXT_DLA_Circle_GUI.EXT_DLA_Circle_GUI(windowSize)
-i = INT_DLA.INT_DLA(windowSize)
-ig = INT_DLA_GUI.INT_DLA_GUI(windowSize)
+#d = DLA.DLA(windowSize)
+#ec = EXT_DLA_Circle.EXT_DLA_Circle(windowSize)
+#ecg = EXT_DLA_Circle_GUI.EXT_DLA_Circle_GUI(windowSize)
+#i = INT_DLA.INT_DLA(windowSize)
+#ig = INT_DLA_GUI.INT_DLA_GUI(windowSize)
 
-rd = Reverse_DLA.Reverse_DLA(windowSize)
+#rd = Reverse_DLA.Reverse_DLA(windowSize)
 
 #approx1: very bad approximation
-a1 = DLA_approx1.DLA_approx1(windowSize)
-a1g = DLA_approx1_GUI.DLA_approx1_GUI(windowSize)
+#1 = DLA_approx1.DLA_approx1(windowSize)
+#a1g = DLA_approx1_GUI.DLA_approx1_GUI(windowSize)
 
+#a3 = DLA_approx3.DLA_approx3(windowSize)
+
+d0 = decg.DLA_External_Circle_GUI()
+d0.runProcess(350)
+#dg = DLA_GUI.DLA_GUI(dc.atoms)
+
+#d1 = decg.DLA_External_Circle_GUI()
+#d1.runProcess(300)
+
+#d2 = drcg.DLA_Reverse_Circle_GUI()
+#d2.runProcess(300)
+
+#d3 = drrg.DLA_Reverse_Rect_GUI()
+#d3.runProcess(300)
+
+#d4 = dag.DLA_Approx3_GUI()
+#d4.runProcess(200)
 
 def printProcess(dla, atomsMax = None):
     surface = pygame.display.set_mode(windowSize,0,32)
@@ -49,7 +75,7 @@ def printProcess(dla, atomsMax = None):
                 if counter == 0:
                     if atomsMax is not None:
                         #dla.runProcess2(atomsMax, surface = surface) #nice coloring
-                        dla.runProcess(atomsMax, surface = surface)
+                        dla.runProcessLive(atomsMax, surface = surface)
                     else:
                         dla.render(surface)
                     counter += 1
@@ -188,5 +214,41 @@ def printPoints(points):
 #so.saveObject(rd, newfile)
 #getdla = so.getObject(newfile)
 
+
+#checking function calculateAnglesIntervall in DLA_approx3
+def checkLines(dla, point):
+    surface = pygame.display.set_mode(windowSize,0,32)
+    surface.fill((0,0,0,0))
+    pygame.display.update()
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit()
+                    sys.exit()
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                dla.render(surface)
+                
+                angleIntervall = dla.calculateAnglesIntervall(point)
+                maxRel = cmath.rect(50, angleIntervall[1])
+                minRel = cmath.rect(50, angleIntervall[0])
+                maxPoint = maxRel - point + 500 + 500 * 1j
+                maxPoint = int(maxPoint.real) + int(maxPoint.imag) * 1j
+                minPoint = minRel - point + 500 + 500 * 1j
+                minPoint = int(minPoint.real) + int(minPoint.imag) * 1j
+                
+                print(maxPoint)
+                print(minPoint)
+                
+                pygame.draw.line(surface, (255,0,0), (point.real, point.imag), (minPoint.real, minPoint.imag))
+                pygame.draw.line(surface, (255,0,0), (point.real, point.imag), (maxPoint.real, maxPoint.imag))
+                
+                pygame.draw.line(surface, (255,255,0), (500,500), (cmath.rect(10, -0.7).real, cmath.rect(10, -0.7).imag))
+                
+                surface.set_at((int(point.real), int(point.imag)), (255,255,255))
+                
+        pygame.display.update()
 
 

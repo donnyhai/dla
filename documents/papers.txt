@@ -2,6 +2,25 @@ GENERAL KEYWORDS: Progress in wavelet analysis and applications
 
 
 
+Sava-Huss Paper Resultate:
+obere Schranke für Wachstumsgeschwindigkeit von r(E_n) in Z^d
+N(n)>Cn^(d-1) Anzahl Partikel in B_n in Z^d
+H_n number of holes tends to infinity a.s. in Z^2
+properties of walks on Z
+questions: 
+E[r(E_n)] of order n^(1/d)?
+distribution of ends of E_inf on Z^d?
+-> external DLA in a wedge of Z^d
+Zylinder-Graphen
+
+
+
+
+MR1917996
+Multifractal structure of the harmonic measure of diffusion-limited aggregates.
+physics
+2002 PDF DOWNLOADED
+
 MR1909232
 How to grow isotropic on-lattice diffusion-limited aggregates.
 2002 PDF DOWNLOADED

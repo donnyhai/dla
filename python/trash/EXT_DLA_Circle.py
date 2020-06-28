@@ -1,5 +1,5 @@
 import random
-import math
+import math, cmath
 import EXT_DLA
 
 class EXT_DLA_Circle(EXT_DLA.EXT_DLA):
@@ -92,4 +92,24 @@ class EXT_DLA_Circle(EXT_DLA.EXT_DLA):
             
             print(i)
             
+            
+    #a lot here and especially the different cases with specialSituation etc correlate strongly with cmath.phase (values from -pi to pi)
+    def calculateAnglesIntervall(self, point):
+        allAngles = []
+        specialSituation = False #exists particle in the cluster with point[1] == particle[1] & point[0] > particle[0] (phase break)
+        
+        for particle in self.atoms:
+            if point[1] == particle[1] & point[0] > particle[0]: #this condition correlates strongly with the function cmath.phase (values from -pi to pi)
+                specialSituation = True
+            relVector = (particle[0] - point[0]) + (particle[1] - point[1]) * 1j #vector point -> particle as complex number
+            allAngles.append(round(cmath.phase(relVector), 3))
+            
+        if specialSituation:
+            minAngle = max([angle for angle in allAngles if angle < 0])
+            maxAngle = min([angle for angle in allAngles if angle > 0])
+        else:
+            minAngle = min(allAngles)
+            maxAngle = max(allAngles)
+            
+        return (minAngle, maxAngle)
     

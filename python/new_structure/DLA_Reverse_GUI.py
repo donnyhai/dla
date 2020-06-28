@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 11 19:27:26 2020
-
-@author: donnykong
-"""
+#last changed: 200627
 
 import DLA
 import pygame
@@ -12,11 +7,11 @@ from math import sin, cos, sqrt
 
 #start in the center and walk to the 
 class Reverse_DLA(DLA.DLA):
-    def __init__(self, spaceSize = (100,100), startAtoms = None):
+    def __init__(self, startAtoms = None):
         super().__init__(spaceSize, startAtoms)
         self.atoms = []
         
-        self.start_position = (spaceSize[0] // 2, spaceSize[1] // 2)
+        self.start_position = (0,0)
         
         self.boundary_radius = 150 #will be square or circle
         self.boundary_rect = pygame.Rect(self.start_position[0] - self.boundary_radius, self.start_position[1] - self.boundary_radius, 2 * self.boundary_radius, 2 * self.boundary_radius)
@@ -105,9 +100,14 @@ class Reverse_DLA(DLA.DLA):
             
     def render(self, surface):
         surface.fill((0,0,0,0))
+        offset = (surface.get_width() // 2, surface.get_height() // 2)
+        #offset = surface.get_width() // 2 + (surface.get_height() // 2) * 1j #complex
         
         for i in range(len(self.atoms)):
-            surface.set_at(self.atoms[i], self.colors[(i//250)%len(self.colors)])
+            renderAtom = (self.atoms[i][0] + offset[0], self.atoms[i][1] + offset[1])
+            #renderAtom = self.atoms[i] + offset #complex
+            surface.set_at(renderAtom, self.colors[(i//250)%len(self.colors)])
+            #surface.set_at((renderAtom.rel, renderAtom.imag), self.colors[(i//250)%len(self.colors)]) #complex
         #for atom in self.atoms:
         #    surface.set_at(atom, (150, 215, 182, 255))
         
