@@ -16,11 +16,11 @@ class DLA:
         else:
             return [atom + 1, atom - 1, atom + 1j, atom - 1j]  #only up, down, right, left neighbours
         
-    def numberOfNeighboursWithParticles(self, atom):
-        return len(set(self.getNeighbours(atom)).intersection(set(self.atoms))) #touching diagonal neighbours included? here not
+    def numberOfNeighboursWithParticles(self, atom, withDiagonal = False):
+        return len(set(self.getNeighbours(atom, withDiagonal)).intersection(set(self.atoms))) #touching diagonal neighbours included? here not
 
-    def isTouching(self, atom):
-        return self.numberOfNeighboursWithParticles(atom) > 0
+    def isTouching(self, atom, withDiagonal = False):
+        return self.numberOfNeighboursWithParticles(atom, withDiagonal) > 0
 
     def runProcess(self, atomsMax = 500):
         pass

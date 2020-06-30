@@ -9,17 +9,17 @@ class DLA_Approx3(DLA.DLA):
     def __init__(self, startAtoms = None):
         super().__init__(startAtoms)
         
-        self.maxDistance = 0
         self.initializeHelpingStructures()        
         self.calculateStartCluster() #after this the cluster has three particles (chosen uniformly, symmetry)
-        self.lineDelta = 0.5 #determines the step sizes of going along the line until hitting the cluster
+        
+        self.nothitcounter = 0
         
 
     def calculateStartCluster(self):
-        self.addAtom(random.choice(self.getNeighbours(self.atoms[0])))
+        self.addAtom(random.choice(self.getNeighbours(self.atoms[0], withDiagonal = True)))
         self.actualizeHelpingStructures()
         
-        l = list(set(self.getNeighbours(self.atoms[0]) + self.getNeighbours(self.atoms[1])))
+        l = list(set(self.getNeighbours(self.atoms[0], withDiagonal = True) + self.getNeighbours(self.atoms[1], withDiagonal = True)))
         l.remove(self.atoms[0])
         l.remove(self.atoms[1])
         self.addAtom(random.choice(l))
@@ -30,7 +30,7 @@ class DLA_Approx3(DLA.DLA):
     #outest particle of the cluster). In there we take a random point and choose a random radius big enough to cover the whole circle
     def getRandomSurroundingCircle(self):
         p = self.middlePoint + cmath.rect(random.random() * self.circleRadius, random.random() * 2 * 3.14)
-        return (int(p.real) + int(p.imag) * 1j, random.uniform(3 * self.circleRadius, 4 * self.circleRadius))
+        return (int(p.real) + int(p.imag) * 1j, random.uniform(2.5 * self.circleRadius, 3 * self.circleRadius))
         
     
     def calculateStartPosition(self):
@@ -49,8 +49,14 @@ class DLA_Approx3(DLA.DLA):
             allAngles.append(round(cmath.phase(particle - point), 3)) #vector point -> particle as complex number
             
         if specialSituation:
-            minAngle = max([angle for angle in allAngles if angle < 0])
-            maxAngle = min([angle for angle in allAngles if angle > 0])
+            negAngles = [angle for angle in allAngles if angle < 0]
+            posAngles = [angle for angle in allAngles if angle > 0]
+            if len(negAngles) == 0:
+                minAngle = min(posAngles)
+                maxAngle = max(posAngles)
+            else:
+                minAngle = max(negAngles)
+                maxAngle = min(posAngles)
         else:
             minAngle = min(allAngles)
             maxAngle = max(allAngles)
@@ -64,52 +70,38 @@ class DLA_Approx3(DLA.DLA):
             if randAngle > 0:
                 return round(randAngle - 3.142, 3)
             else:
-                round(randAngle + 3.142, 3)
+                return round(randAngle + 3.142, 3)
         else:
             return round(random.uniform(intervall[0], intervall[1]), 3)
             
-    def getLineClusterHitPoint(self, startPoint, angle):
+    def getLineClusterHitPoint(self, init_position, angle):
         unnormedLineDirection = cmath.rect(10, angle)
         normedLineDirection = unnormedLineDirection/abs(unnormedLineDirection)
-        
-        actualPlace = startPoint
         steps = 1
-        smallCondition = len(self.atoms) < 10
-        
+        walkcounter = 0
         while True:
-            nextPlace = startPoint + steps * self.lineDelta * normedLineDirection
-            nextPlace = math.ceil(nextPlace.real) + math.ceil(nextPlace.imag) * 1j
-            if nextPlace in self.atoms:
-                print("test3")
-                if actualPlace in self.getNeighbours(nextPlace, True):
-                    return actualPlace
-                else:
-                    x = nextPlace[0] + 0.25 * (-1) * normedLineDirection[0] #move a bit back to certainly get a neighbour
-                    y = nextPlace[1] + 0.25 * (-1) * normedLineDirection[1]
-                    return (math.ceil(x), math.ceil(y))
-            
-            if smallCondition:
-                for parti in self.atoms:
-                    for neigh in self.getNeighbours(parti):
-                        if nextPlace == neigh:
-                            return nextPlace
-            
-            actualPlace = nextPlace
+            position = init_position + steps * self.lineDelta * normedLineDirection
+            position = int(round(position.real, 0)) + int(round(position.imag, 0)) * 1j
+            #print(position)
+            if self.isTouching(position, withDiagonal = True):
+                return position
             steps += 1
+            
+            #if walked by the cluster (which should not happen), reset randomly position and angle
+            if walkcounter == 10000:
+                init_position = self.calculateStartPosition()
+                angle = self.chooseRandomAngle(self.calculateAnglesIntervall(position))
+                steps = 1
+                walkcounter = 0
+                self.nothitcounter += 1
+            walkcounter += 1
     
     def runProcess(self, maxAtoms = 100):
         for i in range(maxAtoms):
             start_point = self.calculateStartPosition()
-            print(start_point)
-            angleIntervall = self.calculateAnglesIntervall(start_point)
-            print(angleIntervall)
-            angle = self.chooseRandomAngle(angleIntervall)
-            print(angle)
-            hitPoint = self.getLineClusterHitPoint(start_point, angle)
+            hitPoint = self.getLineClusterHitPoint(start_point, self.chooseRandomAngle(self.calculateAnglesIntervall(start_point)))
             self.addAtom(hitPoint)
-            
             self.actualizeHelpingStructures()
-            
             print(i)
                 
     def initializeHelpingStructures(self):
@@ -121,6 +113,7 @@ class DLA_Approx3(DLA.DLA):
         self.circleRadius = self.helpSpaceDelta
         
         self.circleparameter = 1         
+        self.lineDelta = 0.2 #determines the step sizes of going along the line until hitting the cluster
                 
                 
     def actualizeHelpingStructures(self):
