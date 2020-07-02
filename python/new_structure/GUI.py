@@ -6,30 +6,29 @@ import DLA_GUI
 import DLA_External_Circle_GUI as decg
 import DLA_Reverse_Circle_GUI as drcg
 import DLA_Reverse_Rect_GUI as drrg
-import DLA_Approx3_GUI as dag
+import DLA_External_Approx3_GUI as deag
 import testclass as t
   
 pygame.init()
 pygame.display.init()
 
 windowSize = (500, 500)
-atomsMax = 3000
 
 #d0 = decg.DLA_External_Circle_GUI()
 #d0.runProcess(350)
 #dg = DLA_GUI.DLA_GUI(dc.atoms)
 
-d1 = decg.DLA_External_Circle_GUI()
-d1.runProcess(2000)
+#d1 = decg.DLA_External_Circle_GUI()
+#d1.runProcess(100)
 
 #d2 = drcg.DLA_Reverse_Circle_GUI()
-#d2.runProcess(2000)
+#d2.runProcess(500)
 
 #d3 = drrg.DLA_Reverse_Rect_GUI()
 #d3.runProcess(300)
 
-#d4 = dag.DLA_Approx3_GUI()
-#d4.runProcess(3000)
+d4 = deag.DLA_External_Approx3_GUI()
+d4.runProcess(100)
 
 #d5 = t.Testclass()
 #d5.runProcess(300)
@@ -62,8 +61,10 @@ def printProcess(dla, atomsMax = None):
 
 
 
-
-
+####### SAVE OBJECTS #######
+#newfile = "objects/reverse_dla_radius250_particles7879.p"
+#so.saveObject(rd, newfile)
+#getdla = so.getObject(newfile)
 
 
 
@@ -173,10 +174,6 @@ def printPoints(points):
         pygame.display.update()
 
 
-
-#newfile = "objects/reverse_dla_radius250_particles7879.p"
-#so.saveObject(rd, newfile)
-#getdla = so.getObject(newfile)
 
 
 #checking function calculateAnglesIntervall in DLA_approx3

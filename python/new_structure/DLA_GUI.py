@@ -20,7 +20,7 @@ class DLA_GUI(DLA.DLA):
             for i in range(len(self.atoms)):
                 renderAtom = self.atoms[i] + offset
                 surface.set_at((int(renderAtom.real), int(renderAtom.imag)), self.colors[(i // 250) % len(self.colors)])
-                #surface.set_at((renderAtom.rel, renderAtom.imag), (255,255,255)) 
+                #surface.set_at((int(renderAtom.real), int(renderAtom.imag)), (255,255,255)) 
             
             pygame.display.flip()   
         
