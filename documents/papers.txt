@@ -15,7 +15,6 @@ Zylinder-Graphen
 
 
 
-
 MR1917996
 Multifractal structure of the harmonic measure of diffusion-limited aggregates.
 physics
@@ -57,7 +56,7 @@ description of geometric structures of aggregates. comparing DLA and cluster-clu
 Zbl 0879.28018 
 Summary: Fourier and wavelet transforms of fractal objects show specific scaling properties from which fractal dimensions may be deduced. When applied to Witten and Sander aggregates, 
 these two techniques, in their optical and numerical versions, give conflicting results. We describe and hopefully explain these contradictions.
-1993, ONLY BOOK
+1993 ONLY BOOK
 
 Zbl 0882.28007
 Summary: We use the wavelet transform microscope to explore the intricate geometry of fractal aggregates. We show that the statistical self-similarity of Witten and Sander diffusion 

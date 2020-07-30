@@ -1,5 +1,7 @@
 \babel@toc {ngerman}{}
 \contentsline {section}{\numberline {1}Einleitung}{1}%
 \contentsline {section}{\numberline {2}Preliminaries}{2}%
-\contentsline {section}{\numberline {3}External DLA}{3}%
-\contentsline {section}{\numberline {4}Notizen}{4}%
+\contentsline {section}{\numberline {3}Incremental Aggregation}{3}%
+\contentsline {section}{\numberline {4}External DLA}{4}%
+\contentsline {section}{\numberline {5}Notizen}{5}%
+\contentsline {section}{\numberline {6}Line Process}{6}%
