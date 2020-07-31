@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  30 JUL 2020 22:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  31 JUL 2020 12:06
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -555,16 +555,23 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 110.
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--111
+Underfull \hbox (badness 10000) in paragraph at lines 108--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--112
 
  []
 
 [2] [3]
-Overfull \hbox (5.0036pt too wide) in paragraph at lines 184--185
-\T1/lmr/bx/n/12 Definition 4.1. \T1/lmr/m/n/12 Let $\OML/lmm/m/it/12 G$ \T1/lmr
-/m/n/12 be an in-fi-ni-te graph and $\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 S[]\OT1/
-lmr/m/n/12 )[]$ \T1/lmr/m/n/12 a ran-dom walk on it. $\OML/lmm/m/it/12 External
- DLA$
+Underfull \hbox (badness 10000) in paragraph at lines 168--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--187
+
  []
 
 [4] [5] [6] [7]
@@ -579,26 +586,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 258--260
 
 [8] (masterarbeit.aux) ) 
 Here is how much of TeX's memory you used:
- 7433 strings out of 481565
- 134098 string characters out of 2912287
- 486726 words of memory out of 3000000
- 22525 multiletter control sequences out of 15000+200000
- 603839 words of font info for 71 fonts, out of 3000000 for 9000
+ 7436 strings out of 481565
+ 134132 string characters out of 2912287
+ 484734 words of memory out of 3000000
+ 22527 multiletter control sequences out of 15000+200000
+ 616517 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,14n,56p,10109b,338s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/f
 onts/enc/dvips/lm/lm-ec.enc}{C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2
 .9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/donnykong/AppData/Local/Programs/MiKT
-eX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/donnykong/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/donnykong/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Users/donnykong/App
+eX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/donnykong/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/donnykong/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Users/donnykong/App
 Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Users/donny
-kong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Use
-rs/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi12.pfb
-><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lm
-mi6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
-c/lm/lmmi8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/lm/lmmib10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/f
+kong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Us
+ers/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pf
+b><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/l
+mmi12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmmi6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/lm/lmmi8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/public/lm/lmr12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/donnykong/AppData/Local/Program
 s/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/donnykong/AppData/Local/P
@@ -610,7 +617,7 @@ nykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:
 .pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/l
 m/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (10 pages, 2890256 bytes).
+Output written on masterarbeit.pdf (10 pages, 2896945 bytes).
 PDF statistics:
  111 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -77,7 +77,7 @@
 
 
     Supervisor: PD. Dr. Steffen Winter \\[1cm]
-    Mathematics Faculty\\[1cm]
+    Faculty of Mathematics\\[1cm]
 	Karlsruhe Institute of Technology
 \end{center}
 \end{titlepage}
@@ -103,20 +103,14 @@ External DLA beschreibt einen stochastischen Prozess, welcher zumindest in ähnl
 \newpage
 
 
-\section{Preliminaries}
+\section{Preliminaries} \label{prelim}
 
 We prepare this script with the following preliminaries. \\
 \\
-$\boldsymbol{Graphs}.\quad$ Let $G$ be an infinite graph. Denote $deg(x)$ the degree of a vertex $x\in G$. $G$ shall be additionally locally finite, i.e. $deg(x)<\infty$ for all $x\in G$. Let $o\in G$ be a distinguished vertex which we call $origin$ or $root$. Define the distance between two vertices $x,y\in G$ as 
-\begin{align*}
-	d(x,y):=\min \{n\geq 1\ |\ \exists\ x_1,\dots, x_{n-1}\in G:\ (x,x_1), (x_1,x_2),\dots, (x_{n-1},y) \in E(G)\},
-\end{align*}
-thus the distance between two vertices is the minimal length of paths connecting the two vertices. For $n\in \mathbb{N}$ and $x\in G$ $balls$ are defined as $B_n(x):=\{y\in G|d(x,y)\leq n\}$, and for the special case $B_n:=B_n(o)$. Let $A\subset G$ a subgraph, then we define the boundary of $A$ as
-\begin{align*}
-	\partial A := \{y\in G\setminus A\ |\ \exists\ x\in A: (x,y)\in E(G)\}.
-\end{align*}
+$\boldsymbol{\mathit{Graphs}}.\quad$ In this paper we will be interested in the graph $(\mathbb{Z}^d, E)$ with the canonical graph structure, which is $x,y\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if $\exists ! i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as $N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}$ and the canonical graph structure as defined above basically means that $N(x) = \{x+re_i\ |\ r\in \{-1,1\}\text{ and } i\in \{1,\dots, d\}\}$, $e_i$ being the usual unit vectors of $\mathbb{Z}^d$. For a set $A\subset \mathbb{Z}^d$ the $\mathit{edgeset}\ \partial A$ of $A$ is defined as $\partial A := \{y\in \mathbb{Z}^d\ |\ \exists x\in A:\ (x,y)\in E\}$. From now on insted of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$. 
+\\
 
-\noindent $\boldsymbol{Random\ Walks}.\quad$ Let $(S_n)_n$ be a random walk on $G$ and denote $\mathbb{P}_x$ the probability measure of the random walk started at $x$. That means precisely 
+\noindent $\boldsymbol{\mathit{Random\ Walks}}.\quad$ Let $(S_n)_n$ be a random walk on $G$ and denote $\mathbb{P}_x$ the probability measure of the random walk started at $x$. That means precisely 
 \begin{align*}
 	\mathbb{P}_x(A) := \mathbb{P}_{S_n}(A|S_0=x) = \mathbb{P}(S_n\in A|S_0=x)
 \end{align*}
@@ -136,16 +130,9 @@ Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green\ function$ 
 \begin{align*}
 	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T(A) > n).
 \end{align*} 
-\noindent The $hitting\ distribution$ of elements in $A$ with $hitting\ position$ $S_{T(A)}$ is then
-\begin{align*}
-	H_A(x,y) := p_{T(A)}(x,y),\quad y\in A, 
-\end{align*}
-and for the special case $x=o$ we define
-\begin{align*}
-	h_A(y) := H_A(o,y) = \mathbb{P}_o(S_{T(A)}=y),\quad y\in A.
-\end{align*}
-Thus, $h_A(y)$ is the probability of hitting $A$ for the first time at $y$ starting from $o$. $h_A$ is called the $harmonic\ measure\ (from\ o)$.
 
+
+\newpage
 \section{Incremental Aggregation}
 In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the edgeset of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregation}$. Define 
 \begin{align}
@@ -169,36 +156,39 @@ So every element in $\mathcal{D}_A$ naturally defines a distribution on the elem
 	
 \end{rem}
 
-\begin{definition}
-	Incremental Aggregation with the harmonic measure $h_A$ as its distribution we define here and is known as $\mathit{Diffusion\ Limited\ Aggregate}$, short $\mathit{DLA}$.
-\end{definition}
+
 
 \newpage
 
 \newpage
 \section{External DLA}
 
-External DLA is a model building a sequence of random growing sets $(\mathcal{E}_n)_{n\geq 0}$ starting with one particle $\mathcal{E}_0=\{o\}$ at the origin. At each timestep $n+1$ a new particle starts a random walk $(S_k)_k$ from "far away" (infinity) until it hits the boundary $\partial \mathcal{E}_n$ of the current exting cluster for the first time. The union of this vertex and the already exting cluster then form the new cluster. Lets see the formal definition.
+External DLA is a model of Incremental Aggregation as defined above using a very natural distribution, called the $\mathit{harmonic\ measure}$. 
 
-\begin{definition}
-	Let $G$ be an infinite graph and $(S_n)_n$ a random walk on it. $External\ DLA$ on $G$ is a Markov chain $(\mathcal{E}_n)_{n\geq 0}$ on finite subsets of $G$ which evolve in the following way. We start with a single vertex at the origin, thus $\mathcal{E}_0 := \{o\}$. Then given the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random vertex in $\partial \mathcal{E}_n$ chosen according to the harmonic measure (from infinity) of $\partial \mathcal{E}_n$. Precisely that is
+\begin{definition} $\mathit{(Harmonic\ Measure)}$\\
+	\\
+	Remembering the definitions in \eqref{prelim}, especially the heat kernel $p_n(x,y):=\mathbb{P}_x(S_n=y)$ of a random walk, the $\mathit{hitting\ distribution}$ of elements in $A$ with $\mathit{hitting\ position}$ $S_{T(A)}$ is 
 	\begin{align*}
-		\mathbb{P}(y_{n+1}=y\ |\ \mathcal{E}_n) = \mu_{\partial \mathcal{E}_n}(y),\quad y\in \partial \mathcal{E}_n.
+	H_A(x,y) := p_{T(A)}(x,y),\quad y\in A, 
 	\end{align*}
-	We then set $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$.	
-	
+	and for the special case $x=o:=(0,0)$ we define
+	\begin{align*}
+	h_A(y) := H_A(o,y) = \mathbb{P}_o(S_{T(A)}=y),\quad y\in A.
+	\end{align*}
+	Thus, $h_A(y)$ is the probability of hitting $A$ for the first time at $y$ starting from $o$. $h_A$ is called the $\mathit{harmonic\ measure\ (from\ o)}$.
 \end{definition}
 
-\begin{com}
-	Given the definition above, how does a realization of the process mathematcially look like? We start with a constant $\mathcal{E}_0 = \{o\}$. Now we want to realize a vertex $y_1$ in $\partial \mathcal{E}_0$. For this choose $\omega_1\in \Omega$ and realize a random walk $(S(\omega_1)_n)_n$ at $\omega_1$ (starting from infinity). $y_1(\omega_1)$ is the hitting vertex of the random walk and $\partial \mathcal{E}_0$. We can then can set a realization of $\mathcal{E}_1$, which is $\mathcal{E}_1(\omega_1)=\{o,y_1(\omega_1)\}$. 
-\end{com}
+\begin{lemma}
+	harmonic measure := hearmonic measure from infinity. Why does this exist?
+\end{lemma}
 
-\newpage
+\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate,\ External\ DLA)}$\\
+	\\ Incremental Aggregation with the harmonic measure $h$ as its distribution we define here, and in literature is known as $\mathit{Exernal\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$.
+\end{definition}
 
-
-\section{Notizen}
-
-diffusion in fractals: $d_f < d$ (space $\mathbb{Z}^d$)
+\begin{rem}
+	contenu...
+\end{rem}
 
 
 \newpage
@@ -206,7 +196,7 @@ diffusion in fractals: $d_f < d$ (space $\mathbb{Z}^d$)
 
 \section{Line Process}
 
-In the following we will look at a process which is the approach of a simple approximation of external DLA. The idea is to let particles move on straight lines coming from infinity and add to the cluster when hitting it. Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^d$. Therefore we will consider points in $\mathbb{Z}^d$ as the centers of unit squares and let the particles move on straight lines in the full plane $\mathbb{R}^d$. We consider the line hitting a point in $\mathbb{Z}^d$ if it cuts its unit square as defined in the following. 
+In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add to the cluster when hitting it. Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider the line hitting a point in $\mathbb{Z}^2$ if and only if it cuts its unit square as defined in the following. 
 
 \begin{definition}
 	Define 
@@ -224,15 +214,25 @@ In the following we will look at a process which is the approach of a simple app
 BILD Linie durch squares "hitting"\\
 Gradenmaß
 
-\begin{definition}
-	Similair to the definition of a DLA process we now define a stochastic process $(\epsilon_n)_{n\in \mathbb{N}_0}$ on the set of subsets of $G_{sq}$. We start with $\epsilon_0 =  \{(0,0)\}$. Having the process $\epsilon_n$ after $n$ steps, the next  
+\begin{definition} $\mathit{Line\ Hitting\ Distribution}$\\
+	contenu...
 \end{definition}
 
+\begin{definition} $\mathit{Line\ Process}$\\
+	contenu...
+\end{definition}
 
 
 
 \newpage
 
+
+\section{Notizen}
+
+diffusion in fractals: $d_f < d$ (space $\mathbb{Z}^d$)
+
+
+\newpage
 
 \begin{thebibliography}{Lam00}
 \thispagestyle{empty}
