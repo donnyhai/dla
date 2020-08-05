@@ -207,15 +207,53 @@ In the following we will look at a process which is the approach of a simple app
 	\begin{align}
 	sq: \mathbb{Z}^2 \to G_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2})
 	\end{align}
-	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $G_{sq}$, which is two squares $s_1, s_2\in G_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $G$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2$ such that $L=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}$. For the following context we say a line $L$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $L\cap sq(p) \neq \emptyset$.
+	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $G_{sq}$, which is two squares $s_1, s_2\in G_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $G$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2$ such that $L=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}$. We may accordingly sometimes reference a line $L$ with $L_{a,b}$. The set of lines we will call $\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}\}$. For the following context we say a line $L$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $L\cap sq(p) \neq \emptyset$.
 	
 \end{definition}
 
 BILD Linie durch squares "hitting"\\
-Gradenmaß
+Gradenmaß $\mu_0$
+
+\begin{definition}
+	Let $L=L_{a,b}\in \mathcal{L}$ be a line. For $A\in \mathcal{P}_C$ we define $L_{A} := \{ p\in A\ |\ L \text{ hits } p\}$ which is the set of points in $A$ which the line $L$ hits. Here suppose $L_A \neq \emptyset$. We want to define a total ordered relation $<_{line}$ on $L_A$ which will help us construct the distribution for the Line Process. We choose two points $(x_1,x_2)\neq(y_1,y_2)\in L_A$ and devide the definition of a relation into three cases, which are the line having zero, positive or negative gradient: \\
+	$\mathit{Case\ 1,\ b=0}$:
+	\begin{align*}
+	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad x_1 < y_1
+	\end{align*}\\
+	$\mathit{Case\ 2,\ b>0}$:
+	\begin{align*}
+	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad
+		\begin{cases}
+			x_1 < y_1, & \text{ if } x_1 \neq y_1, \\
+			x_2 < y_2, & \text{ if } x_1 = y_1.
+		\end{cases}
+	\end{align*}\\
+	$\mathit{Case\ 3,\ b<0}$:
+	\begin{align*}
+	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad
+	\begin{cases}
+	x_1 < y_1, & \text{ if } x_1 \neq y_1, \\
+	x_2 > y_2, & \text{ if } x_1 = y_1.
+	\end{cases}
+	\end{align*}\\
+	It is easy to see that this well-defines a relation on $L_A$. In the following we will quickly proove that this relation is totally ordered. 
+\end{definition}
+
+\begin{lemma}
+For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_C$ with $L_A\neq \emptyset$ the relation $<_{line}$ on $L_A$ is totally ordered. 
+	\begin{proof}
+		We will only proove the case where $b>0$, since the other cases work very similair (Note, that in the case $b=0$ we have $x_2 = y_2$). Let $b>0$. For antisymmetry let $(x_1, x_2) <_{line} (y_1, y_2)$ and $(y_1, y_2) <_{line} (x_1, x_2)$. Suppose $x_1\neq y_1$, then $x_1 < y_1$ and $y_1 < x_1$, therefore $x_1 = y_1$ by antisymmetry of the standard order $<$ in $\mathbb{R}$, a contradiction, hence $x_1 = y_1$. But then we have $x_2 < y_2$ and $y_2 < x_2$ and therefore also $x_2 = y_2$. For transitivity let $(x_1,x_2) <_{line} (y_1,y_2)$ and $(y_1,y_2) <_{line} (z_1,z_2)$. We find four cases. In case $x_1 \neq y_1$ and $y_1 \neq z_1$ we get $x_1 < z_1$ by transitivity of $<$, hence $(x_1,x_2) <_{line} (z_1,z_2)$. In case $x_1\neq y_1$ and $y_1 = z_1$ we get $x_1 < y_1 = z_1$, therefore $(x_1,x_2) <_{line} (z_1,z_2)$. In case $x_1 = y_1$ and $y_1 \neq z_1$ we get $x_1 = y_1 < z_1$, similair as the last case. In the last case $x_1 = y_1 = z_1$ we get $x_2 < y_2$ and $y_2 < z_2$ and again by transitivity of $<$ we get $x_2 < z_2$, hence $(x_1,x_2) <_{line} (z_1,z_2)$ again. At last, connexity quickly follows from the connexity of $<$ by looking at the two cases $x_1 \neq y_1$ and $x_1 = y_1$. 
+	\end{proof}
+\end{lemma}
+
+\begin{rem}
+	The relatoin $<_{line}$ on $L_A$ shall basically order the hitpoints of a line $L$ with a finite connected set $A$ from left-bottom to right-top in the case of positive gradient, and left-top to right-bottom in the case of negative gradient of the line. In case of zero gradient we get equal second coordinates for all points in $L_A$ and therefore order them naturally by their first coordinate. This order will permit us to know which points $L$ hits first and last when moving on the line facing $A$.  
+\end{rem}
+
 
 \begin{definition} $\mathit{Line\ Hitting\ Distribution}$\\
-	contenu...
+	Choose $A\in \mathcal{P}_C$, a finite and connected subset of $\mathbb{Z}^2$. We will define a distribution $\mu_A$ on $\mathbb{Z}^2$ like in the following. 
+	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$. 
 \end{definition}
 
 \begin{definition} $\mathit{Line\ Process}$\\
