@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  5 AUG 2020 20:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  9 AUG 2020 17:09
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -574,13 +574,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--187
 
  []
 
-[4] [5] [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 294--295
+[4] [5]
+Overfull \hbox (39.85994pt too wide) in paragraph at lines 258--261
+\OMS/lmsy/m/n/12 f\OML/lmm/m/it/12 min[]L[]; max[]L[]\OMS/lmsy/m/n/12 g$\T1/lmr
+/m/n/12 . $\OML/lmm/m/it/12 [] \OT1/lmr/m/n/12 := \OML/lmm/m/it/12 U[]$ \T1/lm
+r/m/n/12 we will call the $[]$. 
+ []
+
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--298
+Underfull \hbox (badness 10000) in paragraph at lines 300--302
 
  []
 
@@ -611,15 +618,16 @@ X 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/donnykong/AppData/Local/Program
 s/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/donnykong/AppData/Local/P
 rograms/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/donnykong/AppData/L
 ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Users/donnykong/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmro12.pfb><C:/Users/don
-nykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:
-/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10
-.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/l
-m/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (11 pages, 2906368 bytes).
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri8.pfb><C:/Users/donn
+ykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmro12.pfb><C:/Us
+ers/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.
+pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
+/lmsy10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on masterarbeit.pdf (11 pages, 2920158 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
+ 118 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

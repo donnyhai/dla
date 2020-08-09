@@ -133,8 +133,8 @@ Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green\ function$ 
 
 
 \newpage
-\section{Incremental Aggregation}
-In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the edgeset of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregation}$. Define 
+\section{Incremental Aggregate}
+In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the edgeset of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregate}$. Define 
 \begin{align}
 	\mathcal{P}_C := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite and connected}\}, 
 \end{align}
@@ -142,10 +142,10 @@ the set of finite and connected subsets of $\mathbb{Z}^d$. Furthermore we will b
 \begin{align}
 	\mathcal{D}_A:= \{\mu: \mathbb{Z}^d\to [0,1]\ |\ \mu(y) = 0, \forall y\notin A\ \text{and}\ \sum_{y\in A} y = 1 \}.
 \end{align}
-So every element in $\mathcal{D}_A$ naturally defines a distribution on the elements of $A$. Now we define incremental aggregation as follows.  
+So every element in $\mathcal{D}_A$ naturally defines a distribution on the elements of $A$. Now we define incremental Aggregate as follows.  
 
 \begin{definition}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_C}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_C$. $\mathit{Incremental\ Aggregation\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{(0,0)\}$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point on $\partial \mathcal{E}_n\in \mathcal{P}_C$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_C}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_C$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{(0,0)\}$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point on $\partial \mathcal{E}_n\in \mathcal{P}_C$ with distribution
 	\begin{align}
 		\mathbb{P}(y_n = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
@@ -163,7 +163,7 @@ So every element in $\mathcal{D}_A$ naturally defines a distribution on the elem
 \newpage
 \section{External DLA}
 
-External DLA is a model of Incremental Aggregation as defined above using a very natural distribution, called the $\mathit{harmonic\ measure}$. 
+External DLA is a model of Incremental Aggregate as defined above using a very natural distribution, called the $\mathit{harmonic\ measure}$. 
 
 \begin{definition} $\mathit{(Harmonic\ Measure)}$\\
 	\\
@@ -183,7 +183,7 @@ External DLA is a model of Incremental Aggregation as defined above using a very
 \end{lemma}
 
 \begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate,\ External\ DLA)}$\\
-	\\ Incremental Aggregation with the harmonic measure $h$ as its distribution we define here, and in literature is known as $\mathit{Exernal\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$.
+	\\ Incremental Aggregate with the harmonic measure $h$ as its distribution we define here, and in literature is known as $\mathit{Exernal\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$.
 \end{definition}
 
 \begin{rem}
@@ -194,20 +194,20 @@ External DLA is a model of Incremental Aggregation as defined above using a very
 \newpage
 
 
-\section{Line Process}
+\section{Line Hitting Aggregate}
 
 In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add to the cluster when hitting it. Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider the line hitting a point in $\mathbb{Z}^2$ if and only if it cuts its unit square as defined in the following. 
 
 \begin{definition}
 	Define 
 	\begin{align}
-		G_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2}) \subset \mathbb{R}^2\ |\ k,l \in \mathbb{Z}\}, 
+		\mathbb{R}^2_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2}) \subset \mathbb{R}^2\ |\ k,l \in \mathbb{Z}\}, 
 	\end{align} 
-	note that $\mathbb{R}^2 = \bigcup_{s\in G_{sq}} s$ and $s_1\cap s_2 = \emptyset$ for all $s_1\neq s_2\in G_{sq}$. The canonical function
+	note that $\mathbb{R}^2 = \bigcup_{s\in \mathbb{R}^2_{sq}} s$ and $s_1\cap s_2 = \emptyset$ for all $s_1\neq s_2\in \mathbb{R}^2_{sq}$. The canonical function
 	\begin{align}
-	sq: \mathbb{Z}^2 \to G_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2})
+	sq: \mathbb{Z}^2 \to \mathbb{R}^2_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2})
 	\end{align}
-	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $G_{sq}$, which is two squares $s_1, s_2\in G_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $G$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2$ such that $L=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}$. We may accordingly sometimes reference a line $L$ with $L_{a,b}$. The set of lines we will call $\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}\}$. For the following context we say a line $L$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $L\cap sq(p) \neq \emptyset$.
+	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $\mathbb{R}^2_{sq}$, which is two squares $s_1, s_2\in \mathbb{R}^2_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2,\ b\neq (0,0)$ such that $L=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}$. We may accordingly sometimes reference a line $L$ with $L_{a,b}$. The set of lines we will call $\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}\}$. For the following context we say a line $L$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $L\cap sq(p) \neq \emptyset$.
 	
 \end{definition}
 
@@ -215,12 +215,16 @@ BILD Linie durch squares "hitting"\\
 Gradenmaß $\mu_0$
 
 \begin{definition}
-	Let $L=L_{a,b}\in \mathcal{L}$ be a line. For $A\in \mathcal{P}_C$ we define $L_{A} := \{ p\in A\ |\ L \text{ hits } p\}$ which is the set of points in $A$ which the line $L$ hits. Here suppose $L_A \neq \emptyset$. We want to define a total ordered relation $<_{line}$ on $L_A$ which will help us construct the distribution for the Line Process. We choose two points $(x_1,x_2)\neq(y_1,y_2)\in L_A$ and devide the definition of a relation into three cases, which are the line having zero, positive or negative gradient: \\
-	$\mathit{Case\ 1,\ b=0}$:
+	Let $L=L_{a,b}\in \mathcal{L}$ be a line. For $A\in \mathcal{P}_C$ we define $L_{A} := \{ p\in A\ |\ L \text{ hits } p\}$ which is the subset of points in $A$ which the line $L$ hits. Here suppose $L_A \neq \emptyset$. We want to define a total ordered relation $<_{line}$ on $L_A$ which will help us construct the distribution for the Line Process. We choose two points $(x_1,x_2)\neq(y_1,y_2)\in L_A$ and devide the definition of a relation into four cases, which are the line going from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Write $b=(b_1,b_2)$:  \\
+	$\mathit{Case\ 1,\text{ line is parallel to x-axis},\ b_2=0}$:
 	\begin{align*}
 	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad x_1 < y_1
 	\end{align*}\\
-	$\mathit{Case\ 2,\ b>0}$:
+	$\mathit{Case\ 2, \text{ line is parallel to y-axis},\ b_1=0}$:
+	\begin{align*}
+	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad x_2 < y_2
+	\end{align*}\\
+	$\mathit{Case\ 3, \text{ line is going from left-bottom to right-top},\ b_1b_2>0}$:
 	\begin{align*}
 	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad
 		\begin{cases}
@@ -228,7 +232,7 @@ Gradenmaß $\mu_0$
 			x_2 < y_2, & \text{ if } x_1 = y_1.
 		\end{cases}
 	\end{align*}\\
-	$\mathit{Case\ 3,\ b<0}$:
+	$\mathit{Case\ 4, \text{ line is going from left-top to right-bottom},\ b_1b_2<0}$:
 	\begin{align*}
 	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad
 	\begin{cases}
@@ -247,17 +251,17 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_C$ with $L_A\neq \em
 \end{lemma}
 
 \begin{rem}
-	The relatoin $<_{line}$ on $L_A$ shall basically order the hitpoints of a line $L$ with a finite connected set $A$ from left-bottom to right-top in the case of positive gradient, and left-top to right-bottom in the case of negative gradient of the line. In case of zero gradient we get equal second coordinates for all points in $L_A$ and therefore order them naturally by their first coordinate. This order will permit us to know which points $L$ hits first and last when moving on the line facing $A$.  
+	The relation $<_{line}$ on $L_A$ shall basically order the hitpoints of a line $L$ with a finite connected set $A$ from left to right, or bottom to top in case of a line parallel to the $y$-axis. This order will permit us to know which points $L$ hits first and last when moving on the line facing $A$.  
 \end{rem}
 
 
-\begin{definition} $\mathit{Line\ Hitting\ Distribution}$\\
+\begin{definition} $\mathit{Random\ Line\ Hitting\ Distribution}$\\
 	Choose $A\in \mathcal{P}_C$, a finite and connected subset of $\mathbb{Z}^2$. We will define a distribution $\mu_A$ on $\mathbb{Z}^2$ like in the following. 
-	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$. 
+	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$. Define a variable $U_{L_A}$, which chooses uniformly an element out of $\{min_{<_{line}}L_A, max_{<_{line}}L_A\}$. $\mu_A := U_{L_A}$ we will call the $\mathit{Random\ Line\ Hitting\ Distribution\ (of\ A)}$.
 \end{definition}
 
-\begin{definition} $\mathit{Line\ Process}$\\
-	contenu...
+\begin{definition} $\mathit{Line\ Hitting\ Aggregate}$\\
+	Incremental Aggregate with the Random Line Hitting Distribution as its distribution we will call here $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
 \end{definition}
 
 
