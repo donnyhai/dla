@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  9 AUG 2020 17:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  10 AUG 2020 13:24
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -595,7 +595,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 300--302
 Here is how much of TeX's memory you used:
  7436 strings out of 481565
  134132 string characters out of 2912287
- 487734 words of memory out of 3000000
+ 488734 words of memory out of 3000000
  22527 multiletter control sequences out of 15000+200000
  616517 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -603,8 +603,8 @@ Here is how much of TeX's memory you used:
 {C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/f
 onts/enc/dvips/lm/lm-ec.enc}{C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2
 .9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/donnykong/AppData/Local/Programs/MiKT
-eX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/donnykong/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/donnykong/AppData/Loc
+eX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/donnykong/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/donnykong/AppData/Loc
 al/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Users/donnykong/App
 Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Users/donny
 kong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Us
@@ -625,7 +625,7 @@ pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
 /lmsy10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (11 pages, 2920158 bytes).
+Output written on masterarbeit.pdf (11 pages, 2920751 bytes).
 PDF statistics:
  118 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

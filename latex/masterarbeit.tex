@@ -107,12 +107,12 @@ External DLA beschreibt einen stochastischen Prozess, welcher zumindest in ähnl
 
 We prepare this script with the following preliminaries. \\
 \\
-$\boldsymbol{\mathit{Graphs}}.\quad$ In this paper we will be interested in the graph $(\mathbb{Z}^d, E)$ with the canonical graph structure, which is $x,y\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if $\exists ! i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as $N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}$ and the canonical graph structure as defined above basically means that $N(x) = \{x+re_i\ |\ r\in \{-1,1\}\text{ and } i\in \{1,\dots, d\}\}$, $e_i$ being the usual unit vectors of $\mathbb{Z}^d$. For a set $A\subset \mathbb{Z}^d$ the $\mathit{edgeset}\ \partial A$ of $A$ is defined as $\partial A := \{y\in \mathbb{Z}^d\ |\ \exists x\in A:\ (x,y)\in E\}$. From now on insted of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$. 
+$\boldsymbol{\mathit{Graphs}}.\quad$ In this paper we will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as $N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}$ and the canonical graph structure as defined above basically means that $N(x) = \{x+re_i\ |\ r\in \{-1,1\}\text{ and } i\in \{1,\dots, d\}\}$ where $e_i$ is the usual $i$-th standard basis vector of $\mathbb{Z}^d$. For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as $\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ (x,y)\in E\}$. Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
 \\
 
 \noindent $\boldsymbol{\mathit{Random\ Walks}}.\quad$ Let $(S_n)_n$ be a random walk on $G$ and denote $\mathbb{P}_x$ the probability measure of the random walk started at $x$. That means precisely 
 \begin{align*}
-	\mathbb{P}_x(A) := \mathbb{P}_{S_n}(A|S_0=x) = \mathbb{P}(S_n\in A|S_0=x)
+	\mathbb{P}^n_x(A) := \mathbb{P}_{S_n}(A|S_0=x) = \mathbb{P}(S_n\in A|S_0=x)
 \end{align*}
 for any subset $A\subset G$. We define the $hitting\ time$ of A as 
 \begin{align*}
@@ -122,11 +122,11 @@ and for the special case $T(\{x\})=:T(x)$ for every $x\in G$. The $heat\ kernel$
 \begin{align*}
 	p_n(x,y):=\mathbb{P}_x(S_n=y)
 \end{align*}
-and following the $Green\ function$ as 
+and following the $Green's\ function$ as 
 \begin{align*}
 	G(x,y) := \sum_{n\geq 0} p_n(x,y).
 \end{align*}
-Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green\ function$ is defined as
+Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green's\ function$ is defined as
 \begin{align*}
 	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T(A) > n).
 \end{align*} 
@@ -136,7 +136,7 @@ Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green\ function$ 
 \section{Incremental Aggregate}
 In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the edgeset of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregate}$. Define 
 \begin{align}
-	\mathcal{P}_C := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite and connected}\}, 
+	\mathcal{P}_C := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
 \end{align}
 the set of finite and connected subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mathcal{P}_C$ we define 
 \begin{align}
