@@ -41,9 +41,8 @@
 
 \newtheorem{thm}{Theorem}[section]%
 \newtheorem{lem}[thm]{Lemma}%
-\newtheorem{satz}[thm]{Satz}%
 \newtheorem{prop}[thm]{Proposition}%
-\newtheorem{algo}[thm]{Algorithmus}%
+\newtheorem{algo}[thm]{Algorithm}%
 
 \newtheorem{cor}[thm]{Corollary}%
 \theoremstyle{definition}
@@ -51,7 +50,7 @@
 \newtheorem{rem}[thm]{Remark}%
 \newtheorem{com}[thm]{Comment}
 \newtheorem{exa}[thm]{Example}%
-\newtheorem{bew}[thm]{Beweis}%
+\newtheorem{bew}[thm]{Proof}%
 
 
 \begin{document}
@@ -107,26 +106,55 @@ External DLA beschreibt einen stochastischen Prozess, welcher zumindest in ähnl
 
 We prepare this script with the following preliminaries. \\
 \\
-$\boldsymbol{\mathit{Graphs}}.\quad$ In this paper we will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as $N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}$ and the canonical graph structure as defined above basically means that $N(x) = \{x+re_i\ |\ r\in \{-1,1\}\text{ and } i\in \{1,\dots, d\}\}$ where $e_i$ is the usual $i$-th standard basis vector of $\mathbb{Z}^d$. For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as $\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ (x,y)\in E\}$. Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
+\noindent $\boldsymbol{\mathit{General\ Definitions}}.\quad$ In this paper for practical purposes we will consider the natural numbers containing 0, so $\mathbb{N} := \{0, 1, 2, 3, \dots\}$. 
 \\
 
-\noindent $\boldsymbol{\mathit{Random\ Walks}}.\quad$ Let $(S_n)_n$ be a random walk on $G$ and denote $\mathbb{P}_x$ the probability measure of the random walk started at $x$. That means precisely 
+\noindent $\boldsymbol{\mathit{Graphs}}.\quad$ We will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
 \begin{align*}
-	\mathbb{P}^n_x(A) := \mathbb{P}_{S_n}(A|S_0=x) = \mathbb{P}(S_n\in A|S_0=x)
+	N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}
 \end{align*}
+and the canonical graph structure as defined above basically means that $N(x) = \{x+re_i\ |\ r\in \{-1,1\}\text{ and } i\in \{1,\dots, d\}\}$ where $e_i$ is the usual $i$-th standard basis vector of $\mathbb{Z}^d$, precisely $(e_i)_j=\delta_{ij}$ for all $i,j\in \{1, \dots , n \}$ where $\delta_{ij}=0$ if $i\neq j$ and $\delta_{ij}=1$ if $i=j$. For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as 
+\begin{align*}
+	\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ (x,y)\in E\}
+\end{align*}
+Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
+\\
+
+\noindent $\boldsymbol{\mathit{Probability\ Spaces}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space which we will base on in this paper. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-Algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $A$ holds $\mathbb{P}$-$a.s.$, or short $A$ holds $a.s.$ (almost sure).
+\\
+
+\noindent $\boldsymbol{\mathit{Random\ Walks}}.\quad$ First we define a $\mathit{Random\ Walk}$ on $\mathbb{Z}^d$ which we will use in this paper. A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ $a.s.$ and $\mathbb{P}(S_n\in N(y)\ |\ S_{n-1} = y) = 1$ for all $n \geq 1$ with 
+
+\begin{align*}
+	\mathbb{P}(S_n = y) = \frac{1}{|N(S_{n-1})|} = \frac{1}{2d}\quad \text{ for all }  y\in N(S_{n-1})\quad a.s., 
+\end{align*}
+
+note that $|N(y)| = 2d$ for all $y\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbour points. Furthermore define 
+
+\begin{align*}
+	\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x)
+\end{align*}
+
 for any subset $A\subset G$. We define the $hitting\ time$ of A as 
+
 \begin{align*}
 	T(A) := \min \{n\geq 0\ |\ S_n\in A\},
 \end{align*}
-and for the special case $T(\{x\})=:T(x)$ for every $x\in G$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
+
+and $T(x):= T(\{x\})$ for one element sets and $x\in G$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
+
 \begin{align*}
-	p_n(x,y):=\mathbb{P}_x(S_n=y)
+	p_n(x,y):=\mathbb{P}^n_x(S_n=y)
 \end{align*}
-and following the $Green's\ function$ as 
+
+and following the $\mathit{Green's\ function}$ as 
+
 \begin{align*}
 	G(x,y) := \sum_{n\geq 0} p_n(x,y).
 \end{align*}
-Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green's\ function$ is defined as
+
+Similarily for a subset $A\subset G$ the $killed$ or $\mathit{stopped\ Green's\ function}$ is defined as
+
 \begin{align*}
 	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T(A) > n).
 \end{align*} 
@@ -134,18 +162,18 @@ Similarily for a subset $A\subset G$ the $killed$ or $stopped\ Green's\ function
 
 \newpage
 \section{Incremental Aggregate}
-In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the edgeset of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregate}$. Define 
+In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the outer boundary of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregate}$. Define 
 \begin{align}
-	\mathcal{P}_C := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
+	\mathcal{P}_f := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
 \end{align}
-the set of finite and connected subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mathcal{P}_C$ we define 
+the set of finite and connected subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mathcal{P}_f$ we define 
 \begin{align}
 	\mathcal{D}_A:= \{\mu: \mathbb{Z}^d\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}.
 \end{align}
-So every element in $\mathcal{D}_A$ naturally defines a distribution on the elements of $A$. Now we define incremental Aggregate as follows.  
+So every element in $\mathcal{D}_A$ naturally defines a distribution on the elements of $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
 \begin{definition}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_C}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_C$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{(0,0)\}$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point on $\partial \mathcal{E}_n\in \mathcal{P}_C$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{(0,0)\}$ in the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_n = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
@@ -196,7 +224,7 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 
 \section{Line Hitting Aggregate}
 
-In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add to the cluster when hitting it. Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider the line hitting a point in $\mathbb{Z}^2$ if and only if it cuts its unit square as defined in the following. 
+In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add to the cluster when hitting it. Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider a line hitting a point in $\mathbb{Z}^2$ if and only if it intersects with its unit square as defined in the following. 
 
 \begin{definition}
 	Define 
@@ -207,24 +235,48 @@ In the following we will look at a process which is the approach of a simple app
 	\begin{align}
 	sq: \mathbb{Z}^2 \to \mathbb{R}^2_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2})
 	\end{align}
-	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $\mathbb{R}^2_{sq}$, which is two squares $s_1, s_2\in \mathbb{R}^2_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2,\ b\neq (0,0)$ such that $L=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}$. We may accordingly sometimes reference a line $L$ with $L_{a,b}$. The set of lines we will call $\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}\}$. For the following context we say a line $L$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $L\cap sq(p) \neq \emptyset$.
+	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$, which is $p$ is the center of square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $\mathbb{R}^2_{sq}$, which is two squares $s_1, s_2\in \mathbb{R}^2_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2$ with $b\neq (0,0)$ such that 
+	
+	\begin{align}
+		L=L_{a,b}:=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}
+	\end{align}
+	
+	The set of lines we will call 
+	
+	\begin{align}
+		\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}^2\ \text{ with }b\neq(0,0)\}.
+	\end{align}
+	
+	\noindent For the following context we say a line $L$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $L\ \cap\ sq(p) \neq \emptyset$.
 	
 \end{definition}
 
 BILD Linie durch squares "hitting"\\
-Gradenmaß $\mu_0$
+
 
 \begin{definition}
-	Let $L=L_{a,b}\in \mathcal{L}$ be a line. For $A\in \mathcal{P}_C$ we define $L_{A} := \{ p\in A\ |\ L \text{ hits } p\}$ which is the subset of points in $A$ which the line $L$ hits. Here suppose $L_A \neq \emptyset$. We want to define a total ordered relation $<_{line}$ on $L_A$ which will help us construct the distribution for the Line Process. We choose two points $(x_1,x_2)\neq(y_1,y_2)\in L_A$ and devide the definition of a relation into four cases, which are the line going from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Write $b=(b_1,b_2)$:  \\
-	$\mathit{Case\ 1,\text{ line is parallel to x-axis},\ b_2=0}$:
+	Geradenmaß $\mu_0$
+\end{definition}
+
+
+\begin{definition}
+	Let $L=L_{a,b}\in \mathcal{L}$ be a line. For a finite set $A\in \mathcal{P}_f$ we define 
+	
+	\begin{align*}
+		L_{A} := \{ p\in A\ |\ L \text{ hits } p\}
+	\end{align*}
+	
+	which is the subset of points in $A$ are hit by the line $L$ hits. For the following we suppose $L_A \neq \emptyset$. We want to define a total ordered relation $<_{line}$ on $L_A$. We choose two points $(x_1,x_2),(y_1,y_2)\in L_A$ and devide the definition of a relation into four cases, which are the line going from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Write $b=(b_1,b_2)$.  \\
+	\\
+	$\mathit{Case\ 1:}\quad L\ \text{ is parallel to the x-axis}\quad \Leftrightarrow\quad b_2=0$
 	\begin{align*}
 	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad x_1 < y_1
 	\end{align*}\\
-	$\mathit{Case\ 2, \text{ line is parallel to y-axis},\ b_1=0}$:
+	$\mathit{Case\ 2:}\quad L\ \text{ is parallel to the y-axis}\quad \Leftrightarrow\quad b_1=0$
 	\begin{align*}
 	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad x_2 < y_2
 	\end{align*}\\
-	$\mathit{Case\ 3, \text{ line is going from left-bottom to right-top},\ b_1b_2>0}$:
+	$\mathit{Case\ 3:}\quad L\ \text{ is going from left-bottom to right-top}\quad \Leftrightarrow\quad b_1b_2>0$
 	\begin{align*}
 	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad
 		\begin{cases}
@@ -232,7 +284,7 @@ Gradenmaß $\mu_0$
 			x_2 < y_2, & \text{ if } x_1 = y_1.
 		\end{cases}
 	\end{align*}\\
-	$\mathit{Case\ 4, \text{ line is going from left-top to right-bottom},\ b_1b_2<0}$:
+	$\mathit{Case\ 4:}\quad L\ \text{ is going from left-top to right-bottom}\quad \Leftrightarrow\quad b_1b_2<0$
 	\begin{align*}
 	(x_1, x_2) <_{line} (y_1, y_2) \quad :\Leftrightarrow \quad
 	\begin{cases}
@@ -244,20 +296,27 @@ Gradenmaß $\mu_0$
 \end{definition}
 
 \begin{lemma}
-For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_C$ with $L_A\neq \emptyset$ the relation $<_{line}$ on $L_A$ is totally ordered. 
+For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $L_A\neq \emptyset$ the relation $<_{line}$ on $L_A$ is totally ordered. 
 	\begin{proof}
-		We will only proove the case where $b>0$, since the other cases work very similair (Note, that in the case $b=0$ we have $x_2 = y_2$). Let $b>0$. For antisymmetry let $(x_1, x_2) <_{line} (y_1, y_2)$ and $(y_1, y_2) <_{line} (x_1, x_2)$. Suppose $x_1\neq y_1$, then $x_1 < y_1$ and $y_1 < x_1$, therefore $x_1 = y_1$ by antisymmetry of the standard order $<$ in $\mathbb{R}$, a contradiction, hence $x_1 = y_1$. But then we have $x_2 < y_2$ and $y_2 < x_2$ and therefore also $x_2 = y_2$. For transitivity let $(x_1,x_2) <_{line} (y_1,y_2)$ and $(y_1,y_2) <_{line} (z_1,z_2)$. We find four cases. In case $x_1 \neq y_1$ and $y_1 \neq z_1$ we get $x_1 < z_1$ by transitivity of $<$, hence $(x_1,x_2) <_{line} (z_1,z_2)$. In case $x_1\neq y_1$ and $y_1 = z_1$ we get $x_1 < y_1 = z_1$, therefore $(x_1,x_2) <_{line} (z_1,z_2)$. In case $x_1 = y_1$ and $y_1 \neq z_1$ we get $x_1 = y_1 < z_1$, similair as the last case. In the last case $x_1 = y_1 = z_1$ we get $x_2 < y_2$ and $y_2 < z_2$ and again by transitivity of $<$ we get $x_2 < z_2$, hence $(x_1,x_2) <_{line} (z_1,z_2)$ again. At last, connexity quickly follows from the connexity of $<$ by looking at the two cases $x_1 \neq y_1$ and $x_1 = y_1$. 
+		We will only proove the case where $L$ is going from left-bottom to right-top, which is $\mathit{Case\ 3}$ of the definition. In this case we have $b_1b_2>0$. Note, that the proof for $\mathit{Case\ 4}$ will work very similair. And in the case of $L$ being parallel to one of the axes ($\mathit{Case\ 1\ or\ 2}$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $b_1b_2>0$. \\
+		\\
+		$\mathit{Antisymmetry:}$ For antisymmetry let $(x_1, x_2) <_{line} (y_1, y_2)$ and $(y_1, y_2) <_{line} (x_1, x_2)$. Suppose $x_1\neq y_1$, then $x_1 < y_1$ and $y_1 < x_1$, therefore $x_1 = y_1$ by antisymmetry of the standard order $<$ in $\mathbb{R}$, a contradiction, hence $x_1 = y_1$. But then we have $x_2 < y_2$ and $y_2 < x_2$ and therefore also $x_2 = y_2$. \\
+		\\
+		$\mathit{Transitivity:}$ For transitivity let $(x_1,x_2) <_{line} (y_1,y_2)$ and $(y_1,y_2) <_{line} (z_1,z_2)$. We find four cases. In case $x_1 \neq y_1$ and $y_1 \neq z_1$ we get $x_1 < z_1$ by transitivity of $<$, hence $(x_1,x_2) <_{line} (z_1,z_2)$. In case $x_1\neq y_1$ and $y_1 = z_1$ we get $x_1 < y_1 = z_1$, therefore $(x_1,x_2) <_{line} (z_1,z_2)$. In case $x_1 = y_1$ and $y_1 \neq z_1$ we get $x_1 = y_1 < z_1$, similair as the last case. In the last case $x_1 = y_1 = z_1$ we get $x_2 < y_2$ and $y_2 < z_2$ and again by transitivity of $<$ we get $x_2 < z_2$, hence $(x_1,x_2) <_{line} (z_1,z_2)$ again. \\
+		\\
+		$\mathit{Connexity:}$ Connexity is given since for any two points $(x_1,x_2),(y_1,y_2)\in L_A$ we have either $x_1 \neq y_1$ or $x_1 = y_1$ and therefore either $(x_1,x_2)<_{line}(y_1,y_2)$ or $(y_1,y_2)<_{line}(x_1,x_2)$.
+	 
 	\end{proof}
 \end{lemma}
 
 \begin{rem}
-	The relation $<_{line}$ on $L_A$ shall basically order the hitpoints of a line $L$ with a finite connected set $A$ from left to right, or bottom to top in case of a line parallel to the $y$-axis. This order will permit us to know which points $L$ hits first and last when moving on the line facing $A$.  
+	The relation $<_{line}$ on $L_A$ basically orders the hitpoints of a line $L$ with a finite set $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outest hitting points of $A$ by $L$. This means when moving on a line $L$ facing $A$ this order allows us to know where in $A$ the line $L$ hits first when ,,entering`` $A$ and where it hits last when ,,leaving`` $A$ which will be the two points $min_{<_{line}}L_A$ and $max_{<_{line}}L_A$ (or the other way around). 
 \end{rem}
 
 
 \begin{definition} $\mathit{Random\ Line\ Hitting\ Distribution}$\\
-	Choose $A\in \mathcal{P}_C$, a finite and connected subset of $\mathbb{Z}^2$. We will define a distribution $\mu_A$ on $\mathbb{Z}^2$ like in the following. 
-	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$. Define a variable $U_{L_A}$, which chooses uniformly an element out of $\{min_{<_{line}}L_A, max_{<_{line}}L_A\}$. $\mu_A := U_{L_A}$ we will call the $\mathit{Random\ Line\ Hitting\ Distribution\ (of\ A)}$.
+	Choose $A\in \mathcal{P}_f$. We define a distribution $\mu_A$ on $\mathbb{Z}^2$ as in the following. 
+	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$ with the condition that $L$ hits $A$. Then define a variable , which chooses uniformly an element out of $\{min_{<_{line}}L_A, max_{<_{line}}L_A\}$. Then $\mu_A := U_{L_A}$ we will call the $\mathit{Random\ Line\ Hitting\ Distribution\ (of\ A)}$.
 \end{definition}
 
 \begin{definition} $\mathit{Line\ Hitting\ Aggregate}$\\

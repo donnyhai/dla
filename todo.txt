@@ -1,0 +1,8 @@
+1. linienprozess sauber fertigdefinieren, gradenmaß hinzufügen -> steffen schicken
+2. kesten resultat external dla
+
+
+
+- buch schneider und weil
++ vereinfachte dla programmieren, zufällig punkt außen, zufällige linie auf den cluster, punkt läuft gerade auf dieser linie
+- benjamini yadin

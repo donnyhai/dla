@@ -1,7 +1,7 @@
 \babel@toc {ngerman}{}
 \contentsline {section}{\numberline {1}Einleitung}{1}%
 \contentsline {section}{\numberline {2}Preliminaries}{2}%
-\contentsline {section}{\numberline {3}Incremental Aggregate}{3}%
-\contentsline {section}{\numberline {4}External DLA}{4}%
-\contentsline {section}{\numberline {5}Line Hitting Aggregate}{5}%
-\contentsline {section}{\numberline {6}Notizen}{7}%
+\contentsline {section}{\numberline {3}Incremental Aggregate}{4}%
+\contentsline {section}{\numberline {4}External DLA}{5}%
+\contentsline {section}{\numberline {5}Line Hitting Aggregate}{6}%
+\contentsline {section}{\numberline {6}Notizen}{9}%
