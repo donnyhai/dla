@@ -3,5 +3,6 @@
 \contentsline {section}{\numberline {2}Preliminaries}{2}%
 \contentsline {section}{\numberline {3}Incremental Aggregate}{4}%
 \contentsline {section}{\numberline {4}External DLA}{5}%
-\contentsline {section}{\numberline {5}Line Hitting Aggregate}{6}%
-\contentsline {section}{\numberline {6}Notizen}{9}%
+\contentsline {section}{\numberline {5}Exkurs: Integral Geometry}{6}%
+\contentsline {section}{\numberline {6}Line Hitting Aggregate}{7}%
+\contentsline {section}{\numberline {7}Notizen}{10}%

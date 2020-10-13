@@ -32,7 +32,7 @@
 \numberwithin{equation}{section}%
 
 \theoremstyle{definition}
-\newtheorem{exmp}{Example}[section]
+\newtheorem{example}{Example}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -218,9 +218,49 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 	contenu...
 \end{rem}
 
+\newpage
+\section{Exkurs: Integral Geometry}
+In the next section we want to define an approximation for DLA. To do this we will need some concepts and results from Integral Geometry which we will discuss and develop in this section. The space we are moving in this section is $\mathbb{R}^2$ for some dimension $d\in \mathbb{N}$ with $d>1$. Little Reminder: A set $A\subset \mathbb{R}^2$ is called $\mathit{convex}$ if and only if for any two points $a,b\in A$ we have that $\{ta + (1-t)b \in \mathbb{R}^2\ |\ t\in [0,1]\}\subset A$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2$ with $b\neq (0,0)$ such that 
+
+\begin{align}
+L=L_{a,b}:=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}
+\end{align}
+
+The set of lines we will call 
+
+\begin{align}
+\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}^2\ \text{ with }b\neq(0,0)\}.
+\end{align}
+
+
+\begin{definition}
+	$\mathcal{K}^2 := \{K\subset \mathbb{R}^2\ |\ K\text{ is convex and compact }\}$\\
+\end{definition}
+\begin{definition}
+	Let $K_0 \in \mathcal{K}^2$. Let $\gamma \sim \mathcal{U}([0,\pi))$ and for $\alpha \in [0,\pi)$ define $y_\alpha \sim \mathcal{U}(M_\alpha(K_0))$ where 
+	\begin{align*}
+		M_\alpha(K):= \begin{cases}
+		\{h\in \mathbb{R}\ |\ L_{\tbinom{0}{h}, \tbinom{1}{0}} \cap K \neq \emptyset\},\ \text{ if } \alpha = 0\\
+		\{h\in \mathbb{R}\ |\ L_{\tbinom{h}{0}, \tbinom{cos(\alpha)}{sin(\alpha)}} \cap K \neq \emptyset\},\ \text{ if } \alpha\in (0,\pi)
+		\end{cases} 
+	\end{align*}
+	Note that $	M_\alpha(K) \in\mathcal{K}^1$ for all $K\in \mathcal{K}^2$ and $\alpha\in [0,\pi)$ (Proof). For $K\in \mathcal{K}^2$ define $\nu_{K_0}(K) := \int_{[0,\pi)} \mathbb{P}_{y_\alpha}(M_\alpha(K\cap K_0)) \mathbb{P}_\gamma(d\alpha)$.\\
+	Interpretation: $\nu_{K_0}(K)$ is the probability that a random line which intersects with $K_0$ also intersects with $K_0 \cap K$. \\
+	Conjecture: $\nu_{K_0}(K) = \frac{\mu_1(K\cap K_0)}{\mu_1(K_0)}$ for $K,K_0\in \mathcal{K}^2$ ($\mu_1$  Gradenmaß).
+\end{definition}
+
+\begin{example}
+	Let $0<r<R$ and $K_0 = B_R := B_R(0) = \{x\in \mathbb{R}^2\ |\ |x| \leq R\}$ and analogously $K:=B_r$. Note that $K,K_0\in \mathcal{K}^2$. Then ...
+\end{example}
+
+\begin{example}
+	Let $0<r,R$ with $r\leq \frac{R}{\sqrt{2}}$, $K_0 = B_R := B_R(0) = \{x\in \mathbb{R}^2\ |\ |x| \leq R\}$ and $K:=I_r := [-r,r]^2$. Note that $K,K_0\in \mathcal{K}^2$. Then ...
+\end{example}
+
+
+
 
 \newpage
-
 
 \section{Line Hitting Aggregate}
 
@@ -229,24 +269,13 @@ In the following we will look at a process which is the approach of a simple app
 \begin{definition}
 	Define 
 	\begin{align}
-		\mathbb{R}^2_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2}) \subset \mathbb{R}^2\ |\ k,l \in \mathbb{Z}\}, 
+		\mathbb{R}^2_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}] \times [l- \frac{1}{2}, l + \frac{1}{2}] \subset \mathbb{R}^2\ |\ k,l \in \mathbb{Z}\}, 
 	\end{align} 
-	note that $\mathbb{R}^2 = \bigcup_{s\in \mathbb{R}^2_{sq}} s$ and $s_1\cap s_2 = \emptyset$ for all $s_1\neq s_2\in \mathbb{R}^2_{sq}$. The canonical function
+	note that $\mathbb{R}^2 = \bigcup_{s\in \mathbb{R}^2_{sq}} s$. The canonical function
 	\begin{align}
-	sq: \mathbb{Z}^2 \to \mathbb{R}^2_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}) \times [l- \frac{1}{2}, l + \frac{1}{2})
+	sq: \mathbb{Z}^2 \to \mathbb{R}^2_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] \times [l- \frac{1}{2}, l + \frac{1}{2}]
 	\end{align}
-	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$, which is $p$ is the center of square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $\mathbb{R}^2_{sq}$, which is two squares $s_1, s_2\in \mathbb{R}^2_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2$ with $b\neq (0,0)$ such that 
-	
-	\begin{align}
-		L=L_{a,b}:=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}
-	\end{align}
-	
-	The set of lines we will call 
-	
-	\begin{align}
-		\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}^2\ \text{ with }b\neq(0,0)\}.
-	\end{align}
-	
+	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$, which is $p$ is the center of square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $\mathbb{R}^2_{sq}$, which is two squares $s_1, s_2\in \mathbb{R}^2_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. 
 	\noindent For the following context we say a line $L$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $L\ \cap\ sq(p) \neq \emptyset$.
 	
 \end{definition}
@@ -315,12 +344,12 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $L_A\neq \em
 
 
 \begin{definition} $\mathit{Random\ Line\ Hitting\ Distribution}$\\
-	Choose $A\in \mathcal{P}_f$. We define a distribution $\mu_A$ on $\mathbb{Z}^2$ as in the following. 
-	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$ with the condition that $L$ hits $A$. Then define a variable , which chooses uniformly an element out of $\{min_{<_{line}}L_A, max_{<_{line}}L_A\}$. Then $\mu_A := U_{L_A}$ we will call the $\mathit{Random\ Line\ Hitting\ Distribution\ (of\ A)}$.
+	\indent Choose $A\in \mathcal{P}_f$. We define a distribution $\mu_A$ on $\mathbb{Z}^2$ as in the following. 
+	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$ with the condition that $L$ hits $A$. Then define $\mu_A$ with distribution $\mu_A \sim U(\{min_{<_{line}}L_A, max_{<_{line}}L_A\})$, which chooses uniformly an element out of $\{min_{<_{line}}L_A, max_{<_{line}}L_A\}$. We call this distribution the $\mathit{Random\ Line\ Hitting\ Distribution\ (of\ A)}$.
 \end{definition}
 
 \begin{definition} $\mathit{Line\ Hitting\ Aggregate}$\\
-	Incremental Aggregate with the Random Line Hitting Distribution as its distribution we will call here $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
+	\indent Incremental Aggregate with the Random Line Hitting Distribution as its distribution we will call here $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
 \end{definition}
 
 
