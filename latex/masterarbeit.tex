@@ -253,7 +253,7 @@ where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is
 	\begin{enumerate}[label=(\roman*)]
 		\item The coefficients $\kappa_{d-j}$ are chosen such that the $V_j$ become independent of the dimension of the underlying space. This means that $V_j$ will assign the same value for $K$ if $K$ is considered to be subset of $\R^d$ or $\R^{\tilde{d}}$ for  $d<\tilde{d}$, although the unit balls $B_d$ are different in those two spaces. This is why they are called intrinsic volumes. (REFERENCE)
 		\item For $\varepsilon = 0$ the right side of \ref{steiner} reduces to $V_d(K)$ which shows a consistency of the notation. 
-		\item With \ref{steiner} we get $S_{d-1}(K) = \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K + \varepsilon B_d) - V_d(K) = \kappa_1 V_{d-1}(K)$, which will be a useful result. 
+		\item With \ref{steiner} we get $S_{d-1}(K) = \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K + \varepsilon B_d) - V_d(K) = \kappa_1 V_{d-1}(K) = 2V_{d-1}(K)$, which will be a useful result. 
 		\item It can be shown that $V_0(\emptyset)=\dots=V_d(\emptyset)=0$ and $V_0(K)=1$ if $K\neq \emptyset$. 
 	\end{enumerate}
 \end{remark}
@@ -345,13 +345,17 @@ for $s,r\in \N_0$ and we set
 
 \subsection{Constructions in the real plane}
 
-From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line which intersects with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $X\in A:=A(2,1)$ has a form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $X_1$ be an isotropic random $1$-flat through $K_0$. 
+From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line which intersects with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $X\in A:=A(2,1)$ has a form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $X_1$ be an isotropic random $1$-flat through $K_0$. Recap the definition of $\kappa_j$, which is the $j$-dimensional Lebesgue measure of the $j$-dimensional unit ball, for our use here $\kappa_0=1$, $\kappa_1 = 2$ and $\kappa_2 = \pi$. 
 
 \begin{example}
 	Let $0<r<R$, $K_0 := B_R$ and analogously $K:=B_r$. Note that $K,K_0\in \K^2$ and $K\subset K_0$. Then with Lemma (\ref{K}) and Remark (\ref{Vjprop}) (iii) we get
 	\begin{flalign*}
-		\PP(X_1\cap B_r) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{S_1(B_r)}{S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
+		\PP(X_1\cap B_r) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{\frac{1}{2}S_1(B_r)}{\frac{1}{2}S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
 	\end{flalign*}
+\end{example}
+
+\begin{example}
+	CONTINUE
 \end{example}
 
 \subsection{Easy attempt}

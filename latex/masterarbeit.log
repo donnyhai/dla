@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  19 OCT 2020 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  19 OCT 2020 23:38
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -658,37 +658,37 @@ LaTeX Font Info:    Trying to load font information for U+bbm on input line 339
  ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 456--457
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 471--474
+Underfull \hbox (badness 10000) in paragraph at lines 475--478
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 503--510
+Underfull \hbox (badness 10000) in paragraph at lines 507--514
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 503--510
+Underfull \hbox (badness 10000) in paragraph at lines 507--514
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 503--510
+Underfull \hbox (badness 10000) in paragraph at lines 507--514
 
  []
 
 [13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 559--560
+Underfull \hbox (badness 10000) in paragraph at lines 563--564
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--563
+Underfull \hbox (badness 10000) in paragraph at lines 565--567
 
  []
 
@@ -726,7 +726,7 @@ x10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/lm/lmsy10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
 e1/public/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (18 pages, 2960106 bytes).
+Output written on masterarbeit.pdf (18 pages, 2960507 bytes).
 PDF statistics:
  141 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
