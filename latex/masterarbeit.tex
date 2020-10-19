@@ -16,6 +16,7 @@
 \usepackage{lmodern}
 \usepackage{enumitem}% http://ctan.org/pkg/enumerate
 %\usepackage{enumerate}
+\usepackage{bbm}
 
 % Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
 \setlength{\topmargin}{-15mm}	   
@@ -86,6 +87,8 @@
  	\pagestyle{headings}
 
 \setcounter{page}{1}
+
+\newpage
 \section{Einleitung}
 External DLA beschreibt einen stochastischen Prozess, welcher zumindest in ähnlicher Form in natürlichen Prozessen beobachtbar ist. Er ähnelt zum Beispiel der fraktalen Gestalt eines sich kreisförmig ausbreitenden Risses einer Glasscheibe, oder eines Risses eines Kristallfluids wie in LCD Displays in alten Autoradios (siehe Fotos). Er kann auch in Schneeflocken oder in elektrostatischen Anhaftungen an Metallen beobachtet werden. Die Formalisierung solcher Prozesse ist sehr aktuell und die sehr konstruktive Definition erlaubten bisher nur mühsame Folgerungen über Struktur und Verhalten des Prozesses. Wir werden uns Modelle auf $\mathbb{Z}^2$, sowie auf anderen Graphen, darunter auch fraktale Graphen, anschauen, und außerdem versuchen, eine Approximation der bisherigen Definition zu finden, die grundsätzlich handlicher ist und auf einfachere Weise zu Erkenntnissen führt. Wir werden außerdem diese Arbeit mit einigen Python Simulationen begleiten. Der Code ist frei verfügbar auf Github. \\
 \\
@@ -217,9 +220,9 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 
 In the next section we want to define an approximation for DLA. To do this we will need some concepts and results from Integral Geometry which we will discuss and develop in this section. Reminder: A set $K\subset \mathbb{R}^d$ is called $\mathit{convex}$ if and only if for any two points $a,b\in K$ we have that $\{ta + (1-t)b \in \mathbb{R}^d\ |\ t\in [0,1]\}\subset K$. The set of convex and compact subsets of $\R^d$ we call $\K^d$. 
 
-\subsection{Intrinsic Volumina}
+\subsection{Intrinsic Volumes}
 
-A useful concept to measure intrinsic geometrical properties of Borel-sets $K\subset \R^d$ are $\mathit{intrinsic\ volumina}$. Define the $d$-th intrinsic volume of $K$ as $V_d(K):=\lambda_d(K)$. Furthermore define $S_{d-1}(K)$ to be the $\mathit{surface\ area}$ of $V_d(K)$, which is formally defined as the Hausdorff-measure of $\partial K$. If $\partial K$ is sufficiently regular (i.e. rectifiable, which is for example the case for all convex sets), then $S_{d-1}$ is equal to the $\mathit{outer\ Minkowski\ content}$, i.e.
+A useful concept to measure intrinsic geometrical properties of Borel-sets $K\subset \R^d$ are $\mathit{intrinsic\ volumes}$. Define the $d$-th intrinsic volume of $K$ as $V_d(K):=\lambda_d(K)$. Furthermore define $S_{d-1}(K)$ to be the $\mathit{surface\ area}$ of $V_d(K)$, which is formally defined as the Hausdorff-measure of $\partial K$. If $\partial K$ is sufficiently regular (i.e. rectifiable, which is for example the case for all convex sets), then $S_{d-1}$ is equal to the $\mathit{outer\ Minkowski\ content}$, i.e.
 
 \begin{flalign*}
 	S_{d-1}(K) = M_{d-1}(K) := \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K_{\oplus \varepsilon}) - V_d(K)),  \quad (Proof)
@@ -230,7 +233,7 @@ where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is
 	\kappa_d := V_d(B_d) \text{ for } d>0, \text{ and } \kappa_0:=1
 \end{flalign*}
 
-where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)}$ with the $\mathit{Gamma\ function}$ $\Gamma$. 
+\noindent where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)}$ with the $\mathit{Gamma\ function}$ $\Gamma(x) := \int_0^\infty t^{x-1}e^{-t}dt,\ x>0$. 
 
 \begin{theorem} $(\mathit{Steiner\ Formula})$
 	For $K\in \K^d$ there exist uniquely determined numbers $V_0(K),\dots, V_d(K)\in \R$, such that for each $\varepsilon\geq 0$ 
@@ -243,10 +246,10 @@ where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} 
 \end{theorem}
 
 \begin{definition}
-	$V_0(K),\dots, V_d(K)$ are called $\mathit{intrinsic\ volumina}$ of $K$. 
+	$V_0(K),\dots, V_d(K)$ are called $\mathit{intrinsic\ volumes}$ of $K$. 
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{Vjprop}
 	\begin{enumerate}[label=(\roman*)]
 		\item The coefficients $\kappa_{d-j}$ are chosen such that the $V_j$ become independent of the dimension of the underlying space. This means that $V_j$ will assign the same value for $K$ if $K$ is considered to be subset of $\R^d$ or $\R^{\tilde{d}}$ for  $d<\tilde{d}$, although the unit balls $B_d$ are different in those two spaces. This is why they are called intrinsic volumes. (REFERENCE)
 		\item For $\varepsilon = 0$ the right side of \ref{steiner} reduces to $V_d(K)$ which shows a consistency of the notation. 
@@ -257,22 +260,103 @@ where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} 
 
 \subsection{Random q-flats}
 
-An interesting set in Integral Geometry is the set of $q$-dimensional affine spaces in the $d$-dimensional real space, short
+An interesting set in Integral Geometry is the set of $q$-dimensional affine subspaces in the $d$-dimensional real space, short $A(d,q)$ the set of $q$-flats in $\R^d$. 
+Later we will be interested in choosing random lines (i.e. $2$-flats). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll define now in this section. Let $G_d$ be the set of rigid motions (euclidean motions) in $\R^d$. For $r>0$ and $x\in \R^d$ define $B_d(r,x) := \{y\in \mathbb{R}^d\ |\ d(x,y) \leq r\}$ and $B_d:=B_d(1,0)$. 
+
+\begin{definition}
+	 For $r>0$ and $x\in \R^d$ define $A_d(r,x) := \{ F\in A(d,q)\ |\ F\cap B_d(r,x) \neq\emptyset \}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
+	 \begin{flalign*}
+	 	\mathcal{A}(d,q) := \sigma(\{ A_d(r,x)\ |\ r>0,x\in \R^d\}).
+	 \end{flalign*} 
+\end{definition}
+
+\begin{theorem}
+	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
+	\begin{flalign}
+		\mu_q(A_d(1,0)) = \mu_q(\{F\in A(d,q)\ |\ F\cap B_d\neq \emptyset\}) = \kappa_{d-q}
+	\end{flalign}
+\end{theorem}
+\begin{proof}
+	\cite{stoch1} Theorem 4.26
+\end{proof}
+
+\begin{remark}
+	For a convex set $K\in \K^d$ since $K$ is closed we can write $K=(\bigcup_{j=0}^\infty B_d(r_j, x_j))^C$ for some $r_j>0$ and $x_j\in \R^d$. Then we get
+	\begin{flalign*}
+		A_K :&= \{F\in A(d,q)\ |\ F\cap K\neq \emptyset\} 
+		\\ &= \{F\in A(d,q)\ |\ F\cap (\bigcup_{j=0}^\infty B_d(r_j, x_j))^C \neq \emptyset\} 
+		\\ &= \{F\in A(d,q)\ |\ F\cap \bigcap_{j=0}^\infty B_d(r_j, x_j)^C \neq \emptyset\} 
+		\\ &= \{F\in A(d,q)\ |\ \bigcap_{j=0}^\infty F\cap B_d(r_j, x_j)^C\neq \emptyset\}
+		\\ &= \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)^C\neq \emptyset\text{ for all } j>0 \}
+		\\ &\supset \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j) = \emptyset\text{ for all } j>0 \}
+		\\ &= \bigcap_{j=0}^\infty \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)= \emptyset\}
+		\\ &= \bigcap_{j=0}^\infty A_d(r_j, x_j)^C
+		\\ &= (\bigcup_{j=0}^\infty A_d(r_j, x_j))^C.
+	\end{flalign*}
+	$A_K\in \mathcal{A}(d,q)$ ?
+\end{remark}
+
+For convenience we define constants 
 \begin{flalign*}
-A(d,q) := \{V \subset \R^d\ |\ V \text{ is an affine space with dimension }q\}
+	c_s^r := \frac{r!\kappa_r}{s!\kappa_s}
 \end{flalign*}
-the set of $q$-flats in $\R^d$. Later we will be interested in choosing random lines (i.e. $2$-flats). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll construct in this section. 
+for $s,r\in \N_0$ and we set
+\begin{flalign*}
+	c^{r_1,\dots,r_k}_{s_1,\dots,s_k} := \prod_{j=1}^k c_{s_j}^{r_j}.
+\end{flalign*}
+
+\begin{theorem} $(\mathit{Crofton\ formula})$
+	Let $K\in \K',k\in \{1,\dots,d-1\}$ and $j\in \{ 0,\dots,k\}$. Then
+	\begin{flalign}
+		\int_{A(d,k)} V_j(K\cap F) \mu_k(dF) = c^{k,d-k+j}_{j,d}V_{d-k+j}(K).
+	\end{flalign} 
+\end{theorem}
+
+\begin{proof}
+	\cite{stoch1} Theorem 4.27
+\end{proof}
+
+\begin{definition}
+	Let $K_0\in \K^d$ with $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$. An $A(d,q)$-valued random element $X_q$ with distribution $\frac{\mu_q(\ \cdot\ \cap\ A_{K_0})}{\mu_q(A_{K_0})}$ is called an $\mathit{isotropic\ random\ q}$-$\mathit{flat}$ through $K_0$. 
+\end{definition}
+
+\begin{lemma} \label{K}
+	Let $K,K_0\in \K^d$ with $K\subset K_0$ and $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$ and $X_q$ be an isotropic random $q$-flat through $K_0$. Then
+\begin{flalign}
+	\PP(X_q\cap K\neq \emptyset) = \frac{V_{d-q}(K)}{V_{d-q}(K_0)}. 
+\end{flalign}
+\end{lemma}
+\begin{proof}
+	We directly get
+	\begin{flalign*}
+		\PP(X_q\cap K \neq \emptyset) &= \PP(X_q\in A_K)
+		= \frac{\mu_q(A_K\cap A_{K_0})}{\mu_q(A_{K_0})}
+		\\ &= \frac{\mu_q(A_K)}{\mu_q(A_{K_0})}
+		= \frac{\int_{A(d,q)} \mathbbm{1}\{F\cap K\neq \emptyset\} \mu_q(dF)}{\int_{A(d,q)} \mathbbm{1}\{F\cap K_0\neq \emptyset\} \mu_q(dF)}
+		\\ &= \frac{\int_{A(d,q)} V_0(F\cap K) \mu_q(dF)}{\int_{A(d,q)} V_0(F\cap K_0) \mu_q(dF)}
+		 \overset{Crofton}{=} \frac{c^{q,d-q}_{0,d}V_{d-q}(K)}{c^{q,d-q}_{0,d}V_{d-q}(K_0)}
+		\\ &= \frac{V_{d-q}(K)}{V_{d-q}(K_0)}.
+	\end{flalign*}
+\end{proof}
 
 
 
 
 
+\subsection{Constructions in the real plane}
 
+From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line which intersects with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $X\in A:=A(2,1)$ has a form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $X_1$ be an isotropic random $1$-flat through $K_0$. 
 
+\begin{example}
+	Let $0<r<R$, $K_0 := B_R$ and analogously $K:=B_r$. Note that $K,K_0\in \K^2$ and $K\subset K_0$. Then with Lemma (\ref{K}) and Remark (\ref{Vjprop}) (iii) we get
+	\begin{flalign*}
+		\PP(X_1\cap B_r) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{S_1(B_r)}{S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
+	\end{flalign*}
+\end{example}
 
 \subsection{Easy attempt}
 
-In this paper we will discuss the case $d=2$ and $q=1$, hence the set of lines in $\R^2$. Note that every line $X\in A:=A(2,1)$ has the form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. For $r>0$ also define $B_r := B_r(0) := \{x\in \mathbb{R}^2\ |\ |x| \leq r\}$. 
+In this paper we will discuss the case $d=2$ and $q=1$, hence the set of lines in $\R^2$. 
 
 \begin{definition}
 	Let $K_0 \in \K^2$. Let $\gamma \sim \mathcal{U}([0,\pi))$ and for $\alpha \in [0,\pi)$ define $y_\alpha \sim \mathcal{U}(M_\alpha(K_0))$ where 
@@ -441,8 +525,8 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $L_A\neq \em
 	\indent Incremental Aggregate with the Random Line Hitting Distribution as its distribution we will call here $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
 \end{definition}
 
-
-
+\section{Questions}
+$\mathcal{K}'=?$
 
 \newpage
 
