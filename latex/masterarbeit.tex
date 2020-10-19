@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[british,UKenglish,USenglish,english,american]{babel}
+\usepackage[british,UKenglish,USenglish,american]{babel}
 
 \usepackage[pdftex]{graphicx}
 \usepackage{latexsym}
@@ -14,6 +14,8 @@
 \usepackage{textcomp}
 \usepackage{enumitem}
 \usepackage{lmodern}
+\usepackage{enumitem}% http://ctan.org/pkg/enumerate
+%\usepackage{enumerate}
 
 % Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
 \setlength{\topmargin}{-15mm}	   
@@ -211,16 +213,66 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 \end{remark}
 
 \newpage
-\section{Exkurs: Integral Geometry}
-In the next section we want to define an approximation for DLA. To do this we will need some concepts and results from Integral Geometry which we will discuss and develop in this section. An interesting set in Integral Geometry is the set of $q$-dimensional affine spaces in the $d$-dimensional real space, short
+\section{Integral Geometry}
+
+In the next section we want to define an approximation for DLA. To do this we will need some concepts and results from Integral Geometry which we will discuss and develop in this section. Reminder: A set $K\subset \mathbb{R}^d$ is called $\mathit{convex}$ if and only if for any two points $a,b\in K$ we have that $\{ta + (1-t)b \in \mathbb{R}^d\ |\ t\in [0,1]\}\subset K$. The set of convex and compact subsets of $\R^d$ we call $\K^d$. 
+
+\subsection{Intrinsic Volumina}
+
+A useful concept to measure intrinsic geometrical properties of Borel-sets $K\subset \R^d$ are $\mathit{intrinsic\ volumina}$. Define the $d$-th intrinsic volume of $K$ as $V_d(K):=\lambda_d(K)$. Furthermore define $S_{d-1}(K)$ to be the $\mathit{surface\ area}$ of $V_d(K)$, which is formally defined as the Hausdorff-measure of $\partial K$. If $\partial K$ is sufficiently regular (i.e. rectifiable, which is for example the case for all convex sets), then $S_{d-1}$ is equal to the $\mathit{outer\ Minkowski\ content}$, i.e.
+
 \begin{flalign*}
-	A(d,q) := \{V \subset \R^d\ |\ V \text{ is an affine space with dimension }q\}
+	S_{d-1}(K) = M_{d-1}(K) := \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K_{\oplus \varepsilon}) - V_d(K)),  \quad (Proof)
 \end{flalign*}
-In this paper we will discuss the case $d=2$ and $q=1$, hence the set of lines in $\R^2$. Note that every line $X\in A:=A(2,1)$ has the form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. Little Reminder: A set $A\subset \mathbb{R}^2$ is called $\mathit{convex}$ if and only if for any two points $a,b\in A$ we have that $\{ta + (1-t)b \in \mathbb{R}^2\ |\ t\in [0,1]\}\subset A$. For $r>0$ also define $B_r := B_r(0) := \{x\in \mathbb{R}^2\ |\ |x| \leq r\}$. 
+where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is easy to show, that $K_{\oplus \varepsilon} = K + \varepsilon B_d :=\{x+y\in \R^d\ |\ x\in K, y\in \varepsilon B_d\}$, where $B_d := \{x\in \R^d\ |\ d(0,x)\leq 1\}$. For the following theorem define 
+
+\begin{flalign*}
+	\kappa_d := V_d(B_d) \text{ for } d>0, \text{ and } \kappa_0:=1
+\end{flalign*}
+
+where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)}$ with the $\mathit{Gamma\ function}$ $\Gamma$. 
+
+\begin{theorem} $(\mathit{Steiner\ Formula})$
+	For $K\in \K^d$ there exist uniquely determined numbers $V_0(K),\dots, V_d(K)\in \R$, such that for each $\varepsilon\geq 0$ 
+	\begin{flalign} \label{steiner}
+		V_d(K+\varepsilon B_d) = \sum_{j=0}^{d} \kappa_{d-j} \varepsilon^{d-j} V_j(K). 
+	\end{flalign}
+	\begin{proof}
+		\cite{stoch1} Theorem 3.32
+	\end{proof}
+\end{theorem}
 
 \begin{definition}
-	$\K^2 := \{K\subset \mathbb{R}^2\ |\ K\text{ is convex and compact }\}$\\
+	$V_0(K),\dots, V_d(K)$ are called $\mathit{intrinsic\ volumina}$ of $K$. 
 \end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\roman*)]
+		\item The coefficients $\kappa_{d-j}$ are chosen such that the $V_j$ become independent of the dimension of the underlying space. This means that $V_j$ will assign the same value for $K$ if $K$ is considered to be subset of $\R^d$ or $\R^{\tilde{d}}$ for  $d<\tilde{d}$, although the unit balls $B_d$ are different in those two spaces. This is why they are called intrinsic volumes. (REFERENCE)
+		\item For $\varepsilon = 0$ the right side of \ref{steiner} reduces to $V_d(K)$ which shows a consistency of the notation. 
+		\item With \ref{steiner} we get $S_{d-1}(K) = \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K + \varepsilon B_d) - V_d(K) = \kappa_1 V_{d-1}(K)$, which will be a useful result. 
+		\item It can be shown that $V_0(\emptyset)=\dots=V_d(\emptyset)=0$ and $V_0(K)=1$ if $K\neq \emptyset$. 
+	\end{enumerate}
+\end{remark}
+
+\subsection{Random q-flats}
+
+An interesting set in Integral Geometry is the set of $q$-dimensional affine spaces in the $d$-dimensional real space, short
+\begin{flalign*}
+A(d,q) := \{V \subset \R^d\ |\ V \text{ is an affine space with dimension }q\}
+\end{flalign*}
+the set of $q$-flats in $\R^d$. Later we will be interested in choosing random lines (i.e. $2$-flats). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll construct in this section. 
+
+
+
+
+
+
+
+
+\subsection{Easy attempt}
+
+In this paper we will discuss the case $d=2$ and $q=1$, hence the set of lines in $\R^2$. Note that every line $X\in A:=A(2,1)$ has the form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. For $r>0$ also define $B_r := B_r(0) := \{x\in \mathbb{R}^2\ |\ |x| \leq r\}$. 
 
 \begin{definition}
 	Let $K_0 \in \K^2$. Let $\gamma \sim \mathcal{U}([0,\pi))$ and for $\alpha \in [0,\pi)$ define $y_\alpha \sim \mathcal{U}(M_\alpha(K_0))$ where 
@@ -391,23 +443,23 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $L_A\neq \em
 
 
 
-\newpage
-
-
-\section{Notizen}
-
-diffusion in fractals: $d_f < d$ (space $\mathbb{Z}^d$)
-
 
 \newpage
 
-\begin{thebibliography}{Lam00}
+\begin{thebibliography}{biblio}
 \thispagestyle{empty}
 
 \bibitem{Henze Skript}
 N. Henze.
 \emph{Maß und Wahrscheinlichkeitstheorie (Stochastik II)}.
 Karlsruher Institut für Technologie, Karlsruhe, 2010
+
+\bibitem{stoch1}
+Daniel Hug, Günter Last, Steffen Winter.
+\emph{Stochastic Geometry, 	Lecture Notes (summer term 2020)}.
+Institute of Technologie, Karlsruhe
+
+
 
 \end{thebibliography}
 

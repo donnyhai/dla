@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  19 OCT 2020 10:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  19 OCT 2020 20:17
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -203,10 +203,6 @@ english.ldf"
 Language: english 2017/06/06 v3.3r English support from the babel system
 ))
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/babel-english\
-english.ldf"
-Language: english 2017/06/06 v3.3r English support from the babel system
-)
-("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/babel-english\
 american.ldf"
 Language: american 2017/06/06 v3.3r English support from the babel system
 
@@ -214,12 +210,6 @@ Language: american 2017/06/06 v3.3r English support from the babel system
 english.ldf"
 Language: english 2017/06/06 v3.3r English support from the babel system
 )))
-
-Package Babel Warning: The package option `english' should not be used
-(Babel)                with a more specific one (like `american') on input line
- 6.
-
-
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graph
 icx.sty"
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
@@ -467,29 +457,29 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
  (masterarbeit.aux)
 \openout1 = `masterarbeit.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 48
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 50
 .
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Package scrbase Info: activating american \contentsname on input line 48.
-Package scrbase Info: activating american \listfigurename on input line 48.
-Package scrbase Info: activating american \listtablename on input line 48.
+Package scrbase Info: activating american \contentsname on input line 50.
+Package scrbase Info: activating american \listfigurename on input line 50.
+Package scrbase Info: activating american \listtablename on input line 50.
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\su
 pp-pdf.mkii"
@@ -515,115 +505,114 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 <kit-logo.jpg, id=1, 199.7061pt x 91.3011pt>
 File: kit-logo.jpg Graphic file (type jpg)
 <use kit-logo.jpg>
-Package pdftex.def Info: kit-logo.jpg  used on input line 53.
+Package pdftex.def Info: kit-logo.jpg  used on input line 55.
 (pdftex.def)             Requested size: 89.86691pt x 41.08511pt.
  [1
 
 {C:/Users/donnykong/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./kit-l
 ogo.jpg>] [2]
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 8
-2.
+4.
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) (masterarbeit.toc)
-\tf@toc=\write3
-\openout3 = `masterarbeit.toc'.
-
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
-8.
+) (masterarbeit.toc
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
+.
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
-8.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
+.
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-88.
+7.
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-88.
+7.
  ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omxlmex.fd
 "
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 88.
+(Font)              <12> on input line 7.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 88.
+(Font)              <8> on input line 7.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 88.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 88
-.
+(Font)              <6> on input line 7.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 7.
+
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 88.
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.
 fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 88.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.
 fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
+))
+\tf@toc=\write3
+\openout3 = `masterarbeit.toc'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
 
  []
 
 <display.jpg, id=11, 4183.63pt x 3693.8pt>
 File: display.jpg Graphic file (type jpg)
 <use display.jpg>
-Package pdftex.def Info: display.jpg  used on input line 91.
+Package pdftex.def Info: display.jpg  used on input line 93.
 (pdftex.def)             Requested size: 167.3167pt x 147.72684pt.
 <display2.jpg, id=12, 2320.67pt x 1581.91pt>
 File: display2.jpg Graphic file (type jpg)
 <use display2.jpg>
-Package pdftex.def Info: display2.jpg  used on input line 92.
+Package pdftex.def Info: display2.jpg  used on input line 94.
 (pdftex.def)             Requested size: 211.18839pt x 143.95886pt.
 [1 <./display.jpg> <./display2.jpg>]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 101.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 103.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 101.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 103.
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--103
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--103
+Underfull \hbox (badness 10000) in paragraph at lines 101--105
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--114
+Underfull \hbox (badness 10000) in paragraph at lines 101--105
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--117
+Underfull \hbox (badness 10000) in paragraph at lines 113--116
 
  []
 
 
-Overfull \hbox (7.6667pt too wide) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 117--119
+
+ []
+
+
+Overfull \hbox (7.6667pt too wide) in paragraph at lines 120--121
 \T1/lmr/m/n/12 per. A fam-ily $\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 S[]\OT1/lmr/m/
 n/12 )[]$ \T1/lmr/m/n/12 of mea-sur-able func-tions $\OML/lmm/m/it/12 S[] \OT1/
 lmr/m/n/12 : 
@@ -632,64 +621,59 @@ n/12 Z[]$
  []
 
 [2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 190--193
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--207
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
-
- []
-
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
+[5] [6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--338
+Underfull \hbox (badness 10000) in paragraph at lines 387--390
 
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 367--374
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 367--374
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 419--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--374
-
- []
-
-[9] [10] [11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 423--424
+Underfull \hbox (badness 10000) in paragraph at lines 419--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 425--427
+Underfull \hbox (badness 10000) in paragraph at lines 419--426
+
+ []
+
+[10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 475--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--479
 
  []
 
 [13] (masterarbeit.aux) ) 
 Here is how much of TeX's memory you used:
- 7444 strings out of 481565
- 135591 string characters out of 2912287
- 489828 words of memory out of 3000000
- 22518 multiletter control sequences out of 15000+200000
- 616517 words of font info for 74 fonts, out of 3000000 for 9000
+ 7450 strings out of 481565
+ 135836 string characters out of 2912287
+ 490554 words of memory out of 3000000
+ 22526 multiletter control sequences out of 15000+200000
+ 619285 words of font info for 75 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,16n,56p,10109b,316s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,16n,56p,10109b,354s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/
 fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/donnykong/AppData/Local/Programs/MiKTeX 
 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/donnykong/AppData/Local/Programs/MiK
@@ -714,7 +698,7 @@ nnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C
 0.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (15 pages, 2938372 bytes).
+Output written on masterarbeit.pdf (15 pages, 2946560 bytes).
 PDF statistics:
  127 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
