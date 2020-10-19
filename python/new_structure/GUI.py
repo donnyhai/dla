@@ -21,14 +21,14 @@ windowSize = (500, 500)
 #d1 = decg.DLA_External_Circle_GUI()
 #d1.runProcess(100)
 
-d2 = drcg.DLA_Reverse_Circle_GUI()
-d2.runProcess(500)
+#d2 = drcg.DLA_Reverse_Circle_GUI()
+#d2.runProcess(500)
 
 #d3 = drrg.DLA_Reverse_Rect_GUI()
 #d3.runProcess(300)
 
-#d4 = deag.DLA_External_Approx3_GUI()
-#d4.runProcess(100)
+d4 = deag.DLA_External_Approx3_GUI()
+d4.runProcess(6000)
 
 #d5 = t.Testclass()
 #d5.runProcess(300)

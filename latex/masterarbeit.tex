@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
+\usepackage[british,UKenglish,USenglish,english,american]{babel}
 
 \usepackage[pdftex]{graphicx}
 \usepackage{latexsym}
@@ -21,36 +21,28 @@
 \numberwithin{equation}{section} 
 
 \newcommand{\C}{\mathbb{C}} % komplexe
-\newcommand{\K}{\mathbb{K}} % komplexe
 \newcommand{\R}{\mathbb{R}} % reelle
 \newcommand{\Q}{\mathbb{Q}} % rationale
 \newcommand{\Z}{\mathbb{Z}} % ganze
 \newcommand{\N}{\mathbb{N}} % natuerliche
 \newcommand{\PP}{\mathbb{P}} % Probability
 \newcommand{\E}{\mathcal{E}} % big Epsilon
+\newcommand{\K}{\mathcal{K}}
 
-\numberwithin{equation}{section}%
+\numberwithin{equation}{section}
 
 \theoremstyle{definition}
-\newtheorem{example}{Example}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}[theorem]{Definition} 
-\newtheorem{proposition}[theorem]{Proposition}
-
-\newtheorem{thm}{Theorem}[section]%
-\newtheorem{lem}[thm]{Lemma}%
-\newtheorem{prop}[thm]{Proposition}%
-\newtheorem{algo}[thm]{Algorithm}%
-
-\newtheorem{cor}[thm]{Corollary}%
-\theoremstyle{definition}
-\newtheorem{dfn}[thm]{Definition}%
-\newtheorem{rem}[thm]{Remark}%
-\newtheorem{com}[thm]{Comment}
-\newtheorem{exa}[thm]{Example}%
-\newtheorem{bew}[thm]{Proof}%
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{prop}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{pro}{Proof}
+\newtheorem{comment}{Comment}
 
 
 \begin{document}
@@ -180,9 +172,9 @@ So every element in $\mathcal{D}_A$ naturally defines a distribution on the elem
 	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_n\}$.
 \end{definition} 
 
-\begin{rem}
+\begin{remark}
 	
-\end{rem}
+\end{remark}
 
 
 
@@ -214,51 +206,96 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 	\\ Incremental Aggregate with the harmonic measure $h$ as its distribution we define here, and in literature is known as $\mathit{Exernal\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$.
 \end{definition}
 
-\begin{rem}
+\begin{remark}
 	contenu...
-\end{rem}
+\end{remark}
 
 \newpage
 \section{Exkurs: Integral Geometry}
-In the next section we want to define an approximation for DLA. To do this we will need some concepts and results from Integral Geometry which we will discuss and develop in this section. The space we are moving in this section is $\mathbb{R}^2$ for some dimension $d\in \mathbb{N}$ with $d>1$. Little Reminder: A set $A\subset \mathbb{R}^2$ is called $\mathit{convex}$ if and only if for any two points $a,b\in A$ we have that $\{ta + (1-t)b \in \mathbb{R}^2\ |\ t\in [0,1]\}\subset A$. We call $L\subset \mathbb{R}^2$ a $line$ if and only if there exist $a,b\in \mathbb{R}^2$ with $b\neq (0,0)$ such that 
-
-\begin{align}
-L=L_{a,b}:=\{a+tb\in \mathbb{R}^2\ |\ t\in \mathbb{R}\}
-\end{align}
-
-The set of lines we will call 
-
-\begin{align}
-\mathcal{L} := \{L_{a,b}\ |\ a,b\in \mathbb{R}^2\ \text{ with }b\neq(0,0)\}.
-\end{align}
-
+In the next section we want to define an approximation for DLA. To do this we will need some concepts and results from Integral Geometry which we will discuss and develop in this section. An interesting set in Integral Geometry is the set of $q$-dimensional affine spaces in the $d$-dimensional real space, short
+\begin{flalign*}
+	A(d,q) := \{V \subset \R^d\ |\ V \text{ is an affine space with dimension }q\}
+\end{flalign*}
+In this paper we will discuss the case $d=2$ and $q=1$, hence the set of lines in $\R^2$. Note that every line $X\in A:=A(2,1)$ has the form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. Little Reminder: A set $A\subset \mathbb{R}^2$ is called $\mathit{convex}$ if and only if for any two points $a,b\in A$ we have that $\{ta + (1-t)b \in \mathbb{R}^2\ |\ t\in [0,1]\}\subset A$. For $r>0$ also define $B_r := B_r(0) := \{x\in \mathbb{R}^2\ |\ |x| \leq r\}$. 
 
 \begin{definition}
-	$\mathcal{K}^2 := \{K\subset \mathbb{R}^2\ |\ K\text{ is convex and compact }\}$\\
+	$\K^2 := \{K\subset \mathbb{R}^2\ |\ K\text{ is convex and compact }\}$\\
 \end{definition}
+
 \begin{definition}
-	Let $K_0 \in \mathcal{K}^2$. Let $\gamma \sim \mathcal{U}([0,\pi))$ and for $\alpha \in [0,\pi)$ define $y_\alpha \sim \mathcal{U}(M_\alpha(K_0))$ where 
+	Let $K_0 \in \K^2$. Let $\gamma \sim \mathcal{U}([0,\pi))$ and for $\alpha \in [0,\pi)$ define $y_\alpha \sim \mathcal{U}(M_\alpha(K_0))$ where 
 	\begin{align*}
 		M_\alpha(K):= \begin{cases}
-		\{h\in \mathbb{R}\ |\ L_{\tbinom{0}{h}, \tbinom{1}{0}} \cap K \neq \emptyset\},\ \text{ if } \alpha = 0\\
-		\{h\in \mathbb{R}\ |\ L_{\tbinom{h}{0}, \tbinom{cos(\alpha)}{sin(\alpha)}} \cap K \neq \emptyset\},\ \text{ if } \alpha\in (0,\pi)
+		\{h\in \mathbb{R}\ |\ L_{\tbinom{0}{h}, \tbinom{1}{0}} \cap K \neq \emptyset\},\quad \text{ if } \alpha = 0\\
+		\{h\in \mathbb{R}\ |\ L_{\tbinom{h}{0}, \tbinom{cos(\alpha)}{sin(\alpha)}} \cap K \neq \emptyset\},\quad \text{ if } \alpha\in (0,\pi).
 		\end{cases} 
 	\end{align*}
-	Note that $	M_\alpha(K) \in\mathcal{K}^1$ for all $K\in \mathcal{K}^2$ and $\alpha\in [0,\pi)$ (Proof). For $K\in \mathcal{K}^2$ define $\nu_{K_0}(K) := \int_{[0,\pi)} \mathbb{P}_{y_\alpha}(M_\alpha(K\cap K_0)) \mathbb{P}_\gamma(d\alpha)$.\\
+	For $K\in \K^2$ define 
+
+	\begin{flalign*}
+		\nu_{K_0}(K) := \int_{[0,\pi)} \mathbb{P}_{y_\alpha}(M_\alpha(K\cap K_0)) \mathbb{P}_\gamma(d\alpha).
+	\end{flalign*}
 	Interpretation: $\nu_{K_0}(K)$ is the probability that a random line which intersects with $K_0$ also intersects with $K_0 \cap K$. \\
-	Conjecture: $\nu_{K_0}(K) = \frac{\mu_1(K\cap K_0)}{\mu_1(K_0)}$ for $K,K_0\in \mathcal{K}^2$ ($\mu_1$  Gradenmaß).
+	Conjecture: $\nu_{K_0}(K) = \frac{\mu_1(K\cap K_0)}{\mu_1(K_0)}$ for $K,K_0\in \K^2$ ($\mu_1$  Gradenmaß).
 \end{definition}
 
+\begin{remark}
+	Note that $	M_\alpha(K) \in\K^1$ for all $K\in \K^2$ and $\alpha\in [0,\pi)$ (Proof). Proof rotation symmetry.
+\end{remark}
+
 \begin{example}
-	Let $0<r<R$ and $K_0 = B_R := B_R(0) = \{x\in \mathbb{R}^2\ |\ |x| \leq R\}$ and analogously $K:=B_r$. Note that $K,K_0\in \mathcal{K}^2$. Then ...
+	Let $0<r<R$ and $K_0 := B_R$ and analogously $K:=B_r$. Note that $K,K_0\in \K^2$ and $K\subset K_0$. Then by trigonometry we get 
+	\begin{flalign*}
+		M_\alpha(K_0) = \begin{cases}
+			[-R,R],\quad \text{ if } \alpha=0,\\
+			[-\frac{R}{sin(\alpha)}, \frac{R}{sin(\alpha)}],\quad \text{ if } \alpha\in (0,\pi)
+		\end{cases}
+	\end{flalign*} 
+	and analogously $M_\alpha(K)$. Finally we get
+	\begin{flalign*}
+		\nu_{K_0}(K) &= \int_{[0,\pi)} \PP_{y_\alpha}(M_\alpha(K\cap \K_0)) \mathbb{P}_\gamma(d\alpha)\\
+					&= \int_{[0,\pi)} \frac{\lambda(M_\alpha(K))}{\lambda(M_\alpha(K_0))} \frac{d\alpha}{\lambda([0,\pi))}\\
+					&= \frac{1}{\pi} \int_{[0,\pi)} \frac{2r}{2R} d\alpha
+					= \frac{1}{\pi} \frac{r}{R} \int_{[0,\pi)} 1 d\alpha
+					= \frac{r}{R}
+	\end{flalign*}
+	This result makes sense considering the symmetries of the balls $B_r$ and $B_R$ and the relation of their diameters. 
 \end{example}
 
 \begin{example}
-	Let $0<r,R$ with $r\leq \frac{R}{\sqrt{2}}$, $K_0 = B_R := B_R(0) = \{x\in \mathbb{R}^2\ |\ |x| \leq R\}$ and $K:=I_r := [-r,r]^2$. Note that $K,K_0\in \mathcal{K}^2$. Then ...
+	Let $0<r\leq \frac{R}{\sqrt{2}}$, $K_0 := B_R$ as above and $K:= [-r,r]^2$. Note that $K,K_0\in \K^2$ and $K\subset K_0$. We get 
+	\begin{flalign*}
+		M_\alpha(K) = \begin{cases}
+		[-r,r],\quad \text{ if } \alpha\in \{0,\frac{\pi}{2}\},\\
+		[-r(1+\frac{1}{tan(\alpha)}),\ r(1+\frac{1}{tan(\alpha)})],\quad \text{ if } \alpha\in (0,\pi)\setminus \{\frac{\pi}{2}\}
+		\end{cases}
+	\end{flalign*}
+	and finally 
+	\begin{flalign*}
+		\nu_{K_0}(K) &= \int_{[0,\pi)} \PP_{y_\alpha}(M_\alpha(K)) \mathbb{P}_\gamma(d\alpha)\\
+		&= \frac{1}{\pi} \int_{(0,\pi)\setminus \{\frac{\pi}{2}\}} \frac{r}{R} (sin(\alpha) + cos(\alpha)) d\alpha\\
+		&= \frac{r}{R\pi} [-cos(\alpha) + sin(\alpha)]^\pi_0 
+		= \frac{r}{R\pi} (1 + 1) = \frac{2r}{R\pi}
+	\end{flalign*}	
 \end{example}
 
+\begin{example}
+	Let $K_0 := B_R$ and $K:=[-r,r]$ for some $0<r\leq R$. Note $K_0,K\in \K^2$ and $K\subset K_0$. Then 
+	\begin{flalign*}
+		M_\alpha(K) = \begin{cases}
+			\{0\},\quad \alpha = 0,\\
+			[-r,r],\quad \alpha\in (0,\pi).
+		\end{cases}
+	\end{flalign*}
+	and finally
+	\begin{flalign*}
+		\nu_{K_0}(K) = \frac{1}{\pi} \int_{(0,\pi)} \frac{r}{R} sin(\alpha) d\alpha = \frac{2r}{R\pi}.
+	\end{flalign*}
+\end{example}
 
-
+\begin{remark}
+	Only fair if $K_0$ symmetric. 
+\end{remark}
 
 \newpage
 
@@ -338,9 +375,9 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $L_A\neq \em
 	\end{proof}
 \end{lemma}
 
-\begin{rem}
+\begin{remark}
 	The relation $<_{line}$ on $L_A$ basically orders the hitpoints of a line $L$ with a finite set $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outest hitting points of $A$ by $L$. This means when moving on a line $L$ facing $A$ this order allows us to know where in $A$ the line $L$ hits first when ,,entering`` $A$ and where it hits last when ,,leaving`` $A$ which will be the two points $min_{<_{line}}L_A$ and $max_{<_{line}}L_A$ (or the other way around). 
-\end{rem}
+\end{remark}
 
 
 \begin{definition} $\mathit{Random\ Line\ Hitting\ Distribution}$\\
