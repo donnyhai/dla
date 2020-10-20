@@ -14,14 +14,13 @@
 \usepackage{textcomp}
 \usepackage{enumitem}
 \usepackage{lmodern}
-\usepackage{enumitem}% http://ctan.org/pkg/enumerate
-%\usepackage{enumerate}
 \usepackage{bbm}
 
 % Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
 \setlength{\topmargin}{-15mm}	   
                   
-\numberwithin{equation}{section} 
+%\numberwithin{equation}{section} 
+\numberwithin{equation}{subsection}
 
 \newcommand{\C}{\mathbb{C}} % komplexe
 \newcommand{\R}{\mathbb{R}} % reelle
@@ -35,17 +34,17 @@
 \numberwithin{equation}{section}
 
 \theoremstyle{definition}
-\newtheorem{example}{Example}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{definition}{Definition}
-\newtheorem{proposition}{Proposition}
-\newtheorem{algorithm}{Algorithm}
-\newtheorem{prop}{Proposition}
-\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{proposition}{Proposition}[subsection]
+\newtheorem{algorithm}{Algorithm}[subsection]
+\newtheorem{prop}{Proposition}[subsection]
+\newtheorem{remark}{Remark}[subsection]
 \newtheorem{pro}{Proof}
-\newtheorem{comment}{Comment}
+\newtheorem{comment}{Comment}[subsection]
 
 
 \begin{document}
@@ -88,13 +87,12 @@
 
 \setcounter{page}{1}
 
-\newpage
-\section{Einleitung}
-External DLA beschreibt einen stochastischen Prozess, welcher zumindest in ähnlicher Form in natürlichen Prozessen beobachtbar ist. Er ähnelt zum Beispiel der fraktalen Gestalt eines sich kreisförmig ausbreitenden Risses einer Glasscheibe, oder eines Risses eines Kristallfluids wie in LCD Displays in alten Autoradios (siehe Fotos). Er kann auch in Schneeflocken oder in elektrostatischen Anhaftungen an Metallen beobachtet werden. Die Formalisierung solcher Prozesse ist sehr aktuell und die sehr konstruktive Definition erlaubten bisher nur mühsame Folgerungen über Struktur und Verhalten des Prozesses. Wir werden uns Modelle auf $\mathbb{Z}^2$, sowie auf anderen Graphen, darunter auch fraktale Graphen, anschauen, und außerdem versuchen, eine Approximation der bisherigen Definition zu finden, die grundsätzlich handlicher ist und auf einfachere Weise zu Erkenntnissen führt. Wir werden außerdem diese Arbeit mit einigen Python Simulationen begleiten. Der Code ist frei verfügbar auf Github. \\
-\\
 
+\newpage
+
+\section{Introduction}
 \includegraphics[scale=0.04]{display.jpg} 
-\includegraphics[scale=0.091]{display2.jpg} 
+\includegraphics[scale=0.091]{display2.jpg}
 
 \newpage
 
@@ -163,7 +161,7 @@ In this paper we will look at stochastic processes on the set of finite subsets 
 \begin{align}
 	\mathcal{P}_f := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
 \end{align}
-the set of finite and connected subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mathcal{P}_f$ we define 
+the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mathcal{P}_f$ we define 
 \begin{align}
 	\mathcal{D}_A:= \{\mu: \mathbb{Z}^d\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}.
 \end{align}
@@ -222,18 +220,28 @@ In the next section we want to define an approximation for DLA. To do this we wi
 
 \subsection{Intrinsic Volumes}
 
-A useful concept to measure intrinsic geometrical properties of Borel-sets $K\subset \R^d$ are $\mathit{intrinsic\ volumes}$. Define the $d$-th intrinsic volume of $K$ as $V_d(K):=\lambda_d(K)$. Furthermore define $S_{d-1}(K)$ to be the $\mathit{surface\ area}$ of $V_d(K)$, which is formally defined as the Hausdorff-measure of $\partial K$. If $\partial K$ is sufficiently regular (i.e. rectifiable, which is for example the case for all convex sets), then $S_{d-1}$ is equal to the $\mathit{outer\ Minkowski\ content}$, i.e.
-
-\begin{flalign*}
-	S_{d-1}(K) = M_{d-1}(K) := \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K_{\oplus \varepsilon}) - V_d(K)),  \quad (Proof)
-\end{flalign*}
-where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is easy to show, that $K_{\oplus \varepsilon} = K + \varepsilon B_d :=\{x+y\in \R^d\ |\ x\in K, y\in \varepsilon B_d\}$, where $B_d := \{x\in \R^d\ |\ d(0,x)\leq 1\}$. For the following theorem define 
+A useful concept to measure intrinsic geometrical properties of Borel-sets $K\subset \R^d$ are $\mathit{intrinsic\ volumes}$. We define the $d$-th intrinsic volume of $K$ as $V_d(K):=\lambda_d(K)$. Furthermore define $S_{d-1}(K)$ to be the $\mathit{surface\ area}$ of $V_d(K)$, which is formally defined as the Hausdorff-measure of $\partial K$. For the following theorem define 
 
 \begin{flalign*}
 	\kappa_d := V_d(B_d) \text{ for } d>0, \text{ and } \kappa_0:=1
 \end{flalign*}
 
 \noindent where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)}$ with the $\mathit{Gamma\ function}$ $\Gamma(x) := \int_0^\infty t^{x-1}e^{-t}dt,\ x>0$. 
+
+\begin{lemma} \label{mink}
+	If $K\subset \K^d$, then $S_{d-1}$ is equal to the $\mathit{outer\ Minkowski\ content}$, i.e.
+	
+	\begin{flalign*}
+		S_{d-1}(K) = M_{d-1}(K) := \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K_{\oplus \varepsilon}) - V_d(K)),
+	\end{flalign*}
+	
+	where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is easy to show, that $K_{\oplus \varepsilon} = K + \varepsilon B_d :=\{x+y\in \R^d\ |\ x\in K, y\in \varepsilon B_d\}$, where $B_d := \{x\in \R^d\ |\ d(0,x)\leq 1\}$.
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
 
 \begin{theorem} $(\mathit{Steiner\ Formula})$
 	For $K\in \K^d$ there exist uniquely determined numbers $V_0(K),\dots, V_d(K)\in \R$, such that for each $\varepsilon\geq 0$ 
@@ -251,17 +259,18 @@ where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is
 
 \begin{remark}\label{Vjprop}
 	\begin{enumerate}[label=(\roman*)]
-		\item The coefficients $\kappa_{d-j}$ are chosen such that the $V_j$ become independent of the dimension of the underlying space. This means that $V_j$ will assign the same value for $K$ if $K$ is considered to be subset of $\R^d$ or $\R^{\tilde{d}}$ for  $d<\tilde{d}$, although the unit balls $B_d$ are different in those two spaces. This is why they are called intrinsic volumes. (REFERENCE)
-		\item For $\varepsilon = 0$ the right side of \ref{steiner} reduces to $V_d(K)$ which shows a consistency of the notation. 
-		\item With \ref{steiner} we get $S_{d-1}(K) = \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K + \varepsilon B_d) - V_d(K) = \kappa_1 V_{d-1}(K) = 2V_{d-1}(K)$, which will be a useful result. 
-		\item It can be shown that $V_0(\emptyset)=\dots=V_d(\emptyset)=0$ and $V_0(K)=1$ if $K\neq \emptyset$. 
+		\item What we get are functions $V_j:\K^d \to \R$ for the $j$-intrinsic volume $V_j$. It can be shown that every $V_j$ can be uniquely extended to a function $V_j: \mathcal{R}^d \to \R$, where $\mathcal{R}^d := \{\bigcup_{j=1}^n K_j\subset \R^d\ |\ n\in \N_0,K_j\in \K^d \}$ (\cite{stoch1} Theorem 4.10).
+		\item The coefficients $\kappa_{d-j}$ are chosen such that the $V_j$ become independent of the dimension of the underlying space. This means that $V_j$ will assign the same value for $K$ if $K$ is considered to be subset of $\R^d$ or $\R^{\tilde{d}}$ for  $d<\tilde{d}$, although the unit balls $B_d$ and $B_{\tilde d}$ are different in those two spaces. This is why the $V_j$ are called $\mathit{intrinsic}$ volumes (REFERENCE). 
+		\item For $\varepsilon = 0$ the right side of equation (\ref{steiner}) reduces to $V_d(K)$ which shows a consistency of the notation. 
+		\item With Lemma (\ref{mink}) and equation (\ref{steiner}) we get $S_{d-1}(K) = \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K + \varepsilon B_d) - V_d(K) = \kappa_1 V_{d-1}(K) = 2V_{d-1}(K)$, which will be a useful result. 
+		\item It can be shown that $V_0(\emptyset)=\dots=V_d(\emptyset)=0$ and $V_0(K)=1$ if $K\neq \emptyset$ (REFERENCE). 
 	\end{enumerate}
 \end{remark}
 
 \subsection{Random q-flats}
 
 An interesting set in Integral Geometry is the set of $q$-dimensional affine subspaces in the $d$-dimensional real space, short $A(d,q)$ the set of $q$-flats in $\R^d$. 
-Later we will be interested in choosing random lines (i.e. $2$-flats). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll define now in this section. Let $G_d$ be the set of rigid motions (euclidean motions) in $\R^d$. For $r>0$ and $x\in \R^d$ define $B_d(r,x) := \{y\in \mathbb{R}^d\ |\ d(x,y) \leq r\}$ and $B_d:=B_d(1,0)$. 
+Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll define now in this section. Let $G_d$ be the set of rigid motions (euclidean motions) in $\R^d$. For $r>0$ and $x\in \R^d$ define $B_d(r,x) := \{y\in \mathbb{R}^d\ |\ d(x,y) \leq r\}$ and $B_d:=B_d(1,0)$. 
 
 \begin{definition}
 	 For $r>0$ and $x\in \R^d$ define $A_d(r,x) := \{ F\in A(d,q)\ |\ F\cap B_d(r,x) \neq\emptyset \}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
@@ -281,35 +290,27 @@ Later we will be interested in choosing random lines (i.e. $2$-flats). For that 
 \end{proof}
 
 \begin{remark}
-	For a convex set $K\in \K^d$ since $K$ is closed we can write $K=(\bigcup_{j=0}^\infty B_d(r_j, x_j))^C$ for some $r_j>0$ and $x_j\in \R^d$. Then we get
-	\begin{flalign*}
-		A_K :&= \{F\in A(d,q)\ |\ F\cap K\neq \emptyset\} 
-		\\ &= \{F\in A(d,q)\ |\ F\cap (\bigcup_{j=0}^\infty B_d(r_j, x_j))^C \neq \emptyset\} 
-		\\ &= \{F\in A(d,q)\ |\ F\cap \bigcap_{j=0}^\infty B_d(r_j, x_j)^C \neq \emptyset\} 
-		\\ &= \{F\in A(d,q)\ |\ \bigcap_{j=0}^\infty F\cap B_d(r_j, x_j)^C\neq \emptyset\}
-		\\ &= \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)^C\neq \emptyset\text{ for all } j>0 \}
-		\\ &\supset \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j) = \emptyset\text{ for all } j>0 \}
-		\\ &= \bigcap_{j=0}^\infty \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)= \emptyset\}
-		\\ &= \bigcap_{j=0}^\infty A_d(r_j, x_j)^C
-		\\ &= (\bigcup_{j=0}^\infty A_d(r_j, x_j))^C.
-	\end{flalign*}
-	$A_K\in \mathcal{A}(d,q)$ ?
+	$A_K\in \mathcal{A}(d,q)$ for $K\in\K^d$?
+%	For a convex set $K\in \K^d$ since $K$ is closed we can write $K=(\bigcup_{j=0}^\infty B_d(r_j, x_j))^C$ for some $r_j>0$ and $x_j\in \R^d$. Then we get
+%	\begin{flalign*}
+%		A_K :&= \{F\in A(d,q)\ |\ F\cap K\neq \emptyset\} 
+%		\\ &= \{F\in A(d,q)\ |\ F\cap (\bigcup_{j=0}^\infty B_d(r_j, x_j))^C \neq \emptyset\} 
+%		\\ &= \{F\in A(d,q)\ |\ F\cap \bigcap_{j=0}^\infty B_d(r_j, x_j)^C \neq \emptyset\} 
+%		\\ &= \{F\in A(d,q)\ |\ \bigcap_{j=0}^\infty F\cap B_d(r_j, x_j)^C\neq \emptyset\}
+%		\\ &= \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)^C\neq \emptyset\text{ for all } j>0 \}
+%		\\ &\supset \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j) = \emptyset\text{ for all } j>0 \}
+%		\\ &= \bigcap_{j=0}^\infty \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)= \emptyset\}
+%		\\ &= \bigcap_{j=0}^\infty A_d(r_j, x_j)^C
+%		\\ &= (\bigcup_{j=0}^\infty A_d(r_j, x_j))^C.
+%	\end{flalign*}
 \end{remark}
-
-For convenience we define constants 
-\begin{flalign*}
-	c_s^r := \frac{r!\kappa_r}{s!\kappa_s}
-\end{flalign*}
-for $s,r\in \N_0$ and we set
-\begin{flalign*}
-	c^{r_1,\dots,r_k}_{s_1,\dots,s_k} := \prod_{j=1}^k c_{s_j}^{r_j}.
-\end{flalign*}
 
 \begin{theorem} $(\mathit{Crofton\ formula})$
 	Let $K\in \K',k\in \{1,\dots,d-1\}$ and $j\in \{ 0,\dots,k\}$. Then
 	\begin{flalign}
-		\int_{A(d,k)} V_j(K\cap F) \mu_k(dF) = c^{k,d-k+j}_{j,d}V_{d-k+j}(K).
+		\int_{A(d,k)} V_j(K\cap F) \mu_k(dF) = c^{k,d-k+j}_{j,d}V_{d-k+j}(K),
 	\end{flalign} 
+	where $c_s^r := \frac{r!\kappa_r}{s!\kappa_s}$ for $s,r\in \N_0$ and $c^{r_1,\dots,r_k}_{s_1,\dots,s_k} := \prod_{j=1}^k c_{s_j}^{r_j}$. 
 \end{theorem}
 
 \begin{proof}
@@ -317,7 +318,7 @@ for $s,r\in \N_0$ and we set
 \end{proof}
 
 \begin{definition}
-	Let $K_0\in \K^d$ with $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$. An $A(d,q)$-valued random element $X_q$ with distribution $\frac{\mu_q(\ \cdot\ \cap\ A_{K_0})}{\mu_q(A_{K_0})}$ is called an $\mathit{isotropic\ random\ q}$-$\mathit{flat}$ through $K_0$. 
+	Let $K_0\in \K^d$ with $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$. A $A(d,q)$-valued random element $X_q$ with distribution $\frac{\mu_q(\ \cdot\ \cap\ A_{K_0})}{\mu_q(A_{K_0})}$ is called an $\mathit{isotropic\ random\ q}$-$\mathit{flat}$ through $K_0$. 
 \end{definition}
 
 \begin{lemma} \label{K}
@@ -339,103 +340,56 @@ for $s,r\in \N_0$ and we set
 	\end{flalign*}
 \end{proof}
 
+\begin{remark} \label{S=2V}
+	Taking the situation from the last Lemma, with Remark (\ref{Vjprop}) (iv) and $q=1$ we get
+	\begin{flalign*}
+		\PP(X_1\cap K \neq \emptyset) = \frac{V_{d-1}(K)}{V_{d-1}(K_0)} = \frac{S_{d-1}(K)}{S_{d-1}(K_0)}. 
+	\end{flalign*}
+	For $d=2$ we basically can interpretate, that the propability of a line $X_1$ which intersects $K_0$ also interesects $K$ can be calculated by deviding the boundary length of $K$ by the boundary length of $K_0$. This seems to be a convenient result although it may not be completely intuitive. 
+\end{remark}
+
 
 
 
 
 \subsection{Constructions in the real plane}
 
-From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line which intersects with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $X\in A:=A(2,1)$ has a form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $X_1$ be an isotropic random $1$-flat through $K_0$. Recap the definition of $\kappa_j$, which is the $j$-dimensional Lebesgue measure of the $j$-dimensional unit ball, for our use here $\kappa_0=1$, $\kappa_1 = 2$ and $\kappa_2 = \pi$. 
+From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line which intersects with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $X\in A:=A(2,1)$ has a form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $X_1$ be an isotropic random $1$-flat through $K_0$. Recap the definition of $\kappa_j$, which is the $j$-dimensional Lebesgue measure of the $j$-dimensional unit ball, for our use here $\kappa_0=1$, $\kappa_1 = 2$ and $\kappa_2 = \pi$. For the next examples we always use Lemma (\ref{K}) and Remark (\ref{S=2V}) (iii) and choose $K,K_0\in \K^2$ with $K\subset K_0$. 
 
 \begin{example}
-	Let $0<r<R$, $K_0 := B_R$ and analogously $K:=B_r$. Note that $K,K_0\in \K^2$ and $K\subset K_0$. Then with Lemma (\ref{K}) and Remark (\ref{Vjprop}) (iii) we get
+	Let $0<r<R$, $K_0 := B_R$ and $K:=B_r$. We get
 	\begin{flalign*}
-		\PP(X_1\cap B_r) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{\frac{1}{2}S_1(B_r)}{\frac{1}{2}S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
+		\PP(X_1\cap B_r\neq\emptyset) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{\frac{1}{2}S_1(B_r)}{\frac{1}{2}S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
 	\end{flalign*}
 \end{example}
 
 \begin{example}
-	CONTINUE
+	Let $0<r\leq \frac{R}{\sqrt{2}}$, $K_0 := B_R$ and $K:= [-r,r]^2$. We get 
+	\begin{flalign*}
+		\PP(X_1\cap [-r,r]^2 \neq\emptyset) = \frac{S_1([-r,r]^2)}{S_1(B_R)} = \frac{8r}{2\pi R} = \frac{4}{\pi} \frac{r}{R}. 
+	\end{flalign*}
 \end{example}
 
-\subsection{Easy attempt}
-
-In this paper we will discuss the case $d=2$ and $q=1$, hence the set of lines in $\R^2$. 
-
-\begin{definition}
-	Let $K_0 \in \K^2$. Let $\gamma \sim \mathcal{U}([0,\pi))$ and for $\alpha \in [0,\pi)$ define $y_\alpha \sim \mathcal{U}(M_\alpha(K_0))$ where 
-	\begin{align*}
-		M_\alpha(K):= \begin{cases}
-		\{h\in \mathbb{R}\ |\ L_{\tbinom{0}{h}, \tbinom{1}{0}} \cap K \neq \emptyset\},\quad \text{ if } \alpha = 0\\
-		\{h\in \mathbb{R}\ |\ L_{\tbinom{h}{0}, \tbinom{cos(\alpha)}{sin(\alpha)}} \cap K \neq \emptyset\},\quad \text{ if } \alpha\in (0,\pi).
-		\end{cases} 
-	\end{align*}
-	For $K\in \K^2$ define 
-
+\begin{example}
+	Let $0<r\leq R$, $K_0 := B_R$ and $K:=[-r,r]$. We get 
 	\begin{flalign*}
-		\nu_{K_0}(K) := \int_{[0,\pi)} \mathbb{P}_{y_\alpha}(M_\alpha(K\cap K_0)) \mathbb{P}_\gamma(d\alpha).
+	\PP(X_1\cap [-r,r] \neq\emptyset) = \frac{V_1([-r,r])}{V_1(B_R)} = \frac{\lambda_1([-r,r])}{\frac{1}{2}S_1(B_R)} = \frac{2r}{\pi R} = \frac{2}{\pi} \frac{r}{R}. 
 	\end{flalign*}
-	Interpretation: $\nu_{K_0}(K)$ is the probability that a random line which intersects with $K_0$ also intersects with $K_0 \cap K$. \\
-	Conjecture: $\nu_{K_0}(K) = \frac{\mu_1(K\cap K_0)}{\mu_1(K_0)}$ for $K,K_0\in \K^2$ ($\mu_1$  Gradenmaß).
-\end{definition}
+\end{example}
+
+\begin{example}
+	Let $K_0 := B_1$ and $K:=T_a$ a equilateral triangle with side length $a=\frac{\pi}{3}$ centered at $(0,0)$. We get 
+	\begin{flalign*}
+	\PP(X_1\cap T_a\neq\emptyset) = \frac{V_1(T_a)}{V_1(B_1)} = \frac{3a}{2\pi} = \frac{1}{2}.
+	\end{flalign*}
+\end{example}
+
+
 
 \begin{remark}
-	Note that $	M_\alpha(K) \in\K^1$ for all $K\in \K^2$ and $\alpha\in [0,\pi)$ (Proof). Proof rotation symmetry.
+	We still haven't answered why $\mu_1$ is a senseful measure to be used to calculate probabilities for situations like in the last examples. And yet it is not obvious how to actually simulate a realisation of a random line with $\mu_1$. For now we can calculate the probability that a random line $X_1$ hits some convex set $K$ in the base set $K_0$. What we need is some form of parametrisation of this random choosing so we can actually end up for example with one angle defining the rotation of $X_1$ to the $x$-axis and a real number defining the interesection value of $X_1$ with the $y$-axis. If we wouldn't know about $\mu_1$ for now, we could choose an angle and a real number intuitively the following way: Choose an angle $\alpha$ uniformly out of $[0,\pi)$. Then consider all lines in the plane which are rotated counterclockwise by $\alpha$ starting at the $x$-axis and which intersect $K$. Take the set of intersection values of these lines with the $y$-axis and choose a value $y_0$ uniformly out of it, so finally $\alpha$ and $y_0$ define a unique line and we have a realisation of a random line which interesects $K$. This procedure may sound balanced, but it is only if $K_0$ is strongly symmetric. At this point it is important to remember what exactly we want. Out of all lines which intersect $K_0$ we are looking for the probability that a random chosen line intersects $K$ and finally calculate a realisation. Imagine $K_0=[-a,a]\times [-b,b]$ with $a<b$. Then it makes sense that there are "more" lines through the longer side $[-b,b]$ than through the shorter side $[-a,a]$. If we now choose the angle $\alpha$ uniformly, the shorter side is overweighted and the larger side underweighted, or in other words, the angle area around $\frac{\pi}{2}$ should be more likely to be chosen than the angle area around $0$. So this naive attempt of choosing the angle for our line uniformly doesn't consider asymmetries of $K_0$ and does therefore not hold the senseful idea, that longer sides of $K_0$ are hit by more lines than shorter ones. 
 \end{remark}
 
-\begin{example}
-	Let $0<r<R$ and $K_0 := B_R$ and analogously $K:=B_r$. Note that $K,K_0\in \K^2$ and $K\subset K_0$. Then by trigonometry we get 
-	\begin{flalign*}
-		M_\alpha(K_0) = \begin{cases}
-			[-R,R],\quad \text{ if } \alpha=0,\\
-			[-\frac{R}{sin(\alpha)}, \frac{R}{sin(\alpha)}],\quad \text{ if } \alpha\in (0,\pi)
-		\end{cases}
-	\end{flalign*} 
-	and analogously $M_\alpha(K)$. Finally we get
-	\begin{flalign*}
-		\nu_{K_0}(K) &= \int_{[0,\pi)} \PP_{y_\alpha}(M_\alpha(K\cap \K_0)) \mathbb{P}_\gamma(d\alpha)\\
-					&= \int_{[0,\pi)} \frac{\lambda(M_\alpha(K))}{\lambda(M_\alpha(K_0))} \frac{d\alpha}{\lambda([0,\pi))}\\
-					&= \frac{1}{\pi} \int_{[0,\pi)} \frac{2r}{2R} d\alpha
-					= \frac{1}{\pi} \frac{r}{R} \int_{[0,\pi)} 1 d\alpha
-					= \frac{r}{R}
-	\end{flalign*}
-	This result makes sense considering the symmetries of the balls $B_r$ and $B_R$ and the relation of their diameters. 
-\end{example}
-
-\begin{example}
-	Let $0<r\leq \frac{R}{\sqrt{2}}$, $K_0 := B_R$ as above and $K:= [-r,r]^2$. Note that $K,K_0\in \K^2$ and $K\subset K_0$. We get 
-	\begin{flalign*}
-		M_\alpha(K) = \begin{cases}
-		[-r,r],\quad \text{ if } \alpha\in \{0,\frac{\pi}{2}\},\\
-		[-r(1+\frac{1}{tan(\alpha)}),\ r(1+\frac{1}{tan(\alpha)})],\quad \text{ if } \alpha\in (0,\pi)\setminus \{\frac{\pi}{2}\}
-		\end{cases}
-	\end{flalign*}
-	and finally 
-	\begin{flalign*}
-		\nu_{K_0}(K) &= \int_{[0,\pi)} \PP_{y_\alpha}(M_\alpha(K)) \mathbb{P}_\gamma(d\alpha)\\
-		&= \frac{1}{\pi} \int_{(0,\pi)\setminus \{\frac{\pi}{2}\}} \frac{r}{R} (sin(\alpha) + cos(\alpha)) d\alpha\\
-		&= \frac{r}{R\pi} [-cos(\alpha) + sin(\alpha)]^\pi_0 
-		= \frac{r}{R\pi} (1 + 1) = \frac{2r}{R\pi}
-	\end{flalign*}	
-\end{example}
-
-\begin{example}
-	Let $K_0 := B_R$ and $K:=[-r,r]$ for some $0<r\leq R$. Note $K_0,K\in \K^2$ and $K\subset K_0$. Then 
-	\begin{flalign*}
-		M_\alpha(K) = \begin{cases}
-			\{0\},\quad \alpha = 0,\\
-			[-r,r],\quad \alpha\in (0,\pi).
-		\end{cases}
-	\end{flalign*}
-	and finally
-	\begin{flalign*}
-		\nu_{K_0}(K) = \frac{1}{\pi} \int_{(0,\pi)} \frac{r}{R} sin(\alpha) d\alpha = \frac{2r}{R\pi}.
-	\end{flalign*}
-\end{example}
-
-\begin{remark}
-	Only fair if $K_0$ symmetric. 
-\end{remark}
 
 \newpage
 
@@ -529,6 +483,7 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $L_A\neq \em
 	\indent Incremental Aggregate with the Random Line Hitting Distribution as its distribution we will call here $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
 \end{definition}
 
+\newpage
 \section{Questions}
 $\mathcal{K}'=?$
 
@@ -545,7 +500,7 @@ Karlsruher Institut für Technologie, Karlsruhe, 2010
 \bibitem{stoch1}
 Daniel Hug, Günter Last, Steffen Winter.
 \emph{Stochastic Geometry, 	Lecture Notes (summer term 2020)}.
-Institute of Technologie, Karlsruhe
+Institute of Technology, Karlsruhe
 
 
 
