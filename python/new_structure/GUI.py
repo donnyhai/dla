@@ -18,7 +18,7 @@ windowSize = (500, 500)
 #d0.runProcess(350)
 #dg = DLA_GUI.DLA_GUI(dc.atoms)
 
-#d1 = decg.DLA_External_Circle_GUI()
+d1 = decg.DLA_External_Circle_GUI()
 #d1.runProcess(100)
 
 #d2 = drcg.DLA_Reverse_Circle_GUI()
@@ -27,8 +27,8 @@ windowSize = (500, 500)
 #d3 = drrg.DLA_Reverse_Rect_GUI()
 #d3.runProcess(300)
 
-d4 = deag.DLA_External_Approx3_GUI()
-d4.runProcess(6000)
+#d4 = deag.DLA_External_Approx3_GUI()
+#d4.runProcess(6000)
 
 #d5 = t.Testclass()
 #d5.runProcess(300)

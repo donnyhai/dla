@@ -30,6 +30,7 @@
 \newcommand{\PP}{\mathbb{P}} % Probability
 \newcommand{\E}{\mathcal{E}} % big Epsilon
 \newcommand{\K}{\mathcal{K}}
+\newcommand{\1}{\mathbbm{1}}
 
 \numberwithin{equation}{section}
 
@@ -79,6 +80,26 @@ External DLA beschreibt einen stochastischen Prozess, welcher zumindest in ähnl
 
 \includegraphics[scale=0.04]{display.jpg} 
 \includegraphics[scale=0.091]{display2.jpg} 
+
+\newpage
+\section{harmonic measure}
+For the following we are interested in letting start the random walk "from infinity". Thus we are looking for someting like $\lim_{|x|\to\infty} h_A(x,y)$ for $y\in A$. This is solved the following way. Define the $\mathit{escape\ probability}$ from $A$  
+\begin{flalign*}
+e_A(x) := \1\{x\in A\}\PP(T_A^+=\infty), \quad x\in \Z^2
+\end{flalign*}
+and the $\mathit{capacity}$ of $A$
+\begin{flalign*}
+cap(A) := \sum_{x\in \Z^2} e_A(x). 
+\end{flalign*}
+Note that this sum is finite since $A$ is finite. Now we can define the $\mathit{harmonic\ measure}$ (from infinity) of $A$ as
+\begin{flalign*}
+h_A(x) := \frac{e_A(x)}{cap(A)}, \quad x\in \Z^2.
+\end{flalign*}
+The idea here is to use the symmetry of random walks and to not look the probability of coming from infinity to hit $A$, but actually starting in $A$ and stating the probability to escape $A$, which means to never hit $A$ again and therefore necessarily move away to infinity. We finally define the harmonic measure $h=(h_A)_{A\in \mathcal{P}_f}$.
+
+\begin{lemma}
+	Does something like $\lim_{|x|\to\infty} h_A(x,y)$ exist and is it equal to $h_A(y)$ for all $y\in A$?
+\end{lemma}
 
 \newpage
 \section{A naive attempt}

@@ -30,6 +30,7 @@
 \newcommand{\PP}{\mathbb{P}} % Probability
 \newcommand{\E}{\mathcal{E}} % big Epsilon
 \newcommand{\K}{\mathcal{K}}
+\newcommand{\1}{\mathbbm{1}}
 
 \numberwithin{equation}{section}
 
@@ -118,40 +119,40 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 \noindent $\boldsymbol{\mathit{Probability\ Spaces}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space which we will base on in this paper. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-Algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $A$ holds $\mathbb{P}$-$a.s.$, or short $A$ holds $a.s.$ (almost sure).
 \\
 
-\noindent $\boldsymbol{\mathit{Random\ Walks}}.\quad$ First we define a $\mathit{Random\ Walk}$ on $\mathbb{Z}^d$ which we will use in this paper. A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ $a.s.$ and $\mathbb{P}(S_n\in N(y)\ |\ S_{n-1} = y) = 1$ for all $n \geq 1$ with 
+\noindent $\boldsymbol{\mathit{Random\ Walks}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ $a.s.$ and $ S_n\in N(S_{n-1})$ $a.s.$ for all $n\geq 1$. It further shall hold that 
 
 \begin{align*}
 	\mathbb{P}(S_n = y) = \frac{1}{|N(S_{n-1})|} = \frac{1}{2d}\quad \text{ for all }  y\in N(S_{n-1})\quad a.s., 
 \end{align*}
 
-note that $|N(y)| = 2d$ for all $y\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbour points. Furthermore define 
+note that $|N(y)| = 2d$ for all $y\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbour points. Further define 
 
 \begin{align*}
 	\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x)
 \end{align*}
 
-for any subset $A\subset G$. We define the $hitting\ time$ of A as 
+for any subset $A\subset G$. We define the $hitting\ times$ of A 
 
 \begin{align*}
-	T(A) := \min \{n\geq 0\ |\ S_n\in A\},
+	T_A := \min \{n\geq 0\ |\ S_n\in A\}\text{ and } T^+_A := \min \{n\geq 1\ |\ S_n\in A\}, 
 \end{align*}
 
-and $T(x):= T(\{x\})$ for one element sets and $x\in G$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
+$T_x:= T_{\{x\}}$ and $T^+_x:= T^+_{\{x\}}$ for one element sets and $x\in G$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
 
 \begin{align*}
-	p_n(x,y):=\mathbb{P}^n_x(S_n=y)
+	p_n(x,y):=\mathbb{P}_x(S_n=y)
 \end{align*}
 
-and following the $\mathit{Green's\ function}$ as 
+\noindent and the $\mathit{Green\ function}$ as 
 
 \begin{align*}
 	G(x,y) := \sum_{n\geq 0} p_n(x,y).
 \end{align*}
 
-Similarily for a subset $A\subset G$ the $killed$ or $\mathit{stopped\ Green's\ function}$ is defined as
+$G$ is well-defined and finite since $\Z^2$ is transient. Similarily for a subset $A\subset G$ the $killed$ or $\mathit{stopped\ Green\ function}$ is defined as
 
 \begin{align*}
-	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T(A) > n).
+	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T_A > n).
 \end{align*} 
 
 
@@ -188,25 +189,18 @@ So every element in $\mathcal{D}_A$ naturally defines a distribution on the elem
 
 External DLA is a model of Incremental Aggregate as defined above using a very natural distribution, called the $\mathit{harmonic\ measure}$. 
 
-\begin{definition} $\mathit{(Harmonic\ Measure)}$\\
-	\\
-	Remembering the definitions in \eqref{prelim}, especially the heat kernel $p_n(x,y):=\mathbb{P}_x(S_n=y)$ of a random walk, the $\mathit{hitting\ distribution}$ of elements in $A$ with $\mathit{hitting\ position}$ $S_{T(A)}$ is 
+\begin{definition} $\mathit{(Harmonic\ Measure)}$ Let $A\in\mathcal{P}_f$. Remembering the definitions in \eqref{prelim}, especially the heat kernel $p_n(x,y)=\mathbb{P}_x(S_n=y)$ of a random walk, for $x\in \Z^2$ the $\mathit{harmonic\ measure}$ (from $x$) of $A$ is
 	\begin{align*}
-	H_A(x,y) := p_{T(A)}(x,y),\quad y\in A, 
+	h_A(x,y) := \1\{y\in A\}p_{T_A}(x,y) = \1\{y\in A\}\PP_x(S_{T_A} = y),\quad \text{ for } y\in \Z^2.  
 	\end{align*}
-	and for the special case $x=o:=(0,0)$ we define
-	\begin{align*}
-	h_A(y) := H_A(o,y) = \mathbb{P}_o(S_{T(A)}=y),\quad y\in A.
-	\end{align*}
-	Thus, $h_A(y)$ is the probability of hitting $A$ for the first time at $y$ starting from $o$. $h_A$ is called the $\mathit{harmonic\ measure\ (from\ o)}$.
+	We now define the $\mathit{harmonic\ measure}$ (from infinity) of $A$ as the family $h=(h_A)_{A\in \mathcal{P}_f}$ with
+	\begin{flalign*}
+		h_A(y) := \lim_{|x|\to\infty} h_A(x,y),\quad y\in \Z^2. 
+	\end{flalign*}
+	This is well-define because ... CONTINUE
 \end{definition}
 
-\begin{lemma}
-	harmonic measure := hearmonic measure from infinity. Why does this exist?
-\end{lemma}
-
-\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate,\ External\ DLA)}$\\
-	\\ Incremental Aggregate with the harmonic measure $h$ as its distribution we define here, and in literature is known as $\mathit{Exernal\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$.
+\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$, is a incremental aggregate with the harmonic measure $h$ as distribution. 
 \end{definition}
 
 \begin{remark}
@@ -387,7 +381,7 @@ From now on consider the case $d=2$ and $q=1$ which is looking at lines in the r
 
 
 \begin{remark}
-	We still haven't answered why $\mu_1$ is a senseful measure to be used to calculate probabilities for situations like in the last examples. And yet it is not obvious how to actually simulate a realisation of a random line with $\mu_1$. For now we can calculate the probability that a random line $X_1$ hits some convex set $K$ in the base set $K_0$. What we need is some form of parametrisation of this random choosing so we can actually end up for example with one angle defining the rotation of $X_1$ to the $x$-axis and a real number defining the interesection value of $X_1$ with the $y$-axis. If we wouldn't know about $\mu_1$ for now, we could choose an angle and a real number intuitively the following way: Choose an angle $\alpha$ uniformly out of $[0,\pi)$. Then consider all lines in the plane which are rotated counterclockwise by $\alpha$ starting at the $x$-axis and which intersect $K$. Take the set of intersection values of these lines with the $y$-axis and choose a value $y_0$ uniformly out of it, so finally $\alpha$ and $y_0$ define a unique line and we have a realisation of a random line which interesects $K$. This procedure may sound balanced, but it is only if $K_0$ is strongly symmetric. At this point it is important to remember what exactly we want. Out of all lines which intersect $K_0$ we are looking for the probability that a random chosen line intersects $K$ and finally calculate a realisation. Imagine $K_0=[-a,a]\times [-b,b]$ with $a<b$. Then it makes sense that there are "more" lines through the longer side $[-b,b]$ than through the shorter side $[-a,a]$. If we now choose the angle $\alpha$ uniformly, the shorter side is overweighted and the larger side underweighted, or in other words, the angle area around $\frac{\pi}{2}$ should be more likely to be chosen than the angle area around $0$. So this naive attempt of choosing the angle for our line uniformly doesn't consider asymmetries of $K_0$ and does therefore not hold the senseful idea, that longer sides of $K_0$ are hit by more lines than shorter ones. 
+	We still haven't answered why $\mu_1$ is a senseful measure to be used to calculate probabilities for situations like in the last examples. And yet it is not obvious how to actually simulate a realisation of a random line with $\mu_1$. For now we can calculate the probability that a random line $X_1$ hits some convex set $K$ in the base set $K_0$. What we need is some form of parametrisation of this random choosing so we can actually end up for example with one angle defining the rotation of $X_1$ to the $x$-axis and a real number defining the interesection value of $X_1$ with the $y$-axis. If we wouldn't know about $\mu_1$ for now, we could choose an angle and a real number intuitively the following way: Choose an angle $\alpha$ uniformly in $[0,\pi)$. Then consider all lines in the plane which are rotated counterclockwise by $\alpha$ starting at the $x$-axis and which intersect $K$. Take the set of intersection values of these lines with the $y$-axis and choose a value $y_0$ uniformly out of it, so finally $\alpha$ and $y_0$ define a unique line and we have a realisation of a random line which interesects $K$. This procedure may sound balanced, but it is only if $K_0$ is strongly symmetric. At this point it is important to remember what exactly we want. Out of all lines which intersect $K_0$ we are looking for the probability that a random chosen line intersects $K$ and finally calculate a realisation. Imagine $K_0=[-a,a]\times [-b,b]$ with $a<b$. Then it makes sense that there are "more" lines through the longer side $[-b,b]$ than through the shorter side $[-a,a]$. If we now choose the angle $\alpha$ uniformly, the shorter side is overweighted and the larger side underweighted, or in other words, the angle area around $0$ should be less likely to be chosen than the angle area around $\frac{\pi}{2}$. So this naive attempt of choosing the angle for our line uniformly doesn't consider asymmetries of $K_0$ and does therefore not hold the senseful idea, that longer sides of $K_0$ are hit by more lines than shorter ones. 
 \end{remark}
 
 
@@ -500,7 +494,12 @@ Karlsruher Institut für Technologie, Karlsruhe, 2010
 \bibitem{stoch1}
 Daniel Hug, Günter Last, Steffen Winter.
 \emph{Stochastic Geometry, 	Lecture Notes (summer term 2020)}.
-Institute of Technology, Karlsruhe
+Institute of Technology, Karlsruhe, 2020
+
+\bibitem{sackmann}
+Franz Sackmann. 
+\emph{Zufällige Geraden, Staatsexamensarbeit}.
+University Karlsruhe (TH), Karlsruhe, 2007
 
 
 
