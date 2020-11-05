@@ -31,6 +31,7 @@
 \newcommand{\E}{\mathcal{E}} % big Epsilon
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\1}{\mathbbm{1}}
+\newcommand{\G}{\mathcal{G}}
 
 \numberwithin{equation}{section}
 
@@ -95,49 +96,67 @@
 \includegraphics[scale=0.04]{display.jpg} 
 \includegraphics[scale=0.091]{display2.jpg}
 
+
+
+
+
 \newpage
 
 
 \section{Preliminaries} \label{prelim}
 
-We prepare this script with the following preliminaries. \\
-\\
-\noindent $\boldsymbol{\mathit{General\ Definitions}}.\quad$ In this paper for practical purposes we will consider the natural numbers containing 0, so $\mathbb{N} := \{0, 1, 2, 3, \dots\}$. 
-\\
+\subsection{Namings}
+Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
+\begin{flalign*}
+	&\N = \{1,2,3,\dots\} &&\text{set of natural numbers (without 0)}\\
+	&\N_0 = \N\cup\{0\}\\
+	&\K^d &&\text{set of convex and compact sets in }\R^d\\
+	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\} &&\text{$d$-dimensional closed ball of radius $r$ around $x$}\\
+	&S_{d-1}(r,x) = \partial B_d(r,x) &&\text{$(d-1)$-dimensional surface of the $d$-dimensional ball}\\
+	&A(d,q) &&\text{set of q-dimensional affine subspaces of }\R^d \\
+	&\mathcal{A}(d,q) &&\sigma\text{-algebra of } A(d,q), \text{ as constructed later in the paper} \\
+	&\G := A(2,1) &&\text{set of lines in the real plane}\\
+	&\mathfrak{G} := \mathcal{A}(2,1)\\
+\end{flalign*}
+
+\newpage
+\subsection{Basic structures}
+
+We prepare this script with the following preliminaries. Let $d\in \N$. \\
 
 \noindent $\boldsymbol{\mathit{Graphs}}.\quad$ We will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
 \begin{align*}
-	N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}
+	N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}.
 \end{align*}
-and the canonical graph structure as defined above basically means that $N(x) = \{x+re_i\ |\ r\in \{-1,1\}\text{ and } i\in \{1,\dots, d\}\}$ where $e_i$ is the usual $i$-th standard basis vector of $\mathbb{Z}^d$, precisely $(e_i)_j=\delta_{ij}$ for all $i,j\in \{1, \dots , n \}$ where $\delta_{ij}=0$ if $i\neq j$ and $\delta_{ij}=1$ if $i=j$. For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as 
+For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as 
 \begin{align*}
 	\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ (x,y)\in E\}
 \end{align*}
 Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
 \\
 
-\noindent $\boldsymbol{\mathit{Probability\ Spaces}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space which we will base on in this paper. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-Algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $A$ holds $\mathbb{P}$-$a.s.$, or short $A$ holds $a.s.$ (almost sure).
+\noindent $\boldsymbol{\mathit{Probability\ Space}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space which we will base on in this paper. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-Algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" (almost sure).
 \\
 
-\noindent $\boldsymbol{\mathit{Random\ Walks}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ $a.s.$ and $ S_n\in N(S_{n-1})$ $a.s.$ for all $n\geq 1$. It further shall hold that 
+\noindent $\boldsymbol{\mathit{Random\ Walk}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ $a.s.$ and $ S_n\in N(S_{n-1})$ $a.s.$ for all $n\geq 1$. It further shall hold that 
 
 \begin{align*}
-	\mathbb{P}(S_n = y) = \frac{1}{|N(S_{n-1})|} = \frac{1}{2d}\quad \text{ for all }  y\in N(S_{n-1})\quad a.s., 
+	\mathbb{P}(S_n = y) = \frac{1}{|N(S_{n-1})|} = \frac{1}{2d}\quad \text{ for all }  y\in N(S_{n-1})\quad a.s.
 \end{align*}
 
-note that $|N(y)| = 2d$ for all $y\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbour points. Further define 
+\noindent Note that $|N(y)| = 2d$ for all $y\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. Further define 
 
 \begin{align*}
 	\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x)
 \end{align*}
 
-for any subset $A\subset G$. We define the $hitting\ times$ of A 
+\noindent for any subset $A\subset G$. We define the $hitting\ times$ of A 
 
 \begin{align*}
 	T_A := \min \{n\geq 0\ |\ S_n\in A\}\text{ and } T^+_A := \min \{n\geq 1\ |\ S_n\in A\}, 
 \end{align*}
 
-$T_x:= T_{\{x\}}$ and $T^+_x:= T^+_{\{x\}}$ for one element sets and $x\in G$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
+\noindent $T_x:= T_{\{x\}}$ and $T^+_x:= T^+_{\{x\}}$ for one element sets and $x\in \Z^d$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
 
 \begin{align*}
 	p_n(x,y):=\mathbb{P}_x(S_n=y)
@@ -156,6 +175,7 @@ $G$ is well-defined and finite since $\Z^2$ is transient. Similarily for a subse
 \end{align*} 
 
 
+
 \newpage
 \section{Incremental Aggregate}
 In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the outer boundary of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregate}$. Define 
@@ -164,9 +184,9 @@ In this paper we will look at stochastic processes on the set of finite subsets 
 \end{align}
 the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mathcal{P}_f$ we define 
 \begin{align}
-	\mathcal{D}_A:= \{\mu: \mathbb{Z}^d\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}.
+	\mathcal{D}_A:= \{\mu: \mathbb{Z}^d\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}, 
 \end{align}
-So every element in $\mathcal{D}_A$ naturally defines a distribution on the elements of $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
+the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
 \begin{definition}
 	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{(0,0)\}$ in the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
@@ -210,7 +230,9 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 \newpage
 \section{Integral Geometry}
 
-In the next section we want to define an approximation for DLA. To do this we will need some concepts and results from Integral Geometry which we will discuss and develop in this section. Reminder: A set $K\subset \mathbb{R}^d$ is called $\mathit{convex}$ if and only if for any two points $a,b\in K$ we have that $\{ta + (1-t)b \in \mathbb{R}^d\ |\ t\in [0,1]\}\subset K$. The set of convex and compact subsets of $\R^d$ we call $\K^d$. 
+In the next section we want to define an approximation for External DLA. This approximation will be a incremental aggregate for which definition of its distribution we need some concepts and results from Integral Geometry which we will discuss and develop in this section. The process we want to define bases on choosing a random line out of all lines which cut the current cluster of the aggregate. This random choosing is not obvious and it is even less obvious how to actually get a realisation of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the real plane and a reasonable way of choosing random parameters. \\
+
+We will introduce a possible solution for this problem first through the abstract concepts and constructions of integral geometry. Later we find a simple parametrisation for the simple case of lines in the real plane and proof, that it goes hand in hand with the general construction. 
 
 \subsection{Intrinsic Volumes}
 
@@ -264,40 +286,25 @@ A useful concept to measure intrinsic geometrical properties of Borel-sets $K\su
 \subsection{Random q-flats}
 
 An interesting set in Integral Geometry is the set of $q$-dimensional affine subspaces in the $d$-dimensional real space, short $A(d,q)$ the set of $q$-flats in $\R^d$. 
-Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll define now in this section. Let $G_d$ be the set of rigid motions (euclidean motions) in $\R^d$. For $r>0$ and $x\in \R^d$ define $B_d(r,x) := \{y\in \mathbb{R}^d\ |\ d(x,y) \leq r\}$ and $B_d:=B_d(1,0)$. 
+Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll define now in this section. Let $G_d$ be the set of rigid motions (euclidean motions, which are concatenations of translation and rotation) in $\R^d$. 
 
 \begin{definition}
-	 For $r>0$ and $x\in \R^d$ define $A_d(r,x) := \{ F\in A(d,q)\ |\ F\cap B_d(r,x) \neq\emptyset \}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
+	 For $K\in \K^d$ define $A_K := \{F\in A(d,q)\ |\ F\cap K \neq\emptyset\}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
 	 \begin{flalign*}
-	 	\mathcal{A}(d,q) := \sigma(\{ A_d(r,x)\ |\ r>0,x\in \R^d\}).
+	 	\mathcal{A}(d,q) := \sigma(\{ A_K\ |\ K\in \K^d\}).
 	 \end{flalign*} 
 \end{definition}
 
 \begin{theorem}
 	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
 	\begin{flalign}
-		\mu_q(A_d(1,0)) = \mu_q(\{F\in A(d,q)\ |\ F\cap B_d\neq \emptyset\}) = \kappa_{d-q}
+		\mu_q(A_{B_d(1,0)}) = \kappa_{d-q}
 	\end{flalign}
 \end{theorem}
 \begin{proof}
 	\cite{stoch1} Theorem 4.26
 \end{proof}
 
-\begin{remark}
-	$A_K\in \mathcal{A}(d,q)$ for $K\in\K^d$?
-%	For a convex set $K\in \K^d$ since $K$ is closed we can write $K=(\bigcup_{j=0}^\infty B_d(r_j, x_j))^C$ for some $r_j>0$ and $x_j\in \R^d$. Then we get
-%	\begin{flalign*}
-%		A_K :&= \{F\in A(d,q)\ |\ F\cap K\neq \emptyset\} 
-%		\\ &= \{F\in A(d,q)\ |\ F\cap (\bigcup_{j=0}^\infty B_d(r_j, x_j))^C \neq \emptyset\} 
-%		\\ &= \{F\in A(d,q)\ |\ F\cap \bigcap_{j=0}^\infty B_d(r_j, x_j)^C \neq \emptyset\} 
-%		\\ &= \{F\in A(d,q)\ |\ \bigcap_{j=0}^\infty F\cap B_d(r_j, x_j)^C\neq \emptyset\}
-%		\\ &= \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)^C\neq \emptyset\text{ for all } j>0 \}
-%		\\ &\supset \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j) = \emptyset\text{ for all } j>0 \}
-%		\\ &= \bigcap_{j=0}^\infty \{F\in A(d,q)\ |\ F\cap B_d(r_j, x_j)= \emptyset\}
-%		\\ &= \bigcap_{j=0}^\infty A_d(r_j, x_j)^C
-%		\\ &= (\bigcup_{j=0}^\infty A_d(r_j, x_j))^C.
-%	\end{flalign*}
-\end{remark}
 
 \begin{theorem} $(\mathit{Crofton\ formula})$
 	Let $K\in \K',k\in \{1,\dots,d-1\}$ and $j\in \{ 0,\dots,k\}$. Then
@@ -348,42 +355,45 @@ Later we will be interested in choosing random lines in the real plane (i.e. $1$
 
 \subsection{Constructions in the real plane}
 
-From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line which intersects with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $X\in A:=A(2,1)$ has a form $X=X_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $X_1$ be an isotropic random $1$-flat through $K_0$. Recap the definition of $\kappa_j$, which is the $j$-dimensional Lebesgue measure of the $j$-dimensional unit ball, for our use here $\kappa_0=1$, $\kappa_1 = 2$ and $\kappa_2 = \pi$. For the next examples we always use Lemma (\ref{K}) and Remark (\ref{S=2V}) (iii) and choose $K,K_0\in \K^2$ with $K\subset K_0$. 
+From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line which intersects with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $g\in \G:=A(2,1)$ has a form $g=g_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $g$ be an isotropic random $1$-flat through $K_0$. Recap the definition of $\kappa_j$, which is the $j$-dimensional Lebesgue measure of the $j$-dimensional unit ball, for our use here $\kappa_0=1$, $\kappa_1 = 2$ and $\kappa_2 = \pi$. For the next examples we always use Lemma (\ref{K}) and Remark (\ref{S=2V}) (iii) and choose $K,K_0\in \K^2$ with $K\subset K_0$. 
 
 \begin{example}
 	Let $0<r<R$, $K_0 := B_R$ and $K:=B_r$. We get
 	\begin{flalign*}
-		\PP(X_1\cap B_r\neq\emptyset) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{\frac{1}{2}S_1(B_r)}{\frac{1}{2}S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
+		\PP(g\cap B_r\neq\emptyset) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{\frac{1}{2}S_1(B_r)}{\frac{1}{2}S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
 	\end{flalign*}
 \end{example}
 
 \begin{example}
 	Let $0<r\leq \frac{R}{\sqrt{2}}$, $K_0 := B_R$ and $K:= [-r,r]^2$. We get 
 	\begin{flalign*}
-		\PP(X_1\cap [-r,r]^2 \neq\emptyset) = \frac{S_1([-r,r]^2)}{S_1(B_R)} = \frac{8r}{2\pi R} = \frac{4}{\pi} \frac{r}{R}. 
+		\PP(g\cap [-r,r]^2 \neq\emptyset) = \frac{S_1([-r,r]^2)}{S_1(B_R)} = \frac{8r}{2\pi R} = \frac{4}{\pi} \frac{r}{R}. 
 	\end{flalign*}
 \end{example}
 
 \begin{example}
 	Let $0<r\leq R$, $K_0 := B_R$ and $K:=[-r,r]$. We get 
 	\begin{flalign*}
-	\PP(X_1\cap [-r,r] \neq\emptyset) = \frac{V_1([-r,r])}{V_1(B_R)} = \frac{\lambda_1([-r,r])}{\frac{1}{2}S_1(B_R)} = \frac{2r}{\pi R} = \frac{2}{\pi} \frac{r}{R}. 
+	\PP(g\cap [-r,r] \neq\emptyset) = \frac{V_1([-r,r])}{V_1(B_R)} = \frac{\lambda_1([-r,r])}{\frac{1}{2}S_1(B_R)} = \frac{2r}{\pi R} = \frac{2}{\pi} \frac{r}{R}. 
 	\end{flalign*}
 \end{example}
 
 \begin{example}
 	Let $K_0 := B_1$ and $K:=T_a$ a equilateral triangle with side length $a=\frac{\pi}{3}$ centered at $(0,0)$. We get 
 	\begin{flalign*}
-	\PP(X_1\cap T_a\neq\emptyset) = \frac{V_1(T_a)}{V_1(B_1)} = \frac{3a}{2\pi} = \frac{1}{2}.
+	\PP(g\cap T_a\neq\emptyset) = \frac{V_1(T_a)}{V_1(B_1)} = \frac{3a}{2\pi} = \frac{1}{2}.
 	\end{flalign*}
 \end{example}
 
 
 
 \begin{remark}
-	We still haven't answered why $\mu_1$ is a senseful measure to be used to calculate probabilities for situations like in the last examples. And yet it is not obvious how to actually simulate a realisation of a random line with $\mu_1$. For now we can calculate the probability that a random line $X_1$ hits some convex set $K$ in the base set $K_0$. What we need is some form of parametrisation of this random choosing so we can actually end up for example with one angle defining the rotation of $X_1$ to the $x$-axis and a real number defining the interesection value of $X_1$ with the $y$-axis. If we wouldn't know about $\mu_1$ for now, we could choose an angle and a real number intuitively the following way: Choose an angle $\alpha$ uniformly in $[0,\pi)$. Then consider all lines in the plane which are rotated counterclockwise by $\alpha$ starting at the $x$-axis and which intersect $K$. Take the set of intersection values of these lines with the $y$-axis and choose a value $y_0$ uniformly out of it, so finally $\alpha$ and $y_0$ define a unique line and we have a realisation of a random line which interesects $K$. This procedure may sound balanced, but it is only if $K_0$ is strongly symmetric. At this point it is important to remember what exactly we want. Out of all lines which intersect $K_0$ we are looking for the probability that a random chosen line intersects $K$ and finally calculate a realisation. Imagine $K_0=[-a,a]\times [-b,b]$ with $a<b$. Then it makes sense that there are "more" lines through the longer side $[-b,b]$ than through the shorter side $[-a,a]$. If we now choose the angle $\alpha$ uniformly, the shorter side is overweighted and the larger side underweighted, or in other words, the angle area around $0$ should be less likely to be chosen than the angle area around $\frac{\pi}{2}$. So this naive attempt of choosing the angle for our line uniformly doesn't consider asymmetries of $K_0$ and does therefore not hold the senseful idea, that longer sides of $K_0$ are hit by more lines than shorter ones. 
+	We still haven't answered why $\mu_1$ is a senseful measure to be used to calculate probabilities for situations like in the last examples. And yet it is not obvious how to actually simulate a realisation of a random line with $\mu_1$. For now we can calculate the probability that a random line $g$ hits some convex set $K$ in the base set $K_0$. What we need is some form of parametrisation of this random choosing so we can actually end up for example with one angle defining the rotation of $g$ to the $x$-axis and a real number defining the interesection value of $g$ with the $y$-axis. If we wouldn't know about $\mu_1$ for now, we could choose an angle and a real number intuitively the following way: Choose an angle $\alpha$ uniformly in $[0,\pi)$. Then consider all lines in the plane which are rotated counterclockwise by $\alpha$ starting at the $x$-axis and which intersect $K$. Take the set of intersection values of these lines with the $y$-axis and choose a value $y_0$ uniformly out of it, so finally $\alpha$ and $y_0$ define a unique line and we have a realisation of a random line which interesects $K$. This procedure may sound balanced, but it is only if $K_0$ is strongly symmetric. At this point it is important to remember what exactly we want. Out of all lines which intersect $K_0$ we are looking for the probability that a random chosen line intersects $K$ and finally calculate a realisation. Imagine $K_0=[-a,a]\times [-b,b]$ with $a<b$. Then it makes sense that there are "more" lines through the longer side $[-b,b]$ than through the shorter side $[-a,a]$. If we now choose the angle $\alpha$ uniformly, the shorter side is overweighted and the larger side underweighted, or in other words, the angle area around $0$ should be less likely to be chosen than the angle area around $\frac{\pi}{2}$. So this naive attempt of choosing the angle for our line uniformly doesn't consider asymmetries of $K_0$ and does therefore not hold the senseful idea, that longer sides of $K_0$ are hit by more lines than shorter ones. 
 \end{remark}
 
+\begin{definition}
+	
+\end{definition}
 
 \newpage
 
