@@ -32,6 +32,7 @@
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\1}{\mathbbm{1}}
 \newcommand{\G}{\mathcal{G}}
+\newcommand{\GG}{\mathfrak{G}}
 
 \numberwithin{equation}{section}
 
@@ -117,6 +118,7 @@ Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\
 	&\mathcal{A}(d,q) &&\sigma\text{-algebra of } A(d,q), \text{ as constructed later in the paper} \\
 	&\G := A(2,1) &&\text{set of lines in the real plane}\\
 	&\mathfrak{G} := \mathcal{A}(2,1)\\
+	&G_d &&\text{set of euclidean motions in $\R^d$ (rotations and translations)}
 \end{flalign*}
 
 \newpage
@@ -230,170 +232,50 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 \newpage
 \section{Integral Geometry}
 
-In the next section we want to define an approximation for External DLA. This approximation will be a incremental aggregate for which definition of its distribution we need some concepts and results from Integral Geometry which we will discuss and develop in this section. The process we want to define bases on choosing a random line out of all lines which cut the current cluster of the aggregate. This random choosing is not obvious and it is even less obvious how to actually get a realisation of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the real plane and a reasonable way of choosing random parameters. \\
+In the next section we want to define an approximation for External DLA. This approximation will be a incremental aggregate for which definition of its distribution we need some concepts and results from Integral Geometry which we will discuss and develop in this section. The process we want to define bases on choosing a random line out of all lines which cut the current cluster of the aggregate. This random choosing is not obvious since the cluster most of times will be strongly not symmetric and it is even less obvious how to actually get a realisation of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the real plane and a reasonable way of choosing random parameters. \\
 
-We will introduce a possible solution for this problem first through the abstract concepts and constructions of integral geometry. Later we find a simple parametrisation for the simple case of lines in the real plane and proof, that it goes hand in hand with the general construction. 
+We will introduce a possible solution for this problem first through the abstract and general way of integral geometry and later through a simple parametrisation for the case of lines in the real plane which goes hand in hand with the general result.
+ 
+\subsection{General result}
 
-\subsection{Intrinsic Volumes}
+In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimensional affine subspaces where $q\in \{0,\dots,d\}$, short $q$-flats in $\R^d$. This set of $q$-flats in $\R^d$ is denoted by $A(d,q)$. Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we need a measure and a $\sigma$-algebra on $A(d,q)$ in total. 
 
-A useful concept to measure intrinsic geometrical properties of Borel-sets $K\subset \R^d$ are $\mathit{intrinsic\ volumes}$. We define the $d$-th intrinsic volume of $K$ as $V_d(K):=\lambda_d(K)$. Furthermore define $S_{d-1}(K)$ to be the $\mathit{surface\ area}$ of $V_d(K)$, which is formally defined as the Hausdorff-measure of $\partial K$. For the following theorem define 
-
-\begin{flalign*}
-	\kappa_d := V_d(B_d) \text{ for } d>0, \text{ and } \kappa_0:=1
-\end{flalign*}
-
-\noindent where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)}$ with the $\mathit{Gamma\ function}$ $\Gamma(x) := \int_0^\infty t^{x-1}e^{-t}dt,\ x>0$. 
-
-\begin{lemma} \label{mink}
-	If $K\subset \K^d$, then $S_{d-1}$ is equal to the $\mathit{outer\ Minkowski\ content}$, i.e.
-	
+\begin{definition}
+	For $K\in \K^d$ define $A_K := \{F\in A(d,q)\ |\ F\cap K \neq\emptyset\}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
 	\begin{flalign*}
-		S_{d-1}(K) = M_{d-1}(K) := \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K_{\oplus \varepsilon}) - V_d(K)),
-	\end{flalign*}
-	
-	where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is easy to show, that $K_{\oplus \varepsilon} = K + \varepsilon B_d :=\{x+y\in \R^d\ |\ x\in K, y\in \varepsilon B_d\}$, where $B_d := \{x\in \R^d\ |\ d(0,x)\leq 1\}$.
-\end{lemma}
-
-\begin{proof}
-	
-\end{proof}
-
-
-\begin{theorem} $(\mathit{Steiner\ Formula})$
-	For $K\in \K^d$ there exist uniquely determined numbers $V_0(K),\dots, V_d(K)\in \R$, such that for each $\varepsilon\geq 0$ 
-	\begin{flalign} \label{steiner}
-		V_d(K+\varepsilon B_d) = \sum_{j=0}^{d} \kappa_{d-j} \varepsilon^{d-j} V_j(K). 
-	\end{flalign}
-	\begin{proof}
-		\cite{stoch1} Theorem 3.32
-	\end{proof}
-\end{theorem}
-
-\begin{definition}
-	$V_0(K),\dots, V_d(K)$ are called $\mathit{intrinsic\ volumes}$ of $K$. 
+		\mathcal{A}(d,q) := \sigma(\{ A_K\ |\ K\in \K^d\}).
+	\end{flalign*} 
 \end{definition}
 
-\begin{remark}\label{Vjprop}
-	\begin{enumerate}[label=(\roman*)]
-		\item What we get are functions $V_j:\K^d \to \R$ for the $j$-intrinsic volume $V_j$. It can be shown that every $V_j$ can be uniquely extended to a function $V_j: \mathcal{R}^d \to \R$, where $\mathcal{R}^d := \{\bigcup_{j=1}^n K_j\subset \R^d\ |\ n\in \N_0,K_j\in \K^d \}$ (\cite{stoch1} Theorem 4.10).
-		\item The coefficients $\kappa_{d-j}$ are chosen such that the $V_j$ become independent of the dimension of the underlying space. This means that $V_j$ will assign the same value for $K$ if $K$ is considered to be subset of $\R^d$ or $\R^{\tilde{d}}$ for  $d<\tilde{d}$, although the unit balls $B_d$ and $B_{\tilde d}$ are different in those two spaces. This is why the $V_j$ are called $\mathit{intrinsic}$ volumes (REFERENCE). 
-		\item For $\varepsilon = 0$ the right side of equation (\ref{steiner}) reduces to $V_d(K)$ which shows a consistency of the notation. 
-		\item With Lemma (\ref{mink}) and equation (\ref{steiner}) we get $S_{d-1}(K) = \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K + \varepsilon B_d) - V_d(K) = \kappa_1 V_{d-1}(K) = 2V_{d-1}(K)$, which will be a useful result. 
-		\item It can be shown that $V_0(\emptyset)=\dots=V_d(\emptyset)=0$ and $V_0(K)=1$ if $K\neq \emptyset$ (REFERENCE). 
-	\end{enumerate}
-\end{remark}
-
-\subsection{Random q-flats}
-
-An interesting set in Integral Geometry is the set of $q$-dimensional affine subspaces in the $d$-dimensional real space, short $A(d,q)$ the set of $q$-flats in $\R^d$. 
-Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). For that we need a suitable $\sigma$-algebra and measure on $A(d,q)$ which we'll define now in this section. Let $G_d$ be the set of rigid motions (euclidean motions, which are concatenations of translation and rotation) in $\R^d$. 
-
-\begin{definition}
-	 For $K\in \K^d$ define $A_K := \{F\in A(d,q)\ |\ F\cap K \neq\emptyset\}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
-	 \begin{flalign*}
-	 	\mathcal{A}(d,q) := \sigma(\{ A_K\ |\ K\in \K^d\}).
-	 \end{flalign*} 
-\end{definition}
+After constructions which involve typical results in integral geometry like intrinsic volumes, Steiner Formula and the Crofton Formula we get the follwing theorem. Let $G_d = \{\phi:\R^d \to\R^d,\ x\mapsto Ax+b\ |\ b\in R^d, A\in \R^{d\times d} \text{ with } A^TA=I\}$ be the set of euclidean motions in $\R^d$. 
 
 \begin{theorem}
 	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
 	\begin{flalign}
-		\mu_q(A_{B_d(1,0)}) = \kappa_{d-q}
+		\mu_q(A_{B_d(1,0)}) = \kappa_{d-q}, 
 	\end{flalign}
+	where $\kappa_n := \lambda_n(B_n(1,0))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
 \end{theorem}
 \begin{proof}
 	\cite{stoch1} Theorem 4.26
 \end{proof}
 
+\subsection{Construction in the real plane}
 
-\begin{theorem} $(\mathit{Crofton\ formula})$
-	Let $K\in \K^d\setminus\{\emptyset\}$, $k\in \{1,\dots,d-1\}$ and $j\in \{ 0,\dots,k\}$. Then
-	\begin{flalign}
-		\int_{A(d,k)} V_j(K\cap F) \mu_k(dF) = c^{k,d-k+j}_{j,d}V_{d-k+j}(K),
-	\end{flalign} 
-	where $c_s^r := \frac{r!\kappa_r}{s!\kappa_s}$ for $s,r\in \N_0$ and $c^{r_1,\dots,r_k}_{s_1,\dots,s_k} := \prod_{j=1}^k c_{s_j}^{r_j}$. 
-\end{theorem}
+For our case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := \tbinom{\cos(\alpha)}{\sin(\alpha)}$ be the unit vector $\tbinom{1}{0}$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \R^2\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+\begin{flalign*}
+	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
+\end{flalign*}
+We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\Phi$ is a bijection. The next lemma shows that this way of defining a $\sigma$-algebra on $\G$ makes sense and for our special case indeed is equivalent to the general context as defined above. 
 
-\begin{proof}
-	\cite{stoch1} Theorem 4.27
-\end{proof}
-
-\begin{definition}
-	Let $K_0\in \K^d$ with $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$. A $A(d,q)$-valued random element $X_q$ with distribution $\frac{\mu_q(\ \cdot\ \cap\ A_{K_0})}{\mu_q(A_{K_0})}$ is called an $\mathit{isotropic\ random\ q}$-$\mathit{flat}$ through $K_0$. 
-\end{definition}
-
-\begin{lemma} \label{K}
-	Let $K,K_0\in \K^d$ with $K\subset K_0$ and $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$ and $X_q$ be an isotropic random $q$-flat through $K_0$. Then
-\begin{flalign}
-	\PP(X_q\cap K\neq \emptyset) = \frac{V_{d-q}(K)}{V_{d-q}(K_0)}. 
-\end{flalign}
+\begin{lemma}
+	We have $\GG=\mathcal{A}(2,1)$. 
 \end{lemma}
 \begin{proof}
-	We directly get
-	\begin{flalign*}
-		\PP(X_q\cap K \neq \emptyset) &= \PP(X_q\in A_K)
-		= \frac{\mu_q(A_K\cap A_{K_0})}{\mu_q(A_{K_0})}
-		\\ &= \frac{\mu_q(A_K)}{\mu_q(A_{K_0})}
-		= \frac{\int_{A(d,q)} \mathbbm{1}\{F\cap K\neq \emptyset\} \mu_q(dF)}{\int_{A(d,q)} \mathbbm{1}\{F\cap K_0\neq \emptyset\} \mu_q(dF)}
-		\\ &= \frac{\int_{A(d,q)} V_0(F\cap K) \mu_q(dF)}{\int_{A(d,q)} V_0(F\cap K_0) \mu_q(dF)}
-		 \overset{Crofton}{=} \frac{c^{q,d-q}_{0,d}V_{d-q}(K)}{c^{q,d-q}_{0,d}V_{d-q}(K_0)}
-		\\ &= \frac{V_{d-q}(K)}{V_{d-q}(K_0)}.
-	\end{flalign*}
+	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[a,b]\times[c,d]\subset \Phi\ |\ 0\leq a<b<\pi,c<d\in \R\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$, and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. We will show $\tilde A = \chi(R)$ which will complete the proof.  \\
+	\indent $\subset$: 
 \end{proof}
 
-\begin{remark} \label{S=2V}
-	Taking the situation from the last Lemma, with Remark (\ref{Vjprop}) (iv) and $q=1$ we get
-	\begin{flalign*}
-		\PP(X_1\cap K \neq \emptyset) = \frac{V_{d-1}(K)}{V_{d-1}(K_0)} = \frac{S_{d-1}(K)}{S_{d-1}(K_0)}. 
-	\end{flalign*}
-	For $d=2$ we basically can interpretate, that the propability of a line $X_1$ which intersects $K_0$ also interesects $K$ can be calculated by deviding the boundary length of $K$ by the boundary length of $K_0$. This seems to be a convenient result although it may not be completely intuitive. 
-\end{remark}
-
-
-
-
-
-\subsection{Constructions in the real plane}
-
-From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line out of all lines which intersect with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $g\in \G$ has a form $g=g_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $g$ be an isotropic random $1$-flat through $K_0$. Recap the definition of $\kappa_j$, which is the $j$-dimensional Lebesgue measure of the $j$-dimensional unit ball, for our use here $\kappa_0=1$, $\kappa_1 = 2$ and $\kappa_2 = \pi$. For the next examples we always use Lemma (\ref{K}) and Remark (\ref{S=2V}) (iii) and choose $K,K_0\in \K^2$ with $K\subset K_0$. 
-
-\begin{example}
-	Let $0<r<R$, $K_0 := B_R$ and $K:=B_r$. We get
-	\begin{flalign*}
-		\PP(g\cap B_r\neq\emptyset) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{\frac{1}{2}S_1(B_r)}{\frac{1}{2}S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
-	\end{flalign*}
-\end{example}
-
-\begin{example}
-	Let $0<r\leq \frac{R}{\sqrt{2}}$, $K_0 := B_R$ and $K:= [-r,r]^2$. We get 
-	\begin{flalign*}
-		\PP(g\cap [-r,r]^2 \neq\emptyset) = \frac{S_1([-r,r]^2)}{S_1(B_R)} = \frac{8r}{2\pi R} = \frac{4}{\pi} \frac{r}{R}. 
-	\end{flalign*}
-\end{example}
-
-\begin{example}
-	Let $0<r\leq R$, $K_0 := B_R$ and $K:=[-r,r]$. We get 
-	\begin{flalign*}
-	\PP(g\cap [-r,r] \neq\emptyset) = \frac{V_1([-r,r])}{V_1(B_R)} = \frac{\lambda_1([-r,r])}{\frac{1}{2}S_1(B_R)} = \frac{2r}{\pi R} = \frac{2}{\pi} \frac{r}{R}. 
-	\end{flalign*}
-\end{example}
-
-\begin{example}
-	Let $K_0 := B_1$ and $K:=T_a$ a equilateral triangle with side length $a=\frac{\pi}{3}$ centered at $(0,0)$. We get 
-	\begin{flalign*}
-	\PP(g\cap T_a\neq\emptyset) = \frac{V_1(T_a)}{V_1(B_1)} = \frac{3a}{2\pi} = \frac{1}{2}.
-	\end{flalign*}
-\end{example}
-
-
-
-\begin{remark}
-	We still haven't answered why $\mu_1$ is a senseful measure to be used to calculate probabilities for situations like in the last examples. And yet it is not obvious how to actually simulate a realisation of a random line with $\mu_1$. For now we can calculate the probability that a random line $g$ hits some convex set $K$ in the base set $K_0$. What we need is some form of parametrisation of this random choosing so we can actually end up for example with one angle defining the rotation of $g$ to the $x$-axis and a real number defining the interesection value of $g$ with the $y$-axis. If we wouldn't know about $\mu_1$ for now, we could choose an angle and a real number intuitively the following way: Choose an angle $\alpha$ uniformly in $[0,\pi)$. Then consider all lines in the plane which are rotated counterclockwise by $\alpha$ starting at the $x$-axis and which intersect $K$. Take the set of intersection values of these lines with the $y$-axis and choose a value $y_0$ uniformly out of it, so finally $\alpha$ and $y_0$ define a unique line and we have a realisation of a random line which interesects $K$. This procedure may sound balanced, but it is only if $K_0$ is strongly symmetric. At this point it is important to remember what exactly we want. Out of all lines which intersect $K_0$ we are looking for the probability that a random chosen line intersects $K$ and finally calculate a realisation. Imagine $K_0=[-a,a]\times [-b,b]$ with $a<b$. Then it makes sense that there are "more" lines through the longer side $[-b,b]$ than through the shorter side $[-a,a]$. If we now choose the angle $\alpha$ uniformly, the shorter side is overweighted and the larger side underweighted, or in other words, the angle area around $0$ should be less likely to be chosen than the angle area around $\frac{\pi}{2}$. So this naive attempt of choosing the angle for our line uniformly doesn't consider asymmetries of $K_0$ and does therefore not hold the senseful idea, that longer sides of $K_0$ are hit by more lines than shorter ones. 
-\end{remark}
-
-\begin{definition}
-	
-\end{definition}
 
 \newpage
 

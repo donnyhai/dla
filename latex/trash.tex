@@ -206,6 +206,161 @@ We will look closer at the thought of the last Remark and find a reason, why thi
 \end{flalign*}
 
 \newpage
+\section{Integral Geometry}
+\subsubsection{Intrinsic Volumes}
+
+A useful concept to measure intrinsic geometrical properties of Borel-sets $K\subset \R^d$ are $\mathit{intrinsic\ volumes}$. We define the $d$-th intrinsic volume of $K$ as $V_d(K):=\lambda_d(K)$. Furthermore define $S_{d-1}(K)$ to be the $\mathit{surface\ area}$ of $V_d(K)$, which is formally defined as the Hausdorff-measure of $\partial K$. For the following theorem define 
+
+\begin{flalign*}
+	\kappa_d := V_d(B_d) \text{ for } d>0, \text{ and } \kappa_0:=1
+\end{flalign*}
+
+\noindent where we can calculate $V_d(B_d) = \frac{\pi ^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)}$ with the $\mathit{Gamma\ function}$ $\Gamma(x) := \int_0^\infty t^{x-1}e^{-t}dt,\ x>0$. 
+
+\begin{lemma} \label{mink}
+	If $K\subset \K^d$, then $S_{d-1}$ is equal to the $\mathit{outer\ Minkowski\ content}$, i.e.
+	
+	\begin{flalign*}
+		S_{d-1}(K) = M_{d-1}(K) := \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K_{\oplus \varepsilon}) - V_d(K)),
+	\end{flalign*}
+	
+	where $K_{\oplus \varepsilon} = \{x\in \R^d\ |\ d(x,K)\leq \varepsilon\}$. It is easy to show, that $K_{\oplus \varepsilon} = K + \varepsilon B_d :=\{x+y\in \R^d\ |\ x\in K, y\in \varepsilon B_d\}$, where $B_d := \{x\in \R^d\ |\ d(0,x)\leq 1\}$.
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
+
+\begin{theorem} $(\mathit{Steiner\ Formula})$
+	For $K\in \K^d$ there exist uniquely determined numbers $V_0(K),\dots, V_d(K)\in \R$, such that for each $\varepsilon\geq 0$ 
+	\begin{flalign} \label{steiner}
+		V_d(K+\varepsilon B_d) = \sum_{j=0}^{d} \kappa_{d-j} \varepsilon^{d-j} V_j(K). 
+	\end{flalign}
+	\begin{proof}
+		\cite{stoch1} Theorem 3.32
+	\end{proof}
+\end{theorem}
+
+\begin{definition}
+	$V_0(K),\dots, V_d(K)$ are called $\mathit{intrinsic\ volumes}$ of $K$. 
+\end{definition}
+
+\begin{remark}\label{Vjprop}
+	\begin{enumerate}[label=(\roman*)]
+		\item What we get are functions $V_j:\K^d \to \R$ for the $j$-intrinsic volume $V_j$. It can be shown that every $V_j$ can be uniquely extended to a function $V_j: \mathcal{R}^d \to \R$, where $\mathcal{R}^d := \{\bigcup_{j=1}^n K_j\subset \R^d\ |\ n\in \N_0,K_j\in \K^d \}$ (\cite{stoch1} Theorem 4.10).
+		\item The coefficients $\kappa_{d-j}$ are chosen such that the $V_j$ become independent of the dimension of the underlying space. This means that $V_j$ will assign the same value for $K$ if $K$ is considered to be subset of $\R^d$ or $\R^{\tilde{d}}$ for  $d<\tilde{d}$, although the unit balls $B_d$ and $B_{\tilde d}$ are different in those two spaces. This is why the $V_j$ are called $\mathit{intrinsic}$ volumes. 
+		\item For $\varepsilon = 0$ the right side of equation (\ref{steiner}) reduces to $V_d(K)$ which shows a consistency of the notation. 
+		\item With Lemma (\ref{mink}) and equation (\ref{steiner}) we get $S_{d-1}(K) = \lim_{\varepsilon \searrow 0} \frac{1}{\varepsilon} (V_d(K + \varepsilon B_d) - V_d(K) = \kappa_1 V_{d-1}(K) = 2V_{d-1}(K)$, which will be a useful result. 
+		\item It can be shown that $V_0(\emptyset)=\dots=V_d(\emptyset)=0$ and $V_0(K)=1$ if $K\neq \emptyset$. 
+	\end{enumerate}
+\end{remark}
+
+\subsubsection{Random q-flats}
+
+\begin{theorem} $(\mathit{Crofton\ formula})$
+	Let $K\in \K^d\setminus\{\emptyset\}$, $k\in \{1,\dots,d-1\}$ and $j\in \{ 0,\dots,k\}$. Then
+	\begin{flalign}
+		\int_{A(d,k)} V_j(K\cap F) \mu_k(dF) = c^{k,d-k+j}_{j,d}V_{d-k+j}(K),
+	\end{flalign} 
+	where $c_s^r := \frac{r!\kappa_r}{s!\kappa_s}$ for $s,r\in \N_0$ and $c^{r_1,\dots,r_k}_{s_1,\dots,s_k} := \prod_{j=1}^k c_{s_j}^{r_j}$. 
+\end{theorem}
+
+\begin{proof}
+	\cite{stoch1} Theorem 4.27
+\end{proof}
+
+\begin{definition}
+	Let $K_0\in \K^d$ with $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$. A $A(d,q)$-valued random element $X_q$ with distribution $\frac{\mu_q(\ \cdot\ \cap\ A_{K_0})}{\mu_q(A_{K_0})}$ is called an $\mathit{isotropic\ random\ q}$-$\mathit{flat}$ through $K_0$. 
+\end{definition}
+
+\begin{lemma} \label{K}
+	Let $K,K_0\in \K^d$ with $K\subset K_0$ and $V_d(K_0)>0$. Let $q\in \{0,\dots,d-1\}$ and $X_q$ be an isotropic random $q$-flat through $K_0$. Then
+	\begin{flalign}
+		\PP(X_q\cap K\neq \emptyset) = \frac{V_{d-q}(K)}{V_{d-q}(K_0)}. 
+	\end{flalign}
+\end{lemma}
+\begin{proof}
+	We directly get
+	\begin{flalign*}
+		\PP(X_q\cap K \neq \emptyset) &= \PP(X_q\in A_K)
+		= \frac{\mu_q(A_K\cap A_{K_0})}{\mu_q(A_{K_0})}
+		\\ &= \frac{\mu_q(A_K)}{\mu_q(A_{K_0})}
+		= \frac{\int_{A(d,q)} \mathbbm{1}\{F\cap K\neq \emptyset\} \mu_q(dF)}{\int_{A(d,q)} \mathbbm{1}\{F\cap K_0\neq \emptyset\} \mu_q(dF)}
+		\\ &= \frac{\int_{A(d,q)} V_0(F\cap K) \mu_q(dF)}{\int_{A(d,q)} V_0(F\cap K_0) \mu_q(dF)}
+		\overset{Crofton}{=} \frac{c^{q,d-q}_{0,d}V_{d-q}(K)}{c^{q,d-q}_{0,d}V_{d-q}(K_0)}
+		\\ &= \frac{V_{d-q}(K)}{V_{d-q}(K_0)}.
+	\end{flalign*}
+\end{proof}
+
+\begin{remark} \label{S=2V}
+	Taking the situation from the last Lemma, with Remark (\ref{Vjprop}) (iv) and $q=1$ we get
+	\begin{flalign*}
+		\PP(X_1\cap K \neq \emptyset) = \frac{V_{d-1}(K)}{V_{d-1}(K_0)} = \frac{S_{d-1}(K)}{S_{d-1}(K_0)}. 
+	\end{flalign*}
+	For $d=2$ we basically can interpretate, that the propability of a line $X_1$ which intersects $K_0$ also interesects $K$ can be calculated by deviding the boundary length of $K$ by the boundary length of $K_0$. This seems to be a convenient result although it may not be completely intuitive. 
+\end{remark}
+
+
+
+
+
+\subsection{Constructions in the real plane}
+
+From now on consider the case $d=2$ and $q=1$ which is looking at lines in the real plane. For some $K_0\in \K^2$ we will be interested in choosing a random line out of all lines which intersect with $K_0$. We have looked at exactly this situation in Lemma (\ref{K}). We will look at some examples in this section, argue about why the measure $\mu_1$ is senseful to be used and what parametrisations on lines could be helpful to actually calculate realisations for random lines equivalently to $\mu_1$. In the next chapter we'll define an Incremental Aggregate where we'll use our insights here to realise random lines. Note that every line $g\in \G$ has a form $g=g_{a,b}:=\{a+tb\in \R^2\ |\ t\in \R^2\}$ for some vectors $a,b\in \R^2$ with $b\neq (0,0)$. From now on for $r>0$ and $x\in \R^2$ define $B_r(x):= \{y\in R^2\ |\ d(x,y)\leq r\}$ and $B_r:=B_r(0)$. Let furthermore $g$ be an isotropic random $1$-flat through $K_0$. Recap the definition of $\kappa_j$, which is the $j$-dimensional Lebesgue measure of the $j$-dimensional unit ball, for our use here $\kappa_0=1$, $\kappa_1 = 2$ and $\kappa_2 = \pi$. For the next examples we always use Lemma (\ref{K}) and Remark (\ref{S=2V}) (iii) and choose $K,K_0\in \K^2$ with $K\subset K_0$. 
+
+\begin{example}
+	Let $0<r<R$, $K_0 := B_R$ and $K:=B_r$. We get
+	\begin{flalign*}
+		\PP(g\cap B_r\neq\emptyset) = \frac{V_1(B_r)}{V_1(B_R)} = \frac{\frac{1}{2}S_1(B_r)}{\frac{1}{2}S_1(B_R)} = \frac{2\pi r}{2\pi R} = \frac{r}{R}. 
+	\end{flalign*}
+\end{example}
+
+\begin{example}
+	Let $0<r\leq \frac{R}{\sqrt{2}}$, $K_0 := B_R$ and $K:= [-r,r]^2$. We get 
+	\begin{flalign*}
+		\PP(g\cap [-r,r]^2 \neq\emptyset) = \frac{S_1([-r,r]^2)}{S_1(B_R)} = \frac{8r}{2\pi R} = \frac{4}{\pi} \frac{r}{R}. 
+	\end{flalign*}
+\end{example}
+
+\begin{example}
+	Let $0<r\leq R$, $K_0 := B_R$ and $K:=[-r,r]$. We get 
+	\begin{flalign*}
+		\PP(g\cap [-r,r] \neq\emptyset) = \frac{V_1([-r,r])}{V_1(B_R)} = \frac{\lambda_1([-r,r])}{\frac{1}{2}S_1(B_R)} = \frac{2r}{\pi R} = \frac{2}{\pi} \frac{r}{R}. 
+	\end{flalign*}
+\end{example}
+
+\begin{example}
+	Let $K_0 := B_1$ and $K:=T_a$ a equilateral triangle with side length $a=\frac{\pi}{3}$ centered at $(0,0)$. We get 
+	\begin{flalign*}
+		\PP(g\cap T_a\neq\emptyset) = \frac{V_1(T_a)}{V_1(B_1)} = \frac{3a}{2\pi} = \frac{1}{2}.
+	\end{flalign*}
+\end{example}
+
+
+
+\begin{remark}
+	We still haven't answered why $\mu_1$ is a senseful measure to be used to calculate probabilities for situations like in the last examples. And yet it is not obvious how to actually simulate a realisation of a random line with $\mu_1$. For now we can calculate the probability that a random line $g$ hits some convex set $K$ in the base set $K_0$. What we need is some form of parametrisation of this random choosing so we can actually end up for example with one angle defining the rotation of $g$ to the $x$-axis and a real number defining the interesection value of $g$ with the $y$-axis. If we wouldn't know about $\mu_1$ for now, we could choose an angle and a real number intuitively the following way: Choose an angle $\alpha$ uniformly in $[0,\pi)$. Then consider all lines in the plane which are rotated counterclockwise by $\alpha$ starting at the $x$-axis and which intersect $K$. Take the set of intersection values of these lines with the $y$-axis and choose a value $y_0$ uniformly out of it, so finally $\alpha$ and $y_0$ define a unique line and we have a realisation of a random line which interesects $K$. This procedure may sound balanced, but it is only if $K_0$ is strongly symmetric. At this point it is important to remember what exactly we want. Out of all lines which intersect $K_0$ we are looking for the probability that a random chosen line intersects $K$ and finally calculate a realisation. Imagine $K_0=[-a,a]\times [-b,b]$ with $a<b$. Then it makes sense that there are "more" lines through the longer side $[-b,b]$ than through the shorter side $[-a,a]$. If we now choose the angle $\alpha$ uniformly, the shorter side is overweighted and the larger side underweighted, or in other words, the angle area around $0$ should be less likely to be chosen than the angle area around $\frac{\pi}{2}$. So this naive attempt of choosing the angle for our line uniformly doesn't consider asymmetries of $K_0$ and does therefore not hold the senseful idea, that longer sides of $K_0$ are hit by more lines than shorter ones. 
+\end{remark}
+
+\begin{definition}
+	
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
 
 \begin{thebibliography}{biblio}
 \thispagestyle{empty}
