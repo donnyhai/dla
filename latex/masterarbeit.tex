@@ -117,7 +117,6 @@ Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\
 	&A(d,q) &&\text{set of q-dimensional affine subspaces of }\R^d \\
 	&\mathcal{A}(d,q) &&\sigma\text{-algebra of } A(d,q), \text{ as constructed later in the paper} \\
 	&\G := A(2,1) &&\text{set of lines in the real plane}\\
-	&\mathfrak{G} := \mathcal{A}(2,1)\\
 	&G_d &&\text{set of euclidean motions in $\R^d$ (rotations and translations)}
 \end{flalign*}
 
@@ -249,7 +248,7 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 
 After constructions which involve typical results in integral geometry like intrinsic volumes, Steiner Formula and the Crofton Formula we get the follwing theorem. Let $G_d = \{\phi:\R^d \to\R^d,\ x\mapsto Ax+b\ |\ b\in R^d, A\in \R^{d\times d} \text{ with } A^TA=I\}$ be the set of euclidean motions in $\R^d$. 
 
-\begin{theorem}
+\begin{theorem} \label{uniqmeas}
 	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
 	\begin{flalign}
 		\mu_q(A_{B_d(1,0)}) = \kappa_{d-q}, 
@@ -272,9 +271,49 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	We have $\GG=\mathcal{A}(2,1)$. 
 \end{lemma}
 \begin{proof}
-	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[a,b]\times[c,d]\subset \Phi\ |\ 0\leq a<b<\pi,c<d\in \R\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$, and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. We will show $\tilde A = \chi(R)$ which will complete the proof.  \\
-	\indent $\subset$: 
+	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[a,b]\times[c,d]\subset \R^2\ |\ 0\leq a<b<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
+	\indent $\subset$: CONTINUE
 \end{proof}
+
+\begin{definition}
+	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted on $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu(A_K)<\infty$. 
+\end{definition}
+
+\begin{lemma}
+	$\mu$ is locally finite and $G_2$-invariant. 
+\end{lemma}
+\begin{proof}
+	
+\end{proof}
+
+By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
+\begin{flalign*}
+	\PP^K_\mu(A) := \frac{\mu( A\cap A_K)}{\mu(A_K)},\quad A\in \GG.
+\end{flalign*}
+
+\begin{definition}
+	Let $K\in\K^2$. A random line $g:\Omega \to \G$ is called $K$-$\mathit{isotropic}$ if its distributed as 
+	\begin{flalign*}
+		\PP(g\in A) = \PP^K_\mu(A),\quad A\in\GG.
+	\end{flalign*}
+\end{definition}
+
+\begin{lemma}
+	Let $M,K\in \K^2$ with $M\subset K$. Let $f$ be a random $K$-isotropic and $g$ be a random $M$-isotropic line. Then for all $A\in \GG$ we have
+	\begin{flalign*}
+		\PP(f\in A\ |\ f\in A_M) = \PP(g\in A).
+	\end{flalign*}
+\end{lemma}
+\begin{proof}
+	Note that since $M\subset K$ it is $A_M\subset A_K$. For $A\in \GG$ we therefore directly get 
+	\begin{flalign*}
+		\PP(f\in A\ |\ f\in A_M) &= \frac{\PP(f\in A\cap A_M)}{\PP(f\in A_M)}\\
+		&= \frac{\mu(A\cap A_M\cap A_K)}{\mu(A_K)}\frac{\mu(A_K)}{\mu(A_M\cap A_K)}\\
+		&=\frac{\mu(A\cap A_M)}{\mu(A_M)} = \PP(g\in A).
+	\end{flalign*}
+\end{proof}
+
+
 
 
 \newpage
@@ -371,7 +410,6 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $L_A\neq \em
 
 \newpage
 \section{Questions}
-$\mathcal{K}'=?$
 
 \newpage
 

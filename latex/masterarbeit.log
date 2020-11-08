@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  7 NOV 2020 08:35
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.4)  6 NOV 2020 21:18
->>>>>>> master
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  8 NOV 2020 22:46
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -453,7 +449,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 (Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
 )
-<<<<<<< HEAD
 \c@example=\count198
 \c@theorem=\count199
 \c@corollary=\count266
@@ -466,50 +461,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 \c@pro=\count273
 \c@comment=\count274
  (masterarbeit.aux)
-\openout1 = `masterarbeit.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 52
-.
-
-("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
-File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package scrbase Info: activating american \contentsname on input line 52.
-Package scrbase Info: activating american \listfigurename on input line 52.
-Package scrbase Info: activating american \listtablename on input line 52.
-=======
-\c@example=\count268
-\c@theorem=\count269
-\c@corollary=\count270
-\c@lemma=\count271
-\c@definition=\count272
-\c@proposition=\count273
-\c@algorithm=\count274
-\c@prop=\count275
-\c@remark=\count276
-\c@pro=\count277
-\c@comment=\count278
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 53
-.
-
-(C:\Users\donnyhai\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
-File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-(masterarbeit.aux)
 \openout1 = `masterarbeit.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
@@ -526,10 +477,15 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 53
+.
+
+("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 Package scrbase Info: activating american \contentsname on input line 53.
 Package scrbase Info: activating american \listfigurename on input line 53.
 Package scrbase Info: activating american \listtablename on input line 53.
->>>>>>> master
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\su
 pp-pdf.mkii"
@@ -628,97 +584,96 @@ File: display2.jpg Graphic file (type jpg)
 Package pdftex.def Info: display2.jpg  used on input line 98.
 (pdftex.def)             Requested size: 211.18839pt x 143.95886pt.
  [2 <./display.jpg> <./display2.jpg>]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 122
-.
-
-("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\ueuf.
-fd"
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-Overfull \hbox (31.61014pt too wide) detected at line 122
+Overfull \hbox (31.61014pt too wide) detected at line 121
 []
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 129.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 128.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 129.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 128.
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--139
+Underfull \hbox (badness 10000) in paragraph at lines 135--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--142
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
 
  []
 
 [4] [5] [6]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 217
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 216
 .
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (48.8309pt too wide) in paragraph at lines 225--226
+Overfull \hbox (48.8309pt too wide) in paragraph at lines 224--225
 \T1/lmr/bx/n/12 Definition 4.0.2. $[]$ $[]$\T1/lmr/m/n/12 ,
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
 
  []
 
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 300--301
+[8]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 268
+.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--318
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 347--354
+("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\ueuf.
+fd"
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+) [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--354
+Underfull \hbox (badness 10000) in paragraph at lines 354--357
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 386--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--354
-
- []
-
-[11] [12] [13] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
+Underfull \hbox (badness 10000) in paragraph at lines 386--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--413
+Underfull \hbox (badness 10000) in paragraph at lines 386--393
 
  []
 
-[15] (masterarbeit.aux) ) 
+[12] [13] [14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--451
+
+ []
+
+[16] (masterarbeit.aux) ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 7531 strings out of 481565
- 137415 string characters out of 2912287
- 491025 words of memory out of 3000000
- 22585 multiletter control sequences out of 15000+200000
- 624729 words of font info for 88 fonts, out of 3000000 for 9000
+ 7521 strings out of 481565
+ 137271 string characters out of 2912287
+ 489979 words of memory out of 3000000
+ 22576 multiletter control sequences out of 15000+200000
+ 624493 words of font info for 87 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,16n,56p,10109b,357s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,16n,56p,10109b,343s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/
 fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\donnykong\AppData\Local\MiKTeX\2.9\font
 s/pk/ljfour/public/bbm/dpi600\bbm12.pk>{C:/Users/donnykong/AppData/Local/Progra
@@ -745,44 +700,9 @@ ype1/public/lm/lmssbx10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/donnykong/AppData/Local/Programs/
 MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Pr
 ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (20 pages, 2959974 bytes).
-=======
- 7500 strings out of 479799
- 136873 string characters out of 2868298
- 550444 words of memory out of 3000000
- 24302 multiletter control sequences out of 15000+200000
- 627479 words of font info for 93 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 106i,16n,111p,10609b,356s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts
-/enc/dvips/lm/lm-ec.enc} <C:\Users\donnyhai\AppData\Local\MiKTeX\fonts/pk/ljfou
-r/public/bbm/dpi600\bbm12.pk>{C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/f
-onts/enc/dvips/lm/lm-rm.enc}{C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fo
-nts/enc/dvips/lm/lm-mathit.enc}{C:/Users/donnyhai/AppData/Local/Programs/MiKTeX
-/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/donnyhai/AppData/Local/Programs/MiK
-TeX/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Users/donnyhai/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/donnyhai/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/donnyhai/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/donnyhai/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/donnyha
-i/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/donn
-yhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/do
-nnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/
-donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/User
-s/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Us
-ers/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/U
-sers/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/
-Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><
-C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pf
-b><C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx
-10.pfb><C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
-msy10.pfb><C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
-m/lmsy8.pfb><C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (17 pages, 2942263 bytes).
->>>>>>> master
+Output written on masterarbeit.pdf (18 pages, 2945811 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
+ 145 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
