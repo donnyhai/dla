@@ -107,13 +107,12 @@
 \section{Preliminaries} \label{prelim}
 
 \subsection{Namings}
-Here we list all namings which will be used in this paper. Let $d\in \N$, $q\in \{0,\dots,d\}$ and $r\in [0,\infty)$. 
+Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
 \begin{flalign*}
 	&\N = \{1,2,3,\dots\} &&\text{set of natural numbers (without 0)}\\
 	&\N_0 = \N\cup\{0\}\\
 	&\K^d &&\text{set of convex and compact sets in }\R^d\\
 	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\} &&\text{$d$-dimensional closed ball of radius $r$ around $x$}\\
-	&B_r := B_2(r,0) \\
 	&S_{d-1}(r,x) = \partial B_d(r,x) &&\text{$(d-1)$-dimensional surface of the $d$-dimensional ball}\\
 	&A(d,q) &&\text{set of q-dimensional affine subspaces of }\R^d \\
 	&\mathcal{A}(d,q) &&\sigma\text{-algebra of } A(d,q), \text{ as constructed later in the paper} \\
@@ -268,7 +267,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	We have $\GG=\mathcal{A}(2,1)$. 
 \end{lemma}
 \begin{proof}
-	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[a,b]\times[c,d]\subset \R^2\ |\ 0\leq a<b<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $A_{\K^2} := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(A_{\K^2})$. \\
+	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[a,b]\times[c,d]\subset \R^2\ |\ 0\leq a<b<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
 	\indent $\subset$: CONTINUE
 \end{proof}
 
@@ -284,11 +283,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	$\mu$ is locally finite and $G_2$-invariant. 
 \end{lemma}
 \begin{proof}
-	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $A_K\subset A_{B_r}$ and
-	\begin{flalign*}
-		\mu(A_K) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
-	\end{flalign*}
-	hence $\mu$ is locally finite. 
+	
 \end{proof}
 
 By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
@@ -318,7 +313,7 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 	\end{flalign*}
 \end{proof}
 
-If we choose a simple convex set such as $K=B_r$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
+If we choose a simple convex set such as $K=B_r :=B_2(r,0)$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
 
 \begin{lemma} \label{chi}
 	Let $K=B_r\in\K^2$ and let $(\alpha,p)\sim\mathcal{U}(\tilde\Phi)$ with $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}(A_K)\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
