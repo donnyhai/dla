@@ -197,9 +197,7 @@ the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$
 	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_n\}$.
 \end{definition} 
 
-\begin{remark}
-	
-\end{remark}
+
 
 
 
@@ -224,9 +222,7 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 \begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$, is a incremental aggregate with the harmonic measure $h$ as distribution. 
 \end{definition}
 
-\begin{remark}
-	contenu...
-\end{remark}
+
 
 \newpage
 \section{Integral Geometry}
@@ -235,9 +231,9 @@ In the next section we want to define an approximation for External DLA. This ap
 
 We will introduce a possible solution for this problem first through the abstract and general way of integral geometry and later through a simple parametrisation for the case of lines in the real plane which goes hand in hand with the general result.
  
-\subsection{General result}
+\subsection{General results}
 
-In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimensional affine subspaces where $q\in \{0,\dots,d\}$, short $q$-flats in $\R^d$. This set of $q$-flats in $\R^d$ is denoted by $A(d,q)$. Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we need a measure and a $\sigma$-algebra on $A(d,q)$ in total. 
+In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimensional affine subspaces where $q\in \{0,\dots,d\}$, short $q$-flats in $\R^d$. The set of $q$-flats in $\R^d$ is denoted by $A(d,q)$. Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. 
 
 \begin{definition}
 	For $K\in \K^d$ define $A_K := \{F\in A(d,q)\ |\ F\cap K \neq\emptyset\}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
@@ -246,7 +242,7 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 	\end{flalign*} 
 \end{definition}
 
-After constructions which involve typical results in integral geometry like intrinsic volumes, Steiner Formula and the Crofton Formula we get the follwing theorem. Let $G_d = \{\phi:\R^d \to\R^d,\ x\mapsto Ax+b\ |\ b\in R^d, A\in \R^{d\times d} \text{ with } A^TA=I\}$ be the set of euclidean motions in $\R^d$. 
+After constructions which involve typical results in integral geometry like intrinsic volumes, Steiner Formula and the Crofton Formula we get the follwing theorem. Let $G_d = \{\varphi:\R^d \to\R^d,\ x\mapsto Ax+b\ |\ b\in R^d, A\in \R^{d\times d} \text{ with } A^TA=I\}$ be the set of euclidean motions in $\R^d$. 
 
 \begin{theorem} \label{uniqmeas}
 	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
@@ -261,11 +257,11 @@ After constructions which involve typical results in integral geometry like intr
 
 \subsection{Construction in the real plane}
 
-For our case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := \tbinom{\cos(\alpha)}{\sin(\alpha)}$ be the unit vector $\tbinom{1}{0}$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \R^2\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+For our special case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := \tbinom{\cos(\alpha)}{\sin(\alpha)}$ be the unit vector $\tbinom{1}{0}$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \R^2\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
 \begin{flalign*}
 	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
 \end{flalign*}
-We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\Phi$ is a bijection. The next lemma shows that this way of defining a $\sigma$-algebra on $\G$ makes sense and for our special case indeed is equivalent to the general context as defined above. 
+We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection. The next lemma shows that this way of defining a $\sigma$-algebra on $\G$ makes sense as it is indeed equivalent to the general context as defined above. 
 
 \begin{lemma}
 	We have $\GG=\mathcal{A}(2,1)$. 
@@ -276,7 +272,11 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 \end{proof}
 
 \begin{definition}
-	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted on $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu(A_K)<\infty$. 
+	A $\mathcal{F}$-$\GG$-measurable function $g:\Omega \to \G$ is called a $\mathit{random\ line}$.  
+\end{definition}
+
+\begin{definition}
+	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu(A_K)<\infty$. 
 \end{definition}
 
 \begin{lemma}
@@ -292,13 +292,13 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 \end{flalign*}
 
 \begin{definition}
-	Let $K\in\K^2$. A random line $g:\Omega \to \G$ is called $K$-$\mathit{isotropic}$ if its distributed as 
+	Let $K\in\K^2$. A random line $g:\Omega \to \G$ is called $K$-$\mathit{isotropic}$ if it is distributed as 
 	\begin{flalign*}
 		\PP(g\in A) = \PP^K_\mu(A),\quad A\in\GG.
 	\end{flalign*}
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{circ}
 	Let $M,K\in \K^2$ with $M\subset K$. Let $f$ be a random $K$-isotropic and $g$ be a random $M$-isotropic line. Then for all $A\in \GG$ we have
 	\begin{flalign*}
 		\PP(f\in A\ |\ f\in A_M) = \PP(g\in A).
@@ -313,8 +313,20 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 	\end{flalign*}
 \end{proof}
 
+If we choose a simple convex set such as $K=B_r :=B_2(r,0)$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
 
+\begin{lemma} \label{chi}
+	Let $K=B_r\in\K^2$ and let $(\alpha,p)\sim\mathcal{U}(\tilde\Phi)$ with $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}(A_K)\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
+\end{lemma}
+\begin{proof}
+	For $A\in\GG$ we get 
+	\begin{flalign*}
+		\PP(\chi(\alpha,p)\in A) &= \PP((\alpha,p)\in \chi^{-1}(A)) = \frac{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A\cap A_K))}{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A_K))}\\
+		&=\frac{{\lambda_2}_{|\Phi}(\chi^{-1}(A\cap A_K))}{{\lambda_2}_{|\Phi}(\chi^{-1}(A_K))} = \frac{\mu(A\cap A_K)}{\mu(A_K)}.
+	\end{flalign*}
+\end{proof}
 
+Both lemmas \ref{circ} and \ref{chi} give a useful help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new Incremental Aggregate in the next section which tries to approximize External DLA. 
 
 \newpage
 
