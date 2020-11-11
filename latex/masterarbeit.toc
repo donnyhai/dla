@@ -1,12 +1,13 @@
 \babel@toc {american}{}
-\contentsline {section}{\numberline {1}Introduction}{2}%
-\contentsline {section}{\numberline {2}Preliminaries}{3}%
-\contentsline {subsection}{\numberline {2.1}Namings}{3}%
-\contentsline {subsection}{\numberline {2.2}Basic structures}{4}%
-\contentsline {section}{\numberline {3}Incremental Aggregate}{6}%
-\contentsline {section}{\numberline {4}External DLA}{7}%
-\contentsline {section}{\numberline {5}Integral Geometry}{8}%
-\contentsline {subsection}{\numberline {5.1}General results}{8}%
-\contentsline {subsection}{\numberline {5.2}Construction in the real plane}{9}%
-\contentsline {section}{\numberline {6}Line Hitting Aggregate}{11}%
-\contentsline {section}{\numberline {7}Questions}{14}%
+\contentsline {section}{\numberline {1}Introduction}{2}{}%
+\contentsline {section}{\numberline {2}Preliminaries}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Namings}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Basic structures}{4}{}%
+\contentsline {section}{\numberline {3}Incremental Aggregate}{6}{}%
+\contentsline {section}{\numberline {4}External DLA}{7}{}%
+\contentsline {section}{\numberline {5}Integral Geometry}{8}{}%
+\contentsline {subsection}{\numberline {5.1}General results}{8}{}%
+\contentsline {subsection}{\numberline {5.2}Construction in the real plane}{9}{}%
+\contentsline {section}{\numberline {6}Line Hitting Aggregate}{11}{}%
+\contentsline {section}{\numberline {7}Questions}{14}{}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

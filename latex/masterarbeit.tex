@@ -283,7 +283,11 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	$\mu$ is locally finite and $G_2$-invariant. 
 \end{lemma}
 \begin{proof}
-	
+	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $A_K\subset A_{B_r}$ and
+	\begin{flalign*}
+		\mu(A_K) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
+	\end{flalign*}
+	hence $\mu$ is locally finite. 
 \end{proof}
 
 By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
@@ -351,23 +355,23 @@ In the following we will look at a process which is the approach of a simple app
 BILD Linie durch squares "hitting"\\
 
 \begin{definition}
-	Let $g=g_{\alpha,p}\in \G$ be a line. For a finite set $A\in \mathcal{P}_f$ we define 
+	Let $g=g_{\alpha,p}\in \G$ and $A\in \mathcal{P}_f$. We define 
 	
 	\begin{align*}
-		L_{A} := \{ p\in A\ |\ L \text{ hits } p\}
+		g\cap A := \{ p\in A\ |\ g \text{ hits } p\}
 	\end{align*}
 	
-	which is the subset of points in $A$ are hit by the line $L$ hits. For the following we suppose $g\cap A \neq \emptyset$. We want to define a total ordered relation $\triangleleft$ on $g\cap A$. We choose two points $(x_1,x_2),(y_1,y_2)\in g\cap A$ and devide the definition of a relation into four cases, which are the line going from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Write $b=(b_1,b_2)$.  \\
+	which is the subset of all points in $A$ which are hit by $g$. For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mathcal{P}_f$ with $g\cap A \neq\emptyset$. We choose two points $(x_1,x_2),(y_1,y_2)\in g\cap A$ and devide the definition of the relation $\triangleleft$ into four cases, which are the line going from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. \\
 	\\
-	$\mathit{Case\ 1:}\quad L\ \text{ is parallel to the x-axis}\quad \Leftrightarrow\quad b_2=0$
+	$\mathit{Case}\ 1:\quad g\ \text{ is parallel to the x-axis}\quad \Leftrightarrow\quad \alpha = \frac{\pi}{2}$
 	\begin{align*}
 	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad x_1 < y_1
 	\end{align*}\\
-	$\mathit{Case\ 2:}\quad L\ \text{ is parallel to the y-axis}\quad \Leftrightarrow\quad b_1=0$
+	$\mathit{Case}\ 2:\quad g\ \text{ is parallel to the y-axis}\quad \Leftrightarrow\quad \alpha = 0$
 	\begin{align*}
 	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad x_2 < y_2
 	\end{align*}\\
-	$\mathit{Case\ 3:}\quad L\ \text{ is going from left-bottom to right-top}\quad \Leftrightarrow\quad b_1b_2>0$
+	$\mathit{Case}\ 3:\quad g\ \text{ is going from left-bottom to right-top}\quad \Leftrightarrow\quad \alpha\in (\frac{\pi}{2},\pi)$
 	\begin{align*}
 	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad
 		\begin{cases}
@@ -375,7 +379,7 @@ BILD Linie durch squares "hitting"\\
 			x_2 < y_2, & \text{ if } x_1 = y_1.
 		\end{cases}
 	\end{align*}\\
-	$\mathit{Case\ 4:}\quad L\ \text{ is going from left-top to right-bottom}\quad \Leftrightarrow\quad b_1b_2<0$
+	$\mathit{Case}\ 4:\quad g\ \text{ is going from left-top to right-bottom}\quad \Leftrightarrow\quad \alpha\in (0,\frac{\pi}{2})$
 	\begin{align*}
 	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad
 	\begin{cases}
@@ -387,9 +391,9 @@ BILD Linie durch squares "hitting"\\
 \end{definition}
 
 \begin{lemma}
-For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
+For a line $g=g_{\alpha,p}\in\G$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
 	\begin{proof}
-		We will only proove the case where $L$ is going from left-bottom to right-top, which is $\mathit{Case\ 3}$ of the definition. In this case we have $b_1b_2>0$. Note, that the proof for $\mathit{Case\ 4}$ will work very similair. And in the case of $L$ being parallel to one of the axes ($\mathit{Case\ 1\ or\ 2}$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $b_1b_2>0$. \\
+		We will only proove the case where $g$ is going from left-bottom to right-top, which is $\mathit{Case}\ 3$ of the definition. In this case we have $\alpha\in (\frac{\pi}{2},\pi)$. Note, that the proof for $\mathit{Case\ }4$ will work very similair and in the case of $g$ being parallel to one of the axes ($\mathit{Case\ }1$ or $2$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $\alpha\in (\frac{\pi}{2},\pi)$. \\
 		\\
 		$\mathit{Antisymmetry:}$ For antisymmetry let $(x_1, x_2) \triangleleft (y_1, y_2)$ and $(y_1, y_2) \triangleleft (x_1, x_2)$. Suppose $x_1\neq y_1$, then $x_1 < y_1$ and $y_1 < x_1$, therefore $x_1 = y_1$ by antisymmetry of the standard order $<$ in $\mathbb{R}$, a contradiction, hence $x_1 = y_1$. But then we have $x_2 < y_2$ and $y_2 < x_2$ and therefore also $x_2 = y_2$. \\
 		\\
@@ -401,17 +405,23 @@ For a line $L=L_{a,b}\in \mathcal{L}$ and $A\in \mathcal{P}_f$ with $g\cap A\neq
 \end{lemma}
 
 \begin{remark}
-	The relation $\triangleleft$ on $g\cap A$ basically orders the hitpoints of a line $L$ with a finite set $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outest hitting points of $A$ by $L$. This means when moving on a line $L$ facing $A$ this order allows us to know where in $A$ the line $L$ hits first when ,,entering`` $A$ and where it hits last when ,,leaving`` $A$ which will be the two points $min_{\triangleleft}g\cap A$ and $max_{\triangleleft}g\cap A$ (or the other way around). 
+	The relation $\triangleleft$ on $g\cap A$ basically orders the hitpoints of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outest hitting points which are minimum and maximum of $g\cap A$ respecting $\triangleleft$. To clarify, we define $min (g\cap A) := (x,y)$ if and only if $(x,y) \triangleleft (\tilde x,\tilde y)$ for all $(\tilde x, \tilde y)\in g\cap A$, analogously $max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when "entering" $A$ and where it hits last when "leaving" $A$. 
 \end{remark}
 
+Remind, for a bounded subset $A\subset \R^2$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
+\begin{flalign*}
+	conv(A) := \bigcap_{A\subset K\in \K^2} K. 
+\end{flalign*}
+Note that $conv(A)\in \K^2$ for all bounded subsets $A\subset \R^2$. For a set $A\in \mathcal{P}_f$ we define 
+\begin{flalign*}
+	conv(A):=conv(\bigcup_{p\in A} sq(p))
+\end{flalign*}
+and since $\bigcup_{p\in A} sq(p)$ is a bounded set aswell we have $conv(A)\in \K^2$ here aswell. 
 
-\begin{definition} $\mathit{Random\ Line\ Hitting\ Distribution}$\\
-	\indent Choose $A\in \mathcal{P}_f$. We define a distribution $\mu_A$ on $\mathbb{Z}^2$ as in the following. 
-	Let $L=L_{a,b}$ be a random line according to the line measure $\mu_0$ with the condition that $L$ hits $A$. Then define $\mu_A$ with distribution $\mu_A \sim U(\{min_{\triangleleft}g\cap A, max_{\triangleleft}g\cap A\})$, which chooses uniformly an element out of $\{min_{\triangleleft}g\cap A, max_{\triangleleft}g\cap A\}$. We call this distribution the $\mathit{Random\ Line\ Hitting\ Distribution\ (of\ A)}$.
+\begin{definition} $\mathit{(Random\ Line\ Hitting\ Distribution)}$ Let $A\in \mathcal{P}_f$ and $g:\Omega \to \G$ be a random $conv(A)$-isotropic line. Then define a distribution $\mu_A \sim \mathcal{U}(\{min(g\cap A), max(g\cap A)\})$, which chooses uniformly out of the outest hitting points of $g$ with $A$. We call this family $(\mu_A)_{A\in \mathcal{P}_f}$ of distributions the $\mathit{Random\ Line\ Hitting\ Distribution}$.
 \end{definition}
 
-\begin{definition} $\mathit{Line\ Hitting\ Aggregate}$\\
-	\indent Incremental Aggregate with the Random Line Hitting Distribution as its distribution we will call here $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
+\begin{definition} $(\mathit{Line\ Hitting\ Aggregate)}$ An Incremental Aggregate with the Random Line Hitting Distribution we call $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
 \end{definition}
 
 \newpage
