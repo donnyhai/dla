@@ -1,0 +1,7 @@
+{ 
+"iterations": 700, 
+"color": "yes",
+"color_generation_size": 50,
+"image_size_x": 500, 
+"image_size_y": 500
+}
