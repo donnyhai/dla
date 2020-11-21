@@ -17,6 +17,7 @@ from math import pi, sqrt
 
 class Line_Hitting_Aggregate_Simulation:
     
+    
     def __init__(self):
         
         self.particles = [0]
@@ -26,28 +27,83 @@ class Line_Hitting_Aggregate_Simulation:
         
         self.missed_counter = 0
         
-    
+        
     def run_process(self, iterations):
         
         for k in range(iterations):
             
-            line_missed_cluster = True
+            line_hits_cluster = False
             
-            while line_missed_cluster:
+            while not line_hits_cluster:
         
                 random_line = geom.Line(self.get_random_line())
             
                 if self.line_hits_cluster(random_line):
-                    self.actualize_structures(self.get_next_particle_position(random_line))
                     
-                    line_missed_cluster = False
+                    next_position = self.get_next_particle_position(random_line)
+                    
+                    """
+                    add particle at next_position to the cluster, remove it from the boundary_set and add its empty neighbours to it,
+                    actualize max_distance, so the next random line can be chosen correct accordingly
+                    """
+                    
+                    self.particles.append(next_position)
+                    self.actualize_boundary_set(next_position)
+                    self.actualize_max_distance(next_position)
+                    
+                    line_hits_cluster = True
                     print(k)
                 
                 else:
-                    self.missed_counter += 1 #counts how often a random line missed the current cluster
+                    self.missed_counter += 1 #counts how often a random line missed the current cluster, as described in the paper
                     print("line missed cluster")
         print("number of misses: " + str(self.missed_counter))
-                
+    
+    
+    def get_random_line(self):
+        
+        """
+        We choose uniform random parameters (alpha, p) in [0, pi) x [0, 20/19 * self.max_distance) 
+        which is equivalent to choosing a B-isotropic line where B is a circle with radius 20/19 * self.max_distance with center 0
+        and by contstruction therefore certainly contains the current cluster. 
+        random.random() chooses uniformly in [0, 1.0)
+        return is the parameters pair (alpha, p)
+        """
+     
+        alpha = pi * random.random()
+        p = 20/19 * (2 * self.max_distance * random.random() - self.max_distance)
+        
+        return (alpha, p)
+    
+    
+    def line_hits_cluster(self, line):
+        for particle in self.particles:
+            if line.intersects_with_polygon(self.get_position_square_polygon(particle)):
+                return True
+        return False
+    
+    
+    def get_position_square_polygon(self, position):
+        
+        """
+        return is a square polygon around position as defined in the paper, with segments starting 
+        from right top vertex of the square moving clockwise
+        """
+        
+        return geom.Polygon([position + 1/2 * (1+1j), position + 1/2 * (1-1j), position + 1/2 * (-1-1j), position + 1/2 * (-1+1j)])
+    
+
+    def get_next_particle_position(self, line):
+        
+        """
+        Choose next particle according to the random line hitting distribution as described in the paper.
+        """
+        
+        hit_positions = self.get_boundary_hit_positions(line)
+        min_position = self.get_min(line.alpha, hit_positions)
+        max_position = self.get_max(line.alpha, hit_positions)
+        return random.choice([min_position, max_position])
+    
     
     def get_boundary_hit_positions(self, line):
         
@@ -61,6 +117,33 @@ class Line_Hitting_Aggregate_Simulation:
                 boundary_hit_positions.append(position)
         return boundary_hit_positions
         
+
+    def actualize_boundary_set(self, position):
+        
+        """ 
+        suppose that position is part of the current boundary set and a particle
+        comes to sit there now. therefore delete position of the current boundary set and add its empty neighbours to it
+        """
+    
+        self.boundary_set.remove(position)
+        for neighbour in self.get_neighbours(position):
+            if neighbour not in self.boundary_set and neighbour not in self.particles:
+                self.boundary_set.append(neighbour)
+    
+    
+    def actualize_max_distance(self, position):
+        new_distance = self.get_distance(position, 0)
+        if new_distance > self.max_distance:
+            self.max_distance = new_distance
+    
+    
+    def get_neighbours(self, particle):
+        return [particle + 1, particle - 1, particle + 1j, particle - 1j]
+    
+    
+    def get_distance(self, x, y):
+        return sqrt(pow(x.real - y.real, 2) + pow(x.imag - y.imag, 2))    
+    
     
     def get_max(self, alpha, positions):
         
@@ -74,6 +157,7 @@ class Line_Hitting_Aggregate_Simulation:
                 max_position = position
         return max_position
     
+    
     def get_min(self, alpha, positions):
         
         """
@@ -85,6 +169,7 @@ class Line_Hitting_Aggregate_Simulation:
             if self.is_lower(alpha, position, min_position):
                 min_position = position
         return min_position
+    
     
     def is_lower(self, alpha, x, y):
         
@@ -109,89 +194,6 @@ class Line_Hitting_Aggregate_Simulation:
                 return x_1 > y_1
             else:
                 return x_0 < y_0
-        
-        
-
-    def get_position_square_polygon(self, position):
-        
-        """
-        return is a square polygon around position as defined in the paper, with segments starting 
-        from right top vertex of the square moving clockwise
-        """
-        
-        return geom.Polygon([position + 1/2 * (1+1j), position + 1/2 * (1-1j), position + 1/2 * (-1-1j), position + 1/2 * (-1+1j)])
-
-    
-    def get_neighbours(self, particle):
-        return [particle + 1, particle - 1, particle + 1j, particle - 1j]
-    
-    def get_distance(self, x, y):
-        return sqrt(pow(x.real + y.real, 2) + pow(x.imag + y.imag, 2))
-    
-    
-    def get_random_line(self):
-        
-        """
-        We choose uniform random parameters (alpha, p) in [0, pi) x [0, 20/19 * self.max_distance) 
-        which is equivalent to choosing a B-isotropic line where B is a circle with radius 20/19 * self.max_distance with center 0
-        and by contstruction therefore certainly contains the current cluster. 
-        random.random() chooses uniformly in [0, 1.0)
-        return is the parameters pair (alpha, p)
-        """
-        
-        alpha = pi * random.random()
-        p = 20/19 * self.max_distance * random.random()
-        
-        return (alpha, p)
-        
-        
-    def actualize_boundary_set(self, position):
-        
-        """ 
-        suppose that position is part of the current boundary set and a particle
-        comes to sit there now. therefore delete position of the current boundary set and add its empty neighbours to it
-        """
-    
-        self.boundary_set.remove(position)
-        for neighbour in self.get_neighbours(position):
-            if neighbour not in self.boundary_set and neighbour not in self.particles:
-                self.boundary_set.append(neighbour)
-    
-    
-    def actualize_max_distance(self, position):
-        new_distance = self.get_distance(position, 0)
-        if new_distance > self.max_distance:
-            self.max_distance = new_distance
-    
-    
-    def get_next_particle_position(self, line):
-        
-        """
-        choose next particle according to the random line hitting distribution
-        """
-        
-        hit_positions = self.get_boundary_hit_positions(line)
-        min_position = self.get_min(line.alpha, hit_positions)
-        max_position = self.get_max(line.alpha, hit_positions)
-        return random.choice([min_position, max_position])
-    
-    def actualize_structures(self, next_position):
-        
-        """
-        add particle at next_position to the cluster, remove it from the boundary_set and add its empty neighbours to it,
-        actualize max_distance, so the next random line can be chosen correct accordingly
-        """
-        
-        self.particles.append(next_position)
-        self.actualize_boundary_set(next_position)
-        self.actualize_max_distance(next_position)
-    
-    
-    def line_hits_cluster(self, line):
-        for particle in self.particles:
-            if line.intersects_with_polygon(self.get_position_square_polygon(particle)):
-                return True
-        return False
 
 
 

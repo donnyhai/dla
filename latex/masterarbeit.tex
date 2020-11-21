@@ -125,7 +125,7 @@ Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\
 
 We prepare this script with the following preliminaries. Let $d\in \N$. \\
 
-\noindent $\boldsymbol{\mathit{Graphs}}.\quad$ We will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
+\noindent $\boldsymbol{\mathit{Graphs}}.\quad$ We will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y.\text{real},\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
 \begin{align*}
 	N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}.
 \end{align*}
@@ -197,6 +197,7 @@ the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$
 	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_n\}$.
 \end{definition} 
 
+For all incremental aggregates in this paper we will have $d=2$, therefore move on the grid $\Z^2$. We will identify $\R^2$ with $\C$. 
 
 
 
@@ -257,7 +258,7 @@ After constructions which involve typical results in integral geometry like intr
 
 \subsection{Construction in the real plane}
 
-For our special case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := \tbinom{\cos(\alpha)}{\sin(\alpha)}$ be the unit vector $\tbinom{1}{0}$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \R^2\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+For our special case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ be the unit vector $1$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
 \begin{flalign*}
 	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
 \end{flalign*}
@@ -342,14 +343,14 @@ In the following we will look at a process which is the approach of a simple app
 \begin{definition} \label{squares}
 	Define 
 	\begin{align}
-		\mathbb{R}^2_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}] \times [l- \frac{1}{2}, l + \frac{1}{2}] \subset \mathbb{R}^2\ |\ k,l \in \mathbb{Z}\}, 
+		\C_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i \subset \C\ |\ k,l \in \mathbb{Z}\}, 
 	\end{align} 
-	note that $\mathbb{R}^2 = \bigcup_{s\in \mathbb{R}^2_{sq}} s$. The canonical function
+	note that $\C = \bigcup_{s\in \C_{sq}} s$. The canonical function
 	\begin{align}
-	sq: \mathbb{Z}^2 \to \mathbb{R}^2_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] \times [l- \frac{1}{2}, l + \frac{1}{2}]
+	sq: \mathbb{Z}^2 \to \C_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i
 	\end{align}
-	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\mathbb{R}^2$, which is $p$ is the center of square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\mathbb{R}^2$ respecting the context. This bijection also naturally defines a graph structure on $\mathbb{R}^2_{sq}$, which is two squares $s_1, s_2\in \mathbb{R}^2_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. 
-	\noindent For the following context we say a line $g$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $g\ \cap\ sq(p) \neq \emptyset$.
+	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\C$ which is $p$ is the center of the square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\C$ respecting the context. This bijection also naturally defines a graph structure on $\C_{sq}$, which is two squares $s_1, s_2\in \C_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. 
+	\noindent For the following context we say a line $g$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $g\ \cap\ sq(p) \neq \emptyset$. 
 	
 \end{definition}
 
@@ -362,30 +363,30 @@ BILD Linie durch squares "hitting"\\
 		g\cap A := \{ p\in A\ |\ g \text{ hits } p\}
 	\end{align*}
 	
-	which is the subset of all points in $A$ which are hit by $g$. For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mathcal{P}_f$ with $g\cap A \neq\emptyset$. We choose two points $(x_1,x_2),(y_1,y_2)\in g\cap A$ and devide the definition of the relation $\triangleleft$ into four cases, which are the line going from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. \\
+	which is the subset of all points in $A$ which are hit by $g$. For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mathcal{P}_f$ with $g\cap A \neq\emptyset$. We choose two points $x,y\in g\cap A$ and devide the definition of the relation $\triangleleft$ into four cases, which are the line going from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Denote the real part of $x$ with $x.$real and the imaginary one with $x.$imag. \\
 	\\
 	$\mathit{Case}\ 1:\quad g\ \text{ is parallel to the x-axis}\quad \Leftrightarrow\quad \alpha = \frac{\pi}{2}$
 	\begin{align*}
-	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad x_1 < y_1
+	x \triangleleft y \quad :\Leftrightarrow \quad x.\text{real} < y.\text{imag}
 	\end{align*}\\
 	$\mathit{Case}\ 2:\quad g\ \text{ is parallel to the y-axis}\quad \Leftrightarrow\quad \alpha = 0$
 	\begin{align*}
-	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad x_2 < y_2
+	x \triangleleft y \quad :\Leftrightarrow \quad x.\text{imag} < y.\text{imag}
 	\end{align*}\\
 	$\mathit{Case}\ 3:\quad g\ \text{ is going from left-bottom to right-top}\quad \Leftrightarrow\quad \alpha\in (\frac{\pi}{2},\pi)$
 	\begin{align*}
-	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad
+	x \triangleleft y \quad :\Leftrightarrow \quad
 		\begin{cases}
-			x_1 < y_1, & \text{ if } x_1 \neq y_1, \\
-			x_2 < y_2, & \text{ if } x_1 = y_1.
+			x.\text{real} < y.\text{real}, & \text{ if } x.\text{real} \neq y.\text{real}, \\
+			x.\text{imag} < y.\text{imag}, & \text{ if } x.\text{real} = y.\text{real}.
 		\end{cases}
 	\end{align*}\\
 	$\mathit{Case}\ 4:\quad g\ \text{ is going from left-top to right-bottom}\quad \Leftrightarrow\quad \alpha\in (0,\frac{\pi}{2})$
 	\begin{align*}
-	(x_1, x_2) \triangleleft (y_1, y_2) \quad :\Leftrightarrow \quad
+	x \triangleleft y \quad :\Leftrightarrow \quad
 	\begin{cases}
-	x_1 < y_1, & \text{ if } x_1 \neq y_1, \\
-	x_2 > y_2, & \text{ if } x_1 = y_1.
+	x.\text{real} < y.\text{real}, & \text{ if } x.\text{real} \neq y.\text{real}, \\
+	x.\text{imag} > y.\text{imag}, & \text{ if } x.\text{real} = y.\text{real}.
 	\end{cases}
 	\end{align*}\\
 	It is easy to see that this well-defines a relation on $g\cap A$. In the following we will quickly proove that this relation is totally ordered. 
@@ -396,24 +397,24 @@ For a line $g=g_{\alpha,p}\in\G$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emp
 	\begin{proof}
 		We will only proove the case where $g$ is going from left-bottom to right-top, which is $\mathit{Case}\ 3$ of the definition. In this case we have $\alpha\in (\frac{\pi}{2},\pi)$. Note, that the proof for $\mathit{Case\ }4$ will work very similair and in the case of $g$ being parallel to one of the axes ($\mathit{Case\ }1$ or $2$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $\alpha\in (\frac{\pi}{2},\pi)$. \\
 		\\
-		$\mathit{Antisymmetry:}$ For antisymmetry let $(x_1, x_2) \triangleleft (y_1, y_2)$ and $(y_1, y_2) \triangleleft (x_1, x_2)$. Suppose $x_1\neq y_1$, then $x_1 < y_1$ and $y_1 < x_1$, therefore $x_1 = y_1$ by antisymmetry of the standard order $<$ in $\mathbb{R}$, a contradiction, hence $x_1 = y_1$. But then we have $x_2 < y_2$ and $y_2 < x_2$ and therefore also $x_2 = y_2$. \\
+		$\mathit{Antisymmetry:}$ For antisymmetry let $x \triangleleft y$ and $y \triangleleft x$. Suppose $x.\text{real}\neq y.\text{real}$, then $x.\text{real} < y.\text{real}$ and $y.\text{real} < x.\text{real}$, therefore $x.\text{real} = y.\text{real}$ by antisymmetry of the standard order $<$ in $\mathbb{R}$, a contradiction, hence $x.\text{real} = y.\text{real}$. But then we have $x.\text{imag} < y.\text{imag}$ and $y.\text{imag} < x.\text{imag}$ and therefore also $x.\text{imag} = y.\text{imag}$. \\
 		\\
-		$\mathit{Transitivity:}$ For transitivity let $(x_1,x_2) \triangleleft (y_1,y_2)$ and $(y_1,y_2) \triangleleft (z_1,z_2)$. We find four cases. In case $x_1 \neq y_1$ and $y_1 \neq z_1$ we get $x_1 < z_1$ by transitivity of $<$, hence $(x_1,x_2) \triangleleft (z_1,z_2)$. In case $x_1\neq y_1$ and $y_1 = z_1$ we get $x_1 < y_1 = z_1$, therefore $(x_1,x_2) \triangleleft (z_1,z_2)$. In case $x_1 = y_1$ and $y_1 \neq z_1$ we get $x_1 = y_1 < z_1$, similair as the last case. In the last case $x_1 = y_1 = z_1$ we get $x_2 < y_2$ and $y_2 < z_2$ and again by transitivity of $<$ we get $x_2 < z_2$, hence $(x_1,x_2) \triangleleft (z_1,z_2)$ again. \\
+		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $x.\text{real} \neq y.\text{real}$ and $y.\text{real} \neq z.\text{real}$ we get $x.\text{real} < z.\text{real}$ by transitivity of $<$, hence $x \triangleleft z$. In case $x.\text{real}\neq y.\text{real}$ and $y.\text{real} = z.\text{real}$ we get $x.\text{real} < y.\text{real} = z.\text{real}$, therefore $x \triangleleft z$. In case $x.\text{real} = y.\text{real}$ and $y.\text{real} \neq z.\text{real}$ we get $x.\text{real} = y.\text{real} < z.\text{real}$, similair as the last case. In the last case $x.\text{real} = y.\text{real} = z.\text{real}$ we get $x.\text{imag} < y.\text{imag}$ and $y.\text{imag} < z.\text{imag}$ and again by transitivity of $<$ we get $x.\text{imag} < z.\text{imag}$, hence $x \triangleleft z$ again. \\
 		\\
-		$\mathit{Connexity:}$ Connexity is given since for any two points $(x_1,x_2),(y_1,y_2)\in g\cap A$ we have either $x_1 \neq y_1$ or $x_1 = y_1$ and therefore either $(x_1,x_2)\triangleleft(y_1,y_2)$ or $(y_1,y_2)\triangleleft(x_1,x_2)$.
+		$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $x.\text{real} \neq y.\text{real}$ or $x.\text{real} = y.\text{real}$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
 	 
 	\end{proof}
 \end{lemma}
 
 \begin{remark}
-	The relation $\triangleleft$ on $g\cap A$ basically orders the hitpoints of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outest hitting points which are minimum and maximum of $g\cap A$ respecting $\triangleleft$. To clarify, we define $min (g\cap A) := (x,y)$ if and only if $(x,y) \triangleleft (\tilde x,\tilde y)$ for all $(\tilde x, \tilde y)\in g\cap A$, analogously $max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when "entering" $A$ and where it hits last when "leaving" $A$. 
+	The relation $\triangleleft$ on $g\cap A$ basically orders the hitpoints of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outest hitting points which are minimum and maximum of $g\cap A$ respecting $\triangleleft$. To clarify, we define $min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A$, analogously $max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when "entering" $A$ and where it hits last when "leaving" $A$. 
 \end{remark}
 
-Remind, for a bounded subset $A\subset \R^2$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
+Remind, for a bounded subset $A\subset \C$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
 \begin{flalign*}
 	conv(A) := \bigcap_{A\subset K\in \K^2} K. 
 \end{flalign*}
-Note that $conv(A)\in \K^2$ for all bounded subsets $A\subset \R^2$. For a set $A\in \mathcal{P}_f$ we define 
+Note that $conv(A)\in \K^2$ for all bounded subsets $A\subset \C$. For a set $A\in \mathcal{P}_f$ we define 
 \begin{flalign*}
 	conv(A):=conv(\bigcup_{p\in A} sq(p))
 \end{flalign*}
@@ -427,11 +428,11 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$ he
 
 \newpage
 \section{Python Simulation}
-Part of the work in this paper is the attempt to build simulations for both incremental aggregates $\mathit{External\ DLA}$ and $\mathit{LHI}$ which were presented in the previous sections. For calculating the simlations we use $\mathit{Python}$ and for rendering pictures we use the package $\mathit{Pygame}$. Each vertex in $\Z^2$ is naturally mapped to its coordinate and is represented in this way in python code. In graphics each coordinate basically can be represented by squares in $\R^2$ as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel, so every picture about incremental aggregates you'll see in the following consists of pixels each representing exactly one vertex in $\Z^2$ in the most natural way. Our aim will be to simulate the aggregates as close as possible to their mathematical definitions. This is much easier for LHI, and less obvious for External DLA. We start of with External DLA in the following.
+Part of the work in this paper is the attempt to build simulations for both incremental aggregates $\mathit{External\ DLA}$ and $\mathit{LHI}$ which were presented in the previous sections. For calculating the simulations we use $\mathit{Python}$ and for rendering pictures we use the package $\mathit{Pygame}$. Each vertex in $\Z^2$ is naturally mapped to its coordinate and is represented in this way in python code. In graphics each coordinate basically can be represented by squares in $\C$ as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel, so every picture about incremental aggregates you'll see in the following consists of pixels each representing exactly one vertex in $\Z^2$ in the most natural way. Our aim will be to simulate the aggregates as close as possible to their mathematical definitions. This is much easier for LHI, and less obvious for External DLA. We start of with External DLA in the following.
 
 \subsection{External DLA Simulation}
 
-By identifying each vertex in $\Z^2$ with its square in $\R^2$ and a pixel when rendering, the representation of the space we are moving is exact. For any simulation of randomness we use the package $\mathit{random}$. Respecting the error behaviour of this package, random walks on $\Z^2$ can be simulated directly and therefore very exact. For External DLA we let a particle move randomly on the grid and wait for it to hit the actual cluster. The problem which will have to be solved is where to start the moving particle and how to handle a particle when it is moving away from the actual cluster, therefore creating a too long waiting time for it coming back to the cluster. In the definition of External DLA new particles start the random walk from infinity. Obviously this is not possible in simulation so this has to be solved differently. 
+By identifying each vertex in $\Z^2$ with its square in $\C$ and a pixel when rendering, the representation of the space we are moving is exact. For any simulation of randomness we use the package $\mathit{random}$. Respecting the error behaviour of this package, random walks on $\Z^2$ can be simulated directly and therefore very exact. For External DLA we let a particle move randomly on the grid and wait for it to hit the actual cluster. The problem which will have to be solved is where to start the moving particle and how to handle a particle when it is moving away from the actual cluster, therefore creating a too long waiting time for it coming back to the cluster. In the definition of External DLA new particles start the random walk from infinity. Obviously this is not possible in simulation so this has to be solved differently. 
 
 
 

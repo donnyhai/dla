@@ -30,7 +30,7 @@ def create_image(aggregate, data):
         elif data["color"]  == "no":
             surface.set_at((int(render_atom.real), int(render_atom.imag)), (255,255,255)) 
 
-    pygame.image.save(surface, (time.ctime() + ".png").replace(":","_"))
+    pygame.image.save(surface, (time.ctime() + "__" + str(data["iterations"]) + "__" + str(data["color_generation_size"]) + "__" + ".png").replace(":","_"))
 
     pygame.quit()
     sys.exit()

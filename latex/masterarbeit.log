@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  20 NOV 2020 20:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  21 NOV 2020 14:48
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -608,60 +608,60 @@ Underfull \hbox (badness 10000) in paragraph at lines 139--141
  []
 
 [4] [5] [6]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 214
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 215
 .
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (48.8309pt too wide) in paragraph at lines 222--223
+Overfull \hbox (48.8309pt too wide) in paragraph at lines 223--224
 \T1/lmr/bx/n/12 Definition 4.0.2. $[]$ $[]$\T1/lmr/m/n/12 ,
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
  []
 
 [8]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 264
+LaTeX Font Info:    Trying to load font information for U+euf on input line 265
 .
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\ueuf.
 fd"
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 356--357
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--368
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 397--404
+Underfull \hbox (badness 10000) in paragraph at lines 398--405
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 397--404
+Underfull \hbox (badness 10000) in paragraph at lines 398--405
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 397--404
+Underfull \hbox (badness 10000) in paragraph at lines 398--405
 
  []
 
 [12] [13] [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 478--479
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 480--482
+Underfull \hbox (badness 10000) in paragraph at lines 481--483
 
  []
 
@@ -700,7 +700,7 @@ ype1/public/lm/lmssbx10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/donnykong/AppData/Local/Programs/
 MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Pr
 ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (19 pages, 2952056 bytes).
+Output written on masterarbeit.pdf (19 pages, 2950666 bytes).
 PDF statistics:
  149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

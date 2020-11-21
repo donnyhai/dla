@@ -9,5 +9,5 @@ rm parameters.txt
 rm -r __pycache__
 
 cd ..
-cp library/*.png images/
+cp library/*.png images
 rm -r library/*.png

@@ -70,10 +70,15 @@ class Line:
             return True
         return False
     
+    
     def intersects_with_polygon(self, polygon):
         for segment in polygon.segments:
             if self.intersects_with_segment(segment):
                 return True
         return False
+
+    
+    
+    
     
     

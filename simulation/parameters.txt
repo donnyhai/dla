@@ -1,7 +1,7 @@
 { 
-"iterations": 700, 
+"iterations": 5000, 
 "color": "yes",
-"color_generation_size": 50,
+"color_generation_size": 200,
 "image_size_x": 500, 
 "image_size_y": 500
 }
