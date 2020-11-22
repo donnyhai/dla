@@ -7,15 +7,12 @@ Created on Wed Nov 18 19:04:51 2020
 We reference the set of complex numbers as CC
 """
 
+
 import geometry as geom
-
 import random
-from math import pi, sqrt
 
 
-
-
-class Line_Hitting_Aggregate_Simulation:
+class Line_Hitting_Aggregate:
     
     
     def __init__(self):
@@ -70,15 +67,15 @@ class Line_Hitting_Aggregate_Simulation:
         return is the parameters pair (alpha, p)
         """
      
-        alpha = pi * random.random()
+        alpha = 3.1416 * random.random()
         p = 20/19 * (2 * self.max_distance * random.random() - self.max_distance)
         
         return (alpha, p)
     
     
     def line_hits_cluster(self, line):
-        for particle in self.particles:
-            if line.intersects_with_polygon(self.get_position_square_polygon(particle)):
+        for k in range(len(self.particles)):
+            if line.intersects_with_polygon(self.get_position_square_polygon(self.particles[-k])):
                 return True
         return False
     
@@ -142,7 +139,7 @@ class Line_Hitting_Aggregate_Simulation:
     
     
     def get_distance(self, x, y):
-        return sqrt(pow(x.real - y.real, 2) + pow(x.imag - y.imag, 2))    
+        return abs(x - y)   
     
     
     def get_max(self, alpha, positions):
@@ -180,16 +177,16 @@ class Line_Hitting_Aggregate_Simulation:
         x_0, x_1 = x.real, x.imag
         y_0, y_1 = y.real, y.imag
         
-        if alpha == pi/2: # Case 1
+        if alpha == 3.1416/2: # Case 1
             return x_0 < y_0
         elif alpha == 0: # Case 2
             return x_1 < y_1
-        elif pi/2 < alpha < pi: # Case 3 
+        elif 3.1416/2 < alpha < 3.1416: # Case 3 
             if x_0 == y_0:
                 return x_1 < y_1
             else:
                 return x_0 < y_0
-        elif 0 < alpha < pi/2: # Case 4
+        elif 0 < alpha < 3.1416/2: # Case 4
             if x_0 == y_0:
                 return x_1 > y_1
             else:

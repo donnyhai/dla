@@ -1,7 +1,10 @@
 { 
-"iterations": 5000, 
+"aggregate": "lha",
+"iterations": 1000, 
 "color": "yes",
-"color_generation_size": 200,
-"image_size_x": 500, 
-"image_size_y": 500
+"color_generation_size": 50,
+"background_color": "black",
+"particle_color": "white",
+"image_size_x": 200, 
+"image_size_y": 200
 }
