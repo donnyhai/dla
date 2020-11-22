@@ -1,10 +1,10 @@
 { 
-"aggregate": "lha",
+"aggregate": "dla3",
 "iterations": 1000, 
-"color": "yes",
+"color": "no",
 "color_generation_size": 50,
-"background_color": "black",
-"particle_color": "white",
-"image_size_x": 200, 
-"image_size_y": 200
+"background_color": "white",
+"particle_color": "black",
+"image_size_x": 300, 
+"image_size_y": 300
 }

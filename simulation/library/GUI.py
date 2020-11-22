@@ -11,6 +11,9 @@ Here we provide the code for running the aggregate process and creating images.
 import pygame, sys, json, time
 import line_hitting_aggregate as lha
 import external_dla as dla
+import external_dla_2 as dla2
+import external_dla_3 as dla3
+import external_dla_4 as dla4
 
 
 colors = [(255,255,0), (255,128,0), (255,0,0), (255,0,128), (255,0,255), (128,0,255), (0,0,255), (0,128,255), (0,255,255), (0,255,128), (0,255,0), (128,255,0)]
@@ -63,9 +66,26 @@ if __name__ == "__main__":
         dla = dla.External_DLA()
         dla.run_process(data["iterations"])
         create_image(dla, data)
+        
+    elif data["aggregate"] == "dla2":
+        
+        dla = dla2.External_DLA()
+        dla.run_process(data["iterations"])
+        create_image(dla, data)
     
     
+    elif data["aggregate"] == "dla3":
+        
+        dla = dla3.External_DLA()
+        dla.run_process(data["iterations"])
+        create_image(dla, data)
     
+
+    elif data["aggregate"] == "dla4":
+        
+        dla = dla4.External_DLA()
+        dla.run_process(data["iterations"])
+        create_image(dla, data)
     
     
     
