@@ -1,0 +1,39 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Incremental Aggregates</title>
+	<link rel="stylesheet" href="themes/todolist.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="fixed">
+			<a href="#" id="new_task-button" data-role="button" data-icon="plus">New Task</a>
+			<h1>Incremental Aggregates</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+				<ul id="task_list" data-role="listview" data-split-icon="check">
+					<li>
+						<a class="task_title" href="#">
+							<h2>Task 1</h2>
+						</a>
+
+						<a class="comple_task" href="#">
+							Done
+						</a>
+					</il>
+				</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+				<a href="#" id="delete_all_tasks-button" data-role="button" data-icon="refresh">Reset</a>
+		</div>
+
+
+	</div>
+</body>
+</html>

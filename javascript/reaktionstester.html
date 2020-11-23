@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+
+<head>
+ <title>Javascript Lernen</title>
+ <meta charset="utf-8" />
+ <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style type="text/css">
+body{
+font-family:Georgia, 'Times New Roman', serif;
+}
+#box{
+width:200px;
+height:200px;
+background-color:red;
+display:none;
+position:relative;
+}
+.fett{
+font-weight:bold;
+}
+ </style>
+ 
+</head>
+
+
+<body>
+
+<h1>Teste deine Reaktion!</h1>
+<p>Klicke auf die Boxen und Kreise und das so schnell du kannst.</p>
+<p class="fett">Deine Zeit: <span id="zeit"></span></p>
+
+<div id="box"></div>
+
+<script type="text/javascript">
+
+var erstellZeit; var clickZeit; var reaktionsZeit;
+function macheBox(){
+var zeit=Math.random();
+<!-- zeit=zeit*1000; -->
+setTimeout(function(){
+if(Math.random()>0.5){
+document.getElementById("box").style.borderRadius="100px";
+}else{
+document.getElementById("box").style.borderRadius="0px";
+}
+var top=Math.random();
+top=top*300;
+var left=Math.random();
+left=left*500;
+document.getElementById("box").style.top=top+"px";
+document.getElementById("box").style.left=left+"px";
+document.getElementById("box").style.backgroundColor=getRandomColor();
+document.getElementById("box").style.display="block";
+erstellZeit=Date.now();
+}, zeit);
+}
+function getRandomColor() {
+var letters = '0123456789ABCDEF'.split('');
+var color = '#';
+for (var i = 0; i < 6; i++ ) {
+color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+document.getElementById("box").onclick=function(){
+clickZeit=Date.now();
+reaktionsZeit=(clickZeit-erstellZeit)/1000;
+document.getElementById("zeit").innerHTML=reaktionsZeit;
+this.style.display="none";
+macheBox();
+}
+macheBox();
+
+</script>
+
+</body>
+
+</html>
