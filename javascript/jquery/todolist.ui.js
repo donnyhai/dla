@@ -5,12 +5,17 @@ if(typeof window.todoList === "undefined") {
 
 
 window.todoList.ui = (function() {
+  console.log("todolistui aufgerufen");
 
   var initHomePage = function() {
+
+    console.log("inithomepage aufgerufen");
+
     var bindButtonEvents = function() {
       $("new_task-button").on("Click", function() {
+        console.log("newtaskbutton aufgerufen");
         showNewTaskPage();
-      })
+      });
 
       $("task_title").on("Click", function() {
         showEditTaskPage();
@@ -32,20 +37,42 @@ window.todoList.ui = (function() {
         deleteAllTasks();
       });
 
+    };
+    bindButtonEvents();
+  };
+
+  initHomePage();
+
+  var showHomePage = function() {
+    $.mobile.changePage("#home-page", {
+      transition: "slideup",
+      reverse: true,
+      changeHash: true
+    });
+  };
+
+  var initNewTaskPage = function() {
+    var bindButtonEvents = function() {
+      $("cancel_new_task_save-button").on("Click", function() {
+        showHomePage();
+      });
+
+      $("save_new_task-button").on("Click", function() {
+        addNewTask($("add_task_name").val(), $("add_task_description").val());
+      });
+
     }
     bindButtonEvents();
   };
 
-  var showHomePage = function() {
-
-  };
-
-  var initNewTaskPage = function() {
-
-  };
-
   var showNewTaskPage = function() {
+    alert("showNewTaskPage")
 
+    $.mobile.changePage("#new_task-page", {
+      transition: "slideup",
+      reverse: false,
+      changeHash: true
+    });
   };
 
   var initEditTaskPage = function() {
@@ -56,6 +83,9 @@ window.todoList.ui = (function() {
 
   };
 
+  var addNewTask = function(name, description) {
+
+  }
 
 
 
@@ -67,7 +97,7 @@ window.todoList.ui = (function() {
 
   };
 
-  var deleteTask = function() {
+  var deleteTask = function(id) {
 
   };
 
