@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.4)  16 NOV 2020 18:06
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  21 NOV 2020 14:48
->>>>>>> master
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.4)  24 NOV 2020 12:00
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -726,11 +722,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 481--483
 Here is how much of TeX's memory you used:
  7502 strings out of 479799
  136887 string characters out of 2868298
- 551502 words of memory out of 3000000
+ 551495 words of memory out of 3000000
  24305 multiletter control sequences out of 15000+200000
  627243 words of font info for 92 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
-<<<<<<< HEAD
  106i,16n,111p,10609b,356s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts
 /enc/dvips/lm/lm-ec.enc} <C:\Users\donnyhai\AppData\Local\MiKTeX\fonts/pk/ljfou
@@ -757,37 +752,7 @@ b><C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx
 msy10.pfb><C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy8.pfb><C:/Users/donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (19 pages, 2952027 bytes).
-=======
- 48i,16n,56p,10109b,343s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/
-fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\donnykong\AppData\Local\MiKTeX\2.9\font
-s/pk/ljfour/public/bbm/dpi600\bbm12.pk>{C:/Users/donnykong/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/donnykong/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/donnykong/AppData/
-Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/donnykong/
-AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Users/do
-nnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/euler/euf
-m10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
-c/lm/lmbx12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/lm/lmbxi10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/lm/lmex10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/lm/lmmi12.pfb><C:/Users/donnykong/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/lm/lmmi6.pfb><C:/Users/donnykong/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Users/donnykong/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/donnyko
-ng/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/
-donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/
-Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pf
-b><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/l
-mri12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmro12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/lm/lmssbx10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/donnykong/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (19 pages, 2950666 bytes).
->>>>>>> master
+Output written on masterarbeit.pdf (19 pages, 2950627 bytes).
 PDF statistics:
  149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -22,11 +22,43 @@
 							<h2>Task 1</h2>
 						</a>
 
-						<a class="comple_task" href="#">
+						<a class="complete_task" href="#">
 							Done
 						</a>
 					</il>
 				</ul>
+		</div>
+
+		<div id="new_task-page" data-role="page" data-theme="b">
+
+			<div data-role="header" data-position="fixed">
+				<a href="#" id="cancel_new_task_save-button" data-role="button" data-icon="back">Cancel</a>
+				<h1>Add Task</h1>
+				<a href="#" id="save_new_task-button" data-role="button" data-icon="plus">Cancel</a>
+			</div>
+
+			<div data-role="content" data-theme="a">
+					<form id="add_task-form">
+						<label for="add_task_name">Title:</label>
+						<input type="text" name="add_task_name" id="add_task_name" value="" data-clear-btn="true" />
+
+						<label for="add_task_description">Description:</label>
+						<input type="text" name="add_task_description" id="add_task_description" value="" data-clear-btn="true" />
+					</form>
+			</div>
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+		<div id="edit_task-page" data-role="page" data-theme="b">
 		</div>
 
 		<div data-role="footer" data-position="fixed">
