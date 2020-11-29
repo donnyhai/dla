@@ -1,7 +1,7 @@
 { 
-"aggregate": "dla3",
+"aggregate": "lha",
 "iterations": 1000, 
-"color": "no",
+"color": "yes",
 "color_generation_size": 50,
 "background_color": "white",
 "particle_color": "black",

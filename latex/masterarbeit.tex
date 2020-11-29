@@ -139,13 +139,13 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 \noindent $\boldsymbol{\mathit{Probability\ Space}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space which we will base on in this paper. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-Algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" (almost sure).
 \\
 
-\noindent $\boldsymbol{\mathit{Random\ Walk}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ $a.s.$ and $ S_n\in N(S_{n-1})$ $a.s.$ for all $n\geq 1$. It further shall hold that 
+\noindent $\boldsymbol{\mathit{Random\ Walk}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$, $a.s.$ and 
 
 \begin{align*}
-	\mathbb{P}(S_n = y) = \frac{1}{|N(S_{n-1})|} = \frac{1}{2d}\quad \text{ for all }  y\in N(S_{n-1})\quad a.s.
+	\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
 \end{align*}
 
-\noindent Note that $|N(y)| = 2d$ for all $y\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. Further define 
+\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. We can therefore follow easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. Further define 
 
 \begin{align*}
 	\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x)
@@ -190,7 +190,7 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
 \begin{definition}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{(0,0)\}$ in the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{0\}$ in the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_n = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
@@ -258,7 +258,7 @@ After constructions which involve typical results in integral geometry like intr
 
 \subsection{Construction in the real plane}
 
-For our special case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ be the unit vector $1$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+For our special case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ be the unit vector $1$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
 \begin{flalign*}
 	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
 \end{flalign*}
@@ -288,7 +288,36 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\begin{flalign*}
 		\mu(A_K) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
 	\end{flalign*}
-	hence $\mu$ is locally finite. CONTINUE 
+	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
+	\begin{flalign*}
+		T_b:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto (\alpha,p+\langle e_\alpha, b\rangle) \quad \text{ and } \\
+		D_{\beta}:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto ((\alpha + \beta)_{\pi}, \delta((\alpha + \beta)_{2\pi})p), 
+	\end{flalign*}
+	where 
+	\begin{flalign*}
+		\delta: [0,2\pi) \to \{-1,1\}, \quad \gamma \to \begin{cases}
+			1,\ \gamma\in [0,\pi) \\
+			-1,\ \gamma\in [\pi,2\pi)
+		\end{cases}.
+	\end{flalign*}
+	It is easy to see that both functions all well-defined. $T_b$ defines a translation by $b$ and $D_\beta$ a rotation by $\beta$. Lets proof that first. Let $(\alpha,p)\in \Phi$, then 
+	\begin{flalign*}
+		x\in \chi(\alpha,p)+b &\Leftrightarrow x-b\in \chi(\alpha,p) \\ 
+		&\Leftrightarrow \langle e_\alpha, x-b\rangle = p \\ 
+		&\Leftrightarrow \langle e_\alpha, x\rangle = p + \langle e_\alpha, b\rangle \\
+		&\Leftrightarrow x\in \chi(\alpha, p + \langle e_\alpha, b\rangle) \\
+		&\Leftrightarrow x\in \chi(T_b(\alpha, p))
+	\end{flalign*}
+	and therefore $\chi(\alpha,p) + b = \chi(T_b(\alpha, p))$. Hence $T_b(\alpha,p)$ are indeed the parameters for the by $b$ translated line. For the rotation lets devide it into two cases. First let $(\alpha+\beta)_{2\pi} \in [0,\pi)$, then $\delta((\alpha+\beta)_{2\pi}) = 1$ and $(\alpha+\beta)_\pi = \alpha+\beta$ and therefore 
+	\begin{flalign*}
+		D_\beta(\alpha,p) = (\alpha+\beta,p).
+	\end{flalign*} 
+	In the second case with $(\alpha+\beta)_{2\pi} \in [\pi,2\pi)$ we have $\delta((\alpha+\beta)_{2\pi}) = -1$ and $(\alpha+\beta)_\pi = \alpha+\beta - \pi$ and therefore
+	\begin{flalign*}
+		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
+	\end{flalign*}
+	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ indeed are the parameters of the by $\beta$ rotated line. We will further show now, that $\mu$ is invariant in respect to both these functions. Let $b\in \C$. Then 
+	CONTINUE
 \end{proof}
 
 By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
