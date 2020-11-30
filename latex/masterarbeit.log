@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  29 NOV 2020 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  30 NOV 2020 23:44
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -584,103 +584,108 @@ File: display2.jpg Graphic file (type jpg)
 Package pdftex.def Info: display2.jpg  used on input line 98.
 (pdftex.def)             Requested size: 211.18839pt x 143.95886pt.
  [2 <./display.jpg> <./display2.jpg>]
-Overfull \hbox (31.61014pt too wide) detected at line 121
+Overfull \hbox (95.71771pt too wide) detected at line 122
 []
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 128.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 128.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 129.
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--138
+Underfull \hbox (badness 10000) in paragraph at lines 136--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 140--142
 
  []
 
 [4] [5] [6]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 215
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 216
 .
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (48.8309pt too wide) in paragraph at lines 223--224
+Overfull \hbox (48.8309pt too wide) in paragraph at lines 224--225
 \T1/lmr/bx/n/12 Definition 4.0.2. $[]$ $[]$\T1/lmr/m/n/12 ,
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 
  []
 
 [8]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 265
+LaTeX Font Info:    Trying to load font information for U+euf on input line 266
 .
 
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\ueuf.
 fd"
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 386--387
+) [9]
+Underfull \hbox (badness 10000) in paragraph at lines 322--325
+
+ []
+
+[10] [11] [12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--398
+Underfull \hbox (badness 10000) in paragraph at lines 431--434
 
  []
 
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 427--434
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 427--434
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 463--470
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--434
-
- []
-
-[13] [14] [15] [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
+Underfull \hbox (badness 10000) in paragraph at lines 463--470
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--512
+Underfull \hbox (badness 10000) in paragraph at lines 463--470
 
  []
 
-[18] (masterarbeit.aux) ) 
+[15] [16] [17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 544--545
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 546--548
+
+ []
+
+[20] (masterarbeit.aux) ) 
 Here is how much of TeX's memory you used:
- 7524 strings out of 481565
- 137291 string characters out of 2912287
- 491018 words of memory out of 3000000
- 22579 multiletter control sequences out of 15000+200000
+ 7526 strings out of 481565
+ 137308 string characters out of 2912287
+ 492039 words of memory out of 3000000
+ 22581 multiletter control sequences out of 15000+200000
  624493 words of font info for 87 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,16n,56p,10109b,343s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/
-fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\donnykong\AppData\Local\MiKTeX\2.9\font
-s/pk/ljfour/public/bbm/dpi600\bbm12.pk>{C:/Users/donnykong/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/donnykong/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/donnykong/AppData/
-Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/donnykong/
-AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Users/do
+fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/donnykong/AppData/Local/Programs/MiK
+TeX 2.9/fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\donnykong\AppData\Local\MiKTeX\
+2.9\fonts/pk/ljfour/public/bbm/dpi600\bbm12.pk>{C:/Users/donnykong/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/donnykong/AppData/
+Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/donnykong/
+AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}<C:/Users/do
 nnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/euler/euf
 m10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/lm/lmbx12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
@@ -698,11 +703,12 @@ mri12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmro12.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2.9/fonts/t
 ype1/public/lm/lmssbx10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/donnykong/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (20 pages, 2955646 bytes).
+MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Users/donnykong/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/donnykong/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on masterarbeit.pdf (22 pages, 2967333 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
+ 162 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -109,15 +109,16 @@
 \subsection{Namings}
 Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
 \begin{flalign*}
-	&\N = \{1,2,3,\dots\} &&\text{set of natural numbers (without 0)}\\
+	&\N = \{1,2,3,\dots\} &&\text{Set of natural numbers (without 0)}\\
 	&\N_0 = \N\cup\{0\}\\
-	&\K^d &&\text{set of convex and compact sets in }\R^d\\
+	&\K^d &&\text{Set of convex and compact sets in }\R^d\\
 	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\} &&\text{$d$-dimensional closed ball of radius $r$ around $x$}\\
 	&S_{d-1}(r,x) = \partial B_d(r,x) &&\text{$(d-1)$-dimensional surface of the $d$-dimensional ball}\\
-	&A(d,q) &&\text{set of q-dimensional affine subspaces of }\R^d \\
+	&A(d,q) &&\text{Set of q-dimensional affine subspaces of }\R^d \\
 	&\mathcal{A}(d,q) &&\sigma\text{-algebra of } A(d,q), \text{ as constructed later in the paper} \\
-	&\G := A(2,1) &&\text{set of lines in the real plane}\\
-	&G_d &&\text{set of euclidean motions in $\R^d$ (rotations and translations)}
+	&\G := A(2,1) &&\text{Set of lines in the real plane}\\
+	&G_d &&\text{Set of euclidean motions in $\R^d$ (rotations and translations)} \\
+	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\} &&\text{Identify }SO_2 = \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\}
 \end{flalign*}
 
 \newpage
@@ -288,11 +289,14 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\begin{flalign*}
 		\mu(A_K) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
 	\end{flalign*}
-	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
-	\begin{flalign*}
-		T_b:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto (\alpha,p+\langle e_\alpha, b\rangle) \quad \text{ and } \\
-		D_{\beta}:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto ((\alpha + \beta)_{\pi}, \delta((\alpha + \beta)_{2\pi})p), 
-	\end{flalign*}
+	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. First we clarify what exactly translation and rotation mean for lines. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
+	\begin{flalign} \label{motion}
+		T_b:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto (\alpha,p+\langle e_\alpha, b\rangle)
+	\end{flalign}
+	and
+	\begin{flalign} \label{motion2}
+	D_{\beta}:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto ((\alpha + \beta)_{\pi}, \delta((\alpha + \beta)_{2\pi})p), 
+	\end{flalign}
 	where 
 	\begin{flalign*}
 		\delta: [0,2\pi) \to \{-1,1\}, \quad \gamma \to \begin{cases}
@@ -316,8 +320,40 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\begin{flalign*}
 		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
 	\end{flalign*}
-	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ indeed are the parameters of the by $\beta$ rotated line. We will further show now, that $\mu$ is invariant in respect to both these functions. Let $b\in \C$. Then 
-	CONTINUE
+	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the by $\beta$ rotated line. \\
+	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise aswell. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
+	\begin{flalign*}
+		\mu(A+b) 
+		&= \int_\GG \1_{A+b}(g) \mu(dg) \\
+		&= \int_\GG \1_A(g-b) \mu(dg) \\
+		&= \int_\GG \1_A(g-b) {\lambda_2}_{|\Phi}(\chi^{-1}(dg)) \\
+		&= \int_{\chi^{-1}(\GG)} \1_{\chi^{-1}(A)}(\chi^{-1}(g-b)) {\lambda_2}_{|\Phi}(d(\chi^{-1}(g))) \\
+		&\overset{(\ref{motion})}{=} \int_\Phi \1_{\chi^{-1}(A)}(\alpha,p-\langle e_\alpha, b\rangle) {\lambda_2}_{|\Phi}(d(\alpha,p)) \\ 
+		&= \int_0^\pi \int_\R \1_{A_\alpha}(p-\langle e_\alpha, b\rangle) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&= \int_0^\pi \int_\R \1_{A_\alpha +\langle e_\alpha, b\rangle}(p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&= \int_0^\pi \lambda_1(A_\alpha +\langle e_\alpha, b\rangle) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&\overset{(+)}= \int_0^\pi \lambda_1(A_\alpha) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&= \dots \\
+		&= \mu(A),
+	\end{flalign*}
+	and for a rotation we get
+	\begin{flalign*}
+		\mu(\nu_\beta A) &= \int_\G \1_{\nu_\beta A}(g) \mu(dg) \\
+		&= \int_\G \1_A(\nu_{-\beta} g) {\lambda_2}_{|\Phi}(\chi^{-1}(dg))\\
+		&= \int_{\chi^{-1}(\G)} \1_{\chi^{-1}(A)}(\chi^{-1}(\nu_{-\beta} g)) {\lambda_2}_{|\Phi}(d(\chi^{-1}(g)))\\
+		&\overset{(\ref{motion2})}= \int_\Phi \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_2}_{|\Phi}(\alpha,p) \\
+		&= \int_\Phi \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_2}_{|\Phi}(\alpha,p) \\
+		&= \int_{0}^{2\pi} \int_\R \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
+		&= \int_{0}^{2\pi} \int_\R \1_{A_{(\alpha - \beta)_{\pi}}}(\delta((\alpha - \beta)_{2\pi})p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
+		&\overset{(+)}= \int_{0}^{2\pi} \int_\R \1_{A_{(\alpha - \beta)_{\pi}}}(p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
+		&= \int_\R \int_{0}^{2\pi} \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, p) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&= \int_\R \int_{0}^{2\pi} \1_{A_p}((\alpha - \beta)_{\pi}) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&\overset{(+)}= \int_\R \int_{0}^{2\pi} \1_{A_p}(\alpha) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&= \int_\R \int_{0}^{2\pi} \1_{\chi^{-1}(A)}(\alpha,p) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&= \dots \\
+		&= \mu(A).
+	\end{flalign*}
+	where in $(+)$ we used the translation and rotation invariance of the Lebesgue measure. This completes the proof.
 \end{proof}
 
 By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
