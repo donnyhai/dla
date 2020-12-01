@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  30 NOV 2020 23:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.13)  1 DEC 2020 16:47
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -630,43 +630,53 @@ LaTeX Font Info:    Trying to load font information for U+euf on input line 266
 ("C:\Users\donnykong\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\ueuf.
 fd"
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [9]
-Underfull \hbox (badness 10000) in paragraph at lines 322--325
+)
+Underfull \hbox (badness 10000) in paragraph at lines 272--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--275
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
 
  []
 
 [10] [11] [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 422--423
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--434
+Underfull \hbox (badness 10000) in paragraph at lines 432--435
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 463--470
+Underfull \hbox (badness 10000) in paragraph at lines 464--471
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 463--470
+Underfull \hbox (badness 10000) in paragraph at lines 464--471
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 463--470
+Underfull \hbox (badness 10000) in paragraph at lines 464--471
 
  []
 
 [15] [16] [17] [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 544--545
+Underfull \hbox (badness 10000) in paragraph at lines 545--546
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--548
+Underfull \hbox (badness 10000) in paragraph at lines 547--549
 
  []
 
@@ -674,7 +684,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 546--548
 Here is how much of TeX's memory you used:
  7526 strings out of 481565
  137308 string characters out of 2912287
- 492039 words of memory out of 3000000
+ 492040 words of memory out of 3000000
  22581 multiletter control sequences out of 15000+200000
  624493 words of font info for 87 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -706,7 +716,7 @@ ype1/public/lm/lmssbx10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX 2
 MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Users/donnykong/AppData/Local/Pr
 ograms/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/donnykong/AppData/L
 ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (22 pages, 2967333 bytes).
+Output written on masterarbeit.pdf (22 pages, 2968296 bytes).
 PDF statistics:
  162 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

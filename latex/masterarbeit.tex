@@ -266,11 +266,12 @@ For our special case we choose $d=2$ and $q=1$, thus lines in the real plane, de
 We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection. The next lemma shows that this way of defining a $\sigma$-algebra on $\G$ makes sense as it is indeed equivalent to the general context as defined above. 
 
 \begin{lemma}
-	We have $\GG=\mathcal{A}(2,1)$. 
+	We have $\mathcal{A}(2,1) = \GG$. 
 \end{lemma}
 \begin{proof}
-	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[a,b]\times[c,d]\subset \R^2\ |\ 0\leq a<b<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
-	\indent $\subset$: CONTINUE
+	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[\alpha,\beta] \times [c,d]\subset \C\ |\ 0\leq \alpha<\beta<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
+	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}(A_K)$ is a closed set in $\Phi$. If that is the case we can write $\chi^{-1}(A_K) = \cup_{i=1}^\infty R_i$ for some rectangles $R_i\in R$, hence $A_K =  \cup_{i=1}^\infty \chi(R_i)$ and therefore $A_K\in\sigma(\chi(R)) = \GG$. Therefore we have $\tilde A\subset \GG$ and finally $\sigma(\tilde A) = \mathcal{A}(2,1) \subset \GG$. To show that $\chi^{-1}(A_K)$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}(A_K)$. Then $\chi(\alpha_0,p_0) \notin A_K$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: \tilde R$. Hence we have $\tilde R\subset \Phi \setminus \chi^{-1}(A_K)$, so $\Phi \setminus \chi^{-1}(A_K)$ is open. Hence $\chi^{-1}(A_K)$ is closed. \\
+	\\ \indent $\supset$: CONTINUE
 \end{proof}
 
 \begin{definition}
