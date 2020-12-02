@@ -4,7 +4,10 @@
 \usepackage[T1]{fontenc}
 \usepackage[british,UKenglish,USenglish,american]{babel}
 
+\usepackage{bbm}
+\usepackage{hyperref}
 \usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 \usepackage{latexsym}
 \usepackage{amsmath,amssymb,amsthm}
 \allowdisplaybreaks
@@ -14,7 +17,7 @@
 \usepackage{textcomp}
 \usepackage{enumitem}
 \usepackage{lmodern}
-\usepackage{bbm}
+
 
 % Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
 \setlength{\topmargin}{-15mm}	   
@@ -106,19 +109,19 @@
 
 \section{Preliminaries} \label{prelim}
 
-\subsection{Namings}
-Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
+\subsection{Symbols}
+Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
 \begin{flalign*}
-	&\N = \{1,2,3,\dots\} &&\text{Set of natural numbers (without 0)}\\
+	&\N = \{1,2,3,\dots\},\quad \text{the set of natural numbers (without 0)}\\
 	&\N_0 = \N\cup\{0\}\\
-	&\K^d &&\text{Set of convex and compact sets in }\R^d\\
-	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\} &&\text{$d$-dimensional closed ball of radius $r$ around $x$}\\
-	&S_{d-1}(r,x) = \partial B_d(r,x) &&\text{$(d-1)$-dimensional surface of the $d$-dimensional ball}\\
-	&A(d,q) &&\text{Set of q-dimensional affine subspaces of }\R^d \\
-	&\mathcal{A}(d,q) &&\sigma\text{-algebra of } A(d,q), \text{ as constructed later in the paper} \\
-	&\G := A(2,1) &&\text{Set of lines in the real plane}\\
-	&G_d &&\text{Set of euclidean motions in $\R^d$ (rotations and translations)} \\
-	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\} &&\text{Identify }SO_2 = \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\}
+	&\K^d,\quad \text{the set of convex and compact sets in }\R^d\\
+	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
+	&S_{d-1}(r,x) = \partial B_d(r,x),\quad  \text{the $(d-1)$-dimensional surface of the $d$-dimensional ball}\\
+	&A(d,q),\quad \text{the set of q-dimensional affine subspaces of }\R^d \\
+	&\mathcal{A}(d,q),\quad  \text{the $\sigma$-algebra of } A(d,q), \text{ as constructed later in the paper} \\
+	&\G := A(2,1),\quad  \text{the set of lines in the real plane}\\
+	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\},\quad \text{identify }SO_2 = \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
+	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d,b\in \R^d\},\quad  \text{the set of euclidean motions} \\
 \end{flalign*}
 
 \newpage
@@ -126,7 +129,7 @@ Here we list all namings which will be used in this paper. Let $d\in \N$ and $q\
 
 We prepare this script with the following preliminaries. Let $d\in \N$. \\
 
-\noindent $\boldsymbol{\mathit{Graphs}}.\quad$ We will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y.\text{real},\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $(x,y)\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
+\noindent $\boldsymbol{\mathit{Graphs}}.\quad$ We will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $\{x,y\}\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
 \begin{align*}
 	N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}.
 \end{align*}
@@ -137,7 +140,7 @@ For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of 
 Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
 \\
 
-\noindent $\boldsymbol{\mathit{Probability\ Space}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space which we will base on in this paper. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-Algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" (almost sure).
+\noindent $\boldsymbol{\mathit{Probability\ Space}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" (almost sure).
 \\
 
 \noindent $\boldsymbol{\mathit{Random\ Walk}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$, $a.s.$ and 
@@ -152,7 +155,7 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 	\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x)
 \end{align*}
 
-\noindent for any subset $A\subset G$. We define the $hitting\ times$ of A 
+\noindent for any subset $A\subset \Z^d$. We define the $hitting\ times$ of A by
 
 \begin{align*}
 	T_A := \min \{n\geq 0\ |\ S_n\in A\}\text{ and } T^+_A := \min \{n\geq 1\ |\ S_n\in A\}, 
@@ -180,7 +183,7 @@ $G$ is well-defined and finite since $\Z^2$ is transient. Similarily for a subse
 
 \newpage
 \section{Incremental Aggregate}
-In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $(0,0)$ and incrementally add a point on the outer boundary of the current cluster according to some distribution. What we get is a randomly, point-by-point growing connected cluster which here we will call $\mathit{Incremental\ Aggregate}$. Define 
+In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $\{0\}$ and incrementally add a point on the outer boundary of the current cluster according to some distribution. What we get is a randomly, point by point growing connected cluster which we will call $\mathit{Incremental\ Aggregate}$. Define 
 \begin{align}
 	\mathcal{P}_f := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
 \end{align}
@@ -191,14 +194,14 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
 \begin{definition}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{0\}$ in the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{0\}$ at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_n = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
 	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_n\}$.
 \end{definition} 
 
-For all incremental aggregates in this paper we will have $d=2$, therefore move on the grid $\Z^2$. We will identify $\R^2$ with $\C$. 
+For all incremental aggregates in this paper we will have $d=2$. From now on we will identify $\R^2$ with $\C$. 
 
 
 
@@ -208,7 +211,7 @@ For all incremental aggregates in this paper we will have $d=2$, therefore move 
 \newpage
 \section{External DLA}
 
-External DLA is a model of Incremental Aggregate as defined above using a very natural distribution, called the $\mathit{harmonic\ measure}$. 
+External DLA is a model of an Incremental Aggregate as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
 
 \begin{definition} $\mathit{(Harmonic\ Measure)}$ Let $A\in\mathcal{P}_f$. Remembering the definitions in \eqref{prelim}, especially the heat kernel $p_n(x,y)=\mathbb{P}_x(S_n=y)$ of a random walk, for $x\in \Z^2$ the $\mathit{harmonic\ measure}$ (from $x$) of $A$ is
 	\begin{align*}
@@ -218,7 +221,7 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 	\begin{flalign*}
 		h_A(y) := \lim_{|x|\to\infty} h_A(x,y),\quad y\in \Z^2. 
 	\end{flalign*}
-	This is well-define because ... CONTINUE
+	This is well-defined because ... CONTINUE
 \end{definition}
 
 \begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$, is a incremental aggregate with the harmonic measure $h$ as distribution. 
@@ -229,9 +232,9 @@ External DLA is a model of Incremental Aggregate as defined above using a very n
 \newpage
 \section{Integral Geometry}
 
-In the next section we want to define an approximation for External DLA. This approximation will be a incremental aggregate for which definition of its distribution we need some concepts and results from Integral Geometry which we will discuss and develop in this section. The process we want to define bases on choosing a random line out of all lines which cut the current cluster of the aggregate. This random choosing is not obvious since the cluster most of times will be strongly not symmetric and it is even less obvious how to actually get a realisation of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the real plane and a reasonable way of choosing random parameters. \\
+In the next section we want to define an approximation for External DLA. This approximation will be an incremental aggregate for which distribution definition we need some concepts and results from Integral Geometry which we will discuss and develop in this section. In the process we want to define we will want to choose a random line out of all lines which intersect with the current cluster of the aggregate. This random choosing is not obvious since most of the time the cluster will be strongly non symmetric and it is even less obvious how to actually get a realisation of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the plane and a reasonable way of choosing parameters randomly. \\
 
-We will introduce a possible solution for this problem first through the abstract and general way of integral geometry and later through a simple parametrisation for the case of lines in the real plane which goes hand in hand with the general result.
+We will introduce a possible solution for this problem first through the abstract and general concepts of integral geometry and later through a simple parametrisation for the case of lines in the plane which goes hand in hand with the general result.
  
 \subsection{General results}
 
@@ -244,8 +247,6 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 	\end{flalign*} 
 \end{definition}
 
-After constructions which involve typical results in integral geometry like intrinsic volumes, Steiner Formula and the Crofton Formula we get the follwing theorem. Let $G_d = \{\varphi:\R^d \to\R^d,\ x\mapsto Ax+b\ |\ b\in R^d, A\in \R^{d\times d} \text{ with } A^TA=I\}$ be the set of euclidean motions in $\R^d$. 
-
 \begin{theorem} \label{uniqmeas}
 	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
 	\begin{flalign}
@@ -254,15 +255,24 @@ After constructions which involve typical results in integral geometry like intr
 	where $\kappa_n := \lambda_n(B_n(1,0))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
 \end{theorem}
 \begin{proof}
-	\cite{stoch1} Theorem 4.26
+	\cite{stoch1} Theorem 4.26 \\ \\ MAKE PROOF CLEARER
 \end{proof}
 
-\subsection{Construction in the real plane}
+\subsection{Construction in the plane}
 
-For our special case we choose $d=2$ and $q=1$, thus lines in the real plane, denoted by the set $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as following. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ be the unit vector $1$ turned by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ be the unit vector $1$ rotated by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation (see in $\autoref{lineparam}$). With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
 \begin{flalign*}
 	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
 \end{flalign*}
+\\
+\begin{figure}
+	\centering
+	\includegraphics[height=10cm]{line-param.png}
+	\caption{Line parameters $\alpha$ and $p$} \label{lineparam}
+\end{figure}
+\\
+
+
 We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection. The next lemma shows that this way of defining a $\sigma$-algebra on $\G$ makes sense as it is indeed equivalent to the general context as defined above. 
 
 \begin{lemma}
