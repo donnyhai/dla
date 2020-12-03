@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.4)  2 DEC 2020 23:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.4)  3 DEC 2020 20:11
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -828,47 +828,47 @@ been already used, duplicate ignored
                    \relax 
 l.107 \newpage
                [2 <./display.jpg> <./display2.jpg>]
-Overfull \hbox (25.34587pt too wide) detected at line 126
+Overfull \hbox (25.34587pt too wide) detected at line 127
 []
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 133.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 134.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 133.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 134.
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--143
+Underfull \hbox (badness 10000) in paragraph at lines 141--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 
  []
 
 [4] [5] [6]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 220
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 221
 .
 
 (C:\Users\donnyhai\AppData\Local\Programs\MiKTeX\tex/latex/bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (48.8309pt too wide) in paragraph at lines 228--229
+Overfull \hbox (48.8309pt too wide) in paragraph at lines 229--230
 []\T1/lmr/bx/n/12 Definition 4.0.2. $[]$ $[]$\T1/lmr/m/n/12 ,
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
@@ -876,24 +876,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 259--260
 <line-param.png, id=109, 428.76794pt x 326.36417pt>
 File: line-param.png Graphic file (type png)
 <use line-param.png>
-Package pdftex.def Info: line-param.png  used on input line 271.
+Package pdftex.def Info: line-param.png  used on input line 280.
 (pdftex.def)             Requested size: 373.82327pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--275
+Underfull \hbox (badness 10000) in paragraph at lines 276--284
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+euf on input line 277
+LaTeX Font Info:    Trying to load font information for U+euf on input line 286
 .
 (C:\Users\donnyhai\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-Underfull \hbox (badness 10000) in paragraph at lines 283--286
+Underfull \hbox (badness 10000) in paragraph at lines 292--295
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--286
+Underfull \hbox (badness 10000) in paragraph at lines 292--295
 
  []
 
@@ -901,50 +901,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--286
 er (name{equation.5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.307 	\end{flalign}
+l.316 	\end{flalign}
                      [10]
-Underfull \hbox (badness 10000) in paragraph at lines 334--337
+Underfull \hbox (badness 10000) in paragraph at lines 343--346
 
  []
 
 [11] [12] [13]
-<line-hit-squares.png, id=154, 535.33333pt x 370.27222pt>
+<line-hit-squares.png, id=155, 535.33333pt x 370.27222pt>
 File: line-hit-squares.png Graphic file (type png)
 <use line-hit-squares.png>
-Package pdftex.def Info: line-hit-squares.png  used on input line 436.
+Package pdftex.def Info: line-hit-squares.png  used on input line 445.
 (pdftex.def)             Requested size: 411.3829pt x 284.52756pt.
-<line-hit-A.png, id=155, 643.35312pt x 466.43102pt>
+<line-hit-A.png, id=156, 643.35312pt x 466.43102pt>
 File: line-hit-A.png Graphic file (type png)
 <use line-hit-A.png>
-Package pdftex.def Info: line-hit-A.png  used on input line 438.
+Package pdftex.def Info: line-hit-A.png  used on input line 447.
 (pdftex.def)             Requested size: 392.46446pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--452
+Underfull \hbox (badness 10000) in paragraph at lines 458--461
 
  []
 
 [14] [15 <./line-hit-squares.png> <./line-hit-A.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 481--488
+Underfull \hbox (badness 10000) in paragraph at lines 490--497
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--488
+Underfull \hbox (badness 10000) in paragraph at lines 490--497
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--488
+Underfull \hbox (badness 10000) in paragraph at lines 490--497
 
  []
 
-[16] [17] [18] [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 562--563
+[16]
+Overfull \hbox (1.27916pt too wide) in paragraph at lines 515--516
+[]\T1/lmr/bx/n/12 Definition 6.0.3. $[]$ \T1/lmr/m/n/12 Let $\OML/lmm/m/it/12 A
+ \OMS/lmsy/m/n/12 2 P[]$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 K \OT1/lmr/m/n/12
+ := \OML/lmm/m/it/12 conv\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 ) \
+OMS/lmsy/m/n/12 2
+ []
+
+[17] [18] [19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 591--592
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 564--566
+Underfull \hbox (badness 10000) in paragraph at lines 593--595
 
  []
 
@@ -953,9 +961,9 @@ Package rerunfilecheck Info: File `masterarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 11681 strings out of 479799
- 204087 string characters out of 2868298
- 661165 words of memory out of 3000000
+ 11683 strings out of 479799
+ 204115 string characters out of 2868298
+ 662165 words of memory out of 3000000
  28300 multiletter control sequences out of 15000+200000
  627243 words of font info for 92 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -986,9 +994,9 @@ nyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/d
 onnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users
 /donnyhai/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb>
-Output written on masterarbeit.pdf (23 pages, 3285009 bytes).
+Output written on masterarbeit.pdf (23 pages, 3285908 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 70 named destinations out of 1000 (max. 500000)
+ 334 PDF objects out of 1000 (max. 8388607)
+ 72 named destinations out of 1000 (max. 500000)
  143 words of extra memory for PDF output out of 10000 (max. 10000000)
 

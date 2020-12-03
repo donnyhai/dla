@@ -114,6 +114,7 @@ Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\
 \begin{flalign*}
 	&\N = \{1,2,3,\dots\},\quad \text{the set of natural numbers (without 0)}\\
 	&\N_0 = \N\cup\{0\}\\
+	&\mathcal{B}^d,\quad \text{$d$-dimensional Borel-$\sigma$-algebra of $\R^d$} \\
 	&\K^d,\quad \text{the set of convex and compact sets in }\R^d\\
 	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
 	&B_r := B_2(r,0) \\
@@ -242,9 +243,17 @@ We will introduce a possible solution for this problem first through the abstrac
 In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimensional affine subspaces where $q\in \{0,\dots,d\}$, short $q$-flats in $\R^d$. The set of $q$-flats in $\R^d$ is denoted by $A(d,q)$. Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. 
 
 \begin{definition}
-	For $K\in \K^d$ define $A_K := \{F\in A(d,q)\ |\ F\cap K \neq\emptyset\}$. Then the $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ shall be defined by
+	For $B\in \mathcal{B}^d$ define 
 	\begin{flalign*}
-		\mathcal{A}(d,q) := \sigma(\{ A_K\ |\ K\in \K^d\}).
+		\bar B_{d,q} := \{F\in A(d,q)\ |\ F\cap B \neq\emptyset\}.
+	\end{flalign*}
+	If the context is clear, we will only write $\bar B$ instead of $\bar B_{d,q}$. 
+\end{definition}
+
+\begin{definition}
+	The $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ is defined by
+	\begin{flalign*}
+		\mathcal{A}(d,q) := \sigma(\{ \bar K\ |\ K\in \K^d\}).
 	\end{flalign*} 
 \end{definition}
 
@@ -280,8 +289,8 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	We have $\mathcal{A}(2,1) = \GG$. 
 \end{lemma}
 \begin{proof}
-	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[\alpha,\beta] \times [c,d]\subset \C\ |\ 0\leq \alpha<\beta<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{A_K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
-	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}(A_K)$ is a closed set in $\Phi$. If that is the case we can write $\chi^{-1}(A_K) = \cup_{i=1}^\infty R_i$ for some rectangles $R_i\in R$, hence $A_K =  \cup_{i=1}^\infty \chi(R_i)$ and therefore $A_K\in\sigma(\chi(R)) = \GG$. Therefore we have $\tilde A\subset \GG$ and finally $\sigma(\tilde A) = \mathcal{A}(2,1) \subset \GG$. To show that $\chi^{-1}(A_K)$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}(A_K)$. Then $\chi(\alpha_0,p_0) \notin A_K$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: \tilde R$. Hence we have $\tilde R\subset \Phi \setminus \chi^{-1}(A_K)$, so $\Phi \setminus \chi^{-1}(A_K)$ is open. Hence $\chi^{-1}(A_K)$ is closed. \\
+	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[\alpha,\beta] \times [c,d]\subset \C\ |\ 0\leq \alpha<\beta<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{\bar K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
+	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}(\bar K)$ is a closed set in $\Phi$. If that is the case we can write $\chi^{-1}(\bar K) = \cup_{i=1}^\infty R_i$ for some rectangles $R_i\in R$, hence $\bar K =  \cup_{i=1}^\infty \chi(R_i)$ and therefore $\bar K\in\sigma(\chi(R)) = \GG$. Therefore we have $\tilde A\subset \GG$ and finally $\sigma(\tilde A) = \mathcal{A}(2,1) \subset \GG$. To show that $\chi^{-1}(\bar K)$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}(\bar K)$. Then $\chi(\alpha_0,p_0) \notin \bar K$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: \tilde R$. Hence we have $\tilde R\subset \Phi \setminus \chi^{-1}(\bar K)$, so $\Phi \setminus \chi^{-1}(\bar K)$ is open. Hence $\chi^{-1}(\bar K)$ is closed. \\
 	\\ \indent $\supset$: CONTINUE
 \end{proof}
 
@@ -290,16 +299,16 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 \end{definition}
 
 \begin{definition}
-	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu(A_K)<\infty$. 
+	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu(\bar K)<\infty$. 
 \end{definition}
 
 \begin{lemma}
 	$\mu$ is locally finite and $G_2$-invariant. 
 \end{lemma}
 \begin{proof}
-	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $A_K\subset A_{B_r}$ and
+	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $\bar K\subset A_{B_r}$ and
 	\begin{flalign*}
-		\mu(A_K) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
+		\mu(\bar K) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
 	\end{flalign*}
 	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. First we clarify what exactly translation and rotation mean for lines. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
 	\begin{flalign} \label{motion}
@@ -370,7 +379,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 
 By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
 \begin{flalign*}
-	\PP^K_\mu(A) := \frac{\mu( A\cap A_K)}{\mu(A_K)},\quad A\in \GG.
+	\PP^K_\mu(A) := \frac{\mu( A\cap \bar K)}{\mu(\bar K)},\quad A\in \GG.
 \end{flalign*}
 
 \begin{definition}
@@ -383,15 +392,15 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 \begin{lemma}\label{circ}
 	Let $M,K\in \K^2$ with $M\subset K$. Let $f$ be a random $K$-isotropic and $g$ be a random $M$-isotropic line. Then for all $A\in \GG$ we have
 	\begin{flalign*}
-		\PP(f\in A\ |\ f\in A_M) = \PP(g\in A).
+		\PP(f\in A\ |\ f\in \bar M) = \PP(g\in A).
 	\end{flalign*}
 \end{lemma}
 \begin{proof}
-	Note that since $M\subset K$ it is $A_M\subset A_K$. For $A\in \GG$ we therefore directly get 
+	Note that since $M\subset K$ it is $\bar M\subset \bar K$. For $A\in \GG$ we therefore directly get 
 	\begin{flalign*}
-		\PP(f\in A\ |\ f\in A_M) &= \frac{\PP(f\in A\cap A_M)}{\PP(f\in A_M)}\\
-		&= \frac{\mu(A\cap A_M\cap A_K)}{\mu(A_K)}\frac{\mu(A_K)}{\mu(A_M\cap A_K)}\\
-		&=\frac{\mu(A\cap A_M)}{\mu(A_M)} \\
+		\PP(f\in A\ |\ f\in \bar M) &= \frac{\PP(f\in A\cap \bar M)}{\PP(f\in \bar M)}\\
+		&= \frac{\mu(A\cap \bar M\cap \bar K)}{\mu(\bar K)}\frac{\mu(\bar K)}{\mu(\bar M\cap \bar K)}\\
+		&=\frac{\mu(A\cap \bar M)}{\mu(\bar M)} \\
 		&= \PP(g\in A).
 	\end{flalign*}
 \end{proof}
@@ -399,13 +408,13 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 If we choose a simple convex set such as $K=B_r$ the ball around the origin with radius $r$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
 
 \begin{lemma} \label{chi}
-	Let $K=B_r\in\K^2$ and let $(\alpha,p)$ be uniformly distributed in $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}(A_K)\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
+	Let $K=B_r\in\K^2$ and let $(\alpha,p)$ be uniformly distributed in $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}(\bar K)\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
 \end{lemma}
 \begin{proof}
 	For $A\in\GG$ we get 
 	\begin{flalign*}
-		\PP(\chi(\alpha,p)\in A) &= \PP((\alpha,p)\in \chi^{-1}(A)) = \frac{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A\cap A_K))}{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A_K))}\\
-		&=\frac{{\lambda_2}_{|\Phi}(\chi^{-1}(A\cap A_K))}{{\lambda_2}_{|\Phi}(\chi^{-1}(A_K))} = \frac{\mu(A\cap A_K)}{\mu(A_K)}.
+		\PP(\chi(\alpha,p)\in A) &= \PP((\alpha,p)\in \chi^{-1}(A)) = \frac{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A\cap \bar K))}{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(\bar K))}\\
+		&=\frac{{\lambda_2}_{|\Phi}(\chi^{-1}(A\cap \bar K))}{{\lambda_2}_{|\Phi}(\chi^{-1}(\bar K))} = \frac{\mu(A\cap \bar K)}{\mu(\bar K)}.
 	\end{flalign*}
 \end{proof}
 
@@ -482,7 +491,7 @@ For a line $g=g_{\alpha,p}\in\G$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emp
 		\\
 		$\mathit{Antisymmetry:}$ For antisymmetry let $x \triangleleft y$ and $y \triangleleft x$. Suppose $Re(x)\neq Re(y)$, then $Re(x) < Re(y)$ and $Re(y) < Re(x)$, a contradiction because of the total order $<$ in $\mathbb{R}$. So $Re(x) = Re(y)$. But then we have $Im(x) < Im(y)$ and $Im(y) < Im(x)$ and therefore also $Im(x) = Im(y)$, hence $x=y$. \\
 		\\
-		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $Re(x) \neq Re(y)$ and $Re(y) \neq z.\text{real}$ we get $Re(x) < z.\text{real}$ by transitivity of $<$, hence $x \triangleleft z$. In case $Re(x)\neq Re(y)$ and $Re(y) = z.\text{real}$ we get $Re(x) < Re(y) = z.\text{real}$, therefore $x \triangleleft z$. In case $Re(x) = Re(y)$ and $Re(y) \neq z.\text{real}$ we get $Re(x) = Re(y) < z.\text{real}$, similair as the last case. In the last case $Re(x) = Re(y) = z.\text{real}$ we get $Im(x) < Im(y)$ and $Im(y) < z.\text{imag}$ and again by transitivity of $<$ we get $Im(x) < z.\text{imag}$, hence $x \triangleleft z$ again. \\
+		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $Re(x) \neq Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) < Re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $Re(x)\neq Re(y)$ and $Re(y) = Re(z)$ we get $Re(x) < Re(y) = Re(z)$, therefore $x \triangleleft z$. In case $Re(x) = Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) = Re(y) < Re(z)$, similair as the last case. In the last case $Re(x) = Re(y) = Re(z)$ we get $Im(x) < Im(y)$ and $Im(y) < Im(z)$ and again by transitivity of $<$ we get $Im(x) < Im(z)$, hence $x \triangleleft z$ again. \\
 		\\
 		$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $Re(x) \neq Re(y)$ or $Re(x) = Re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
 	 
@@ -490,7 +499,7 @@ For a line $g=g_{\alpha,p}\in\G$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emp
 \end{lemma}
 
 \begin{remark}
-	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when "entering" $A$ and where it hits last when "leaving" $A$. 
+	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when "entering" $A$ and where it hits last when "leaving" $A$. 
 \end{remark}
 
 Recall that for a bounded subset $A\subset \C$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
@@ -503,7 +512,27 @@ Note that $conv(A)\in \K^2$ for all bounded subsets $A\subset \C$. For a set $A\
 \end{flalign*}
 and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. 
 
-\begin{definition} $\mathit{(Random\ Line\ Hitting\ Distribution)}$ Let $A\in \mathcal{P}_f$ and $g:\Omega \to \G$ be a random $conv(A)$-isotropic line. Then define a distribution $\mu_A \sim \mathcal{U}(\{min(g\cap A), max(g\cap A)\})$, which chooses uniformly out of the outest hitting points of $g$ with $A$. We call this family $(\mu_A)_{A\in \mathcal{P}_f}$ of distributions the $\mathit{Random\ Line\ Hitting\ Distribution}$.
+\begin{definition} $\mathit{(Random\ Line\ Hitting\ Distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
+	\begin{flalign*}
+		\tilde \mu_A(x,g) := (\frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\}) \ \1\{x\in \{\min(g\cap A),\max(g\cap A)\}\}
+	\end{flalign*}
+	and
+	\begin{flalign}
+		\mu_A(x) := \frac{1}{\PP^K_\mu(\bar A)} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
+	\end{flalign}
+	We quickly show that $\mu_A\in \mathcal{D}_A$. For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
+	\begin{flalign*}
+		\sum_{x\in A} \tilde \mu_A(x,g) = \begin{cases}
+			\frac{1}{2}2, \quad &|g\cap A| \geq 2, \\
+			1, \quad &|g\cap A| = 1, \\
+			0, \quad &|g\cap A| = 0.
+		\end{cases} \quad= \1\{g\cap A\neq \emptyset\}
+	\end{flalign*} 
+	and therefore 
+	\begin{flalign*}
+		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu(\bar A)}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu(\bar A)}{\PP^K_\mu(\bar A)} = 1. 
+	\end{flalign*}
+	Hence, the family of distributions $(\mu_A)_{A\in \mathcal{P}_f}$ defines an incremental aggregate. 
 \end{definition}
 
 \begin{definition} $(\mathit{Line\ Hitting\ Aggregate)}$ An Incremental Aggregate with the Random Line Hitting Distribution we call $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
