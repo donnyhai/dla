@@ -203,7 +203,7 @@ the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$
 	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_n\}$.
 \end{definition} 
 
-For all incremental aggregates in this paper we will have $d=2$. From now on we will identify $\R^2$ with $\C$. 
+For all incremental aggregates in this paper we will have $d=2$. From now on we will identify $\R^2$ with $\C$ as $\R$-vectorspaces. 
 
 
 
@@ -268,9 +268,9 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 	\cite{stoch1} Theorem 4.26 \\ \\ MAKE PROOF CLEARER
 \end{proof}
 
-\subsection{Construction in the plane}
+\subsection{Construction in the plane: Isotropic lines}
 
-For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ be the unit vector $1$ rotated by $\alpha$ counterclockwise. It is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line and that every line has a unique pair of $\alpha$ and $p$ for such a representation (see in $\autoref{lineparam}$). With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $\langle\cdot,\cdot\rangle$ be the standard scalar product on $\R^2$, respectively used for values in $\C$ as we identify $\R^2$ with $\C$ as $\R$-vectorspaces. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ and $s_\alpha : = -\sin(\alpha) + \cos(\alpha)i$ be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
 \begin{flalign*}
 	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
 \end{flalign*}
@@ -289,10 +289,33 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	We have $\mathcal{A}(2,1) = \GG$. 
 \end{lemma}
 \begin{proof}
-	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $R := \{[\alpha,\beta] \times [c,d]\subset \C\ |\ 0\leq \alpha<\beta<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (R)$ and since $\chi$ is a bijection, we have $\chi(\sigma (R)) = \sigma (\chi(R))$ and finally $\GG = \sigma(\chi(R))$. For $\tilde A := \{\bar K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
-	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}(\bar K)$ is a closed set in $\Phi$. If that is the case we can write $\chi^{-1}(\bar K) = \cup_{i=1}^\infty R_i$ for some rectangles $R_i\in R$, hence $\bar K =  \cup_{i=1}^\infty \chi(R_i)$ and therefore $\bar K\in\sigma(\chi(R)) = \GG$. Therefore we have $\tilde A\subset \GG$ and finally $\sigma(\tilde A) = \mathcal{A}(2,1) \subset \GG$. To show that $\chi^{-1}(\bar K)$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}(\bar K)$. Then $\chi(\alpha_0,p_0) \notin \bar K$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: \tilde R$. Hence we have $\tilde R\subset \Phi \setminus \chi^{-1}(\bar K)$, so $\Phi \setminus \chi^{-1}(\bar K)$ is open. Hence $\chi^{-1}(\bar K)$ is closed. \\
-	\\ \indent $\supset$: CONTINUE
+	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $\mathcal{R} := \{[\alpha,\beta] \times (c,d]\subset \Phi\ |\ 0\leq \alpha<\beta<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (\mathcal{R})$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{\bar K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
+	%
+	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}(\bar K)$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}(\bar K)\in\mathcal{B}_\Phi$, therefore $\bar K \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}(\bar K)$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}(\bar K)$. Then $\chi(\alpha_0,p_0) \notin \bar K$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}(\bar K)$, so $\Phi \setminus \chi^{-1}(\bar K)$ is open. Hence $\chi^{-1}(\bar K)$ is closed. \\
+	%
+	\\ \indent $\supset$: For this inclusion we will show that $\chi(R)\in\mathcal{A}(2,1)$ for all $R\in\mathcal{R}$. Recall that $\sigma$-algebras are closed under countable unions per definition and further closed under substraction ($A\setminus B\in \mathcal{A}(2,1)$ for all $A,B\in \mathcal{A}(2,1)$). Let $b>0$. For a general rectangle $R=[\alpha,\beta] \times (a,b]$ with $a\neq 0$ we can write $R= [\alpha,\beta]\times(0,b]\cup [\alpha,\beta]\times(a,0]$ and therefore $\chi(R) = \chi([\alpha,\beta]\times(0,b])\cup\chi([\alpha,\beta]\times(a,0])$ in case of $a<0$, and $R = ([\alpha,\beta]\times(0,b])\setminus([\alpha,\beta]\times(0,a])$ and therefore $\chi(R) = \chi([\alpha,\beta]\times(0,b])\setminus\chi([\alpha,\beta]\times(0,a])$ in case of $a>0$. Analog results we get for $b<0$. So in total we only have to show $\chi(R) \in\mathcal{A}(2,1)$ for rectangles of the forms $[\alpha,\beta]\times(0,b]$ and $[\alpha,\beta]\times(b,0]$, $b\neq 0$. So without loss of generality let $b>0$ and $R = [\alpha,\beta]\times(0,b]$. Define 
+	\begin{flalign*}
+		S:= \{pe_\gamma \in \C\ |\ (\gamma,p)\in R\}
+	\end{flalign*}
+	Furthermore for $n\in \N$ define 
+	\begin{flalign*}
+		A_n := \{tns_\beta\ |\ t\in [0,1]\} \text{ and } B_n := \{-tns_\alpha\ |\ t\in [0,1]\},
+	\end{flalign*}
+	the segments from $0$ to $ns_\beta$ and $0$ to $-ns_\alpha$ ($\autoref{circleS}$). We will show now that 
+	\begin{flalign*}
+		\chi(R) = \bar S \setminus (\bigcup_{n\in\N} \bar {A_n} \cup \bigcup_{n\in\N} \bar {B_n}). 
+	\end{flalign*}
+	Let $(\gamma,p)\in R$.
+
+	CONTINUE
 \end{proof}
+
+\begin{figure}
+	\centering
+	\includegraphics[height=10cm]{circle-part-S.png}
+	\caption{$S$ and the sets $A_n$ and $B_n$} \label{circleS}
+\end{figure}
+
 
 \begin{definition}
 	A $\mathcal{F}$-$\GG$-measurable function $g:\Omega \to \G$ is called a $\mathit{random\ line}$.  
@@ -342,7 +365,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
 	\end{flalign*}
 	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the by $\beta$ rotated line. \\
-	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise aswell. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
+	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise aswell. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
 	\begin{flalign*}
 		\mu(A+b) 
 		&= \int_\GG \1_{A+b}(g) \mu(dg) \\

@@ -1,6 +1,7 @@
-1. linienprozess sauber fertigdefinieren, gradenmaß hinzufügen -> steffen schicken
-2. kesten resultat external dla
-
+- linienprozess sauber fertigdefinieren, gradenmaß hinzufügen -> steffen schicken
+- kesten resultat external dla
+- beispiele durchrechnen für lha distribution
+- eden-modell anmerken
 
 
 - buch schneider und weil

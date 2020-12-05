@@ -7,10 +7,10 @@
 \contentsline {section}{\numberline {4}External DLA}{7}{section.4}%
 \contentsline {section}{\numberline {5}Integral Geometry}{8}{section.5}%
 \contentsline {subsection}{\numberline {5.1}General results}{8}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Construction in the plane}{9}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Line Hitting Aggregate}{14}{section.6}%
-\contentsline {section}{\numberline {7}Python Simulation}{18}{section.7}%
-\contentsline {subsection}{\numberline {7.1}External DLA Simulation}{18}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}LHI Simulation}{18}{subsection.7.2}%
-\contentsline {section}{\numberline {8}Questions}{19}{section.8}%
+\contentsline {subsection}{\numberline {5.2}Construction in the plane: Isotropic lines}{9}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Line Hitting Aggregate}{15}{section.6}%
+\contentsline {section}{\numberline {7}Python Simulation}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}External DLA Simulation}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}LHI Simulation}{19}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Questions}{20}{section.8}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
