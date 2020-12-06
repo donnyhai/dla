@@ -245,15 +245,15 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 \begin{definition}
 	For $B\in \mathcal{B}^d$ define 
 	\begin{flalign*}
-		\bar B_{d,q} := \{F\in A(d,q)\ |\ F\cap B \neq\emptyset\}.
+		[B]_{d,q} := \{F\in A(d,q)\ |\ F\cap B \neq\emptyset\}.
 	\end{flalign*}
-	If the context is clear, we will only write $\bar B$ instead of $\bar B_{d,q}$. 
+	If the context is clear, we will only write $[B]$ instead of $[B]_{d,q}$. 
 \end{definition}
 
 \begin{definition}
 	The $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ is defined by
 	\begin{flalign*}
-		\mathcal{A}(d,q) := \sigma(\{ \bar K\ |\ K\in \K^d\}).
+		\mathcal{A}(d,q) := \sigma(\{ [K]\ |\ K\in \K^d\}).
 	\end{flalign*} 
 \end{definition}
 
@@ -289,9 +289,9 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	We have $\mathcal{A}(2,1) = \GG$. 
 \end{lemma}
 \begin{proof}
-	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $\mathcal{R} := \{[\alpha,\beta] \times (c,d]\subset \Phi\ |\ 0\leq \alpha<\beta<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (\mathcal{R})$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{\bar K\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
+	To proof this it is helpful to consider generators of these $\sigma$-algebras. Define the set of closed rectangles in $\Phi$ as $\mathcal{R} := \{[\alpha,\beta] \times (c,d]\subset \Phi\ |\ 0\leq \alpha<\beta<\pi,c<d\}$. Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (\mathcal{R})$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{[K]\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
 	%
-	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}(\bar K)$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}(\bar K)\in\mathcal{B}_\Phi$, therefore $\bar K \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}(\bar K)$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}(\bar K)$. Then $\chi(\alpha_0,p_0) \notin \bar K$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}(\bar K)$, so $\Phi \setminus \chi^{-1}(\bar K)$ is open. Hence $\chi^{-1}(\bar K)$ is closed. \\
+	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}([K])$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}([K])\in\mathcal{B}_\Phi$, therefore $[K] \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}([K])$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}([K])$. Then $\chi(\alpha_0,p_0) \notin [K]$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}([K])$, so $\Phi \setminus \chi^{-1}([K])$ is open. Hence $\chi^{-1}([K])$ is closed. \\
 	%
 	\\ \indent $\supset$: For this inclusion we will show that $\chi(R)\in\mathcal{A}(2,1)$ for all $R\in\mathcal{R}$. Recall that $\sigma$-algebras are closed under countable unions per definition and further closed under substraction ($A\setminus B\in \mathcal{A}(2,1)$ for all $A,B\in \mathcal{A}(2,1)$). Let $b>0$. For a general rectangle $R=[\alpha,\beta] \times (a,b]$ with $a\neq 0$ we can write $R= [\alpha,\beta]\times(0,b]\cup [\alpha,\beta]\times(a,0]$ and therefore $\chi(R) = \chi([\alpha,\beta]\times(0,b])\cup\chi([\alpha,\beta]\times(a,0])$ in case of $a<0$, and $R = ([\alpha,\beta]\times(0,b])\setminus([\alpha,\beta]\times(0,a])$ and therefore $\chi(R) = \chi([\alpha,\beta]\times(0,b])\setminus\chi([\alpha,\beta]\times(0,a])$ in case of $a>0$. Analog results we get for $b<0$. So in total we only have to show $\chi(R) \in\mathcal{A}(2,1)$ for rectangles of the forms $[\alpha,\beta]\times(0,b]$ and $[\alpha,\beta]\times(b,0]$, $b\neq 0$. So without loss of generality let $b>0$ and $R = [\alpha,\beta]\times(0,b]$. Define 
 	\begin{flalign*}
@@ -303,12 +303,12 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\end{flalign*}
 	the segments from $0$ to $ns_\beta$ and $0$ to $-ns_\alpha$ ($\autoref{circleS}$). We will show now that 
 	\begin{flalign*}
-		\chi(R) = \bar S \setminus (\bigcup_{n\in\N} \bar {A_n} \cup \bigcup_{n\in\N} \bar {B_n}) =: \tilde S. 
+		\chi(R) = [S] \setminus (\bigcup_{n\in\N} [A_n] \cup \bigcup_{n\in\N} [B_n]) =: \tilde S. 
 	\end{flalign*}
 	\\
-	Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in \bar S$. Assume that there exits a $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similairly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin \bar {A_n}$ and $\chi(\gamma,p) \notin \bar {B_n}$ for any $n\in \N$. Hence $\chi(R)\subset \tilde S$. \\
+	Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in [S]$. Assume that there exits a $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similairly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin [A_n]$ and $\chi(\gamma,p) \notin [B_n]$ for any $n\in \N$. Hence $\chi(R)\subset \tilde S$. \\
 	\\
-	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similair arguemnt as in the first inclusion it is easy to see that there must be $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $S\subset B_b$ it is $\chi(\gamma,p)\notin \bar S$, a contradiction. If $p<0$ then since the angle between the segments $A_n$ and $B_n$ for some $n\in \N$ opposite of $S$ is strictly smaller than $\pi$ and therefore $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. 
+	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similair arguemnt as in the first inclusion it is easy to see that there must be $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $S\subset B_b$ it is $\chi(\gamma,p)\notin [S]$, a contradiction. If $p<0$ then since the angle between the segments $A_n$ and $B_n$ for some $n\in \N$ opposite of $S$ is strictly smaller than $\pi$ and therefore $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. 
 	\\
 	If is left to show that $\tilde S\in \mathcal{A}(2,1)$. All the segments $A_n$ and $B_n$ are compact and convex for all $n\in\N$, and also 
 	
@@ -328,16 +328,16 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 \end{definition}
 
 \begin{definition}
-	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu(\bar K)<\infty$. 
+	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu([K])<\infty$. 
 \end{definition}
 
 \begin{lemma}
 	$\mu$ is locally finite and $G_2$-invariant. 
 \end{lemma}
 \begin{proof}
-	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $\bar K\subset A_{B_r}$ and
+	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $[K]\subset A_{B_r}$ and
 	\begin{flalign*}
-		\mu(\bar K) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
+		\mu([K]) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
 	\end{flalign*}
 	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. First we clarify what exactly translation and rotation mean for lines. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
 	\begin{flalign} \label{motion}
@@ -408,7 +408,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 
 By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
 \begin{flalign*}
-	\PP^K_\mu(A) := \frac{\mu( A\cap \bar K)}{\mu(\bar K)},\quad A\in \GG.
+	\PP^K_\mu(A) := \frac{\mu( A\cap [K])}{\mu([K])},\quad A\in \GG.
 \end{flalign*}
 
 \begin{definition}
@@ -421,15 +421,15 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 \begin{lemma}\label{circ}
 	Let $M,K\in \K^2$ with $M\subset K$. Let $f$ be a random $K$-isotropic and $g$ be a random $M$-isotropic line. Then for all $A\in \GG$ we have
 	\begin{flalign*}
-		\PP(f\in A\ |\ f\in \bar M) = \PP(g\in A).
+		\PP(f\in A\ |\ f\in [M]) = \PP(g\in A).
 	\end{flalign*}
 \end{lemma}
 \begin{proof}
-	Note that since $M\subset K$ it is $\bar M\subset \bar K$. For $A\in \GG$ we therefore directly get 
+	Note that since $M\subset K$ it is $[M]\subset [K]$. For $A\in \GG$ we therefore directly get 
 	\begin{flalign*}
-		\PP(f\in A\ |\ f\in \bar M) &= \frac{\PP(f\in A\cap \bar M)}{\PP(f\in \bar M)}\\
-		&= \frac{\mu(A\cap \bar M\cap \bar K)}{\mu(\bar K)}\frac{\mu(\bar K)}{\mu(\bar M\cap \bar K)}\\
-		&=\frac{\mu(A\cap \bar M)}{\mu(\bar M)} \\
+		\PP(f\in A\ |\ f\in [M]) &= \frac{\PP(f\in A\cap [M])}{\PP(f\in [M])}\\
+		&= \frac{\mu(A\cap [M]\cap [K])}{\mu([K])}\frac{\mu([K])}{\mu([M]\cap [K])}\\
+		&=\frac{\mu(A\cap [M])}{\mu([M])} \\
 		&= \PP(g\in A).
 	\end{flalign*}
 \end{proof}
@@ -437,13 +437,13 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 If we choose a simple convex set such as $K=B_r$ the ball around the origin with radius $r$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
 
 \begin{lemma} \label{chi}
-	Let $K=B_r\in\K^2$ and let $(\alpha,p)$ be uniformly distributed in $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}(\bar K)\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
+	Let $K=B_r\in\K^2$ and let $(\alpha,p)$ be uniformly distributed in $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}([K])\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
 \end{lemma}
 \begin{proof}
 	For $A\in\GG$ we get 
 	\begin{flalign*}
-		\PP(\chi(\alpha,p)\in A) &= \PP((\alpha,p)\in \chi^{-1}(A)) = \frac{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A\cap \bar K))}{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(\bar K))}\\
-		&=\frac{{\lambda_2}_{|\Phi}(\chi^{-1}(A\cap \bar K))}{{\lambda_2}_{|\Phi}(\chi^{-1}(\bar K))} = \frac{\mu(A\cap \bar K)}{\mu(\bar K)}.
+		\PP(\chi(\alpha,p)\in A) &= \PP((\alpha,p)\in \chi^{-1}(A)) = \frac{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A\cap [K]))}{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}([K]))}\\
+		&=\frac{{\lambda_2}_{|\Phi}(\chi^{-1}(A\cap [K]))}{{\lambda_2}_{|\Phi}(\chi^{-1}([K]))} = \frac{\mu(A\cap [K])}{\mu([K])}.
 	\end{flalign*}
 \end{proof}
 
@@ -547,7 +547,7 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 	\end{flalign*}
 	and
 	\begin{flalign}
-		\mu_A(x) := \frac{1}{\PP^K_\mu(\bar A)} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
+		\mu_A(x) := \frac{1}{\PP^K_\mu([A])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
 	\end{flalign}
 	We quickly show that $\mu_A\in \mathcal{D}_A$. For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
 	\begin{flalign*}
@@ -559,7 +559,7 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 	\end{flalign*} 
 	and therefore 
 	\begin{flalign*}
-		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu(\bar A)}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu(\bar A)}{\PP^K_\mu(\bar A)} = 1. 
+		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([A])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([A])}{\PP^K_\mu([A])} = 1. 
 	\end{flalign*}
 	Hence, the family of distributions $(\mu_A)_{A\in \mathcal{P}_f}$ defines an incremental aggregate. 
 \end{definition}
