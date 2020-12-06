@@ -285,31 +285,40 @@ For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We deno
 
 We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection. We want to show in the following that this way of defining a $\sigma$-algebra on $\G$ makes sense as it is indeed equivalent to the general context as defined above. To do that it is convenient to use a special generator set for the Borel-$\sigma$-algebra $\mathcal{B}_\Phi$. 
 
-\begin{lemma}
+\begin{lemma} \label{generators}
 	Define 
 	\begin{flalign*}
-		\mathcal{R}_+ := \{[\alpha,\beta]\times (0,b]\ |\ 0\leq \alpha<\beta<\pi, b>0\}
+		\mathcal{R}_+ := \{[\alpha,\beta]\times (0,b]\ |\ 0\leq \alpha<\beta<\pi, b \geq 0\}, 
+	\end{flalign*}
+	\begin{flalign*}
+		\mathcal{R}_- := \{[\alpha,\beta]\times [b,0)\ |\ 0\leq \alpha<\beta<\pi, b\leq 0\},
+	\end{flalign*}
+	\begin{flalign*}
+		\mathcal{R}_0 := \{[\alpha,\beta]\times \{0\}\ |\ 0\leq \alpha<\beta<\pi\},
 	\end{flalign*}
 	and
 	\begin{flalign*}
-		\mathcal{R}_- := \{[\alpha,\beta]\times [b,0)\ |\ 0\leq \alpha<\beta<\pi, b<0\},
+		\mathcal{R} := \mathcal{R}_+ \cup \mathcal{R}_- \cup \mathcal{R}_0.
 	\end{flalign*}
-	and finally $\mathcal{R} := \mathcal{R}_+ \cup \mathcal{R}_- \cup \{[0,\pi)\times \{0\}\}$. 
+ 	Then $\sigma(\mathcal{R}) = \mathcal{B}_\Phi$.
 \end{lemma}
+\begin{proof}
+	We show that $\sigma(\mathcal{R})$ contains all rectangles in $\Phi$ of the form $[\alpha,\beta]\times (a,b]$ with $a,b>0$, $[\alpha,\beta]\times [a,b)$ with $a,b<0$ and $[\alpha,\beta]\times [a,b]$ with $0\in [a,b]$. First let $a,b>0$ and $R=[\alpha,\beta]\times (a,b]$, then 
+	\begin{flalign*}
+		R = ([\alpha,\beta] \times (0,b]) \setminus ([\alpha,\beta] \times (0,a])
+	\end{flalign*}
+	and therefore $R\in \sigma(\mathcal{R}_+)\subset\sigma(\mathcal{R})$. Similairly it works if $a,b<0$. If $0\in[a,b]$ then we can write $R = [\alpha,\beta]\times [a,b]$ with three components $R = [\alpha,\beta] \times [a,0) \cup [\alpha,\beta] \times \{0\} \cup [\alpha,\beta] \times (0,b]$ which lie in $\mathcal{R}_-, \mathcal{R}_0$ and $\mathcal{R}_+$ respectively. Therefore $R\in \sigma(\mathcal{R})$ aswell. By measure theory the above described rectangles form a generator set of $\mathcal{B}_\Phi$, which completes the proof. 
+\end{proof}
 
 \begin{lemma}
 	We have $\mathcal{A}(2,1) = \GG$. 
 \end{lemma}
 \begin{proof}
-	To proof this equality of $\sigma$-algebras it is helpful to consider generators of these. Define the set of rectangles in $\Phi$ as 
-	\begin{flalign*}
-		\mathcal{R} := \{[\alpha,\beta] \times (c,d]\subset \Phi\ |\ 0\leq \alpha<\beta<\pi,c\leq d\}.
-	\end{flalign*}
-	Then by measure theory we know that $\mathcal{B}_\Phi = \sigma (\mathcal{R})$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{[K]\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
+	We will consider generators of these $\sigma$-algebras. By Lemma $\autoref{generators}$ we know that $\sigma(\mathcal{R}) = \mathcal{B}_\Phi$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{[K]\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
 	%
-	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}([K])$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}([K])\in\mathcal{B}_\Phi$, therefore $[K] \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}([K])$ is a closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}([K])$. Then $\chi(\alpha_0,p_0) \notin [K]$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}([K])$, so $\Phi \setminus \chi^{-1}([K])$ is open. Hence $\chi^{-1}([K])$ is closed. \\
+	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}([K])$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}([K])\in\mathcal{B}_\Phi$, therefore $[K] \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}([K])$ is closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}([K])$. Then $\chi(\alpha_0,p_0) \notin [K]$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}([K])$, so $\Phi \setminus \chi^{-1}([K])$ is open. Hence $\chi^{-1}([K])$ is closed. \\
 	%
-	\\ \indent $\supset$: For this inclusion we will show that $\chi(R)\in\mathcal{A}(2,1)$ for all $R\in\mathcal{R}$. Recall that $\sigma$-algebras are complete under countable unions per definition and further closed under substraction ($A\setminus B\in \mathcal{A}(2,1)$ for all $A,B\in \mathcal{A}(2,1)$). Let $b>0$. For a general rectangle $R=[\alpha,\beta] \times (a,b]$ with $a\neq 0$ we can write $R= [\alpha,\beta]\times(0,b]\cup [\alpha,\beta]\times(a,0]$ and therefore $\chi(R) = \chi([\alpha,\beta]\times(0,b])\cup\chi([\alpha,\beta]\times(a,0])$ in case of $a<0$, and $R = ([\alpha,\beta]\times(0,b])\setminus([\alpha,\beta]\times(0,a])$ and therefore $\chi(R) = \chi([\alpha,\beta]\times(0,b])\setminus\chi([\alpha,\beta]\times(0,a])$ in case of $a>0$. Analog results we get for $b<0$. So in total we only have to show $\chi(R) \in\mathcal{A}(2,1)$ for rectangles of the forms $[\alpha,\beta]\times(0,b]$ and $[\alpha,\beta]\times(b,0]$, $b\neq 0$. So without loss of generality let $b>0$ and $R = [\alpha,\beta]\times(0,b]$. Define 
+	\\ \indent $\supset$: For this inclusion we will show that $\chi(R)\in\mathcal{A}(2,1)$ for all $R\in\mathcal{R}$. First let $R = [\alpha,\beta]\times(0,b]\in\mathcal{R}_+$ for some $b>0$. Define 
 	\begin{flalign*}
 		S:= \{pe_\gamma \in \C\ |\ (\gamma,p)\in R\}
 	\end{flalign*}
@@ -321,17 +330,30 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\begin{flalign*}
 		\chi(R) = [\bar S] \setminus (\bigcup_{n\in\N} [A_n] \cup \bigcup_{n\in\N} [B_n]) =: \tilde S,  
 	\end{flalign*}
-	where $\bar S$ is the closure of $S$ (note that $\bar S = S\ \cup\ \{0\}$). Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in [\bar S]$. Assume that there exits a $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similairly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin [A_n]$ and $\chi(\gamma,p) \notin [B_n]$ for any $n\in \N$. Hence $\chi(R)\subset \tilde S$. \\
-	\\
-	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similair argument as in the first inclusion it is easy to see that there must be an $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $S\subset B_b$ it is $\chi(\gamma,p)\notin [S]$, a contradiction. If $p<0$ then, since the angle between the segments $A_n$ and $B_n$ opposite of $S$ is strictly smaller than $\pi$, $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Note that $p\neq 0$ since $[\{0\}] \subset [A_1]$. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. 
-	\\
-	If is left to show that $\tilde S\in \mathcal{A}(2,1)$. All the segments $A_n$ and $B_n$ are compact and convex for all $n\in\N$, and since $S$ is bounded and convex as a circle segment with angle smaller than $\pi$, $\bar S$ is compact and convex. Finally $\tilde S\in \mathcal{A}(2,1)$ which completes the proof.
-\end{proof}
 
 \begin{figure}
 	\centering
 	\includegraphics[height=10cm]{circle-part-S.png}
 	\caption{$S$ and the sets $A_n$ and $B_n$} \label{circleS}
+\end{figure}
+
+	where $\bar S$ is the closure of $S$ (note that $\bar S = S\ \cup\ \{0\}$). Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in [\bar S]$. Assume that there exits an $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similairly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin [A_n]$ and $\chi(\gamma,p) \notin [B_n]$ for any $n\in \N$. Hence $\chi(\gamma,p)\in\tilde S$ and therefore $\chi(R)\subset \tilde S$. \\
+	\\
+	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similair argument as in the first inclusion it is easy to see that there must be an $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $\bar S\subset B_b$ it is $\chi(\gamma,p)\notin [\bar S]$, a contradiction. If $p<0$ then, since the angle between the segments $A_n$ and $B_n$ opposite of $S$ is strictly smaller than $\pi$, $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Note that $p\neq 0$ since $[\{0\}] \subset [A_1]$. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. \\
+	\\
+	It is left to show that $\tilde S\in \mathcal{A}(2,1)$. All the segments $A_n$ and $B_n$ are compact and convex for all $n\in\N$, and since $S$ is bounded and convex as a circle segment with angle smaller than $\pi$, $\bar S$ is compact and convex. Finally $\tilde S\in \mathcal{A}(2,1)$. \\
+	\\
+	In total we get $\mathcal{R}_+\subset \mathcal{A}(2,1)$. $\mathcal{R}_-\subset \mathcal{A}(2,1)$ can be shown analogously. So for the last case let $R = [\alpha,\beta] \times \{0\}\in \mathcal{R}_0$. Define the line segment
+	\begin{flalign*}
+		T := \{(1-t)s_\alpha + ts_\beta\ |\ t\in [0,1]\}. 
+	\end{flalign*}
+	Then $[\{0\}] \cap [T] \in \mathcal{A}(2,1)$. We show that $\chi(R) = [\{0\}] \cap [T]$. Let $(\gamma,0)\in R$. Then $\chi(\gamma,0)$ contains $0$ and since $\gamma$ is in between $\alpha$ and $\beta$, $\chi(\gamma,0)$ must intersect with $T$ ($\autoref{T}$). For the other inclusion let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in [\{0\}] \cap [T]$. Since $0\in \chi(\gamma,p)$ it must be $p=0$ and since it intersects with $T$ its angle must lay in between $\alpha$ and $\beta$. All in all this completes the proof. 
+\end{proof}
+
+\begin{figure}
+	\centering
+	\includegraphics[height=10cm]{T.png}
+	\caption{Line in $[\{0\}] \cap [T]$} \label{T}
 \end{figure}
 
 

@@ -8,9 +8,9 @@
 \contentsline {section}{\numberline {5}Integral Geometry}{8}{section.5}%
 \contentsline {subsection}{\numberline {5.1}General results}{8}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Construction in the plane: Isotropic lines}{9}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Line Hitting Aggregate}{16}{section.6}%
-\contentsline {section}{\numberline {7}Python Simulation}{20}{section.7}%
-\contentsline {subsection}{\numberline {7.1}External DLA Simulation}{20}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}LHI Simulation}{20}{subsection.7.2}%
-\contentsline {section}{\numberline {8}Questions}{21}{section.8}%
+\contentsline {section}{\numberline {6}Line Hitting Aggregate}{17}{section.6}%
+\contentsline {section}{\numberline {7}Python Simulation}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}External DLA Simulation}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}LHI Simulation}{21}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Questions}{22}{section.8}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
