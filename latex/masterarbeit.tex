@@ -145,7 +145,7 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 \noindent $\boldsymbol{\mathit{Probability\ Space}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" (almost sure).
 \\
 
-\noindent $\boldsymbol{\mathit{Random\ Walk}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{Random\ Walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$, $a.s.$ and 
+\noindent $\boldsymbol{\mathit{Random\ Walk}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$, $a.s.$ and 
 
 \begin{align*}
 	\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
@@ -175,7 +175,7 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 	G(x,y) := \sum_{n\geq 0} p_n(x,y).
 \end{align*}
 
-$G$ is well-defined and finite since $\Z^2$ is transient. Similarily for a subset $A\subset G$ the $killed$ or $\mathit{stopped\ Green\ function}$ is defined as
+$G$ is well-defined and finite since $\Z^d$ is transient. Similarily for a subset $A\subset \Z^d$ the $killed$ or $\mathit{stopped\ Green\ function}$ is defined as
 
 \begin{align*}
 	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T_A > n).
