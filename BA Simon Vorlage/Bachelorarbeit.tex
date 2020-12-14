@@ -1,0 +1,897 @@
+\documentclass[12pt,a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm}
+\allowdisplaybreaks
+\usepackage{dsfont}
+\usepackage{pifont}
+\usepackage{nicefrac}
+\usepackage{textcomp}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
+\setlength{\topmargin}{-15mm}
+
+
+% Umgebungen für Definitionen, Sätze, usw.
+% Es werden Sätze, Definitionen etc innerhalb einer Section mit
+% 1.1, 1.2 etc durchnummeriert, ebenso die Gleichungen mit (1.1), (1.2) ..
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{Definition}[Satz]{Definition} 
+\newtheorem{Lemma}[Satz]{Lemma}		   
+                  
+\numberwithin{equation}{section} 
+
+\newcommand{\C}{\mathbb{C}} % komplexe
+\newcommand{\K}{\mathbb{K}} % komplexe
+\newcommand{\R}{\mathbb{R}} % reelle
+\newcommand{\Q}{\mathbb{Q}} % rationale
+\newcommand{\Z}{\mathbb{Z}} % ganze
+\newcommand{\N}{\mathbb{N}} % natuerliche
+
+\numberwithin{equation}{section}%
+
+\newtheorem{thm}{Theorem}[section]%
+\newtheorem{lem}[thm]{Lemma}%
+\newtheorem{satz}[thm]{Satz}%
+\newtheorem{prop}[thm]{Proposition}%
+\newtheorem{algo}[thm]{Algorithmus}%
+
+\newtheorem{cor}[thm]{Corollary}%
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}%
+\newtheorem{bem}[thm]{Bemerkung}%
+\newtheorem{exa}[thm]{Example}%
+\newtheorem{bew}[thm]{Beweis}%
+
+
+\begin{document}
+  \pagestyle{empty}
+
+\begin{titlepage}
+
+    \vspace*{2cm} 
+\begin{center} \large 
+    
+    Bachelorarbeit
+    \vspace*{2cm}
+
+    {\huge Das Wachstumsverhalten von Pfaden der}\\
+    \vspace*{10pt}
+    {\huge Brownschen Bewegung}
+    \vspace*{2.5cm}
+
+    Simon Drüssel
+    \vspace*{1.5cm}
+
+    08. November 2017
+    \vspace*{3.5cm}
+
+
+    Betreuung: Prof. Dr. Nicole Bäuerle \\[1cm]
+    Fakultät für Mathematik \\[1cm]
+		Karlsruher Institut für Technologie
+\end{center}
+\end{titlepage}
+
+\ \\
+\newpage
+
+\tableofcontents %Inhaltsverzeichnis
+
+\newpage
+\phantom \\
+\newpage
+
+  \pagestyle{headings}
+
+\setcounter{page}{1}
+\section{Einleitung}
+Wer sich mit der Bewegung von Teilchen beschäftigen möchte, wird schnell auf den Begriff der Brownschen Molekularbewegung stoßen.
+Robert Brown (\textborn 1773, \textdied 1858) entdeckte im Jahr 1827 bei Versuchen mit Gasen und Flüssigkeiten eine Wärmebewegung von mikroskopisch sichtbaren Teilchen. Der Begriff $\glqq$Molekül$\grqq$ darf dabei nicht im heutigen Sinn verstanden werden, da es sich dabei nur um sehr kleine Teilchen handelte.\\
+Brown zeigte bei seinen Veröffentlichungen 1828 und 1829 dabei hauptsächlich folgende Punkte auf:
+\begin{itemize}
+\item Die Bewegung ist eine sehr unregelmäßige Mischung aus Translation und Rotation.
+\item Die Teilchen scheinen sich unabhängig von anderen zu bewegen.
+\item Umso kleiner die Teilchen sind, desto aktiver ist die Bewegung.
+\item Die Zusammensetzung und Anzahl der Teilchen hat keinen Einfluss auf die Bewegung.
+\item Die Bewegung wird bei geringerer Viskosität aktiver.
+\item Die Bewegung stoppt zu keinem Zeitpunkt.
+\item Die Bewegung wird nicht durch Verdunstung oder Flüssigkeitsströmungen beeinflusst.
+\item Die Teilchen werden nicht angeregt.
+\end{itemize}
+
+\noindent In der folgenden Zeit gab es immer weitere Theorien, es war jedoch Norbert Wiener, der 1923 dem ganzen Prozess ein vollständiges mathematisches Fundament gab und dessen wahrscheinlichkeitstheoretische Existenz bewies.\\
+
+\noindent Daran orientierend wollen wir in Kapitel 2 dieser Arbeit erst einmal eine mathematische Definition der Brownschen Bewegung einführen.\\
+In Kapitel 3 soll dann die Brownsche Bewegung als Gauß-Prozess betrachtet und dabei auch ein paar vorbereitende Sätze für die Kapitel 4 und 5 erarbeitet werden.\\
+In Kapitel 4 werden wir schließlich das bekannte Gesetz des iterierten Logarithmus von Khintchine, welches genaue Auskunft über das Wachstumsverhalten eines Pfades der Brownschen Bewegung gibt, kennen lernen und beweisen.\\
+Abschließend soll in Kapitel 5 noch ein weiteres iteriertes Logarithmus Gesetz, das auf Chung aus dem Jahr 1948 zurückgeht, bewiesen werden. Hierbei soll dann auch noch auf die Nicht-Differenzierbarkeit einer Brownschen Bewegung und auf den Modul der Nicht-Differenzierbarkeit eingegangen werden.
+\\
+\noindent Bevor wir jetzt jedoch zur Definition der Brownschen Bewegung kommen, vorab noch zwei Anmerkungen:\\
+Zunächst soll an dieser Stelle darauf hingewiesen werden, dass sich die Kapitel 2 und 3 an \cite[Kapitel 2]{Schilling}, die Kapitel 3 und 4 an \cite[Kapitel 11]{Schilling} orientieren.\\
+Außerdem sei noch gesagt, dass zum Lesen dieser Bachelorarbeit allgemeine Kenntnisse, wie sie in der Analysis 3, aber auch in der Wahrscheinlichkeitstheorie, siehe \cite{Henze Skript}, vermittelt werden, grundsätzlich vorausgesetzt sein sollen. 
+
+\newpage
+
+\section{Definition der Brownschen Bewegung}
+Um uns mit der Brownschen Bewegung mathematisch beschäftigen zu können, benötigen wir als Erstes eine Definition deren.\\
+Sei dafür $d \in \N $ und $\left(\Omega, \mathcal{A}, \mathbb{P}\right)$ ein Wahrscheinlichkeitsraum. Dann ist eine $d-dimensionale$ $Brownsche$ $Bewegung$ $B = (B_t)_{t \geq 0} = (B(t))_{t \geq 0}$  ein stochastischer Prozess, also ein Prozess mit Indexwerten $t \in [0,\infty)$, sodass $B_t$ zu jedem Zeitpunkt $t \in [0,\infty)$ eine Zufallsvariable ist und $B(t,\omega) \in \R^d$ für alle $\omega \in \Omega$ und der Prozess insgesamt dabei den folgenden Eigenschaften genügt:
+\begin{itemize}[leftmargin=2cm]
+\item[(B0)] $B_0(\omega) = 0$ für fast alle $\omega$ $\in \Omega$;
+\item[(B1)] $B_{t_n}-B_{t_{n-1}}, \dots ,B_{t_1}-B_{t_0}$ sind unabhängig für alle $n\geq 1$,\\
+$0 = t_0\leq t_1 <t_2 < \dots <t_n<\infty$;
+\item[(B2)] $B_t-B_s \sim B_{t+h}-B_{s+h}$ für alle $0\leq s < t$, $h\geq -s$;
+\item[(B3)]  $B_t-B_s \sim N(0,t-s)^{\otimes d}$, wobei $N(0,t)(dx) = \tfrac{1}{\sqrt{2\pi t}}$ exp$(-\tfrac{x^2}{2t})dx$;
+\item[(B4)] $t \mapsto B_t(\omega)$ ist stetig für alle $\omega$ $\in \Omega$.
+\end{itemize}
+
+\noindent Eine Brownsche Bewegung ist also ein $\R ^d$-wertiger Prozess der nach (B0) in 0 startet, nach (B1) unabhängige und nach (B2) stationäre Zuwächse hat und dessen Pfade nach (B4) stetig sind. Außerdem kennen wir nach (B3) noch zu jedem Zeitpunkt die Verteilung von $B(t)$.\\
+
+\noindent Im Folgenden wird anstatt $B(t,\omega)$ häufig $B_t(\omega)$ oder anstatt $B(t)$ auch $B_t$ geschrieben.\\
+\\
+\noindent \textbf{Bemerkung} In vielen Lehr- und Einführungsbüchern zur Brownschen Bewegung werden in der Definitionen oft nur die Eigenschaften (B0)-(B3) gefordert, da mit diesen bereits auch (B4) gelten muss, oder alternativ dazu auch (B0)-(B2) und (B4), mit denen dann auch (B3) gilt.
+Dies soll hier nicht gemacht werden, dass so einerseits die Motivation der Definition aus der physikalischen Herleitung näher scheint, andererseits aber auch in Beweisen genauer auf die jeweiligen Eigenschaften verwiesen werden kann.
+
+
+\newpage
+\section{Die Brownsche Bewegung als Gaußprozess}
+\noindent Um die Brownsche Bewegung näher kennen zu lernen, ist es hilfreich, die Brownsche Bewegung als Gaußprozess zu betrachten. Dafür benötigen wir zunächst einmal die Definition einer Gaußschen Zufallsvariablen:
+
+\begin{dfn}
+Eine eindimensionale Zufallsvariable $X$ heißt gaußsch, genau dann wenn die charakteristische Funktion $\phi_X$ von $X$ gegeben ist durch:
+\begin{equation}
+\phi_X(\xi) = \mathbb{E} e^{i\xi X} =  e^{im\xi-\frac{1}{2}\sigma ^2\xi ^2},
+\label{eq:charfkt}
+\end{equation} 
+für Zahlen $m \in \R$ und $\sigma \geq 0$ 
+\end{dfn}
+\noindent
+Zweimaliges Differenzieren von \eqref{eq:charfkt} nach $\xi$ und mit $\xi = 0$ folgt: $m = \mathbb{E} X$ und $\sigma ^2 = \mathbb{V} X$.
+\begin{satz}
+Seien $(B_t)_{t\geq 0}$ eine eindimensionale Brownsche Bewegung, $t \geq 0$. Dann ist $ B_t = B(t)$ gaußsch mit Erwartungswert 0 und Varianz t und es gilt:
+\begin{align}\label{eq:charfktgleichung}
+\phi_{B_t}=\phi_t=\mathbb{E}e^{i\xi B_t}=e^{-t\xi^2/2} \text{\quad für alle } t\geq 0\text{, }\xi \in \R.
+\end{align}
+\end{satz}
+
+\begin{proof}
+Differenzierung von $\phi_t$ nach $\xi$ ergibt:
+\begin{equation*}
+\sqrt{2\pi t}\cdot \phi_t'(\xi) \overset{(B3)}= \frac{d}{d\xi} \int_\R{e^{-x^2/(2t)}e^{i\xi x} dx}
+\overset{\text{Lebesgue}}=\int_\R{e^{-x^2/(2t)}e^{i\xi x}\cdot (ix)}dx.
+\end{equation*}
+Mit der geschickten Umformung $\frac{d}{dx} e^{-x^2/(2t)} = -\frac{x}{t} e^{-x^2/(2t)}$ können wir das Ingetral umschreiben und es folgt partieller Integration (p.I.):
+\begin{flalign*}
+\int_\R{e^{-x^2/(2t)}e^{i\xi x}\cdot (ix)}dx
+&= \int_\R{ \left( \frac{d}{dx} e^{-x^2/(2t)} \right) (-it)e^{i\xi x} dx}\\
+&{\overset{\text{p.I.}}=} -\int_\R{e^{-x^2/(2t)}(-it)e^{i \xi x} (i\xi) dx}\\
+&=-t\xi \int_\R{e^{-x^2/(2t)}e^{i\xi x}dx}\\
+&=-t\xi\cdot \sqrt{2\pi t}\cdot \phi_t(\xi).
+\end{flalign*}
+Dies führt zu der Differentialgleichung $\phi_t'(\xi)=-t\xi \phi_t(\xi) $ die äquivalent ist zu:
+\begin{equation}
+\frac{\phi_t'(\xi)}{\phi_t(\xi)} = - t \xi \label{eq:charfktdgl}.
+\end{equation}
+\\
+\noindent Da auch $\phi_t(0) = \mathbb{E}e^{i\cdot 0\cdot B_t}=1$ gelten muss, wird \eqref{eq:charfktdgl} eindeutig gelöst von \\
+$\phi_t(\xi)=e^{-t\xi^2/2}$.
+\end{proof}
+
+\noindent Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. 
+Wir wollen im Folgenden zeigen, dass der stochastische Prozess $(W_t)_{t\geq 0}$ definiert durch
+\begin{align} \label{eq:Wt}
+W(t) := \left\lbrace
+\begin{array}{rll}
+t B(\frac{1}{t}), & \text{falls } t > 0,
+\\[4pt]
+0, & \text{falls } t = 0,
+\end{array}
+\right.
+\end{align}
+\noindent ebenfalls eine Brownsche Bewegung ist. Damit können wir aus dem Wachstumsverhalten von $(B_t)$ für $t \rightarrow \infty$ auch direkt Aussagen über das Verhalten von $(B_t)$ für $t \rightarrow 0$ folgern.
+Um dies zeigen zu können, benötigen wir allerdings zuerst noch ein paar allgemeine Feststellungen und die Definition eines Gauß-Prozesses.\\
+Betrachten wir zu aller erst einmal die Verteilung von $(W_t)$ indem wir uns die charakteristische Funktion $\psi_{w_t} = \psi_t $ anschauen, wobei $\psi_t(\xi)$ für $t>0$ gegeben ist durch:
+\begin{equation*}
+\psi_t(\xi)= \mathbb{E}(e^{i \xi W_t}) = \mathbb{E}(e^{i\xi t B_{1/t}}) = \sqrt{\frac{2\pi}{t}} \int_\R{e^{i\xi t x} e^{-x^2t/2}} dx.
+\end{equation*}
+Wie eben leiten wir $\psi_t$ nach $\xi$ ab und erhalten für $t>0$:
+\begin{flalign*}
+\sqrt{\frac{2\pi}{t}}\cdot \psi_t'(\xi)
+&= \sqrt{\frac{2\pi}{t}}\frac{d}{d\xi}\mathbb{E}e^{i\xi t B_{1/t}} = \int_\R{(itx)e^{i\xi tx}e^{-x^2t/2}dx} = \int_\R{(-i)e^{i\xi t x}\frac{d}{dx}e^{-x^2t/2}dx} \\
+&= i\int_\R{e^{i\xi t x} (i\xi t) e^{-x^2t/2}} dx = -\xi t \sqrt{\frac{2\pi}{t}} \psi_t(\xi).
+\end{flalign*}
+Daraus folgt: Die charakteristische Funktion $\phi_t$ von $B_t$ und $\psi_t$ von $W_t$ stimmen für alle $t\geq 0$ überein und da die charakteristische Funktion die Verteilung eindeutig bestimmt, siehe \cite[Satz 15.7 Seite 158]{Henze Skript}, haben $B_t$ und $W_t$ also auch dieselbe Verteilung für alle $t\geq0$.\\
+
+\begin{dfn}
+Sei $X = (X_1,\dots , X_d) \colon \Omega \mapsto \R^d$ ein Zufallsvektor. Dann ist $X$ ein Gaußscher Zufallsvektor genau dann, wenn  für alle $\alpha_1,\dots ,\alpha_d$ $\in \R$ die Zufallsvariable $\sum_{n=1}^d \alpha_n X_n$ gaußsch ist.
+\end{dfn}
+
+\noindent Damit kommen wir nun zur Definition eines Gauß-Prozess.
+
+\begin{dfn}
+Sei $(X_t)_{t\geq 0}$ ein eindimensionaler stochastischer Prozess. Dann ist $(X_t)$ ein Gauß-Prozess $:\Leftrightarrow$ Alle Vektoren $\Gamma = (X_{t_1},\dots,X_{t_n})^\top, n\geq 1, 0\leq t_1<t_2<\dots<t_n$, sind Gaußsche Zufallsvektoren.
+\end{dfn}
+
+\begin{thm}\label{eq:BBistGaussprozess}
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. Dann ist der Vektor \linebreak$\Gamma := (B_{t_1},\dots,B_{t_n})^\top$, $t_0:=0<t_1<\dots<t_n, n\geq 1$, ein Gaußscher Zufallsvektor (und damit nach Defintion $(B_t)$ ein Gauß-Prozess) mit strikt positiv definiter, symmetrischer Kovarianzmatrix $C = (t_j\land t_k)_{j,k=1,\dots,n}$ und Erwartungswertvektor $m = 0_n\in \R^n$.
+\end{thm}
+
+\begin{proof}
+\cite[Theorem 2.6, Seite 9 ff]{Schilling}
+\end{proof}
+
+\begin{lem}\label{eq:gaussprozessistBB}
+Sei $(X_t)_{t\geq 0}$ ein eindimensionaler Gauß-Prozess, mit $\Gamma := (X_{t_1},\dots , X_{t_n})^\top$ ist ein Gaußsche Zufallsvektor mit Erwartungswert $0$ und Kovarianzmatrix C, wobei C geben ist durch: $C = (t_j\land t_k)_{j,k=1,\dots,n}$. Es gelte weiter, dass $(X_t)_{t\geq 0}$ stetige Pfade habe. Dann gilt:\\
+$(X_t)_{t\geq 0}$ ist eine eindimensionale Brownsche Bewegung.
+\end{lem}
+
+\begin{proof}
+\cite[Korollar 2.7, Seite 11]{Schilling}
+\end{proof}
+
+\noindent Jetzt wollen wir noch ein kleines Resultat beweisen, das vielleicht sogar aus der Analysis 1 bekannt sein könnte.
+
+\begin{lem}\label{eq:Stetigrational}
+Sei $f \colon [0,\infty) \to \R, f(0)=0$ und $f$ stetig auf $(0,\infty)$. Dann gilt:
+\begin{align*}
+\text{f stetig } \Leftrightarrow \forall n \in \N \text{ } \exists m_n \in \N \text{ } \forall r\in \Q \cap (0,\tfrac{1}{m_n}]: \vert f(r)\vert \leq \frac{1}{n}
+\end{align*}
+\end{lem}
+
+\begin{proof}\
+\begin{itemize}
+\item[$\glqq\Rightarrow\grqq$] Folgt sofort aus der Definition von Stetigkeit.
+\item[$\glqq\Leftarrow\grqq$] Sei $(t_n)_{n\in \N} \subset (0,\infty)$, mit $\underset{n\to \infty}\lim t_n = 0$.\\
+%und o.B.d.A $t_{n+1}\leq t_n$ $\forall n\in \N$.
+Sei $n\in \N$. Dann ist $f$ nach Voraussetzung in $t_n$ stetig, also existiert $\delta_n > 0$ so, dass:
+\begin{align*}
+\vert f(t_n)-f(t)\vert \leq \frac{1}{n} \text{\quad für alle } t \in U_{\delta_n}(t_n).
+\end{align*}
+Sei o.B.d.A $\delta_n \to 0$. Da $\Q$ dicht in $\R$, existiert $r_n \in \Q^+ \cap U_{\delta_n}(t_n)$.\\
+Also gilt $\vert f(t_n)-f(r_n) \vert \leq \frac{1}{n}$.\\
+Da $t_n \rightarrow 0$ und $\delta_n \rightarrow 0$, muss auch $r_n \rightarrow 0$ und damit nach Voraussetzung auch $f(r_n)  \rightarrow 0$ (für $n \to \infty$).\\
+$\Rightarrow$ $\vert f(t_n)\vert -\underbrace{\vert f(r_n)\vert}_{\to 0}  \leq \vert f(t_n)-f(r_n)\vert \leq \frac{1}{n}$,\\
+$\Rightarrow$ $f(t_n) \to 0$ für $(n \to \infty)$.\\
+$\Rightarrow$ f stetig.
+\end{itemize}
+\end{proof}
+
+\noindent Mit dieser Vorarbeit kann jetzt die oben gemachte Behauptung beweisen werden.
+\begin{satz}
+Sei $(B_t)_{t\geq 0}$ Brownsche Bewegung und $(W_t)_{t\geq 0}$ definiert wie in Gleichung \eqref{eq:Wt}. Dann ist $(W_t)_{t\geq 0}$ eine Brownsche Bewegung.
+\end{satz}
+
+\begin{proof}
+Nach Theorem \ref{eq:BBistGaussprozess} wissen wir bereits, dass $(B_t)$  ein Gauß-Prozess und \linebreak$\Gamma := (B_{t_1},\dots,B_{t_n}))^\top$ gaußsch mit Kovarianzmatrix $C=(t_j\land t_k)_{j,k=1,\dots,n}$ und Erwartunswert $m=0\in\R^n$ ist.\\
+$\Rightarrow$ $\mathbb{E}(W(t))= \mathbb{E}(t(B(\frac{1}{t})) = t$ $\mathbb{E}(B(\frac{1}{t})) = t\cdot0 = 0$, für $t > 0$ und $\mathbb{E}(W(0)) = \mathbb{E}( 0) = 0$. \\
+Die Kovarianzmatrix von $W_t$ zu den den Zeitpunkten $0\leq t_0 < t_1 <\dots < t_n$ ist für $1\leq j,k\leq n$ gegeben durch:
+\begin{flalign*}
+\text{Cov}(W(t_j),W(t_k))= \text{Cov}(t_j B(\tfrac{1}{t_j}),t_k B(\tfrac{1}{t_k} ))=t_j t_k(\tfrac{1}{t_j} \land \tfrac{1}{t_k}) = t_j\land t_k.
+\end{flalign*}
+Also ist $(W(t_1),\dots,W(t_n))^\top$ ein Gauß-Prozess.
+Da $t \mapsto W(t)=tB(\tfrac{1}{t})$ für $t>0$ stetig ist, genügt der Prozess $(W_t)_{t>0}$ nach Lemma \ref{eq:gaussprozessistBB} den Forderungen (B1)-(B4). 
+Also müssen wir noch zeigen, dass $\underset{t\to0}\lim$ $W(t)=W(0)=0$ gilt.\\
+Nach Lemma \ref{eq:Stetigrational} können wir uns dabei auf die Betrachtung von positiven, rationalen Zahlen beschränken.
+Dafür definieren wir uns die Menge
+\begin{flalign*}
+\Omega^W:=\left\{\underset{t\to 0^+}\lim W(t)=0\right\} \overset{\text{\ref{eq:Stetigrational}}}= \bigcap_{n\geq 1} \underset{m\geq 1} \bigcup\underset{r\in \Q \cap \left(0,\frac{1}{m}\right]}\bigcap \left\{\vert W(r) \vert \leq \frac{1}{n}\right\}.
+\end{flalign*}
+\noindent Wir wissen bereits, dass $(W_t)_{t>0} $ und $(B_t)_{t>0}$ dieselbe Verteilung haben und da die Mengen $\Omega^W$ und die analog definierte Menge $\Omega^B$ durch abzählbar viele Mengen der Form $\{ \vert W(r) \vert \leq \tfrac{1}{n}\}$ und $\{ \vert B(r)\vert \leq \tfrac{1}{n} \}$ definiert sind, können wir folgern, dass $\mathbb{P}(\Omega^W)=\mathbb{P}(\Omega^B)$.
+Also gilt
+\begin{align*}
+{P}(\Omega^W)=\mathbb{P}(\Omega^B) \overset{\text{(B4)}}= \mathbb{P}(\Omega)=1.
+\end{align*}
+Der stochastische Prozess $(W_t)_{t\geq 0}$ ist also auf dem Wahrscheinlichkeitsraum\\ $(\Omega^W, \Omega^W \cap \mathcal{A}, \mathbb{P})$ eine Brownsche Bewegung $(\Omega^W\cap \mathcal{A}:= \{ \Omega^W \cap A \text{ } \vert \text{ }A \in \mathcal{A} \})$.
+\end{proof}
+
+\begin{satz}
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegegung. Dann ist $(-B_t)_{t\geq 0}$ ebenfalls eine Brownsche Bewegung.
+\end{satz}
+
+\begin{proof}
+Die Eigenschaften (B0)-(B2) und (B4) folgen sofort, die Eigenschaft (B3) folgt aus der Symmetrie der Normalverteilung.
+\end{proof}
+
+\noindent Auch der nächste Satz zeigt uns eine Möglichkeit, wie wir aus einer gegebenen Brownschen Bewegung $(B_t)$ wieder einer Brownsche Bewegung $(W_t)$ bekommen.
+
+\begin{satz}\label{eq:belstartzeitpunkt}
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung und a > 0.\\
+Dann ist $W(t):=B(t+a)-B(a)$ ebenfalls eine Brownsche Bewegung.
+\end{satz}
+
+\begin{proof}
+Da $W(0)= B(a)-B(a) = 0$ und $B(t)$ stetig für alle $t$, ist auch $W(t)$ stetig. Die Eigenschaften (B0) und (B4) sind also erfüllt. Seien $0\leq s\leq t$, $0\leq h$. Dann gilt:
+\begin{flalign*}
+W(t+h)-W(s+h) &= B(t+h+a)-B(a) - (B(s+h+a)-B(a)) \\
+&= B(t+\underbrace{h+a}_{=\tilde{h}})-B(s+\underbrace{h+a}_{=\tilde{h}}) \overset{\text{(B2)}}\sim B(t)-B(s) \overset{\text{(B3)}}\sim N(0,t-s).
+\end{flalign*}
+Also gelten auch (B2) und (B3) für den Prozess $(W_t)$. Es bleibt also noch (B1) zu zeigen. Seien dafür $0\leq t_0<t_1<\dots<t_n$. Es gilt:
+\begin{flalign*}
+W(t_j)-W(t_{j-1})=B(t_j+a)-B(t_{j-1}+a) \text{\quad für alle } j = 1,\dots,n.
+\end{flalign*}
+Da nach Voraussetzung für die Zeipunkte $\bar{t}_j :=t_j+a$ die Zuwächse $B(\bar{t}_j)-B(\bar{t}_{j-1})$ unabhängig sind, gelten alle Eigenschaften (B0)-(B4) für den Prozess $(W_t)$ und damit ist $(W_t)$ eine Brownsche Bewegung.
+\end{proof}
+
+
+\newpage
+
+
+\section{Das Wachstum eines Pfades der Browschen Bewegung}
+\noindent In diesem Kapitel wollen wir uns anschauen, wie sich zu gegebenem $\omega \in \Omega$ der Pfad $B(t,\omega)$ in $t$ verhält. Genauer wollen wir versuchen, Aussagen zu finden, wie schnell die Brownsche Bewegung insgesamt wächst, also $\mathbb{P}$-fast sichere Aussagen finden.\\
+Dafür wollen wir die enge Beziehung der Brownschen Bewegung zur Normalverteilung ausnutzen. Dies motiviert dazu, bei einer Standardnormalverteilten Zufallsvariable $X$ und zu gegebenem $x>0$, die Wahrscheinlichkeit $\mathbb{P}(X>x)$ näher zu betrachten. Wir erhalten die folgende beidseitig einschließende Abschätzung:
+\begin{lem}
+Sei $X \sim N(0,1)$. Dann gilt für $x>0$:
+\begin{align}\label{eq:Schlange}
+\frac{1}{\sqrt{2\pi}} \frac{x}{x^2+1} e^{-x^2/2} \leq \mathbb{P}(X>x)\leq \frac{1}{\sqrt{2\pi}} \frac{1}{x} e^{-x^2/2}.
+\end{align}
+\end{lem}
+\begin{proof} Mit partieller Integration folgt:
+\begin{align*}
+\frac{1}{x^2} \int_x^\infty e^{-y^2/2}dy\geq \int_x^\infty \frac{1}{y^2} e^{-y^2/2} dy \overset{\text{p.I.}}= (-1)(-1)\frac{1}{x}e^{-x^2/2} - \int_x^\infty (-y^{-1})e^{-y^2/2}(-y)dy
+\end{align*}
+und damit
+\begin{align*}
+\left(\frac{1}{x^2}+1 \right) ^{-1} \frac{1}{x} e^{-x^2/2}
+&\leq \int_x^\infty e^{-y^2/2}dy \\
+&= \sqrt{2\pi} \mathbb{P}(X>x)
+\leq \int_x^\infty{\frac{y}{x} e^{-y^2/2}dy}
+= \frac{1}{x}e^{-x^2/2}.
+\end{align*}
+\end{proof}
+
+\begin{lem}\label{eq:MaxAbschaetzung}
+Seien $(B_t)$ eine Brownsche Bewegung, $\tau_b:= \inf \{ t\geq 0$ $\vert$ $B_t=b\}$ und $M_t:=\sup_{s\leq t} B(s)$. Dann gilt:
+\begin{align*}
+&\{ \tau_b  \leq t \} = \{ M_t \geq b \} \text{ und damit }\\
+&\mathbb{P} (M_t \geq b ) = \mathbb{P}(\tau_b \leq t ) = 2\cdot \mathbb{P} (B_t \geq b) \text{ für alle } b > 0.
+\end{align*}
+\end{lem}
+
+\begin{proof}
+\cite[Gleichung 6.11, Seite 68-69]{Schilling}
+\end{proof}
+
+\noindent Die Abschätzungen dieser beiden Lemmata sind der Schlüssel um das Gesetz des iterierten Logarithmus von Khintchine beweisen zu können.
+\begin{thm}\label{eq:LIL} \textbf{Gesetz des iterierten Logarithmus von Khintchine}\\
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. Dann gilt:
+\begin{equation}
+\mathbb{P}\left( \limsup_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} = 1 \right) = 1.
+\end{equation}
+\end{thm}
+
+\begin{proof}
+Wir wollen den Beweis in zwei Teile teilen, indem wir im ersten Schritt zeigen, dass $\mathbb{P}$-fast sicher 
+\begin{equation*}
+\limsup_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \leq 1
+\end{equation*}
+gilt und im zweiten Schritt zeigen, dass $\mathbb{P}$-fast sicher auch
+\begin{equation*}
+\limsup_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \geq 1
+\end{equation*}
+gilt.
+
+\begin{itemize}
+\item[1.] Seien $\epsilon > 0$, $q>1$ und die Mengen
+\begin{align*}
+A_n:=\left\{ \underset{0\leq s\leq q^n}\sup B(s)\geq (1+\epsilon)\sqrt{2q^n\log\log q^n} \right\} \text{\quad für alle } n \in \N.
+\end{align*}
+Nach Lemma \ref{eq:MaxAbschaetzung} können wir direkt folgern:
+\begin{flalign*}
+\mathbb{P}(A_n)
+&\leq 2\mathbb{P} \left(B(q^n)\geq (1+\epsilon)\sqrt{2q^n\log\log q^n}\right)\\
+&= 2\mathbb{P} \left( \frac{B(q^n)}{\sqrt{q^n}}\geq (1+\epsilon)\sqrt{2\log\log q^n}\right).
+\end{flalign*}
+Da allgemein für eine $N(0,\sigma^2)$-verteilte Zufallsvariable X gilt, dass $\frac{X}{\sigma} \sim N(0,1)$ ist, gilt $B(q^n)/\sqrt{q^n} \sim B(1)$ und damit:
+\begin{align*}
+\mathbb{P} \left( \frac{B(q^n)}{\sqrt{q^n}}\geq (1+\epsilon)\sqrt{2\log\log q^n}\right) = \mathbb{P} \left( B(1)\geq (1+\epsilon)\sqrt{2\log\log q^n}\right).
+\end{align*}
+Mithilfe der Gleichung \eqref{eq:Schlange} und  $x=(1+\epsilon)\sqrt{2\log\log q^n}$ können wir $\mathbb{P}(A_n)$ nach oben wie folgt abschätzen:
+\begin{flalign*}
+\mathbb{P}(A_n)
+&\leq \frac{2}{(1+\epsilon)\sqrt{2\log\log q^n}}\frac{1}{\sqrt{2\pi}}e^{-(1+\epsilon)^2\log\log q^n}\\
+&= \underbrace{\frac{1}{(1+\epsilon)\sqrt{\pi\log\log q^n}}}_{\leq c}\underbrace{e^{-(1+\epsilon)^2\log\log q^n}}_{=(\log q^n)^{-(1+\epsilon)2}}\\
+&\leq c\cdot (n \log q)^{-(1+\epsilon)^2}.
+\end{flalign*}
+$\Rightarrow$ $\sum_{n=1}^\infty  \mathbb{P}(A_n) < \infty$ und wir können das Borel-Cantelli Lemma, siehe \linebreak
+\cite[9.18, Seite 106 ff]{Henze Skript}, benutzen um $ \mathbb{P} (\limsup_{n\to\infty} A_n)=0$ zu folgern, wobei der $\limsup$ von Mengen definiert ist als:
+\begin{align*}
+&\limsup\limits_{n\to\infty} A_n := \bigcap\limits_{n=1}^\infty \bigcup\limits_{k=n}^\infty A_k\\
+\text{Daraus folgt: } \omega \in &\limsup\limits_{n\to\infty} A_n \Leftrightarrow \exists \text{ Teilfolge }(A_{n_k}) \text{ von } (A_n): \omega \in A_{n_k}\text{ } \text{ für alle } k
+\end{align*}
+Damit können wir sagen, dass $\mathbb{P} \left( ( \limsup\limits_{n\to\infty} A_n)^C \right) \overset{\text{Def}}= \mathbb{P} \left( \liminf\limits_{n\to\infty} A_n^C \right) = 1$.\\
+Also gilt mit Wahrscheinlichkeit 1:
+\begin{align}\label{eq:supremumschranke}
+\limsup\limits_{n\to\infty} \frac{\sup_{0\leq s\leq q^n} B(s)}{\sqrt{2q^n\log\log q^n}} \leq (1+\epsilon).
+\end{align}
+Die folgenden Gleichungen bzw Ungleichungen sind alle $\mathbb{P}$-fast sicher auf unserer gefundenen $1$-Menge $\liminf\limits_{n\to\infty} A_n^C $ zu betrachten.
+Seien $t>3$ und $\Lambda (t) := \sqrt{2t\log\log t}$. Dann gibt es $n \in \N$: $t \in [q^{n-1},q^n]$. Da weiter
+\begin{flalign*}
+\frac{d}{dt} \Lambda (t) = \frac{1}{2} (2t\log\log t)^{-1/2}\cdot \left( 2\log\log t + 2t \frac{1}{\log t}\frac{1}{t} \right) > 0 \text{ für alle } t>3,
+\end{flalign*}
+ist $\Lambda$ strickt mononton wachsend auf $(3,\infty)$ und somit gilt für $q^n > t \geq q^{n-1} > 3:$
+\begin{align}\label{eq:obergrenze}
+\begin{split}
+\frac{B(t)}{\sqrt{2t\log\log t}} 
+&\leq \frac{\sup_{s\leq q^n} B(s)}{\sqrt{2q^{n-1}\log\log q^{n-1}}}\\
+&= \frac{\sup_{s\leq q^n} B(s)}{\sqrt{2q^n\log\log q^n}}\cdot \frac{\sqrt{2q^n\log\log q^n}}{\sqrt{2q^{n-1}\log\log q^{n-1}}}
+\end{split}
+\end{align}
+Sei $(t_m)$ eine Folge in $(3,\infty)$ mit $t_m \to \infty$ für $m \to \infty$. Dann können wir für jedes Folgenglied $t_m$ die Abschätzung aus \eqref{eq:obergrenze} anwenden und damit auch für den $\lim\limits_{m\to\infty}$:
+\begin{align*}
+\lim\limits_{m\to\infty} \frac{B(t_m)}{\sqrt{2t_m\log\log t_m}} \leq \limsup\limits_{n\to\infty} \frac{\sup_{s\leq q^n} B(s)}{\sqrt{2q^n\log\log q^n}}\cdot \frac{\sqrt{2q^n\log\log q^n}}{\sqrt{2q^{n-1}\log\log q^{n-1}}}
+\end{align*}
+Damit können wir insgesamt für den $\limsup\limits_{t\to\infty}$ sagen:
+\begin{align*}
+\limsup\limits_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \leq \limsup\limits_{n\to\infty} \frac{\sup_{s\leq q^n} B(s)}{\sqrt{2q^n\log\log q^n}}\cdot \frac{\sqrt{2q^n\log\log q^n}}{\sqrt{2q^{n-1}\log\log q^{n-1}}} \leq (1+\epsilon) \cdot \sqrt{q}.
+\end{align*}
+Seien $(\epsilon_k)_{k \in \N}$ bzw. $(q_l)_{l \in \N}$ beliebig von oben konvergente Folgen gegen $0$ bzw $1$.
+Dann können wir die Beweisschritte wie eben für jedes Folgenglied $\epsilon_k$ und $q_l$ machen und erhalten damit im $\lim\limits_{\epsilon \to 0}$ bzw $\lim\limits_{q\to 1}$:
+\begin{flalign*}
+\limsup\limits_{t\to\infty}\frac{B(t)}{\sqrt{2t\log\log t}} \leq 1 \text{ $\mathbb{P}$-fast sicher.}
+\end{flalign*}
+
+\item[2.] Benutzen wir die Ungleichung \eqref{eq:supremumschranke} bei der Brownschen Bewegung $(-B_t)_{t\geq 0}$ zum Zeitpunkt $q^{n-1}$ und mit $\epsilon = 1$ wissen wir:
+\begin{align}\label{eq:Bqn-1Abschätzung}
+-B(q^{n-1}) \leq \sqrt{2q^{n-1}\log\log q^{n-1}}(1+\epsilon) \leq \frac{2}{\sqrt{q}}\sqrt{2q^n\log\log q^n}.
+\end{align}
+Wir werden dies im dritten Beweisschritt noch benutzen.
+
+\item[3.] Bis hierhin haben wir die Eigenschaften (B1) und (B2), also dass die Zuwächse der Brownschen Bewegung unabhängig und stationär sind, nicht benutzt. Es ist also naheliegend, dass dies für die zweite Abschätzung notwendig sein wird. Wie eben wollen wir uns zuerst eine geschickt gewählte $1$-Menge konstruieren. Sei dafür $q > 1$ und 
+\begin{flalign*}
+C_n := \left\{ B(q^n)-B(q^{n-1}) \geq \sqrt{2(q^n-q^{n-1})\log\log q^n} \right\} \text{ für alle } n\geq 1.
+\end{flalign*}
+Dann sind die Mengen $C_n,C_m$ für alle $n\neq m$ unabhängig, aufgrund der unabhängigen Zuwächse, siehe (B1).\\
+%\begin{flalign*}
+%\mathbb{P} (C_n \cap C_m) &= \mathbb{P} \bigg( \left\{ B(q^n)-B(q^{n-1}) \geq \sqrt{2(q^n-q^{n-1})\log\log q^n} \right\} \\
+%&\cap \left\{ B(q^m)-B(q^{m-1}) \geq \sqrt{2(q^m-q^{m-1})\log\log q^m} \right\} \bigg)\\
+%&{\overset{(B1)}=} \mathbb{P} \left( \left\{ B(q^n)-B(q^{n-1}) \geq \sqrt{2(q^n-q^{n-1})\log\log q^n} \right\}\right) \\
+%&\cap \mathbb{P}\left(\left\{ B(q^m)-B(q^{m-1}) \geq \sqrt{2(q^m-q^{m-1})\log\log q^m} \right\} \right)\\
+%&= \mathbb{P}(C_n)\mathbb{P}(C_m)
+%\end{flalign*}
+Außerdem verrät uns (B2), mit $s = 0$, $ t = q^n-q^{n-1}$ und $h = q^{n-1}:$
+\begin{align*}
+B(q^n-q^{n-1})=B(t)=B(t)-B(s) \overset{(B2)}\sim B(t+h)-B(s+h)=B(q^n)-B(q^{n-1}).
+\end{align*}
+Also liefern uns die stationären Zuwächse der Brownschen Bewegung für $\mathbb{P}(C_n)$:
+\begin{flalign*}
+\mathbb{P}(C_n) &=\mathbb{P}\left( \frac{B(q^n)-B(q^{n-1})}{\sqrt{q^n-q^{n-1}}} \geq \sqrt{2\log\log q^n}\right)\\
+&=\mathbb{P}\left( \frac{B(q^n-q^{n-1})}{\sqrt{q^n-q^{n-1}}} \geq \sqrt{2\log\log q^n}\right).
+\end{flalign*}
+Wie bereits in Teil 1. genutzt, gilt auch hier
+\begin{align*}
+\frac{B(q^n)-B(q^{n-1})}{\sqrt{q^n-q^{n-1}}} \sim B(1) \sim N(0,1).
+\end{align*}
+Wir können also die untere Abschätzung der Gleichung \eqref{eq:Schlange} mit $x=\sqrt{2\log\log q^n}$ benutzen.
+Für $x\geq 1$ gilt zudem, dass $ 2x^2\geq x^2+1\Leftrightarrow x^2\geq \tfrac{1}{2}(x^2+1)\Leftrightarrow \tfrac{x}{x^2+1}\geq \tfrac{1}{2}\tfrac{1}{x}$ und da für $n$ groß genug auch $x\geq 1$ gilt können wir also abschätzen:
+\begin{flalign*}
+\mathbb{P}(C_n) &\geq \frac{1}{\sqrt{2\pi}}\frac{\sqrt{2\log\log q^n}}{2\log\log q^n+1}e^{-\log\log q^n}\\
+&\geq \frac{1}{\sqrt{2\pi}} \frac{1}{2} \frac{1}{\sqrt{2\log\log q^n}}e^{-\log\log q^n}\\
+&=\frac{1}{\sqrt{8\pi}}\frac{1}{\sqrt{2\log\log q^n}} (n\log q)^{-1}\\
+&= c \cdot \underbrace{\frac{1}{n}\frac{1}{\sqrt{\log (n \log q)}}}_{=: a_n}
+\end{flalign*}
+Dann ist $a_n > 0$ und $a_{n+1}\leq a_n$ für alle $n$, also gilt nach dem Cauchy-Verdichtungssatz:\\
+$\sum a_n$ konvergent $\Leftrightarrow \sum 2^k a_{2^k}$ konvergent. Es gilt aber
+\begin{align*}
+\sum\limits_{k=1}^\infty 2^ka_{2^k} = \sum\limits_{k=1}^\infty 2^k\frac{1}{2^k} \frac{1}{\sqrt{\log2^k\log q}} = \sum\limits_{k=1}^\infty\frac{1}{\sqrt{k}}\frac{1}{\sqrt{\log(2\log q)}}= \frac{1}{\sqrt{\log(2\log q)}} \sum\limits_{k=1}^\infty \frac{1}{\sqrt{k}},
+\end{align*}
+also muss $\sum_{n=1}^\infty \mathbb{P}(C_n) \geq \sum_{n=1}^\infty c \cdot a_n= \infty$ gelten und da die $C_n$ wie oben gezeigt unabhängig sind können wir das Borel-Cantelli Lemma anwenden und es folgt:
+\begin{align*}
+\mathbb{P} \left( \limsup\limits_{n\to\infty} C_n \right) = 1.
+\end{align*}
+Es gilt also:
+\begin{flalign*}
+0 &= \mathbb{P} \left( \{ \omega \in \Omega\text{ | } \omega \in C_n^C \text{ für fast alle n} \} \right)\\
+&= \mathbb{P} \left( \{ \omega \in \Omega\text{ | } \frac{B(q^n-q^{n-1})}{\sqrt{q^n-q^{n-1}}} < \sqrt{2\log\log q^n }\text{ für fast alle n} \} \right)
+\end{flalign*}
+oder, äquivalent dazu: Es gilt $\mathbb{P}$-fast sicher für unendlich viele $n\geq 1$:
+\begin{flalign*}
+B(q^n) &\geq \sqrt{2(q^n-q^{n-1})\log\log q^n} + B(q^{n-1})\\
+&{\overset{2.}\geq} \sqrt{2(q^n-q^{n-1})\log\log q^n} -\frac{2}{\sqrt{q}}\sqrt{2q^n\log\log q^n}\\
+\Leftrightarrow \frac{B(q^n)}{\sqrt{2q^n\log\log q^n}} &\geq\sqrt{\frac{2(q^n-q^{n-1})\log\log q^n}{2q^n\log\log q^n}}- \frac{2}{\sqrt{q}}\\
+\Leftrightarrow \frac{B(q^n)}{\sqrt{2q^n\log\log q^n}} &\geq \sqrt{\frac{q^n-q^{n-1}}{q^n}}-\frac{2}{\sqrt{q}}\underset{n\to\infty}\rightarrow \sqrt{1-\frac{1}{q}}-\frac{2}{\sqrt{q}} 
+\end{flalign*}
+Da dies für unendlich viele $n$ gilt, folgt für die Brownsche Bewegung insgesamt:
+\begin{flalign*}
+&\limsup\limits_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \geq\limsup\limits_{n\to\infty} \frac{B(q^n)}{\sqrt{2q^n\log\log q^n}} \\
+\geq &\lim\limits_{n\to\infty} \sqrt{\frac{q^n-q^{n-1}}{q^n}}-\frac{2}{\sqrt{q}} = \sqrt{\frac{q-1}{q}}-\frac{2}{\sqrt{q}}
+\end{flalign*}
+Ähnlich wie im ersten Teil, nehmen wir jetzt eine beliebige Folge $(q_l), q_l\to\infty$ und können die einzelnen Schritte für jedes $q_l$ machen. Also können wir mit dem $\lim\limits_{q\to\infty}$ sagen:
+\begin{align*}
+\limsup\limits_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \geq\lim\limits_{q\to\infty} \sqrt{\frac{q-1}{q}}-\frac{2}{\sqrt{q}} = 1.
+\end{align*}
+
+Für $\bar{\Omega}:= 
+\liminf\limits_{n\to\infty} A_n^C \cap$ $\limsup\limits_{n\to\infty} C_n$, gilt einerseits $\mathbb{P}({\bar{\Omega}}) = 1$, vor allem aber auch:
+\begin{align*}
+\limsup\limits_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \geq 1 &\text{ und } \limsup\limits_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \leq 1 \text{\quad} \forall \text{ } \omega \in \bar{\Omega}\\
+\Longrightarrow &\mathbb{P} \left( \limsup\limits_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} = 1 \right) = 1.
+\end{align*}
+\end{itemize}
+\end{proof}
+
+
+\noindent Wir wissen bereits, dass zu gegebener Brownscher Bewegung $(B_t)_{t\geq 0}$ die Prozesse $-B(t)$ und $tB(\frac{1}{t})$ ebenfalls Brownsche Bewegungen sind. Dies wollen wir nutzen, um über $\liminf\limits_{n\to\infty}$ und $\liminf\limits_{t\to 0}$ bzw $\limsup\limits_{t\to 0}$  weitere Ergebnisse aus dem Theorem \ref{eq:LIL} zu bekommen. Das folgende Lemma gibt uns darüber direkt Auskunft.
+%\noindent Wir wollen versuchen, einige weitere Resultate aus Theorem \ref{eq:LIL} zu gewinnen. Da wir schon wissen, dass zu gegebener Brownscher Bewegung $(B_t)_{t\geq 0}$ die Prozesse $-B(t)$ und $tB(\frac{1}{t})$ ebenfalls Brownsche Bewegung sind können wir damit für $\liminf\limits_{n\to\infty}$ und für $t\to 0$ folgendes Lemma aufstellen:
+
+\begin{lem} Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. Dann gilt $\mathbb{P}$-fast sicher:
+\begin{flalign*}
+\qquad &(a)\quad \limsup\limits_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} = 1,
+&&(b)\quad \limsup\limits_{t\to 0} \frac{B(t)}{\sqrt{2t\log\log \frac{1}{t}}} = 1,\qquad\qquad \\
+&(c)\quad \liminf\limits_{t\to \infty} \frac{B(t)}{\sqrt{2t\log\log t}} = -1,
+&&(d)\quad \liminf\limits_{t\to 0} \frac{B(t)}{\sqrt{2t\log\log \frac{1}{t}}} = -1.
+\end{flalign*}
+\end{lem}
+
+\begin{proof} \
+\begin{itemize}
+\item[(a)] Die Aussage (a) ist Theorem \ref{eq:LIL}.
+\item[(b)]
+\begin{flalign*}
+\limsup\limits_{t\to 0} \frac{B(t)}{\sqrt{2t\log\log \tfrac{1}{t}}}
+&= \limsup\limits_{t\to \infty} \frac{B\left(\tfrac{1}{t}\right)}{\sqrt{2\tfrac{1}{t}\log\log t}}
+= \limsup\limits_{t\to \infty} \frac{t}{t} \frac{B\left(\tfrac{1}{t}\right)}{\sqrt{2\tfrac{1}{t}\log\log t}}\\
+&=\limsup\limits_{t\to \infty} \frac{\tilde{B}(t)}{\sqrt{2t\log\log t}}
+= 1.
+\end{flalign*}
+\item[(c)]
+\begin{flalign*}
+\liminf\limits_{t\to \infty} \frac{B(t)}{\sqrt{2t\log\log t}}
+= \liminf\limits_{t\to \infty} (-) \frac{-B(t)}{\sqrt{2t\log\log t}}
+= - \limsup\limits_{t\to \infty} \frac{\tilde{B}(t)}{\sqrt{2t\log\log t}}
+= -1.
+\end{flalign*}
+\item[(d)]
+\begin{flalign*}
+\liminf\limits_{t\to 0} \frac{B(t)}{\sqrt{2t\log\log \frac{1}{t}}}
+= - \limsup\limits_{t\to \infty} \frac{-tB(\frac{1}{t})}{\sqrt{2\frac{1}{t}t^2\log\log t}}
+= - \limsup\limits_{t\to \infty} \frac{\tilde{\tilde{B}}(t)}{\sqrt{2t \log\log t}} = -1.
+\end{flalign*}
+\end{itemize}
+\end{proof}
+
+\newpage
+
+\noindent An dieser Stelle soll noch ein kleiner Exkurs gemacht werden. Dazu sei wieder $(B_t)_{t\geq0}$ eine Brownsche Bewegung und für $t>0$ $W_h:=B(t+h)-B(t)$. Dann ist nach Satz \ref{eq:belstartzeitpunkt} $(W_h)$ auch eine Brownsche Bewegung und damit gilt:
+\begin{align}\label{eq:lokalstetig}
+\limsup\limits_{h\to 0} \frac{\vert B(t+h)-B(t)\vert}{\sqrt{2h\log\log \frac{1}{h}}} = 1.
+\end{align}
+
+\noindent Nach Satz von Lévy (1937) gilt aber auch $\mathbb{P}$-fast sicher:
+\begin{align}\label{eq:globalstetig}
+\limsup\limits_{h\to0} \frac{\sup_{0\leq t\leq 1-h} \vert B(t+h)-B(t)\vert}{\sqrt{2h\log\frac{1}{h}}} = 1.
+\end{align}
+
+\noindent Das Interessante daran ist, dass Gleichung \eqref{eq:lokalstetig} uns verrät, dass der lokale Stetigkeitsmodul einer Brownschen Bewegung durch die Funktion $\sqrt{2h\log\log \frac{1}{h}}$ gegeben ist. Andererseits muss nach Gleichung \eqref{eq:globalstetig} der globale Stetigkeitsmodul größer als $\sqrt{2h\log\frac{1}{h}}$ sein. Es muss also für jeden Pfad Punkte geben, an denen das Gesetz des iterierten Logarithmus nicht gilt!
+Definieren wir uns die Menge der Punkte, abhängig von $\omega$, an denen das Gesetz des iterierten Logarithmus von Khintchine nicht gilt
+\begin{flalign*}
+E(\omega) = \left \{ t\geq 0 \text{ | } \limsup\limits_{h\to 0} \frac{\vert B(t+h,\omega)-B(t,\omega) \vert}{\sqrt{2h\log\log \frac{1}{h}}} \neq 1\right\} ,
+\end{flalign*}
+kann gezeigt werden, dass $E(\omega)$ $\mathbb{P}$-fast sicher überabzählbar und dicht in $[0,\infty)$ liegt. Dieses auf den ersten Blick überraschende Ergebnis kann zum Beispiel in \cite[Seite 195-203]{Taylor} oder auch in \cite[Seite 174-192]{Orey Taylor} nachgelesen werden.
+
+\newpage
+\section{Chung's Gesetz des interierten Logarithmus}
+Bevor wir ein weiteres iteriertes Logarithmus Gesetz kennen lernen, soll eine kleine Motivation dafür gemacht werden. Dafür sei $_{k \in \N}(X_j)_{j\in\N}$ eine Folge von unabhängigen, identisch verteilten (kurz uiv.) Zufallsvariablen mit $\mathbb{E}(X_1)=0$ und $\mathbb{E}(X_1^2) < \infty$. In \cite[Seite 205-233]{Chung} wurde bewiesen, dass
+\begin{align*}
+\liminf\limits_{n\to\infty}\frac{\max_{j\leq n}\vert X_1+\dots+X_n\vert}{\sqrt{n/\log\log n}} = \frac{\pi}{\sqrt{8}}.
+\end{align*}
+\noindent Wir wollen versuchen, ein ähnliches Resultat für die Brownsche Bewegung zu finden. Dafür benötigen wir allerdings eine etwas feinere Abschätzung für die Verteilung des Maximums einer Brownschen Bewegung.\\
+Der folgende Satz geht auf Lévy aus dem Jahr 1948 zurück:
+\begin{satz}
+Seien $(B_t)$ eine Brownsche Bewegung und $m_t:=\inf\limits_{s\leq t} B(s)$, $M_t:=\sup\limits_{s\leq t} B(s)$. Dann gilt für $a<b\in \R$, $I\subset \R$
+\begin{align*}
+\mathbb{P}(m_t>a,M_t<b,B_t \in I)= \frac{1}{\sqrt{2\pi}} \sum_{n=-\infty}^{\infty} \int_I \left( e^{-\tfrac{(x-2n(a-b))^2}{2t}}-e^{-\tfrac{(2a-x-2n(a-b))^2}{2t}} \right) dx.
+\end{align*}
+\end{satz}
+\begin{proof}
+Siehe \cite[Theorem 6.18, Seite 76 ff]{Schilling}
+\end{proof}
+
+\noindent
+Dies können wir benutzen, um $\mathbb{P}\left( \sup_{s\leq 1} \vert B_s \vert < x \right)$ zu berechnen. Dazu der folgende Satz:
+
+\begin{satz}\label{eq:Wahrscheinlichkeit}
+Seien $(B_t)$ eine Brownsche Bewegung, $x > 0$. Dann gilt:
+\begin{align*}
+\mathbb{P}\left( \sup\limits_{s\leq 1} \vert B_s \vert < x \right) = \frac{4}{\pi}\sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} e^{-\pi^2(2k+1)^2/(8x^2)}.
+\end{align*}
+\end{satz}
+\begin{proof}
+Sei $x>0$. Wir setzen $a = -x$, $b=x$ und $t=1$. Dann gilt:
+\begin{flalign*}
+\mathbb{P}\left( \sup\limits_{s\leq 1} \vert B_s \vert < x \right)
+&=\mathbb{P}\left( \inf\limits_{s\leq 1} B(s) >-x,\sup\limits_{s\leq 1} B(s) <x, B_1\in(-x,x)  \right)\\
+\overset{(5.1.)}= &\frac{1}{\sqrt{2\pi}} \sum_{n=-\infty}^{\infty} \int_{-x}^x \left( \exp\left[-\frac{(y+4nx)^2}{2}\right]-\exp\left[-\frac{(-2x-y+4nx))^2}{2}\right] \right) dy\\
+{\overset{abs.}{\underset{Konv.}{=}}} &\frac{1}{\sqrt{2\pi}}  \int_{-x}^x \sum_{n=-\infty}^{\infty} \left( \exp\left[{-\frac{(y+4nx)^2}{2}}\right]-\exp\left[-\frac{(-2x-y+4nx))^2}{2}\right] \right) dy\\
+= &\frac{1}{\sqrt{2\pi}}  \int_{-x}^x \left(  \sum_{n=-\infty}^{\infty} \exp\left[{-\frac{(y+4nx)^2}{2}}\right]- \sum_{n=-\infty}^{n=\infty} \exp\left[-\frac{((4n-2)x-y))^2}{2}\right] \right) dy\\
+= &\frac{1}{\sqrt{2\pi}}  \int_{-x}^x \left(  \sum_{n=-\infty}^{\infty} \exp\left[{-\frac{(y+4nx)^2}{2}}\right] - \sum_{n=-\infty}^{n=\infty} \exp\left[-\frac{((4n-2)x+y))^2}{2}\right] \right) dy\\
+=&\frac{1}{\sqrt{2\pi}}  \int_{-x}^x   \sum_{j=-\infty}^{\infty} (-1)^j \exp\left[{-\frac{(y+2jx)^2}{2}}\right]dy\\
+%\displaybreak
+=&\frac{1}{\sqrt{2\pi}} \sum_{j=-\infty}^{\infty} (-1)^j \int_{-x}^x  e^{{-\tfrac{(y+2jx)^2}{2}}}dy\\
+&\text{und mit der Substitution } t=y+2jx \text{ folgt:}\\
+{\overset{Subs.}=}&\frac{1}{\sqrt{2\pi}} \sum_{j=-\infty}^{\infty} (-1)^j \int_{x(2j-1)}^{x(2j+1)}  e^{-t^2/2}dt\\
+=&\frac{1}{\sqrt{2\pi}} \int_\R \underbrace{\sum_{j=-\infty}^{\infty} (-1)^j \mathds{1}_{((2j-1)x,(2j+1)x)}(y)}_{=: f(y)}\cdot e^{-y^2/2} dy.
+\end{flalign*}
+
+\noindent Dann ist f gerade bzgl. $0$, da $f(y)=f(-y)$ und $4x$-periodisch, da $f(y+4x)=f(y)$. Wir können für f also eine Fourierreihe berechnen und da f gerade ist , benötigen wir dafür nur die $\cos$-Koeffizienten. Diese ergeben sich zu:
+\begin{flalign*}
+a_0&=\frac{1}{4x}\int_{-2x}^{2x}\left( \sum_{j=-\infty}^{\infty} (-1)^j \mathds{1}_{((2j-1)x,(2j+1)x)}(y) \right) dy\\
+&=\frac{1}{4x}\left( \int_{-2x}^x -1 dy + \int_{-x}^x 1 dy + \int_x^{2x} -1 dy \right) = 0\\
+&\text{\quad und für $n \in \N$}:\\
+a_n &= \frac{1}{2x} \int_{-2x}^{2x} \left( \sum_{j=-\infty}^{\infty} (-1)^j \mathds{1}_{((2j-1)x,(2j+1)x)}(y) \right) \cdot \cos \left(\frac{n\pi}{2x}y \right) dy\\
+&= \frac{1}{2x} \left( \int_{-2x}^{-x} -\cos \left(\frac{n\pi}{2x}y \right) dy +  \int_{-x}^{x} \cos \left(\frac{n\pi}{2x}y \right) dy + \int_{x}^{2x} -\cos \left(\frac{n\pi}{2x}y \right)dy \right)\\
+&=\frac{1}{2x}\frac{2x}{n\pi} \left( \left[-\sin\left(\frac{n\pi}{2x}y\right) \right]_{-2x}^{-x} \left[\sin\left(\frac{n\pi}{2x}y\right) + \right]_{-x}^{x} + \left[-\sin\left(\frac{n\pi}{2x}y\right) \right]_{x}^{2x} \right)\\
+&=\frac{1}{n\pi} \left( \underbrace{-\sin\left(-\frac{\pi}{2} n\right)}_{=\sin (\tfrac{\pi}{2}n ) } + \underbrace{\sin \left(-n\pi \right)}_{=0} + \sin\left(\frac{\pi}{2} n\right)- \sin\left(-\frac{\pi}{2} n\right) -\sin\left(\pi n\right)+\sin\left(\frac{\pi}{2} n\right)  \right)\\
+&= \frac{4}{n\pi}\sin \left( \frac{\pi}{2} n \right)
+= \frac{4}{n \pi}\cdot \left\lbrace \begin{array}{rll}
+1, &&\text{ falls } n \in 4\N_0 + 1,\\ [4pt]
+-1, &&\text{ falls } n \in 4\N_0 + 3, \\[4pt]
+0, &&\text{ sonst}.
+\end{array}
+\right.\\
+&\Longrightarrow f(y) = \sum_{n=1}^{\infty} a_n \cos \left( \frac{n}{2x}\pi y\right)
+=\frac{4}{\pi} \sum_{k=0}^\infty \frac{(-1)^k}{2k+1}\cos\left(\frac{2k+1}{2x}\pi y\right).
+\end{flalign*}
+Jetzt definieren wir $b_k:=\frac{2k+1}{2x}\pi$ und mit der $e$-Darstellung des $\cos$ folgt:
+\begin{flalign*}
+\mathbb{P}\left( \sup\limits_{s\leq 1} \vert B_s \vert < x \right)
+&= \frac{4}{\pi} \frac{1}{\sqrt{2\pi}} \sum_{k=0}^\infty \frac{(-1)^k}{2k+1} \int_\R \cos(b_ky)e^{-y^2/2}dy\\
+&= \frac{4}{\pi} \frac{1}{\sqrt{2\pi}} \sum_{k=0}^\infty \frac{(-1)^k}{2k+1} \int_\R \frac{1}{2}\left(e^{i(-b_k)y}+e^{i(b_k)y}\right) e^{-y^2/2}dy.
+\end{flalign*}
+An dieser Stelle können wir die explizite Darstellung der charakteristischen Funktion einer Brownschen Bewegung, Gleichung \ref{eq:charfktgleichung}, benutzen und wissen daher:
+\begin{align*}
+\int_\R e^{i\xi y}e^{-y^2/2}dy = \sqrt{2\pi}e^{-\xi^2/2}.
+\end{align*}
+Insgesamt folgt:
+\begin{flalign*}
+\mathbb{P}\left( \sup\limits_{s\leq 1} \vert B_s \vert < x \right)
+= \frac{4}{\pi} \frac{1}{\sqrt{2\pi}} \sum_{k=0}^\infty \frac{(-1)^k}{2k+1} \sqrt{2\pi} e^{-\left(\tfrac{2k+1}{2x}\pi\right)^2\tfrac{1}{2}}
+=\frac{4}{\pi}\sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} e^{-\tfrac{\pi^2(2k+1)^2}{(8x^2)}}.
+\end{flalign*}
+\end{proof}
+
+\begin{thm} \textbf{Chung's Gesetz vom interierten Logarithmus} (1948)\label{eq:ChungGesetz}\\
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. Dann gilt:
+\begin{align*}
+\mathbb{P} \left( \liminf\limits_{t\to\infty} \frac{\sup_{s\leq t}\vert B(s)\vert}{\sqrt{t/\log\log t}} = \frac{\pi}{\sqrt{8}} \right) = 1.
+\end{align*}
+\end{thm}
+
+\begin{proof}\
+Wie auch den Beweis des Gesetz des iterierten Logarithmus von Khintchine wollen wir auch diesen Beweis in 2 Schritten vollführen, wobei wir im ersten Schritt zeigen, dass $\mathbb{P}$-fast sicher 
+\begin{equation*}
+\liminf_{t\to\infty} \frac{\sup_{s\leq t}\vert B(s)\vert}{\sqrt{t/\log\log t}} \leq \frac{\pi}{\sqrt{8}}
+\end{equation*}
+gilt und im zweiten Schritt zeigen, dass $\mathbb{P}$-fast sicher auch
+\begin{equation*}
+\liminf_{t\to\infty} \frac{\sup_{s\leq t}\vert B(s)\vert}{\sqrt{t/\log\log t}} \geq \frac{\pi}{\sqrt{8}}
+\end{equation*}
+gilt.
+\begin{itemize}
+\item[1.] Es ist naheliegend, sich wieder eine geschickte $1$-Menge zu konstruieren. Dafür definieren wir uns die Folge $t_n:=n^n$ und damit die Mengen:
+\begin{align*}
+C_n:= \left\{ \sup_{t_{n-1}\leq s\leq t_n} \vert B(s)-B(t_{n-1})\vert < \frac{\pi}{\sqrt{8}} \sqrt{\frac{t_n}{\log\log t_n}} \right\} \text{ für alle } n \in \N.
+\end{align*}
+
+Wir benutzen die Eigenschaft (B2) der Brownschen Bewegung mit $t=r$, $h=t_{n-1}$, $s=0$ und es folgt:
+\begin{align*}
+B(r+t_{n-1})-B(t_{n-1}) \sim B(r) \text{\quad und damit}
+\end{align*}
+\begin{flalign*}
+\frac{\sup_{t_{n-1}\leq r \leq t_n} \vert B(r)-B(t_{n-1})\vert }{\sqrt{t_n}}
+&= \frac{\sup_{0\leq r \leq t_n-t_{n-1}} \vert B(t_{n-1}+r) - B(t_{n-1}) \vert }{\sqrt{t_n}}\\
+&\sim \frac{\sup_{0\leq r \leq t_n-t_{n-1}} \vert B(r) \vert} {\sqrt{t_n}}\\
+&\leq \frac{\sup_{0\leq r \leq t_n-t_{n-1}} \vert B(r) \vert} {\sqrt{t_n-t_{n-1}}}
+\end{flalign*}
+
+Benutzen wir an dieser Stelle Satz \ref{eq:Wahrscheinlichkeit} mit $x=\frac{\pi}{\sqrt{8\log\log t_n}}$, können wir damit $\mathbb{P}(C_n)$ nach unten abschätzen gegen:
+\begin{align*}
+\mathbb{P}(C_n)
+&\geq \mathbb{P}\left( \frac{\sup_{0\leq r \leq t_n-t_{n-1}} \vert B(r) \vert} {\sqrt{t_n-t_{n-1}}} < \frac{\pi}{\sqrt{8}} \sqrt{\frac{1}{\log\log t_n}}\right)\\
+&\geq c \cdot \mathbb{P} \left( \sup_{r\leq 1} \vert B(r) \vert < \frac{\pi}{\sqrt{8\log\log t_n}} \right)\\
+&\overset{\text{\ref{eq:Wahrscheinlichkeit}}}= c \cdot \frac{4}{\pi} e^{-\tfrac{8\pi^2\log\log t_n}{8\pi^2}}\\
+&= c\cdot \frac{4}{\pi} \log(t_n)^{-1}
+= c\cdot \frac{4}{\pi} \frac{1}{n\log n}
+\end{align*}
+
+Da außerdem die Zuwächse von $(B_t)$ unabhängig und stationär sind, nach (B1) und (B2), sind die Mengen $C_n$, $C_m$ für alle $n\neq m $ unabhängig. Damit ist das Borel-Cantelli Lemma anwendbar und wir können sagen, dass:
+\begin{align*}
+\mathbb{P} \left( \limsup\limits_{n\to\infty} C_n \right) = 1,
+\end{align*}
+dass also $\mathbb{P}$-fast sicher gilt:
+\begin{align*}
+\liminf\limits_{n\to\infty} \frac{\sup_{t_{n-1}\leq s \leq t_n} \vert B(s)-B(t_{n-1}) \vert }{\sqrt{t_n / \log\log t_n}} \leq \frac{\pi}{\sqrt{8}}.
+\end{align*}
+
+Der 1. Schritt im Beweis vom Gesetz des iterierten Logarithmus, Satz \ref{eq:LIL}, lieferte uns:
+\begin{flalign*}
+\limsup_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} \leq (1+\epsilon)\sqrt{q} \text{\quad für alle } \epsilon>0\text{, } q>1
+\end{flalign*}
+und damit können wir mit $\epsilon= 1/2$, $q=2$ abschätzen:
+\begin{flalign*}
+\limsup_{n\to\infty} \frac{\sup_{s\leq t_{n-1}} \vert B(s)\vert}{\sqrt{t_n/\log\log t_n}}
+&= \limsup_{n\to\infty} \frac{\sup_{s\leq t_{n-1}} \vert B(s)\vert}{\sqrt{t_n/\log\log t_n}} \cdot \sqrt{\frac{t_{n-1}/\log\log t_{n-1}}{t_{n-1}/\log\log t_{n-1}}}\\[15pt]
+&= \limsup_{n\to\infty} \frac{\sup_{s\leq t_{n-1}} \vert B(s)\vert}{\sqrt{t_{n-1}/\log\log t_{n-1}}} \cdot \sqrt{\frac{t_{n-1}/\log\log t_{n-1}}{t_n/\log\log t_n}}\\[15pt]
+&= \limsup_{n\to\infty} \frac{\sup_{s\leq t_{n-1}} \vert B(s)\vert}{\sqrt{t_{n-1}\log\log t_{n-1}}} \cdot \sqrt{\frac{t_{n-1}\cdot\log\log t_{n-1} \cdot \log\log t_n}{t_n}}\\[15pt]
+&\leq \frac{3}{2}\sqrt{2} \cdot 0 = 0.
+\end{flalign*}
+Also können wir abschätzen:
+%Benutzen wir zusätzlich noch die Abschätzung $\sup_{s\leq t_n} \vert B(s)\vert$ \\
+%$\leq 2\sup_{s\leq t_{n-1}} \vert B(s)\vert +\sup_{t_{n-1}\leq s \leq t_n} \vert B(s)-B(t_{n-1})\vert$, können wir damit sagen:
+\begin{flalign*}
+\liminf_{n\to\infty} \frac{\sup_{s\leq t_n} \vert B(s)\vert}{\sqrt{t_n/\log\log t_n}}
+&\leq \liminf_{n\to\infty} \frac{ 2 \cdot \sup_{s\leq t_{n-1}} \vert B(s)\vert + \sup_{t_{n-1}\leq s\leq t_n} \vert B(s)-B(t_{n-1}) \vert}{\sqrt{t_n/\log\log t_n}}\\[15pt]
+&\leq \limsup\limits_{n\to\infty} 2 \cdot \frac{\sup\limits_{s\leq t_{n-1}} \vert B(s)\vert}{\sqrt{t_n/\log\log t_n}} + \liminf\limits_{n\to\infty}  \frac{\sup\limits_{t_{n-1}\leq s\leq t_n} \vert B(s)-B(t_{n-1}) \vert}{\sqrt{t_n/\log\log t_n}}\\[15pt]
+&\leq 0 + \frac{\pi}{\sqrt{8}} \text{ \quad $\mathbb{P}$-fast sicher.}
+\end{flalign*}
+Und insgesamt folgt damit:
+\begin{flalign*}
+\liminf_{t\to\infty} \frac{\sup_{s\leq t}\vert B(s) \vert }{\sqrt{t/\log\log t}} \leq 
+\liminf_{n\to\infty}\frac{\sup_{s\leq t_n} \vert B(s) \vert }{\sqrt{t_n/\log\log t}}
+\leq 1\text{\qquad $\mathbb{P}$-fast sicher.}
+\end{flalign*}
+\item[2.] Der Beweis, dass $\mathbb{P}$-fast sicher auch
+\begin{align*}
+\liminf_{t\to\infty} \frac{\sup_{s\leq t}\vert B(s)\vert}{\sqrt{t/\log\log t}} \geq \frac{\pi}{\sqrt{8}}
+\end{align*}
+gilt, erinnert etwas an den 1. Teil des Beweises von Khintchine's Gesetz des iterierten Logarithmus. Auch hier sei wieder $\epsilon > 0$ und $q>1$. Wir definieren uns die Mengen
+\begin{flalign*}
+A_n:= \left\{ \sup_{s\leq q^n} B(s) < (1-\epsilon)\frac{\pi}{\sqrt{8}} \sqrt{\frac{q^n}{\log\log q^n}} \right\} \text{\quad für alle } n \in \N.
+\end{flalign*}
+Wir benutzen wieder Satz \ref{eq:Wahrscheinlichkeit}, diesesmal mit $x=(1-\epsilon)\frac{\pi}{\sqrt{8\log\log q^n}}$ und damit gilt für fast alle $n$:
+\begin{flalign*}
+\mathbb{P} (A_n)
+&= \mathbb{P} \left( \frac{\sup_{s\leq q^n} \vert B(s) \vert }{\sqrt{q^n}} < (1-\epsilon)\frac{\pi}{\sqrt{8\log\log q^n}} \right)\\
+&\leq  c\cdot \mathbb{P}\left( \sup_{s\leq 1} \vert B(s) \vert < (1-\epsilon) \frac{\pi}{\sqrt{8\log\log q^n}} \right)\\
+&{\overset{\ref{eq:Wahrscheinlichkeit}}=}\text{ } c \cdot \frac{4}{\pi} e^{-\tfrac{\pi^2}{8}\cdot \tfrac {8\log\log q^n}{(1-\epsilon)^2\pi^2}}\\
+&= c \cdot \frac{4}{\pi}(n \log q)^{-1/(1-\epsilon)^2}
+= c\cdot \frac{4}{\pi}\left(\frac{1}{n\log q}\right)^{\tfrac{1}{(1-\epsilon)^2}}
+\end{flalign*}
+Erneut benutzen wir das Borel-Cantelli Lemma und es folgt mit 
+\begin{align*}
+\sum_{n\in \N} \mathbb{P}(C_n) < \infty,
+\end{align*}
+ dass $\mathbb{P} (\{\omega \in \Omega$ | $ \omega \in A_n^C$ für fast alle n $\} ) = 1$. Es gilt also:
+\begin{align*}
+&\mathbb{P} \left( \frac{\sup_{s\leq q^n} \vert B(s)\vert }{\sqrt{q^n/\log\log q^n}} \geq (1-\epsilon) \frac{\pi}{\sqrt{8}} \right) = 1.\\
+\Rightarrow &\liminf_{n\to\infty} \frac{\sup_{s\leq q^n} \vert B(s)\vert }{\sqrt{q^n/\log\log q^n}}\geq (1-\epsilon) \frac{\pi}{\sqrt{8}} \text{\quad $\mathbb{P}$-fast sicher}.
+\end{align*}
+Dann gibt es für alle $t> 1$ ein $n\in\N$: $t\in [q^{n-1},q^n]$ und wir können schlussendlich abschätzen:
+\begin{align*}
+\frac{\sup_{s\leq t} \vert B(s)\vert}{\sqrt{t/\log\log t}}
+&\geq \frac{\sup_{s\leq q^{n-1}}\vert B(s)\vert}{\sqrt{q^n/\log\log q^n}}\\
+&= \frac{\sup_{s\leq q^{n-1}}\vert B(s)\vert}{\sqrt{q^{n-1}/\log\log q^{n-1}}} \cdot \frac{\sqrt{q^{n-1}/\log\log q^{n-1}}}{\sqrt{q^n/\log\log q^n}}\\
+&\geq (1-\epsilon) \frac{\pi}{\sqrt{8}}\cdot \sqrt{\frac{1}{q}\frac{\log\log q^n}{\log\log q^{n-1}}} \underset{n\to\infty}\longrightarrow (1-\epsilon) \sqrt{\frac{1}{q}}\frac{\pi}{\sqrt{8}} \text{ \quad } \mathbb{P} \text{-fast sicher.}\\
+&\Rightarrow \liminf_{t\to\infty}\frac{\sup_{s\leq t} \vert B(s)\vert}{\sqrt{t/\log\log t}} \geq (1-\epsilon)\sqrt{\frac{1}{q}}\frac{\pi}{\sqrt{8}}\text{ \quad } \mathbb{P} \text{-fast sicher.}
+\end{align*}
+Seien $(\epsilon_k)_{k\in\N}$ bzw. $(q_l)_{l\in\N}$ beliebig von oben konvergente Folgen gegen $0$ bzw $1$.
+Dann können wir die Beweisschritte wie eben für jedes Folgenglied $\epsilon_k$ und $q_l$ machen und erhalten damit insgesamt im $\lim\limits_{\epsilon \to 0}$ bzw $\lim\limits_{q\to 1}$
+\begin{align*}
+\liminf_{t\to\infty} \frac{\sup_{s\leq t} \vert B(s)\vert}{\sqrt{t/\log\log t}} \geq \frac{\pi}{\sqrt{8}} \text{ \quad} \mathbb{P} \text{-fast sicher}.
+\end{align*}
+Abschließend definieren wir uns nun die Mengen
+\begin{align*}
+&\Omega_1 := \left\{\omega \in \Omega \text{ : } \liminf_{t\to\infty}\frac{\sup_{s\leq t} \vert B(s,\omega)\vert}{\sqrt{t/\log\log t}} \geq \frac{\pi}{\sqrt{8}} \right\}\\
+&\Omega_2 := \left\{\omega \in \Omega \text{ : } \liminf_{t\to\infty}\frac{\sup_{s\leq t} \vert B(s,\omega)\vert}{\sqrt{t/\log\log t}} \leq \frac{\pi}{\sqrt{8}} \right\}
+\end{align*}
+und $\bar{\Omega} := \Omega_1 \cap \Omega_2$, so gilt $\mathbb{P}(\bar{\Omega}) = 1$ und damit:
+\begin{align*}
+\mathbb{P} \left( \liminf\limits_{t\to\infty} \frac{\sup_{s\leq t}\vert B(s)\vert}{\sqrt{t/\log\log t}} = \frac{\pi}{\sqrt{8}} \right) = 1.
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\noindent Auf eine sehr ähnliche Weise lässt sich der folgende, ähnliche Satz bewiesen:
+
+\begin{satz}\label{eq:NichtDiffbar}
+Seien $(B_t)_{t\geq 0}$ eine Brownsche Bewegung und $h\geq 0$. Dann gelten:
+\begin{align*}
+\text{ $a)$ }&\mathbb{P} \left( \liminf\limits_{t\to 0} \frac{\sup_{s\leq t}\vert B(s)\vert}{\sqrt{t/\log\log \frac{1}{t}}} = \frac{\pi}{\sqrt{8}} \right) = 1.\\
+\text{ $b)$ }&\mathbb{P} \left( \liminf\limits_{t\to 0} \frac{\sup_{s\leq t}\vert B(s+h)- B(h)\vert}{\sqrt{t/\log\log \frac{1}{t}}} = \frac{\pi}{\sqrt{8}} \right) = 1.
+\end{align*}
+\end{satz}
+
+\begin{proof} Für den Beweis der Aussage $a)$ dieses Satzes können wir $\log\log t$ in Theorem \ref{eq:ChungGesetz} durch~$\log \vert \log t \vert $ ersetzen und ansonsten fast den selben Beweis wie von Theorem \ref{eq:ChungGesetz} machen. Dafür müssen wir zusätzlich noch $q>1$ durch $q<1$ und die Folge $(n^n)$ durch $(n^{-n})$ ersetzen.\\
+Für den Beweis der Aussagbe $b)$ beachte, dass $B(t+h)-B(h)$ ebenfalls eine Brownsche Bewegung ist und wir deshalb Aussage $a)$ auf die zum Zeitpunkt $h$ gestartete Brownsche Bewegung anwenden können.
+\end{proof}
+
+\noindent Abschließend wollen wir noch auf die Nicht-Differenzierbarkeit einer Brownschen Bewegung eingehen. Hierfür zunächst der folgende Satz:
+
+\begin{satz} Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung.\\
+Dann ist der Pfad $t \mapsto B_t(\omega)$ für $\mathbb{P}$-fast alle $\omega \in \Omega$ nirgends differenzierbar.
+\end{satz}
+
+\begin{proof}
+Siehe \cite[Theorem 10.3, Seite 155 ff]{Schilling}
+\end{proof}
+
+\noindent Ein diesbezüglich sehr interessantes Resultat kann in \cite[32, Seite 44-47]{Csorgo Revesz} nachgelesen werden. Dort wird mit ähnlichen Beweismethoden wie in Satz \ref{eq:NichtDiffbar} oder auch Theorem \ref{eq:ChungGesetz} gezeigt, dass der exakte Modulus der Nicht-Differenzierbarkeit einer Brownschen Bewegung gegeben ist durch:
+\begin{equation*}
+\lim_{h\to 0}\text{ } \inf_{s\leq 1-h}\text{ } \sup_{t\leq h} \frac{\vert B(s+t)-B(s)\vert}{\sqrt{h/\log \frac{1}{h}}} = \frac{\pi}{\sqrt{8}}.
+\end{equation*}
+
+\newpage
+\section{Zusammenfassung}
+\noindent In dieser Arbeit haben wir damit angefangen, die Brownsche Bewegung mithilfe von naturwissenschaftlichen Beobachtungen zu motivieren und ihr dann darauf aufbauend eine mathematische Definiton gegeben.
+Um die Brownsche Bewegung dann etwas besser kennen zu lernen, wurden die mit der Brownschen Bewegung verbundenen Gauß-Prozesse eingeführt und wir haben gelernt, wie wir die Brownsche Bewegung über Gauß-Prozesse charakterisieren können.
+Mithilfe dieser Charakterisierung konnten wir erkennen, dass zu gegebener Brownscher Bewegung $(B_t)$ die Prozesse $(W_t)$, definiert wie in Gleichung \eqref{eq:Wt}, oder $(-B_t)$, oder auch $B(t+a)-B(a)$ für $a>0$, ebenfalls Brownsche Bewegungen sind.\\
+Wir haben dann in Kapitel 4 gesehen, dass wir das Wachstumsverhalten $\limsup_{t\to\infty} B(t)$  mithilfe der Verbindung zur Normalverteilung von $B_t$ für $t>0$ und mit der Abschätzung $\mathbb{P} (M_t \geq b ) \leq 2\cdot \mathbb{P} (B_t \geq b)$, für $b>0$ und $M_t:=\sup_{s\leq t} B_s$, $\mathbb{P}$-fast sicher charakterisieren können, dass nämlich gilt:
+\begin{equation*}
+\limsup_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} = 1 \text{\quad} \mathbb{P} \text{-fast sicher.}
+\end{equation*}
+Mit den Erkenntnissen aus Kapitel 3 konnten wir damit dann auch Aussagen über das Wachstumsverhalten $\liminf_{t\to\infty} B(t)$ beziehungsweise $\limsup_{t\to 0} B(t)$
+beziehungsweise $\liminf_{t\to 0} B(t)$ folgern.\\
+Verglichen mit dem Satz von Lévy (1937), dass $\mathbb{P}$-fast sicher auch
+\begin{align*}
+\limsup\limits_{h\to0} \frac{\sup_{0\leq t\leq 1-h} \vert B(t+h)-B(t)\vert}{\sqrt{2h\log\frac{1}{h}}} = 1
+\end{align*}
+gilt, kamen wir zu dem Schluss, dass es Zeitpunkte geben muss, an denen das Gesetz des iterierten Logarithmus nicht gilt.\\
+In Kapitel 5 haben wir schließlich auch noch das Wachstumsverhalten\\
+$\liminf_{t\to\infty} \sup_{s\leq t} \vert B(s) \vert$ betrachtet und dabei mithilfe der Gleichung 
+\begin{align*}
+\mathbb{P}\left( \sup\limits_{s\leq 1} \vert B_s \vert < x \right) = \frac{4}{\pi}\sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} e^{-\pi^2(2k+1)^2/(8x^2)}
+\end{align*}
+gesehen, dass $\mathbb{P}$-fast sicher
+\begin{align*}
+\liminf\limits_{t\to\infty} \frac{\sup_{s\leq t}\vert B(s)\vert}{\sqrt{t/\log\log t}} = \frac{\pi}{\sqrt{8}}
+\end{align*}
+gilt.
+Wir sind also in der Lage, obwohl wir in der Definition der Brownschen Bewegung nur 5 Bedingunen fordern, dass wir das Wachstumsverhalten $\limsup_{t\to\infty} B(t)$ und \linebreak$\liminf_{t \to \infty} \sup_{s\leq t} \vert B(s) \vert$ $\mathbb{P}$-fast sicher exakt angeben können.
+
+\newpage
+
+\begin{thebibliography}{Lam00}
+\thispagestyle{empty}
+\bibitem{Schilling}
+René L. Schilling, Lothar Partzsch
+\emph{Brownian Motion. An Introduction to Stoachastic Processes},
+Degruyter, 2012.
+
+
+\bibitem{Henze Skript}
+N. Henze.
+\emph{Maß und Wahrscheinlichkeitstheorie (Stochastik II)}.
+Karlsruher Institut für Technologie, Karlsruhe, 2010
+
+\bibitem{Taylor}
+S.J. Taylor
+\emph{Regularity of irregulatities on a Brownian Path},
+Ann. Inst. Fourier \textbf{24.2}, 1974
+
+\bibitem{Orey Taylor}
+S. Orey, S.J. Taylor
+\emph{How often does the law of the iterated logarithm fail?}, Proc. London Math. Soc. \textbf{28}, 1974
+
+\bibitem{Chung}
+K.L. Chung
+\emph{On the maximum partial sums of sequences of independent random variables},
+Trans. Am. Math. Soc. \textbf{61}, 1948
+
+\bibitem{Csorgo Revesz}
+M. Csörg$\H{o}$, P. Révész
+\emph{Strong Approximations in Probability and Statistics},\linebreak
+Academic Press, New York, 1981
+\end{thebibliography}
+
+\newpage
+  
+\thispagestyle{empty}
+
+\vspace*{8cm}
+
+
+\section*{Erklärung}
+
+Hiermit versichere ich, dass ich diese Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt, die wörtlich oder inhaltlich übernommenen Stellen als solche kenntlich gemacht und die Satzung des Karlsruher Instituts für Technologie zur Sicherung guter wissenschaftlicher Praxis in der jeweils gültigen Fassung beachtet habe. \\[2ex] 
+
+\noindent
+Karlsruhe, den 08. November 2017\\[5ex] 
+
+\end{document}
+

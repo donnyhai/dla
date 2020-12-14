@@ -1,0 +1,330 @@
+\documentclass[12pt,a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{pifont}
+\usepackage{nicefrac}
+
+% Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
+\setlength{\topmargin}{-15mm}
+
+
+% Umgebungen für Definitionen, Sätze, usw.
+% Es werden Sätze, Definitionen etc innerhalb einer Section mit
+% 1.1, 1.2 etc durchnummeriert, ebenso die Gleichungen mit (1.1), (1.2) ..
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{Definition}[Satz]{Definition} 
+\newtheorem{Lemma}[Satz]{Lemma}		   
+                  
+\numberwithin{equation}{section} 
+
+\newcommand{\C}{\mathbb{C}} % komplexe
+\newcommand{\K}{\mathbb{K}} % komplexe
+\newcommand{\R}{\mathbb{R}} % reelle
+\newcommand{\Q}{\mathbb{Q}} % rationale
+\newcommand{\Z}{\mathbb{Z}} % ganze
+\newcommand{\N}{\mathbb{N}} % natuerliche
+
+\numberwithin{equation}{section}%
+
+\newtheorem{thm}{Theorem}[section]%
+\newtheorem{lem}[thm]{Lemma}%
+\newtheorem{satz}[thm]{Satz}%
+\newtheorem{prop}[thm]{Proposition}%
+\newtheorem{algo}[thm]{Algorithmus}%
+
+\newtheorem{cor}[thm]{Corollary}%
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}%
+\newtheorem{bem}[thm]{Bemerkung}%
+\newtheorem{exa}[thm]{Example}%
+\newtheorem{bew}[thm]{Beweis}%
+
+
+
+\begin{document}
+  % Keine Seitenzahlen im Vorspann
+  \pagestyle{empty}
+
+  % Titelblatt der Arbeit
+  \begin{titlepage}
+
+    \includegraphics[scale=0.45]{kit-logo.jpg} 
+    \vspace*{2cm} 
+
+ \begin{center} \large 
+    
+    Bachelorarbeit
+    \vspace*{2cm}
+
+    {\huge Das Wachstumsverhalten Brownscher Pfade}
+    \vspace*{2.5cm}
+
+    Simon Drüssel
+    \vspace*{1.5cm}
+
+    17.09.2017
+    \vspace*{4.5cm}
+
+
+    Betreuung: Prof. Dr. Nicole Bäuerle \\[1cm]
+    Fakultät für Mathematik \\[1cm]
+		Karlsruher Institut für Technologie
+  \end{center}
+\end{titlepage}
+
+  % Inhaltsverzeichnis
+  \tableofcontents
+
+\newpage
+
+  \pagestyle{headings}
+
+\section{Einleitung}
+Wer sich mit der Bewegung von Teilchen beschäftigen möchte, wird schnell auf den Begriff der Brownschen Molekularbewegung stoßen.
+Robert Brown (1773-1858) entdeckte im Jahr 1827 bei Versuchen mit Gasen und Flüssigkeiten eine Wärmebewegung von mikroskopisch sichtbaren Teilchen. Der Begriff "Molekül" darf dabei nicht im heutigen Sinn verstanden werden, da es sich dabei nur um sehr kleine Teilchen handelt.\\
+Brown zeigte bei seinen Veröffentlichungen 1828 und 1829 dabei folgende Punkte auf:
+\begin{itemize}
+\item Die Bewegung ist eine sehr unregelmäßige Mischung aus Translation und Rotation
+\item Die Teilchen scheinen sich unabhängig von anderen zu bewegen
+\item Die Bewegung ist umso aktiver umso kleiner die Teilchen sind
+\item Die Zusammensetzung und Anzahl der Teilchen hat keinen Einfluss
+\item Die Bewegung wird bei geringerer Viskosität aktiver
+\item Die Bewegung stoppt zu keinem Zeitpunkt
+\item Die Bewegung wird nicht durch Verdunstung oder Flüssigkeitsströmungen beeinflusst
+\item Die Teilchen werden nicht angeregt
+\end{itemize}
+
+\noindent Aufgrund dieser Beobachtungen erschienen immer weitere Theorien, bis Albert Einstein (1879-1955) im Jahr 1905 die bis heute richtige Erklärung veröffentlichte: 
+\\
+\\
+\noindent Insgesamt veranlassen uns diese Beobachtungen zu folgender Defintion der Brownschen Bewegung:
+\\
+\\
+\noindent Zum Lesen dieser Bachelorarbeit werden allgemeine Kenntnisse, wie sie üblicherweise in der Analysis 3 aber auch in der Wahrscheinlichkeitstheorie vermittelt werden, grundsätzlich vorausgesetzt. Einzelne Ergebnisse, wie z.B. das Borel-Cantelli Lemma, sollen aufgrund der Relevanz für diese Arbeit dennoch hier bewiesen werden.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \newpage  % neuer Abschnitt auf neue Seite, kann auch entfallen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{Definition der Brownschen Bewegung}
+Sei $d \in \N $. Dann ist eine $d-dimensionale$ $Brownsche$ $Bewegung$ $B = (B_t)_{t \geq 0}$  ein stochastischer Prozess indiziert durch $t \in [0,\infty)$ mit Werten in $\R^d$, sodass gilt:\\
+\begin{itemize}
+\item[B0] $B_0(\omega) = 0$ für fast alle $\omega$;
+\item[B1] $B_{t_n}-B_{t_{n-1}}, \dots ,B_{t_1}-B_{t_0}$ sind unabhängig für alle $n\geq 1$,\\
+$0 = t_0\leq t_1 <t_2 < \dots <t_n<\infty$;
+\item[B2] $B_t-B_s \sim B_{t+h}-B_{s+h}$ für alle $0\leq s < t$, $h\geq -s$;
+\item[B3]  $B_t-B_s \sim N(0,t-s)^{\otimes d}$, wobei $N(0,t)(dx) = \frac{1}{\sqrt{2\pi t}}$ exp$(-\frac{x^2}{2t})dx$;\\
+\item[B4] $t \mapsto B_t(\omega)$ ist stetig für alle $\omega$.
+\end{itemize}
+
+\noindent Eine Brownsche Bewegung ist also ein $\R ^d$-wertiger Prozess der nach (B0) in 0 startet, der nach (B1) unabhängige und nach (B2) stationäre Zuwächse hat und dessen Pfade nach (B4) stetig sind. Außerdem kennen wir nach (B3) noch zu jedem Zeitpunkt die Verteilung von $B(t)$.
+
+\noindent Jetzt wollen wir ein paar Folgerungen betrachten mit den dafür benötigten Definitionen.
+\begin{satz}
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegegung. Dann ist $(-B_t)_{t\geq 0}$ ebenfalls eine Brownsche Bewegung.
+\end{satz}
+\begin{proof}
+Die Eigenschaften (B0)-(B2) \& (B4) folgen sofort, die Eigenschaft (B3) folgt aus der Symmetrie der Normalverteilung.
+\end{proof}
+
+\begin{dfn}
+Eine eindimensionale Zufallsvariable $X$ heißt gaußsch, genau dann wenn die charakteristische Funktion $\phi_X$ von $X$ gegeben ist durch:
+\begin{equation}
+\phi_X = \mathbb{E} e^{i\xi X} =  e^{im\xi-\frac{1}{2}\sigma ^2\xi ^2}
+\label{eq:charfkt}
+\end{equation} 
+für Zahlen $m \in \R$ und $\sigma \geq 0$.
+\end{dfn}
+\noindent
+Zwei-maliges Differenzieren von \eqref{eq:charfkt} nach $\xi$ und mit $\xi = 0$ sieht man: $m = \mathbb{E} X$ und $\sigma ^2 = \mathbb{V} X$.
+\begin{satz}
+Sei $(B_t)_{t\geq 0}$ eine ein-dimensionale Brownsche Bewegung, $t \geq 0$. Dann ist $ B_t = B(t)$ gaußsch mit Erwartungswert 0 und Varianz t und es gilt:
+\begin{align}
+\phi_{B_t}=\phi_t=\mathbb{E}e^{i\xi B_t}=e^{-t\xi^2/2} \text{ für alle } t\geq 0\text{, }\xi \in \R.
+\end{align}
+\end{satz}
+\begin{proof}
+Differenzierung von $\phi_t$ nach $\xi$ ergibt:
+\begin{equation*}
+\sqrt{2\pi t}\cdot \phi_t'(\xi) \overset{(B3)}= \frac{d}{d\xi} \int_\R{e^{-x^2/(2t)}e^{i\xi x} dx}
+\overset{Lebesgue}=\int_\R{e^{-x^2/(2t)}e^{i\xi x}\cdot (ix)}dx
+\end{equation*}
+Mit der geschickten Umformung $\frac{d}{dx} e^{-x^2/(2t)} = -\frac{x}{t} e^{-x^2/(2t)}$ können wir das Ingetral auch aufschreiben als:
+\begin{flalign*}
+\int_\R{e^{-x^2/(2t)}e^{i\xi x}\cdot (ix)}dx
+&= \int_\R{\frac{d}{dx} e^{-x^2/(2t)} (-it)e^{i\xi x} dx}\\
+&{\overset{PI}=} -\int_\R{e^{-x^2/(2t)}(-it)e^{i \xi x} (i\xi) dx}\\
+&=-t\xi \int_\R{e^{-x^2/(2t)}e^{i\xi x}dx}\\
+&=-t\xi \phi_t(\xi)
+\end{flalign*}
+Dies führt uns also zu der Differentialgleichung $\phi_t'(\xi)=-t\xi \phi_t(\xi) $ die äquivalent ist zu:
+\begin{equation}
+\frac{\phi_t'(\xi)}{\phi_t(\xi)} = - t \xi \label{eq:charfktdgl}
+\end{equation}
+\noindent Da auch $\phi_t(0) = \mathbb{E}e^{i\cdot 0\cdot B_t}=1$ gelten muss, wird \eqref{eq:charfktdgl} eindeutig gelöst von $\phi_t(\xi)=e^{-t\xi^2/2}$.
+\end{proof}
+\noindent Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. 
+Wir wollen als nächstes zeigen, dass der stochastische Prozess $(W_t)_{t\geq 0}$ definiert durch
+\begin{align} \label{eq:Wt}
+W(t) := \left\lbrace
+\begin{array}{rll}
+t B(\frac{1}{t}), & \text{falls } t > 0,
+\\[4pt]
+0, & \text{falls } t = 0,
+\end{array}
+\right.
+\end{align}
+\noindent ebenfalls eine Brownsche Bewegung ist. Damit können wir aus dem Wachstumsverhalten von $(B_t)$ für $t \rightarrow \infty$ auch direkt Aussagen über das Verhalten von $(B_t)$ für $t \rightarrow 0$ folgern.
+Um dies zeigen zu können benötigen wir allerdings zuerst noch ein paar allgemeine Feststellungen und die Definition eines Gaußprozess.\\
+Betrachten wir zu aller erst einmal die Verteilung von $(W_t)$ und dafür die charakteristische Funktion $\psi_{w_t} = \psi_t$ an.
+Wie eben leiten wir $\psi_t(\xi)$ nach $\xi$ ab und erhalten für $t>0$:
+\begin{flalign*}
+\sqrt{\frac{2\pi}{t}}\cdot \psi_t'(\xi)
+&= \frac{d}{d\xi}\mathbb{E}e^{i\xi t B_{1/t}} = \int_\R{(itx)e^{i\xi tx}e^{-x^2t/2}dx} = \int_\R{(-i)e^{i\xi t x}\frac{d}{dx}e^{-x^2t/2}dx} \\
+&= i\int_\R{e^{i\xi t x} (i\xi t) e^{-x^2t/2}} = -\xi t \sqrt{\frac{2\pi}{t}} \psi_t(\xi)
+\end{flalign*}
+$\Rightarrow$ Die charakteristische Funktion $\phi_t$ von $(B_t)_{t\geq 0}$ und $\psi_t$ von $(W_t)_{t\geq0}$ stimmen überein, also haben $B_t$ und $W_t$ diesselbe Verteilung, für alle $t\geq0$.\\
+Kommen wir nun zur Definition eines Gauß-Prozess.
+\begin{dfn}
+Sei $(X_t)_{t\geq 0}$ ein eindimensionaler stochastischer Prozess. Dann ist $(X_t)$ ein Gauß-Prozess $:\Leftrightarrow$ Alle Vektoren $\Gamma = (X_{t_1},\dots,X_{t_n}), n\geq 1, 0\leq t_1<t_2<\dots<t_n$, sind gaußsche Zufallsvektoren.
+\end{dfn}
+\begin{thm}\label{eq:BBistGaussprozess}
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. Dann ist der Vektor $\Gamma := (B_{t_1},\dots,B_{t_n})^{\mathrm{T}}$, $t_0:=0<t_1<\dots<t_n, n\geq 1$, ein Gaußscher Zufallsvektor (und damit nach Defintion $(B_t)$ ein Gauß-Prozess) mit strikt positiv definiter, symmetrischer Kovarianzmatrix $C = (t_j\land t_k)_{j,k=1,\dots,n}$ und Erwartungswertvektor $m = 0_n\in \R^n$.
+\end{thm}
+\begin{proof}
+Siehe irgendwo bzw. noch auszufüllen bzw Literaturverzeichnis zu machen :D
+\end{proof}
+\noindent Bevor wir anfangen, wollen wir noch ein kleines Resultat beweisen, das vielleicht sogar aus der Analysis 1 bekannt sein könnte.
+\begin{lem}\label{eq:Stetigrational}
+Sei $f \colon [0,\infty) \to \R, f(0)=0$ und $f$ stetig auf $(0,\infty)$. Dann gilt:\\
+$f stetig :\Leftrightarrow \forall n \in \N$  $\exists m_n \in \N$  $\forall r\in \Q \cap (0,\frac{1}{m}]: \vert f(r)\vert \leq \frac{1}{n}$
+\end{lem}
+\begin{proof}
+$"\Rightarrow"$  Folgt sofort aus der Definition von Stetigkeit.
+\\Zeige also $"\Leftarrow"$. Sei dafür $(t_n)_{n\in \N} \subset (0,\infty)$, mit $\underset{n\to \infty}\lim t_n = 0$.\\
+%und o.B.d.A $t_{n+1}\leq t_n$ $\forall n\in \N$.
+Sei $n\in \N$. Dann ist $f$ nach Voraussetzung in $t_n$ stetig, also existiert $\delta_n > 0$:
+\begin{align*}
+\vert f(t_n)-f(t)\vert \leq \frac{1}{n} \text{ für alle } t \in U_{\delta_n}(t_n)
+\end{align*}
+Sei o.B.d.A $\delta_n \to 0$. Da $\Q$ dicht in $\R$, existiert $r_n \in \Q \cap U_{\delta_n}(t_n)$.\\
+Also gilt $\vert f(t_n)-f(r_n) \vert \leq \frac{1}{n}$.\\
+Da $t_n \rightarrow 0$ und $\delta_n \rightarrow 0$, muss auch $r_n \rightarrow 0$ und damit nach Voraussetzung auch $f(r_n)  \rightarrow 0$ (für $n \to \infty$).\\
+$\Rightarrow$ $\vert f(t_n)\vert -\underbrace{\vert f(r_n)\vert}_{\to 0}  \leq \vert f(t_n)-f(r_n)\vert \leq \frac{1}{n}$\\
+$\Rightarrow$ $f(t_n) \to 0$ für $(n \to \infty)$ $\Rightarrow$ f stetig.
+\end{proof}
+\noindent Mit der ganzen Vorarbeit können wir jetzt oben gemachte Behaptung beweisen\\
+\begin{satz}
+Sei $(B_t)_{t\geq 0}$ Brownsche Bewegung und $(W_t)_{t\geq 0}$ definiert wie in \eqref{eq:Wt}. Dann ist $(W_t)$ eine Brownsche Bewegung.
+\end{satz}
+\begin{proof}
+Nach Theorem \ref{eq:BBistGaussprozess} wissen wir bereits, dass $(B_t)$  ein Gauß-Prozess und $\Gamma := (B_{t_1},\dots,B_{t_n}))^{\mathrm{T}}$ gaußsch mit Kovarianzmatrix $C=(t_j\land t_k)_{j,k=1,\dots,n}$ und Erwartunswert $m=0\in\R^n$ ist.\\
+$\Rightarrow$ $\mathbb{E}(w(t))= \mathbb{E}(t(B(\frac{1}{t})) = t\mathbb{E}(B(\frac{1}{t})) = t\cdot0 = 0$, für $t > 0$.\\
+Die Kovarianzmatrix ist für $1\leq j,k\leq n$ gegeben durch
+\begin{align*}
+Cov(W(t_j),W(t_k))=Cov(t_j B(\tfrac{1}{t_j}),t_k B(\tfrac{1}{t_k} ))=t_j t_k(\tfrac{1}{t_j} \land \tfrac{1}{t_k}) = t_j\land t_k
+\end{align*}
+Also ist $(W(t_1),\dots,W(t_n))^\mathrm{T}$ ein Gauß-Prozess.
+Da $t \mapsto W(t)=tB(\tfrac{1}{t})$ für $t>0$ stetig ist, genügt der Prozess $(W_t)_{t>0}$ nach "Lemma 2.7 aus dem Buch" den Forderungen (B1)-(B4). 
+Also müssen wir noch zeigen, dass $\underset{t\to0}\lim W(t)=W(0)=0$ gilt.\\
+Nach Lemma \eqref{eq:Stetigrational} können wir uns dabei auf die Betrachtung von positiven, rationalen Zahlen beschränken.
+Dafür definieren wir uns die Menge
+\begin{align*}
+\Omega^W:=\left\{\underset{t\to 0^+}\lim W(t)=0\right\} = \underset{n\geq 1}\bigcap \underset{m\geq 1}\bigcup\underset{r\in \Q \cap (0,1/m]}\bigcup \left\{\vert W(r) \vert \leq \frac{1}{n}\right\}
+\end{align*}
+\noindent Wir wissen bereits, dass $(W_t)_{t>0} $ und $(B_t)_{t>0}$ dieselbe Verteilung haben und da die Mengen $\Omega^W$ und die analog definierte Menge $\Omega^B$ durch abzählbare viele Mengen der Form $\{ \vert W(r) \vert \leq \tfrac{1}{n}\}$ und $\{ \vert B(r)\vert \leq \tfrac{1}{n} \}$ definiert sind, können wir folgern, dass $\mathbb{P}(\Omega^W)=\mathbb{P}(\Omega^B)$.
+Also gilt
+\begin{align*}
+{P}(\Omega^W)=\mathbb{P}(\Omega^B) \overset{(B4)}= \mathbb{P}(\Omega)=1.
+\end{align*}
+\end{proof}
+\newpage
+\section{Das Wachstum einer Brownschen Bewegung}
+\begin{lem}
+Sei $X \sim N(0,1)$. Dann gilt für $x>0$:
+\begin{align}\label{eq:Schlange}
+\frac{1}{\sqrt{2\pi}} \frac{x}{x^2+1} e^{-x^2/2} \leq \mathbb{P}(X>x)\leq \frac{1}{\sqrt{2\pi}} \frac{1}{x} e^{-x^2/2}
+\end{align}
+\end{lem}
+\begin{proof} Mit partieller Integration folgt:
+\begin{align*}
+\frac{1}{x^2} \int_x^\infty e^{-y^2/2}dy\geq \int_x^\infty \frac{1}{y^2} e^{-y^2/2} dy = (-)(-)\frac{1}{x}e^{-x^2/2} - \int_x^\infty (-y^{-1})e^{-y^2/2}(-y)dy
+\end{align*}
+und damit
+\begin{flalign*}
+\frac{x}{x^2+1}e^{-x^2/2}
+&= \left(\frac{1}{x^2} + 1\right)^{-1} \frac{1}{x} \int_x^\infty{e^{-y^2/2}dy}
+\leq \int_x^\infty e^{-y^2/2}dy \\
+&= \sqrt{2\pi} \mathbb{P}(X>x)
+\leq \int_x^\infty{\frac{y}{x} e^{-y^2/2}dy}
+= \frac{1}{x}e^{-x^2/2}
+\end{flalign*}
+\end{proof}
+
+
+\begin{thm}
+Sei $(B_t)_{t\geq 0}$ eine Brownsche Bewegung. Dann gilt:
+\begin{equation}
+\mathbb{P}\left( \limsup_{t\to\infty} \frac{B(t)}{\sqrt{2t\log\log t}} = 1 \right) = 1
+\end{equation}
+\end{thm}
+\begin{proof}
+Wir wollen den Beweis in 2 Teile teilen, indem wir im ersten Schritt $"\leq"$ und im zweiten Schritt $\geq$ zeigen.
+\begin{itemize}
+\item[] Seien $\epsilon > 0$, $q>1$, und die Mengen
+\begin{align*}
+A_n:=\left\{ \underset{0\leq s\leq q^n}\sup B(s)\geq (1+\epsilon)\sqrt{2q^n\log\log q^n} \right\}
+\end{align*}
+Nach -hier noch Thm 6.9 einfügen- können wir direkt folgern:
+\begin{flalign*}
+\mathbb{P}(A_n)
+&\leq 2\mathbb{P} \left(B(q^n\geq (1+\epsilon)\sqrt{2q^n\log\log q^n}\right)\\
+&= 2\mathbb{P} \left( \frac{B(q^n)}{\sqrt{q^n}}\geq (1+\epsilon)\sqrt{2q^n\log\log q^n}\right)
+\end{flalign*}
+Da allgemein für eine $N(0,\sigma^2)$-verteilte Zufallsvariable X gilt, dass $\frac{X}{\sigma} \sim N(0,1)$ ist, gilt $B(q^n)/\sqrt{q^n} \sim B(1)$ und damit
+\begin{align*}
+\mathbb{P} \left( \frac{B(q^n)}{\sqrt{q^n}}\geq (1+\epsilon)\sqrt{2q^n\log\log q^n}\right) = \mathbb{P} \left( B(1)\geq (1+\epsilon)\sqrt{2q^n\log\log q^n}\right)
+\end{align*}
+Benutzen der oberen Grenze aus Gleichung \eqref{eq:Schlange} mit $x=(1+\epsilon)\sqrt{2\log\log q^n}$ führt zu
+\begin{flalign*}
+\mathbb{P}(A_n)
+&\leq \frac{2}{(1+\epsilon)\sqrt{2\log\log q^n}}\frac{1}{\sqrt{2\pi}}e^{-(1+\epsilon)^2\log\log q^n}\\
+&= \underbrace{\frac{1}{(1+\epsilon)\sqrt{\pi\log\log q^n}}}_{\leq c}\underbrace{e^{-(1+\epsilon)^2\log\log q^n}}_{=(\log q^n)^{-(1+\epsilon)2}}\\
+&\leq c\cdot (n \log q)^{-(1+\epsilon)^2}
+\end{flalign*}
+$\Rightarrow$ $\sum_{n=1}^\infty  \mathbb{P}(A_n) < \infty$ und wir können das Borel-Cantelli Lemma benutzen, das uns sagt dass 
+$ \mathbb{P} (\underset{n\to\infty}\limsup A_n)=0$
+\end{itemize}
+\end{proof}
+
+\newpage
+\begin{thebibliography}{Lam00}
+ 
+\end{thebibliography}
+      
+  % ggf. hier Tabelle mit Symbolen 
+  % (kann auch auf das Inhaltsverzeichnis folgen)
+
+\newpage
+  
+ \thispagestyle{empty}
+
+
+\vspace*{8cm}
+
+
+\section*{Erklärung}
+
+Hiermit versichere ich, dass ich diese Arbeit selbständig verfasst und keine anderen, als die angegebenen Quellen und Hilfsmittel benutzt, die wörtlich oder inhaltlich übernommenen Stellen als solche kenntlich gemacht und die Satzung des Karlsruher Instituts für Technologie zur Sicherung guter wissenschaftlicher Praxis in der jeweils gültigen Fassung beachtet habe. \\[2ex] 
+
+\noindent
+Ort, den Datum\\[5ex]
+
+\end{document}
+
