@@ -3,6 +3,7 @@
 - beispiele durchrechnen für lha distribution
 - eden-modell anmerken
 
+- random walk on Z^2 recurrent, proof siehe PCMI
 
 - buch schneider und weil
 + vereinfachte dla programmieren, zufällig punkt außen, zufällige linie auf den cluster, punkt läuft gerade auf dieser linie
