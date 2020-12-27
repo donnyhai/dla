@@ -5,6 +5,7 @@
 \contentsline {subsection}{\numberline {2.2}Basic structures}{4}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Incremental Aggregate}{6}{section.3}%
 \contentsline {section}{\numberline {4}External DLA}{7}{section.4}%
+<<<<<<< Updated upstream
 \contentsline {section}{\numberline {5}Fractal Dimension and Growth rate}{8}{section.5}%
 \contentsline {section}{\numberline {6}Integral Geometry}{9}{section.6}%
 \contentsline {subsection}{\numberline {6.1}General results}{9}{subsection.6.1}%
@@ -14,4 +15,14 @@
 \contentsline {subsection}{\numberline {8.1}External DLA Simulation}{22}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}LHI Simulation}{22}{subsection.8.2}%
 \contentsline {section}{\numberline {9}Questions}{23}{section.9}%
+=======
+\contentsline {section}{\numberline {5}Integral Geometry}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}General results}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Construction in the plane: Isotropic lines}{9}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Line Hitting Aggregate}{17}{section.6}%
+\contentsline {section}{\numberline {7}Python Simulation}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}External DLA Simulation}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}LHI Simulation}{21}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Questions}{22}{section.8}%
+>>>>>>> Stashed changes
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

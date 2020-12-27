@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.16)  27 DEC 2020 15:24
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  18 DEC 2020 13:00
+>>>>>>> Stashed changes
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -817,12 +821,20 @@ been already used, duplicate ignored
                    \relax 
 l.97 \newpage
               [1]
+<<<<<<< Updated upstream
 <display.jpg, id=50, 4183.63pt x 3693.8pt>
+=======
+<display.jpg, id=48, 4183.63pt x 3693.8pt>
+>>>>>>> Stashed changes
 File: display.jpg Graphic file (type jpg)
 <use display.jpg>
 Package pdftex.def Info: display.jpg  used on input line 100.
 (pdftex.def)             Requested size: 167.3167pt x 147.72684pt.
+<<<<<<< Updated upstream
 <display2.jpg, id=51, 2320.67pt x 1581.91pt>
+=======
+<display2.jpg, id=49, 2320.67pt x 1581.91pt>
+>>>>>>> Stashed changes
 File: display2.jpg Graphic file (type jpg)
 <use display2.jpg>
 Package pdftex.def Info: display2.jpg  used on input line 101.
@@ -867,12 +879,18 @@ Overfull \hbox (48.8309pt too wide) in paragraph at lines 229--230
 []\T1/lmr/bx/n/12 Definition 4.0.2. $[]$ $[]$\T1/lmr/m/n/12 ,
  []
 
+<<<<<<< Updated upstream
 [7] [8]
 Underfull \hbox (badness 10000) in paragraph at lines 281--282
+=======
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
+>>>>>>> Stashed changes
 
  []
 
 
+<<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 312--313
 
  []
@@ -889,20 +907,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 320--328
  []
 
 LaTeX Font Info:    Trying to load font information for U+euf on input line 330
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
+
+ []
+
+[8]
+<line-param.png, id=109, 283.04178pt x 205.20529pt>
+File: line-param.png Graphic file (type png)
+<use line-param.png>
+Package pdftex.def Info: line-param.png  used on input line 280.
+(pdftex.def)             Requested size: 392.48108pt x 284.52756pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--284
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+euf on input line 286
+>>>>>>> Stashed changes
 .
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
+<<<<<<< Updated upstream
 [10 <./line-param.png>]
 
 Package hyperref Warning: No autoref name for `lemma' on input line 361.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 361--366
+=======
+[9 <./line-param.png>]
+
+Package hyperref Warning: No autoref name for `lemma' on input line 317.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 317--322
+>>>>>>> Stashed changes
 
  []
 
 
+<<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 361--366
 
  []
@@ -915,15 +961,34 @@ Package pdftex.def Info: circle-part-S.png  used on input line 380.
 (pdftex.def)             Requested size: 392.47046pt x 284.52756pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 384--391
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 317--322
+
+ []
+
+[10]
+<circle-part-S.png, id=127, 426.79134pt x 309.42372pt>
+File: circle-part-S.png Graphic file (type png)
+<use circle-part-S.png>
+Package pdftex.def Info: circle-part-S.png  used on input line 336.
+(pdftex.def)             Requested size: 392.47046pt x 284.52756pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--347
+>>>>>>> Stashed changes
 
  []
 
 
+<<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 384--391
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 340--347
+>>>>>>> Stashed changes
 
  []
 
 
+<<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 384--391
 
  []
@@ -962,15 +1027,60 @@ Underfull \hbox (badness 10000) in paragraph at lines 565--568
 
 [18] [19 <./line-hit-squares.png> <./line-hit-A.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 597--604
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 340--347
+
+ []
+
+[11 <./circle-part-S.png>]
+<T.png, id=136, 223.51546pt x 162.0487pt>
+File: T.png Graphic file (type png)
+<use T.png>
+Package pdftex.def Info: T.png  used on input line 355.
+(pdftex.def)             Requested size: 392.49141pt x 284.52756pt.
+ [12 <./T.png>]pdfTeX warning (ext4): destination with the same identifier (nam
+e{equation.5.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.379 	\end{flalign}
+                    
+Underfull \hbox (badness 10000) in paragraph at lines 406--409
+
+ []
+
+[13] [14] [15] [16]
+<line-hit-squares.png, id=177, 535.33333pt x 370.27222pt>
+File: line-hit-squares.png Graphic file (type png)
+<use line-hit-squares.png>
+Package pdftex.def Info: line-hit-squares.png  used on input line 508.
+(pdftex.def)             Requested size: 411.3829pt x 284.52756pt.
+<line-hit-A.png, id=178, 643.35312pt x 466.43102pt>
+File: line-hit-A.png Graphic file (type png)
+<use line-hit-A.png>
+Package pdftex.def Info: line-hit-A.png  used on input line 510.
+(pdftex.def)             Requested size: 392.46446pt x 284.52756pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 521--524
+
+ []
+
+[17] [18 <./line-hit-squares.png> <./line-hit-A.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 553--560
+>>>>>>> Stashed changes
 
  []
 
 
+<<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 597--604
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 553--560
+>>>>>>> Stashed changes
 
  []
 
 
+<<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 597--604
 
  []
@@ -978,30 +1088,59 @@ Underfull \hbox (badness 10000) in paragraph at lines 597--604
 [20]
 Overfull \hbox (1.27916pt too wide) in paragraph at lines 622--623
 []\T1/lmr/bx/n/12 Definition 7.0.3. $[]$ \T1/lmr/m/n/12 Let $\OML/lmm/m/it/12 A
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 553--560
+
+ []
+
+[19]
+Overfull \hbox (1.27916pt too wide) in paragraph at lines 578--579
+[]\T1/lmr/bx/n/12 Definition 6.0.3. $[]$ \T1/lmr/m/n/12 Let $\OML/lmm/m/it/12 A
+>>>>>>> Stashed changes
  \OMS/lmsy/m/n/12 2 P[]$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 K \OT1/lmr/m/n/12
  := \OML/lmm/m/it/12 conv\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 ) \
 OMS/lmsy/m/n/12 2
  []
 
+<<<<<<< Updated upstream
 [21] [22] [23] [24]
 Underfull \hbox (badness 10000) in paragraph at lines 703--704
+=======
+[20] [21] [22] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 654--655
+>>>>>>> Stashed changes
 
  []
 
 
+<<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 705--707
 
  []
 
 [25] (masterarbeit.aux)
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 656--658
+
+ []
+
+[24] (masterarbeit.aux)
+>>>>>>> Stashed changes
 Package rerunfilecheck Info: File `masterarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< Updated upstream
  11709 strings out of 479697
  204591 string characters out of 2865232
  660826 words of memory out of 3000000
  28417 multiletter control sequences out of 15000+200000
+=======
+ 11704 strings out of 479697
+ 204540 string characters out of 2865232
+ 661826 words of memory out of 3000000
+ 28415 multiletter control sequences out of 15000+200000
+>>>>>>> Stashed changes
  495585 words of font info for 90 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  106i,16n,111p,10609b,447s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1031,9 +1170,17 @@ y10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
 /lmsy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb>
+<<<<<<< Updated upstream
 Output written on masterarbeit.pdf (27 pages, 3597515 bytes).
 PDF statistics:
  370 PDF objects out of 1000 (max. 8388607)
  81 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+Output written on masterarbeit.pdf (26 pages, 3593170 bytes).
+PDF statistics:
+ 359 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> Stashed changes
 
