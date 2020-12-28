@@ -129,9 +129,13 @@ Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\
 \newpage
 \subsection{Basic structures}
 
-We prepare this script with the following preliminaries. Let $d\in \N$. \\
+\subsubsection{Probability Space}
 
-\noindent $\boldsymbol{\mathit{Graphs}}.\quad$ We will be interested in the graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $\{x,y\}\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
+Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" ($A$ holds almost sure).
+
+\subsubsection{Graphs}
+
+Let $d\in \N$. We will be interested in the undirected graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $\{x,y\}\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
 \begin{align*}
 	N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}.
 \end{align*}
@@ -140,51 +144,70 @@ For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of 
 	\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ (x,y)\in E\}
 \end{align*}
 Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
-\\
 
-\noindent $\boldsymbol{\mathit{Probability\ Space}}.\quad$ Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" (almost sure).
-\\
+\subsubsection{Random Walk}
 
-\noindent $\boldsymbol{\mathit{Random\ Walk}}.\quad$ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$, $a.s.$ and 
+A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$, $a.s.$ and 
 
 \begin{align*}
 	\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
 \end{align*}
 
-\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. We can therefore follow easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. Further define 
+\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. We can therefore follow easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. For the following let $(S_n)_{n\in \mathbb{N}}$ be a random walk on $\Z^d$ starting at $x\in \Z^d$. 
 
-\begin{align*}
-	\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x)
-\end{align*}
+\begin{definition}
+	Let $A\subset \Z^d$. We define the $hitting\ times$ of A by
+	
+	\begin{align*}
+		T_A := \min \{n\geq 0\ |\ S_n\in A\}\text{ and } T^+_A := \min \{n\geq 1\ |\ S_n\in A\}, 
+	\end{align*}
+	
+	\noindent and $T_y:= T_{\{y\}}$ and $T^+_y:= T^+_{\{y\}}$ for $y\in \Z^d$.
+\end{definition}
 
-\noindent for any subset $A\subset \Z^d$. We define the $hitting\ times$ of A by
+\begin{definition}
+	Define $T:=T^+_x$ to be the first time for the random walk to come back to its origin $x$. The random walk is called $\mathit{recurrent}$ if 
+	\begin{flalign*}
+		\PP(T<\infty) = 1, 
+	\end{flalign*}
+	and $\mathit{transient}$ if
+	\begin{flalign*}
+		\PP(T<\infty) < 1.
+	\end{flalign*}
+\end{definition}
 
-\begin{align*}
-	T_A := \min \{n\geq 0\ |\ S_n\in A\}\text{ and } T^+_A := \min \{n\geq 1\ |\ S_n\in A\}, 
-\end{align*}
+\begin{lemma}
+	A random walk $(S_n)_{n\in \N}$ on $\Z^d$ is recurrent if $d\leq 2$ and transient if $d\geq 3$. 
+\end{lemma}
+\begin{proof}
+	A detailed proof about this result is presented in $\cite{henze}$ Satz $5.1$. 
+\end{proof}
 
-\noindent $T_x:= T_{\{x\}}$ and $T^+_x:= T^+_{\{x\}}$ for one element sets and $x\in \Z^d$. The $heat\ kernel$ of the random walk $S_n$ is defined to be 
-
-\begin{align*}
-	p_n(x,y):=\mathbb{P}_x(S_n=y)
-\end{align*}
-
-\noindent and the $\mathit{Green\ function}$ as 
-
-\begin{align*}
-	G(x,y) := \sum_{n\geq 0} p_n(x,y).
-\end{align*}
-
-$G$ is well-defined and finite since $\Z^d$ is transient. Similarily for a subset $A\subset \Z^d$ the $killed$ or $\mathit{stopped\ Green\ function}$ is defined as
-
-\begin{align*}
-	G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T_A > n).
-\end{align*} 
-
+\begin{definition}
+	Now let $d=2$. For $A\subset\Z^2$ define 
+	\begin{align*}
+		\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x), \quad n\in\N,x\in\Z^2
+	\end{align*}
+	and the $heat\ kernel$ of the random walk $(S_n)_{n\in \N}$ as 
+	\begin{align*}
+		p_n(x,y):=\mathbb{P}_x(S_n=y), \quad n\in\N,x,y\in\Z^2. 
+	\end{align*}
+	Further define the $\mathit{Green\ function}$ as 
+	\begin{align*}
+		G(x,y) := \sum_{n\geq 0} p_n(x,y),\quad x,y\Z^2. 
+	\end{align*}
+	$G$ is well-defined and finite since $\Z^d$ is transient. Similarily for a subset $A\subset \Z^d$ the $killed$ or $\mathit{stopped\ Green\ function}$ is defined as
+	\begin{align*}
+		G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T_A > n).
+	\end{align*} 
+\end{definition}
 
 
 \newpage
 \section{Incremental Aggregate}
+
+\subsection{Definition}
+
 In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $\{0\}$ and incrementally add a point on the outer boundary of the current cluster according to some distribution. What we get is a randomly, point by point growing connected cluster which we will call $\mathit{Incremental\ Aggregate}$. Define 
 \begin{align}
 	\mathcal{P}_f := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
@@ -207,11 +230,29 @@ For all incremental aggregates in this paper we will have $d=2$. From now on we 
 
 
 
+\subsection{Notion of Fractal Dimension and Growth Rate}
 
-\newpage
+Looking at computer simulations of External DLA it seems that the cluster are formed relatively sparse and they appear to have anoninteger fractal dimension. The notion of fractal dimension is not very clear but the following bulids on a intuitive feel of what the "dimension" of a subset of $\Z^d$ should be. First we define the radius of a finite set $A\subset \Z^d$ as 
+
+\begin{flalign*}
+	rad(A) := \max_{x\in A} |x|. 
+\end{flalign*}
+
+For an Incremental Aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we have that $\E_n$ contains $n$ points and for the notion of dimension we are interested in how the cardinality of $\E_n$ and its radius relate to each other. We understand the fractal dimension as a value $\bar d$ such that
+
+\begin{flalign*}
+	n\approx rad(\E_n)^{\bar d}. 
+\end{flalign*}
+
+
+
+
+
 
 \newpage
 \section{External DLA}
+
+\subsection{Definition}
 
 External DLA is a model of an Incremental Aggregate as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
 
@@ -229,19 +270,8 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 \begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$, is a incremental aggregate with the harmonic measure $h$ as distribution. 
 \end{definition}
 
-\newpage
-\section{Fractal Dimension and Growth rate}
-Looking at computer simulations of External DLA it seems that the cluster are formed relatively sparse and they appear to have anoninteger fractal dimension. The notion of fractal dimension is not very clear but the following bulids on a intuitive feel of what the "dimension" of a subset of $\Z^d$ should be. First we define the radius of a finite set $A\subset \Z^d$ as 
 
-\begin{flalign*}
-	rad(A) := \max_{x\in A} |x|. 
-\end{flalign*}
-
-For an Incremental Aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we have that $\E_n$ contains $n$ points and for the notion of dimension we are interested in how the cardinality of $\E_n$ and its radius relate to each other. We understand the fractal dimension as a value $\bar d$ such that
-
-\begin{flalign*}
-	n nearlyequal rad(\E_n)^{\bar d}. 
-\end{flalign*}
+\subsection{Fractal Dimension and Growth rate}
 
 
 
@@ -263,265 +293,10 @@ For an Incremental Aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we have that $\E_n$ c
 
 
 
-
-
-
-
-\newpage
-\section{Integral Geometry}
-
-In the next section we want to define an approximation for External DLA. This approximation will be an incremental aggregate for which distribution definition we need some concepts and results from Integral Geometry which we will discuss and develop in this section. In the process we want to define we will want to choose a random line out of all lines which intersect with the current cluster of the aggregate. This random choosing is not obvious since most of the time the cluster will be strongly non symmetric and it is even less obvious how to actually get a realisation of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the plane and a reasonable way of choosing parameters randomly. \\
-
-We will introduce a possible solution for this problem first through the abstract and general concepts of integral geometry and later through a simple parametrisation for the case of lines in the plane which goes hand in hand with the general result.
- 
-\subsection{General results}
-
-In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimensional affine subspaces where $q\in \{0,\dots,d\}$, short $q$-flats in $\R^d$. The set of $q$-flats in $\R^d$ is denoted by $A(d,q)$. Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. 
-
-\begin{definition}
-	For $B\in \mathcal{B}^d$ define 
-	\begin{flalign*}
-		[B]_{d,q} := \{F\in A(d,q)\ |\ F\cap B \neq\emptyset\}.
-	\end{flalign*}
-	If the context is clear, we will only write $[B]$ instead of $[B]_{d,q}$. 
-\end{definition}
-
-\begin{definition}
-	The $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ is defined by
-	\begin{flalign*}
-		\mathcal{A}(d,q) := \sigma(\{ [K]\ |\ K\in \K^d\}).
-	\end{flalign*} 
-\end{definition}
-
-\begin{theorem} \label{uniqmeas}
-	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
-	\begin{flalign}
-		\mu_q(A_{B_d(1,0)}) = \kappa_{d-q}, 
-	\end{flalign}
-	where $\kappa_n := \lambda_n(B_n(1,0))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
-\end{theorem}
-\begin{proof}
-	\cite{stoch1} Theorem 4.26 \\ \\ MAKE PROOF CLEARER
-\end{proof}
-
-\subsection{Construction in the plane: Isotropic lines}
-
-For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $\langle\cdot,\cdot\rangle$ be the standard scalar product on $\R^2$, respectively used for values in $\C$ as we identify $\R^2$ with $\C$ as $\R$-vectorspaces. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ and $s_\alpha : = -\sin(\alpha) + \cos(\alpha)i$ be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
-\begin{flalign*}
-	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
-\end{flalign*}
-\\
-\begin{figure}
-	\centering
-	\includegraphics[height=10cm]{line-param.png}
-	\caption{Line parameters $\alpha$ and $p$} \label{lineparam}
-\end{figure}
-\\
-
-
-We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection. We want to show in the following that this way of defining a $\sigma$-algebra on $\G$ makes sense as it is indeed equivalent to the general context as defined above. To do that it is convenient to use a special generator set for the Borel-$\sigma$-algebra $\mathcal{B}_\Phi$. 
-
-\begin{lemma} \label{generators}
-	Define 
-	\begin{flalign*}
-		\mathcal{R}_+ := \{[\alpha,\beta]\times (0,b]\ |\ 0\leq \alpha<\beta<\pi, b \geq 0\}, 
-	\end{flalign*}
-	\begin{flalign*}
-		\mathcal{R}_- := \{[\alpha,\beta]\times [b,0)\ |\ 0\leq \alpha<\beta<\pi, b\leq 0\},
-	\end{flalign*}
-	\begin{flalign*}
-		\mathcal{R}_0 := \{[\alpha,\beta]\times \{0\}\ |\ 0\leq \alpha<\beta<\pi\},
-	\end{flalign*}
-	and
-	\begin{flalign*}
-		\mathcal{R} := \mathcal{R}_+ \cup \mathcal{R}_- \cup \mathcal{R}_0.
-	\end{flalign*}
- 	Then $\sigma(\mathcal{R}) = \mathcal{B}_\Phi$.
-\end{lemma}
-\begin{proof}
-	We show that $\sigma(\mathcal{R})$ contains all rectangles in $\Phi$ of the form $[\alpha,\beta]\times (a,b]$ with $a,b>0$, $[\alpha,\beta]\times [a,b)$ with $a,b<0$ and $[\alpha,\beta]\times [a,b]$ with $0\in [a,b]$. First let $a,b>0$ and $R=[\alpha,\beta]\times (a,b]$, then 
-	\begin{flalign*}
-		R = ([\alpha,\beta] \times (0,b]) \setminus ([\alpha,\beta] \times (0,a])
-	\end{flalign*}
-	and therefore $R\in \sigma(\mathcal{R}_+)\subset\sigma(\mathcal{R})$. Similairly it works if $a,b<0$. If $0\in[a,b]$ then we can write $R = [\alpha,\beta]\times [a,b]$ with three components $R = [\alpha,\beta] \times [a,0) \cup [\alpha,\beta] \times \{0\} \cup [\alpha,\beta] \times (0,b]$ which lie in $\mathcal{R}_-, \mathcal{R}_0$ and $\mathcal{R}_+$ respectively. Therefore $R\in \sigma(\mathcal{R})$ aswell. By measure theory the above described rectangles form a generator set of $\mathcal{B}_\Phi$, which completes the proof. 
-\end{proof}
-
-\begin{lemma}
-	We have $\mathcal{A}(2,1) = \GG$. 
-\end{lemma}
-\begin{proof}
-	We will consider generators of these $\sigma$-algebras. By Lemma $\autoref{generators}$ we know that $\sigma(\mathcal{R}) = \mathcal{B}_\Phi$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{[K]\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
-	%
-	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}([K])$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}([K])\in\mathcal{B}_\Phi$, therefore $[K] \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}([K])$ is closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}([K])$. Then $\chi(\alpha_0,p_0) \notin [K]$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}([K])$, so $\Phi \setminus \chi^{-1}([K])$ is open. Hence $\chi^{-1}([K])$ is closed. \\
-	%
-	\\ \indent $\supset$: For this inclusion we will show that $\chi(R)\in\mathcal{A}(2,1)$ for all $R\in\mathcal{R}$. First let $R = [\alpha,\beta]\times(0,b]\in\mathcal{R}_+$ for some $b>0$. Define 
-	\begin{flalign*}
-		S:= \{pe_\gamma \in \C\ |\ (\gamma,p)\in R\}
-	\end{flalign*}
-	Furthermore for $n\in \N$ define 
-	\begin{flalign*}
-		A_n := \{tns_\beta\ |\ t\in [0,1]\} \text{ and } B_n := \{-tns_\alpha\ |\ t\in [0,1]\},
-	\end{flalign*}
-	the segments from $0$ to $ns_\beta$ and $0$ to $-ns_\alpha$ ($\autoref{circleS}$). We will show now that 
-	\begin{flalign*}
-		\chi(R) = [\bar S] \setminus (\bigcup_{n\in\N} [A_n] \cup \bigcup_{n\in\N} [B_n]) =: \tilde S,  
-	\end{flalign*}
-
-\begin{figure}
-	\centering
-	\includegraphics[height=10cm]{circle-part-S.png}
-	\caption{$S$ and the sets $A_n$ and $B_n$} \label{circleS}
-\end{figure}
-
-	where $\bar S$ is the closure of $S$ (note that $\bar S = S\ \cup\ \{0\}$). Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in [\bar S]$. Assume that there exits an $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similairly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin [A_n]$ and $\chi(\gamma,p) \notin [B_n]$ for any $n\in \N$. Hence $\chi(\gamma,p)\in\tilde S$ and therefore $\chi(R)\subset \tilde S$. \\
-	\\
-	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similair argument as in the first inclusion it is easy to see that there must be an $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $\bar S\subset B_b$ it is $\chi(\gamma,p)\notin [\bar S]$, a contradiction. If $p<0$ then, since the angle between the segments $A_n$ and $B_n$ opposite of $S$ is strictly smaller than $\pi$, $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Note that $p\neq 0$ since $[\{0\}] \subset [A_1]$. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. \\
-	\\
-	It is left to show that $\tilde S\in \mathcal{A}(2,1)$. All the segments $A_n$ and $B_n$ are compact and convex for all $n\in\N$, and since $S$ is bounded and convex as a circle segment with angle smaller than $\pi$, $\bar S$ is compact and convex. Finally $\tilde S\in \mathcal{A}(2,1)$. \\
-	\\
-	In total we get $\mathcal{R}_+\subset \mathcal{A}(2,1)$. $\mathcal{R}_-\subset \mathcal{A}(2,1)$ can be shown analogously. So for the last case let $R = [\alpha,\beta] \times \{0\}\in \mathcal{R}_0$. Define the line segment
-	\begin{flalign*}
-		T := \{(1-t)s_\alpha + ts_\beta\ |\ t\in [0,1]\}. 
-	\end{flalign*}
-	Then $[\{0\}] \cap [T] \in \mathcal{A}(2,1)$. We show that $\chi(R) = [\{0\}] \cap [T]$. Let $(\gamma,0)\in R$. Then $\chi(\gamma,0)$ contains $0$ and since $\gamma$ is in between $\alpha$ and $\beta$, $\chi(\gamma,0)$ must intersect with $T$ ($\autoref{T}$). For the other inclusion let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in [\{0\}] \cap [T]$. Since $0\in \chi(\gamma,p)$ it must be $p=0$ and since it intersects with $T$ its angle must lay in between $\alpha$ and $\beta$. All in all this completes the proof. 
-\end{proof}
-
-\begin{figure}
-	\centering
-	\includegraphics[height=10cm]{T.png}
-	\caption{Line in $[\{0\}] \cap [T]$} \label{T}
-\end{figure}
-
-
-\begin{definition}
-	A $\mathcal{F}$-$\GG$-measurable function $g:\Omega \to \G$ is called a $\mathit{random\ line}$.  
-\end{definition}
-
-\begin{definition}
-	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu([K])<\infty$. 
-\end{definition}
-
-\begin{lemma}
-	$\mu$ is locally finite and $G_2$-invariant. 
-\end{lemma}
-\begin{proof}
-	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $[K]\subset A_{B_r}$ and
-	\begin{flalign*}
-		\mu([K]) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
-	\end{flalign*}
-	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. First we clarify what exactly translation and rotation mean for lines. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
-	\begin{flalign} \label{motion}
-		T_b:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto (\alpha,p+\langle e_\alpha, b\rangle)
-	\end{flalign}
-	and
-	\begin{flalign} \label{motion2}
-	D_{\beta}:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto ((\alpha + \beta)_{\pi}, \delta((\alpha + \beta)_{2\pi})p), 
-	\end{flalign}
-	where 
-	\begin{flalign*}
-		\delta: [0,2\pi) \to \{-1,1\}, \quad \gamma \to \begin{cases}
-			1,\ \gamma\in [0,\pi) \\
-			-1,\ \gamma\in [\pi,2\pi)
-		\end{cases}.
-	\end{flalign*}
-	It is easy to see that both functions all well-defined. $T_b$ defines a translation by $b$ and $D_\beta$ a rotation by $\beta$. Lets proof that first. Let $(\alpha,p)\in \Phi$, then 
-	\begin{flalign*}
-		x\in \chi(\alpha,p)+b &\Leftrightarrow x-b\in \chi(\alpha,p) \\ 
-		&\Leftrightarrow \langle e_\alpha, x-b\rangle = p \\ 
-		&\Leftrightarrow \langle e_\alpha, x\rangle = p + \langle e_\alpha, b\rangle \\
-		&\Leftrightarrow x\in \chi(\alpha, p + \langle e_\alpha, b\rangle) \\
-		&\Leftrightarrow x\in \chi(T_b(\alpha, p))
-	\end{flalign*}
-	and therefore $\chi(\alpha,p) + b = \chi(T_b(\alpha, p))$. Hence $T_b(\alpha,p)$ are indeed the parameters for the by $b$ translated line. For the rotation lets devide it into two cases. First let $(\alpha+\beta)_{2\pi} \in [0,\pi)$, then $\delta((\alpha+\beta)_{2\pi}) = 1$ and $(\alpha+\beta)_\pi = \alpha+\beta$ and therefore 
-	\begin{flalign*}
-		D_\beta(\alpha,p) = (\alpha+\beta,p).
-	\end{flalign*} 
-	In the second case with $(\alpha+\beta)_{2\pi} \in [\pi,2\pi)$ we have $\delta((\alpha+\beta)_{2\pi}) = -1$ and $(\alpha+\beta)_\pi = \alpha+\beta - \pi$ and therefore
-	\begin{flalign*}
-		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
-	\end{flalign*}
-	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the by $\beta$ rotated line. \\
-	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise aswell. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
-	\begin{flalign*}
-		\mu(A+b) 
-		&= \int_\GG \1_{A+b}(g) \mu(dg) \\
-		&= \int_\GG \1_A(g-b) \mu(dg) \\
-		&= \int_\GG \1_A(g-b) {\lambda_2}_{|\Phi}(\chi^{-1}(dg)) \\
-		&= \int_{\chi^{-1}(\GG)} \1_{\chi^{-1}(A)}(\chi^{-1}(g-b)) {\lambda_2}_{|\Phi}(d(\chi^{-1}(g))) \\
-		&\overset{(\ref{motion})}{=} \int_\Phi \1_{\chi^{-1}(A)}(\alpha,p-\langle e_\alpha, b\rangle) {\lambda_2}_{|\Phi}(d(\alpha,p)) \\ 
-		&= \int_0^\pi \int_\R \1_{A_\alpha}(p-\langle e_\alpha, b\rangle) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
-		&= \int_0^\pi \int_\R \1_{A_\alpha +\langle e_\alpha, b\rangle}(p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
-		&= \int_0^\pi \lambda_1(A_\alpha +\langle e_\alpha, b\rangle) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
-		&\overset{(+)}= \int_0^\pi \lambda_1(A_\alpha) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
-		&= \dots \\
-		&= \mu(A),
-	\end{flalign*}
-	and for a rotation we get
-	\begin{flalign*}
-		\mu(\nu_\beta A) &= \int_\G \1_{\nu_\beta A}(g) \mu(dg) \\
-		&= \int_\G \1_A(\nu_{-\beta} g) {\lambda_2}_{|\Phi}(\chi^{-1}(dg))\\
-		&= \int_{\chi^{-1}(\G)} \1_{\chi^{-1}(A)}(\chi^{-1}(\nu_{-\beta} g)) {\lambda_2}_{|\Phi}(d(\chi^{-1}(g)))\\
-		&\overset{(\ref{motion2})}= \int_\Phi \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_2}_{|\Phi}(\alpha,p) \\
-		&= \int_\Phi \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_2}_{|\Phi}(\alpha,p) \\
-		&= \int_{0}^{2\pi} \int_\R \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
-		&= \int_{0}^{2\pi} \int_\R \1_{A_{(\alpha - \beta)_{\pi}}}(\delta((\alpha - \beta)_{2\pi})p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
-		&\overset{(+)}= \int_{0}^{2\pi} \int_\R \1_{A_{(\alpha - \beta)_{\pi}}}(p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
-		&= \int_\R \int_{0}^{2\pi} \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, p) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
-		&= \int_\R \int_{0}^{2\pi} \1_{A_p}((\alpha - \beta)_{\pi}) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
-		&\overset{(+)}= \int_\R \int_{0}^{2\pi} \1_{A_p}(\alpha) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
-		&= \int_\R \int_{0}^{2\pi} \1_{\chi^{-1}(A)}(\alpha,p) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
-		&= \dots \\
-		&= \mu(A).
-	\end{flalign*}
-	where in $(+)$ we used the translation and rotation invariance of the Lebesgue measure. This completes the proof.
-\end{proof}
-
-By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
-\begin{flalign*}
-	\PP^K_\mu(A) := \frac{\mu( A\cap [K])}{\mu([K])},\quad A\in \GG.
-\end{flalign*}
-
-\begin{definition}
-	Let $K\in\K^2$. A random line $g:\Omega \to \G$ is called $K$-$\mathit{isotropic}$ if 
-	\begin{flalign*}
-		\PP(g\in A) = \PP^K_\mu(A),\quad A\in\GG.
-	\end{flalign*}
-\end{definition}
-
-\begin{lemma}\label{circ}
-	Let $M,K\in \K^2$ with $M\subset K$. Let $f$ be a random $K$-isotropic and $g$ be a random $M$-isotropic line. Then for all $A\in \GG$ we have
-	\begin{flalign*}
-		\PP(f\in A\ |\ f\in [M]) = \PP(g\in A).
-	\end{flalign*}
-\end{lemma}
-\begin{proof}
-	Note that since $M\subset K$ it is $[M]\subset [K]$. For $A\in \GG$ we therefore directly get 
-	\begin{flalign*}
-		\PP(f\in A\ |\ f\in [M]) &= \frac{\PP(f\in A\cap [M])}{\PP(f\in [M])}\\
-		&= \frac{\mu(A\cap [M]\cap [K])}{\mu([K])}\frac{\mu([K])}{\mu([M]\cap [K])}\\
-		&=\frac{\mu(A\cap [M])}{\mu([M])} \\
-		&= \PP(g\in A).
-	\end{flalign*}
-\end{proof}
-
-If we choose a simple convex set such as $K=B_r$ the ball around the origin with radius $r$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
-
-\begin{lemma} \label{chi}
-	Let $K=B_r\in\K^2$ and let $(\alpha,p)$ be uniformly distributed in $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}([K])\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
-\end{lemma}
-\begin{proof}
-	For $A\in\GG$ we get 
-	\begin{flalign*}
-		\PP(\chi(\alpha,p)\in A) &= \PP((\alpha,p)\in \chi^{-1}(A)) = \frac{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A)\cap \chi^{-1}([K])))}{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}([K]))}\\
-		&=\frac{{\lambda_2}_{|\Phi}(\chi^{-1}(A\cap [K]))}{{\lambda_2}_{|\Phi}(\chi^{-1}([K]))} = \frac{\mu(A\cap [K])}{\mu([K])}.
-	\end{flalign*}
-\end{proof}
-
-Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new Incremental Aggregate in the next section which tries to approximize External DLA. 
-
-\newpage
 
 \section{Line Hitting Aggregate}
+
+\subsection{Motivation}
 
 In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider a line hitting a point in $\mathbb{Z}^2$ if and only if it intersects with its unit square as defined in the following. 
 
@@ -637,6 +412,267 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 \begin{definition} $(\mathit{Line\ Hitting\ Aggregate)}$ An Incremental Aggregate with the Random Line Hitting Distribution we call $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
 \end{definition}
 
+
+
+
+\subsection{Integral Geometry}
+
+In the next section we want to define an approximation for External DLA. This approximation will be an incremental aggregate for which distribution definition we need some concepts and results from Integral Geometry which we will discuss and develop in this section. In the process we want to define we will want to choose a random line out of all lines which intersect with the current cluster of the aggregate. This random choosing is not obvious since most of the time the cluster will be strongly non symmetric and it is even less obvious how to actually get a realisation of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the plane and a reasonable way of choosing parameters randomly. \\
+
+We will introduce a possible solution for this problem first through the abstract and general concepts of integral geometry and later through a simple parametrisation for the case of lines in the plane which goes hand in hand with the general result.
+
+\subsubsection{General results}
+
+In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimensional affine subspaces where $q\in \{0,\dots,d\}$, short $q$-flats in $\R^d$. The set of $q$-flats in $\R^d$ is denoted by $A(d,q)$. Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. 
+
+\begin{definition}
+	For $B\in \mathcal{B}^d$ define 
+	\begin{flalign*}
+		[B]_{d,q} := \{F\in A(d,q)\ |\ F\cap B \neq\emptyset\}.
+	\end{flalign*}
+	If the context is clear, we will only write $[B]$ instead of $[B]_{d,q}$. 
+\end{definition}
+
+\begin{definition}
+	The $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ is defined by
+	\begin{flalign*}
+		\mathcal{A}(d,q) := \sigma(\{ [K]\ |\ K\in \K^d\}).
+	\end{flalign*} 
+\end{definition}
+
+\begin{theorem} \label{uniqmeas}
+	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
+	\begin{flalign}
+		\mu_q(A_{B_d(1,0)}) = \kappa_{d-q}, 
+	\end{flalign}
+	where $\kappa_n := \lambda_n(B_n(1,0))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
+\end{theorem}
+\begin{proof}
+	\cite{stoch1} Theorem 4.26 \\ \\ MAKE PROOF CLEARER
+\end{proof}
+
+\subsubsection{Construction in the plane: Isotropic lines}
+
+For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $\langle\cdot,\cdot\rangle$ be the standard scalar product on $\R^2$, respectively used for values in $\C$ as we identify $\R^2$ with $\C$ as $\R$-vectorspaces. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ and $s_\alpha : = -\sin(\alpha) + \cos(\alpha)i$ be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+\begin{flalign*}
+	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
+\end{flalign*}
+\\
+\begin{figure}
+	\centering
+	\includegraphics[height=10cm]{line-param.png}
+	\caption{Line parameters $\alpha$ and $p$} \label{lineparam}
+\end{figure}
+\\
+
+
+We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection. We want to show in the following that this way of defining a $\sigma$-algebra on $\G$ makes sense as it is indeed equivalent to the general context as defined above. To do that it is convenient to use a special generator set for the Borel-$\sigma$-algebra $\mathcal{B}_\Phi$. 
+
+\begin{lemma} \label{generators}
+	Define 
+	\begin{flalign*}
+		\mathcal{R}_+ := \{[\alpha,\beta]\times (0,b]\ |\ 0\leq \alpha<\beta<\pi, b \geq 0\}, 
+	\end{flalign*}
+	\begin{flalign*}
+		\mathcal{R}_- := \{[\alpha,\beta]\times [b,0)\ |\ 0\leq \alpha<\beta<\pi, b\leq 0\},
+	\end{flalign*}
+	\begin{flalign*}
+		\mathcal{R}_0 := \{[\alpha,\beta]\times \{0\}\ |\ 0\leq \alpha<\beta<\pi\},
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		\mathcal{R} := \mathcal{R}_+ \cup \mathcal{R}_- \cup \mathcal{R}_0.
+	\end{flalign*}
+	Then $\sigma(\mathcal{R}) = \mathcal{B}_\Phi$.
+\end{lemma}
+\begin{proof}
+	We show that $\sigma(\mathcal{R})$ contains all rectangles in $\Phi$ of the form $[\alpha,\beta]\times (a,b]$ with $a,b>0$, $[\alpha,\beta]\times [a,b)$ with $a,b<0$ and $[\alpha,\beta]\times [a,b]$ with $0\in [a,b]$. First let $a,b>0$ and $R=[\alpha,\beta]\times (a,b]$, then 
+	\begin{flalign*}
+		R = ([\alpha,\beta] \times (0,b]) \setminus ([\alpha,\beta] \times (0,a])
+	\end{flalign*}
+	and therefore $R\in \sigma(\mathcal{R}_+)\subset\sigma(\mathcal{R})$. Similairly it works if $a,b<0$. If $0\in[a,b]$ then we can write $R = [\alpha,\beta]\times [a,b]$ with three components $R = [\alpha,\beta] \times [a,0) \cup [\alpha,\beta] \times \{0\} \cup [\alpha,\beta] \times (0,b]$ which lie in $\mathcal{R}_-, \mathcal{R}_0$ and $\mathcal{R}_+$ respectively. Therefore $R\in \sigma(\mathcal{R})$ aswell. By measure theory the above described rectangles form a generator set of $\mathcal{B}_\Phi$, which completes the proof. 
+\end{proof}
+
+\begin{lemma}
+	We have $\mathcal{A}(2,1) = \GG$. 
+\end{lemma}
+\begin{proof}
+	We will consider generators of these $\sigma$-algebras. By Lemma $\autoref{generators}$ we know that $\sigma(\mathcal{R}) = \mathcal{B}_\Phi$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{[K]\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
+	%
+	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}([K])$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}([K])\in\mathcal{B}_\Phi$, therefore $[K] \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}([K])$ is closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}([K])$. Then $\chi(\alpha_0,p_0) \notin [K]$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}([K])$, so $\Phi \setminus \chi^{-1}([K])$ is open. Hence $\chi^{-1}([K])$ is closed. \\
+	%
+	\\ \indent $\supset$: For this inclusion we will show that $\chi(R)\in\mathcal{A}(2,1)$ for all $R\in\mathcal{R}$. First let $R = [\alpha,\beta]\times(0,b]\in\mathcal{R}_+$ for some $b>0$. Define 
+	\begin{flalign*}
+		S:= \{pe_\gamma \in \C\ |\ (\gamma,p)\in R\}
+	\end{flalign*}
+	Furthermore for $n\in \N$ define 
+	\begin{flalign*}
+		A_n := \{tns_\beta\ |\ t\in [0,1]\} \text{ and } B_n := \{-tns_\alpha\ |\ t\in [0,1]\},
+	\end{flalign*}
+	the segments from $0$ to $ns_\beta$ and $0$ to $-ns_\alpha$ ($\autoref{circleS}$). We will show now that 
+	\begin{flalign*}
+		\chi(R) = [\bar S] \setminus (\bigcup_{n\in\N} [A_n] \cup \bigcup_{n\in\N} [B_n]) =: \tilde S,  
+	\end{flalign*}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[height=10cm]{circle-part-S.png}
+		\caption{$S$ and the sets $A_n$ and $B_n$} \label{circleS}
+	\end{figure}
+	
+	where $\bar S$ is the closure of $S$ (note that $\bar S = S\ \cup\ \{0\}$). Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in [\bar S]$. Assume that there exits an $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similairly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin [A_n]$ and $\chi(\gamma,p) \notin [B_n]$ for any $n\in \N$. Hence $\chi(\gamma,p)\in\tilde S$ and therefore $\chi(R)\subset \tilde S$. \\
+	\\
+	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similair argument as in the first inclusion it is easy to see that there must be an $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $\bar S\subset B_b$ it is $\chi(\gamma,p)\notin [\bar S]$, a contradiction. If $p<0$ then, since the angle between the segments $A_n$ and $B_n$ opposite of $S$ is strictly smaller than $\pi$, $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Note that $p\neq 0$ since $[\{0\}] \subset [A_1]$. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. \\
+	\\
+	It is left to show that $\tilde S\in \mathcal{A}(2,1)$. All the segments $A_n$ and $B_n$ are compact and convex for all $n\in\N$, and since $S$ is bounded and convex as a circle segment with angle smaller than $\pi$, $\bar S$ is compact and convex. Finally $\tilde S\in \mathcal{A}(2,1)$. \\
+	\\
+	In total we get $\mathcal{R}_+\subset \mathcal{A}(2,1)$. $\mathcal{R}_-\subset \mathcal{A}(2,1)$ can be shown analogously. So for the last case let $R = [\alpha,\beta] \times \{0\}\in \mathcal{R}_0$. Define the line segment
+	\begin{flalign*}
+		T := \{(1-t)s_\alpha + ts_\beta\ |\ t\in [0,1]\}. 
+	\end{flalign*}
+	Then $[\{0\}] \cap [T] \in \mathcal{A}(2,1)$. We show that $\chi(R) = [\{0\}] \cap [T]$. Let $(\gamma,0)\in R$. Then $\chi(\gamma,0)$ contains $0$ and since $\gamma$ is in between $\alpha$ and $\beta$, $\chi(\gamma,0)$ must intersect with $T$ ($\autoref{T}$). For the other inclusion let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in [\{0\}] \cap [T]$. Since $0\in \chi(\gamma,p)$ it must be $p=0$ and since it intersects with $T$ its angle must lay in between $\alpha$ and $\beta$. All in all this completes the proof. 
+\end{proof}
+
+\begin{figure}
+	\centering
+	\includegraphics[height=10cm]{T.png}
+	\caption{Line in $[\{0\}] \cap [T]$} \label{T}
+\end{figure}
+
+
+\begin{definition}
+	A $\mathcal{F}$-$\GG$-measurable function $g:\Omega \to \G$ is called a $\mathit{random\ line}$.  
+\end{definition}
+
+\begin{definition}
+	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu([K])<\infty$. 
+\end{definition}
+
+\begin{lemma}
+	$\mu$ is locally finite and $G_2$-invariant. 
+\end{lemma}
+\begin{proof}
+	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $[K]\subset A_{B_r}$ and
+	\begin{flalign*}
+		\mu([K]) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
+	\end{flalign*}
+	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. First we clarify what exactly translation and rotation mean for lines. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
+	\begin{flalign} \label{motion}
+		T_b:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto (\alpha,p+\langle e_\alpha, b\rangle)
+	\end{flalign}
+	and
+	\begin{flalign} \label{motion2}
+		D_{\beta}:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto ((\alpha + \beta)_{\pi}, \delta((\alpha + \beta)_{2\pi})p), 
+	\end{flalign}
+	where 
+	\begin{flalign*}
+		\delta: [0,2\pi) \to \{-1,1\}, \quad \gamma \to \begin{cases}
+			1,\ \gamma\in [0,\pi) \\
+			-1,\ \gamma\in [\pi,2\pi)
+		\end{cases}.
+	\end{flalign*}
+	It is easy to see that both functions all well-defined. $T_b$ defines a translation by $b$ and $D_\beta$ a rotation by $\beta$. Lets proof that first. Let $(\alpha,p)\in \Phi$, then 
+	\begin{flalign*}
+		x\in \chi(\alpha,p)+b &\Leftrightarrow x-b\in \chi(\alpha,p) \\ 
+		&\Leftrightarrow \langle e_\alpha, x-b\rangle = p \\ 
+		&\Leftrightarrow \langle e_\alpha, x\rangle = p + \langle e_\alpha, b\rangle \\
+		&\Leftrightarrow x\in \chi(\alpha, p + \langle e_\alpha, b\rangle) \\
+		&\Leftrightarrow x\in \chi(T_b(\alpha, p))
+	\end{flalign*}
+	and therefore $\chi(\alpha,p) + b = \chi(T_b(\alpha, p))$. Hence $T_b(\alpha,p)$ are indeed the parameters for the by $b$ translated line. For the rotation lets devide it into two cases. First let $(\alpha+\beta)_{2\pi} \in [0,\pi)$, then $\delta((\alpha+\beta)_{2\pi}) = 1$ and $(\alpha+\beta)_\pi = \alpha+\beta$ and therefore 
+	\begin{flalign*}
+		D_\beta(\alpha,p) = (\alpha+\beta,p).
+	\end{flalign*} 
+	In the second case with $(\alpha+\beta)_{2\pi} \in [\pi,2\pi)$ we have $\delta((\alpha+\beta)_{2\pi}) = -1$ and $(\alpha+\beta)_\pi = \alpha+\beta - \pi$ and therefore
+	\begin{flalign*}
+		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
+	\end{flalign*}
+	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the by $\beta$ rotated line. \\
+	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise aswell. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
+	\begin{flalign*}
+		\mu(A+b) 
+		&= \int_\GG \1_{A+b}(g) \mu(dg) \\
+		&= \int_\GG \1_A(g-b) \mu(dg) \\
+		&= \int_\GG \1_A(g-b) {\lambda_2}_{|\Phi}(\chi^{-1}(dg)) \\
+		&= \int_{\chi^{-1}(\GG)} \1_{\chi^{-1}(A)}(\chi^{-1}(g-b)) {\lambda_2}_{|\Phi}(d(\chi^{-1}(g))) \\
+		&\overset{(\ref{motion})}{=} \int_\Phi \1_{\chi^{-1}(A)}(\alpha,p-\langle e_\alpha, b\rangle) {\lambda_2}_{|\Phi}(d(\alpha,p)) \\ 
+		&= \int_0^\pi \int_\R \1_{A_\alpha}(p-\langle e_\alpha, b\rangle) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&= \int_0^\pi \int_\R \1_{A_\alpha +\langle e_\alpha, b\rangle}(p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&= \int_0^\pi \lambda_1(A_\alpha +\langle e_\alpha, b\rangle) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&\overset{(+)}= \int_0^\pi \lambda_1(A_\alpha) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&= \dots \\
+		&= \mu(A),
+	\end{flalign*}
+	and for a rotation we get
+	\begin{flalign*}
+		\mu(\nu_\beta A) &= \int_\G \1_{\nu_\beta A}(g) \mu(dg) \\
+		&= \int_\G \1_A(\nu_{-\beta} g) {\lambda_2}_{|\Phi}(\chi^{-1}(dg))\\
+		&= \int_{\chi^{-1}(\G)} \1_{\chi^{-1}(A)}(\chi^{-1}(\nu_{-\beta} g)) {\lambda_2}_{|\Phi}(d(\chi^{-1}(g)))\\
+		&\overset{(\ref{motion2})}= \int_\Phi \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_2}_{|\Phi}(\alpha,p) \\
+		&= \int_\Phi \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_2}_{|\Phi}(\alpha,p) \\
+		&= \int_{0}^{2\pi} \int_\R \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, \delta((\alpha - \beta)_{2\pi})p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
+		&= \int_{0}^{2\pi} \int_\R \1_{A_{(\alpha - \beta)_{\pi}}}(\delta((\alpha - \beta)_{2\pi})p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
+		&\overset{(+)}= \int_{0}^{2\pi} \int_\R \1_{A_{(\alpha - \beta)_{\pi}}}(p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\
+		&= \int_\R \int_{0}^{2\pi} \1_{\chi^{-1}(A)}((\alpha - \beta)_{\pi}, p) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&= \int_\R \int_{0}^{2\pi} \1_{A_p}((\alpha - \beta)_{\pi}) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&\overset{(+)}= \int_\R \int_{0}^{2\pi} \1_{A_p}(\alpha) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&= \int_\R \int_{0}^{2\pi} \1_{\chi^{-1}(A)}(\alpha,p) {{\lambda_1}_{|[0,\pi)}}(d\alpha){\lambda_1}(dp) \\
+		&= \dots \\
+		&= \mu(A).
+	\end{flalign*}
+	where in $(+)$ we used the translation and rotation invariance of the Lebesgue measure. This completes the proof.
+\end{proof}
+
+By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
+\begin{flalign*}
+	\PP^K_\mu(A) := \frac{\mu( A\cap [K])}{\mu([K])},\quad A\in \GG.
+\end{flalign*}
+
+\begin{definition}
+	Let $K\in\K^2$. A random line $g:\Omega \to \G$ is called $K$-$\mathit{isotropic}$ if 
+	\begin{flalign*}
+		\PP(g\in A) = \PP^K_\mu(A),\quad A\in\GG.
+	\end{flalign*}
+\end{definition}
+
+\begin{lemma}\label{circ}
+	Let $M,K\in \K^2$ with $M\subset K$. Let $f$ be a random $K$-isotropic and $g$ be a random $M$-isotropic line. Then for all $A\in \GG$ we have
+	\begin{flalign*}
+		\PP(f\in A\ |\ f\in [M]) = \PP(g\in A).
+	\end{flalign*}
+\end{lemma}
+\begin{proof}
+	Note that since $M\subset K$ it is $[M]\subset [K]$. For $A\in \GG$ we therefore directly get 
+	\begin{flalign*}
+		\PP(f\in A\ |\ f\in [M]) &= \frac{\PP(f\in A\cap [M])}{\PP(f\in [M])}\\
+		&= \frac{\mu(A\cap [M]\cap [K])}{\mu([K])}\frac{\mu([K])}{\mu([M]\cap [K])}\\
+		&=\frac{\mu(A\cap [M])}{\mu([M])} \\
+		&= \PP(g\in A).
+	\end{flalign*}
+\end{proof}
+
+If we choose a simple convex set such as $K=B_r$ the ball around the origin with radius $r$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
+
+\begin{lemma} \label{chi}
+	Let $K=B_r\in\K^2$ and let $(\alpha,p)$ be uniformly distributed in $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}([K])\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
+\end{lemma}
+\begin{proof}
+	For $A\in\GG$ we get 
+	\begin{flalign*}
+		\PP(\chi(\alpha,p)\in A) &= \PP((\alpha,p)\in \chi^{-1}(A)) = \frac{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}(A)\cap \chi^{-1}([K])))}{{\lambda_2}_{|\tilde\Phi}(\chi^{-1}([K]))}\\
+		&=\frac{{\lambda_2}_{|\Phi}(\chi^{-1}(A\cap [K]))}{{\lambda_2}_{|\Phi}(\chi^{-1}([K]))} = \frac{\mu(A\cap [K])}{\mu([K])}.
+	\end{flalign*}
+\end{proof}
+
+Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new Incremental Aggregate in the next section which tries to approximize External DLA. 
+
+
+\subsection{Definition}
+
+
+
+
+
 \newpage
 \section{Python Simulation}
 Part of the work in this paper is the attempt to build simulations for both incremental aggregates $\mathit{External\ DLA}$ and $\mathit{LHI}$ which were presented in the previous sections. For calculating the simulations we use $\mathit{Python}$ and for rendering pictures we use the package $\mathit{Pygame}$. Each vertex in $\Z^2$ is naturally mapped to its coordinate and is represented in this way in python code. In graphics each coordinate basically can be represented by squares in $\C$ as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel, so every picture about incremental aggregates you'll see in the following consists of pixels each representing exactly one vertex in $\Z^2$ in the most natural way. Our aim will be to simulate the aggregates as close as possible to their mathematical definitions. This is much easier for LHI, and less obvious for External DLA. We start of with External DLA in the following.
@@ -647,7 +683,7 @@ By identifying each vertex in $\Z^2$ with its square in $\C$ and a pixel when re
 
 
 
-\subsection{LHI Simulation}
+\subsection{LHA Simulation}
 
 
 
@@ -658,11 +694,6 @@ By identifying each vertex in $\Z^2$ with its square in $\C$ and a pixel when re
 
 \begin{thebibliography}{biblio}
 \thispagestyle{empty}
-
-\bibitem{Henze Skript}
-N. Henze.
-\emph{Maß und Wahrscheinlichkeitstheorie (Stochastik II)}.
-Karlsruher Institut für Technologie, Karlsruhe, 2010
 
 \bibitem{stoch1}
 Daniel Hug, Günter Last, Steffen Winter.
@@ -679,6 +710,10 @@ Gregory F. Lawler
 \emph{Intersections of Random Walks}.
 University of Chicago, 1996
 
+\bibitem{henze}
+Norbert Henze
+\emph{Irrfahrten - Faszination der Random Walks}
+Institute of Technology, Karlsruhe, 2018
 
 
 \end{thebibliography}
