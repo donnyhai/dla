@@ -32,6 +32,7 @@
 \newcommand{\N}{\mathbb{N}} % natuerliche
 \newcommand{\PP}{\mathbb{P}} % Probability
 \newcommand{\E}{\mathcal{E}} % big Epsilon
+\newcommand{\EE}{\mathbb{E}} %Expectation value
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\1}{\mathbbm{1}}
 \newcommand{\G}{\mathcal{G}}
@@ -132,7 +133,7 @@ Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\
 
 \subsubsection{Probability Space}
 
-Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that "$A$ holds $\mathbb{P}$-$a.s.$", or short "$A$ holds $a.s.$" ($A$ holds almost sure).
+Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure).
 
 \subsubsection{Graphs}
 
@@ -148,13 +149,16 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 
 \subsubsection{Random Walk}
 
-A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$, $a.s.$ and 
-
-\begin{align*}
-	\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
-\end{align*}
-
-\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. We can therefore follow easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. For the following let $(S_n)_{n\in \mathbb{N}}$ be a random walk on $\Z^d$ starting at $x\in \Z^d$. 
+\begin{definition}
+	A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ a.s. and 
+	
+	\begin{align*}
+		\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
+	\end{align*}
+	
+	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. We can therefore follow easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. 
+\end{definition}
+So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. For the following let $(S_n)_{n\in \mathbb{N}}$ be a random walk on $\Z^d$ starting at $x\in \Z^d$. 
 
 \begin{definition}
 	Let $A\subset \Z^d$. We define the $hitting\ times$ of A by
@@ -183,6 +187,8 @@ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mat
 \begin{proof}
 	A detailed proof about this result is presented in $\cite{henze}$ Satz $5.1$. 
 \end{proof}
+
+CONTINUE
 
 \begin{definition}
 	Now let $d=2$. For $A\subset\Z^2$ define 
@@ -233,19 +239,31 @@ For all incremental aggregates in this paper we will focus on the $2$-dimensiona
 
 \subsection{Notion of Fractal Dimension and Growth Rate}
 
-Looking at computer simulations of External DLA it seems that the cluster are formed relatively sparse and they appear to have anoninteger fractal dimension. The notion of fractal dimension is not very clear but the following bulids on a intuitive feel of what the "dimension" of a subset of $\Z^d$ should be. First we define the radius of a finite set $A\subset \Z^d$ as 
-
+When there is no strict self-similarity in sets, like in randomly growing clusters as the ones of incremental aggregates, the notion of fractal dimension is not very clear. There are different nonequivalent definitions of what the $\glqq \text{dimension} \grqq$ of a set should be. In many cases they are in fact equivalent and if not it is known in many cases which dimension is bigger than the other one. Here we will mainly consider the following understanding of a dimension of incremental aggregate clusters which we will just call $\mathit{fractal\ dimension}$. This definition is mainly motivated by $\cite{fractalwinter}$ Part II (page 98) and $\cite{lawler}$ 2.6 (page 82). We define the radius of a finite set $A\in \mathcal{P}_f$ as 
 \begin{flalign*}
 	rad(A) := \max_{x\in A} |x|. 
 \end{flalign*}
-
-For an Incremental Aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we have that $\E_n$ contains $n$ points and for the notion of dimension we are interested in how the cardinality of $\E_n$ and its radius relate to each other. We understand the fractal dimension as a value $\bar d$ such that
-
+In a $d$-dimensional ball $B_d(m,0)$ of radius $m$ we could consider a $k$-dimensional subset as a set with cardinality of order $m^k$. Similarly for an incremental aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we define the dimension as a value $d_f$ such that 
 \begin{flalign*}
-	n\approx rad(\E_n)^{\bar d}. 
+	n=|\E_n| \approx \EE[rad(\E_n)]^{d_f}
 \end{flalign*}
-
-
+for large $n$. Formally we can therefore define the fractal dimension as
+\begin{flalign*}
+	d_f := \lim_{n\to\infty} \frac{ln(n)}{ln(\EE[rad(\E_n)])},
+\end{flalign*}
+if the limit exists. This correlates strongly with the growth rate of the aggregate, which we could express looking at a possibly small exponent $\alpha$ such that there exists a constant $c>0$ with 
+\begin{flalign*}
+	\EE [rad(\E_n)] \leq cn^\alpha
+\end{flalign*}
+for large $n$. Rewriting this we come to the equivalent expression
+\begin{flalign*}
+	\frac{ln(\EE [rad(\E_n)])}{ln(cn)} \leq \alpha
+\end{flalign*}
+for large $n$ and we could define the growth rate $\alpha$ of an incremental aggregate as the smallest value holding this expression, so
+\begin{flalign*}
+	\alpha := \limsup_{n\to\infty} \frac{ln(\EE [rad(\E_n)])}{ln(n)}
+\end{flalign*}, 
+if the $\limsup$ exists. 
 
 
 
@@ -278,7 +296,7 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 
 \subsection{Fractal Dimension and Growth Rate of External DLA}
 
-
+Looking at computer simulations of External DLA it seems that the cluster are formed relatively sparse and they appear to have anoninteger fractal dimension. 
 
 
 
@@ -366,11 +384,11 @@ In the following we will look at a process which is the approach of a simple app
 \begin{lemma}
 For a line $g=g_{\alpha,p}\in\G$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
 	\begin{proof}
-		We will only proove the case where $g$ is going from left-bottom to right-top, which is $\mathit{Case}\ 3$ of the definition. In this case we have $\alpha\in (\frac{\pi}{2},\pi)$. Note, that the proof for $\mathit{Case\ }4$ will work very similair and in the case of $g$ being parallel to one of the axes ($\mathit{Case\ }1$ or $2$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $\alpha\in (\frac{\pi}{2},\pi)$. \\
+		We will only proove the case where $g$ is going from left-bottom to right-top, which is $\mathit{Case}\ 3$ of the definition. In this case we have $\alpha\in (\frac{\pi}{2},\pi)$. Note, that the proof for $\mathit{Case\ }4$ will work very similar and in the case of $g$ being parallel to one of the axes ($\mathit{Case\ }1$ or $2$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $\alpha\in (\frac{\pi}{2},\pi)$. \\
 		\\
 		$\mathit{Antisymmetry:}$ For antisymmetry let $x \triangleleft y$ and $y \triangleleft x$. Suppose $Re(x)\neq Re(y)$, then $Re(x) < Re(y)$ and $Re(y) < Re(x)$, a contradiction because of the total order $<$ in $\mathbb{R}$. So $Re(x) = Re(y)$. But then we have $Im(x) < Im(y)$ and $Im(y) < Im(x)$ and therefore also $Im(x) = Im(y)$, hence $x=y$. \\
 		\\
-		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $Re(x) \neq Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) < Re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $Re(x)\neq Re(y)$ and $Re(y) = Re(z)$ we get $Re(x) < Re(y) = Re(z)$, therefore $x \triangleleft z$. In case $Re(x) = Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) = Re(y) < Re(z)$, similair as the last case. In the last case $Re(x) = Re(y) = Re(z)$ we get $Im(x) < Im(y)$ and $Im(y) < Im(z)$ and again by transitivity of $<$ we get $Im(x) < Im(z)$, hence $x \triangleleft z$ again. \\
+		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $Re(x) \neq Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) < Re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $Re(x)\neq Re(y)$ and $Re(y) = Re(z)$ we get $Re(x) < Re(y) = Re(z)$, therefore $x \triangleleft z$. In case $Re(x) = Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) = Re(y) < Re(z)$, similar as the last case. In the last case $Re(x) = Re(y) = Re(z)$ we get $Im(x) < Im(y)$ and $Im(y) < Im(z)$ and again by transitivity of $<$ we get $Im(x) < Im(z)$, hence $x \triangleleft z$ again. \\
 		\\
 		$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $Re(x) \neq Re(y)$ or $Re(x) = Re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
 	 
@@ -495,7 +513,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\begin{flalign*}
 		R = ([\alpha,\beta] \times (0,b]) \setminus ([\alpha,\beta] \times (0,a])
 	\end{flalign*}
-	and therefore $R\in \sigma(\mathcal{R}_+)\subset\sigma(\mathcal{R})$. Similairly it works if $a,b<0$. If $0\in[a,b]$ then we can write $R = [\alpha,\beta]\times [a,b]$ with three components $R = [\alpha,\beta] \times [a,0) \cup [\alpha,\beta] \times \{0\} \cup [\alpha,\beta] \times (0,b]$ which lie in $\mathcal{R}_-, \mathcal{R}_0$ and $\mathcal{R}_+$ respectively. Therefore $R\in \sigma(\mathcal{R})$ aswell. By measure theory the above described rectangles form a generator set of $\mathcal{B}_\Phi$, which completes the proof. 
+	and therefore $R\in \sigma(\mathcal{R}_+)\subset\sigma(\mathcal{R})$. Similarly it works if $a,b<0$. If $0\in[a,b]$ then we can write $R = [\alpha,\beta]\times [a,b]$ with three components $R = [\alpha,\beta] \times [a,0) \cup [\alpha,\beta] \times \{0\} \cup [\alpha,\beta] \times (0,b]$ which lie in $\mathcal{R}_-, \mathcal{R}_0$ and $\mathcal{R}_+$ respectively. Therefore $R\in \sigma(\mathcal{R})$ aswell. By measure theory the above described rectangles form a generator set of $\mathcal{B}_\Phi$, which completes the proof. 
 \end{proof}
 
 \begin{lemma}
@@ -525,9 +543,9 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 		\caption{$S$ and the sets $A_n$ and $B_n$} \label{circleS}
 	\end{figure}
 	
-	where $\bar S$ is the closure of $S$ (note that $\bar S = S\ \cup\ \{0\}$). Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in [\bar S]$. Assume that there exits an $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similairly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin [A_n]$ and $\chi(\gamma,p) \notin [B_n]$ for any $n\in \N$. Hence $\chi(\gamma,p)\in\tilde S$ and therefore $\chi(R)\subset \tilde S$. \\
+	where $\bar S$ is the closure of $S$ (note that $\bar S = S\ \cup\ \{0\}$). Let $(\gamma,p)\in R$. Then $pe_\gamma\in \chi(\gamma,p)\cap S$ and therefore $\chi(\gamma,p)\in [\bar S]$. Assume that there exits an $n\in\N$ such that $\chi(\gamma,p)\cap A_n \neq \emptyset$. Then $\beta + \frac{\pi}{2} - \gamma < \frac{\pi}{2}$, hence $\beta < \gamma$, a contradiction. Similarly argument for any $B_n$, so we finally have $\chi(\gamma,p) \notin [A_n]$ and $\chi(\gamma,p) \notin [B_n]$ for any $n\in \N$. Hence $\chi(\gamma,p)\in\tilde S$ and therefore $\chi(R)\subset \tilde S$. \\
 	\\
-	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similair argument as in the first inclusion it is easy to see that there must be an $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $\bar S\subset B_b$ it is $\chi(\gamma,p)\notin [\bar S]$, a contradiction. If $p<0$ then, since the angle between the segments $A_n$ and $B_n$ opposite of $S$ is strictly smaller than $\pi$, $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Note that $p\neq 0$ since $[\{0\}] \subset [A_1]$. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. \\
+	Now let $(\gamma,p)\in\Phi$ such that $\chi(\gamma,p)\in \tilde S$. Assume that $\gamma\notin[\alpha,\beta]$ then with a similar argument as in the first inclusion it is easy to see that there must be an $n\in\N$ such that $\chi(\gamma,p)\cap A_n\neq \emptyset$ or $\chi(\gamma,p)\cap B_n\neq \emptyset$, a contradiction. Therefore $\gamma\in[\alpha,\beta]$. Now assume $p\notin (0,b]$. If $p>b$ then $\chi(\gamma,b)\cap B_b = \emptyset$ and since $\bar S\subset B_b$ it is $\chi(\gamma,p)\notin [\bar S]$, a contradiction. If $p<0$ then, since the angle between the segments $A_n$ and $B_n$ opposite of $S$ is strictly smaller than $\pi$, $\chi(\gamma,p)$ must intersect with $A_n$ or $B_n$ for some $n\in\N$, again a contradiction. Note that $p\neq 0$ since $[\{0\}] \subset [A_1]$. Thus we have $p\in(0,b]$. Therefore we have $(\gamma,p)\in R$ and finally $\tilde S\subset \chi(R)$. \\
 	\\
 	It is left to show that $\tilde S\in \mathcal{A}(2,1)$. All the segments $A_n$ and $B_n$ are compact and convex for all $n\in\N$, and since $S$ is bounded and convex as a circle segment with angle smaller than $\pi$, $\bar S$ is compact and convex. Finally $\tilde S\in \mathcal{A}(2,1)$. \\
 	\\
@@ -720,6 +738,10 @@ Norbert Henze
 \emph{Irrfahrten - Faszination der Random Walks}
 Institute of Technology, Karlsruhe, 2018
 
+\bibitem{fractalwinter}
+Uta Freiberg, Ben Hambly, Michael Hinz, Steffen Winter
+\emph{Fractal Geometry and Stochastics VI}
+2020
 
 \end{thebibliography}
 
