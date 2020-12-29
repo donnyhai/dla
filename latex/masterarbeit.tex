@@ -124,6 +124,7 @@ Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\
 	&\G := A(2,1),\quad  \text{the set of lines in the real plane}\\
 	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\},\quad \text{identify }SO_2 = \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
 	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d,b\in \R^d\},\quad  \text{the set of euclidean motions} \\
+	&\mathcal{P}_f,\quad \text{the set of finite subsets of $\Z^d$ (or $\Z^2$ respective to the context)} \\
 \end{flalign*}
 
 \newpage
@@ -176,7 +177,7 @@ A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mat
 	\end{flalign*}
 \end{definition}
 
-\begin{lemma}
+\begin{lemma} \label{recurr}
 	A random walk $(S_n)_{n\in \N}$ on $\Z^d$ is recurrent if $d\leq 2$ and transient if $d\geq 3$. 
 \end{lemma}
 \begin{proof}
@@ -226,7 +227,7 @@ the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$
 	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_n\}$.
 \end{definition} 
 
-For all incremental aggregates in this paper we will have $d=2$. From now on we will identify $\R^2$ with $\C$ as $\R$-vectorspaces. 
+For all incremental aggregates in this paper we will focus on the $2$-dimensional case $d=2$. From now on we will identify $\R^2$ with $\C$ as $\R$-vectorspaces. 
 
 
 
@@ -256,22 +257,26 @@ For an Incremental Aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we have that $\E_n$ c
 
 External DLA is a model of an Incremental Aggregate as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
 
-\begin{definition} $\mathit{(Harmonic\ Measure)}$ Let $A\in\mathcal{P}_f$. Remembering the definitions in \eqref{prelim}, especially the heat kernel $p_n(x,y)=\mathbb{P}_x(S_n=y)$ of a random walk, for $x\in \Z^2$ the $\mathit{harmonic\ measure}$ (from $x$) of $A$ is
-	\begin{align*}
-	h_A(x,y) := \1\{y\in A\}p_{T_A}(x,y) = \1\{y\in A\}\PP_x(S_{T_A} = y),\quad \text{ for } y\in \Z^2.  
-	\end{align*}
-	We now define the $\mathit{harmonic\ measure}$ (from infinity) of $A$ as the family $h=(h_A)_{A\in \mathcal{P}_f}$ with
+\begin{definition} $\mathit{(Harmonic\ Measure)}$ Let $A\subset\Z^d$. The hitting probability of $A$ is the function 
 	\begin{flalign*}
-		h_A(y) := \lim_{|x|\to\infty} h_A(x,y),\quad y\in \Z^2. 
+		H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto H_A(x,y):=\PP_x(S_{T_A^+} = y).
 	\end{flalign*}
-	This is well-defined because ... CONTINUE
+	In literature you can find the same definition where $T_A$ is used instead of $T_A^+$. Since in the following for finite sets $A\in\mathcal{P}_f$ the limit $|x| \to \infty$ of $H_A(x,y)$ is of interest, $T_A^+$ is chosen by convenience. In fact for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
+	\begin{flalign*}
+		\bar H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto \bar H_A(x,y):=\PP_x(S_{T_A^+} = y\ |\ T_A^+<\infty), 
+	\end{flalign*} 
+	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}\ 2.1$ and in the same chapter it is prooved, that for finite sets $A\in\mathcal{P}_f$ the limit
+	\begin{flalign*}
+		\lim_{|x|\to\infty} \bar H_A(x,y) =: h_A(y) 
+	\end{flalign*}
+	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$ and for an element $y\in A$ it displays the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case by Lemma $\autoref{recurr}$ we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. We will call the familiy of distributions $h:=(h_A)_{A\in\mathcal{P}_f}$ $\mathit{harmonic\ measure}$. 
 \end{definition}
 
-\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited\ Aggregate}$, short $\mathit{External\ DLA}$, is a incremental aggregate with the harmonic measure $h$ as distribution. 
+\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited}$ $\mathit{Aggregate}$, short $\mathit{External\ DLA}$, is an incremental aggregate with the harmonic measure $h$ as distribution. 
 \end{definition}
 
 
-\subsection{Fractal Dimension and Growth rate}
+\subsection{Fractal Dimension and Growth Rate of External DLA}
 
 
 
@@ -293,7 +298,7 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 
 
 
-
+\newpage
 \section{Line Hitting Aggregate}
 
 \subsection{Motivation}
@@ -705,7 +710,7 @@ Franz Sackmann.
 \emph{Zufällige Geraden, Staatsexamensarbeit}.
 University Karlsruhe (TH), Karlsruhe, 2007
 
-\bibitem{randomwalks}
+\bibitem{lawler}
 Gregory F. Lawler
 \emph{Intersections of Random Walks}.
 University of Chicago, 1996
