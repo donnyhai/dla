@@ -133,7 +133,7 @@ Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\
 
 \subsubsection{Probability Space}
 
-Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure).
+Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure). Another short expression, if for a sequence of statements $(A_n)_{n\in\N}$ we say $\glqq$$A_n$ holds for large $n$$\grqq$ it shall mean that for all $M\in\N$ there exists a $n>M$ such that $A_n$ holds. 
 
 \subsubsection{Graphs}
 
@@ -248,10 +248,10 @@ In a $d$-dimensional ball $B_d(m,0)$ of radius $m$ we could consider a $k$-dimen
 	n=|\E_n| \approx \EE[rad(\E_n)]^{d_f}
 \end{flalign*}
 for large $n$. Formally we can therefore define the fractal dimension as
-\begin{flalign*}
-	d_f := \lim_{n\to\infty} \frac{ln(n)}{ln(\EE[rad(\E_n)])},
-\end{flalign*}
-if the limit exists. This correlates strongly with the growth rate of the aggregate, which we could express looking at a possibly small exponent $\alpha$ such that there exists a constant $c>0$ with 
+\begin{flalign} \label{fractaldim}
+	d_f := \liminf_{n\to\infty} \frac{ln(n)}{ln(\EE[rad(\E_n)])},
+\end{flalign}
+if this limit exists. Why choosing $\liminf$ makes sense we will see in the following. The fractal dimension strongly correlates with the growth rate of the aggregate which shall indicate how the radius of the cluster evolves while increasing the particle number. We could express the growth rate by looking for a possibly small exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\EE [rad(\E_n)] \leq cn^\alpha
 \end{flalign*}
@@ -259,12 +259,23 @@ for large $n$. Rewriting this we come to the equivalent expression
 \begin{flalign*}
 	\frac{ln(\EE [rad(\E_n)])}{ln(cn)} \leq \alpha
 \end{flalign*}
-for large $n$ and we could define the growth rate $\alpha$ of an incremental aggregate as the smallest value holding this expression, so
+for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregate as the smallest value holding this expression, so
+\begin{flalign} \label{growthrate}
+	\alpha_f := \limsup_{n\to\infty} \frac{ln(\EE [rad(\E_n)])}{ln(n)},
+\end{flalign}
+if the $\limsup$ exists. Since $rad(\E_n) \leq n$ for all $n\in\N$ a.s., this $\limsup$ exists and we get 
 \begin{flalign*}
-	\alpha := \limsup_{n\to\infty} \frac{ln(\EE [rad(\E_n)])}{ln(n)}
-\end{flalign*}, 
-if the $\limsup$ exists. 
-
+	\alpha_f \leq 1. 
+\end{flalign*}
+ We further simply have 
+\begin{flalign*}
+	d_f = \frac{1}{\alpha_f}
+\end{flalign*}
+and therefore the $\liminf$ in $\ref{fractaldim}$ exists and it is
+\begin{flalign*}
+	d_f\geq 1.
+\end{flalign*}
+We will see later how these values behave for incremental aggregates we define in this paper. 
 
 
 
@@ -296,11 +307,33 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 
 \subsection{Fractal Dimension and Growth Rate of External DLA}
 
-Looking at computer simulations of External DLA it seems that the cluster are formed relatively sparse and they appear to have anoninteger fractal dimension. 
+Looking at computer simulations it seems that the clusters of External DLA are formed relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
+\begin{flalign*}
+	d_f = \frac{d^2 + 1}{d+1}
+\end{flalign*}
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and one of them we will see in the following. The following theorem and proof are motivated by $\cite{lawler}$ $2.6$. 
 
-
-
-
+\begin{theorem}
+	For the growth rate of External DLA in $\Z^2$ according to the definition in $(\ref{growthrate})$ we have
+	\begin{flalign}
+		\alpha_f \leq \frac{2}{3}. 
+	\end{flalign}	
+\end{theorem}
+\begin{proof}
+	To proof this we will show that there exists a constant $c>0$ such that
+	\begin{flalign} \label{rad}
+		rad(\E_n) \leq cn^{\frac{2}{3}}
+	\end{flalign}
+	for large $n$ a.s.. Define the bijective function
+	\begin{flalign*}
+		h: [0,\infty) \to [0,\infty), x\mapsto x^{\frac{2}{3}}. 
+	\end{flalign*}
+	To show (\ref{rad}) we can also show that there exists a constant $\tilde c>0$ such that 
+	\begin{flalign}
+		\lambda_n \geq \tilde c h^{-1}(n)
+	\end{flalign}
+	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. 
+\end{proof}
 
 
 
@@ -739,9 +772,16 @@ Norbert Henze
 Institute of Technology, Karlsruhe, 2018
 
 \bibitem{fractalwinter}
-Uta Freiberg, Ben Hambly, Michael Hinz, Steffen Winter
+Uta Freiberg, Ben Hambly, Michael Hinz and Steffen Winter
 \emph{Fractal Geometry and Stochastics VI}
 2020
+
+\bibitem{magnetic}
+J. Gonzalez-Gutierrez, J. L. Carrillo-Estrada and J. C. Ruiz-Suarez
+\emph{Aggregation and dendritic growth in a magnetic granular system}
+2013
+
+
 
 \end{thebibliography}
 
