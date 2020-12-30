@@ -225,7 +225,7 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 \end{align}
 the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
-\begin{definition}
+\begin{definition} \label{incrementalaggregate}
 	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{0\}$ at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_n = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
@@ -243,7 +243,7 @@ When there is no strict self-similarity in sets, like in randomly growing cluste
 \begin{flalign*}
 	rad(A) := \max_{x\in A} |x|. 
 \end{flalign*}
-In a $d$-dimensional ball $B_d(m,0)$ of radius $m$ we could consider a $k$-dimensional subset as a set with cardinality of order $m^k$. Similarly for an incremental aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we define the dimension as a value $d_f$ such that 
+In a $d$-dimensional ball $B_d(m,0)$ of radius $m\geq 0$ we could consider a $k$-dimensional subset of the ball as a set with cardinality of order $m^k$. Similarly for an incremental aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we define the dimension as a value $d_f$ such that 
 \begin{flalign*}
 	n=|\E_n| \approx \EE[rad(\E_n)]^{d_f}
 \end{flalign*}
@@ -275,7 +275,6 @@ and therefore the $\liminf$ in $\ref{fractaldim}$ exists and it is
 \begin{flalign*}
 	d_f\geq 1.
 \end{flalign*}
-We will see later how these values behave for incremental aggregates we define in this paper. 
 
 
 
@@ -329,10 +328,10 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 		h: [0,\infty) \to [0,\infty), x\mapsto x^{\frac{2}{3}}. 
 	\end{flalign*}
 	To show (\ref{rad}) we can also show that there exists a constant $\tilde c>0$ such that 
-	\begin{flalign}
+	\begin{flalign} \label{lambda}
 		\lambda_n \geq \tilde c h^{-1}(n)
 	\end{flalign}
-	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. 
+	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_0,\dots,y_{n-1}\}$ according to the definition in $\ref{incrementalaggregate}$ with $y_0 := 0$, where $y_j$ is the $j$-th point added to the cluster. 
 \end{proof}
 
 
@@ -366,7 +365,7 @@ In the following we will look at a process which is the approach of a simple app
 	sq: \mathbb{Z}^2 \to \C_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i
 	\end{align}
 	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\C$ which is $p$ is the center of the square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\C$ respecting the context. This bijection also naturally defines a graph structure on $\C_{sq}$, which is two squares $s_1, s_2\in \C_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. 
-	\noindent For the following we say a line $g$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $g\ \cap\ sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). 
+	\noindent For the following we say a line $g$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $g\cap sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). 
 	
 \end{definition}
 
@@ -429,44 +428,10 @@ For a line $g=g_{\alpha,p}\in\G$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emp
 \end{lemma}
 
 \begin{remark}
-	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when "entering" $A$ and where it hits last when "leaving" $A$. 
+	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when $\glqq$entering$\grqq$ $A$ and where it hits last when $\glqq$leaving$\grqq$ $A$. What we want to do next is to choose a line randomly out of all lines which hit the current cluster. This is isn`t an obvious task and we will have to develop a most fair underlying distribution on lines in the next section where we will touch basic aspects of Integral Geometry. 
 \end{remark}
 
-Recall that for a bounded subset $A\subset \C$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
-\begin{flalign*}
-	conv(A) := \bigcap_{A\subset K\in \K^2} K. 
-\end{flalign*}
-Note that $conv(A)\in \K^2$ for all bounded subsets $A\subset \C$. For a set $A\in \mathcal{P}_f$ we define 
-\begin{flalign*}
-	conv(A):=conv(\bigcup_{p\in A} sq(p))
-\end{flalign*}
-and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. 
 
-\begin{definition} $\mathit{(Random\ Line\ Hitting\ Distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
-	\begin{flalign*}
-		\tilde \mu_A(x,g) := (\frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\}) \ \1\{x\in \{\min(g\cap A),\max(g\cap A)\}\}
-	\end{flalign*}
-	and
-	\begin{flalign}
-		\mu_A(x) := \frac{1}{\PP^K_\mu([A])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
-	\end{flalign}
-	We quickly show that $\mu_A\in \mathcal{D}_A$. For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
-	\begin{flalign*}
-		\sum_{x\in A} \tilde \mu_A(x,g) = \begin{cases}
-			\frac{1}{2}2, \quad &|g\cap A| \geq 2, \\
-			1, \quad &|g\cap A| = 1, \\
-			0, \quad &|g\cap A| = 0.
-		\end{cases} \quad= \1\{g\cap A\neq \emptyset\}
-	\end{flalign*} 
-	and therefore 
-	\begin{flalign*}
-		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([A])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([A])}{\PP^K_\mu([A])} = 1. 
-	\end{flalign*}
-	Hence, the family of distributions $(\mu_A)_{A\in \mathcal{P}_f}$ defines an incremental aggregate. 
-\end{definition}
-
-\begin{definition} $(\mathit{Line\ Hitting\ Aggregate)}$ An Incremental Aggregate with the Random Line Hitting Distribution we call $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
-\end{definition}
 
 
 
@@ -684,7 +649,7 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 	\PP^K_\mu(A) := \frac{\mu( A\cap [K])}{\mu([K])},\quad A\in \GG.
 \end{flalign*}
 
-\begin{definition}
+\begin{definition} \label{isotropic}
 	Let $K\in\K^2$. A random line $g:\Omega \to \G$ is called $K$-$\mathit{isotropic}$ if 
 	\begin{flalign*}
 		\PP(g\in A) = \PP^K_\mu(A),\quad A\in\GG.
@@ -725,13 +690,54 @@ Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lin
 
 \subsection{Definition}
 
+We are now able to choose a line randomly out of all lines hitting a cluster in a fair and agreeable way, which are $K$-isotropic lines as presented in Definition \ref{isotropic}. All in all we have realized the mathematical structure to define the incremental aggregate as we have planned it in the motivation in the beginning of this chapter. Recall that for a bounded subset $A\subset \C$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
+\begin{flalign*}
+	conv(A) := \bigcap_{A\subset K\in \K^2} K. 
+\end{flalign*}
+Note that $conv(A)\in \K^2$ for all bounded subsets $A\subset \C$. For a set $A\in \mathcal{P}_f$ we define 
+\begin{flalign*}
+	conv(A):=conv(\bigcup_{p\in A} sq(p))
+\end{flalign*}
+and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. 
 
+\begin{definition} $\mathit{(Random\ Line\ Hitting\ Distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
+	\begin{flalign*} 
+		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
+	\end{flalign*}
+	\begin{flalign} \label{mu}
+		\tilde \mu_A(x,g) := \gamma_A(g) \ \1\{x\in \{\min(g\cap A),\max(g\cap A)\}\}
+	\end{flalign}
+	and
+	\begin{flalign}
+		\mu_A(x) := \frac{1}{\PP^K_\mu([A])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
+	\end{flalign}
+	We quickly show that $\mu_A\in \mathcal{D}_A$. For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
+	\begin{flalign*}
+		\sum_{x\in A} \tilde \mu_A(x,g) = \begin{cases}
+			\frac{1}{2}2, \quad &|g\cap A| \geq 2, \\
+			1, \quad &|g\cap A| = 1, \\
+			0, \quad &|g\cap A| = 0.
+		\end{cases} \quad= \1\{g\cap A\neq \emptyset\}
+	\end{flalign*} 
+	and therefore 
+	\begin{flalign*}
+		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([A])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([A])}{\PP^K_\mu([A])} = 1. 
+	\end{flalign*}
+	Hence, the family of distributions $(\mu_A)_{A\in \mathcal{P}_f}$ defines an incremental aggregate. 
+\end{definition}
+
+\begin{definition} $(\mathit{Line\ Hitting\ Aggregate)}$ An Incremental Aggregate with the Random Line Hitting Distribution we call $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
+\end{definition}
+
+\begin{remark}
+	Note, that the indicator function in (\ref{mu}) is well-defined, since a line $g$ chosen by the distribution $\PP^K_\mu$ certainly hits $K=conv(A)$ and it is easy to understand that $g$ hits $conv(A)$ if and only if $g$ hits $A$. 
+\end{remark}
 
 
 
 \newpage
 \section{Python Simulation}
-Part of the work in this paper is the attempt to build simulations for both incremental aggregates $\mathit{External\ DLA}$ and $\mathit{LHI}$ which were presented in the previous sections. For calculating the simulations we use $\mathit{Python}$ and for rendering pictures we use the package $\mathit{Pygame}$. Each vertex in $\Z^2$ is naturally mapped to its coordinate and is represented in this way in python code. In graphics each coordinate basically can be represented by squares in $\C$ as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel, so every picture about incremental aggregates you'll see in the following consists of pixels each representing exactly one vertex in $\Z^2$ in the most natural way. Our aim will be to simulate the aggregates as close as possible to their mathematical definitions. This is much easier for LHI, and less obvious for External DLA. We start of with External DLA in the following.
+Part of the work in this paper is the attempt to build simulations for both incremental aggregates $\mathit{External\ DLA}$ and $\mathit{LHI}$ which were presented in the previous sections. For calculating the simulations we use $\mathit{Python}$ and for rendering pictures we use the package $\mathit{pygame}$. Each vertex in $\Z^2$ is naturally mapped to its coordinate and is represented in this way in python code. In graphics each coordinate basically can be represented by squares in $\C$ as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel, so every picture about incremental aggregates you'll see in the following consists of pixels each representing exactly one vertex in $\Z^2$ in the most natural way. Our aim will be to simulate the aggregates as close as possible to their mathematical definitions. This is much easier for LHI, and less obvious for External DLA. We start of with External DLA in the following.
 
 \subsection{External DLA Simulation}
 
