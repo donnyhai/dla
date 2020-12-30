@@ -209,8 +209,15 @@ CONTINUE
 	\end{align*} 
 \end{definition}
 
+\subsection{Notations in $\Z^2$}
+Throughout the paper we will deal with the space $\Z^2$ and often we will want to express some concepts in a more comfortable way. 
+
+CONTINUE, take definitions from line hitting aggregate chapter
+
+
 
 \newpage
+$\cite{lawler}$
 \section{Incremental Aggregate}
 
 \subsection{Definition}
@@ -310,7 +317,19 @@ Looking at computer simulations it seems that the clusters of External DLA are f
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and one of them we will see in the following. The following theorem and proof are motivated by $\cite{lawler}$ $2.6$. 
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and one of them we will see in the following. 
+
+The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
+
+\begin{theorem}
+	Let $0\in A\subset \Z^2$ be a connected set with $rad(A) = n$. Then there exists a constant $c>0$ such that
+	\begin{flalign*}
+		H_A(0) \leq cn^{-\frac{1}{2}}. 
+	\end{flalign*}
+\end{theorem}
+\begin{proof}
+	The proof is presented for all dimensions $d\in \N$ for $\Z^d$ in $\cite{lawler}$ Theorem $2.5.2$. This result is very strong and basically the key for the next theorem. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
+\end{proof}
 
 \begin{theorem}
 	For the growth rate of External DLA in $\Z^2$ according to the definition in $(\ref{growthrate})$ we have
@@ -331,7 +350,35 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 	\begin{flalign} \label{lambda}
 		\lambda_n \geq \tilde c h^{-1}(n)
 	\end{flalign}
-	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_0,\dots,y_{n-1}\}$ according to the definition in $\ref{incrementalaggregate}$ with $y_0 := 0$, where $y_j$ is the $j$-th point added to the cluster. 
+	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_0,\dots,y_{n-1}\}$ according to the definition in $\ref{incrementalaggregate}$ with $y_0 := 0$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$. For $n\in\N$ let $\tilde m := \beta n^{\frac{3}{2}}$ and define 
+	\begin{flalign*}
+		V_n := \{\lambda_{2n} \leq \tilde m\} \subset \Omega. 
+	\end{flalign*}
+	Further define the set of realised random walk paths of length $n$ with starting point in $\partial B_n$ 
+	\begin{flalign*}
+	Z_n := \{[z] := [z_1, \dots, z_n]\ |\ [z] \text{ is a realisation a of random walk with } z_1\in \partial B_n\}, 
+	\end{flalign*}
+	define events 
+	\begin{flalign*}
+		W_n([z]) := \{\exists j_1< \dots < j_n \leq \tilde m \ \text{ s.t. } z_i = y_{j_i} \text{ for all } i\in\{1,\dots,n\} \} \subset \Omega
+	\end{flalign*}
+	and the union of these events 
+	\begin{flalign*}
+		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
+	\end{flalign*}
+	We will quickly proof that $V_n \subset W_n$. Let $\omega \in V_n$, then $\lambda_{2n}(\omega) \leq \tilde m$. For $m:=\max\{j\in\N\ |\ j\leq \tilde m\}$ we therefore have $rad(\E_m(\omega)) \geq 2n$ (Note that $\lambda_{2n}(\omega)\in\N$). Therefore since $\E_m(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_m(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m\leq\tilde m$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. Further fix $[z]\in Z_n$ and define
+	\begin{flalign*}
+		\tau_i \text{ the index s.t. } y_{\tau_i} = z_i
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		\sigma_i := \tau_{i+1} - \tau_i. 
+	\end{flalign*}
+	
+
+
+
+	CONTINUE
 \end{proof}
 
 
