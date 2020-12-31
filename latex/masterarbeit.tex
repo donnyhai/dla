@@ -131,10 +131,6 @@ Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\
 \newpage
 \subsection{Basic structures}
 
-\subsubsection{Probability Space}
-
-Let $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure). Another short expression, if for a sequence of statements $(A_n)_{n\in\N}$ we say $\glqq$$A_n$ holds for large $n$$\grqq$ it shall mean that for all $M\in\N$ there exists a $n>M$ such that $A_n$ holds. 
-
 \subsubsection{Graphs}
 
 Let $d\in \N$. We will be interested in the undirected graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $\{x,y\}\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
@@ -147,10 +143,10 @@ For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of 
 \end{align*}
 Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
 
-\subsubsection{Random Walk}
+\subsubsection{Random Walks}
 
 \begin{definition}
-	A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ a.s. and 
+	Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space and for our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ a.s. and 
 	
 	\begin{align*}
 		\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
@@ -188,29 +184,14 @@ So a Random Walk can be understood as a particle starting from some point $x$ an
 	A detailed proof about this result is presented in $\cite{henze}$ Satz $5.1$. 
 \end{proof}
 
-CONTINUE
+\subsubsection{Expressions}
 
-\begin{definition}
-	Now let $d=2$. For $A\subset\Z^2$ define 
-	\begin{align*}
-		\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x), \quad n\in\N,x\in\Z^2
-	\end{align*}
-	and the $heat\ kernel$ of the random walk $(S_n)_{n\in \N}$ as 
-	\begin{align*}
-		p_n(x,y):=\mathbb{P}_x(S_n=y), \quad n\in\N,x,y\in\Z^2. 
-	\end{align*}
-	Further define the $\mathit{Green\ function}$ as 
-	\begin{align*}
-		G(x,y) := \sum_{n\geq 0} p_n(x,y),\quad x,y\Z^2. 
-	\end{align*}
-	$G$ is well-defined and finite since $\Z^d$ is transient. Similarily for a subset $A\subset \Z^d$ the $killed$ or $\mathit{stopped\ Green\ function}$ is defined as
-	\begin{align*}
-		G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T_A > n).
-	\end{align*} 
-\end{definition}
+If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure). Another short expression, if for a sequence of statements $(A_n)_{n\in\N}$ we say $\glqq$$A_n$ holds for large $n$$\grqq$ it shall mean that there exists $M\in\N$ such that $A_n$ holds for all $n>M$. 
+
+
 
 \subsection{Notations in $\Z^2$}
-Throughout the paper we will deal with the space $\Z^2$ and often we will want to express some concepts in a more comfortable way. 
+Throughout the paper we will deal with the space $\Z^2$ and often we will want to express certain concepts in a more convenient way. 
 
 CONTINUE, take definitions from line hitting aggregate chapter
 
@@ -233,14 +214,14 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
 \begin{definition} \label{incrementalaggregate}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}_0}}$ which evolves as follows. The process starts with one point $\mathcal{E}_0 = \{0\}$ at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_n$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ after having added $n$ points, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
-		\mathbb{P}(y_n = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
+		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
-	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_n\}$.
+	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$.
 \end{definition} 
 
-For all incremental aggregates in this paper we will focus on the $2$-dimensional case $d=2$. From now on we will identify $\R^2$ with $\C$ as $\R$-vectorspaces. 
+The above defines a Markov chain whose state space is the set of finite and connected subets of $\Z^d$. For all incremental aggregates in this paper we will focus on the $2$-dimensional case $\Z^2$ and will always identify $\R^2$ with $\C$ for a more convenient notation. 
 
 
 
@@ -366,7 +347,15 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	We will quickly proof that $V_n \subset W_n$. Let $\omega \in V_n$, then $\lambda_{2n}(\omega) \leq \tilde m$. For $m:=\max\{j\in\N\ |\ j\leq \tilde m\}$ we therefore have $rad(\E_m(\omega)) \geq 2n$ (Note that $\lambda_{2n}(\omega)\in\N$). Therefore since $\E_m(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_m(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m\leq\tilde m$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. Further fix $[z]\in Z_n$ and define
+	We will quickly proof that $V_n \subset W_n$ for all $n\in\N$. Let $\omega \in V_n$, then $\lambda_{2n}(\omega) \leq \tilde m$. For $m:=\max\{j\in\N\ |\ j\leq \tilde m\}$ we therefore have $rad(\E_m(\omega)) \geq 2n$ (Note that $\lambda_{2n}(\omega)\in\N$). Therefore since $\E_m(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_m(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m\leq\tilde m$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ define
+	\begin{flalign*}
+		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = {\omega\in\Omega\ |\ A_n \text{ holds for infinetly many } n\in\N}.
+	\end{flalign*}
+	We will want to use the Lemma of Borel-Cantelli on the sequence of events $(W_n)_{n\in\N}$ to get
+	\begin{flalign}
+		\PP(\limsup_{n\to\infty} V_n) \leq \PP(\limsup_{n\to\infty} W_n) = 0, 
+	\end{flalign}
+	so we can follow that $\PP(V_n^C)=1$ for large $n$ and nearly have what we want to proof. For that take a $n\in \N$ and a $[z]\in Z_n$ and define
 	\begin{flalign*}
 		\tau_i \text{ the index s.t. } y_{\tau_i} = z_i
 	\end{flalign*}

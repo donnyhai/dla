@@ -352,7 +352,24 @@ From now on consider the case $d=2$ and $q=1$ which is looking at lines in the r
 
 
 
-
+\begin{definition}
+	Now let $d=2$. For $A\subset\Z^2$ define 
+	\begin{align*}
+		\mathbb{P}_x(S_n\in A) := \mathbb{P}(S_n\in A|S_0=x), \quad n\in\N,x\in\Z^2
+	\end{align*}
+	and the $heat\ kernel$ of the random walk $(S_n)_{n\in \N}$ as 
+	\begin{align*}
+		p_n(x,y):=\mathbb{P}_x(S_n=y), \quad n\in\N,x,y\in\Z^2. 
+	\end{align*}
+	Further define the $\mathit{Green\ function}$ as 
+	\begin{align*}
+		G(x,y) := \sum_{n\geq 0} p_n(x,y),\quad x,y\Z^2. 
+	\end{align*}
+	$G$ is well-defined and finite since $\Z^d$ is transient. Similarily for a subset $A\subset \Z^d$ the $killed$ or $\mathit{stopped\ Green\ function}$ is defined as
+	\begin{align*}
+		G_A(x,y) := \sum_{n\geq 0} \mathbb{P}_x(S_n=y, T_A > n).
+	\end{align*} 
+\end{definition}
 
 
 

@@ -3,9 +3,9 @@
 \contentsline {section}{\numberline {2}Preliminaries}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Symbols}{3}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Basic structures}{4}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Probability Space}{4}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Graphs}{4}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Random Walk}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.1}Graphs}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Random Walks}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Expressions}{5}{subsubsection.2.2.3}%
 \contentsline {subsection}{\numberline {2.3}Notations in $\mathbb {Z}^2$}{5}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Incremental Aggregate}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Definition}{6}{subsection.3.1}%
