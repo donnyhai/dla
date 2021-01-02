@@ -214,14 +214,14 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
 \begin{definition} \label{incrementalaggregate}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ after having added $n$ points, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ containing $n$ points, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
 	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$.
 \end{definition} 
 
-The above defines a Markov chain whose state space is the set of finite and connected subets of $\Z^d$. For all incremental aggregates in this paper we will focus on the $2$-dimensional case $\Z^2$ and will always identify $\R^2$ with $\C$ for a more convenient notation. 
+The above defines a Markov chain whose state space is the set of finite and connected subsets of $\Z^d$. For all incremental aggregates in this paper we will focus on the $2$-dimensional case $\Z^2$ and will always identify $\R^2$ with $\C$ for a more convenient notation. 
 
 
 
@@ -302,7 +302,7 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 
 The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
 
-\begin{theorem}
+\begin{theorem} \label{keytheorem}
 	Let $0\in A\subset \Z^2$ be a connected set with $rad(A) = n$. Then there exists a constant $c>0$ such that
 	\begin{flalign*}
 		H_A(0) \leq cn^{-\frac{1}{2}}. 
@@ -331,9 +331,9 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign} \label{lambda}
 		\lambda_n \geq \tilde c h^{-1}(n)
 	\end{flalign}
-	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_0,\dots,y_{n-1}\}$ according to the definition in $\ref{incrementalaggregate}$ with $y_0 := 0$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$. For $n\in\N$ let $\tilde m := \beta n^{\frac{3}{2}}$ and define 
+	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$ with $y_0 := 0$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
 	\begin{flalign*}
-		V_n := \{\lambda_{2n} \leq \tilde m\} \subset \Omega. 
+		V_n := \{\lambda_{2n} \leq \tilde m_n\} \subset \Omega. 
 	\end{flalign*}
 	Further define the set of realised random walk paths of length $n$ with starting point in $\partial B_n$ 
 	\begin{flalign*}
@@ -341,28 +341,37 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\end{flalign*}
 	define events 
 	\begin{flalign*}
-		W_n([z]) := \{\exists j_1< \dots < j_n \leq \tilde m \ \text{ s.t. } z_i = y_{j_i} \text{ for all } i\in\{1,\dots,n\} \} \subset \Omega
+		W_n([z]) := \{\exists j_1< \dots < j_n \leq \tilde m_n \ \text{ s.t. } z_i = y_{j_i} \text{ for all } i\in\{1,\dots,n\} \} \subset \Omega
 	\end{flalign*}
 	and the union of these events 
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	We will quickly proof that $V_n \subset W_n$ for all $n\in\N$. Let $\omega \in V_n$, then $\lambda_{2n}(\omega) \leq \tilde m$. For $m:=\max\{j\in\N\ |\ j\leq \tilde m\}$ we therefore have $rad(\E_m(\omega)) \geq 2n$ (Note that $\lambda_{2n}(\omega)\in\N$). Therefore since $\E_m(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_m(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m\leq\tilde m$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ define
+	We will quickly proof that $V_n \subset W_n$ for all $n\in\N$. Let $n\in\N$ and $\omega \in V_n$, then $\lambda_{2n}(\omega) \leq \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $\lambda_{2n}(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ define
 	\begin{flalign*}
-		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = {\omega\in\Omega\ |\ A_n \text{ holds for infinetly many } n\in\N}.
+		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ A_n \text{ holds for infinetly many } n\in\N\}.
 	\end{flalign*}
-	We will want to use the Lemma of Borel-Cantelli on the sequence of events $(W_n)_{n\in\N}$ to get
+	We will want to use the Lemma of Borel-Cantelli on the sequence of events $(W_n)_{n\in\N}$. If we can show that 
+	\begin{flalign*}
+		\sum_{n\in\N} \PP(W_n) < \infty,
+	\end{flalign*}
+	then with $V_n\subset W_n$ for all $n\in\N$ and Borel-Cantelli we get
 	\begin{flalign}
 		\PP(\limsup_{n\to\infty} V_n) \leq \PP(\limsup_{n\to\infty} W_n) = 0, 
 	\end{flalign}
-	so we can follow that $\PP(V_n^C)=1$ for large $n$ and nearly have what we want to proof. For that take a $n\in \N$ and a $[z]\in Z_n$ and define
+	so we can follow that $\PP(V_n^C)=1$ for large $n$ and nearly have what we want to proof. For that take $n\in \N$ and $[z]\in Z_n$ and define
 	\begin{flalign*}
-		\tau_i \text{ the index s.t. } y_{\tau_i} = z_i
+		\tau_i \text{ the index j s.t. } y_j = z_i
 	\end{flalign*}
 	and
 	\begin{flalign*}
 		\sigma_i := \tau_{i+1} - \tau_i. 
 	\end{flalign*}
+	Consider the event $W_n([z])$ and take $i\in\{1,\dots,n\}$. Since $A_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
+	\begin{flalign*}
+		p_n := c_1 n^{-\frac{1}{2}}
+	\end{flalign*}
+	for some constant $c_1>0$. 
 	
 
 
