@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  1 JAN 2021 22:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  2 JAN 2021 14:26
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -905,47 +905,47 @@ Package hyperref Warning: No autoref name for `lemma' on input line 288.
 <line-hit-squares.png, id=160, 535.33333pt x 370.27222pt>
 File: line-hit-squares.png Graphic file (type png)
 <use line-hit-squares.png>
-Package pdftex.def Info: line-hit-squares.png  used on input line 419.
+Package pdftex.def Info: line-hit-squares.png  used on input line 424.
 (pdftex.def)             Requested size: 411.3829pt x 284.52756pt.
 <line-hit-A.png, id=162, 643.35312pt x 466.43102pt>
 File: line-hit-A.png Graphic file (type png)
 <use line-hit-A.png>
-Package pdftex.def Info: line-hit-A.png  used on input line 421.
+Package pdftex.def Info: line-hit-A.png  used on input line 426.
 (pdftex.def)             Requested size: 392.46446pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--435
+Underfull \hbox (badness 10000) in paragraph at lines 437--440
 
  []
 
 [11] [12 <./line-hit-squares.png> <./line-hit-A.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 464--471
+Underfull \hbox (badness 10000) in paragraph at lines 469--476
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--471
+Underfull \hbox (badness 10000) in paragraph at lines 469--476
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--471
+Underfull \hbox (badness 10000) in paragraph at lines 469--476
 
  []
 
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 476.
+LaTeX Warning: Command \glqq invalid in math mode on input line 481.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 476.
+LaTeX Warning: Command \grqq invalid in math mode on input line 481.
 
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 476.
+LaTeX Warning: Command \glqq invalid in math mode on input line 481.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 476.
+LaTeX Warning: Command \grqq invalid in math mode on input line 481.
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 486--487
+Underfull \hbox (badness 10000) in paragraph at lines 491--492
 
  []
 
@@ -953,38 +953,38 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.5.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.513 	\end{flalign}
+l.518 	\end{flalign}
                      [14]
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+Underfull \hbox (badness 10000) in paragraph at lines 522--523
 
  []
 
 <line-param.png, id=196, 283.04178pt x 205.20529pt>
 File: line-param.png Graphic file (type png)
 <use line-param.png>
-Package pdftex.def Info: line-param.png  used on input line 529.
+Package pdftex.def Info: line-param.png  used on input line 534.
 (pdftex.def)             Requested size: 392.48108pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--533
+Underfull \hbox (badness 10000) in paragraph at lines 530--538
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+euf on input line 535
+LaTeX Font Info:    Trying to load font information for U+euf on input line 540
 .
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 [15]
 
-Package hyperref Warning: No autoref name for `lemma' on input line 566.
+Package hyperref Warning: No autoref name for `lemma' on input line 571.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--571
+Underfull \hbox (badness 10000) in paragraph at lines 571--576
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--571
+Underfull \hbox (badness 10000) in paragraph at lines 571--576
 
  []
 
@@ -992,20 +992,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 566--571
 <circle-part-S.png, id=215, 426.79134pt x 309.42372pt>
 File: circle-part-S.png Graphic file (type png)
 <use circle-part-S.png>
-Package pdftex.def Info: circle-part-S.png  used on input line 585.
+Package pdftex.def Info: circle-part-S.png  used on input line 590.
 (pdftex.def)             Requested size: 392.47046pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--596
+Underfull \hbox (badness 10000) in paragraph at lines 594--601
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--596
+Underfull \hbox (badness 10000) in paragraph at lines 594--601
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--596
+Underfull \hbox (badness 10000) in paragraph at lines 594--601
 
  []
 
@@ -1013,25 +1013,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 589--596
 <T.png, id=224, 223.51546pt x 162.0487pt>
 File: T.png Graphic file (type png)
 <use T.png>
-Package pdftex.def Info: T.png  used on input line 604.
+Package pdftex.def Info: T.png  used on input line 609.
 (pdftex.def)             Requested size: 392.49141pt x 284.52756pt.
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.628 	\end{flalign}
+l.633 	\end{flalign}
                      [18] [19 <./T.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 655--658
+Underfull \hbox (badness 10000) in paragraph at lines 660--663
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 671
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 676
 .
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 [20] [21]
-Overfull \hbox (1.27916pt too wide) in paragraph at lines 748--749
+Overfull \hbox (1.27916pt too wide) in paragraph at lines 753--754
 []\T1/lmr/bx/n/12 Definition 5.3.1. $[]$ \T1/lmr/m/n/12 Let $\OML/lmm/m/it/12 A
  \OMS/lmsy/m/n/12 2 P[]$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 K \OT1/lmr/m/n/12
  := \OML/lmm/m/it/12 conv\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 ) \
@@ -1042,19 +1042,19 @@ OMS/lmsy/m/n/12 2
 5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.754 	\end{flalign}
+l.759 	\end{flalign}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{equation.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.758 	\end{flalign}
+l.763 	\end{flalign}
                      [23] [24] [25] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 848--849
+Underfull \hbox (badness 10000) in paragraph at lines 853--854
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 850--852
+Underfull \hbox (badness 10000) in paragraph at lines 855--857
 
  []
 
@@ -1096,7 +1096,7 @@ b><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
 msy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (29 pages, 3625964 bytes).
+Output written on masterarbeit.pdf (29 pages, 3625924 bytes).
 PDF statistics:
  457 PDF objects out of 1000 (max. 8388607)
  103 named destinations out of 1000 (max. 500000)

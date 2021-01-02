@@ -331,7 +331,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign} \label{lambda}
 		\lambda_n \geq \tilde c h^{-1}(n)
 	\end{flalign}
-	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$ with $y_0 := 0$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
+	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
 	\begin{flalign*}
 		V_n := \{\lambda_{2n} \leq \tilde m_n\} \subset \Omega. 
 	\end{flalign*}
@@ -349,7 +349,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\end{flalign*}
 	We will quickly proof that $V_n \subset W_n$ for all $n\in\N$. Let $n\in\N$ and $\omega \in V_n$, then $\lambda_{2n}(\omega) \leq \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $\lambda_{2n}(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ define
 	\begin{flalign*}
-		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ A_n \text{ holds for infinetly many } n\in\N\}.
+		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
 	\end{flalign*}
 	We will want to use the Lemma of Borel-Cantelli on the sequence of events $(W_n)_{n\in\N}$. If we can show that 
 	\begin{flalign*}
@@ -359,7 +359,12 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign}
 		\PP(\limsup_{n\to\infty} V_n) \leq \PP(\limsup_{n\to\infty} W_n) = 0, 
 	\end{flalign}
-	so we can follow that $\PP(V_n^C)=1$ for large $n$ and nearly have what we want to proof. For that take $n\in \N$ and $[z]\in Z_n$ and define
+	so we can follow that $\PP((\limsup_{n\to\infty} V_n)^C)=1$. 
+	Since 
+	\begin{flalign*}
+		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega \ |\ \}
+	\end{flalign*}
+	and nearly have what we want to proof. For that take $n\in \N$ and $[z]\in Z_n$ and define
 	\begin{flalign*}
 		\tau_i \text{ the index j s.t. } y_j = z_i
 	\end{flalign*}
