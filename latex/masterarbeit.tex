@@ -302,6 +302,49 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 
 The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
 
+\begin{lemma}
+	Define 
+	\begin{flalign*}
+		r: \N \to [0,\infty), n\mapsto rad(\E_n)
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		T: [0,\infty) \to \N, r\mapsto \min\{j\in\N\ |\ r(j)\geq r\}.
+	\end{flalign*}
+	Then we have:
+	\begin{itemize}
+		\item $r$ and $T$ grow monotonously 
+		\item $T(r(n)) \leq n$ for all $n\in\N$
+		\item $r(T(r)) \geq r \text{ for all } r\in [0,\infty)$
+	\end{itemize}
+\end{lemma}
+
+\begin{proof}
+	CONTINUE
+\end{proof}
+
+\begin{lemma}
+	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective function. Then
+	\begin{flalign*}
+		\exists c>0: r(n) \leq ch(n) \text{ for large } n\quad  \Leftrightarrow \quad\exists c>0: T(ar)\geq ch^{-1}(r) \text{ for large } r
+	\end{flalign*}
+\end{lemma}
+
+\begin{proof}
+	CONTINUE
+\end{proof}
+
+\begin{lemma} \label{geometric}
+	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometric random variables with parameter $p<\frac{1}{2}$. Let $Y=T_1 + \dots  + T_n$, then for every $a\geq 2p$
+	\begin{flalign*}
+		\PP(Y\leq\frac{an}{p}) \leq (2e^2a)^n. 
+	\end{flalign*}
+\end{lemma}
+
+\begin{proof}
+	CONTINUE
+\end{proof}
+
 \begin{theorem} \label{keytheorem}
 	Let $0\in A\subset \Z^2$ be a connected set with $rad(A) = n$. Then there exists a constant $c>0$ such that
 	\begin{flalign*}
@@ -341,7 +384,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\end{flalign*}
 	define events 
 	\begin{flalign*}
-		W_n([z]) := \{\exists j_1< \dots < j_n \leq \tilde m_n \ \text{ s.t. } z_i = y_{j_i} \text{ for all } i\in\{1,\dots,n\} \} \subset \Omega
+		W_n([z]) := \{\exists j_1< \dots < j_n \leq \tilde m_n \ \text{ s.t. } z_i = y_{j_i} \text{ for all } i\in\{1,\dots,n\} \} \text{ for } [z]\in Z_n
 	\end{flalign*}
 	and the union of these events 
 	\begin{flalign*}
@@ -376,7 +419,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
-	for some constant $c_1>0$. 
+	for some constant $c_1>0$. With Lemma \ref{geometric} CONTINUE
 	
 
 
