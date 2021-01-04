@@ -38,6 +38,8 @@
 \newcommand{\G}{\mathcal{G}}
 \newcommand{\GG}{\mathfrak{G}}
 
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
 \numberwithin{equation}{section}
 
 \theoremstyle{definition}
@@ -298,40 +300,33 @@ Looking at computer simulations it seems that the clusters of External DLA are f
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and one of them we will see in the following. 
-
-The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
-
-\begin{lemma}
-	Define 
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and one of them we will see in the following. First we will proof some lemmas. For that define two random variables
 	\begin{flalign*}
-		r: \N \to [0,\infty), n\mapsto rad(\E_n)
+		r: \N \to [0,\infty),\quad n\mapsto rad(\E_n)
 	\end{flalign*}
 	and
 	\begin{flalign*}
-		T: [0,\infty) \to \N, r\mapsto \min\{j\in\N\ |\ r(j)\geq r\}.
+		T: [0,\infty) \to \N,\quad s\mapsto \min\{j\in\N\ |\ r(j)\geq s\}.
 	\end{flalign*}
-	Then we have:
-	\begin{itemize}
+Then it is easy to show that for all $n\in\N$ and $s\in [0,\infty)$ a.s.
+	\begin{enumerate} \label{props}
 		\item $r$ and $T$ grow monotonously 
-		\item $T(r(n)) \leq n$ for all $n\in\N$
-		\item $r(T(r)) \geq r \text{ for all } r\in [0,\infty)$
-	\end{itemize}
+		\item $T(r(n)) \leq n$
+		\item $r(T(s)) \geq s$
+	\end{enumerate}
+hold. 
+
+\begin{lemma} \label{randt}
+	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective function. Then the following are equivalent:
+	\begin{enumerate}
+		\item $\{\exists c>0: r(n) \leq ch(n) \}\text{ a.s. for large } n$
+		\item $\{\exists c>0: T(ar)\geq ch^{-1}(r)\} \text{ a.s. for large } r$
+	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-	CONTINUE
-\end{proof}
-
-\begin{lemma}
-	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective function. Then
-	\begin{flalign*}
-		\exists c>0: r(n) \leq ch(n) \text{ for large } n\quad  \Leftrightarrow \quad\exists c>0: T(ar)\geq ch^{-1}(r) \text{ for large } r
-	\end{flalign*}
-\end{lemma}
-
-\begin{proof}
-	CONTINUE
+	$\Rightarrow$: \\
+	Take $N\in\N$ such that $\exists c>0$ with $r(n)\leq ch(n)$ for all $n>N$. 
 \end{proof}
 
 \begin{lemma} \label{geometric}
@@ -344,6 +339,8 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 \begin{proof}
 	CONTINUE
 \end{proof}
+
+The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
 
 \begin{theorem} \label{keytheorem}
 	Let $0\in A\subset \Z^2$ be a connected set with $rad(A) = n$. Then there exists a constant $c>0$ such that
