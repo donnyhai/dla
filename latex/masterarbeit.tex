@@ -317,16 +317,19 @@ Then it is easy to show that for all $n\in\N$ and $s\in [0,\infty)$ a.s.
 hold. 
 
 \begin{lemma} \label{randt}
-	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective function. Then the following are equivalent:
+	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
 	\begin{enumerate}
-		\item $\{\exists c>0: r(n) \leq ch(n) \}\text{ a.s. for large } n$
-		\item $\{\exists c>0: T(ar)\geq ch^{-1}(r)\} \text{ a.s. for large } r$
+		\item $\exists c>0: \{r(n) \leq ch(n) \text{ for large $n$}\}$ a.s.
+		\item $\exists c>0: \{T(as)\geq ch^{-1}(s) \text{ for large $s$}\}$ a.s.
 	\end{enumerate}
 \end{lemma}
 
-\begin{proof}
-	$\Rightarrow$: \\
-	Take $N\in\N$ such that $\exists c>0$ with $r(n)\leq ch(n)$ for all $n>N$. 
+\begin{proof} 
+	For the proof it is important to understand the facts that $T(s)\to \infty$ for $s\to \infty$ a.s. and also $r(n)\to \infty $ for $n\to \infty$ a.s.. \\
+	$\Rightarrow$: 
+	We will ommit writing $\glqq$a.s.$\grqq$. Take $c>0$ and choose $N\in\N$ such that $r(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ s.t. $\tilde ch^{-1}(r(n))\leq n$ for all $n>N$. We can choose $M\in\N$ s.t. $T(aM) > N$, hence $T(as)\geq T(aM) > N$ for all $s>M$ since $T$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(T(as))) \leq T(as)$ for all $s>M$ and since $r(T(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(as)$ for all $s>M$ where we used the multiplicativity of $h$ and that $h^{-1}$ falls monotonously. \\
+	$\Leftarrow$: 
+	The proof for this direction works analogously.
 \end{proof}
 
 \begin{lemma} \label{geometric}
@@ -337,13 +340,13 @@ hold.
 \end{lemma}
 
 \begin{proof}
-	CONTINUE
+	The proof of this lemma is presented in \cite{lawler} Lemma 2.6.2.
 \end{proof}
 
 The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
 
 \begin{theorem} \label{keytheorem}
-	Let $0\in A\subset \Z^2$ be a connected set with $rad(A) = n$. Then there exists a constant $c>0$ such that
+	Let $0\in A\subset \Z^2$ be a connected set with $rad(A) = n$. Then there exists a $c>0$ such that
 	\begin{flalign*}
 		H_A(0) \leq cn^{-\frac{1}{2}}. 
 	\end{flalign*}
@@ -359,21 +362,33 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\end{flalign}	
 \end{theorem}
 \begin{proof}
-	To proof this we will show that there exists a constant $c>0$ such that
-	\begin{flalign} \label{rad}
-		rad(\E_n) \leq cn^{\frac{2}{3}}
-	\end{flalign}
-	for large $n$ a.s.. Define the bijective function
+	For $c>0$ define 
 	\begin{flalign*}
-		h: [0,\infty) \to [0,\infty), x\mapsto x^{\frac{2}{3}}. 
+		A_c := \{rad(\E_n) \leq cn^{\frac{2}{3}} \text{ for large }n\}
 	\end{flalign*}
-	To show (\ref{rad}) we can also show that there exists a constant $\tilde c>0$ such that 
-	\begin{flalign} \label{lambda}
-		\lambda_n \geq \tilde c h^{-1}(n)
-	\end{flalign}
-	for large $n$ a.s., where $\lambda_n := \min\{j\in\N\ |\ rad(E_j)\geq n\}$ for $n\in \N$. ($\ref{rad}$) then follows easily from ($\ref{lambda}$). For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
+	and
 	\begin{flalign*}
-		V_n := \{\lambda_{2n} \leq \tilde m_n\} \subset \Omega. 
+		D_c := \{T(2n) \geq c n^{\frac{3}{2}} \text{ for large }n \}.
+	\end{flalign*}
+	If we have a $c>0$ such that $\PP(A_c) = 1$, then we have
+	\begin{flalign*}
+		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\EE[rad(\E_n)])}{\ln(n)}\\ &= \limsup_{n\to\infty} \frac{\ln(\int_\Omega rad(\E_n) d\PP)}{\ln(n)} \\
+		&= \limsup_{n\to\infty} \frac{\ln(\int_{A_c} rad(\E_n) d\PP)}{\ln(n)} \\
+		&\leq \limsup_{n\to\infty} \frac{\ln(\int_{A_c} cn^{\frac{3}{2}} d\PP)}{\ln(n)} \\ 
+		&= \limsup_{n\to\infty} \frac{\ln(cn^{\frac{3}{2}})}{\ln(n)} \\
+		&= \frac{3}{2} \limsup_{n\to\infty} \frac{\ln(cn)}{\ln(n)} = \frac{3}{2}
+	\end{flalign*}
+	If we define
+	\begin{flalign*}
+		h: [0,\infty) \to [0,\infty), x\mapsto x^{\frac{2}{3}},  
+	\end{flalign*}
+	and $a=2$ by Lemma \ref{randt} we can show the above if there exists a constant $c>0$ such that 
+	\begin{flalign} \label{lambda}
+		\PP(D_c) = 1. 
+	\end{flalign}
+	Note that $h$ is bijective, multiplicative and monotonously growing. For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined lateron. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
+	\begin{flalign*}
+		V_n := \{T(2n) < \tilde m_n\}. 
 	\end{flalign*}
 	Further define the set of realised random walk paths of length $n$ with starting point in $\partial B_n$ 
 	\begin{flalign*}
@@ -387,24 +402,23 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	We will quickly proof that $V_n \subset W_n$ for all $n\in\N$. Let $n\in\N$ and $\omega \in V_n$, then $\lambda_{2n}(\omega) \leq \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $\lambda_{2n}(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ define
+	We will quickly proof that $V_n \subset W_n$ for all $n\in\N$. Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ remind this definition
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
 	\end{flalign*}
 	We will want to use the Lemma of Borel-Cantelli on the sequence of events $(W_n)_{n\in\N}$. If we can show that 
-	\begin{flalign*}
+	\begin{flalign} \label{borelcantelli}
 		\sum_{n\in\N} \PP(W_n) < \infty,
-	\end{flalign*}
-	then with $V_n\subset W_n$ for all $n\in\N$ and Borel-Cantelli we get
-	\begin{flalign}
-		\PP(\limsup_{n\to\infty} V_n) \leq \PP(\limsup_{n\to\infty} W_n) = 0, 
 	\end{flalign}
-	so we can follow that $\PP((\limsup_{n\to\infty} V_n)^C)=1$. 
+	then with $V_n\subset W_n$ for all $n\in\N$ and Borel-Cantelli we get
+	\begin{flalign*}
+		\PP(\limsup_{n\to\infty} V_n) \leq \PP(\limsup_{n\to\infty} W_n) = 0. 
+	\end{flalign*}
 	Since 
 	\begin{flalign*}
-		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega \ |\ \}
+		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega\ |\ \exists N\in\N \text{ s.t. } \omega\in V_n^C \text{ for all }n>N\}= D_\beta
 	\end{flalign*}
-	and nearly have what we want to proof. For that take $n\in \N$ and $[z]\in Z_n$ and define
+	we can follow that $\PP(B_\beta) = 1$ and have finished the proof. So we want to show $\ref{borelcantelli}$. For that take $n\in \N$ and $[z]\in Z_n$ and define
 	\begin{flalign*}
 		\tau_i \text{ the index j s.t. } y_j = z_i
 	\end{flalign*}
@@ -416,7 +430,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
-	for some constant $c_1>0$. With Lemma \ref{geometric} CONTINUE
+	for some constant $c_1>0$. With Lemma \ref{geometric} ...
 	
 
 
