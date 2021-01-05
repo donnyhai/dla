@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  5 JAN 2021 01:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  5 JAN 2021 01:09
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -1054,12 +1054,12 @@ l.831 	\end{flalign}
                    \relax 
 l.835 	\end{flalign}
                      [25] [26] [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 925--926
+Underfull \hbox (badness 10000) in paragraph at lines 927--928
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 927--929
+Underfull \hbox (badness 10000) in paragraph at lines 929--931
 
  []
 
@@ -1072,10 +1072,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11755 strings out of 479697
- 205449 string characters out of 2865232
+ 11757 strings out of 479697
+ 205469 string characters out of 2865232
  661840 words of memory out of 3000000
- 28442 multiletter control sequences out of 15000+200000
+ 28443 multiletter control sequences out of 15000+200000
  476221 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  106i,16n,111p,10609b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1104,9 +1104,9 @@ fb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy
 6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 msy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (31 pages, 3619827 bytes).
+Output written on masterarbeit.pdf (31 pages, 3620288 bytes).
 PDF statistics:
- 467 PDF objects out of 1000 (max. 8388607)
- 111 named destinations out of 1000 (max. 500000)
- 225 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 471 PDF objects out of 1000 (max. 8388607)
+ 112 named destinations out of 1000 (max. 500000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 
