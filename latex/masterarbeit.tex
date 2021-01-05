@@ -188,19 +188,10 @@ So a Random Walk can be understood as a particle starting from some point $x$ an
 
 \subsubsection{Expressions}
 
-If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure). Another short expression, if for a sequence of statements $(A_n)_{n\in\N}$ we say $\glqq$$A_n$ holds for large $n$$\grqq$ it shall mean that there exists $M\in\N$ such that $A_n$ holds for all $n>M$. 
-
-
-
-\subsection{Notations in $\Z^2$}
-Throughout the paper we will deal with the space $\Z^2$ and often we will want to express certain concepts in a more convenient way. 
-
-CONTINUE, take definitions from line hitting aggregate chapter
-
+If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure). Another short expression, if for a set of statements $(A_t)_{t\in I}$ with $I\in\{\N,\R\}$ we say $\glqq$$A_t$ holds for large $t$$\grqq$ it shall mean that there exists $T\in I$ such that $A_t$ holds for all $t>T$. 
 
 
 \newpage
-$\cite{lawler}$
 \section{Incremental Aggregate}
 
 \subsection{Definition}
@@ -258,9 +249,9 @@ if the $\limsup$ exists. Since $rad(\E_n) \leq n$ for all $n\in\N$ a.s., this $\
 	\alpha_f \leq 1. 
 \end{flalign*}
  We further simply have 
-\begin{flalign*}
+\begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f}
-\end{flalign*}
+\end{flalign}
 and therefore the $\liminf$ in $\ref{fractaldim}$ exists and it is
 \begin{flalign*}
 	d_f\geq 1.
@@ -300,7 +291,7 @@ Looking at computer simulations it seems that the clusters of External DLA are f
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and one of them we will see in the following. First we will proof some lemmas. For that define two random variables
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and we will see one of them in the following. First we will proof some lemmas. For that define two random variables
 	\begin{flalign*}
 		r: \N \to [0,\infty),\quad n\mapsto rad(\E_n)
 	\end{flalign*}
@@ -402,7 +393,11 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	We will quickly proof that $V_n \subset W_n$ for all $n\in\N$. Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ remind this definition
+	Since the random walks are moving on the grid $\Z^2$, by $z_1\in\partial B_n$ we mean that $z_1$ is $\glqq$near$\grqq$ to $\partial B_n\subset\R^2$, precisely we could mean $z_1\in B_n\setminus B_{n-1}$. Anyway this detail will not create problems of relevant order. We will quickly proof that 
+	\begin{flalign*}
+		V_n \subset W_n \text{ for all } n\in\N.
+	\end{flalign*}
+	Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ remind this definition
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
 	\end{flalign*}
@@ -418,7 +413,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega\ |\ \exists N\in\N \text{ s.t. } \omega\in V_n^C \text{ for all }n>N\}= D_\beta
 	\end{flalign*}
-	we can follow that $\PP(B_\beta) = 1$ and have finished the proof. So we want to show $\ref{borelcantelli}$. For that take $n\in \N$ and $[z]\in Z_n$ and define
+	we then can follow that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $\ref{borelcantelli}$. For that take $n\in \N$ and $[z]\in Z_n$ and define
 	\begin{flalign*}
 		\tau_i \text{ the index j s.t. } y_j = z_i
 	\end{flalign*}
@@ -430,13 +425,32 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
-	for some constant $c_1>0$. With Lemma \ref{geometric} ...
-	
-
-
-
-	CONTINUE
+	for some constant $c_1>0$. Define $a=\beta c_1$ and take $N\in\N$ s.t. $\beta n^{\frac{1}{2}} \geq 2$ and $p_n\leq 2$ for all $n>N$, then with $\tau_0 := 0$ and Lemma \ref{geometric} we have 
+	\begin{flalign*}
+		\PP(\tau_{n} \leq \beta n^{\frac{3}{2}}) = \PP(\sum_{i=0}^{n-1} \sigma_i \leq \beta c_1 n p_n^{-1}) \leq (2e^2\beta c_1)^{n} \quad \text{ for all } n>N
+	\end{flalign*}
+	and since $W_n([z]) \subset \{\tau_{n} \leq \beta n^{\frac{3}{2}}\}$ we get
+	\begin{flalign*}
+		\PP(W_n([z])) \leq (2e^2\beta c_1)^{n} \quad \text{ for all } n>N.
+	\end{flalign*}
+	Counting the elements in $Z_n$ we have less or equal $c_2n$ points in $\partial B_n$ for some constant $c_2>0$ as starting points and $4^{n-1}$ possibilities for the next $n-1$ steps of a random walk of length $n$. So $|Z_n| \leq c_2n4^{n-1}$ and therefore
+	\begin{flalign*}
+		\sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n4^{n-1} (2e^2\beta c_1)^{n-1} = c_2 n(8e^2\beta c_1)^{n-1} \quad \text{ for all } n>N
+	\end{flalign*} 
+	and
+	\begin{flalign*}
+		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} c_2 n(8e^2\beta c_1)^{n-1} =: r_\beta. 
+	\end{flalign*}
+	$r_\beta$ is finite if $8e^2\beta c_1<1$ and since $c_1$ was chosen independent of $\beta$ we can choose $\beta$ such that this holds. Therefore choosing $\beta$ accordingly in total we get
+	\begin{flalign*}
+		\sum_{n\in\N} \PP(W_n) < \infty, 
+	\end{flalign*}
+	which completes the proof. 
 \end{proof}
+
+\begin{remark}
+	With this theorem and \ref{fractaldim} we conclude that the fractal dimension of External DLA is bigger or equal than $\frac{3}{2}$. In the next chapter we will look at another incremental aggregate which tries to approximize External DLA and compare simulations of both to get a hint on which growth rate of the two is bigger than the other one.
+\end{remark}
 
 
 
@@ -809,7 +823,11 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
 	\end{flalign*}
 	\begin{flalign} \label{mu}
-		\tilde \mu_A(x,g) := \gamma_A(g) \ \1\{x\in \{\min(g\cap A),\max(g\cap A)\}\}
+		\tilde \mu_A(x,g) := \gamma_A(g)
+		\begin{cases}
+			\1\{x\in \{\min(g\cap A),\max(g\cap A)\}\}, &\text{ if } g\cap A\neq \emptyset, \\
+			0, &\text{ if } g\cap A = \emptyset.
+		\end{cases}
 	\end{flalign}
 	and
 	\begin{flalign}
