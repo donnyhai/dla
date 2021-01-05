@@ -1,0 +1,13 @@
+- linienprozess sauber fertigdefinieren, gradenmaß hinzufügen -> steffen schicken
+- kesten resultat external dla
+- beispiele durchrechnen für lha distribution
+- eden-modell anmerken
+
+- random walk on Z^2 recurrent, proof siehe PCMI
+
+- buch schneider und weil
++ vereinfachte dla programmieren, zufällig punkt außen, zufällige linie auf den cluster, punkt läuft gerade auf dieser linie
+- benjamini yadin
+
+ISBN: 978-0-470-66481-0
+ISBN: 3-519-02734-8

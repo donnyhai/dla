@@ -1,0 +1,7 @@
+- gradenmaß, verteilung auf randpunkten
+- simplen gradenprozess mathematisch einführen
+
+1. dla einführen
+2. growth rate beweisen, Z^d
+3. linienprozess einführen
+4. simulationen einführen, zeigen, eventuell empirische zahlen produzieren
