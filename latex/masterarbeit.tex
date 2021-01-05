@@ -207,7 +207,7 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
 
 \begin{definition} \label{incrementalaggregate}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ containing $n$ points, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
@@ -220,7 +220,7 @@ The above defines a Markov chain whose state space is the set of finite and conn
 
 \subsection{Notion of Fractal Dimension and Growth Rate}
 
-When there is no strict self-similarity in sets, like in randomly growing clusters as the ones of incremental aggregates, the notion of fractal dimension is not very clear. There are different nonequivalent definitions of what the $\glqq \text{dimension} \grqq$ of a set should be. In many cases they are in fact equivalent and if not it is known in many cases which dimension is bigger than the other one. Here we will mainly consider the following understanding of a dimension of incremental aggregate clusters which we will just call $\mathit{fractal\ dimension}$. This definition is mainly motivated by $\cite{fractalwinter}$ Part II (page 98) and $\cite{lawler}$ 2.6 (page 82). We define the radius of a finite set $A\in \mathcal{P}_f$ as 
+Incremental aggregates are randomly growing clusters and there are different nonequivalent definitions of what the $\glqq \text{dimension} \grqq$ of a set should be. In many cases they are in fact equivalent and if not it is known in many cases which dimension is bigger than the other one. Here we will mainly consider the following understanding of a dimension of incremental aggregate clusters which we will just call $\mathit{fractal\ dimension}$. This definition is mainly motivated by $\cite{fractalwinter}$ Part II (page 98) and $\cite{lawler}$ 2.6 (page 82). We define the radius of a finite set $A\in \mathcal{P}_f$ as 
 \begin{flalign*}
 	rad(A) := \max_{x\in A} |x|. 
 \end{flalign*}
@@ -230,9 +230,9 @@ In a $d$-dimensional ball $B_d(m,0)$ of radius $m\geq 0$ we could consider a $k$
 \end{flalign*}
 for large $n$. Formally we can therefore define the fractal dimension as
 \begin{flalign} \label{fractaldim}
-	d_f := \liminf_{n\to\infty} \frac{ln(n)}{ln(\EE[rad(\E_n)])},
+	d_f := \liminf_{n\to\infty} \frac{ln(n)}{ln(\EE[rad(\E_n)])}.
 \end{flalign}
-if this limit exists. Why choosing $\liminf$ makes sense we will see in the following. The fractal dimension strongly correlates with the growth rate of the aggregate which shall indicate how the radius of the cluster evolves while increasing the particle number. We could express the growth rate by looking for a possibly small exponent $\alpha$ such that there exists a constant $c>0$ with 
+Why choosing $\liminf$ makes sense we will see in the following. The fractal dimension strongly correlates with the growth rate of the aggregate which shall indicate how the radius of the cluster evolves while increasing the particle number. We could express the growth rate by looking for a possibly small exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\EE [rad(\E_n)] \leq cn^\alpha
 \end{flalign*}
@@ -252,7 +252,7 @@ if the $\limsup$ exists. Since $rad(\E_n) \leq n$ for all $n\in\N$ a.s., this $\
 \begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f}
 \end{flalign}
-and therefore the $\liminf$ in $\ref{fractaldim}$ exists and it is
+and therefore
 \begin{flalign*}
 	d_f\geq 1.
 \end{flalign*}
@@ -260,7 +260,7 @@ and therefore the $\liminf$ in $\ref{fractaldim}$ exists and it is
 
 
 \newpage
-\section{External DLA}
+\section{External Diffusion Limited Aggregate}
 
 \subsection{Definition}
 
@@ -278,10 +278,10 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 	\begin{flalign*}
 		\lim_{|x|\to\infty} \bar H_A(x,y) =: h_A(y) 
 	\end{flalign*}
-	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$ and for an element $y\in A$ it displays the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case by Lemma $\autoref{recurr}$ we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. We will call the familiy of distributions $h:=(h_A)_{A\in\mathcal{P}_f}$ $\mathit{harmonic\ measure}$. 
+	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$ and for an element $y\in A$ it displays the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case by Lemma $\autoref{recurr}$ we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. 
 \end{definition}
 
-\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited}$ $\mathit{Aggregate}$, short $\mathit{External\ DLA}$, is an incremental aggregate with the harmonic measure $h$ as distribution. 
+\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited}$ $\mathit{Aggregate}$, short $\mathit{External\ DLA}$, is an incremental aggregate with the family of harmonic measures $h:=(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
 \end{definition}
 
 
@@ -310,8 +310,8 @@ hold.
 \begin{lemma} \label{randt}
 	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
 	\begin{enumerate}
-		\item $\exists c>0: \{r(n) \leq ch(n) \text{ for large $n$}\}$ a.s.
-		\item $\exists c>0: \{T(as)\geq ch^{-1}(s) \text{ for large $s$}\}$ a.s.
+		\item $\exists c>0: \PP(r(n) \leq ch(n) \text{ for large $n$}) = 1$ 
+		\item $\exists c>0: \PP(T(as)\geq ch^{-1}(s) \text{ for large $s$})=1$
 	\end{enumerate}
 \end{lemma}
 
@@ -324,14 +324,33 @@ hold.
 \end{proof}
 
 \begin{lemma} \label{geometric}
-	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometric random variables with parameter $p<\frac{1}{2}$. Let $Y=T_1 + \dots  + T_n$, then for every $a\geq 2p$
+	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometric random variables with parameter $p<\frac{1}{2}$. Let $Y=T_1 + \dots  + T_n$, then for every $a \in [2p,1)$ we have
 	\begin{flalign*}
-		\PP(Y\leq\frac{an}{p}) \leq (2e^2a)^n. 
+		\PP(Y\leq\frac{an}{p}) \leq (ae^2)^n. 
 	\end{flalign*}
 \end{lemma}
 
 \begin{proof}
-	The proof of this lemma is presented in \cite{lawler} Lemma 2.6.2.
+	The moment generating function of $Y$ is
+	\begin{flalign*}
+		\EE[e^{tY}] = (pe^t)^n(1-e^t(1-p))^{-n} = p^n(e^{-t} - (1-p))^{-n}.
+	\end{flalign*}
+	By Chebyshev for any random variable $X$ we know the inequality
+	\begin{flalign*}
+		\PP(X\geq x) \leq \inf_{t>0} \frac{\EE[e^{tX}]}{e^{tx}}
+	\end{flalign*}
+	and can therefore follow that for any $t>0$ 
+	\begin{flalign*}
+		\PP(Y\leq \frac{an}{p}) = \PP(-Y\geq -\frac{an}{p}) \leq \exp(\frac{ant}{p})\EE[e^{-tY}] = \exp(\frac{ant}{p})p^n(e^t- (1-p))^{-n}. 
+	\end{flalign*} 
+	Choose $t=\ln(\frac{a(1-p)}{a-p})$ (note that $t>0$), then
+	\begin{flalign*}
+		\PP(Y\leq \frac{an}{p}) &\leq (\frac{a(1-p)}{a-p})^{\frac{an}{p}}p^n(1-p)^{-n}(\frac{p}{a-p})^{-n} \\
+		&= (\frac{a}{a-p})^{\frac{an}{p}} (1-p)^{\frac{an}{p}} (1-p)^{-n}(\frac{1}{a-p})^{-n} \\
+		&\leq (1 + \frac{p}{a-p})^{\frac{an}{p}}(1-p)^{n}(1-p)^{-n}(a-p)^{n} \\
+		&\leq (1 + \frac{p}{a-p})^{\frac{2(a-p)n}{p}}a^n \\
+		&\leq (ae^2)^n.
+	\end{flalign*}
 \end{proof}
 
 The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
@@ -393,7 +412,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	Since the random walks are moving on the grid $\Z^2$, by $z_1\in\partial B_n$ we mean that $z_1$ is $\glqq$near$\grqq$ to $\partial B_n\subset\R^2$, precisely we could mean $z_1\in B_n\setminus B_{n-1}$. Anyway this detail will not create problems of relevant order. We will quickly proof that 
+	Since the random walks are moving on the grid $\Z^2$, by $z_1\in\partial B_n$ we mean that $z_1$ is $\glqq$near$\grqq$ to $\partial B_n\subset\R^2$, precisely we could mean $z_1\in (B_n\setminus B_{n-1}) \cap \Z^2$. Anyway this detail will not create problems of relevant order. We will quickly proof that 
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
@@ -421,27 +440,27 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		\sigma_i := \tau_{i+1} - \tau_i. 
 	\end{flalign*}
-	Consider the event $W_n([z])$ and take $i\in\{1,\dots,n\}$. Since $A_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
+	Consider the event $W_n([z])$ and take $i\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
-	for some constant $c_1>0$. Define $a=\beta c_1$ and take $N\in\N$ s.t. $\beta n^{\frac{1}{2}} \geq 2$ and $p_n\leq 2$ for all $n>N$, then with $\tau_0 := 0$ and Lemma \ref{geometric} we have 
+	for some constant $c_1>0$. Now choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ s.t. $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
 	\begin{flalign*}
-		\PP(\tau_{n} \leq \beta n^{\frac{3}{2}}) = \PP(\sum_{i=0}^{n-1} \sigma_i \leq \beta c_1 n p_n^{-1}) \leq (2e^2\beta c_1)^{n} \quad \text{ for all } n>N
+		\PP(\tau_{n} \leq \tilde m_n) \leq \PP(\tau_{n} - \tau_1 \leq \tilde m_n) = \PP(Y \leq \frac{an}{p_n}) \leq (e^2a)^{n-1} \quad \text{ for all } n>N
 	\end{flalign*}
-	and since $W_n([z]) \subset \{\tau_{n} \leq \beta n^{\frac{3}{2}}\}$ we get
+	and since $W_n([z]) \subset \{\tau_{n} \leq \tilde m_n\}$ we get
 	\begin{flalign*}
-		\PP(W_n([z])) \leq (2e^2\beta c_1)^{n} \quad \text{ for all } n>N.
+		\PP(W_n([z])) \leq (e^2a)^{n} \quad \text{ for all } n>N.
 	\end{flalign*}
 	Counting the elements in $Z_n$ we have less or equal $c_2n$ points in $\partial B_n$ for some constant $c_2>0$ as starting points and $4^{n-1}$ possibilities for the next $n-1$ steps of a random walk of length $n$. So $|Z_n| \leq c_2n4^{n-1}$ and therefore
 	\begin{flalign*}
-		\sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n4^{n-1} (2e^2\beta c_1)^{n-1} = c_2 n(8e^2\beta c_1)^{n-1} \quad \text{ for all } n>N
+		\sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n4^{n-1} (e^2a)^{n-1} = c_2 n(4e^2a)^{n-1} \quad \text{ for all } n>N
 	\end{flalign*} 
-	and
+	and finally
 	\begin{flalign*}
-		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} c_2 n(8e^2\beta c_1)^{n-1} =: r_\beta. 
+		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} c_2 n(4e^2\beta c_1)^{n-1} =: r_\beta. 
 	\end{flalign*}
-	$r_\beta$ is finite if $8e^2\beta c_1<1$ and since $c_1$ was chosen independent of $\beta$ we can choose $\beta$ such that this holds. Therefore choosing $\beta$ accordingly in total we get
+	Since $\beta$ was chosen such that $4e^2\beta c_1<1$, $r_\beta$ is finite and therefore in total get
 	\begin{flalign*}
 		\sum_{n\in\N} \PP(W_n) < \infty, 
 	\end{flalign*}
@@ -810,9 +829,9 @@ Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lin
 
 We are now able to choose a line randomly out of all lines hitting a cluster in a fair and agreeable way, which are $K$-isotropic lines as presented in Definition \ref{isotropic}. All in all we have realized the mathematical structure to define the incremental aggregate as we have planned it in the motivation in the beginning of this chapter. Recall that for a bounded subset $A\subset \C$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
 \begin{flalign*}
-	conv(A) := \bigcap_{A\subset K\in \K^2} K. 
+	conv(A) := \bigcap_{A\subset K\in \K^2} K \in \K^2. 
 \end{flalign*}
-Note that $conv(A)\in \K^2$ for all bounded subsets $A\subset \C$. For a set $A\in \mathcal{P}_f$ we define 
+For a set $A\in \mathcal{P}_f$ we define 
 \begin{flalign*}
 	conv(A):=conv(\bigcup_{p\in A} sq(p))
 \end{flalign*}
@@ -871,10 +890,6 @@ By identifying each vertex in $\Z^2$ with its square in $\C$ and a pixel when re
 
 \subsection{LHA Simulation}
 
-
-
-\newpage
-\section{Questions}
 
 \newpage
 
