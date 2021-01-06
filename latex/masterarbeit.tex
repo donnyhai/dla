@@ -37,6 +37,8 @@
 \newcommand{\1}{\mathbbm{1}}
 \newcommand{\G}{\mathcal{G}}
 \newcommand{\GG}{\mathfrak{G}}
+\newcommand{\mP}{\mathcal{P}}
+\newcommand{\rad}{\text{rad}}
 
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
@@ -353,17 +355,36 @@ hold.
 	\end{flalign*}
 \end{proof}
 
-The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA.  
+\begin{definition}
+	For $x\in\Z^2$ and $n\in\N$ define 
+	\begin{flalign*}
+		{\mP}^x_n := \{ A\in{\mP}_f\ |\ x\in A, n=\max_{y\in A} |x-y|\text{ and } A \text{ is connected}\}.
+	\end{flalign*}
+\end{definition}
+
+The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA. The theorem is prooved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
 
 \begin{theorem} \label{keytheorem}
-	Let $0\in A\subset \Z^2$ be a connected set with $rad(A) = n$. Then there exists a $c>0$ such that
+	There exists a constant $c>0$ such that for all $n\in\N$
 	\begin{flalign*}
-		H_A(0) \leq cn^{-\frac{1}{2}}. 
+		h_A(0) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n.
 	\end{flalign*}
 \end{theorem}
 \begin{proof}
-	The proof is presented for all dimensions $d\in \N$ for $\Z^d$ in $\cite{lawler}$ Theorem $2.5.2$. This result is very strong and basically the key for the next theorem. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
+	If $A\in\mP^0_n$ then $0\in A$ and $n=\rad(A)$ and for that case the proof is presented for all dimensions $d\in \N$ in $\cite{lawler}$ Theorem $2.5.2$. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
 \end{proof}
+
+\begin{proposition}
+	Theorem \ref{keytheorem} can be generalized to the following. Let $x\in\Z^2$. Then there exists $c>0$ such that for all $n\in\N$
+	\begin{flalign*}
+		h_A(x) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^x_n.
+	\end{flalign*}
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}
+
 
 \begin{theorem}
 	For the growth rate of External DLA in $\Z^2$ according to the definition in $(\ref{growthrate})$ we have
@@ -384,9 +405,9 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\EE[rad(\E_n)])}{\ln(n)}\\ &= \limsup_{n\to\infty} \frac{\ln(\int_\Omega rad(\E_n) d\PP)}{\ln(n)} \\
 		&= \limsup_{n\to\infty} \frac{\ln(\int_{A_c} rad(\E_n) d\PP)}{\ln(n)} \\
-		&\leq \limsup_{n\to\infty} \frac{\ln(\int_{A_c} cn^{\frac{3}{2}} d\PP)}{\ln(n)} \\ 
+		&\overset{(+)}{\leq} \limsup_{n\to\infty} \frac{\ln(\int_{A_c} cn^{\frac{3}{2}} d\PP)}{\ln(n)} \\ 
 		&= \limsup_{n\to\infty} \frac{\ln(cn^{\frac{3}{2}})}{\ln(n)} \\
-		&= \frac{3}{2} \limsup_{n\to\infty} \frac{\ln(cn)}{\ln(n)} = \frac{3}{2}
+		&= \frac{3}{2} \limsup_{n\to\infty} \frac{\ln(c^{\frac{2}{3}}) + \ln(n)}{\ln(n)} = \frac{3}{2} \cdot 1 = \frac{3}{2}
 	\end{flalign*}
 	If we define
 	\begin{flalign*}
@@ -396,7 +417,10 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign} \label{lambda}
 		\PP(D_c) = 1. 
 	\end{flalign}
-	Note that $h$ is bijective, multiplicative and monotonously growing. For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined lateron. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
+	Note that $h$ is bijective, multiplicative and monotonously growing. Lets first argument why $(+)$ indeed holds. We define ...
+	
+	
+	So now we will try to prove (\ref{lambda} For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined lateron. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
 	\begin{flalign*}
 		V_n := \{T(2n) < \tilde m_n\}. 
 	\end{flalign*}
