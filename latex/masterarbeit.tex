@@ -119,6 +119,7 @@ Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\
 \begin{flalign*}
 	&\N = \{1,2,3,\dots\},\quad \text{the set of natural numbers (without 0)}\\
 	&\N_0 = \N\cup\{0\}\\
+	&\N^\infty = \N \cup \{\infty\}\\
 	&\mathcal{B}^d,\quad \text{$d$-dimensional Borel-$\sigma$-algebra of $\R^d$} \\
 	&\K^d,\quad \text{the set of convex and compact sets in }\R^d\\
 	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
@@ -220,33 +221,33 @@ The above defines a Markov chain whose state space is the set of finite and conn
 
 
 
-\subsection{Notion of Fractal Dimension and Growth Rate}
+\subsection{Notion of Fractal Dimension and Growth Rate}\label{notion}
 
 Incremental aggregates are randomly growing clusters and there are different nonequivalent definitions of what the $\glqq \text{dimension} \grqq$ of a set should be. In many cases they are in fact equivalent and if not it is known in many cases which dimension is bigger than the other one. Here we will mainly consider the following understanding of a dimension of incremental aggregate clusters which we will just call $\mathit{fractal\ dimension}$. This definition is mainly motivated by $\cite{fractalwinter}$ Part II (page 98) and $\cite{lawler}$ 2.6 (page 82). We define the radius of a finite set $A\in \mathcal{P}_f$ as 
 \begin{flalign*}
-	rad(A) := \max_{x\in A} |x|. 
+	\rad(A) := \max_{x\in A} |x|. 
 \end{flalign*}
 In a $d$-dimensional ball $B_d(m,0)$ of radius $m\geq 0$ we could consider a $k$-dimensional subset of the ball as a set with cardinality of order $m^k$. Similarly for an incremental aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we define the dimension as a value $d_f$ such that 
 \begin{flalign*}
-	n=|\E_n| \approx \EE[rad(\E_n)]^{d_f}
+	n=|\E_n| \approx \EE[\rad(\E_n)]^{d_f}
 \end{flalign*}
 for large $n$. Formally we can therefore define the fractal dimension as
 \begin{flalign} \label{fractaldim}
-	d_f := \liminf_{n\to\infty} \frac{ln(n)}{ln(\EE[rad(\E_n)])}.
+	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}.
 \end{flalign}
 Why choosing $\liminf$ makes sense we will see in the following. The fractal dimension strongly correlates with the growth rate of the aggregate which shall indicate how the radius of the cluster evolves while increasing the particle number. We could express the growth rate by looking for a possibly small exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
-	\EE [rad(\E_n)] \leq cn^\alpha
+	\EE [\rad(\E_n)] \leq cn^\alpha
 \end{flalign*}
 for large $n$. Rewriting this we come to the equivalent expression
 \begin{flalign*}
-	\frac{ln(\EE [rad(\E_n)])}{ln(cn)} \leq \alpha
+	\frac{\ln(\EE [\rad(\E_n)])}{\ln(n)} - \frac{\ln(c)}{\ln(n)} \leq \alpha
 \end{flalign*}
 for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregate as the smallest value holding this expression, so
 \begin{flalign} \label{growthrate}
-	\alpha_f := \limsup_{n\to\infty} \frac{ln(\EE [rad(\E_n)])}{ln(n)},
+	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\EE [\rad(\E_n)])}{ln(n)},
 \end{flalign}
-if the $\limsup$ exists. Since $rad(\E_n) \leq n$ for all $n\in\N$ a.s., this $\limsup$ exists and we get 
+if the $\limsup$ exists. Since $\rad(\E_n) \leq n$ for all $n\in\N$ a.s., this $\limsup$ exists and we get 
 \begin{flalign*}
 	\alpha_f \leq 1. 
 \end{flalign*}
@@ -256,7 +257,7 @@ if the $\limsup$ exists. Since $rad(\E_n) \leq n$ for all $n\in\N$ a.s., this $\
 \end{flalign}
 and therefore
 \begin{flalign*}
-	d_f\geq 1.
+	d_f \geq 1.
 \end{flalign*}
 
 
@@ -295,7 +296,7 @@ Looking at computer simulations it seems that the clusters of External DLA are f
 \end{flalign*}
 in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and we will see one of them in the following. First we will proof some lemmas. For that define two random variables
 	\begin{flalign*}
-		r: \N \to [0,\infty),\quad n\mapsto rad(\E_n)
+		r: \N \to [0,\infty),\quad n\mapsto \rad(\E_n)
 	\end{flalign*}
 	and
 	\begin{flalign*}
@@ -387,7 +388,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 
 
 \begin{theorem}
-	For the growth rate of External DLA in $\Z^2$ according to the definition in $(\ref{growthrate})$ we have
+	For the growth rate of External DLA in $\Z^2$ according to the definition in $\ref{notion}\ (\ref{growthrate})$ we have
 	\begin{flalign}
 		\alpha_f \leq \frac{2}{3}. 
 	\end{flalign}	
@@ -395,7 +396,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 \begin{proof}
 	For $c>0$ define 
 	\begin{flalign*}
-		A_c := \{rad(\E_n) \leq cn^{\frac{2}{3}} \text{ for large }n\}
+		A_c := \{\rad(\E_n) \leq cn^{\frac{2}{3}} \text{ for large }n\}
 	\end{flalign*}
 	and
 	\begin{flalign*}
@@ -403,8 +404,8 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\end{flalign*}
 	If we have a $c>0$ such that $\PP(A_c) = 1$, then we have
 	\begin{flalign*}
-		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\EE[rad(\E_n)])}{\ln(n)}\\ &= \limsup_{n\to\infty} \frac{\ln(\int_\Omega rad(\E_n) d\PP)}{\ln(n)} \\
-		&= \limsup_{n\to\infty} \frac{\ln(\int_{A_c} rad(\E_n) d\PP)}{\ln(n)} \\
+		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\EE[\rad(\E_n)])}{\ln(n)}\\ &= \limsup_{n\to\infty} \frac{\ln(\int_\Omega \rad(\E_n) d\PP)}{\ln(n)} \\
+		&= \limsup_{n\to\infty} \frac{\ln(\int_{A_c} \rad(\E_n) d\PP)}{\ln(n)} \\
 		&\overset{(+)}{\leq} \limsup_{n\to\infty} \frac{\ln(\int_{A_c} cn^{\frac{3}{2}} d\PP)}{\ln(n)} \\ 
 		&= \limsup_{n\to\infty} \frac{\ln(cn^{\frac{3}{2}})}{\ln(n)} \\
 		&= \frac{3}{2} \limsup_{n\to\infty} \frac{\ln(c^{\frac{2}{3}}) + \ln(n)}{\ln(n)} = \frac{3}{2} \cdot 1 = \frac{3}{2}
@@ -426,11 +427,11 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\end{flalign*}
 	Further define the set of realised random walk paths of length $n$ with starting point in $\partial B_n$ 
 	\begin{flalign*}
-	Z_n := \{[z] := [z_1, \dots, z_n]\ |\ [z] \text{ is a realisation a of random walk with } z_1\in \partial B_n\}, 
+	Z_n := \{[z] := \{z_1, \dots, z_n\}\subset \Z^2\ |\ z_1\in \partial B_n \text{ and } z_i\in N(z_{i-1}) \text{ for all } i\in\{2,\dots,n\}\}, 
 	\end{flalign*}
-	define events 
+	for $[z]\in Z_n$ define events 
 	\begin{flalign*}
-		W_n([z]) := \{\exists j_1< \dots < j_n \leq \tilde m_n \ \text{ s.t. } z_i = y_{j_i} \text{ for all } i\in\{1,\dots,n\} \} \text{ for } [z]\in Z_n
+		W_n([z]) := \{\omega\in\Omega\ |\ \exists j_1< \dots < j_n \leq \tilde m_n \ \text{ such that } y_{j_i}(\omega)  = z_i \text{ for all } i\in\{1,\dots,n\} \}
 	\end{flalign*}
 	and the union of these events 
 	\begin{flalign*}
@@ -440,7 +441,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
-	Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ remind this definition
+	Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ remind this definition
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
 	\end{flalign*}
@@ -456,20 +457,24 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega\ |\ \exists N\in\N \text{ s.t. } \omega\in V_n^C \text{ for all }n>N\}= D_\beta
 	\end{flalign*}
-	we then can follow that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $\ref{borelcantelli}$. For that take $n\in \N$ and $[z]\in Z_n$ and define
+	we then can follow that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ define random variables
 	\begin{flalign*}
-		\tau_i \text{ the index j s.t. } y_j = z_i
+		\tau_i:\Omega \to \N^\infty, \tau(\omega) = j :\Leftrightarrow y_j(\omega) = z_i, 
 	\end{flalign*}
-	and
+	so $\tau_i$ is the index $j$ such that the $j$-th added point to the cluster is equal to $z_i$. This definition of $\tau_i$ is well-defined since for every $\omega\in\Omega$ there can only exist one and certainly exists at least one $j\in\N^\infty$ such that $y_j(\omega) = z_i$ as the final cluster $\E_\infty$ either contains $z_i$ or not. Note that it is possible that $z_i$ never gets added to the cluster for example when the cluster forms such that $z_i$ is inside a hole of the cluster, so $\PP(\tau_i = \infty) > 0$. Further we define waiting times
 	\begin{flalign*}
-		\sigma_i := \tau_{i+1} - \tau_i. 
+		\sigma_i: \Omega \to \N^\infty, \omega\to \begin{cases}
+			\tau_{i+1}(\omega) - \tau_i(\omega), &\text{ if } \tau_{i+1}(\omega) < \infty \text{ and } \tau_i(\omega)<\infty, \\
+			\infty, &\text{ else},	
+		\end{cases}
 	\end{flalign*}
-	Consider the event $W_n([z])$ and take $i\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
+	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster. Consider the event $W_n([z])$ and take $i\in\{1,\dots,n\}$. Note that in this case $\tau_i$ is finite for all $i\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
-	for some constant $c_1>0$. Now choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ s.t. $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
+	for some constant $c_1>0$. Now choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
 	\begin{flalign*}
+		PROBLEM
 		\PP(\tau_{n} \leq \tilde m_n) \leq \PP(\tau_{n} - \tau_1 \leq \tilde m_n) = \PP(Y \leq \frac{an}{p_n}) \leq (e^2a)^{n-1} \quad \text{ for all } n>N
 	\end{flalign*}
 	and since $W_n([z]) \subset \{\tau_{n} \leq \tilde m_n\}$ we get
