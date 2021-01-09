@@ -5,6 +5,7 @@ Subject:	External DLA
 Author: 	Tillmann Bosch
 Professor: 	Steffen Winter
 University: 	Institute of Technology, Karlsruhe (KIT)
+2021
 
 ### How to run the simulation ###
 
@@ -32,6 +33,6 @@ HINT: If you have a problem running this, you maybe have to replace "py" with "p
 The appearing numbers in the shell let you know about how many iterations are finished already. The print "line missed cluster" indicates that a randomly chosen line 
 according to the definitions in the paper missed the cluster and a new line had to be chosen. 
 
-When calculation is over, you can find an image in the folder images.
+When calculation is over, you can find an image in the images folder.
 
 Have fun!
