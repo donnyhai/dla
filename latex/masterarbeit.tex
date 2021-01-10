@@ -115,14 +115,14 @@
 \section{Preliminaries} \label{prelim}
 
 \subsection{Symbols}
-Here we list all Symbols which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
+Here we list all symbols which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
 \begin{flalign*}
 	&\N = \{1,2,3,\dots\},\quad \text{the set of natural numbers (without 0)}\\
 	&\N_0 = \N\cup\{0\}\\
 	&\N^\infty = \N \cup \{\infty\}\\
 	&\mathcal{B}^d,\quad \text{$d$-dimensional Borel-$\sigma$-algebra of $\R^d$} \\
 	&\K^d,\quad \text{the set of convex and compact sets in }\R^d\\
-	&B_d(r,x) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
+	&B_d(x,r) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
 	&B_r := B_2(r,0) \\
 	&S_{d-1}(r,x) = \partial B_d(r,x),\quad  \text{the $(d-1)$-dimensional surface of the $d$-dimensional ball}\\
 	&A(d,q),\quad \text{the set of q-dimensional affine subspaces of }\R^d \\
@@ -157,9 +157,9 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 		\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
 	\end{align*}
 	
-	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in every dimension. We can therefore follow easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. 
+	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in the direction of every component. We can therefore conclude easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. 
 \end{definition}
-So a Random Walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. For the following let $(S_n)_{n\in \mathbb{N}}$ be a random walk on $\Z^d$ starting at $x\in \Z^d$. 
+So a random walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. For the following let $(S_n)_{n\in \mathbb{N}}$ be a random walk on $\Z^d$ starting at $x\in \Z^d$. 
 
 \begin{definition}
 	Let $A\subset \Z^d$. We define the $hitting\ times$ of A by
@@ -186,12 +186,12 @@ So a Random Walk can be understood as a particle starting from some point $x$ an
 	A random walk $(S_n)_{n\in \N}$ on $\Z^d$ is recurrent if $d\leq 2$ and transient if $d\geq 3$. 
 \end{lemma}
 \begin{proof}
-	A detailed proof about this result is presented in $\cite{henze}$ Satz $5.1$. 
+	A detailed proof of this result is presented in $\cite{henze}$ Satz $5.1$. 
 \end{proof}
 
 \subsubsection{Expressions}
 
-If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost sure). Another short expression, if for a set of statements $(A_t)_{t\in I}$ with $I\in\{\N,\R\}$ we say $\glqq$$A_t$ holds for large $t$$\grqq$ it shall mean that there exists $T\in I$ such that $A_t$ holds for all $t>T$. 
+If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \text{ holds }\mathbb{P}\text{-a.s.}\grqq$, or short $\glqq A\text{ holds } \text{a.s.}\grqq$ ($A$ holds almost surely). Another short expression, if for a set of logical statements $(A_t)_{t\in I}$ with $I\in\{\N,\R\}$ we say $\glqq$$A_t$ holds for large $t$$\grqq$ it shall mean that there exists $T\in I$ such that $A_t$ holds for all $t>T$. Here we mean that a logical statement holds if and only if the statement is true. 
 
 
 \newpage
@@ -199,7 +199,7 @@ If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \t
 
 \subsection{Definition}
 
-In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with a one point set at $\{0\}$ and incrementally add a point on the outer boundary of the current cluster according to some distribution. What we get is a randomly, point by point growing connected cluster which we will call $\mathit{Incremental\ Aggregate}$. Define 
+In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with the one point set $\{0\}$ and incrementally add a point of the outer boundary of the current cluster according to some distribution. What we get is a randomly, point by point growing connected cluster which we will call $\mathit{incremental\ aggregate}$. Define 
 \begin{align}
 	\mathcal{P}_f := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
 \end{align}
@@ -207,14 +207,14 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 \begin{align}
 	\mathcal{D}_A:= \{\mu: \mathbb{Z}^d\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}, 
 \end{align}
-the set of distributions on $A$. Now we define $\mathit{Incremental\ Aggregate}$ as follows.  
+the set of distributions on $A$. Now we define an $\mathit{incremental\ aggregate}$ as follows.  
 
 \begin{definition} \label{incrementalaggregate}
 	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
-	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$.
+	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$ and the limit cluster as $\E_\infty := \bigcup_{n\in\N} \E_n$. 
 \end{definition} 
 
 The above defines a Markov chain whose state space is the set of finite and connected subsets of $\Z^d$. For all incremental aggregates in this paper we will focus on the $2$-dimensional case $\Z^2$ and will always identify $\R^2$ with $\C$ for a more convenient notation. 
@@ -223,15 +223,30 @@ The above defines a Markov chain whose state space is the set of finite and conn
 
 \subsection{Notion of Fractal Dimension and Growth Rate}\label{notion}
 
+\begin{figure}
+	\centering
+	\includegraphics[height=6.5cm]{neuseeland-squares.png}
+	\caption{Box-covering of New Zealands outer cost while decreasing the box size $\varepsilon$} \label{neuseeland}
+\end{figure}
+
+The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the box-dimension is defined as
+\begin{flalign}
+	d_b := - \lim_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\frac{1}{\varepsilon})}. 
+\end{flalign} 
+
+This definition then is equivalent to the Hausdorff-dimension which is another approach of defining fractal dimension. The dimension tends to make sense, for example is the box-dimension of straight lines $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregates we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at, is that each point of the cluster can actually be interpreted and identified with a unique square according to what we look at more detail in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes as it is and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
+
+CONTINUE
+
 Incremental aggregates are randomly growing clusters and there are different nonequivalent definitions of what the $\glqq \text{dimension} \grqq$ of a set should be. In many cases they are in fact equivalent and if not it is known in many cases which dimension is bigger than the other one. Here we will mainly consider the following understanding of a dimension of incremental aggregate clusters which we will just call $\mathit{fractal\ dimension}$. This definition is mainly motivated by $\cite{fractalwinter}$ Part II (page 98) and $\cite{lawler}$ 2.6 (page 82). We define the radius of a finite set $A\in \mathcal{P}_f$ as 
 \begin{flalign*}
 	\rad(A) := \max_{x\in A} |x|. 
 \end{flalign*}
-In a $d$-dimensional ball $B_d(m,0)$ of radius $m\geq 0$ we could consider a $k$-dimensional subset of the ball as a set with cardinality of order $m^k$. Similarly for an incremental aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we define the dimension as a value $d_f$ such that 
+In a $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$ we could consider a $k$-dimensional subset of the ball as a set with cardinality of order $m^k$. Similarly for an incremental aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we define the dimension as a value $d_f$ such that 
 \begin{flalign*}
 	n=|\E_n| \approx \EE[\rad(\E_n)]^{d_f}
 \end{flalign*}
-for large $n$. Formally we can therefore define the fractal dimension as
+for large $n$. Formally we can therefore define the fractal dimension of an incremental aggregate as
 \begin{flalign} \label{fractaldim}
 	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}.
 \end{flalign}
@@ -396,11 +411,11 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 \begin{proof}
 	For $c>0$ define 
 	\begin{flalign*}
-		A_c := \{\rad(\E_n) \leq cn^{\frac{2}{3}} \text{ for large }n\}
+		A_c := \{\rad(\E_n) \leq cn^{\frac{3}{2}} \text{ for large }n\}
 	\end{flalign*}
 	and
 	\begin{flalign*}
-		D_c := \{T(2n) \geq c n^{\frac{3}{2}} \text{ for large }n \}.
+		D_c := \{T(2n) \geq c n^{\frac{2}{3}} \text{ for large }n \}.
 	\end{flalign*}
 	If we have a $c>0$ such that $\PP(A_c) = 1$, then we have
 	\begin{flalign*}
@@ -515,7 +530,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 
 
 \newpage
-\section{Line Hitting Aggregate}
+\section{Line Hitting Aggregate} \label{lha}
 
 \subsection{Motivation}
 

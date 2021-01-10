@@ -25,6 +25,9 @@ image_size_y:			Specity the height of the image.
 You need to have installed Python (3.7.* or higher). You furthermore need to able to run a .sh script. In Windows open Git Bash (or install it if necessary), 
 change into the directory of this git repository (GIT_REPO) and run run.sh:
 
+install dependency:
+pip install pygame
+
 cd GIT_REPO
 ./run.sh
 
