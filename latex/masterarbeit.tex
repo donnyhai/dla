@@ -140,24 +140,28 @@ Here we list all symbols which will be used in this paper. Let $d\in \N$ and $q\
 
 Let $d\in \N$. We will be interested in the undirected graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $\{x,y\}\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
 \begin{align*}
-	N(x) := \{y\in \mathbb{Z}^d\ |\ (x,y)\in E\}.
+	N(x) := \{y\in \mathbb{Z}^d\ |\ \{x,y\}\in E\}.
 \end{align*}
 For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as 
 \begin{align*}
-	\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ (x,y)\in E\}
+	\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ \{x,y\}	\in E\}
 \end{align*}
 Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
 
 \subsubsection{Random Walks}
 
 \begin{definition}
-	Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space and for our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. A family $(S_n)_{n\in \mathbb{N}}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ a.s. and 
+	Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space and for our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. A family $(S_n)_{n\in \mathbb{N}_0}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ a.s. and 
 	
 	\begin{align*}
 		\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
 	\end{align*}
 	
-	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in the direction of every component. We can therefore conclude easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. 
+	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in the direction of every component. We can therefore conclude easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. For $x,y\in\Z^d$ we introduce the short notation
+	\begin{flalign*}
+		\PP_x(S_n=y) := \PP(S_n = y\ |\ S_0 = x). 
+	\end{flalign*}
+	
 \end{definition}
 So a random walk can be understood as a particle starting from some point $x$ and moving randomly on the grid choosing its next step uniformly from its neighbours. For the following let $(S_n)_{n\in \mathbb{N}}$ be a random walk on $\Z^d$ starting at $x\in \Z^d$. 
 
@@ -174,11 +178,11 @@ So a random walk can be understood as a particle starting from some point $x$ an
 \begin{definition}
 	Define $T:=T^+_x$ to be the first time for the random walk to come back to its origin $x$. The random walk is called $\mathit{recurrent}$ if 
 	\begin{flalign*}
-		\PP(T<\infty) = 1, 
+		\PP_x(T<\infty) = 1, 
 	\end{flalign*}
 	and $\mathit{transient}$ if
 	\begin{flalign*}
-		\PP(T<\infty) < 1.
+		\PP_x(T<\infty) < 1.
 	\end{flalign*}
 \end{definition}
 
@@ -229,44 +233,39 @@ The above defines a Markov chain whose state space is the set of finite and conn
 	\caption{Box-covering of New Zealands outer cost while decreasing the box size $\varepsilon$} \label{neuseeland}
 \end{figure}
 
-The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the box-dimension is defined as
-\begin{flalign}
-	d_b := - \lim_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\frac{1}{\varepsilon})}. 
+The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. The following definition is motivated by \cite{hausdorff} page 160. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the so called $\mathit{box\text{-}dimension\ d_b}$ is a constant such that $N(\varepsilon)$ grows as fast as $\varepsilon^{-d_b}$ for letting $\varepsilon$ tend to zero, so the box-dimension is defined as
+\begin{flalign} \label{boxdimension}
+	d_b := - \lim_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\varepsilon)}. 
 \end{flalign} 
 
-This definition then is equivalent to the Hausdorff-dimension which is another approach of defining fractal dimension. The dimension tends to make sense, for example is the box-dimension of straight lines $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregates we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at, is that each point of the cluster can actually be interpreted and identified with a unique square according to what we look at more detail in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes as it is and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
-
-CONTINUE
-
-Incremental aggregates are randomly growing clusters and there are different nonequivalent definitions of what the $\glqq \text{dimension} \grqq$ of a set should be. In many cases they are in fact equivalent and if not it is known in many cases which dimension is bigger than the other one. Here we will mainly consider the following understanding of a dimension of incremental aggregate clusters which we will just call $\mathit{fractal\ dimension}$. This definition is mainly motivated by $\cite{fractalwinter}$ Part II (page 98) and $\cite{lawler}$ 2.6 (page 82). We define the radius of a finite set $A\in \mathcal{P}_f$ as 
+This definition makes sense in many contexts, for example is the box-dimension of straight line segments $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregates we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique square since the cluster is living on the grid $\Z^2$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
+Defining the radius of a finite set $A\in \mathcal{P}_f$ (with $|\cdot|$ the euclidean norm) as 
 \begin{flalign*}
-	\rad(A) := \max_{x\in A} |x|. 
+	\rad(A) := \max_{x\in A} |x|,
 \end{flalign*}
-In a $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$ we could consider a $k$-dimensional subset of the ball as a set with cardinality of order $m^k$. Similarly for an incremental aggregate $(\E_n)_{n\in{\mathbb{N}_0}}$ we define the dimension as a value $d_f$ such that 
-\begin{flalign*}
-	n=|\E_n| \approx \EE[\rad(\E_n)]^{d_f}
-\end{flalign*}
-for large $n$. Formally we can therefore define the fractal dimension of an incremental aggregate as
-\begin{flalign} \label{fractaldim}
-	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}.
+
+
+we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define $\varepsilon_n:=\frac{1}{\EE[\rad(\E_n)]}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\EE[\rad(\E_n)]}$ since a box size is now constantly $1$ and the clusters geometrical size is up to a constant given by $\EE[\rad(\E_n)]$. The minimum number of boxes with size $1$ we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\EE[\rad(\E_n)]}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as
+\begin{flalign} \label{fractaldimension}
+	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}
 \end{flalign}
-Why choosing $\liminf$ makes sense we will see in the following. The fractal dimension strongly correlates with the growth rate of the aggregate which shall indicate how the radius of the cluster evolves while increasing the particle number. We could express the growth rate by looking for a possibly small exponent $\alpha$ such that there exists a constant $c>0$ with 
+Why we choose the limes inferior here we will see later. Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$, which is motivated by $\cite{fractalwinter}$ Part II page 98 and $\cite{lawler}$ 2.6 page 82. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\EE[\rad(\E_n)]$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\EE[\rad(\E_n)]^k$ for letting $n$ tend to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregates strongly correlates with the growth rate of the aggregate which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\EE [\rad(\E_n)] \leq cn^\alpha
 \end{flalign*}
-for large $n$. Rewriting this we come to the equivalent expression
+for large $n$. Rewriting this we come to the equivalent inequality
 \begin{flalign*}
 	\frac{\ln(\EE [\rad(\E_n)])}{\ln(n)} - \frac{\ln(c)}{\ln(n)} \leq \alpha
 \end{flalign*}
-for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregate as the smallest value holding this expression, so
+for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregate as the smallest value satisfying this inequality, so
 \begin{flalign} \label{growthrate}
-	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\EE [\rad(\E_n)])}{ln(n)},
+	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\EE [\rad(\E_n)])}{ln(n)}.
 \end{flalign}
-if the $\limsup$ exists. Since $\rad(\E_n) \leq n$ for all $n\in\N$ a.s., this $\limsup$ exists and we get 
+Since $\rad(\E_n) \leq n$ for all $n\in\N$ a.s., we get 
 \begin{flalign*}
 	\alpha_f \leq 1. 
 \end{flalign*}
- We further simply have 
+ We further chose the limes inferior in (\ref{fractaldimension}) to simply have 
 \begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f}
 \end{flalign}
@@ -274,6 +273,20 @@ and therefore
 \begin{flalign*}
 	d_f \geq 1.
 \end{flalign*}
+If we are in $\Z^d$ for $d\in\N$ there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$ a.s. and therefore
+\begin{flalign*}
+	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{cn^{\frac{1}{d}}} = d.
+\end{flalign*}
+So in total we get the trivial boundaries
+\begin{flalign*}
+	1\leq d_f \leq d
+\end{flalign*}
+and
+\begin{flalign*}
+	\frac{1}{d}\leq \alpha_f \leq 1
+\end{flalign*}
+for any incremental aggregate in $\Z^d$ for $d\in\N$. 
+
 
 
 
@@ -288,18 +301,18 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 	\begin{flalign*}
 		H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto H_A(x,y):=\PP_x(S_{T_A^+} = y).
 	\end{flalign*}
-	In literature you can find the same definition where $T_A$ is used instead of $T_A^+$. Since in the following for finite sets $A\in\mathcal{P}_f$ the limit $|x| \to \infty$ of $H_A(x,y)$ is of interest, $T_A^+$ is chosen by convenience. In fact for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
+	In literature you can find the same definition where $T_A$ is used instead of $T_A^+$. Since in the following for finite sets $A\in\mathcal{P}_f$ the limit $|x| \to \infty$ of $H_A(x,y)$ is of interest, $T_A^+$ is chosen for convenience. In fact, for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
 	\begin{flalign*}
 		\bar H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto \bar H_A(x,y):=\PP_x(S_{T_A^+} = y\ |\ T_A^+<\infty), 
 	\end{flalign*} 
-	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}\ 2.1$ and in the same chapter it is prooved, that for finite sets $A\in\mathcal{P}_f$ the limit
+	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}$ (Chapter $2$, Definition $2.1$) and in the same chapter it is proved, that for finite sets $A\in\mathcal{P}_f$ the limit
 	\begin{flalign*}
 		\lim_{|x|\to\infty} \bar H_A(x,y) =: h_A(y) 
 	\end{flalign*}
-	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$ and for an element $y\in A$ it displays the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case by Lemma $\autoref{recurr}$ we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. 
+	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case, by Lemma $\autoref{recurr}$, we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. 
 \end{definition}
 
-\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited}$ $\mathit{Aggregate}$, short $\mathit{External\ DLA}$, is an incremental aggregate with the family of harmonic measures $h:=(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
+\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited}$ $\mathit{Aggregate}$, short $\mathit{External\ DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
 \end{definition}
 
 
@@ -969,6 +982,12 @@ Uta Freiberg, Ben Hambly, Michael Hinz and Steffen Winter
 J. Gonzalez-Gutierrez, J. L. Carrillo-Estrada and J. C. Ruiz-Suarez
 \emph{Aggregation and dendritic growth in a magnetic granular system}
 2013
+
+\bibitem{hausdorff}
+Egbert Brieskorn
+\emph{Felix Hausdorff zum Gedächtnis, Band I, vieweg Verlag}
+1996
+page 160
 
 
 
