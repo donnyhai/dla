@@ -318,11 +318,11 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 
 \subsection{Fractal Dimension and Growth Rate of External DLA}
 
-Looking at computer simulations it seems that the clusters of External DLA are formed relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
+Looking at computer simulations of External DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and we will see one of them in the following. First we will proof some lemmas. For that define two random variables
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously proved results and we will see one of them in the following. First we will proof some lemmas. For that define two random functions
 	\begin{flalign*}
 		r: \N \to [0,\infty),\quad n\mapsto \rad(\E_n)
 	\end{flalign*}
@@ -339,7 +339,7 @@ Then it is easy to show that for all $n\in\N$ and $s\in [0,\infty)$ a.s.
 hold. 
 
 \begin{lemma} \label{randt}
-	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
+	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ be a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
 	\begin{enumerate}
 		\item $\exists c>0: \PP(r(n) \leq ch(n) \text{ for large $n$}) = 1$ 
 		\item $\exists c>0: \PP(T(as)\geq ch^{-1}(s) \text{ for large $s$})=1$
@@ -355,7 +355,7 @@ hold.
 \end{proof}
 
 \begin{lemma} \label{geometric}
-	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometric random variables with parameter $p<\frac{1}{2}$. Let $Y=T_1 + \dots  + T_n$, then for every $a \in [2p,1)$ we have
+	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometrically distributed random variables with parameter $p<\frac{1}{2}$. Let $Y:=T_1 + \dots  + T_n$, then for every $a \in [2p,1)$ we have
 	\begin{flalign*}
 		\PP(Y\leq\frac{an}{p}) \leq (ae^2)^n. 
 	\end{flalign*}
@@ -391,7 +391,7 @@ hold.
 	\end{flalign*}
 \end{definition}
 
-The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA. The theorem is prooved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
+The following theorem gives a bound on the harmonic measure which will be necessary in the proof of the result for the growth rate of External DLA. The theorem is prooved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
 
 \begin{theorem} \label{keytheorem}
 	There exists a constant $c>0$ such that for all $n\in\N$
@@ -416,21 +416,25 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 
 
 \begin{theorem}
-	For the growth rate of External DLA in $\Z^2$ according to the definition in $\ref{notion}\ (\ref{growthrate})$ we have
+	For the growth rate $\alpha_f$ of External DLA in $\Z^2$ as defined in $\ref{notion}\ (\ref{growthrate})$ we have
 	\begin{flalign}
 		\alpha_f \leq \frac{2}{3}. 
 	\end{flalign}	
 \end{theorem}
 \begin{proof}
-	For $c>0$ define 
+	For $c>0$ define the events
 	\begin{flalign*}
-		A_c := \{\rad(\E_n) \leq cn^{\frac{3}{2}} \text{ for large }n\}
+		A_c := \{\omega\in\Omega\ |\ \rad(\E_n(\omega)) \leq cn^{\frac{3}{2}} \text{ for large }n\}
 	\end{flalign*}
 	and
 	\begin{flalign*}
-		D_c := \{T(2n) \geq c n^{\frac{2}{3}} \text{ for large }n \}.
+		D_c := \{\omega\in\Omega\ |\ T(\omega)(2n) \geq c n^{\frac{2}{3}} \text{ for large }n \}.
 	\end{flalign*}
-	If we have a $c>0$ such that $\PP(A_c) = 1$, then we have
+	If we have a $c>0$ such that 
+	\begin{flalign} \label{condi}
+		\PP(A_c) = 1,
+	\end{flalign}
+	then we have
 	\begin{flalign*}
 		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\EE[\rad(\E_n)])}{\ln(n)}\\ &= \limsup_{n\to\infty} \frac{\ln(\int_\Omega \rad(\E_n) d\PP)}{\ln(n)} \\
 		&= \limsup_{n\to\infty} \frac{\ln(\int_{A_c} \rad(\E_n) d\PP)}{\ln(n)} \\
@@ -442,7 +446,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		h: [0,\infty) \to [0,\infty), x\mapsto x^{\frac{2}{3}},  
 	\end{flalign*}
-	and $a=2$ by Lemma \ref{randt} we can show the above if there exists a constant $c>0$ such that 
+	and $a=2$, then by Lemma \ref{randt}, we can show (\ref{condi}) if there exists a constant $c>0$ such that 
 	\begin{flalign} \label{lambda}
 		\PP(D_c) = 1. 
 	\end{flalign}
@@ -469,7 +473,8 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
-	Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ remind this definition
+	Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. \\
+	\\ For a sequence of events $(A_n)_{n\in\N}$ recall this definition
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
 	\end{flalign*}
@@ -485,7 +490,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega\ |\ \exists N\in\N \text{ s.t. } \omega\in V_n^C \text{ for all }n>N\}= D_\beta
 	\end{flalign*}
-	we then can follow that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ define random variables
+	we can then conclude that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ define random variables
 	\begin{flalign*}
 		\tau_i:\Omega \to \N^\infty, \tau(\omega) = j :\Leftrightarrow y_j(\omega) = z_i, 
 	\end{flalign*}
@@ -525,7 +530,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 \end{proof}
 
 \begin{remark}
-	With this theorem and \ref{fractaldim} we conclude that the fractal dimension of External DLA is bigger or equal than $\frac{3}{2}$. In the next chapter we will look at another incremental aggregate which tries to approximize External DLA and compare simulations of both to get a hint on which growth rate of the two is bigger than the other one.
+	With this theorem and (\ref{fractaldim}) we conclude that for the fractal dimension $d_f$ of External DLA we have $d_f \geq\frac{3}{2}$. In the next chapter we will look at another incremental aggregate which tries to approximate External DLA and compare simulations of both to get a hint on which growth rate of the two is bigger than or equal to the other one.
 \end{remark}
 
 
