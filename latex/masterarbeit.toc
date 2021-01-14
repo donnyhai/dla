@@ -12,14 +12,14 @@
 \contentsline {section}{\numberline {4}External Diffusion Limited Aggregate}{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Definition}{9}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Fractal Dimension and Growth Rate of External DLA}{9}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Line Hitting Aggregate}{15}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Motivation}{15}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Integral Geometry}{18}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}General results}{18}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{19}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Definition}{26}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{27}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Python Simulation}{28}{section.6}%
-\contentsline {subsection}{\numberline {6.1}External DLA Simulation}{28}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}LHA Simulation}{28}{subsection.6.2}%
+\contentsline {section}{\numberline {5}Line Hitting Aggregate}{16}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Motivation}{16}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Integral Geometry}{19}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}General results}{19}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{20}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Definition}{27}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{28}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Python Simulation}{29}{section.6}%
+\contentsline {subsection}{\numberline {6.1}External DLA Simulation}{29}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}LHA Simulation}{29}{subsection.6.2}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

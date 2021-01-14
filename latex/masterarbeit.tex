@@ -330,13 +330,32 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 	\begin{flalign*}
 		T: [0,\infty) \to \N,\quad s\mapsto \min\{j\in\N\ |\ r(j)\geq s\}.
 	\end{flalign*}
-Then it is easy to show that for all $n\in\N$ and $s\in [0,\infty)$ a.s.
+Then it is easy to show that for all $n\in\N$, $s\in [0,\infty)$ and $(\omega)\in\Omega$
 	\begin{enumerate} \label{props}
-		\item $r$ and $T$ grow monotonously 
-		\item $T(r(n)) \leq n$
-		\item $r(T(s)) \geq s$
+		\item $r(\omega)$ and $T(\omega)$ grow monotonously 
+		\item $T(\omega)(r(\omega)(n)) \leq n$
+		\item $r(\omega)(T(\omega)(s)) \geq s$
 	\end{enumerate}
 hold. 
+
+\begin{lemma} \label{rtinfty}
+	For both random functions $r$ and $T$ we have that
+	\begin{flalign*}
+		r(\omega)(n) \to\infty \text{ for } n\to\infty
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		T(\omega)(s) \to\infty \text{ for } s\to\infty
+	\end{flalign*}
+	for all $\omega\in\Omega$.
+\end{lemma}
+\begin{proof}
+	Since we are moving on the grid $\Z^d$ we have that for a ball $B_d(0,n)$ with radius $n\geq0$ we have a finite number $N:=|B_d(0,n)\cap \Z^d|$ and for any $\omega\in\Omega$ get 
+	\begin{flalign*}
+		r(\omega)(2N)\geq n. 
+	\end{flalign*}
+	Therefore for all $\omega\in\Omega$ and any $n\in\N$ we can find a $N\in\N$ such that $r(\omega)(N)\geq n$, and since $r(\omega)$ grows monotonously we get $r(\omega)(n) \to\infty \text{ for } n\to\infty$ for all $\omega\in\Omega$. Very similarly we can argument for $T$. 
+\end{proof}
 
 \begin{lemma} \label{randt}
 	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
@@ -347,9 +366,16 @@ hold.
 \end{lemma}
 
 \begin{proof} 
-	For the proof it is important to understand the facts that $T(s)\to \infty$ for $s\to \infty$ a.s. and also $r(n)\to \infty $ for $n\to \infty$ a.s.. \\
 	$\Rightarrow$: 
-	We will ommit writing $\glqq$a.s.$\grqq$. Take $c>0$ and choose $N\in\N$ such that $r(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ s.t. $\tilde ch^{-1}(r(n))\leq n$ for all $n>N$. We can choose $M\in\N$ s.t. $T(aM) > N$, hence $T(as)\geq T(aM) > N$ for all $s>M$ since $T$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(T(as))) \leq T(as)$ for all $s>M$ and since $r(T(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(as)$ for all $s>M$ where we used the multiplicativity of $h$ and that $h^{-1}$ falls monotonously. \\
+	For $c>0$ define
+	\begin{flalign*}
+		A_c:=\{r(n) \leq ch(n) \text{ for large $n$}\}
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		B_c := \{T(as)\geq ch^{-1}(s) \text{ for large $s$}\}.
+	\end{flalign*}
+	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that. $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in B_{\tilde c h^{-1}(a)}}$, where we used the multiplicativity of $h$ and that $h^{-1}$ falls monotonously. We therefore get $A_c\subset B_{\tilde c h^{-1}(a)}$, hence $\PP(B_{\tilde c h^{-1}(a)}) = 1$.\\
 	$\Leftarrow$: 
 	The proof for this direction works analogously.
 \end{proof}
@@ -391,7 +417,7 @@ hold.
 	\end{flalign*}
 \end{definition}
 
-The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA. The theorem is prooved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
+The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA. The theorem is proved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
 
 \begin{theorem} \label{keytheorem}
 	There exists a constant $c>0$ such that for all $n\in\N$
