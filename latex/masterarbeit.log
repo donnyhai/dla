@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  14 JAN 2021 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  14 JAN 2021 16:30
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -893,17 +893,7 @@ LaTeX Warning: Command \grqq invalid in math mode on input line 312.
 
 Package hyperref Warning: No autoref name for `lemma' on input line 312.
 
-[9]
-! Extra }, or forgotten $.
-l.378 ...hence $\omega \in B_{\tilde c h^{-1}(a)}}
-                                                  $, where we used the multi...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-[10] [11] [12]
+[9] [10] [11] [12]
 
 LaTeX Warning: Command \glqq invalid in math mode on input line 494.
 
@@ -1105,7 +1095,7 @@ b><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
 msy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (33 pages, 4008986 bytes).
+Output written on masterarbeit.pdf (33 pages, 4008996 bytes).
 PDF statistics:
  498 PDF objects out of 1000 (max. 8388607)
  119 named destinations out of 1000 (max. 500000)
