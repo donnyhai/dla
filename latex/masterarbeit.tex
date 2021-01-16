@@ -375,9 +375,9 @@ hold.
 	\begin{flalign*}
 		B_c := \{T(as)\geq ch^{-1}(s) \text{ for large $s$}\}.
 	\end{flalign*}
-	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in B_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ falls monotonously. We therefore get $A_c\subset B_{\tilde c h^{-1}(a)}$, hence $\PP(B_{\tilde c h^{-1}(a)}) = 1$.\\
+	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(\omega)(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in B_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ falls monotonously. We therefore get $A_c\subset B_{\tilde c h^{-1}(a)}$, hence $\PP(B_{\tilde c h^{-1}(a)}) = 1$.\\
 	$\Leftarrow$: 
-	The proof for this direction works analogously.
+	The proof for this direction works analogously and needs Lemma \ref{rtinfty} aswell.
 \end{proof}
 
 \begin{lemma} \label{geometric}
@@ -515,14 +515,14 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		\tau_i:\Omega \to \N^\infty, \tau(\omega) = j :\Leftrightarrow y_j(\omega) = z_i, 
 	\end{flalign*}
-	so $\tau_i$ is the index $j$ such that the $j$-th added point to the cluster is equal to $z_i$. This definition of $\tau_i$ is well-defined since for every $\omega\in\Omega$ there can only exist one and certainly exists at least one $j\in\N^\infty$ such that $y_j(\omega) = z_i$ as the final cluster $\E_\infty$ either contains $z_i$ or not. Note that it is possible that $z_i$ never gets added to the cluster for example when the cluster forms such that $z_i$ is inside a hole of the cluster, so $\PP(\tau_i = \infty) > 0$. Further we define waiting times
+	so $\tau_i$ is the index $j$ such that the $j$-th added point to the cluster is equal to $z_i$. This definition of $\tau_i$ is well-defined since for every $\omega\in\Omega$ there can only exist one and certainly exists at least one $j\in\N^\infty$ such that $y_j(\omega) = z_i$ as the final cluster $\E_\infty$ either contains $z_i$ or not. Note that it is possible that $z_i$ never gets added to the cluster for example when the cluster forms such that $z_i$ is inside a hole of the cluster, so $\PP(\tau_i = \infty) > 0$. Further for $i\in \{1,\dots,n-1\}$ we define waiting times
 	\begin{flalign*}
 		\sigma_i: \Omega \to \N^\infty, \omega\to \begin{cases}
 			\tau_{i+1}(\omega) - \tau_i(\omega), &\text{ if } \tau_{i+1}(\omega) < \infty \text{ and } \tau_i(\omega)<\infty, \\
 			\infty, &\text{ else},	
 		\end{cases}
 	\end{flalign*}
-	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster. Consider the event $W_n([z])$ and take $i\in\{1,\dots,n\}$. Note that in this case $\tau_i$ is finite for all $i\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
+	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster. Consider the event $W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j$ is finite for all $j\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
@@ -543,7 +543,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} c_2 n(4e^2\beta c_1)^{n-1} =: r_\beta. 
 	\end{flalign*}
-	Since $\beta$ was chosen such that $4e^2\beta c_1<1$, $r_\beta$ is finite and therefore in total get
+	Since $\beta$ was chosen such that $4e^2\beta c_1<1$, $r_\beta$ is finite and therefore in total we get
 	\begin{flalign*}
 		\sum_{n\in\N} \PP(W_n) < \infty, 
 	\end{flalign*}
