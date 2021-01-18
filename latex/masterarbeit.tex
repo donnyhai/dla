@@ -157,7 +157,7 @@ Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on.
 		\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
 	\end{align*}
 	
-	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in the direction of every component. We can therefore conclude easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. For $x,y\in\Z^d$ we introduce the short notation
+	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in the direction of every dimensional component. We can therefore conclude easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. For $x,y\in\Z^d$ we introduce the short notation
 	\begin{flalign*}
 		\PP_x(S_n=y) := \PP(S_n = y\ |\ S_0 = x). 
 	\end{flalign*}
@@ -214,7 +214,7 @@ the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested i
 the set of distributions on $A$. Now we define an $\mathit{incremental\ aggregate}$ as follows.  
 
 \begin{definition} \label{incrementalaggregate}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{Incremental\ Aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{incremental\ aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
@@ -230,10 +230,10 @@ The above defines a Markov chain whose state space is the set of finite and conn
 \begin{figure}
 	\centering
 	\includegraphics[height=6.5cm]{neuseeland-squares.png}
-	\caption{Box-covering of New Zealands outer cost while decreasing the box size $\varepsilon$} \label{neuseeland}
+	\caption{Box-covering of New Zealands outer cost with decreasing box sizes $\varepsilon$} \label{neuseeland}
 \end{figure}
 
-The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. The following definition is motivated by \cite{hausdorff} page 160. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the so called $\mathit{box\text{-}dimension\ d_b}$ is a constant such that $N(\varepsilon)$ grows as fast as $\varepsilon^{-d_b}$ for letting $\varepsilon$ tend to zero, so the box-dimension is defined as
+The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. The following definition is motivated by \cite{hausdorff} page 160. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the so called $\mathit{box\text{-}dimension\ d_b}$ is a constant such that $N(\varepsilon)$ grows as fast as $\varepsilon^{-d_b}$ for letting $\varepsilon$ tend to zero, so 
 \begin{flalign} \label{boxdimension}
 	d_b := - \lim_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\varepsilon)}. 
 \end{flalign} 
@@ -265,15 +265,16 @@ Since $\rad(\E_n) \leq n$ for all $n\in\N$ a.s., we get
 \begin{flalign*}
 	\alpha_f \leq 1. 
 \end{flalign*}
- We further chose the limes inferior in (\ref{fractaldimension}) to simply have 
+ We further chose the limes inferior in the definition (\ref{fractaldimension}) to simply have 
 \begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f}
 \end{flalign}
-and therefore
+which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$. 
+We therefore get
 \begin{flalign*}
 	d_f \geq 1.
 \end{flalign*}
-If we are in $\Z^d$ for $d\in\N$ there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$ a.s. and therefore
+In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points, so there is a constant $c>0$ such that a.s. $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$. Hence
 \begin{flalign*}
 	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{cn^{\frac{1}{d}}} = d.
 \end{flalign*}
@@ -285,7 +286,7 @@ and
 \begin{flalign*}
 	\frac{1}{d}\leq \alpha_f \leq 1
 \end{flalign*}
-for any incremental aggregate in $\Z^d$ for $d\in\N$. 
+for any incremental aggregate in $\Z^d$. 
 
 
 
@@ -297,7 +298,8 @@ for any incremental aggregate in $\Z^d$ for $d\in\N$.
 
 External DLA is a model of an Incremental Aggregate as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
 
-\begin{definition} $\mathit{(Harmonic\ Measure)}$ Let $A\subset\Z^d$. The hitting probability of $A$ is the function 
+\begin{definition} \label{harmonicmeasure}
+	$\mathit{(harmonic\ measure)}$ Let $A\subset\Z^d$. The hitting probability of $A$ is the function 
 	\begin{flalign*}
 		H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto H_A(x,y):=\PP_x(S_{T_A^+} = y).
 	\end{flalign*}
@@ -312,17 +314,17 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case, by Lemma $\autoref{recurr}$, we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. 
 \end{definition}
 
-\begin{definition} $\mathit{(External\ Diffusion\ Limited\ Aggregate)}$ $\mathit{External\ Diffusion\ Limited}$ $\mathit{Aggregate}$, short $\mathit{External\ DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
+\begin{definition} $\mathit{(External\ diffusion\ limited\ aggregate)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregate}$, short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
 \end{definition}
 
 
 \subsection{Fractal Dimension and Growth Rate of External DLA}
 
-Looking at computer simulations it seems that the clusters of External DLA are formed relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
+Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously prooved results and we will see one of them in the following. First we will proof some lemmas. For that define two random variables
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously proved results and we will see one of them in the following. First we will proof some lemmas. For that define two random functions
 	\begin{flalign*}
 		r: \N \to [0,\infty),\quad n\mapsto \rad(\E_n)
 	\end{flalign*}
@@ -330,7 +332,7 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 	\begin{flalign*}
 		T: [0,\infty) \to \N,\quad s\mapsto \min\{j\in\N\ |\ r(j)\geq s\}.
 	\end{flalign*}
-Then it is easy to show that for all $n\in\N$, $s\in [0,\infty)$ and $(\omega)\in\Omega$
+Then it is easy to show that for all $n\in\N$, $s\in [0,\infty)$ and $\omega\in\Omega$
 	\begin{enumerate} \label{props}
 		\item $r(\omega)$ and $T(\omega)$ grow monotonously 
 		\item $T(\omega)(r(\omega)(n)) \leq n$
@@ -354,11 +356,11 @@ hold.
 	\begin{flalign*}
 		r(\omega)(2N)\geq n. 
 	\end{flalign*}
-	Therefore for all $\omega\in\Omega$ and any $n\in\N$ we can find a $N\in\N$ such that $r(\omega)(N)\geq n$, and since $r(\omega)$ grows monotonously we get $r(\omega)(n) \to\infty \text{ for } n\to\infty$ for all $\omega\in\Omega$. Very similarly we can argument for $T$. 
+	Therefore for all $\omega\in\Omega$ and any $n\in\N$ we can find a $M\in\N$ such that $r(\omega)(M)\geq n$, and since $r(\omega)$ grows monotonously we get $r(\omega)(n) \to\infty \text{ for } n\to\infty$ for all $\omega\in\Omega$. Very similarly we can argument for $T$. 
 \end{proof}
 
 \begin{lemma} \label{randt}
-	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
+	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ be a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
 	\begin{enumerate}
 		\item $\exists c>0: \PP(r(n) \leq ch(n) \text{ for large $n$}) = 1$ 
 		\item $\exists c>0: \PP(T(as)\geq ch^{-1}(s) \text{ for large $s$})=1$
@@ -381,7 +383,7 @@ hold.
 \end{proof}
 
 \begin{lemma} \label{geometric}
-	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometric random variables with parameter $p<\frac{1}{2}$. Let $Y=T_1 + \dots  + T_n$, then for every $a \in [2p,1)$ we have
+	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometrically distributed random variables with parameter $p<\frac{1}{2}$. Let $Y:=T_1 + \dots  + T_n$, then for every $a \in [2p,1)$ we have
 	\begin{flalign*}
 		\PP(Y\leq\frac{an}{p}) \leq (ae^2)^n. 
 	\end{flalign*}
@@ -417,7 +419,7 @@ hold.
 	\end{flalign*}
 \end{definition}
 
-The following theorem gives a boundary on the harmonic measure which will be necessary to proof the result for the growth rate of External DLA. The theorem is proved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
+The following theorem gives a bound on the harmonic measure which will be necessary in the proof we present here for the growth rate of DLA. The theorem is proved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
 
 \begin{theorem} \label{keytheorem}
 	There exists a constant $c>0$ such that for all $n\in\N$
@@ -430,19 +432,40 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 \end{proof}
 
 \begin{proposition}
-	Theorem \ref{keytheorem} can be generalized to the following. Let $x\in\Z^2$. Then there exists $c>0$ such that for all $n\in\N$
+	Theorem \ref{keytheorem} can be generalized to the following. Let $y\in\Z^2$, then there exists $c>0$ such that for all $n\in\N$
 	\begin{flalign*}
-		h_A(x) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^x_n.
+		h_A(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^y_n.
 	\end{flalign*}
 \end{proposition}
 
 \begin{proof}
-	
+	For $y\in\Z^2$ define the translation function 
+	\begin{flalign*}
+		\Phi_y: \Z^2 \to \Z^2, x\mapsto x+y. 
+	\end{flalign*}	
+	Recall that in $\Z^2$ the harmonic measure can be written as $h_A(z) = \lim_{|x|\to \infty} \PP_x(S_{T_A^+} = z)$ for each $z\in A$ for a set $A\subset\Z^2$ (see Definition \ref{harmonicmeasure}). Since the distribution of random walks in $\Z^2$ is invariant under translation we can conlude that
+	\begin{flalign*}
+		h_A(z) &= \lim_{|x|\to \infty} \PP_x(S_{T_A^+} = z) \\
+		&= \lim_{|x|\to \infty} \PP_{\Phi_y(x)}(S_{T_{\Phi_y(A)}^+} = \Phi_y(z)) \\
+		&= h_{\Phi_y(A)}(\Phi_y(z)). 
+	\end{flalign*}
+	By Theorem \ref{keytheorem} we know that there exists a $c>0$ such that for all $n\in\N$ 
+	\begin{flalign*}
+		h_A(0) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n.
+	\end{flalign*}
+	Let $n\in\N$. We get 
+	\begin{flalign*}
+		h_A(0) = h_{\Phi_y(A)}(\Phi_y(0)) = h_{\Phi_y(A)}(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n
+	\end{flalign*}
+	and since $A\in\mP^0_n\ \Leftrightarrow\ \Phi_y(A) \in \mP^{\Phi_y(0)}_n$ we get
+	\begin{flalign*}
+		h_A(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^y_n.
+	\end{flalign*}
 \end{proof}
 
 
 \begin{theorem}
-	For the growth rate of External DLA in $\Z^2$ according to the definition in $\ref{notion}\ (\ref{growthrate})$ we have
+	For the growth rate of external DLA in $\Z^2$ as defined in $\ref{notion}\ (\ref{growthrate})$ we have
 	\begin{flalign}
 		\alpha_f \leq \frac{2}{3}. 
 	\end{flalign}	
@@ -450,13 +473,17 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 \begin{proof}
 	For $c>0$ define 
 	\begin{flalign*}
-		A_c := \{\rad(\E_n) \leq cn^{\frac{3}{2}} \text{ for large }n\}
+		A_c := \{\omega\in\Omega\ |\ \rad(\E_n(\omega)) \leq cn^{\frac{3}{2}} \text{ for large }n\}
 	\end{flalign*}
 	and
 	\begin{flalign*}
-		D_c := \{T(2n) \geq c n^{\frac{2}{3}} \text{ for large }n \}.
+		D_c := \{\omega\in\Omega\ |\ T(\omega)(2n) \geq c n^{\frac{2}{3}} \text{ for large }n \}.
 	\end{flalign*}
-	If we have a $c>0$ such that $\PP(A_c) = 1$, then we have
+	If we have a $c>0$ such that
+	\begin{flalign} \label{Ac}
+		\PP(A_c) = 1, 
+	\end{flalign}
+	then we have
 	\begin{flalign*}
 		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\EE[\rad(\E_n)])}{\ln(n)}\\ &= \limsup_{n\to\infty} \frac{\ln(\int_\Omega \rad(\E_n) d\PP)}{\ln(n)} \\
 		&= \limsup_{n\to\infty} \frac{\ln(\int_{A_c} \rad(\E_n) d\PP)}{\ln(n)} \\
@@ -464,11 +491,11 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 		&= \limsup_{n\to\infty} \frac{\ln(cn^{\frac{3}{2}})}{\ln(n)} \\
 		&= \frac{3}{2} \limsup_{n\to\infty} \frac{\ln(c^{\frac{2}{3}}) + \ln(n)}{\ln(n)} = \frac{3}{2} \cdot 1 = \frac{3}{2}
 	\end{flalign*}
-	If we define
+	If we choose
 	\begin{flalign*}
 		h: [0,\infty) \to [0,\infty), x\mapsto x^{\frac{2}{3}},  
 	\end{flalign*}
-	and $a=2$ by Lemma \ref{randt} we can show the above if there exists a constant $c>0$ such that 
+	and $a=2$, then by Lemma \ref{randt} we can show (\ref{Ac}) if we find a constant $c>0$ such that 
 	\begin{flalign} \label{lambda}
 		\PP(D_c) = 1. 
 	\end{flalign}
@@ -477,11 +504,11 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	
 	So now we will try to prove (\ref{lambda}). For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined lateron. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
 	\begin{flalign*}
-		V_n := \{T(2n) < \tilde m_n\}. 
+		V_n := \{\omega\in\Omega\ |\ T(\omega)(2n) < \tilde m_n\}. 
 	\end{flalign*}
-	Further define the set of realised random walk paths of length $n$ with starting point in $\partial B_n$ 
+	Further define the set of realised random walk paths of length $n$ with starting point in $\tilde B_n := \{x\in\Z^2\ |\ d(x,\partial B_n) \leq 1\}$
 	\begin{flalign*}
-	Z_n := \{[z] := \{z_1, \dots, z_n\}\subset \Z^2\ |\ z_1\in \partial B_n \text{ and } z_i\in N(z_{i-1}) \text{ for all } i\in\{2,\dots,n\}\}, 
+	Z_n := \{[z] := \{z_1, \dots, z_n\}\subset \Z^2\ |\ z_1\in \tilde B_n \text{ and } z_i\in N(z_{i-1}) \text{ for all } i\in\{2,\dots,n\}\}, 
 	\end{flalign*}
 	for $[z]\in Z_n$ define events 
 	\begin{flalign*}
@@ -491,15 +518,16 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	Since the random walks are moving on the grid $\Z^2$, by $z_1\in\partial B_n$ we mean that $z_1$ is $\glqq$near$\grqq$ to $\partial B_n\subset\R^2$, precisely we could mean $z_1\in (B_n\setminus B_{n-1}) \cap \Z^2$. Anyway this detail will not create problems of relevant order. We will quickly proof that 
+	With $\tilde B_n$ we mean that the random walks in $Z_n$ start $\glqq$on the boundary$\grqq$ of $B_n$. We will quickly proof that 
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
-	Let $n\in\N$ and $\omega \in V_n$, then $T(2n)(\omega) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(2n)(\omega)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion. For a sequence of events $(A_n)_{n\in\N}$ remind this definition
+	Let $n\in\N$ and $\omega \in V_n$, then $T(\omega)(2n) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(\omega)(2n)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion.\\ 
+	\\ For a sequence of events $(A_n)_{n\in\N}$ recall that
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
 	\end{flalign*}
-	We will want to use the Lemma of Borel-Cantelli on the sequence of events $(W_n)_{n\in\N}$. If we can show that 
+	We will use the Lemma of Borel-Cantelli on the sequence of events $(W_n)_{n\in\N}$. If we can show that 
 	\begin{flalign} \label{borelcantelli}
 		\sum_{n\in\N} \PP(W_n) < \infty,
 	\end{flalign}
@@ -511,7 +539,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 	\begin{flalign*}
 		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega\ |\ \exists N\in\N \text{ s.t. } \omega\in V_n^C \text{ for all }n>N\}= D_\beta
 	\end{flalign*}
-	we then can follow that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ define random variables
+	we can then conclude that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ define random variables
 	\begin{flalign*}
 		\tau_i:\Omega \to \N^\infty, \tau(\omega) = j :\Leftrightarrow y_j(\omega) = z_i, 
 	\end{flalign*}
@@ -522,7 +550,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 			\infty, &\text{ else},	
 		\end{cases}
 	\end{flalign*}
-	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster. Consider the event $W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j$ is finite for all $j\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by the one of a geometric random variable with parameter
+	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster. Consider the event $W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j$ is finite for all $j\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by that of a geometric random variable with parameter
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
@@ -551,7 +579,7 @@ The following theorem gives a boundary on the harmonic measure which will be nec
 \end{proof}
 
 \begin{remark}
-	With this theorem and \ref{fractaldim} we conclude that the fractal dimension of External DLA is bigger or equal than $\frac{3}{2}$. In the next chapter we will look at another incremental aggregate which tries to approximize External DLA and compare simulations of both to get a hint on which growth rate of the two is bigger than the other one.
+	With this theorem and \ref{fractaldim} we conclude that the fractal dimension of external DLA is at least $\frac{3}{2}$. In the next chapter we will look at another incremental aggregate which tries to approximate DLA and compare simulations of both to get a empirical comparision of their growth rates. 
 \end{remark}
 
 
