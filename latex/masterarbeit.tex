@@ -146,6 +146,10 @@ For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of 
 \begin{align*}
 	\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ \{x,y\}	\in E\}
 \end{align*}
+and the closure $\bar A$ of $A$ as 
+\begin{flalign*}
+	\bar A := A\cup \partial A.
+\end{flalign*}
 Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
 
 \subsubsection{Random Walks}
@@ -506,7 +510,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		V_n := \{\omega\in\Omega\ |\ T(\omega)(2n) < \tilde m_n\}. 
 	\end{flalign*}
-	Further define the set of realised random walk paths of length $n$ with starting point in $\tilde B_n := \{x\in\Z^2\ |\ d(x,\partial B_n) \leq 1\}$
+	Further define the set of realised random walk paths of length $n$ with starting point in $\tilde B_n := \{x\in\Z^2\ |\ d(x,\partial B_n) \leq 1 \text{ and } |x|\geq n\}$
 	\begin{flalign*}
 	Z_n := \{[z] := \{z_1, \dots, z_n\}\subset \Z^2\ |\ z_1\in \tilde B_n \text{ and } z_i\in N(z_{i-1}) \text{ for all } i\in\{2,\dots,n\}\}, 
 	\end{flalign*}
@@ -518,11 +522,11 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	With $\tilde B_n$ we mean that the random walks in $Z_n$ start $\glqq$on the boundary$\grqq$ of $B_n$. We will quickly proof that 
+	With $\tilde B_n$ we mean that the random walks in $Z_n$ start $\glqq$on the boundary$\grqq$ of $B_n$. We will quickly prove that 
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
-	Let $n\in\N$ and $\omega \in V_n$, then $T(\omega)(2n) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(\omega)(2n)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \partial B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion.\\ 
+	Let $n\in\N$ and $\omega \in V_n$, then $T(\omega)(2n) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(\omega)(2n)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ s.t. $y_{j_1}(\omega)\in \tilde B_n$ and $[z_0] := [y_{j_1}(\omega),\dots, y_{j_n}(\omega)]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion.\\ 
 	\\ For a sequence of events $(A_n)_{n\in\N}$ recall that
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
@@ -539,18 +543,48 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega\ |\ \exists N\in\N \text{ s.t. } \omega\in V_n^C \text{ for all }n>N\}= D_\beta
 	\end{flalign*}
-	we can then conclude that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ define random variables
+	we can then conclude that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. \\
+	\\For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ we define random variables
 	\begin{flalign*}
-		\tau_i:\Omega \to \N^\infty, \tau(\omega) = j :\Leftrightarrow y_j(\omega) = z_i, 
+		\tau_i:\Omega \to \N^\infty, \tau(\omega) = j :\Leftrightarrow \begin{cases}
+			y_j(\omega) = z_i,\ &j<\infty, \\
+			z_i \notin \E_\infty(\omega),\ &j = \infty,
+		\end{cases}
+		\end{flalign*}
+	so $\tau_i$ is either the index $j$ such that the $j$-th added point to the cluster is equal to $z_i$, or infinity if the final cluster $\E_\infty$ doesn't contain $z_i$. $\tau_i$ is measurable because for $j\in\N$ we have 
+	\begin{flalign*}
+		\tau_i^{-1}(j) = \{y_j = z_i\} = y_j^{-1}(z_i) \in \mathcal{F}
 	\end{flalign*}
-	so $\tau_i$ is the index $j$ such that the $j$-th added point to the cluster is equal to $z_i$. This definition of $\tau_i$ is well-defined since for every $\omega\in\Omega$ there can only exist one and certainly exists at least one $j\in\N^\infty$ such that $y_j(\omega) = z_i$ as the final cluster $\E_\infty$ either contains $z_i$ or not. Note that it is possible that $z_i$ never gets added to the cluster for example when the cluster forms such that $z_i$ is inside a hole of the cluster, so $\PP(\tau_i = \infty) > 0$. Further for $i\in \{1,\dots,n-1\}$ we define waiting times
+	and for $j=\infty$ we have
+	\begin{flalign*}
+		\tau_i^{-1}(\infty) &= \{z_i\notin\E_\infty=\bigcup_{k\in\N} \E_k\} \\
+		&= \{z_i\notin \E_k\text{ for all } k\in\N\} \\
+		&= \bigcap_{k\in\N} \{z_i\notin \E_k\} \\
+		&= \bigcap_{k\in\N} \bigcap_{l=1}^{k} \{y_l \neq z_i\} \\
+		&=\bigcap_{k\in\N} \bigcap_{l=1}^{k} y_l^{-1}(\Z^2\setminus \{z_i\}) \in\mathcal{F}.
+	\end{flalign*}
+	Further for $i\in \{1,\dots,n-1\}$ we define waiting times
 	\begin{flalign*}
 		\sigma_i: \Omega \to \N^\infty, \omega\to \begin{cases}
 			\tau_{i+1}(\omega) - \tau_i(\omega), &\text{ if } \tau_{i+1}(\omega) < \infty \text{ and } \tau_i(\omega)<\infty, \\
 			\infty, &\text{ else},	
 		\end{cases}
 	\end{flalign*}
-	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster. Consider the event $W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j$ is finite for all $j\in\{1,\dots,n\}$. Since $\E_{j_i}$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by that of a geometric random variable with parameter
+	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster. We quickly argument that $\sigma_i$ is measurable aswell. For $j\in\N$ we have
+	\begin{flalign*}
+		\sigma_i^{-1}(j) = \{\tau_{i+1} - \tau_i = j\} = \bigcup_{k\in\N} \{\tau_{i+1} = k\}\cap\{\tau_i = k-j\} \in\mathcal{F}
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		\sigma_i^{-1}(\infty) = \{\tau_{i+1}=\infty\}\cap\{\tau_i=\infty\} \in\mathcal{F},
+	\end{flalign*}
+	since $\tau_{i+1}$ and $\tau_i$ are measurable. \\
+	\\Choose $\omega\in W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j(\omega)$ is finite for all $j\in\{1,\dots,n\}$. 
+	
+	
+	
+	
+	Since $\E_{j_i}(\omega)$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by that of a geometrically distributed random variable with parameter
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}

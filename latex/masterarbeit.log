@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  18 JAN 2021 23:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  19 JAN 2021 17:19
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -839,31 +839,31 @@ Overfull \hbox (25.34587pt too wide) detected at line 134
 
 [3] [4]
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 198.
+LaTeX Warning: Command \glqq invalid in math mode on input line 202.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 198.
+LaTeX Warning: Command \grqq invalid in math mode on input line 202.
 
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 198.
+LaTeX Warning: Command \glqq invalid in math mode on input line 202.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 198.
+LaTeX Warning: Command \grqq invalid in math mode on input line 202.
 
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 198.
+LaTeX Warning: Command \glqq invalid in math mode on input line 202.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 198.
+LaTeX Warning: Command \grqq invalid in math mode on input line 202.
 
 [5]
 <neuseeland-squares.png, id=102, 2028.07687pt x 814.54312pt>
 File: neuseeland-squares.png Graphic file (type png)
 <use neuseeland-squares.png>
-Package pdftex.def Info: neuseeland-squares.png  used on input line 232.
+Package pdftex.def Info: neuseeland-squares.png  used on input line 236.
 (pdftex.def)             Requested size: 460.47531pt x 184.9429pt.
 
-Overfull \hbox (12.34436pt too wide) in paragraph at lines 232--233
+Overfull \hbox (12.34436pt too wide) in paragraph at lines 236--237
  [][] 
  []
 
@@ -871,90 +871,100 @@ Overfull \hbox (12.34436pt too wide) in paragraph at lines 232--233
 1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.243 \begin{flalign*}
+l.247 \begin{flalign*}
                       ]pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.3.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.251 \end{flalign}
+l.255 \end{flalign}
                     [7 <./neuseeland-squares.png>]pdfTeX warning (ext4): destin
 ation with the same identifier (name{equation.3.3}) has been already used, dupl
 icate ignored
 <to be read again> 
                    \relax 
-l.263 \end{flalign}
+l.267 \end{flalign}
                     [8]
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 314.
+LaTeX Warning: Command \glqq invalid in math mode on input line 318.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 314.
+LaTeX Warning: Command \grqq invalid in math mode on input line 318.
 
 
-Package hyperref Warning: No autoref name for `lemma' on input line 314.
+Package hyperref Warning: No autoref name for `lemma' on input line 318.
 
 
-Overfull \hbox (28.83746pt too wide) in paragraph at lines 317--318
+Overfull \hbox (28.83746pt too wide) in paragraph at lines 321--322
 []\T1/lmr/bx/n/12 Definition 4.1.2. $[]$ $[]$ $[]$\T1/lmr/m/n/12 ,
  []
 
 [9] [10] [11] [12] [13]
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 521.
+LaTeX Warning: Command \glqq invalid in math mode on input line 525.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 521.
+LaTeX Warning: Command \grqq invalid in math mode on input line 525.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--527
+Underfull \hbox (badness 10000) in paragraph at lines 528--531
 
  []
 
-[14] [15]
-<line-hit-squares.png, id=210, 535.33333pt x 370.27222pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 545--548
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 580--583
+
+ []
+
+[15] [16]
+<line-hit-squares.png, id=214, 535.33333pt x 370.27222pt>
 File: line-hit-squares.png Graphic file (type png)
 <use line-hit-squares.png>
-Package pdftex.def Info: line-hit-squares.png  used on input line 622.
+Package pdftex.def Info: line-hit-squares.png  used on input line 651.
 (pdftex.def)             Requested size: 411.3829pt x 284.52756pt.
-<line-hit-A.png, id=212, 643.35312pt x 466.43102pt>
+<line-hit-A.png, id=216, 643.35312pt x 466.43102pt>
 File: line-hit-A.png Graphic file (type png)
 <use line-hit-A.png>
-Package pdftex.def Info: line-hit-A.png  used on input line 624.
+Package pdftex.def Info: line-hit-A.png  used on input line 653.
 (pdftex.def)             Requested size: 392.46446pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 635--638
+Underfull \hbox (badness 10000) in paragraph at lines 664--667
 
  []
 
-[16] [17 <./line-hit-squares.png> <./line-hit-A.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 667--674
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 667--674
+[17] [18 <./line-hit-squares.png> <./line-hit-A.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 696--703
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 667--674
+Underfull \hbox (badness 10000) in paragraph at lines 696--703
 
  []
 
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 679.
+Underfull \hbox (badness 10000) in paragraph at lines 696--703
+
+ []
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 679.
+LaTeX Warning: Command \glqq invalid in math mode on input line 708.
 
 
-LaTeX Warning: Command \glqq invalid in math mode on input line 679.
+LaTeX Warning: Command \grqq invalid in math mode on input line 708.
 
 
-LaTeX Warning: Command \grqq invalid in math mode on input line 679.
+LaTeX Warning: Command \glqq invalid in math mode on input line 708.
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 689--690
+
+LaTeX Warning: Command \grqq invalid in math mode on input line 708.
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 718--719
 
  []
 
@@ -962,123 +972,123 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.5.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.716 	\end{flalign}
-                     [19]
-Underfull \hbox (badness 10000) in paragraph at lines 720--721
+l.745 	\end{flalign}
+                     [20]
+Underfull \hbox (badness 10000) in paragraph at lines 749--750
 
  []
 
-<line-param.png, id=246, 283.04178pt x 205.20529pt>
+<line-param.png, id=250, 283.04178pt x 205.20529pt>
 File: line-param.png Graphic file (type png)
 <use line-param.png>
-Package pdftex.def Info: line-param.png  used on input line 732.
+Package pdftex.def Info: line-param.png  used on input line 761.
 (pdftex.def)             Requested size: 392.48108pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 728--736
+Underfull \hbox (badness 10000) in paragraph at lines 757--765
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+euf on input line 738
+LaTeX Font Info:    Trying to load font information for U+euf on input line 767
 .
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-[20]
+[21]
 
-Package hyperref Warning: No autoref name for `lemma' on input line 769.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 769--774
-
- []
+Package hyperref Warning: No autoref name for `lemma' on input line 798.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 769--774
+Underfull \hbox (badness 10000) in paragraph at lines 798--803
 
  []
 
-[21 <./line-param.png>]
-<circle-part-S.png, id=265, 426.79134pt x 309.42372pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 798--803
+
+ []
+
+[22 <./line-param.png>]
+<circle-part-S.png, id=269, 426.79134pt x 309.42372pt>
 File: circle-part-S.png Graphic file (type png)
 <use circle-part-S.png>
-Package pdftex.def Info: circle-part-S.png  used on input line 788.
+Package pdftex.def Info: circle-part-S.png  used on input line 817.
 (pdftex.def)             Requested size: 392.47046pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--799
+Underfull \hbox (badness 10000) in paragraph at lines 821--828
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--799
+Underfull \hbox (badness 10000) in paragraph at lines 821--828
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--799
+Underfull \hbox (badness 10000) in paragraph at lines 821--828
 
  []
 
-[22 <./circle-part-S.png>]
-<T.png, id=273, 223.51546pt x 162.0487pt>
+[23 <./circle-part-S.png>]
+<T.png, id=278, 223.51546pt x 162.0487pt>
 File: T.png Graphic file (type png)
 <use T.png>
-Package pdftex.def Info: T.png  used on input line 807.
+Package pdftex.def Info: T.png  used on input line 836.
 (pdftex.def)             Requested size: 392.49141pt x 284.52756pt.
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.831 	\end{flalign}
-                     [23] [24 <./T.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 858--861
+l.860 	\end{flalign}
+                     [24] [25 <./T.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 887--890
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 874
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 903
 .
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-[25] [26]
-Overfull \hbox (1.27916pt too wide) in paragraph at lines 951--952
+[26] [27]
+Overfull \hbox (1.27916pt too wide) in paragraph at lines 980--981
 []\T1/lmr/bx/n/12 Definition 5.3.1. $[]$ \T1/lmr/m/n/12 Let $\OML/lmm/m/it/12 A
  \OMS/lmsy/m/n/12 2 P[]$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 K \OT1/lmr/m/n/12
  := \OML/lmm/m/it/12 conv\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 ) \
 OMS/lmsy/m/n/12 2
  []
 
-[27]pdfTeX warning (ext4): destination with the same identifier (name{equation.
+[28]pdfTeX warning (ext4): destination with the same identifier (name{equation.
 5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.961 	\end{flalign}
+l.990 	\end{flalign}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{equation.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.965 	\end{flalign}
-                     [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1059--1060
+l.994 	\end{flalign}
+                     [29] [30] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1089
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1061--1063
+Underfull \hbox (badness 10000) in paragraph at lines 1090--1092
 
  []
 
-[31] (masterarbeit.aux)
+[32] (masterarbeit.aux)
 Package rerunfilecheck Info: File `masterarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 11781 strings out of 479697
- 205812 string characters out of 2865232
+ 11782 strings out of 479697
+ 205819 string characters out of 2865232
  661854 words of memory out of 3000000
  28458 multiletter control sequences out of 15000+200000
  476221 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 106i,16n,111p,10609b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 106i,20n,111p,10609b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\donnykong\AppData\Local\MiKTeX\fonts/pk/ljfour/public/bbm/dpi600\b
 bm12.pk>{C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm
 -mathsy.enc}{C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/l
@@ -1105,9 +1115,9 @@ b><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
 msy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (33 pages, 4013391 bytes).
+Output written on masterarbeit.pdf (34 pages, 4016047 bytes).
 PDF statistics:
- 503 PDF objects out of 1000 (max. 8388607)
- 120 named destinations out of 1000 (max. 500000)
+ 508 PDF objects out of 1000 (max. 8388607)
+ 121 named destinations out of 1000 (max. 500000)
  230 words of extra memory for PDF output out of 10000 (max. 10000000)
 
