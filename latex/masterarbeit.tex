@@ -300,7 +300,7 @@ for any incremental aggregate in $\Z^d$.
 
 \subsection{Definition}
 
-External DLA is a model of an Incremental Aggregate as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
+External DLA is a model of an incremental aggregate as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
 
 \begin{definition} \label{harmonicmeasure}
 	$\mathit{(harmonic\ measure)}$ Let $A\subset\Z^d$. The hitting probability of $A$ is the function 
@@ -318,7 +318,7 @@ External DLA is a model of an Incremental Aggregate as defined above using a ver
 	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case, by Lemma $\autoref{recurr}$, we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. 
 \end{definition}
 
-\begin{definition} $\mathit{(External\ diffusion\ limited\ aggregate)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregate}$, short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
+\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregate)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregate}$, short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
 \end{definition}
 
 
@@ -546,7 +546,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	we can then conclude that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli})$. \\
 	\\For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ we define random variables
 	\begin{flalign*}
-		\tau_i:\Omega \to \N^\infty, \tau(\omega) = j :\Leftrightarrow \begin{cases}
+		\tau_i:\Omega \to \N^\infty, \tau_i(\omega) = j :\Leftrightarrow \begin{cases}
 			y_j(\omega) = z_i,\ &j<\infty, \\
 			z_i \notin \E_\infty(\omega),\ &j = \infty,
 		\end{cases}
@@ -579,16 +579,33 @@ The following theorem gives a bound on the harmonic measure which will be necess
 		\sigma_i^{-1}(\infty) = \{\tau_{i+1}=\infty\}\cap\{\tau_i=\infty\} \in\mathcal{F},
 	\end{flalign*}
 	since $\tau_{i+1}$ and $\tau_i$ are measurable. \\
-	\\Choose $\omega\in W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j(\omega)$ is finite for all $j\in\{1,\dots,n\}$. 
-	
-	
-	
-	
-	Since $\E_{j_i}(\omega)$ is connected and contains $0$, by Theorem $\ref{keytheorem}$ we get that the distribution of $\sigma_i$ is bounded by that of a geometrically distributed random variable with parameter
+	\\Consider the event $W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j(\omega)$ is finite for all $j\in\{1,\dots,n\}$ and $\omega\in W_n([z])$. We will now argue that the distribution of $\sigma_i$ is bounded by that of a geometrically distributed random variable with paramter
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
-	for some constant $c_1>0$. Now choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
+	for some constat $c_1>0$ which is the same constant for all $n\in\N$. 
+	\\TEST
+	\\For $j\geq 2$ define $D_j := \{A\in\mP_f\ |\  \PP(\E_{j-1} = A) > 0\text{ and }z_i\in \partial A\}$. Then
+	\begin{flalign*}
+		\PP(\sigma_i = l) &= \PP(\exists j\geq 2 \text{ such that } y_j = z_i,y_{j+1} \neq z_{i+1}, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1}) \\
+		&= \PP(\bigcup_{j\geq 2}  \{ y_j = z_i,y_{j+1} \neq z_{i+1}, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1}\}) \\
+		&\leq \sum_{j\geq 2} \PP(y_j = z_i,y_{j+1} \neq z_{i+1}, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1}) \\
+		&\overset{(\cdot)}{=} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)\PP(y_j = z_i, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1} \ |\ \E_{j-1} = A) \\
+		&\overset{(\cdot\cdot)}{=} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  \PP(y_j = z_i\ |\ \E_{j-1} = A)   \\
+		&\quad\quad\quad\quad\quad \cdot\PP(y_{j+1} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\}) \\
+		&\leq \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)\PP(y_{j+1} \neq z_{i+1}, \dots,  y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\})\\
+		&\overset{(\cdot\cdot)}{=} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  \PP(y_{j+1} \neq z_{i+1}\ |\ \E_j = A\cup\{z_i\})   \\
+		&\quad\quad\quad \cdot\PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}\neq z_{i+1}) \\
+		&= \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  (1-h_{A\cup\{z_i\}}(z_{i+1}))   \\
+		&\quad\quad\quad \cdot\PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}\neq z_{i+1}) \\
+		&\overset{(\cdot\cdot\cdot)}{\leq} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  (1-h_{A\cup\{z_i\}}(z_{i+1}))   \\
+		&\quad\quad\quad \cdot \sum_{y\in \partial (A\cup\{z_i\}), y\neq z_{i+1}}\PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}=y) \\
+		&\overset{(\cdot\cdot\cdot\cdot)}{\leq} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  (1-h_{A\cup\{z_i\}}(z_{i+1}))   \\
+		&\quad\quad\quad \cdot 4j\ \PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}=\tilde y) \\
+		&= \dots \\ 
+	\end{flalign*}
+	\\TEST
+	Now choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
 	\begin{flalign*}
 		PROBLEM
 		\PP(\tau_{n} \leq \tilde m_n) \leq \PP(\tau_{n} - \tau_1 \leq \tilde m_n) = \PP(Y \leq \frac{an}{p_n}) \leq (e^2a)^{n-1} \quad \text{ for all } n>N
@@ -597,7 +614,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		\PP(W_n([z])) \leq (e^2a)^{n} \quad \text{ for all } n>N.
 	\end{flalign*}
-	Counting the elements in $Z_n$ we have less or equal $c_2n$ points in $\partial B_n$ for some constant $c_2>0$ as starting points and $4^{n-1}$ possibilities for the next $n-1$ steps of a random walk of length $n$. So $|Z_n| \leq c_2n4^{n-1}$ and therefore
+	Counting the elements in $Z_n$ we have less or equal $c_2n$ points in $\tilde B_n$ for some constant $c_2>0$ as starting points and $4^{n-1}$ possibilities for the next $n-1$ steps of a random walk of length $n$. So $|Z_n| \leq c_2n4^{n-1}$ and therefore
 	\begin{flalign*}
 		\sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n4^{n-1} (e^2a)^{n-1} = c_2 n(4e^2a)^{n-1} \quad \text{ for all } n>N
 	\end{flalign*} 
