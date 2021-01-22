@@ -2,7 +2,7 @@
 """
 Created on Fri Nov 20 16:17:40 2020
 
-@author: Tillmann Bosch
+@author: Tillmann Tristan Bosch
 
 INFO
 Here we provide basic geometrical features we need to simulate the line hitting aggregate. 

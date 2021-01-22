@@ -986,7 +986,11 @@ If we choose a simple convex set such as $K=B_r$ the ball around the origin with
 	\end{flalign*}
 \end{proof}
 
-Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new Incremental Aggregate in the next section which tries to approximate external DLA. 
+\begin{remark} \label{choosekiso}
+	Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new Incremental Aggregate in the next section which tries to approximate external DLA. 
+\end{remark}
+
+
 
 
 \subsection{Definition}
@@ -1051,8 +1055,22 @@ In this section we will present a simulation for the line hitting aggregate and 
 \subsection{Images and Empirical Fractal Dimension}
 
 \subsection{Code}
-In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.ln}). Only the imports for mathematical purposes are used for the calculation of a realisation of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised processes. Other than that every calculations preciseness is bounded to some extend by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
-When using the software you will have the possibility to enter some parameters which include colorings of background and particle pixels, how many iterations you want to run the process and how big the image shall be at the end (more on that you can find in the README file of the above mentioned github repository). If correct parameters are set, you can run a shell script which in turn will run a single python file which reads the entered parameters and executes two steps. First is the execution of the mathematical process which needs the mathematical imports as described above. Second is the creation of an image of the calculated process which needs the systemic imports as described above. We will have a look now on what happens on the mathematical side. 
+In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realisation of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised processes. Other than that every calculations preciseness is bounded to some extend by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
+When using the software you will have the possibility to enter some parameters which include colorings of background and particle pixels, how many iterations you want to run the process and how big the image shall be at the end (more on that you can find in the README file of the above mentioned github repository). If correct parameters are set, you can run a shell script which in turn will run a single python file which reads the entered parameters and executes two steps. First is the execution of the mathematical process which needs the mathematical imports as described above. Second is the creation of an image of the calculated process which needs the systemic imports as described above. We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code you will find comments or other irrelevant differences, which we leave away here. 
+
+\subsubsection{Base methods}
+
+LHA INIT start with one fractal dim value, but no problem
+
+RUNPROCESS getrandomline chooses in a ball surrounding the cluster, we keep looking for lines which hit the cluster. By $\ref{choosekiso}$ this is equivalent to choosing k-isotropic lines hitting the cluster. 
+
+\subsubsection{Geometry methods}
+
+getrandomline, linehitscluster, getsquare, islower, line.intersectswithpolygon
+
+
+
+
 
 
 \newpage
