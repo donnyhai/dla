@@ -227,6 +227,10 @@ the set of distributions on $A$. Now we define an $\mathit{incremental\ aggregat
 
 The above defines a Markov chain whose state space is the set of finite and connected subsets of $\Z^d$. For all incremental aggregates in this paper we will focus on the $2$-dimensional case $\Z^2$ and will always identify $\R^2$ with $\C$ for a more convenient notation. 
 
+\begin{remark} \label{orderindependence}
+	It is worth to mention that the distribution of a new added point $y_n$ is not depending on the order of how previous points where added to the cluster since the harmonic measure only looks at the actual cluster as a set which doesn't contain any order information. 
+\end{remark}
+
 
 
 \subsection{Notion of Fractal Dimension and Growth Rate}\label{notion}
@@ -247,9 +251,7 @@ Defining the radius of a finite set $A\in \mathcal{P}_f$ (with $|\cdot|$ the euc
 \begin{flalign*}
 	\rad(A) := \max_{x\in A} |x|,
 \end{flalign*}
-
-
-we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define $\varepsilon_n:=\frac{1}{\EE[\rad(\E_n)]}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\EE[\rad(\E_n)]}$ since a box size is now constantly $1$ and the clusters geometrical size is up to a constant given by $\EE[\rad(\E_n)]$. The minimum number of boxes with size $1$ we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\EE[\rad(\E_n)]}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as
+we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define $\varepsilon_n:=\frac{1}{\EE[\rad(\E_n)]}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\EE[\rad(\E_n)]}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret by $\EE[\rad(\E_n)]$ up to a constant. The minimum number of boxes with size $1$ we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\EE[\rad(\E_n)]}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as
 \begin{flalign} \label{fractaldimension}
 	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}
 \end{flalign}
@@ -278,9 +280,9 @@ We therefore get
 \begin{flalign*}
 	d_f \geq 1.
 \end{flalign*}
-In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points, so there is a constant $c>0$ such that a.s. $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$. Hence
+In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points aswell, so there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$ a.s.. Hence
 \begin{flalign*}
-	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{cn^{\frac{1}{d}}} = d.
+	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d.
 \end{flalign*}
 So in total we get the trivial boundaries
 \begin{flalign*}
@@ -324,7 +326,7 @@ External DLA is a model of an incremental aggregate as defined above using a ver
 
 \subsection{Fractal Dimension and Growth Rate of External DLA}
 
-Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
+There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results on DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
@@ -984,7 +986,7 @@ If we choose a simple convex set such as $K=B_r$ the ball around the origin with
 	\end{flalign*}
 \end{proof}
 
-Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new Incremental Aggregate in the next section which tries to approximize External DLA. 
+Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new Incremental Aggregate in the next section which tries to approximate external DLA. 
 
 
 \subsection{Definition}
@@ -999,7 +1001,7 @@ For a set $A\in \mathcal{P}_f$ we define
 \end{flalign*}
 and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. 
 
-\begin{definition} $\mathit{(Random\ Line\ Hitting\ Distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
+\begin{definition} $\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
 	\begin{flalign*} 
 		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
 	\end{flalign*}
@@ -1029,7 +1031,7 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 	Hence, the family of distributions $(\mu_A)_{A\in \mathcal{P}_f}$ defines an incremental aggregate. 
 \end{definition}
 
-\begin{definition} $(\mathit{Line\ Hitting\ Aggregate)}$ An Incremental Aggregate with the Random Line Hitting Distribution we call $\mathit{Line\ Hitting\ Aggregate}$, short $\mathit{LHA}$. 
+\begin{definition} $(\mathit{line\ hitting\ aggregate)}$ An incremental aggregate with the random line hitting distribution we call $\mathit{line\ hitting\ aggregate}$, short $\mathit{LHA}$. 
 \end{definition}
 
 \begin{remark}
@@ -1041,19 +1043,23 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 
 
 \newpage
-\section{Python Simulation}
-Part of the work in this paper is the attempt to build simulations for both incremental aggregates $\mathit{External\ DLA}$ and $\mathit{LHI}$ which were presented in the previous sections. For calculating the simulations we use $\mathit{Python}$ and for rendering pictures we use the package $\mathit{pygame}$. Each vertex in $\Z^2$ is naturally mapped to its coordinate and is represented in this way in python code. In graphics each coordinate basically can be represented by squares in $\C$ as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel, so every picture about incremental aggregates you'll see in the following consists of pixels each representing exactly one vertex in $\Z^2$ in the most natural way. Our aim will be to simulate the aggregates as close as possible to their mathematical definitions. This is much easier for LHI, and less obvious for External DLA. We start of with External DLA in the following.
+\section{Python Simulation of the Line Hitting Aggregate}
+In this section we will present a simulation for the line hitting aggregate and approximate its fractal dimension empirically. The simulation is written in $\mathit{Python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
+\\LINK \\
+\\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in python code. Every value in $\C$ with integer components can be represented by squares as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realisations of LHA and guess its fractal dimension as close as possible to their mathematical definitions, so the only source of error are external python packages and unexact machine calculation. 
 
-\subsection{External DLA Simulation}
+\subsection{Images and Empirical Fractal Dimension}
 
-By identifying each vertex in $\Z^2$ with its square in $\C$ and a pixel when rendering, the representation of the space we are moving is exact. For any simulation of randomness we use the package $\mathit{random}$. Respecting the error behaviour of this package, random walks on $\Z^2$ can be simulated directly and therefore very exact. For External DLA we let a particle move randomly on the grid and wait for it to hit the actual cluster. The problem which will have to be solved is where to start the moving particle and how to handle a particle when it is moving away from the actual cluster, therefore creating a too long waiting time for it coming back to the cluster. In the definition of External DLA new particles start the random walk from infinity. Obviously this is not possible in simulation so this has to be solved differently. 
+\subsection{Code}
+In the simulation we are using imports for systemic purposes (pygame, sys, json, time) and for mathematical purposes (random, math.sin, math.cos). Only the imports for mathematical purposes are used for the calculation of a realisation of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised processes. Other than that every calculations preciseness is bounded to some extend by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
+When using the software you will have the possibility to enter some parameters which include colorings of background and particle pixels, how many iterations you want to run the process and how big the image shall be at the end (more on that you can find in the README file of the above mentioned github repository). If correct parameters are set, you can run a shell script which in turn will run a single python file which reads the entered parameters and executes two steps. First is the execution of the mathematical process which needs the mathematical imports as described above. Second is the creation of an image of the calculated process which needs the systemic imports as described above. 
 
-
-
-\subsection{LHA Simulation}
 
 
 \newpage
+
+
+
 
 \begin{thebibliography}{biblio}
 \thispagestyle{empty}
