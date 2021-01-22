@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  22 JAN 2021 02:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  22 JAN 2021 14:04
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -1054,16 +1054,8 @@ LaTeX Font Info:    Trying to load font information for U+bbm on input line 927
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-[27] [28]
-Overfull \hbox (1.27916pt too wide) in paragraph at lines 1004--1005
-[]\T1/lmr/bx/n/12 Definition 5.3.1. $[]$ \T1/lmr/m/n/12 Let $\OML/lmm/m/it/12 A
- \OMS/lmsy/m/n/12 2 P[]$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 K \OT1/lmr/m/n/12
- := \OML/lmm/m/it/12 conv\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 ) \
-OMS/lmsy/m/n/12 2
- []
-
-[29]pdfTeX warning (ext4): destination with the same identifier (name{equation.
-5.1}) has been already used, duplicate ignored
+[27] [28] [29]pdfTeX warning (ext4): destination with the same identifier (name
+{equation.5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1014 	\end{flalign}
@@ -1130,7 +1122,7 @@ b><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
 msy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (35 pages, 4019830 bytes).
+Output written on masterarbeit.pdf (35 pages, 4021033 bytes).
 PDF statistics:
  512 PDF objects out of 1000 (max. 8388607)
  123 named destinations out of 1000 (max. 500000)

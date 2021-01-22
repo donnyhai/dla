@@ -7,9 +7,11 @@ Created on Wed Nov 18 19:04:51 2020
 We reference the set of complex numbers as CC
 """
 
+#mathematical imports
+import random
+from math import pi, log #log is the natural logarithm with base e
 
 import geometry as geom
-import random
 
 
 class Line_Hitting_Aggregate:
@@ -20,7 +22,9 @@ class Line_Hitting_Aggregate:
         self.particles = [0]
         self.boundary_set = self.get_neighbours(0)
         
-        self.boundary_radius = 1 #radius of the boundary of the current cluster = maximum of all distances from 0 to the clusters boundary positions
+        self.cluster_radius = 0 #radius of the current cluster = maximum of all distances from 0 to the cluster points
+        
+        self.fractal_dimension_values = [1.5] #start with one neutral value to have equal sizes of particles and fractal_dimension_values 
         
         self.missed_counter = 0
         
@@ -32,23 +36,22 @@ class Line_Hitting_Aggregate:
             line_hits_cluster = False
             
             while not line_hits_cluster:
-        
                 random_line = geom.Line(self.get_random_line())
             
                 if self.line_hits_cluster(random_line):
+                    line_hits_cluster = True
                     
                     next_position = self.get_next_particle_position(random_line)
-                    
                     """
                     add particle at next_position to the cluster, remove it from the boundary_set and add its empty neighbours to it,
-                    actualize boundary_radius, so the next random line can be chosen correct accordingly
+                    actualize cluster_radius, so the next random line can be chosen correct accordingly
                     """
-                    
                     self.particles.append(next_position)
                     self.actualize_boundary_set(next_position)
-                    self.actualize_boundary_radius(next_position)
+                    self.actualize_cluster_radius(next_position)
                     
-                    line_hits_cluster = True
+                    self.add_fractal_dimension_value()
+                    
                     print(k)
                 
                 else:
@@ -57,30 +60,41 @@ class Line_Hitting_Aggregate:
         print("number of misses: " + str(self.missed_counter))
     
     
+    def add_fractal_dimension_value(self):
+        radius = max(self.cluster_radius, 2)
+        '''
+        as long as the cluster is as small that the radius is equal to one, log(1) is zero and therefore creating a problem in the division below, 
+        therefore taking this max here avoids this problem for the short beginning of the process
+        '''
+        value = log(len(self.particles))/log(radius)
+        self.fractal_dimension_values.append(value)
+    
+    
     def get_random_line(self):
         
         """
-        We choose uniform random parameters (alpha, p) in [0, pi) x [0, 20/19 * self.boundary_radius) 
-        which is equivalent to choosing a B-isotropic line where B is a circle with radius 20/19 * self.boundary_radius with center 0
+        We choose uniform random parameters (alpha, p) in [0, pi) x [0, 20/19 * self.cluster_radius) 
+        which is equivalent to choosing a B-isotropic line where B is a circle with radius 20/19 * self.cluster_radius with center 0
         and by contstruction therefore certainly contains the current cluster. 
         random.random() chooses uniformly in [0, 1.0)
         return is the parameters pair (alpha, p)
         """
      
-        alpha = 3.1416 * random.random()
-        p = 20/19 * (2 * self.boundary_radius * random.random() - self.boundary_radius)
+        alpha = pi * random.random()
+        radius = self.cluster_radius + 2 #radius of a circle which certainly surrounds the current cluster
+        p = 2 * radius * random.random() - radius
         
         return (alpha, p)
     
     
     def line_hits_cluster(self, line):
         for k in range(len(self.particles)):
-            if line.intersects_with_polygon(self.get_position_square_polygon(self.particles[-k])):
+            if line.intersects_with_polygon(self.get_square(self.particles[-k])):
                 return True
         return False
     
     
-    def get_position_square_polygon(self, position):
+    def get_square(self, position):
         
         """
         return is a square polygon around position as defined in the paper, with segments starting 
@@ -110,7 +124,7 @@ class Line_Hitting_Aggregate:
         
         boundary_hit_positions = []
         for position in self.boundary_set:
-            if line.intersects_with_polygon(self.get_position_square_polygon(position)):
+            if line.intersects_with_polygon(self.get_square(position)):
                 boundary_hit_positions.append(position)
         return boundary_hit_positions
         
@@ -128,10 +142,11 @@ class Line_Hitting_Aggregate:
                 self.boundary_set.append(neighbour)
     
     
-    def actualize_boundary_radius(self, position):
+    def actualize_cluster_radius(self, position):
         new_radius = self.get_distance(position, 0)
-        if new_radius > self.boundary_radius:
-            self.boundary_radius = new_radius
+        if new_radius > self.cluster_radius:
+            self.cluster_radius = new_radius
+
     
     
     def get_neighbours(self, particle):
@@ -171,22 +186,22 @@ class Line_Hitting_Aggregate:
     def is_lower(self, alpha, x, y):
         
         """
-        return is True iff x is lower than y according to the total ordered relation on vertices in CC as defined in the paper
+        return is True iff x is lower than y according to the total ordered relation on vertices in g\cap A as defined in the paper
         """
         
         x_0, x_1 = x.real, x.imag
         y_0, y_1 = y.real, y.imag
         
-        if alpha == 3.1416/2: # Case 1
+        if alpha == pi/2: # Case 1
             return x_0 < y_0
         elif alpha == 0: # Case 2
             return x_1 < y_1
-        elif 3.1416/2 < alpha < 3.1416: # Case 3 
+        elif pi/2 < alpha < pi: # Case 3 
             if x_0 == y_0:
                 return x_1 < y_1
             else:
                 return x_0 < y_0
-        elif 0 < alpha < 3.1416/2: # Case 4
+        elif 0 < alpha < pi/2: # Case 4
             if x_0 == y_0:
                 return x_1 > y_1
             else:

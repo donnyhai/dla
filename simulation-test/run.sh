@@ -3,7 +3,7 @@
 cp parameters.txt library/parameters.txt
 cd library
 
-py -u -m GUI
+py -u -m main
 
 rm parameters.txt
 rm -r __pycache__
@@ -11,3 +11,6 @@ rm -r __pycache__
 cd ..
 cp library/*.png images
 rm -r library/*.png
+
+cp library/*.txt images
+rm -r library/*.txt

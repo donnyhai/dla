@@ -1,8 +1,8 @@
 { 
 "aggregate": "lha",
-"iterations": 10000, 
+"cluster_size": 1000, 
 "color": "yes",
-"color_generation_size": 200,
+"color_generation_size": 1000,
 "background_color": "white",
 "particle_color": "black",
 "image_size_x": 300, 
