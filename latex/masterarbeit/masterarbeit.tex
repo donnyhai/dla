@@ -63,7 +63,7 @@
 
 \begin{titlepage}
 
-	\includegraphics[scale=0.45]{kit-logo.jpg} 
+	\includegraphics[scale=0.45]{images/kit-logo.jpg} 
     \vspace*{2cm} 
 \begin{center} \large 
     
@@ -102,8 +102,8 @@
 \newpage
 
 \section{Introduction}
-\includegraphics[scale=0.04]{display.jpg} 
-\includegraphics[scale=0.091]{display2.jpg}
+\includegraphics[scale=0.04]{images/display.jpg} 
+\includegraphics[scale=0.091]{images/display2.jpg}
 
 
 
@@ -237,7 +237,7 @@ The above defines a Markov chain whose state space is the set of finite and conn
 
 \begin{figure}
 	\centering
-	\includegraphics[height=6.5cm]{neuseeland-squares.png}
+	\includegraphics[height=6.5cm]{images/geogebra-images/neuseeland-squares.png}
 	\caption{Box-covering of New Zealands outer cost with decreasing box sizes $\varepsilon$} \label{neuseeland}
 \end{figure}
 
@@ -285,9 +285,9 @@ In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length
 	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d.
 \end{flalign*}
 So in total we get the trivial boundaries
-\begin{flalign*}
-	1\leq d_f \leq d
-\end{flalign*}
+\begin{flalign}\label{trivialboundary}
+	1\leq d_f \leq d 
+\end{flalign}
 and
 \begin{flalign*}
 	\frac{1}{d}\leq \alpha_f \leq 1
@@ -672,13 +672,13 @@ In the following we will look at a process which is the approach of a simple app
 
 \begin{figure}
 	\centering
-	\includegraphics[height=10cm]{line-hit-squares.png}
+	\includegraphics[height=10cm]{images/geogebra-images/line-hit-squares.png}
 	\caption{$g$ hits squares around points} \label{linesquares}
-	\includegraphics[height=10cm]{line-hit-A.png}
+	\includegraphics[height=10cm]{images/geogebra-images/line-hit-A.png}
 	\caption{$g$ hits squares in $A$} \label{linesquaresA}
 \end{figure}
 
-\begin{definition}
+\begin{definition} \label{ghitA}
 	Let $g=g_{\alpha,p}\in \G$ and $A\in \mathcal{P}_f$. We define 
 	
 	\begin{align*}
@@ -782,7 +782,7 @@ For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We deno
 \\
 \begin{figure}
 	\centering
-	\includegraphics[height=10cm]{line-param.png}
+	\includegraphics[height=10cm]{images/geogebra-images/line-param.png}
 	\caption{Line parameters $\alpha$ and $p$} \label{lineparam}
 \end{figure}
 \\
@@ -838,7 +838,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	
 	\begin{figure}
 		\centering
-		\includegraphics[height=10cm]{circle-part-S.png}
+		\includegraphics[height=10cm]{images/geogebra-images/circle-part-S.png}
 		\caption{$S$ and the sets $A_n$ and $B_n$} \label{circleS}
 	\end{figure}
 	
@@ -857,7 +857,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 
 \begin{figure}
 	\centering
-	\includegraphics[height=10cm]{T.png}
+	\includegraphics[height=10cm]{images/geogebra-images/T.png}
 	\caption{Line in $[\{0\}] \cap [T]$} \label{T}
 \end{figure}
 
@@ -1005,7 +1005,8 @@ For a set $A\in \mathcal{P}_f$ we define
 \end{flalign*}
 and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. 
 
-\begin{definition} $\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
+\begin{definition} \label{linehittingdistribution}
+	$\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
 	\begin{flalign*} 
 		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
 	\end{flalign*}
@@ -1050,28 +1051,57 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 \section{Python Simulation of the Line Hitting Aggregate}
 In this section we will present a simulation for the line hitting aggregate and approximate its fractal dimension empirically. The simulation is written in $\mathit{Python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
 \\LINK \\
-\\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in python code. Every value in $\C$ with integer components can be represented by squares as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realisations of LHA and guess its fractal dimension as close as possible to their mathematical definitions, so the only sources of error are external python packages and unexact machine calculation. 
+\\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in python code. Every value in $\C$ with integer components can be represented by squares as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realisations of LHA and guess its fractal dimension as close as possible to their mathematical definitions, so the only sources of error are external python packages and unexact machine calculation. \\
+\\Note that this software contains also an external DLA simulation. This simulation doesn't claim to be mathematically precise, but it is worth to play around and create images with it. 
 
 \subsection{Images and Empirical Fractal Dimension}
 
 \subsection{Code}
-In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realisation of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised processes. Other than that every calculations preciseness is bounded to some extend by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
-When using the software you will have the possibility to enter some parameters which include colorings of background and particle pixels, how many iterations you want to run the process and how big the image shall be at the end (more on that you can find in the README file of the above mentioned github repository). If correct parameters are set, you can run a shell script which in turn will run a single python file which reads the entered parameters and executes two steps. First is the execution of the mathematical process which needs the mathematical imports as described above. Second is the creation of an image of the calculated process which needs the systemic imports as described above. We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code you will find comments or other irrelevant differences, which we leave away here. 
-
-\subsubsection{Base methods}
-
-LHA INIT start with one fractal dim value, but no problem
-
-RUNPROCESS getrandomline chooses in a ball surrounding the cluster, we keep looking for lines which hit the cluster. By $\ref{choosekiso}$ this is equivalent to choosing k-isotropic lines hitting the cluster. 
-
-\subsubsection{Geometry methods}
-
-getrandomline, linehitscluster, getsquare, islower, line.intersectswithpolygon
-
-
-
-
-
+In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realisation of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised processes. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
+When using the software you will have the possibility to enter some parameters which include colorings of background and particle pixels, how many particles you want the cluster have at the end and how big the created image shall be at the end (more on that you can find in the README file). If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and a json containing all calculated fractal dimension values. We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code you will find comments or other irrelevant differences, which we leave away here. \\
+\\The main executed python file $\mathit{main.py}$ looks like this:\\
+\\
+\includegraphics[height=4cm]{images/code-snippets/mainpy.png} \\
+\\
+Note again that you can also run an external DLA simulation but we do not claim that it is mathematically precise and therefore won't argument that in this paper. The parameters in $\mathit{parameters.json}$ are read and depending on which process (LHA or DLA) shall be simulated, the according object gets initiated and its $\mathit{run\_process}$ method gets executed. The init method of LHA looks like the following:\\
+\\
+\includegraphics[height=2cm]{images/code-snippets/lhainit.png} \\
+\\
+We init the particle set $\mathit{particles}$ as a set containg $0$, init the boundary set which in every iteration of the process will contain all neighbours of all particles in the particle set, set the initial cluster radius to $0$ and init a list $\mathit{fractal\_dimension\_values}$ which will contain all values of fractal dimensions we calculate during the process, more on that later. We init this list with one value 1.5, to ensure that its length is equal to the amount of particles which is helpful for later calculation. We choose 1.5 since it is most neutral (since the fractal dimension lies in between 1 and 2 by \ref{notion} (\ref{trivialboundary})), anyway this first value is not very relevant as we will be interested more in later values of calculated fractal dimensions. \\
+After initializing a $\mathit{Line\_Hitting\_Aggregate}$ object the code executes the $\mathit{run\_process}$ method, which looks like the following:
+\\
+\includegraphics[height=5.3cm]{images/code-snippets/runprocess.png} \\
+\\
+This method will directly run a loop with $\mathit{data["cluster\_size"] - 1}$ iterations. In each iteration exactly one particle will be added to the particle set, so at the end we end up with exactly $\mathit{data["cluster\_size"]}$ particles since we started with one particle 0. \\
+\\Now it is important to understand again, how fair choosing of random lines which hit the current cluster works. If we call $K$ the current cluster, in \ref{choosekiso} we have argumented that a $K$-isotropic line can be realized by considering a circle $B$ which contains the current cluster and choose an $B$-isotropic line which intersects with the circle. If it happens that this line intersects with the cluster, by \ref{circ} we know that we have realised a fair $K$-isotropic line. The method $\mathit{get\_random\_line}$ \\
+\\
+\includegraphics[height=1.8cm]{images/code-snippets/randomline.png} \\
+\\
+chooses uniform line parameters, and using $\mathit{cluster\_radius + 2}$ here ensures that the line is hitting a surrounding circle. The method $\mathit{random.random()}$ produces an uniformly chosen value in $[0,1)$. The fact that $\mathit{random.random()}$ cannot choose the value $1$ doesn't disturb the distribution of the line since $\{1\}$ is a zero set for the Lebesque-measure. Choosing these values uniformly by \ref{chi} indeed realises a $B$-isotropic line. \\
+\\The method $\mathit{line\_hits\_cluster}$ \\
+\\
+\includegraphics[height=1.8cm]{images/code-snippets/linehitscluster.png} \\
+\\
+bases on the method $\mathit{intersects\_with\_polygon}$ which evaluates whether a line intersects with a given polygon or not (the implemented geometry classes $\mathit{Line}$ and $\mathit{Polygon}$ you can find in the file $\mathit{geometry.py}$). Here the polygon is a square given by the method \\
+\\
+\includegraphics[height=0.8cm]{images/code-snippets/getsquare.png} \\
+\\
+which in total implements the definitions \ref{squares} and \ref{ghitA}. Note that the segments of the square here are open on the right side, but again this will not created problems since single points are zero sets for the Lebesque-measure.
+If the condition is satisfied that the chosen line hits the cluster, we enter the if condition and then choose the next particle with the method $\mathit{get\_next\_particle}$\\
+\\
+\includegraphics[height=1.8cm]{images/code-snippets/nextparticle.png} \\
+\\
+which first collects all particle squares which are hit by the line, calculates minimum and maximum and then chooses uniformly between minimum and maximum with $\mathit{random.choice}$. The methods $\mathit{get\_min}$ and $\mathit{get\_max}$ base on the method $\mathit{is\_lower}$\\
+\\
+\includegraphics[height=6cm]{images/code-snippets/islower.png} \\
+\\
+which implements the total ordered relation on all squares which got hit by the line as defined in \ref{ghitA}. Minimum and maximum is then canonically calculated with respect to this relation. All in all this procedure implements the $\mathit{random\_line\_hitting\_distribution}$ as defined in \ref{linehittingdistribution} mathematically correctly. 
+After having realised the next particle, values like the particle set, the boundary set and the cluster radius get actualized and finally a new fractal dimension value is added to the fractal dimension values list. The method $\mathit{add\_fractal\_dimension\_value}$ \\
+\\
+\includegraphics[height=1.5cm]{images/code-snippets/fractaldimension.png} \\
+\\
+devides the log of the current amount of particles in the cluster by the log of the current radius of the cluster as motivated by the definition \ref{notion} (\ref{fractaldimension}) of the discrete fractal dimension. This value then gets added to the $\mathit{fractal\_dimension\_values}$ list. Note that $\mathit{log}$ in python is the natural logarithm with base $e$. Also note that choosing the maximum of the cluster radius and $2$ only serves the purpose to avoid problems in the very beginning of the simulation when the cluster radius is $1$ and therefore creating division by zero in the following division.\\
+\\All in all this procedure should implement the distribution of the line hitting aggregate as mathematically defined. At the end its preciseness is depending on the preciseness of the distributions given by the python methods $\mathit{random.random}$ and $\mathit{random.choice}$, and machine calculation in general. Eventhough we do not claim to have implemented a mathematically precise simulation for external DLA, feel free to also try that one out and create beautiful pictures of the two incremental aggregates. 
 
 \newpage
 

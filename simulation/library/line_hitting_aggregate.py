@@ -41,14 +41,14 @@ class Line_Hitting_Aggregate:
                 if self.line_hits_cluster(random_line):
                     line_hits_cluster = True
                     
-                    next_position = self.get_next_particle_position(random_line)
+                    next_particle = self.get_next_particle(random_line)
                     """
-                    add particle at next_position to the cluster, remove it from the boundary_set and add its empty neighbours to it,
+                    add particle at next_particle to the cluster, remove it from the boundary_set and add its empty neighbours to it,
                     actualize cluster_radius, so the next random line can be chosen correct accordingly
                     """
-                    self.particles.append(next_position)
-                    self.actualize_boundary_set(next_position)
-                    self.actualize_cluster_radius(next_position)
+                    self.particles.append(next_particle)
+                    self.actualize_boundary_set(next_particle)
+                    self.actualize_cluster_radius(next_particle)
                     
                     self.add_fractal_dimension_value()
                     
@@ -104,7 +104,7 @@ class Line_Hitting_Aggregate:
         return geom.Polygon([position + 1/2 * (1+1j), position + 1/2 * (1-1j), position + 1/2 * (-1-1j), position + 1/2 * (-1+1j)])
     
 
-    def get_next_particle_position(self, line):
+    def get_next_particle(self, line):
         
         """
         Choose next particle according to the random line hitting distribution as described in the paper.

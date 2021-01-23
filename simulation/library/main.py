@@ -22,9 +22,18 @@ if __name__ == "__main__":
         data = json.load(json_file)
     
     if data["aggregate"] == "lha":
-        lha = lha.Line_Hitting_Aggregate()
+        aggregate = lha.Line_Hitting_Aggregate()
     elif data["aggregate"] == "dla":
-        dla = dla.External_DLA()        
+        aggregate = dla.External_DLA()        
         
-    lha.run_process(data["cluster_size"] - 1)
+    aggregate.run_process(data["cluster_size"] - 1)
     cd.export_data(lha, data)
+
+
+
+
+
+
+
+
+
