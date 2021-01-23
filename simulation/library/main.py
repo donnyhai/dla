@@ -9,7 +9,7 @@ Here we provide the code for running the aggregate process and creating exports 
 """
 
 #systemic imports
-import json
+import json, shutil, os
 import create_data as cd
 
 import line_hitting_aggregate as lha
@@ -17,6 +17,10 @@ import external_dla as dla
     
 
 if __name__ == "__main__":
+    
+    current_dir = os.getcwd()
+    up_dir = os.path.dirname(current_dir)
+    shutil.copyfile(up_dir + "\\parameters.json", current_dir + "\\parameters.json")
     
     with open("parameters.json") as json_file:
         data = json.load(json_file)
@@ -27,7 +31,7 @@ if __name__ == "__main__":
         aggregate = dla.External_DLA()        
         
     aggregate.run_process(data["cluster_size"] - 1)
-    cd.export_data(lha, data)
+    cd.export_data(aggregate, data)
 
 
 

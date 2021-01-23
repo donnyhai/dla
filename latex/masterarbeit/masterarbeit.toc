@@ -22,4 +22,5 @@
 \contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregate}{31}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Images and Empirical Fractal Dimension}{31}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Code}{31}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Outlook}{36}{section.7}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

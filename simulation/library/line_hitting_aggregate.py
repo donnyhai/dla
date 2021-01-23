@@ -9,7 +9,7 @@ We reference the set of complex numbers as CC
 
 #mathematical imports
 import random
-from math import pi, log #log is the natural logarithm with base e
+from math import pi, log #here log is the natural logarithm with base e
 
 import geometry as geom
 
@@ -94,14 +94,14 @@ class Line_Hitting_Aggregate:
         return False
     
     
-    def get_square(self, position):
+    def get_square(self, pos):
         
         """
         return is a square polygon around position as defined in the paper, with segments starting 
         from right top vertex of the square moving clockwise
         """
         
-        return geom.Polygon([position + 1/2 * (1+1j), position + 1/2 * (1-1j), position + 1/2 * (-1-1j), position + 1/2 * (-1+1j)])
+        return geom.Polygon([pos + 1/2 * (1+1j), pos + 1/2 * (1-1j), pos + 1/2 * (-1-1j), pos + 1/2 * (-1+1j)])
     
 
     def get_next_particle(self, line):

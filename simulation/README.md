@@ -74,11 +74,16 @@ During the process in each step the "current fractal dimension" is calculated by
 (compare with the definition in the paper). After the process we therefore have list of all calculated fractal dimensions of which the last value comes 
 most close to the definition as in the definition a limit is taken (fractal_dimension = liminf_{n to infinity} ln(n)/ln(radius of the cluster at time n)).
 The fractal information json file will contain the calculated fractal dimension values. You will find this format:
+
 last_value: 			Last value of the calculated fractal dimension list.
+
 every_1000th_value_average:	average of all fractal dimension values which have an index in the list which is zero modulo 1000
+
 all_average:			average of all values in the list
+
 every_1000th_value:		list of all fractal dimension values which have an index in the list which is zero modulo 1000
+
 all_values:			the original list of all calculated fractal dimension values
 
 
-Enjoy the beautiful pictures and have fun!
+## Enjoy the beautiful pictures and have fun! ## 

@@ -1,9 +1,9 @@
 { 
-"aggregate": "dla",
-"cluster_size": 2000, 
+"aggregate": "lha",
+"cluster_size": 100, 
 "background_color": "ffffff",
 "particle_color": ["2b1c8f", "cc0000"],
-"color_generation_size": 400,
+"color_generation_size": 500,
 "image_width": 300, 
 "image_height": 300
 }

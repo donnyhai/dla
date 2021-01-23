@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  23 JAN 2021 18:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  23 JAN 2021 22:28
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -817,12 +817,12 @@ been already used, duplicate ignored
                    \relax 
 l.102 \newpage
                [1]
-<images/display.jpg, id=66, 4183.63pt x 3693.8pt>
+<images/display.jpg, id=68, 4183.63pt x 3693.8pt>
 File: images/display.jpg Graphic file (type jpg)
 <use images/display.jpg>
 Package pdftex.def Info: images/display.jpg  used on input line 105.
 (pdftex.def)             Requested size: 167.3167pt x 147.72684pt.
-<images/display2.jpg, id=67, 2320.67pt x 1581.91pt>
+<images/display2.jpg, id=69, 2320.67pt x 1581.91pt>
 File: images/display2.jpg Graphic file (type jpg)
 <use images/display2.jpg>
 Package pdftex.def Info: images/display2.jpg  used on input line 106.
@@ -857,7 +857,7 @@ LaTeX Warning: Command \glqq invalid in math mode on input line 202.
 LaTeX Warning: Command \grqq invalid in math mode on input line 202.
 
 [5]
-<images/geogebra-images/neuseeland-squares.png, id=102, 2028.07687pt x 814.5431
+<images/geogebra-images/neuseeland-squares.png, id=104, 2028.07687pt x 814.5431
 2pt>
 File: images/geogebra-images/neuseeland-squares.png Graphic file (type png)
 <use images/geogebra-images/neuseeland-squares.png>
@@ -869,23 +869,12 @@ Overfull \hbox (12.34436pt too wide) in paragraph at lines 240--241
  [][] 
  []
 
-[6]pdfTeX warning (ext4): destination with the same identifier (name{equation.3
-.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.257 \end{flalign}
-                    [7pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.3.1}) has been already used, duplicate ignored
+[6] [7pdfTeX warning (ext4): destination with the same identifier (name{equatio
+n.3.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
 l.257 \end{flalign}
-                    <./images/geogebra-images/neuseeland-squares.png>]pdfTeX wa
-rning (ext4): destination with the same identifier (name{equation.3.3}) has bee
-n already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.269 \end{flalign}
-                    [8]
+                    <./images/geogebra-images/neuseeland-squares.png>] [8]
 
 LaTeX Warning: Command \glqq invalid in math mode on input line 320.
 
@@ -928,14 +917,14 @@ Overfull \hbox (27.74617pt too wide) detected at line 608
  []
 
 [15] [16] [17]
-<images/geogebra-images/line-hit-squares.png, id=220, 535.33333pt x 370.27222pt
+<images/geogebra-images/line-hit-squares.png, id=222, 535.33333pt x 370.27222pt
 >
 File: images/geogebra-images/line-hit-squares.png Graphic file (type png)
 <use images/geogebra-images/line-hit-squares.png>
 Package pdftex.def Info: images/geogebra-images/line-hit-squares.png  used on i
 nput line 675.
 (pdftex.def)             Requested size: 411.3829pt x 284.52756pt.
-<images/geogebra-images/line-hit-A.png, id=222, 643.35312pt x 466.43102pt>
+<images/geogebra-images/line-hit-A.png, id=224, 643.35312pt x 466.43102pt>
 File: images/geogebra-images/line-hit-A.png Graphic file (type png)
 <use images/geogebra-images/line-hit-A.png>
 Package pdftex.def Info: images/geogebra-images/line-hit-A.png  used on input l
@@ -989,7 +978,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 773--774
 
  []
 
-<images/geogebra-images/line-param.png, id=255, 283.04178pt x 205.20529pt>
+<images/geogebra-images/line-param.png, id=257, 283.04178pt x 205.20529pt>
 File: images/geogebra-images/line-param.png Graphic file (type png)
 <use images/geogebra-images/line-param.png>
 Package pdftex.def Info: images/geogebra-images/line-param.png  used on input l
@@ -1020,7 +1009,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 822--827
  []
 
 [23 <./images/geogebra-images/line-param.png>]
-<images/geogebra-images/circle-part-S.png, id=275, 426.79134pt x 309.42372pt>
+<images/geogebra-images/circle-part-S.png, id=277, 426.79134pt x 309.42372pt>
 File: images/geogebra-images/circle-part-S.png Graphic file (type png)
 <use images/geogebra-images/circle-part-S.png>
 Package pdftex.def Info: images/geogebra-images/circle-part-S.png  used on inpu
@@ -1042,7 +1031,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 845--852
  []
 
 [24 <./images/geogebra-images/circle-part-S.png>]
-<images/geogebra-images/T.png, id=283, 223.51546pt x 162.0487pt>
+<images/geogebra-images/T.png, id=285, 223.51546pt x 162.0487pt>
 File: images/geogebra-images/T.png Graphic file (type png)
 <use images/geogebra-images/T.png>
 Package pdftex.def Info: images/geogebra-images/T.png  used on input line 860.
@@ -1087,199 +1076,236 @@ Underfull \hbox (badness 10000) in paragraph at lines 1052--1056
 
  []
 
-<images/code-snippets/mainpy.png, id=335, 285.31593pt x 144.54pt>
+<images/code-snippets/parameters.png, id=337, 245.41687pt x 127.22531pt>
+File: images/code-snippets/parameters.png Graphic file (type png)
+<use images/code-snippets/parameters.png>
+Package pdftex.def Info: images/code-snippets/parameters.png  used on input lin
+e 1063.
+(pdftex.def)             Requested size: 164.66061pt x 85.35826pt.
+<images/code-snippets/mainpy.png, id=338, 285.31593pt x 144.54pt>
 File: images/code-snippets/mainpy.png Graphic file (type png)
 <use images/code-snippets/mainpy.png>
 Package pdftex.def Info: images/code-snippets/mainpy.png  used on input line 10
-64.
+68.
 (pdftex.def)             Requested size: 224.657pt x 113.81102pt.
-<images/code-snippets/lhainit.png, id=336, 274.02374pt x 74.52844pt>
+<images/code-snippets/lhainit.png, id=339, 274.02374pt x 74.52844pt>
 File: images/code-snippets/lhainit.png Graphic file (type png)
 <use images/code-snippets/lhainit.png>
 Package pdftex.def Info: images/code-snippets/lhainit.png  used on input line 1
-068.
+072.
 (pdftex.def)             Requested size: 209.23026pt x 56.9055pt.
-<images/code-snippets/runprocess.png, id=339, 361.35pt x 188.95593pt>
+<images/code-snippets/runprocess.png, id=343, 361.35pt x 188.95593pt>
 File: images/code-snippets/runprocess.png Graphic file (type png)
 <use images/code-snippets/runprocess.png>
 Package pdftex.def Info: images/code-snippets/runprocess.png  used on input lin
-e 1073.
+e 1077.
 (pdftex.def)             Requested size: 288.38014pt x 150.79968pt.
-<images/code-snippets/randomline.png, id=342, 244.66406pt x 63.98906pt>
+<images/code-snippets/randomline.png, id=346, 244.66406pt x 63.98906pt>
 File: images/code-snippets/randomline.png Graphic file (type png)
 <use images/code-snippets/randomline.png>
 Package pdftex.def Info: images/code-snippets/randomline.png  used on input lin
-e 1078.
+e 1082.
 (pdftex.def)             Requested size: 195.8211pt x 51.21504pt.
-<images/code-snippets/linehitscluster.png, id=344, 412.54124pt x 64.74188pt>
+<images/code-snippets/linehitscluster.png, id=348, 412.54124pt x 64.74188pt>
 File: images/code-snippets/linehitscluster.png Graphic file (type png)
 <use images/code-snippets/linehitscluster.png>
 Package pdftex.def Info: images/code-snippets/linehitscluster.png  used on inpu
-t line 1083.
+t line 1087.
 (pdftex.def)             Requested size: 326.36354pt x 51.21504pt.
-<images/code-snippets/getsquare.png, id=345, 569.87906pt x 27.85406pt>
+<images/code-snippets/getsquare.png, id=349, 569.87906pt x 27.85406pt>
 File: images/code-snippets/getsquare.png Graphic file (type png)
 <use images/code-snippets/getsquare.png>
 Package pdftex.def Info: images/code-snippets/getsquare.png  used on input line
- 1087.
+ 1091.
 (pdftex.def)             Requested size: 465.70384pt x 22.76228pt.
-<images/code-snippets/nextparticle.png, id=348, 312.41719pt x 63.98906pt>
+<images/code-snippets/nextparticle.png, id=352, 312.41719pt x 63.98906pt>
 File: images/code-snippets/nextparticle.png Graphic file (type png)
 <use images/code-snippets/nextparticle.png>
 Package pdftex.def Info: images/code-snippets/nextparticle.png  used on input l
-ine 1092.
+ine 1095.
 (pdftex.def)             Requested size: 250.0485pt x 51.21504pt.
-<images/code-snippets/islower.png, id=349, 200.24812pt x 211.54031pt>
+<images/code-snippets/islower.png, id=353, 200.24812pt x 211.54031pt>
 File: images/code-snippets/islower.png Graphic file (type png)
 <use images/code-snippets/islower.png>
 Package pdftex.def Info: images/code-snippets/islower.png  used on input line 1
-096.
+099.
 (pdftex.def)             Requested size: 161.60732pt x 170.71652pt.
-<images/code-snippets/fractaldimension.png, id=352, 261.97874pt x 53.44969pt>
+<images/code-snippets/fractaldimension.png, id=355, 261.97874pt x 53.44969pt>
 File: images/code-snippets/fractaldimension.png Graphic file (type png)
 <use images/code-snippets/fractaldimension.png>
 Package pdftex.def Info: images/code-snippets/fractaldimension.png  used on inp
-ut line 1101.
+ut line 1104.
 (pdftex.def)             Requested size: 209.18753pt x 42.67912pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Overfull \hbox (17.57289pt too wide) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
+
+ []
+
+
+Overfull \hbox (17.57289pt too wide) in paragraph at lines 1060--1108
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Overfull \hbox (18.35852pt too wide) in paragraph at lines 1060--1105
+Overfull \hbox (18.35852pt too wide) in paragraph at lines 1060--1108
 \T1/lmr/m/n/12 max-i-mum and then chooses uni-formly be-tween min-i-mum and max
 -i-mum with $[]$.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1105
-
- []
-
-[31] [32 <./images/code-snippets/mainpy.png> <./images/code-snippets/lhainit.pn
-g>] [33 <./images/code-snippets/runprocess.png> <./images/code-snippets/randoml
-ine.png> <./images/code-snippets/linehitscluster.png>] [34 <./images/code-snipp
-ets/getsquare.png> <./images/code-snippets/nextparticle.png> <./images/code-sni
-ppets/islower.png> <./images/code-snippets/fractaldimension.png>] [35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 1163--1164
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1167
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1108
 
  []
 
-[37] (masterarbeit.aux)
+[31] [32 <./images/code-snippets/parameters.png> <./images/code-snippets/mainpy
+.png> <./images/code-snippets/lhainit.png>] [33 <./images/code-snippets/runproc
+ess.png> <./images/code-snippets/randomline.png>] [34 <./images/code-snippets/l
+inehitscluster.png> <./images/code-snippets/getsquare.png> <./images/code-snipp
+ets/nextparticle.png> <./images/code-snippets/islower.png>] [35 <./images/code-
+snippets/fractaldimension.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1112--1115
+
+ []
+
+[36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 1170--1171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1172--1174
+
+ []
+
+[38] (masterarbeit.aux)
 Package rerunfilecheck Info: File `masterarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 11852 strings out of 479697
- 208791 string characters out of 2865232
+ 11862 strings out of 479697
+ 209029 string characters out of 2865232
  665854 words of memory out of 3000000
- 28508 multiletter control sequences out of 15000+200000
+ 28515 multiletter control sequences out of 15000+200000
  476221 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  106i,20n,111p,10609b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1309,9 +1335,9 @@ b><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy1
 msy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (39 pages, 4068573 bytes).
+Output written on masterarbeit.pdf (40 pages, 4074533 bytes).
 PDF statistics:
- 554 PDF objects out of 1000 (max. 8388607)
- 129 named destinations out of 1000 (max. 500000)
- 275 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 564 PDF objects out of 1000 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 288 words of extra memory for PDF output out of 10000 (max. 10000000)
 
