@@ -29,10 +29,10 @@ current_time = format_time()
 current_dir = os.getcwd()
 
 
-def export_data(aggregate, data):
+def export_data(aggregate, data, separator):
     
     #create foldername and filenames for image file, fractal information file and parameters file
-    foldername = ("\\" + current_time + "_" + data["aggregate"] + "_" + str(data["cluster_size"]) + "_" + str(data["color_generation_size"]))
+    foldername = (separator + current_time + "_" + data["aggregate"] + "_" + str(data["cluster_size"]) + "_" + str(data["color_generation_size"]))
     foldername = foldername.replace(":","_")
     
     filename_image = (current_time + "_" + "image" + "_" + data["aggregate"] + "_" + str(data["cluster_size"]) + "_" + str(data["color_generation_size"]) + ".png")
@@ -47,22 +47,22 @@ def export_data(aggregate, data):
     #create exports
     create_pygame_image(filename_image, aggregate, data)
     create_information(filename_information, aggregate)
-    create_parameters_file(filename_parameters)
+    create_parameters_file(filename_parameters, separator)
     
     #move exports into a folder
     os.mkdir(current_dir + foldername)
     for filename in [filename_image, filename_information, filename_parameters]:
-        shutil.move(current_dir + "\\" + filename, current_dir + foldername + "\\" + filename)
+        shutil.move(current_dir + separator + filename, current_dir + foldername + separator + filename)
     
     #move folder to exports
-    move_folder_dir = os.path.dirname(current_dir) + "\\exports"
+    move_folder_dir = os.path.dirname(current_dir) + separator + "exports"
     shutil.move(current_dir + foldername, move_folder_dir)
     
     sys.exit()
     
     
-def create_parameters_file(filename):
-    os.rename(current_dir + "\\parameters.json", current_dir + "\\" + filename)
+def create_parameters_file(filename, separator):
+    os.rename(current_dir + separator + "parameters.json", current_dir + separator + filename)
     
     
 def create_information(filename, aggregate):

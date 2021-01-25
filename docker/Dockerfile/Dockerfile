@@ -1,5 +1,5 @@
 FROM nvidia/cuda:10.2-base
-#transformers-container:v1
+#dla:v1
 
 RUN apt update && \
 	apt install openjdk-8-jdk bash -y && \

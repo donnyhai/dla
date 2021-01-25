@@ -1,1 +1,1 @@
-docker build -t transformers-container:v1 Dockerfile --network=host
+docker build -t dla:v1 Dockerfile --network=host

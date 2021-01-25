@@ -1,1 +1,1 @@
-docker run -it --rm -v $trans/youtube-video-project/mount-dir:/app -w /app transformers-container:v1 bash
+docker run -it --rm -v /home/donnykong/Schreibtisch/dla/docker/mount-dir:/app -w /app dla:v1 bash

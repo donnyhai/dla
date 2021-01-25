@@ -15,11 +15,15 @@ import external_dla as dla
     
 
 if __name__ == "__main__":
+
+    #choose your pathname separator (you can find it looking at pathnames in your system)
+    #separator = "\\"
+    separator = "/"
     
     #copy parameters.json into the library
     current_dir = os.getcwd()
     up_dir = os.path.dirname(current_dir)
-    shutil.copyfile(up_dir + "\\parameters.json", current_dir + "\\parameters.json")
+    shutil.copyfile(up_dir + separator + "parameters.json", current_dir + separator + "parameters.json")
     
     #read parameters.json    
     with open("parameters.json") as json_file:
@@ -37,7 +41,7 @@ if __name__ == "__main__":
     print("running time: " + str(time.time() - begin_time) + " seconds")
     
     #create and export data (image, information, parameters)
-    cd.export_data(aggregate, data)
+    cd.export_data(aggregate, data, separator)
 
 
 
