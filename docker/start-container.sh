@@ -1,1 +1,3 @@
-docker run -it --rm -v /home/donnykong/Schreibtisch/dla/docker/mount-dir:/app -w /app dla:v1 bash
+mountdir="/home/donnykong/Schreibtisch/dla/docker/mount-dir/simulation"
+
+docker run -it -v $mountdir:/app -w /app dla:latest bash
