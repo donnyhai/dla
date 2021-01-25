@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Nov 22 00:50:43 2020
+Created on Fri Jan 25 14:16:52 2021
 
 @author: Tillmann Tristan Bosch
+
+Here you find an implementation of external dla. Note that it is not claimed that this simulation is close to its original mathematical definition. 
 """
+
 import cmath
 import random
 from math import log, pi
@@ -19,7 +22,7 @@ class External_DLA:
 
         self.init_surround_circle()
         self.isnotnear_counter = 0
-
+        
     def run_process(self, iterations):
         for i in range(iterations):
             new_position = self.do_particle_walk(self.get_random_start_position())
@@ -33,8 +36,6 @@ class External_DLA:
             print(i)
         print("number of notnear: " + str(self.isnotnear_counter))
 
-    # particle walk with noise reduction
-
     def do_particle_walk(self, position):
         isnear_counter = 0
         while True:
@@ -43,7 +44,7 @@ class External_DLA:
             else:
                 position = random.choice(self.get_neighbours(position))
 
-            if isnear_counter == 30:
+            if isnear_counter == self.cluster_radius // 3:
                 if not self.isNear(position):
                     position = self.get_random_start_position()
                     self.isnotnear_counter += 1
@@ -70,7 +71,7 @@ class External_DLA:
 
     # start position of the next random walk
     def get_random_start_position(self):
-        radius = self.surroundCircle["radius"]
+        radius = self.surround_circle["radius"]
         startpos = cmath.rect(radius, random.random() * 2 * pi)
         return int(startpos.real) + int(startpos.imag) * 1j
 
@@ -78,10 +79,10 @@ class External_DLA:
         self.minX, self.maxX = 0, 0
         self.minY, self.maxY = 0, 0
 
-        # how far shall be the surroundCircle be away of the outest particles?
-        self.helpSpaceDelta = 2
+        # how far shall be the surround_circle be away of the outest particles?
+        self.helpSpaceDelta = 5
         # this a circle closely around the cluster
-        self.surroundCircle = {
+        self.surround_circle = {
             "middlePoint": self.particles[0], "radius": self.helpSpaceDelta}
 
     def actualize_surround_circle(self):
@@ -89,14 +90,14 @@ class External_DLA:
         self.minX, self.maxX = min(self.minX, x), max(self.maxX, x)
         self.minY, self.maxY = min(self.minY, y), max(self.maxY, y)
 
-        self.surroundCircle["middlePoint"] = (
+        self.surround_circle["middlePoint"] = (
             (self.minX + self.maxX) / 2) + ((self.minY + self.maxY) / 2) * 1j
         dx, dy = self.maxX - self.minX, self.maxY - self.minY
-        self.surroundCircle["radius"] = abs(
+        self.surround_circle["radius"] = abs(
             dx + dy * 1j) / 2 + self.helpSpaceDelta
 
     def isNear(self, pos):
-        return abs(pos) < self.surroundCircle["radius"] + 10
+        return abs(pos) < self.surround_circle["radius"] + 5
 
     def get_neighbours(self, position):
         return [position + 1, position - 1, position + 1j, position - 1j]
@@ -106,3 +107,4 @@ class External_DLA:
             if neighbour in self.particles:
                 return True
         return False
+

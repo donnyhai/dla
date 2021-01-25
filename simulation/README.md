@@ -61,29 +61,30 @@ HINT: If you have a problem running this, you maybe have to replace "py" with "p
 The appearing numbers in the shell let you know about how many iterations are finished already. In the simulation of "lha" the print "line missed cluster" indicates 
 that a randomly chosen line according to the definitions in the paper missed the cluster and a new line had to be chosen. 
 
-When calculation is over, you can find an image, a json file about the calculated fractal dimensions and a json file containing the parameters in the exports folder.
+When calculation is over, you can find an image, a json file about cluster information and a json file containing the parameters in the exports folder.
 The created filenames will have the following format:
 {CURRENT SYSTEM TIME}__{FILE INFORMATION}__{LHA OR DLA}__{CLUSTER SIZE}__{COLOR GENERATION SIZE}.{PNG OR JSON}
 Example:
-Fri Jan 22 16_56_35 2021__image__lha__5000__200.png
-Fri Jan 22 16_56_35 2021__fractalinfo__lha__5000__200.json
-Fri Jan 22 16_56_35 2021__parameters__lha__5000__200.json
-These three files where created at Fri Jan 22 16_56_35 2021 after a simulation of lha using 5000 cluster points with a color generation size of 200. 
+2021_01_24_19_14_59__image__lha__5000__200.png
+2021_01_24_19_14_59__information__lha__5000__200.json
+2021_01_24_19_14_59__parameters__lha__5000__200.json
+These three files where created at 2021_01_24_19_14_59 (format: year_month_day_hour_minute_second) after a simulation of lha using 5000 cluster points 
+with a color generation size of 200. 
 
-During the process in each step the "current fractal dimension" is calculated by ln(n)/ln(radius of the cluster at time n) and saved in a list 
-(compare with the definition in the paper). After the process we therefore have list of all calculated fractal dimensions of which the last value comes 
+During the process in each step the current "fractal dimension" is calculated by ln(n)/ln(radius of the cluster at time n) and saved in a list 
+(compare with the definition in the paper). After the process we therefore have a list of all calculated fractal dimensions of which the last value comes 
 most close to the definition as in the definition a limit is taken (fractal_dimension = liminf_{n to infinity} ln(n)/ln(radius of the cluster at time n)).
-The fractal information json file will contain the calculated fractal dimension values. You will find this format:
 
-last_value: 			Last value of the calculated fractal dimension list.
+The "2021_01_24_19_14_59__information__lha__5000__200.json" file will contain these calculated fractal dimension values and other information about the simulation.
+In this file you will find the following information:
 
-every_1000th_value_average:	average of all fractal dimension values which have an index in the list which is zero modulo 1000
+time:				the system time when the calculation of the process had finished (format: year_month_day_hour_minute_second)
 
-all_average:			average of all values in the list
+last_fractal_value: 		last value of the calculated fractal dimension list.
 
-every_1000th_value:		list of all fractal dimension values which have an index in the list which is zero modulo 1000
+fractal_values:			list of all calculated fractal dimension values
 
-all_values:			the original list of all calculated fractal dimension values
+particles:			list of all particles 
 
 
 ## Enjoy the beautiful pictures and have fun! ## 

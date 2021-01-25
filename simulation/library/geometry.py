@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Nov 20 16:17:40 2020
+Created on Fri Jan 25 14:19:52 2021
 
 @author: Tillmann Tristan Bosch
 
-INFO
-Here we provide basic geometrical features we need to simulate the line hitting aggregate. 
+Here basic geometrical features are provided which are needed in the simulation of the line hitting aggregate. 
 """
 
 from math import sin, cos

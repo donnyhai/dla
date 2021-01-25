@@ -39,6 +39,8 @@
 \newcommand{\GG}{\mathfrak{G}}
 \newcommand{\mP}{\mathcal{P}}
 \newcommand{\rad}{\text{rad}}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
 
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
@@ -115,7 +117,7 @@
 \section{Preliminaries} \label{prelim}
 
 \subsection{Symbols}
-Here we list all symbols which will be used in this paper. Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
+Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
 \begin{flalign*}
 	&\N = \{1,2,3,\dots\},\quad \text{the set of natural numbers (without 0)}\\
 	&\N_0 = \N\cup\{0\}\\
@@ -130,7 +132,8 @@ Here we list all symbols which will be used in this paper. Let $d\in \N$ and $q\
 	&\G := A(2,1),\quad  \text{the set of lines in the real plane}\\
 	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\},\quad \text{identify }SO_2 = \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
 	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d,b\in \R^d\},\quad  \text{the set of euclidean motions} \\
-	&\mathcal{P}_f,\quad \text{the set of finite subsets of $\Z^d$ (or $\Z^2$ respective to the context)} \\
+	&\mP^d_f,\quad \text{the set of finite subsets of $\Z^d$} \\
+	&\mP_f := \mP^2_f 
 \end{flalign*}
 
 \newpage
@@ -180,21 +183,37 @@ So a random walk can be understood as a particle starting from some point $x$ an
 \end{definition}
 
 \begin{definition}
-	Define $T:=T^+_x$ to be the first time for the random walk to come back to its origin $x$. The random walk is called $\mathit{recurrent}$ if 
+	A random walk with origin in $x\in\Z^d$ is called  $\mathit{recurrent}$ if
 	\begin{flalign*}
-		\PP_x(T<\infty) = 1, 
+		\PP_x(T^+_x<\infty) = 1
 	\end{flalign*}
 	and $\mathit{transient}$ if
 	\begin{flalign*}
-		\PP_x(T<\infty) < 1.
+		\PP_x(T^+_x<\infty) < 1.
 	\end{flalign*}
 \end{definition}
 
 \begin{lemma} \label{recurr}
-	A random walk $(S_n)_{n\in \N}$ on $\Z^d$ is recurrent if $d\leq 2$ and transient if $d\geq 3$. 
+	A random walk on $\Z^d$ is recurrent if $d\leq 2$ and transient if $d\geq 3$. 
 \end{lemma}
 \begin{proof}
-	A detailed proof of this result is presented in $\cite{henze}$ Satz $5.1$. 
+	Proofs of this result are presented in $\cite{henze}$ Satz $5.1$ or $\cite{markov}$ Korollar $2.6.6$. 
+\end{proof}
+
+\begin{lemma} \label{recurrA}
+	The following two statements are equivalent:
+	\begin{enumerate}
+		\item $\PP_x(T_x^+<\infty) = 1 \text{ for all } x\in\Z^2$
+		\item $\PP_x(T_A^+<\infty) = 1 \text{ for all } x\in\Z^2 \text{ and } A\subset\Z^2$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	The direction $(ii)$ to $(i)$ is clear. For the other direction choose $x\in\Z^2$ and $A\subset \Z^2$. We know that in general for any point $y\in\Z^2$ we have $\PP_x(T_y^+<\infty) > 0$ for a random walk in $\Z^d$ for any dimension $d\in\N$. By Lemma \ref{recurr} we know that a random walk on $\Z^2$ is recurrent. For that case it is proved  in \cite{markov} Satz $2.6.9$ that even $\PP_x(T_y^+<\infty) = 1$ holds for any $y\in\Z^2$. If we choose $y\in A$ we get
+	\begin{flalign*}
+		1 = \PP_x(T_y^+<\infty) \leq \PP_x(T_A^+<\infty),
+	\end{flalign*}
+	which completes the proof. 
 \end{proof}
 
 \subsubsection{Expressions}
@@ -209,16 +228,16 @@ If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that $\glqq A \t
 
 In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^d$, where we start with the one point set $\{0\}$ and incrementally add a point of the outer boundary of the current cluster according to some distribution. What we get is a randomly, point by point growing connected cluster which we will call $\mathit{incremental\ aggregate}$. Define 
 \begin{flalign*}
-	\mathcal{P}_f := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
+	\mP^d_f := \{A\subset \mathbb{Z}^d\ |\ \text{A is finite}\}, 
 \end{flalign*}
-the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mathcal{P}_f$ we define 
+the set of finite subsets of $\mathbb{Z}^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mP^d_f$ we define 
 \begin{flalign*}
 	\mathcal{D}_A:= \{\mu: \mathbb{Z}^d\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}, 
 \end{flalign*}
 the set of distributions on $A$. Now we define an $\mathit{incremental\ aggregate}$ as follows.  
 
 \begin{definition} \label{incrementalaggregate}
-	Let $\mu=(\mu_A)_{A\in \mathcal{P}_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mathcal{P}_f$. An $\mathit{incremental\ aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mathcal{P}_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mP^d_f}$ be a family of distributions with $\mu_A\in \mathcal{D}_A$ for all $A\in \mP^d_f$. An $\mathit{incremental\ aggregate\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mP^d_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^d.
 	\end{align}
@@ -228,7 +247,7 @@ the set of distributions on $A$. Now we define an $\mathit{incremental\ aggregat
 The above defines a Markov chain whose state space is the set of finite and connected subsets of $\Z^d$. For all incremental aggregates in this paper we will focus on the $2$-dimensional case $\Z^2$ and will always identify $\R^2$ with $\C$ for a more convenient notation. 
 
 \begin{remark} \label{orderindependence}
-	It is worth to mention that the distribution of a new added point $y_n$ is not depending on the order of how previous points where added to the cluster since the harmonic measure only looks at the actual cluster as a set which doesn't contain any order information. 
+	It is worth to mention that the distribution of a new added point $y_{n+1}$ is not depending on the order of how previous points where added to the cluster since the harmonic measure only looks at the boundary of the current cluster and therefore doesn't consider any information about orderings of cluster points. 
 \end{remark}
 
 
@@ -247,7 +266,7 @@ The notion of fractal dimension is usually used for sets with uncountable cardin
 \end{flalign} 
 
 This definition makes sense in many contexts, for example is the box-dimension of straight line segments $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregates we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique square since the cluster is living on the grid $\Z^2$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
-Defining the radius of a finite set $A\in \mathcal{P}_f$ (with $|\cdot|$ the euclidean norm) as 
+Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the euclidean norm) as 
 \begin{flalign*}
 	\rad(A) := \max_{x\in A} |x|,
 \end{flalign*}
@@ -309,22 +328,29 @@ External DLA is a model of an incremental aggregate as defined above using a ver
 	\begin{flalign*}
 		H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto H_A(x,y):=\PP_x(S_{T_A^+} = y).
 	\end{flalign*}
-	In literature you can find the same definition where $T_A$ is used instead of $T_A^+$. Since in the following for finite sets $A\in\mathcal{P}_f$ the limit $|x| \to \infty$ of $H_A(x,y)$ is of interest, $T_A^+$ is chosen for convenience. In fact, for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
+	In literature you can find the same definition where $T_A$ is used instead of $T_A^+$. Since in the following for finite sets $A\in\mP^d_f$ the limit $|x| \to \infty$ of $H_A(x,y)$ is of interest, $T_A^+$ is chosen for convenience. In fact, for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
 	\begin{flalign*}
 		\bar H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto \bar H_A(x,y):=\PP_x(S_{T_A^+} = y\ |\ T_A^+<\infty), 
 	\end{flalign*} 
-	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}$ (Chapter $2$, Definition $2.1$) and in the same chapter it is proved, that for finite sets $A\in\mathcal{P}_f$ the limit
+	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}$ (Chapter $2$, Definition $2.1$) and in the same chapter it is proved, that for finite sets $A\in\mP^d_f$ the limit
 	\begin{flalign*}
 		\lim_{|x|\to\infty} \bar H_A(x,y) =: h_A(y) 
 	\end{flalign*}
-	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$. If we look at the $2$-dimensional case, by Lemma $\autoref{recurr}$, we have that a random walk is recurrent on $\Z^2$ and therefore we get $\bar H_A = H_A$ since $\PP_x(T_A^+<\infty) = 1$ by recurrence. 
+	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$.
 \end{definition}
 
-\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregate)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregate}$, short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mathcal{P}_f}$ as distribution. 
+\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregate)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregate}$, short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mP^d_f}$ as distribution. 
 \end{definition}
 
+\begin{remark} \label{harmonicmeasure2}
+	If we look at the $2$-dimensional case, by Lemma $\autoref{recurrA}$, we have that $\PP_x(T_A^+<\infty) = 1$ for any $x\in\Z^2$, and therefore get $\bar H_A = H_A$. So in two dimensions the harmonic measure of $A\subset \Z^2$ can be written as 
+	\begin{flalign*}
+		h_A(y) = \lim_{|x|\to\infty} \PP_x(S_{T_A^+} = y), \quad y\in A. 
+	\end{flalign*}
+\end{remark}
 
-\subsection{Fractal Dimension and Growth Rate of External DLA}
+
+\subsection{Fractal Dimension and Growth Rate of External DLA in $\Z^2$}
 
 There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results on DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
 \begin{flalign*}
@@ -449,19 +475,23 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		\Phi_y: \Z^2 \to \Z^2, x\mapsto x+y. 
 	\end{flalign*}	
-	Recall that in $\Z^2$ the harmonic measure can be written as $h_A(z) = \lim_{|x|\to \infty} \PP_x(S_{T_A^+} = z)$ for each $z\in A$ for a set $A\subset\Z^2$ (see Definition \ref{harmonicmeasure}). Since the distribution of random walks in $\Z^2$ is invariant under translation we can conlude that
+	Recall that in $\Z^2$ the harmonic measure of $A\subset\Z^2$ can be written as 
+	\begin{flalign*}
+		h_A(z) = \lim_{|x|\to \infty} \PP_x(S_{T_A^+} = z), \quad z\in A, 
+	\end{flalign*}
+	(see Remark \ref{harmonicmeasure2}). Since the distribution of random walks in $\Z^2$ is invariant under translation we can conlude that
 	\begin{flalign*}
 		h_A(z) &= \lim_{|x|\to \infty} \PP_x(S_{T_A^+} = z) \\
 		&= \lim_{|x|\to \infty} \PP_{\Phi_y(x)}(S_{T_{\Phi_y(A)}^+} = \Phi_y(z)) \\
-		&= h_{\Phi_y(A)}(\Phi_y(z)). 
+		&= h_{\Phi_y(A)}(\Phi_y(z)) 
 	\end{flalign*}
-	By Theorem \ref{keytheorem} we know that there exists a $c>0$ such that for all $n\in\N$ 
+	for all $z\in A$. By Theorem \ref{keytheorem} we know that there exists a $c>0$ such that for all $n\in\N$ 
 	\begin{flalign*}
 		h_A(0) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n.
 	\end{flalign*}
-	Let $n\in\N$. We get 
+	Therefore with $n\in\N$ we get 
 	\begin{flalign*}
-		h_A(0) = h_{\Phi_y(A)}(\Phi_y(0)) = h_{\Phi_y(A)}(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n
+		h_A(0) = h_{\Phi_y(A)}(\Phi_y(0)) = h_{\Phi_y(A)}(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n, 
 	\end{flalign*}
 	and since $A\in\mP^0_n\ \Leftrightarrow\ \Phi_y(A) \in \mP^{\Phi_y(0)}_n$ we get
 	\begin{flalign*}
@@ -479,11 +509,11 @@ The following theorem gives a bound on the harmonic measure which will be necess
 \begin{proof}
 	For $c>0$ define 
 	\begin{flalign*}
-		A_c := \{\omega\in\Omega\ |\ \rad(\E_n(\omega)) \leq cn^{\frac{3}{2}} \text{ for large }n\}
+		A_c := \{\omega\in\Omega\ |\ \rad(\E_n(\omega)) \leq cn^{\frac{2}{3}} \text{ for large }n\}
 	\end{flalign*}
 	and
 	\begin{flalign*}
-		D_c := \{\omega\in\Omega\ |\ T(\omega)(2n) \geq c n^{\frac{2}{3}} \text{ for large }n \}.
+		D_c := \{\omega\in\Omega\ |\ T(\omega)(2n) \geq c n^{\frac{3}{2}} \text{ for large }n \}.
 	\end{flalign*}
 	If we have a $c>0$ such that
 	\begin{flalign} \label{Ac}
@@ -493,9 +523,9 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\EE[\rad(\E_n)])}{\ln(n)}\\ &= \limsup_{n\to\infty} \frac{\ln(\int_\Omega \rad(\E_n) d\PP)}{\ln(n)} \\
 		&= \limsup_{n\to\infty} \frac{\ln(\int_{A_c} \rad(\E_n) d\PP)}{\ln(n)} \\
-		&\overset{(+)}{\leq} \limsup_{n\to\infty} \frac{\ln(\int_{A_c} cn^{\frac{3}{2}} d\PP)}{\ln(n)} \\ 
-		&= \limsup_{n\to\infty} \frac{\ln(cn^{\frac{3}{2}})}{\ln(n)} \\
-		&= \frac{3}{2} \limsup_{n\to\infty} \frac{\ln(c^{\frac{2}{3}}) + \ln(n)}{\ln(n)} = \frac{3}{2} \cdot 1 = \frac{3}{2}
+		&\overset{(+)}{\leq} \limsup_{n\to\infty} \frac{\ln(\int_{A_c} cn^{\frac{2}{3}} d\PP)}{\ln(n)} \\ 
+		&= \limsup_{n\to\infty} \frac{\ln(cn^{\frac{2}{3}})}{\ln(n)} \\
+		&= \frac{2}{3} \limsup_{n\to\infty} \frac{\ln(c^{\frac{3}{2}}) + \ln(n)}{\ln(n)} = \frac{2}{3} \cdot 1 = \frac{2}{3}
 	\end{flalign*}
 	If we choose
 	\begin{flalign*}
@@ -679,51 +709,51 @@ In the following we will look at a process which is the approach of a simple app
 \end{figure}
 
 \begin{definition} \label{ghitA}
-	Let $g=g_{\alpha,p}\in \G$ and $A\in \mathcal{P}_f$. We define 
+	Let $g=g_{\alpha,p}\in \G$ and $A\in \mP_f$. We define 
 	
 	\begin{align*}
 		g\cap A := \{ p\in A\ |\ g \text{ hits } p\}
 	\end{align*}
 	
-	which is the subset of all points in $A$ which are hit by $g$ (see $\autoref{linesquaresA}$). For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mathcal{P}_f$ with $g\cap A \neq\emptyset$. We choose two points $x,y\in g\cap A$ and split the definition of the relation $\triangleleft$ into four cases, depending on whether the line $g$ goes from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Denote the real part of $x$ with $Re(x)$ and the imaginary one with $Im(x)$. \\
+	which is the subset of all points in $A$ which are hit by $g$ (see $\autoref{linesquaresA}$). For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mP_f$ with $g\cap A \neq\emptyset$. We choose two points $x,y\in g\cap A$ and split the definition of the relation $\triangleleft$ into four cases, depending on whether the line $g$ goes from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Denote the real part of $x$ with $\re(x)$ and the imaginary one with $\im(x)$. \\
 	\\
 	$\mathit{Case}\ 1:\quad g\ \text{ is parallel to the x-axis}\quad (\Leftrightarrow\quad \alpha = \frac{\pi}{2})$
 	\begin{align*}
-	x \triangleleft y \quad :\Leftrightarrow \quad Re(x) < Re(y)
+	x \triangleleft y \quad :\Leftrightarrow \quad \re(x) < \re(y)
 	\end{align*}\\
 	$\mathit{Case}\ 2:\quad g\ \text{ is parallel to the y-axis}\quad (\Leftrightarrow\quad \alpha = 0)$
 	\begin{align*}
-	x \triangleleft y \quad :\Leftrightarrow \quad Im(x) < Im(y)
+	x \triangleleft y \quad :\Leftrightarrow \quad \im(x) < \im(y)
 	\end{align*}\\
 	$\mathit{Case}\ 3:\quad g\ \text{ is going from left-bottom to right-top}\quad (\Leftrightarrow\quad \alpha\in (\frac{\pi}{2},\pi))$
 	\begin{align*}
 	x \triangleleft y \quad :\Leftrightarrow \quad
 		\begin{cases}
-			Re(x) < Re(y), & \text{ if } Re(x) \neq Re(y), \\
-			Im(x) < Im(y), & \text{ if } Re(x) = Re(y).
+			\re(x) < \re(y), & \text{ if } \re(x) \neq \re(y), \\
+			\im(x) < \im(y), & \text{ if } \re(x) = \re(y).
 		\end{cases}
 	\end{align*}\\
 	$\mathit{Case}\ 4:\quad g\ \text{ is going from left-top to right-bottom}\quad (\Leftrightarrow\quad \alpha\in (0,\frac{\pi}{2}))$
 	\begin{align*}
 	x \triangleleft y \quad :\Leftrightarrow \quad
 	\begin{cases}
-	Re(x) < Re(y), & \text{ if } Re(x) \neq Re(y), \\
-	Im(x) > Im(y), & \text{ if } Re(x) = Re(y).
+	\re(x) < \re(y), & \text{ if } \re(x) \neq \re(y), \\
+	\im(x) > \im(y), & \text{ if } \re(x) = \re(y).
 	\end{cases}
 	\end{align*}\\
 	It is easy to see that this relation on $g\cap A$ is well-defined. In the following we will prove that this relation is strictly and totally ordered. 
 \end{definition}
 
 \begin{lemma}
-For a line $g=g_{\alpha,p}\in\G$ and $A\in \mathcal{P}_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
+For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
 	\begin{proof}
 		We will only proove the case where $g$ is going from left-bottom to right-top, which is $\mathit{Case}\ 3$ of the definition. In this case we have $\alpha\in (\frac{\pi}{2},\pi)$. Note, that the proof for $\mathit{Case\ }4$ will work very similar and in the case of $g$ being parallel to one of the axes ($\mathit{Case\ }1$ or $2$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $\alpha\in (\frac{\pi}{2},\pi)$. \\
 		\\
-		$\mathit{Antisymmetry:}$ For antisymmetry let $x \triangleleft y$ and $y \triangleleft x$. Suppose $Re(x)\neq Re(y)$, then $Re(x) < Re(y)$ and $Re(y) < Re(x)$, a contradiction because of the total order $<$ in $\mathbb{R}$. So $Re(x) = Re(y)$. But then we have $Im(x) < Im(y)$ and $Im(y) < Im(x)$ and therefore also $Im(x) = Im(y)$, hence $x=y$. \\
+		$\mathit{Antisymmetry:}$ For antisymmetry let $x \triangleleft y$ and $y \triangleleft x$. Suppose $\re(x)\neq \re(y)$, then $\re(x) < \re(y)$ and $\re(y) < \re(x)$, a contradiction because of the total order $<$ in $\mathbb{R}$. So $\re(x) = \re(y)$. But then we have $\im(x) < \im(y)$ and $\im(y) < \im(x)$ and therefore also $\im(x) = \im(y)$, hence $x=y$. \\
 		\\
-		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $Re(x) \neq Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) < Re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $Re(x)\neq Re(y)$ and $Re(y) = Re(z)$ we get $Re(x) < Re(y) = Re(z)$, therefore $x \triangleleft z$. In case $Re(x) = Re(y)$ and $Re(y) \neq Re(z)$ we get $Re(x) = Re(y) < Re(z)$, similar as the last case. In the last case $Re(x) = Re(y) = Re(z)$ we get $Im(x) < Im(y)$ and $Im(y) < Im(z)$ and again by transitivity of $<$ we get $Im(x) < Im(z)$, hence $x \triangleleft z$ again. \\
+		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $\re(x) \neq \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) < \re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $\re(x)\neq \re(y)$ and $\re(y) = \re(z)$ we get $\re(x) < \re(y) = \re(z)$, therefore $x \triangleleft z$. In case $\re(x) = \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) = \re(y) < \re(z)$, similar as the last case. In the last case $\re(x) = \re(y) = \re(z)$ we get $\im(x) < \im(y)$ and $\im(y) < \im(z)$ and again by transitivity of $<$ we get $\im(x) < \im(z)$, hence $x \triangleleft z$ again. \\
 		\\
-		$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $Re(x) \neq Re(y)$ or $Re(x) = Re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
+		$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $\re(x) \neq \re(y)$ or $\re(x) = \re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
 	 
 	\end{proof}
 \end{lemma}
@@ -775,7 +805,15 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 
 \subsubsection{Construction in the plane: Isotropic lines}
 
-For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $\langle\cdot,\cdot\rangle$ be the standard scalar product on $\R^2$, respectively used for values in $\C$ as we identify $\R^2$ with $\C$ as $\R$-vectorspaces. Let $e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i$ and $s_\alpha : = -\sin(\alpha) + \cos(\alpha)i$ be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $\langle\cdot,\cdot\rangle$ be the standard scalar product on $\R^2$, respectively used for values in $\C$ as we identify $\R^2$ with $\C$ as $\R$-vectorspaces. Let 
+\begin{flalign*}
+	e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i
+\end{flalign*}
+and 
+\begin{flalign*}
+	s_\alpha : = -\sin(\alpha) + \cos(\alpha)i
+\end{flalign*}
+be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
 \begin{flalign*}
 	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
 \end{flalign*}
@@ -999,14 +1037,14 @@ We are now able to choose a line randomly out of all lines hitting a cluster in 
 \begin{flalign*}
 	conv(A) := \bigcap_{A\subset K\in \K^2} K \in \K^2. 
 \end{flalign*}
-For a set $A\in \mathcal{P}_f$ we define 
+For a set $A\in \mP_f$ we define 
 \begin{flalign*}
 	conv(A):=conv(\bigcup_{p\in A} sq(p))
 \end{flalign*}
 and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. 
 
 \begin{definition} \label{linehittingdistribution}
-	$\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mathcal{P}_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
+	$\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mP_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
 	\begin{flalign*} 
 		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
 	\end{flalign*}
@@ -1033,7 +1071,7 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 	\begin{flalign*}
 		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([A])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([A])}{\PP^K_\mu([A])} = 1. 
 	\end{flalign*}
-	Hence, the family of distributions $(\mu_A)_{A\in \mathcal{P}_f}$ defines an incremental aggregate. 
+	Hence, the family of distributions $(\mu_A)_{A\in \mP_f}$ defines an incremental aggregate. 
 \end{definition}
 
 \begin{definition} $(\mathit{line\ hitting\ aggregate)}$ An incremental aggregate with the random line hitting distribution we call $\mathit{line\ hitting\ aggregate}$, short $\mathit{LHA}$. 
@@ -1057,12 +1095,12 @@ In this section we will present a simulation for the line hitting aggregate and 
 \subsection{Images and Empirical Fractal Dimension}
 
 \subsection{Code}
-In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised process. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
+In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, datetime, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised process. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
 \\When using the software you will have the possibility to enter some parameters in the $\mathit{parameters.json}$ file which include colorings of background and particle pixels, how many particles you want the cluster to have at the end and how big the created image shall be at the end (more on that you can find in the README file). An example of this file looks like this:\\
 \\
 \includegraphics[height=3cm]{images/code-snippets/parameters.png} \\
 \\
-If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing all calculated fractal dimension values. We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there you will find comments or other irrelevant differences, which we leave away here. \\
+If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing all calculated fractal dimension values and all particle coordinates for later lookup aswell. We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there you will find comments or other irrelevant differences, which we leave away here. \\
 \\The main executed python file $\mathit{main.py}$ looks like this:\\
 \\
 \includegraphics[height=4cm]{images/code-snippets/mainpy.png} \\
@@ -1154,6 +1192,11 @@ Egbert Brieskorn
 \emph{Felix Hausdorff zum Gedächtnis, Band I, vieweg Verlag}
 1996
 page 160
+
+\bibitem{markov}
+Prof. Dr. Stefan Tappe
+\emph{Markov-Ketten, lecture script summer semester 2018}
+Abteilung für Mathematische Stochastik, Albert-Ludwigs-Universität Freiburg
 
 
 

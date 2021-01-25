@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Nov 18 19:04:51 2020
+Created on Fri Jan 25 14:18:52 2021
 
 @author: Tillmann Tristan Bosch
 
-We reference the set of complex numbers as CC
+This is a simulation of the line hitting aggregate. In the paper it is displayed why this implementation comes very close to the process original mathematical definition. 
 """
 
 #mathematical imports
@@ -15,8 +15,6 @@ import geometry as geom
 
 
 class Line_Hitting_Aggregate:
-    
-    
     def __init__(self):
         
         self.particles = [0]
