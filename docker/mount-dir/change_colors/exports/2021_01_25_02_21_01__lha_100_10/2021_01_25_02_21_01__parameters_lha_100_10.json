@@ -1,0 +1,13 @@
+{ 
+"aggregate": "lha",
+"cluster_size": 100, 
+"background_color": "FFEBCD",
+"particle_color": ["FF8C00", "FFD700", "FFFF00", "FFD700", "FFD700"],
+"color_generation_size": 10,
+"image_width": 300, 
+"image_height": 300
+}
+
+
+
+
