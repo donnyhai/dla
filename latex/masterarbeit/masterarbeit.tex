@@ -339,7 +339,7 @@ External DLA is a model of an incremental aggregate as defined above using a ver
 	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at $\glqq \text{infinity}\grqq$ hits $A$ the first time at $y$.
 \end{definition}
 
-\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregate)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregate}$, short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mP^d_f}$ as distribution. 
+\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregate)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregate}$ (on $\Z^d$), short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregate with the family of harmonic measures $(h_A)_{A\in\mP^d_f}$ as distribution. 
 \end{definition}
 
 \begin{remark} \label{harmonicmeasure2}
@@ -445,28 +445,28 @@ hold.
 \end{proof}
 
 \begin{definition}
-	For $x\in\Z^2$ and $n\in\N$ define 
+	For $x\in\Z^2$ and $r\in [1,\infty)$ define 
 	\begin{flalign*}
-		{\mP}^x_n := \{ A\in{\mP}_f\ |\ x\in A, n=\max_{y\in A} |x-y|\text{ and } A \text{ is connected}\}.
+		{\mP}^x_r := \{ A\in{\mP}_f\ |\ x\in A, r=\max_{y\in A} |x-y| \text{ and } A \text{ is connected}\}.
 	\end{flalign*}
 \end{definition}
 
 The following theorem gives a bound on the harmonic measure which will be necessary in the proof we present here for the growth rate of DLA. The theorem is proved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
 
 \begin{theorem} \label{keytheorem}
-	There exists a constant $c>0$ such that for all $n\in\N$
+	There exists a constant $c>0$ such that for all $r\in [1,\infty)$
 	\begin{flalign*}
-		h_A(0) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n.
+		h_A(0) \leq cr^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_r.
 	\end{flalign*}
 \end{theorem}
 \begin{proof}
-	If $A\in\mP^0_n$ then $0\in A$ and $n=\rad(A)$ and for that case the proof is presented for all dimensions $d\in \N$ in $\cite{lawler}$ Theorem $2.5.2$. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
+	If $A\in\mP^0_r$ then $0\in A$ and $r=\rad(A)$ and for that case the proof is presented for all dimensions $d\in \N$ in $\cite{lawler}$ Theorem $2.5.2$. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
 \end{proof}
 
-\begin{proposition}
-	Theorem \ref{keytheorem} can be generalized to the following. Let $y\in\Z^2$, then there exists $c>0$ such that for all $n\in\N$
+\begin{proposition} \label{general}
+	Theorem \ref{keytheorem} can be generalized to the following. There exists a $c>0$ such that for all $y\in\Z^2$ and $s,r\in[1,\infty)$ with $s\geq r$ we have 
 	\begin{flalign*}
-		h_A(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^y_n.
+		h_A(y) \leq cr^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^y_s.
 	\end{flalign*}
 \end{proposition}
 
@@ -485,19 +485,21 @@ The following theorem gives a bound on the harmonic measure which will be necess
 		&= \lim_{|x|\to \infty} \PP_{\Phi_y(x)}(S_{T_{\Phi_y(A)}^+} = \Phi_y(z)) \\
 		&= h_{\Phi_y(A)}(\Phi_y(z)) 
 	\end{flalign*}
-	for all $z\in A$. By Theorem \ref{keytheorem} we know that there exists a $c>0$ such that for all $n\in\N$ 
+	for all $z\in A$. By Theorem \ref{keytheorem} we know that there exists a $c>0$ such that for all $s\in[1,\infty)$ 
 	\begin{flalign*}
-		h_A(0) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n.
+		h_A(0) \leq cs^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_s.
 	\end{flalign*}
-	Therefore with $n\in\N$ we get 
+	Therefore for $s,r\in\R$ with $s\geq r$ we get 
 	\begin{flalign*}
-		h_A(0) = h_{\Phi_y(A)}(\Phi_y(0)) = h_{\Phi_y(A)}(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_n, 
+		h_A(0) = h_{\Phi_y(A)}(\Phi_y(0)) = h_{\Phi_y(A)}(y) \leq cs^{-\frac{1}{2}} \leq cr^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_s, 
 	\end{flalign*}
-	and since $A\in\mP^0_n\ \Leftrightarrow\ \Phi_y(A) \in \mP^{\Phi_y(0)}_n$ we get
+	and since $A\in\mP^0_s\ \Leftrightarrow\ \Phi_y(A) \in \mP^{\Phi_y(0)}_s$ we get
 	\begin{flalign*}
-		h_A(y) \leq cn^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^y_n.
+		h_A(y) \leq cr^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^y_s.
 	\end{flalign*}
+	Since $c$ was chosen independently of $y$, $s$ and $r$, this completes the proof. 
 \end{proof}
+
 
 
 \begin{theorem}
@@ -595,6 +597,17 @@ The following theorem gives a bound on the harmonic measure which will be necess
 		&= \bigcap_{k\in\N} \bigcap_{l=1}^{k} \{y_l \neq z_i\} \\
 		&=\bigcap_{k\in\N} \bigcap_{l=1}^{k} y_l^{-1}(\Z^2\setminus \{z_i\}) \in\mathcal{F}.
 	\end{flalign*}
+	EVTL UNNÖTIG 
+	We also define
+	\begin{flalign*}
+		U_{[z]}^n = \{\tau_1<\tau_2<\dots<\tau_n<\infty\}
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		u_{[z]}^n := \PP(U_{[z]}^n)
+	\end{flalign*}
+	which play an important role in proof later. 
+	EVTL UNNÖTIG
 	Further for $i\in \{1,\dots,n-1\}$ we define waiting times
 	\begin{flalign*}
 		\sigma_i: \Omega \to \N^\infty, \omega\to \begin{cases}
@@ -608,35 +621,68 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\end{flalign*}
 	and
 	\begin{flalign*}
-		\sigma_i^{-1}(\infty) = \{\tau_{i+1}=\infty\}\cap\{\tau_i=\infty\} \in\mathcal{F},
+		\sigma_i^{-1}(\infty) = \{\tau_{i+1}=\infty\}\cup\{\tau_i=\infty\} \in\mathcal{F},
 	\end{flalign*}
 	since $\tau_{i+1}$ and $\tau_i$ are measurable. \\
-	\\Consider the event $W_n([z])$ and take $i\in\{1,\dots,n-1\}$. Note that in this case $\tau_j(\omega)$ is finite for all $j\in\{1,\dots,n\}$ and $\omega\in W_n([z])$. We will now argue that the distribution of $\sigma_i$ is bounded by that of a geometrically distributed random variable with paramter
+	\\Let $i\in \{1,\dots,n-1\}$. We will now prove that the distribution of $\sigma_i$ is bounded by that of a geometrically distributed random variable with parameter
 	\begin{flalign*}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign*}
-	for some constat $c_1>0$ which is the same constant for all $n\in\N$. 
-	\\TEST
-	\\For $j\geq 2$ define $D_j := \{A\in\mP_f\ |\  \PP(\E_{j-1} = A) > 0\text{ and }z_i\in \partial A\}$. Then
+	for some constant $c_1>0$, which is the same constant for all $n\in\N$. 
+	We will want to use Proposition \ref{general} here, for which we need to create terms where the harmonic measure appears. For that we need probabilities which condition on a given cluster which we will develop now. We first define some helpful sets. For $m\in\N$ define 
 	\begin{flalign*}
-		\PP(\sigma_i = l) &= \PP(\exists j\geq 2 \text{ such that } y_j = z_i,y_{j+1} \neq z_{i+1}, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1}) \\
-		&= \PP(\bigcup_{j\geq 2}  \{ y_j = z_i,y_{j+1} \neq z_{i+1}, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1}\}) \\
-		&\leq \sum_{j\geq 2} \PP(y_j = z_i,y_{j+1} \neq z_{i+1}, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1}) \\
-		&\overset{(\cdot)}{=} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)\PP(y_j = z_i, \dots, y_{j+l-1} \neq z_{i+1}, y_{j+l} = z_{i+1} \ |\ \E_{j-1} = A) \\
-		&\overset{(\cdot\cdot)}{=} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  \PP(y_j = z_i\ |\ \E_{j-1} = A)   \\
-		&\quad\quad\quad\quad\quad \cdot\PP(y_{j+1} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\}) \\
-		&\leq \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)\PP(y_{j+1} \neq z_{i+1}, \dots,  y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\})\\
-		&\overset{(\cdot\cdot)}{=} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  \PP(y_{j+1} \neq z_{i+1}\ |\ \E_j = A\cup\{z_i\})   \\
-		&\quad\quad\quad \cdot\PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}\neq z_{i+1}) \\
-		&= \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  (1-h_{A\cup\{z_i\}}(z_{i+1}))   \\
-		&\quad\quad\quad \cdot\PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}\neq z_{i+1}) \\
-		&\overset{(\cdot\cdot\cdot)}{\leq} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  (1-h_{A\cup\{z_i\}}(z_{i+1}))   \\
-		&\quad\quad\quad \cdot \sum_{y\in \partial (A\cup\{z_i\}), y\neq z_{i+1}}\PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}=y) \\
-		&\overset{(\cdot\cdot\cdot\cdot)}{\leq} \sum_{j\geq 2} \sum_{A\in D_j} \PP(\E_{j-1} = A)  (1-h_{A\cup\{z_i\}}(z_{i+1}))   \\
-		&\quad\quad\quad \cdot 4j\ \PP(y_{j+2} \neq z_{i+1}, \dots, y_{j+l} = z_{i+1} \ |\ \E_j = A\cup\{z_i\} \text{ and }y_{j+1}=\tilde y) \\
-		&= \dots \\ 
+		C_m := \{\E_m(\omega)\ |\ \omega\in\Omega\}
+	\end{flalign*} 
+	the set of realized clusters of size $m$ and the disjoint union of them as $C:=\bigcup_{m\in\N} C_m$. Further define another disjoint partition of $C$ with sets 
+	\begin{flalign*}
+		E_m := \{\E\in C\ |\ m-1\leq \rad(\E)\leq m\} 
 	\end{flalign*}
-	\\TEST
+	such that $C=\bigcup_{m\in\N} E_m$ aswell.
+	Since $|z_1| \geq n$ and $z_i$ is reachable by $z_1$ in $i-1$ steps we need some minmal amount of time steps such that it is possible for the cluster to contain $z_i$. So there exists a $n_0\in\N$ such that 
+	\begin{flalign*}
+		\PP(\tau_i=j) \begin{cases}
+			>0, \quad \text{ for }j\geq n_0,\\
+			=0, \quad\text{ for }j< n_0. 
+		\end{cases}
+	\end{flalign*}
+	Further if we choose $j\geq n_0$, then $\E_{j-1}$ must have some minimal radius if we want it to be possible that the next added point is $z_i$, similarly argumented as above. So there exists a $m_0\in\N_0$ such that
+	\begin{flalign*}
+		\PP(\E_{j-1}=\E,\tau_i=j) \begin{cases}
+			>0, \quad \text{ for }\E\in E_m \text{ and }m\geq m_0,\\
+			=0, \quad\text{ for }\E\in E_m \text{ and }m< m_0. 
+		\end{cases}
+	\end{flalign*}
+	Having made that clear we can use the law of total probability twice in the following. For $k\in\N_0$ get 
+	\begin{flalign*}
+		\PP(\sigma_i > k) &= \sum_{n_0\leq j \leq\infty}\PP(\tau_i=j) \PP(\sigma_i > k\ |\ \tau_i=j) \\
+		&=\PP(\tau_i=\infty) + \sum_{n_0\leq j <\infty}\PP(\tau_i=j) \PP(\sigma_i > k\ |\ \tau_i=j), 
+	\end{flalign*}
+	note that $\PP(\sigma_i > k\ |\ \tau_i=\infty)=1$ since $\{\tau_i=\infty\}\subset\{\sigma_i=\infty\}\subset\{\sigma_i>k\}$. Further for $n_0\leq j <\infty$ we get 
+	\begin{flalign*}
+		\PP(\sigma_i > k\ |\ \tau_i=j) = \sum_{m_0\leq m} \sum_{\E\in E_m}  \PP(\tau_i=j\ |\ \E_{j-1}=\E)\PP(\sigma_i > k\ |\ \E_{j-1} = \E, \tau_i=j). 
+	\end{flalign*}
+	We now state that there exists a constant $c_1>0$ such that for all $k\in\N$, $n_0\leq j <\infty$, $m_0\leq m$ and $\E\in E_m$ we have
+	\begin{flalign*}
+		\PP(\sigma_i > k\ |\ \E_{j-1} = \E, \tau_i=j) \geq (1-c_1n^{-\frac{1}{2}})^k
+	\end{flalign*}
+	which we prove by induction. For shorter expressions write $\gamma_{ij}:=\{\E_{j-1} = \E\} \cap \{\tau_i=j\}$. For $k=1$ by Proposition \ref{general} there exists a $c>0$ such that 
+	\begin{flalign*}
+		\PP(\sigma_i > 1\ |\ \gamma_{ij}) &\geq \PP(\tau_{j+1} \neq z_{i+1}\ |\ \gamma_{ij}) \\
+		&= 1 - h_{\E\cup \{z_i\}}(z_{i+1}) \\
+		&\geq 1 - cn^{-\frac{1}{2}} \\
+		&=( 1 - cn^{-\frac{1}{2}})^1. 
+	\end{flalign*} 
+	Note that we can use Proposition \ref{general} since ... Note that the harmonic measure doesn't care about the order of how points where added to form the current cluster, as mentioned in Remark \ref{orderindependence}. Now let the statement be true for some $k=l$. Then again by Proposition \ref{general} there exists a $c>0$ such that 
+	\begin{flalign*}
+		\PP(\sigma_i > l+1\ |\ \gamma_{ij}) &= \PP(\sigma_i > l, y_{l+1} \neq z_{i+1}\ |\ \gamma_{ij}) \\
+		&= \PP(\sigma_i>l\ |\ \gamma_{ij}) \PP(y_{l+1} \neq z_{i+1}\ |\ \gamma_{ij}, \sigma_i>l) \\
+		&\overset{(+)}{\geq} (1-c_1n^{-\frac{1}{2}})^l \PP(y_{l+1} \neq z_{i+1}\ |\ \gamma_{ij}, \sigma_i>l) \\
+		&\overset{(++)}{\geq} (1-c_1n^{-\frac{1}{2}})^l(1-c_1n^{-\frac{1}{2}}) \\
+		&= (1-c_1n^{-\frac{1}{2}})^{l+1},
+	\end{flalign*}
+	where in $(+)$ we used the induction assumption. In order to show $(++)$ we would need to split the probability by conditioning on all clusters such that 
+	...\\
+	INDUCTION END\\
 	Now choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
 	\begin{flalign*}
 		PROBLEM
@@ -684,7 +730,8 @@ The following theorem gives a bound on the harmonic measure which will be necess
 
 \subsection{Motivation}
 
-In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider a line hitting a point in $\mathbb{Z}^2$ if and only if it intersects with its unit square as defined in the following. 
+In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. A very similar approach was done by $\cite{ballistic}$ as a so called ballistic model, where they let particles move on straight lines to the cluster, but just from a small amount of directions. Our approach here extends this idea, as we will try to choose a random direction out of all directions in the plane in a most senseful fair way. Anyway we will see, that empirically we find similar results for the fractal dimension of this cluster as in $\cite{ballistic}$. \\
+\\Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares in $\R^2$ and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider a line hitting a point in $\mathbb{Z}^2$ if and only if it intersects with its unit square as defined in the following. Note that we identify $\R^2$ with $\C$ here. 
 
 \begin{definition} \label{squares}
 	Define 
@@ -1085,41 +1132,43 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 
 
 
+
 \newpage
 \section{Python Simulation of the Line Hitting Aggregate}
-In this section we will present a simulation for the line hitting aggregate and approximate its fractal dimension empirically. The simulation is written in $\mathit{Python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
+In this section we will present a simulation for the line hitting aggregate and approximate its fractal dimension empirically. The simulation is written in $\mathit{python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
 \\LINK \\
 \\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in this code. Every value in $\C$ with integer components can be represented by squares as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realizations of LHA as close as possible to its mathematical definition, so the only sources of error are external python packages and unexact machine calculation. \\
-\\Note that this software contains also an external DLA simulation. This simulation doesn't claim to be mathematically precise, but it is good enough to play around and create images with it to compare the to aggregates. 
+\\Note that this software contains also a simulation for external DLA. This simulation doesn't claim to be mathematically precise, but it is good enough to play around and create images with it, and get a vague visual comparison of the two aggregation models. 
 
 \subsection{Images and Empirical Fractal Dimension}
 
 \subsection{Code}
-In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, datetime, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised process. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
-\\When using the software you will have the possibility to enter some parameters in the $\mathit{parameters.json}$ file which include colorings of background and particle pixels, how many particles you want the cluster to have at the end and how big the created image shall be at the end (more on that you can find in the README file). An example of this file looks like this:\\
+In the following we will describe the code and claim that it is a precise implementation of LHA, excluding errors from python packages and machine calculation. In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, datetime, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised process. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
+\\When using the software you will have the possibility to enter some parameters in the $\mathit{parameters.json}$ file which include colorings of background and particle pixels, how many particles you want the cluster to have at the end and how big the created image shall be (more on that you can find in the README file). An example of this file looks like this:\\
 \\
 \includegraphics[height=3cm]{images/code-snippets/parameters.png} \\
 \\
-If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing all calculated fractal dimension values and all particle coordinates for later lookup aswell. We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there you will find comments or other irrelevant differences, which we leave away here. \\
+If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing all calculated fractal dimension values and all particle coordinates for later lookup aswell. \\
+\\We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there you will find comments or other irrelevant differences, which we leave away here. \\
 \\The main executed python file $\mathit{main.py}$ looks like this:\\
 \\
 \includegraphics[height=4cm]{images/code-snippets/mainpy.png} \\
 \\
-Note again that you can also run an external DLA simulation but we do not claim that it is mathematically precise and therefore won't argument that in this paper. The parameters in $\mathit{parameters.json}$ are read and depending on which process (LHA or DLA) shall be simulated, the according object gets initiated and its $\mathit{run\_process}$ method gets executed. The init method of LHA looks like the following:\\
+Note again that you can also run an external DLA simulation but we do not claim that it is mathematically precise and therefore won't argument that in this paper. The parameters in $\mathit{parameters.json}$ are read and depending on which process (LHA or DLA) shall be simulated, the according object gets initiated and its $\mathit{run\_process}$ method gets executed. The init method of $\mathit{Line\_Hitting\_Aggregate}$ looks like the following:\\
 \\
 \includegraphics[height=2cm]{images/code-snippets/lhainit.png} \\
 \\
-We init the particle set $\mathit{particles}$ as a set containg $0$, init the boundary set which in every iteration of the process will contain all neighbours of all particles in the particle set, set the initial cluster radius to $0$ and init a list $\mathit{fractal\_dimension\_values}$ which will contain all values of fractal dimensions we calculate during the process, more on that later. We init this list to contain one value 1.5 to ensure that its length is equal to the amount of particles which is helpful for later calculation. We choose 1.5 since it is most neutral (since the fractal dimension lies in between 1 and 2 by \ref{notion} (\ref{trivialboundary})), anyway this first value is not very relevant as we will be more interested in later values of calculated fractal dimensions. As neighbours we only consider the neighbour coordinates up, down, left and right as defined in \ref{zgraph}. \\
+We init the particle set $\mathit{particles}$ as a set containg $0$, init the boundary set which in every iteration of the process will contain all neighbours of all particles in the particle set, set the initial cluster radius to $0$ and init a list $\mathit{fractal\_dimension\_values}$ which will contain all values of fractal dimensions we calculate during the process, more on that later. We init this list to contain one value 1.5 to ensure that its length is equal to the amount of particles which is helpful for later calculation. We choose 1.5 since it is most neutral (since the fractal dimension lies in between 1 and 2 by \ref{notion} (\ref{trivialboundary})). Anyway this first value is not relevant and will not go into any calculation of later fractal dimension values. As neighbours we only consider the neighbour coordinates up, down, left and right as defined in \ref{zgraph}. \\
 \\After initializing a $\mathit{Line\_Hitting\_Aggregate}$ object the code executes its $\mathit{run\_process}$ method, which looks like the following:
 \\
 \includegraphics[height=5.3cm]{images/code-snippets/runprocess.png} \\
 \\
-This method will directly run a loop with $\mathit{data["cluster\_size"] - 1}$ iterations. In each iteration will exactly one particle be added to the particle set, so at the end we end up with exactly $\mathit{data["cluster\_size"]}$ particles since we started with one particle 0. \\
-\\If we call $K$ the current cluster it is now important to understand again, how choosing random $K$-isotropic lines works. In \ref{choosekiso} we have argumented that a $K$-isotropic line can be realized by considering a circle $B$ which contains the current cluster and choose an $B$-isotropic line which intersects with the circle. If it happens that this line intersects with the cluster, by \ref{circ} we know that we have realised a random $K$-isotropic line. The method $\mathit{get\_random\_line}$ \\
+This method will directly run a loop with $\mathit{data["cluster\_size"] - 1}$ iterations. In each iteration exactly one particle will be added to the particle set, so at the end we end up with exactly $\mathit{data["cluster\_size"]}$ particles since we started with one particle. \\
+\\If we call $K$ the current cluster it is now important to understand again, how choosing random $K$-isotropic lines works. In \ref{choosekiso} we have argumented that a $K$-isotropic line can be realized by considering a circle $B$ which contains the current cluster $K$ and choose a $B$-isotropic line which intersects with the circle. If it happens that this line intersects with $K$, by \ref{circ} we know that we have realised a random $K$-isotropic line. The method $\mathit{get\_random\_line}$ \\
 \\
 \includegraphics[height=1.8cm]{images/code-snippets/randomline.png} \\
 \\
-produces uniformly chosen line parameters, and using $\mathit{cluster\_radius + 2}$ here ensures that the line is hitting a surrounding circle. The method $\mathit{random.random()}$ produces an uniformly chosen value in $[0,1)$. The fact that $\mathit{random.random()}$ cannot choose the value $1$ doesn't disturb the distribution of the line since $\{1\}$ is a zero set for the Lebesque-measure. By \ref{chi}, choosing these line parameters uniformly indeed realises a random $B$-isotropic line. \\
+produces uniformly chosen line parameters, and using $\mathit{cluster\_radius + 2}$ here ensures that the line is hitting a surrounding circle $B$. The method $\mathit{random.random()}$ produces an uniformly chosen value in $[0,1)$. The fact that $\mathit{random.random()}$ cannot choose the value $1$ doesn't disturb the distribution of the line since $\{1\}$ is a zero set for the $2$-dimensional Lebesque-measure. By \ref{chi}, choosing these line parameters uniformly indeed realises a random $B$-isotropic line. \\
 \\The method $\mathit{line\_hits\_cluster}$ \\
 \\
 \includegraphics[height=1.8cm]{images/code-snippets/linehitscluster.png} \\
@@ -1142,7 +1191,7 @@ which implements the total ordered relation on all squares which got hit by the 
 \\
 \includegraphics[height=1.5cm]{images/code-snippets/fractaldimension.png} \\
 \\
-devides the log of the current amount of particles in the cluster by the log of the current radius of the cluster as motivated by the definition \ref{notion} (\ref{fractaldimension}) of the discrete fractal dimension and adds this value to the $\mathit{fractal\_dimension\_values}$ list. Note that $\mathit{log}$ in python is the natural logarithm with base $e$. Also note that choosing the maximum of the cluster radius and $2$ only serves the purpose to avoid problems in the very beginning of the simulation when the cluster radius is $1$ and therefore creating division by zero in the subsequent division.\\
+devides the log of the current amount of particles in the cluster by the log of the current radius of the cluster as motivated by the definition \ref{notion} (\ref{fractaldimension}) of the discrete fractal dimension and adds this value to the $\mathit{fractal\_dimension\_values}$ list. Note that $\mathit{log}$ in python is the natural logarithm with base $e$. Also note that choosing the maximum of the cluster radius and $2$ only serves the purpose to avoid problems in the very beginning of the simulation when the cluster radius is $1$ and therefore creating division by zero in the subsequent division ($\log(1)=0$).\\
 \\All in all this procedure should implement the distribution of the line hitting aggregate as mathematically defined. At the end its preciseness is depending on the preciseness of the distributions given by the python methods $\mathit{random.random}$ and $\mathit{random.choice}$, and machine calculation in general. Eventhough we do not claim to have implemented a mathematically precise simulation for external DLA, feel free to also try that one out and create beautiful pictures of the two incremental aggregates. 
 
 \newpage
@@ -1150,7 +1199,7 @@ devides the log of the current amount of particles in the cluster by the log of 
 \section{Outlook}
 In this paper we have looked at a general definition of incremental aggregates in $\Z^d$ and the notion of defining a fractal dimension for such discrete clusters. We have looked at two such incremental aggregates, the external diffusion limited aggregate and the line hitting aggregate, and have proved a rigorous result for the fractal dimension of external DLA.\\ 
 CONTINUE\\
-\\I hope that I have raised interest in the topic of incremental aggregates with this paper. I feel delighted to watch at the beautiful realizations of the aggregates and I hope the reader can feel similar looking at them and creating realizations him- or herself. 
+\\I hope that I have raised interest in the topic of incremental aggregates with this paper. I feel delighted to watch at the beautiful realizations of the aggregates and I hope the reader can feel similar looking at them and realizing images him- and herself. 
 
 \newpage
 
@@ -1198,6 +1247,11 @@ Prof. Dr. Stefan Tappe
 \emph{Markov-Ketten, lecture script summer semester 2018}
 Abteilung für Mathematische Stochastik, Albert-Ludwigs-Universität Freiburg
 
+\bibitem{ballistic}
+D. Bensimon, B. Shraiman and S. Liang
+\emph{On the ballistic model of aggregation}
+Physics Letter, University of Chicago
+1984
 
 
 \end{thebibliography}
