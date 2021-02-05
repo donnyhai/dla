@@ -267,9 +267,9 @@ The notion of fractal dimension is usually used for sets with uncountable cardin
 
 This definition makes sense in many contexts, for example is the box-dimension of straight line segments $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregates we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique square since the cluster is living on the grid $\Z^2$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
 Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the euclidean norm) as 
-\begin{flalign*}
+\begin{flalign} \label{radius}
 	\rad(A) := \max_{x\in A} |x|,
-\end{flalign*}
+\end{flalign}
 we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define $\varepsilon_n:=\frac{1}{\EE[\rad(\E_n)]}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\EE[\rad(\E_n)]}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret by $\EE[\rad(\E_n)]$ up to a constant. The minimum number of boxes with size $1$ we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\EE[\rad(\E_n)]}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as
 \begin{flalign} \label{fractaldimension}
 	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}
@@ -299,7 +299,7 @@ We therefore get
 \begin{flalign*}
 	d_f \geq 1.
 \end{flalign*}
-In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points aswell, so there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$ a.s.. Hence
+In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points as well, so there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$ a.s.. Hence
 \begin{flalign*}
 	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d.
 \end{flalign*}
@@ -364,13 +364,10 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 	\begin{flalign*}
 		T: [0,\infty) \to \N,\quad s\mapsto \min\{j\in\N\ |\ r(j)\geq s\}.
 	\end{flalign*}
-Then it is easy to show that for all $n\in\N$, $s\in [0,\infty)$ and $\omega\in\Omega$
-	\begin{enumerate} \label{props}
-		\item $r(\omega)$ and $T(\omega)$ grow monotonously 
-		\item $T(\omega)(r(\omega)(n)) \leq n$
-		\item $r(\omega)(T(\omega)(s)) \geq s$
-	\end{enumerate}
-hold. 
+	Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in \ref{notion} (\ref{radius}). 
+\begin{remark}\label{props}
+	It is easy to show that, for all $\omega\in\Omega$, $r(\omega)$ and $T(\omega)$ grow monotonously in $n\in\N$ resp. $s\in [0,\infty)$ and that for all $n\in\N$ and $s\in [0,\infty)$ we have $T(\omega)(r(\omega)(n)) \leq n$ and  $r(\omega)(T(\omega)(s)) \geq s$.
+\end{remark}
 
 \begin{lemma} \label{rtinfty}
 	For both random functions $r$ and $T$ we have that
@@ -384,34 +381,35 @@ hold.
 	for all $\omega\in\Omega$.
 \end{lemma}
 \begin{proof}
-	Since we are moving on the grid $\Z^d$ we have that for a ball $B_d(0,n)$ with radius $n\geq0$ we have a finite number $N:=|B_d(0,n)\cap \Z^d|$ and for any $\omega\in\Omega$ get 
+	Since we are moving on the grid $\Z^d$ we have that for a ball $B_d(0,n)$ with radius $n\geq0$ the number $N:=|B_d(0,n)\cap \Z^d|$ is finite and for any $\omega\in\Omega$ we get 
 	\begin{flalign*}
 		r(\omega)(2N)\geq n. 
 	\end{flalign*}
-	Therefore for all $\omega\in\Omega$ and any $n\in\N$ we can find a $M\in\N$ such that $r(\omega)(M)\geq n$, and since $r(\omega)$ grows monotonously we get $r(\omega)(n) \to\infty \text{ for } n\to\infty$ for all $\omega\in\Omega$. Very similarly we can argument for $T$. 
+	Therefore for all $\omega\in\Omega$ and any $n\in\N$ we can find a $M\in\N$ such that $r(\omega)(M)\geq n$, and since $r(\omega)$ grows monotonously we get $r(\omega)(n) \to\infty \text{ for } n\to\infty$ for all $\omega\in\Omega$. Very similarly we can argue for $T$. 
 \end{proof}
 
 \begin{lemma} \label{randt}
-	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ be a bijective, multiplicative and monotonously growing function. Then the following are equivalent:
+	Let $a>0$ and $h:[0,\infty) \to [0,\infty)$ be a bijective, multiplicative and increasing function. For $c>0$ define
+	\begin{flalign*}
+		A_c:=\{\omega \in\Omega\ |\ \exists N=N(\omega)\in\N: r(\omega)(n) \leq ch(n) \text{ for all } n>N\}
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		D_c := \{\omega \in\Omega\ |\ \exists N=N(\omega)\in\N: T(\omega)(as)\geq ch^{-1}(s) \text{ for all } s>N\}.
+	\end{flalign*}
+	 Then the following are equivalent:
 	\begin{enumerate}
-		\item $\exists c>0: \PP(r(n) \leq ch(n) \text{ for large $n$}) = 1$ 
-		\item $\exists c>0: \PP(T(as)\geq ch^{-1}(s) \text{ for large $s$})=1$
+		\item $\exists c>0: \PP(A_c) = 1$ 
+		\item $\exists c>0: \PP(D_c)=1$
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof} 
 	$\Rightarrow$: 
-	For $c>0$ define
-	\begin{flalign*}
-		A_c:=\{r(n) \leq ch(n) \text{ for large $n$}\}
-	\end{flalign*}
-	and
-	\begin{flalign*}
-		B_c := \{T(as)\geq ch^{-1}(s) \text{ for large $s$}\}.
-	\end{flalign*}
-	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(\omega)(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in B_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ falls monotonously. We therefore get $A_c\subset B_{\tilde c h^{-1}(a)}$, hence $\PP(B_{\tilde c h^{-1}(a)}) = 1$.\\
+	
+	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(\omega)(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in D_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ decreases monotonously. We therefore get $A_c\subset D_{\tilde c h^{-1}(a)}$, hence $\PP(D_{\tilde c h^{-1}(a)}) = 1$.\\
 	$\Leftarrow$: 
-	The proof for this direction works analogously and needs Lemma \ref{rtinfty} aswell.
+	The proof for this direction works analogously and needs Lemma \ref{rtinfty} as well.
 \end{proof}
 
 \begin{lemma} \label{geometric}
@@ -444,6 +442,24 @@ hold.
 	\end{flalign*}
 \end{proof}
 
+The following lemma gives a tool to handle conditioned probabilites and will be helpful later for developing splittings of probabilities similar to the law of total probability. 
+\begin{lemma} \label{totalprob}
+	Let $A,B\in\mathcal{F}$ with $\PP(B)>0$. Further let $c>0$ and $(C_i)_{i\in\N}\subset \mathcal{F}$ be a sequence of pairwise disjoint sets with $\PP(B\cap C_i)>0$, $\PP(A\ |\ B\cap C_i)\geq c$ for all $i\in\N$ and $B\subset \bigcup_{i\in\N} C_i$. Then
+	\begin{flalign*}
+		\PP(A\ |\ B) \geq c.
+	\end{flalign*}
+\end{lemma}
+
+\begin{proof}
+	We have
+	\begin{flalign*}
+		\PP(A\ |\ B) &= \frac{\PP(A\cap B)}{\PP(B)} = \frac{\PP(A\cap B\cap \bigcup_{i\in\N} C_i)}{\PP(B)} \\
+		&= \sum_{i\in\N} \frac{\PP(A\cap B\cap C_i)}{\PP(B)} = \sum_{i\in\N} \frac{\PP(B\cap C_i)}{\PP(B)} \frac{\PP(A\cap B\cap C_i)}{\PP(B\cap C_i)} \\
+		&= \sum_{i\in\N} \PP(C_i\ |\ B) \PP(A\ |\ B\cap C_i) \geq c \sum_{i\in\N} \PP(C_i\ |\ B) \\
+		&= c.
+	\end{flalign*}
+\end{proof}
+
 \begin{definition}
 	For $x\in\Z^2$ and $r\in [1,\infty)$ define 
 	\begin{flalign*}
@@ -451,7 +467,7 @@ hold.
 	\end{flalign*}
 \end{definition}
 
-The following theorem gives a bound on the harmonic measure which will be necessary in the proof we present here for the growth rate of DLA. The theorem is proved by $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly different here to generalize it easier afterwards. 
+The following theorem gives a bound on the harmonic measure which will be used in the proof we present here for the growth rate of DLA. The theorem is proved in $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly differently here to generalize it easier afterwards. 
 
 \begin{theorem} \label{keytheorem}
 	There exists a constant $c>0$ such that for all $r\in [1,\infty)$
@@ -463,8 +479,9 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	If $A\in\mP^0_r$ then $0\in A$ and $r=\rad(A)$ and for that case the proof is presented for all dimensions $d\in \N$ in $\cite{lawler}$ Theorem $2.5.2$. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
 \end{proof}
 
+\noindent Theorem \ref{keytheorem} can be generalized as follows. 
 \begin{proposition} \label{general}
-	Theorem \ref{keytheorem} can be generalized to the following. There exists a $c>0$ such that for all $y\in\Z^2$ and $s,r\in[1,\infty)$ with $s\geq r$ we have 
+	There exists a constant $c>0$ such that for all $y\in\Z^2$ and $s,r\in[1,\infty)$ with $s\geq r$ we have 
 	\begin{flalign*}
 		h_A(y) \leq cr^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^y_s.
 	\end{flalign*}
@@ -485,7 +502,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 		&= \lim_{|x|\to \infty} \PP_{\Phi_y(x)}(S_{T_{\Phi_y(A)}^+} = \Phi_y(z)) \\
 		&= h_{\Phi_y(A)}(\Phi_y(z)) 
 	\end{flalign*}
-	for all $z\in A$. By Theorem \ref{keytheorem} we know that there exists a $c>0$ such that for all $s\in[1,\infty)$ 
+	for all $z\in A$. By Theorem \ref{keytheorem} we know that there exists a constant $c>0$ such that for all $s\in[1,\infty)$ 
 	\begin{flalign*}
 		h_A(0) \leq cs^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_s.
 	\end{flalign*}
@@ -503,12 +520,20 @@ The following theorem gives a bound on the harmonic measure which will be necess
 
 
 \begin{theorem}
-	For the growth rate of external DLA in $\Z^2$ as defined in $\ref{notion}\ (\ref{growthrate})$ we have
+	For the fractal dimension of external DLA in $\Z^2$ as defined in section $\ref{notion}$ equation $(\ref{fractaldimension})$ we have
 	\begin{flalign}
-		\alpha_f \leq \frac{2}{3}. 
+		d_f \geq \frac{3}{2}. 
 	\end{flalign}	
 \end{theorem}
 \begin{proof}
+	By section \ref{notion} equation (\ref{fractaldim}) we have
+	\begin{flalign*}
+		d_f = \frac{1}{\alpha_f},
+	\end{flalign*}
+	where $\alpha_f$ is the growth rate as defined in section $\ref{notion}$ equation $(\ref{growthrate})$, and we will therefore show that
+	\begin{flalign*}
+		\alpha_f \leq \frac{2}{3}.
+	\end{flalign*}
 	For $c>0$ define 
 	\begin{flalign*}
 		A_c := \{\omega\in\Omega\ |\ \rad(\E_n(\omega)) \leq cn^{\frac{2}{3}} \text{ for large }n\}
@@ -517,7 +542,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		D_c := \{\omega\in\Omega\ |\ T(\omega)(2n) \geq c n^{\frac{3}{2}} \text{ for large }n \}.
 	\end{flalign*}
-	If we have a $c>0$ such that
+	If there is a constant $c>0$ such that
 	\begin{flalign} \label{Ac}
 		\PP(A_c) = 1, 
 	\end{flalign}
@@ -537,16 +562,16 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign} \label{lambda}
 		\PP(D_c) = 1. 
 	\end{flalign}
-	Note that $h$ is bijective, multiplicative and monotonously growing. Lets first argument why the inequality at $(+)$ indeed holds. We define CONTINUE
+	Note that $h$ is bijective, multiplicative and increasing. Lets first argue why the inequality at $(+)$ indeed holds. We define CONTINUE
 	
 	
-	So now we will try to prove (\ref{lambda}). For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to the definition in $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined lateron. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
+	So now we will try to prove (\ref{lambda}). For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to Definition $\ref{incrementalaggregate}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined later on. For $n\in\N$ let $\tilde m_n := \beta n^{\frac{3}{2}}$ and define 
 	\begin{flalign*}
 		V_n := \{\omega\in\Omega\ |\ T(\omega)(2n) < \tilde m_n\}. 
 	\end{flalign*}
-	Further define the set of realised random walk paths of length $n$ with starting point in $\tilde B_n := \{x\in\Z^2\ |\ d(x,\partial B_n) \leq 1 \text{ and } |x|\geq n\}$
+	Further define the set of realised random walk paths of length $n$ with starting point in $\tilde B_n := \{x\in\Z^2\ |\ n \leq |x| < n+1\}$
 	\begin{flalign*}
-	Z_n := \{[z] := \{z_1, \dots, z_n\}\subset \Z^2\ |\ z_1\in \tilde B_n \text{ and } z_i\in N(z_{i-1}) \text{ for all } i\in\{2,\dots,n\}\}, 
+	Z_n := \{[z] := (z_1, \dots, z_n)\in (\Z^2)^n \ |\ z_1\in \tilde B_n, z_i\in N(z_{i-1}) \text{ for } i\in\{2,\dots,n\}\}, 
 	\end{flalign*}
 	for $[z]\in Z_n$ define events 
 	\begin{flalign*}
@@ -556,11 +581,11 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	With $\tilde B_n$ we mean that the random walks in $Z_n$ start $\glqq$on the boundary$\grqq$ of $B_n$. We will quickly prove that 
+	With $\tilde B_n$ we mean that the paths in $Z_n$ start $\glqq$on the boundary$\grqq$ of $B_n$, the ball with radius $n$. We will quickly prove that 
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
-	Let $n\in\N$ and $\omega \in V_n$, then $T(\omega)(2n) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $\rad(\E_{m_n}(\omega)) \geq 2n$ (Note that $T(\omega)(2n)\in\N$). Therefore since $\E_{m_n}(\omega)$ is connected there must exist indices $j_1 <\dots < j_n$ such that $[z_0] := \{y_{j_1}(\omega),\dots, y_{j_n}(\omega)\}\in Z_n$ and $[z_0]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion.\\ 
+	Let $n\in\N$ and $\omega \in V_n$, then $T(\omega)(2n) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $T(\omega)(2n)\leq m_n$, hence $\rad(\E_{m_n}(\omega)) \geq 2n$. Therefore, since $\E_{m_n}(\omega)$ is connected, there must exist indices $j_1 <\dots < j_n$ such that $[z_0] := (y_{j_1}(\omega),\dots, y_{j_n}(\omega))\in Z_n$ and $[z_0]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion.\\ 
 	\\ For a sequence of events $(A_n)_{n\in\N}$ recall that
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
@@ -585,7 +610,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 			z_i \notin \E_\infty(\omega),\ &j = \infty,
 		\end{cases}
 		\end{flalign*}
-	so $\tau_i$ is either the index $j$ such that the $j$-th added point to the cluster is equal to $z_i$, or infinity if the final cluster $\E_\infty$ doesn't contain $z_i$. $\tau_i$ is measurable because for $j\in\N$ we have 
+	so $\tau_i$ is either the index $j$ such that the $j$-th added point is $z_i$, or infinity if the final cluster $\E_\infty$ doesn't contain $z_i$. $\tau_i$ is measurable because for $j\in\N$ we have 
 	\begin{flalign*}
 		\tau_i^{-1}(j) = \{y_j = z_i\} = y_j^{-1}(z_i) \in \mathcal{F}
 	\end{flalign*}
@@ -604,7 +629,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 			\infty, &\text{ else},	
 		\end{cases}
 	\end{flalign*}
-	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster, if both are added. We quickly argument that $\sigma_i$ is measurable aswell. For $j\in\N$ we have
+	so $\sigma_i$ is the waiting time between adding $z_i$ and $z_{i+1}$ to the cluster, if both are added. We quickly argue that $\sigma_i$ is measurable as well. For $j\in\N$ we have
 	\begin{flalign*}
 		\sigma_i^{-1}(j) = \{\tau_{i+1} - \tau_i = j\} = \bigcup_{k\in\N} \{\tau_{i+1} = k\}\cap\{\tau_i = k-j\} \in\mathcal{F}
 	\end{flalign*}
@@ -613,7 +638,7 @@ The following theorem gives a bound on the harmonic measure which will be necess
 		\sigma_i^{-1}(\infty) = \{\tau_{i+1}=\infty\}\cup\{\tau_i=\infty\} \in\mathcal{F},
 	\end{flalign*}
 	since $\tau_{i+1}$ and $\tau_i$ are measurable. \\
-	\\Let $i\in \{1,\dots,n-1\}$ and define
+	\\Let $i\in \{1,\dots,n-1\}$ and define the event 
 	\begin{flalign*}
 		U_{[z]}^i := \{\tau_1 \leq \dots \leq \tau_i\}. 
 	\end{flalign*}
@@ -621,15 +646,15 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	\begin{flalign} \label{geom}
 		p_n := c_1 n^{-\frac{1}{2}}
 	\end{flalign}
-	for some constant $c_1>0$, which is the same constant for all $i\in \{1,\dots,n-1\}$ and for all $n\in\N$. We will want to use Proposition \ref{general} here, for which we need to create terms where the harmonic measure appears. For that we need probabilities which condition on a given cluster which we will develop now. We first define some helpful sets. For $m\in\N$ define 
+	for some constant $c_1>0$, which is the same constant for all $i\in \{1,\dots,n-1\}$ and for all $n\in\N$. We want to use Proposition \ref{general} here, for which we need to create terms where the harmonic measure appears. For that we need probabilities where we condition on a given cluster which we will develop now. We first define some helpful sets. For $m\in\N$ define 
 	\begin{flalign*}
 		C_m := \{\E_m(\omega)\ |\ \omega\in\Omega\}
 	\end{flalign*} 
 	the set of realized clusters of size $m$ and the disjoint union of them as $C:=\bigcup_{m\in\N} C_m$. Further define another disjoint partition of $C$ with sets 
 	\begin{flalign*}
-		E_m := \{\E\in C\ |\ m-1\leq \rad(\E)\leq m\} 
+		E_m := \{\E\in C\ |\ m-1\leq \rad(\E) < m\} 
 	\end{flalign*}
-	such that $C=\bigcup_{m\in\N} E_m$ aswell. Since $|z_1| \geq n$ and considering $U_{[z]}^i$, we need a minimal amount of time steps such that it is possible for the cluster to contain $z_i$. So there exists a $n_0\in\N$ such that 
+	for $m\in\N$ such that $C=\bigcup_{m\in\N} E_m$ as well. Since $|z_1| \geq n$ and considering $U_{[z]}^i$, we need a minimal amount of time steps such that it is possible for the cluster to contain $z_i$. So there exists a $n_0\in\N$ such that 
 	\begin{flalign*}
 		\PP(\tau_i=j, U_{[z]}^i) \begin{cases}
 			>0, \quad \text{ for }n_0\leq j\leq\infty,\\
@@ -639,27 +664,29 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	Further if we choose $n_0\leq j <\infty$ and considering $U_{[z]}^i$ again, then $\E_{j-1}$ must have some minimal radius if we want it to be possible that the next added point is $z_i$, similarly argumented as above. So there exists a $m_0\in\N$ such that
 	\begin{flalign*}
 		\PP(\E_{j-1}=\E,\tau_i=j,U_{[z]}^i) \begin{cases}
-			>0, \quad \text{ for }\E\in E_m \text{ and }m\geq m_0,\\
-			=0, \quad\text{ for }\E\in E_m \text{ and }m< m_0. 
+			>0, \quad \E\in E_m^i,m\geq m_0,\\
+			=0, \quad \E\notin E_m^i,m\geq m_0 \text{ or } \E\in E_m,m< m_0,
 		\end{cases}
 	\end{flalign*}
-	Having made that clear we can use the law of total probability twice in the following. For $k\in\N_0$ we get 
+	where $E_m^i:=\{\E\in E_m\ |\ \{z_1,\dots,z_{i-1}\}\subset \E \text{ and } z_i\in\partial\E\}$ with $m\in\N$. Having made that clear we can use the law of total probability twice in the following. For $k\in\N$ we get 
 	\begin{flalign*}
 		\PP(\sigma_i > k\ |\ U_{[z]}^i) &= \sum_{n_0\leq j \leq\infty}\PP(\tau_i=j\ |\ U_{[z]}^i) \PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i) \\
-		&\geq \sum_{n_0\leq j <\infty}\PP(\tau_i=j\ |\ U_{[z]}^i) \PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i).
+		&= \PP(\tau_i=\infty\ |\ U_{[z]}^i) \PP(\sigma_i > k\ |\ \tau_i=\infty,U_{[z]}^i) \\
+		&\quad\quad\quad + \sum_{n_0\leq j <\infty}\PP(\tau_i=j\ |\ U_{[z]}^i) \PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i) \\
+		&= \PP(\tau_i=\infty\ |\ U_{[z]}^i) + \sum_{n_0\leq j <\infty}\PP(\tau_i=j\ |\ U_{[z]}^i) \PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i), 
 	\end{flalign*}
-	For shorter expressions write $\Gamma_{ij}:=\{\E_{j-1} = \E\} \cap \{\tau_i=j\} \cap U_{[z]}^i$. Further for $n_0\leq j <\infty$ we get 
+	note that $\PP(\sigma_i > k\ |\ \tau_i=\infty,U_{[z]}^i)=1$ since $\{\tau_i=\infty\} \subset \{\sigma_i=\infty\}\subset\{\sigma_i>k\}$ for all $k\in\N$. For shorter expressions write $\Gamma_{ij}:=\{\E_{j-1} = \E\} \cap \{\tau_i=j\} \cap U_{[z]}^i$. Further for $n_0\leq j <\infty$ we get 
 	\begin{flalign*}
-		\PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i) = \sum_{m_0\leq m} \sum_{\E\in E_m}  \PP(\E_{j-1}=\E\ |\ \tau_i=j,U_{[z]}^i)\PP(\sigma_i > k\ |\ \Gamma_{ij}). 
+		\PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i) = \sum_{m_0\leq m} \sum_{\E\in E_m^i}  \PP(\E_{j-1}=\E\ |\ \tau_i=j,U_{[z]}^i)\PP(\sigma_i > k\ |\ \Gamma_{ij}). 
 	\end{flalign*}
-	We now state that there exists a constant $c_1>0$ such that for all $k\in\N$, $n_0\leq j <\infty$, $m_0\leq m$ and $\E\in E_m$ we have
+	We now state that there exists a constant $c_1>0$ such that for any $n_0\leq j <\infty$, $m_0\leq m$ and $\E\in E_m^i$ we have
 	\begin{flalign} \label{induc}
 		\PP(\sigma_i > k\ |\ \Gamma_{ij}) \geq (1-c_1n^{-\frac{1}{2}})^k
 	\end{flalign}
-	which we prove by induction. For $k=1$ by Proposition \ref{general} there exists a $c>0$ such that 
+	for all $k\in\N$, which we prove by induction. For $k=1$ by Proposition \ref{general} there exists a $c>0$ such that 
 	\begin{flalign*}
 		\PP(\sigma_i > 1\ |\ \Gamma_{ij}) &\geq \PP(\tau_{j+1} \neq z_{i+1}\ |\ \Gamma_{ij}) \\
-		&= 1 - h_{\E\cup \{z_i\}}(z_{i+1}) \\
+		&= 1 - h_{\partial(\E\cup \{z_i\})}(z_{i+1}) \\
 		&\geq 1 - cn^{-\frac{1}{2}} \\
 		&=(1 - cn^{-\frac{1}{2}})^1. 
 	\end{flalign*} 
@@ -671,11 +698,18 @@ The following theorem gives a bound on the harmonic measure which will be necess
 		&\overset{(++)}{\geq} (1-cn^{-\frac{1}{2}})^l(1-cn^{-\frac{1}{2}}) \\
 		&= (1-cn^{-\frac{1}{2}})^{l+1},
 	\end{flalign*}
-	where in $(+)$ we used the induction assumption. In order to show $(++)$ we would need to split the probability with the law of total probability by conditioning on all clusters such that $\Gamma_{ij}$ is fulfilled and the next $l$ added points are not equal to $z_{i+1}$. We would then have the same inequality as in the induction beginning using Proposition \ref{general} and reput together the contioned probabilites to get this inequality here. Same as in the induction beginning we have now found a constant $c_1>0$ such that (\ref{induc}) holds for all $k\in\N$ and this $c_1$ is independent of $n_0\leq j <\infty$, $m_0\leq m$ or $\E\in E_m$. Therefore we can go backwards the two splittings where we used the law of total probability and finally get 
+	where in $(+)$ we used the induction assumption. In order to show $(++)$ we would need to split the probability with the law of total probability by conditioning on all clusters such that $\Gamma_{ij}$ is fulfilled and the next $l$ added points are not equal to $z_{i+1}$. We would then have the same inequality as in the induction beginning using Proposition \ref{general} and reput together the conditioned probabilites to get this inequality here. Same as in the induction beginning we have now found a constant $c_1>0$ such that (\ref{induc}) holds for all $k\in\N$ and this $c_1$ is independent of $n_0\leq j <\infty$, $m_0\leq m$ or $\E\in E_m$. \\
+	\\Since $\{\tau_i=j\}\cap U_{[z]}^i \subset \bigcup_{m_0\leq m} \bigcup_{\E\in E_m^i}  \{\E_{j-1}=\E\}$ by construction of $E_m^i$ and $m_0$ we can use Lemma \ref{totalprob} and for $n_0\leq j \leq\infty$ get
+	\begin{flalign*}
+		\PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i) \geq (1-c_1n^{-\frac{1}{2}})^k
+	\end{flalign*} 
+	for all $k\in\N$. Because $U_{[z]}^i\subset \bigcup_{n_0\leq j \leq\infty} \{\tau_i=j\}$ by construction of $n_0$ we can use Lemma \ref{totalprob} again and finally get
 	\begin{flalign*}
 		\PP(\sigma_i > k\ |\ U_{[z]}^i) \geq (1-c_1n^{-\frac{1}{2}})^k
-	\end{flalign*}
-	with a constant $c_1>0$ which doesn't depend neither on $i\in \{1,\dots,n-1\}$ or $n\in\N$ by the strong universal property given by Proposition \ref{general}. We therefore have shown what we stated at (\ref{geom}). \\
+	\end{flalign*} 
+	for all $k\in\N$. 
+	We therefore have shown what we stated at (\ref{geom}). \\
+	\\Note again that we needed the constant $c_1$ to not depend on any $j$, $m$ or $\E$ which it does not by its universal property given by Proposition \ref{general}. The universality is so strong that it does not even depend on $i\in \{1,\dots,n-1\}$ or $n\in\N$.\\
 	
 	We now continue to show (\ref{borelcantelli}). Choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
 	PROBLEM
@@ -701,9 +735,8 @@ The following theorem gives a bound on the harmonic measure which will be necess
 	which completes the proof. 
 \end{proof}
 
-\begin{remark}
-	With this theorem and \ref{fractaldim} we conclude that the fractal dimension of external DLA is at least $\frac{3}{2}$. In the next chapter we will look at another incremental aggregate which tries to approximate DLA and compare simulations of both to get an empirical comparision of their growth rates. 
-\end{remark}
+In the next chapter we will look at another incremental aggregate which tries to approximate DLA and compare simulations of both to get an empirical comparision of their growth rates. 
+
 
 
 
@@ -891,7 +924,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\begin{flalign*}
 		R = ([\alpha,\beta] \times (0,b]) \setminus ([\alpha,\beta] \times (0,a])
 	\end{flalign*}
-	and therefore $R\in \sigma(\mathcal{R}_+)\subset\sigma(\mathcal{R})$. Similarly it works if $a,b<0$. If $0\in[a,b]$ then we can write $R = [\alpha,\beta]\times [a,b]$ with three components $R = [\alpha,\beta] \times [a,0) \cup [\alpha,\beta] \times \{0\} \cup [\alpha,\beta] \times (0,b]$ which lie in $\mathcal{R}_-, \mathcal{R}_0$ and $\mathcal{R}_+$ respectively. Therefore $R\in \sigma(\mathcal{R})$ aswell. By measure theory the above described rectangles form a generator set of $\mathcal{B}_\Phi$, which completes the proof. 
+	and therefore $R\in \sigma(\mathcal{R}_+)\subset\sigma(\mathcal{R})$. Similarly it works if $a,b<0$. If $0\in[a,b]$ then we can write $R = [\alpha,\beta]\times [a,b]$ with three components $R = [\alpha,\beta] \times [a,0) \cup [\alpha,\beta] \times \{0\} \cup [\alpha,\beta] \times (0,b]$ which lie in $\mathcal{R}_-, \mathcal{R}_0$ and $\mathcal{R}_+$ respectively. Therefore $R\in \sigma(\mathcal{R})$ as well. By measure theory the above described rectangles form a generator set of $\mathcal{B}_\Phi$, which completes the proof. 
 \end{proof}
 
 \begin{lemma}
@@ -989,7 +1022,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
 	\end{flalign*}
 	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the by $\beta$ rotated line. \\
-	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise aswell. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
+	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise as well. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
 	\begin{flalign*}
 		\mu(A+b) 
 		&= \int_\GG \1_{A+b}(g) \mu(dg) \\
@@ -1142,7 +1175,7 @@ In the following we will describe the code and claim that it is a precise implem
 \\
 \includegraphics[height=3cm]{images/code-snippets/parameters.png} \\
 \\
-If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing all calculated fractal dimension values and all particle coordinates for later lookup aswell. \\
+If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing all calculated fractal dimension values and all particle coordinates for later lookup as well. \\
 \\We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there you will find comments or other irrelevant differences, which we leave away here. \\
 \\The main executed python file $\mathit{main.py}$ looks like this:\\
 \\

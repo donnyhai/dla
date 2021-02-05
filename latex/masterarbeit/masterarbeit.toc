@@ -12,15 +12,15 @@
 \contentsline {section}{\numberline {4}External Diffusion Limited Aggregate}{10}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Definition}{10}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Fractal Dimension and Growth Rate of External DLA in $\mathbb {Z}^2$}{10}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Line Hitting Aggregate}{20}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Motivation}{20}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Integral Geometry}{23}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}General results}{23}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{24}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Definition}{31}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{32}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregate}{33}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Images and Empirical Fractal Dimension}{33}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Code}{33}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Outlook}{38}{section.7}%
+\contentsline {section}{\numberline {5}Line Hitting Aggregate}{21}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Motivation}{21}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Integral Geometry}{24}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}General results}{24}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{25}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Definition}{32}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{33}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregate}{34}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Images and Empirical Fractal Dimension}{34}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Code}{34}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Outlook}{39}{section.7}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
