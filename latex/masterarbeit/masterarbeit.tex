@@ -104,15 +104,15 @@
 \newpage
 
 \section{Introduction}
-	In mathematics and physics there are objects which naturally awaken the interest of many human beings, mathematicans and non-mathematicians, just by their natural visual appearance - and clusterings of particles or clusterlike occurences like snowflakes and broken glasses are one example of them. Looking at \autoref{radio} we find a clusterlike formed occurence in the radio screen of a car which might have arisen by the breaking of a crystal fluid in the screen. Other examples are breakings of solid glass (\autoref{other} (b)), processes like bacterial colonies or electrodeposition and also more symmetrical examples as the formation of snowflakes (\autoref{other} (a)). \\
+	In mathematics and physics there are objects which may naturally awaken the interest of any human being, mathematican and non-mathematician, just by their natural visual appearance - and clusterings of particles or clusterlike occurences like snowflakes or broken glasses are one example of them. Looking at \autoref{radio} we find a clusterlike formed occurence in the radio screen of a car which might have arisen by the breaking of a crystal fluid in the screen. Other examples are breakings of solid glass (\autoref{other} (b)), processes like bacterial colonies or electrodeposition and also more symmetrical examples as the formation of snowflake crystals (\autoref{other} (a)). \\
 	
-	\noindent One way of describing such processes is through clusters which get formed by random, point by point aggregation. If we draw our attention to the two-dimensional lattice ($\Z^2$) and consider one particle in the origin $(0,0)$, we could now start letting grow a cluster by adding new particles one by one, always on the boundary of the current cluster. What we get is a random growth of a connected clusterlike object of which we then can think about its fractal dimension, how quick it grows and produce beautiful realizations. \\
+	\noindent One way of describing such processes is through clusters which get formed by random, point by point aggregation. If we draw our attention to the two-dimensional lattice ($\Z^2$) and consider one particle in the origin $(0,0)$, we can let a cluster grow by adding new particles one by one, always on the boundary of the current cluster. What we get is a random growth of a connected clusterlike set of which we then can think about its fractal dimension, how quick it grows and many other properties, and produce beautiful realizations. \\
 	
 	\noindent In this paper we will look at two ways of letting grow such clusters and simulate them with python at the end, to produce visuals and guess their fractal dimensions empirically. We will call such point by point growing clusters $\mathit{incremental\ aggregations}$ and present the two models briefly here:\\
 
-	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$ was initially introduced by $\mathit{Witten\ and\ Sander}$ \cite{wittensander} in 1983. In this model of incremental aggregation of particles, each particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Indeed random walks on  $\Z^2$ are recurrent and therefore every random walk starting at some point reaches any other point in finite time with probability 1. Despite this very simple definition there are only few rigorously proved results on this process of which one we present here about a lower bound on its fractal dimension. In two dimensions the fractal dimension lies in between 1 and 2 and the here proved lower bound is 1.5. Empirical studies and also the simulation in this paper calculate a value around VALUE.  \\
+	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$ was initially introduced by $\mathit{Witten\ and\ Sander}$ \cite{wittensander} in 1983. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Indeed random walks on  $\Z^2$ are recurrent and therefore every random walk starting at some point reaches any other point in finite time with probability 1. Despite this very simple definition there are only few rigorously proved results on this process of which one we present here about a lower bound on its fractal dimension. In two dimensions the fractal dimension of any incremental aggregation lies in between 1 and 2 and the here proved lower bound is 1.5. Empirical studies and also the simulation in this paper calculate a value around VALUE.  \\
 	
-	\noindent $\mathbf{Line\ Hitting\ Aggregation}$ is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which were chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. Another way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster for the first time. It seems that such formed clusters are denser than external DLA and therefore have a higher fractal dimension which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they find a fractal dimension of 2 for their ballistic model, here we find a similar value, which is around VALUE, therefore significantly higher than the one of external DLA. \\
+	\noindent $\mathbf{Line\ Hitting\ Aggregation}$ is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which were chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So a way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA and therefore have a higher fractal dimension which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they find a fractal dimension of 2 for their ballistic model, here we find a similar value, which is around VALUE, therefore significantly higher than the one of external DLA. \\
 	
 	\noindent We will first draw our attention to the general definition of incremental aggregations and a notion of their fractal dimension. After that we will define external DLA and prove a lower bound for its fractal dimension, which we will try aswell for the line hitting aggregation in the chaper after. At the end we will present simulations for both aggregations of which only the one for the line hitting aggregation shall satisfy the claim of being implemented precisely as mathematically defined. At the end we especially hope the reader to relate with the processes and enjoy the created images.
 	
@@ -133,7 +133,7 @@
 \begin{figure}
 	\begin{subfigure}[b]{.45\textwidth}
 		\includegraphics[width=1\linewidth]{images/snowflake.jpg}
-		\caption{Real snowflake, see at \cite{snowflake}} 
+		\caption{Real snowflake crystal, see at \cite{snowflake}} 
 	\end{subfigure}
 	\begin{subfigure}[b]{.45\textwidth}
 		\includegraphics[width=.8\linewidth]{images/glass-break.jpg}
@@ -448,16 +448,16 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 \end{proof}
 
 \begin{lemma} \label{geometric}
-	Let $n\in\N$ and $T_1,\dots,T_n$ be independent geometrically distributed random variables with parameter $p<\frac{1}{2}$. Let $Y:=T_1 + \dots  + T_n$, then for every $a \in [2p,1)$ we have
+	Let $n\in\N$, $n\geq 2$ and $T_1,\dots,T_n$ be independent geometrically distributed random variables with parameter $0<p<\frac{1}{2}$. Let $Y:=T_1 + \dots  + T_{n-1}$, then for every $a \in [2p,1)$ we have
 	\begin{flalign*}
-		\PP(Y\leq\frac{an}{p}) \leq (ae^2)^n. 
+		\PP(Y\leq\frac{an}{p}) \leq \frac{1}{a} (ae^2)^n. 
 	\end{flalign*}
 \end{lemma}
 
 \begin{proof}
 	The moment generating function of $Y$ is
 	\begin{flalign*}
-		\EE[e^{tY}] = (pe^t)^n(1-e^t(1-p))^{-n} = p^n(e^{-t} - (1-p))^{-n}.
+		\EE[e^{tY}] = (pe^t)^{n-1}(1-e^t(1-p))^{-(n-1)} = p^{n-1}(e^{-t} - (1-p))^{-(n-1)}.
 	\end{flalign*}
 	By Chebyshev for any random variable $X$ we know the inequality
 	\begin{flalign*}
@@ -465,15 +465,16 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 	\end{flalign*}
 	and can therefore follow that for any $t>0$ 
 	\begin{flalign*}
-		\PP(Y\leq \frac{an}{p}) = \PP(-Y\geq -\frac{an}{p}) \leq \exp(\frac{ant}{p})\EE[e^{-tY}] = \exp(\frac{ant}{p})p^n(e^t- (1-p))^{-n}. 
+		\PP(Y\leq \frac{an}{p}) = \PP(-Y\geq -\frac{an}{p}) \leq \exp(\frac{ant}{p})\EE[e^{-tY}] = \exp(\frac{ant}{p})p^{n-1}(e^t- (1-p))^{-(n-1)}. 
 	\end{flalign*} 
 	Choose $t=\ln(\frac{a(1-p)}{a-p})$ (note that $t>0$), then
 	\begin{flalign*}
-		\PP(Y\leq \frac{an}{p}) &\leq (\frac{a(1-p)}{a-p})^{\frac{an}{p}}p^n(1-p)^{-n}(\frac{p}{a-p})^{-n} \\
-		&= (\frac{a}{a-p})^{\frac{an}{p}} (1-p)^{\frac{an}{p}} (1-p)^{-n}(\frac{1}{a-p})^{-n} \\
-		&\leq (1 + \frac{p}{a-p})^{\frac{an}{p}}(1-p)^{n}(1-p)^{-n}(a-p)^{n} \\
-		&\leq (1 + \frac{p}{a-p})^{\frac{2(a-p)n}{p}}a^n \\
-		&\leq (ae^2)^n.
+		\PP(Y\leq \frac{an}{p}) &\leq (\frac{a(1-p)}{a-p})^{\frac{an}{p}}   p^{n-1}   (1-p)^{-(n-1)}   (\frac{p}{a-p})^{-(n-1)} \\
+		&= (\frac{a(1-p)}{a-p})^{\frac{an}{p}}  (1-p)^{-(n-1)}  (a-p)^{n-1} \\ 
+		&= (\frac{a}{a-p})^{\frac{an}{p}} (1-p)^{\frac{an}{p}}  (1-p)^{-(n-1)}  (a-p)^{n-1} \\
+		&\leq (\frac{a}{a-p})^{\frac{an}{p}}  (1-p)^{n-1}(1-p)^{-(n-1)}  (a-p)^{n-1} \\
+		&\leq (1 + \frac{p}{a-p})^{\frac{2(a-p)n}{p}}a^{n-1} \\
+		&\leq \frac{1}{a} (ae^2)^n.
 	\end{flalign*}
 \end{proof}
 
@@ -746,24 +747,23 @@ The following theorem gives a bound on the harmonic measure which will be used i
 	We therefore have shown what we stated at (\ref{geom}). \\
 	\\Note again that we needed the constant $c_1$ to not depend on any $j$, $m$ or $\E$ which it does not by its universal property given by Proposition \ref{general}. The universality is so strong that it does not even depend on $i\in \{1,\dots,n-1\}$ or $n\in\N$.\\
 	
-	We now continue to show (\ref{borelcantelli}). Choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i = \tau_{n} - \tau_1$ we can use Lemma \ref{geometric} and get
-	PROBLEM
+	We now continue to show (\ref{borelcantelli}). Choose $\beta$ such that $4e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ and $Y:=\sum_{i=1}^{n-1} \sigma_i$ we can use Lemma \ref{geometric} and get
 	\begin{flalign*}
-		\PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \PP(\tau_{n} - \tau_1 \leq \tilde m_n\ |\ U_{[z]}^n) = \PP(Y \leq \frac{an}{p_n}\ |\ U_{[z]}^n) \leq (e^2a)^{n-1}
+		\PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \PP(\tau_{n} - \tau_1 \leq \tilde m_n\ |\ U_{[z]}^n) = \PP(Y \leq \frac{an}{p_n}\ |\ U_{[z]}^n) \leq \frac{1}{a} (e^2a)^{n}
 	\end{flalign*}
 	for all $n>N$. Since $W_n([z]) \subset \{\tau_{n} \leq \tilde m_n\} \cap U_{[z]}^n$ we get
 	\begin{flalign*}
-		\PP(W_n([z])) \leq \PP(W_n([z])\ |\ U_{[z]}^n) \leq \PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq (e^2a)^{n}
+		\PP(W_n([z])) \leq \PP(W_n([z])\ |\ U_{[z]}^n) \leq \PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \frac{1}{a} (e^2a)^{n}
 	\end{flalign*}
-	for all $n>N$. Counting the elements in $Z_n$ we have less or equal $c_2n$ points in $\tilde B_n$ for some constant $c_2>0$ (which doesn't depend on $n$) as starting points and $4^{n-1}$ possibilities for the next $n-1$ steps of a random walk of length $n$. So $|Z_n| \leq c_2n4^{n-1}$ and therefore
+	for all $n>N$. Counting the elements in $Z_n$ we have less or equal $c_2n$ points in $\tilde B_n$ for some constant $c_2>0$ as starting points and $4^{n-1}$ possibilities for the next $n-1$ steps of a random walk of length $n$. So $|Z_n| \leq c_2n4^{n-1}$ and therefore
 	\begin{flalign*}
-		\sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n4^{n-1} (e^2a)^{n-1} = c_2 n(4e^2a)^{n-1} \quad \text{ for all } n>N
+		\sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n4^{n-1} \frac{1}{a} (e^2a)^{n} = \frac{c_2}{4a}  n(4e^2a)^{n} \quad \text{ for all } n>N
 	\end{flalign*} 
 	and finally
 	\begin{flalign*}
-		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} c_2 n(4e^2\beta c_1)^{n-1} =: r_\beta. 
+		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} \frac{c_2}{4a}  n(4e^2\beta c_1)^{n} =: r_\beta. 
 	\end{flalign*}
-	Since $\beta$ was chosen such that $4e^2\beta c_1<1$, $r_\beta$ is finite and therefore in total we get
+	Now note again, that $c_1$, $c_2$ and $\beta$ are not depending on $n$. Since $\beta$ was chosen such that $4e^2\beta c_1<1$, $r_\beta$ is finite and therefore in total we get
 	\begin{flalign*}
 		\sum_{n\in\N} \PP(W_n) < \infty, 
 	\end{flalign*}
