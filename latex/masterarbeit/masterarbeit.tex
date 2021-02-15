@@ -171,11 +171,11 @@ Let $d\in \N$ and $q\in \{0,\dots,d\}$.
 	&\mP_f := \mP^2_f 
 \end{flalign*}
 
-\noindent Note that we will always identify $\R^2$ with $\C$ for a more convenient notation. 
+\noindent Note that we will always identify $\R^2$ with $\C$ ($(a,b)\leftrightarrow a+bi$) for a more convenient notation. 
 
 \subsection{Expressions}
 
-Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that \glqq $A \text{ holds }\mathbb{P}\text{-a.s.}$\grqq, or short \glqq$ A\text{ holds } \text{a.s.}$\grqq ($A$ holds almost surely). Another short expression, if for a set of logical statements $(A_t)_{t\in I}$ with $I\in\{\N,\R\}$ we say \glqq$A_t$ holds for large $t$\grqq 	it shall mean that there exists $T\in I$ such that $A_t$ holds for all $t>T$. Here we mean that a logical statement holds if and only if the statement is true. 
+Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that \glqq $A \text{ holds }\mathbb{P}\text{-a.s.}$\grqq, or short \glqq$ A\text{ holds } \text{a.s.}$\grqq ($A$ holds almost surely). Another short expression, if for a set of logical statements $(A_t)_{t\in I}$ with $I\in\{\N,\R\}$ we say \glqq $A_t$ holds for large $t$\grqq\ it shall mean that there exists a $T\in I$ such that $A_t$ holds for all $t>T$. Here we mean that a logical statement holds if and only if the statement is true. 
 
 
 \subsection{Graphs} \label{zgraph}
@@ -248,13 +248,14 @@ So a random walk can be understood as a particle starting from some point $x$ an
 \end{lemma}
 
 \begin{proof}
-	The direction $(ii)$ to $(i)$ is clear. For the other direction choose $x\in\Z^2$ and $A\subset \Z^2$. We know that in general for any point $y\in\Z^2$ we have $\PP_x(T_y^+<\infty) > 0$ for a random walk in $\Z^d$ for any dimension $d\in\N$. By Lemma \ref{recurr} we know that a random walk on $\Z^2$ is recurrent. For that case it is proved  in \cite{markov} Satz $2.6.9$ that even $\PP_x(T_y^+<\infty) = 1$ holds for any $y\in\Z^2$. If we choose $y\in A$ we get
+	The direction $(ii)$ to $(i)$ is clear. For the other direction choose $x\in\Z^2$ and $A\subset \Z^2$. We know that in general for any point $y\in\Z^2$ we have $\PP_x(T_y^+<\infty) > 0$ for a random walk in $\Z^d$ for any dimension $d\in\N$. By Lemma \ref{recurr} we know that a random walk on $\Z^2$ is recurrent. For that case it is proved  in \cite{markov} Satz $2.6.9$ that $\PP_x(T_y^+<\infty) = 1$ holds for even any $y\in\Z^2$. If we choose $y\in A$ we get
 	\begin{flalign*}
 		1 = \PP_x(T_y^+<\infty) \leq \PP_x(T_A^+<\infty),
 	\end{flalign*}
 	which completes the proof. 
 \end{proof}
 
+After having introduced some basics we will in the next chapter turn our focus to the main definition of stochastic processes we will discuss in this paper. 
 
 
 
@@ -282,7 +283,7 @@ the set of distributions on $A$. Now we define incremental aggregation as follow
 \end{definition} 
 
 \begin{remark} \label{orderindependence}
-	It is worth to mention that the distribution of a new added point $y_{n+1}$ is not depending on the order of how previous points where added to the cluster since the harmonic measure only looks at the boundary of the current cluster and therefore doesn't consider any information about orderings of cluster points. 
+	It is worth to mention that the distribution of a new added point $y_{n+1}$ is not depending on the order of how previous points where added to the cluster since the functions $\mu_A$ only look at the boundary of the current cluster and therefore do not consider any information about orderings of cluster points. 
 \end{remark}
 
 
