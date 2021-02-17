@@ -310,7 +310,7 @@ we therefore can identify the relation between the geometrical sizes of the boxe
 \begin{flalign} \label{fractaldimension}
 	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}
 \end{flalign}
-Why we choose the limes inferior here we will see later. Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$, which is motivated by $\cite{fractalwinter}$ Part II page 98 and $\cite{lawler}$ 2.6 page 82. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\EE[\rad(\E_n)]$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\EE[\rad(\E_n)]^k$ for letting $n$ tend to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
+Why we choose the limes inferior here we will see later. Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$, which is motivated by $\cite{fractalwinter}$ Part II page 98 and $\cite{lawler}$ 2.6 page 82. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\EE[\rad(\E_n)]$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\EE[\rad(\E_n)]^k$ for letting tend $n$ to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\EE [\rad(\E_n)] \leq cn^\alpha
 \end{flalign*}
@@ -322,16 +322,15 @@ for large $n$ and we could finally define the growth rate $\alpha_f$ of an incre
 \begin{flalign} \label{growthrate}
 	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\EE [\rad(\E_n)])}{ln(n)}.
 \end{flalign}
-Since $\rad(\E_n) \leq n$ for all $n\in\N$ a.s., we get 
+We therefore simply get that 
+\begin{flalign} \label{fractaldim}
+	d_f = \frac{1}{\alpha_f},
+\end{flalign}
+which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in total motivates choosing the limes inferior in the definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ for all $n\in\N$ a.s., we get 
 \begin{flalign*}
 	\alpha_f \leq 1. 
 \end{flalign*}
- We further chose the limes inferior in the definition (\ref{fractaldimension}) to simply have 
-\begin{flalign} \label{fractaldim}
-	d_f = \frac{1}{\alpha_f}
-\end{flalign}
-which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$. 
-We therefore get
+and therefore 
 \begin{flalign*}
 	d_f \geq 1.
 \end{flalign*}
@@ -1193,24 +1192,8 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 
 \subsection{Fractal Dimension and Growth Rate of LHA}
 
-In this section we present what our simulations produce in terms of images and fractal dimension values. We are especially interested in the calculated fractal dimension value of the line hitting aggregation since we will argue in the next section that it is, in this simulation, implemented as mathematcially defined and therefore will give a realistic approximation of the fractal dimension. We will run ten times the line hitting aggregate with each 10000 particles. To also get a approximation for the fractal dimension of external DLA we will run ten times the simulation of external DLA with each 3000 particles. We need to choose less particles for external DLA because of a much higher comuting time. 
 
-\begin{table}
-	\centering
-	\begin{tabular}{lll}
-		2021\_02\_15\_22\_06\_50\_\_lha\_10000\_10000 & 1.9837036680852318,  &   \\
-		2021\_02\_15\_22\_27\_53\_\_lha\_10000\_10000 & 1.9948632487588576,  &   \\
-		2021\_02\_15\_22\_39\_40\_\_lha\_10000\_10000 & 1.9839811650839574,  &   \\
-		2021\_02\_15\_22\_51\_51\_\_lha\_10000\_10000 & 1.9759741361922358,  &   \\
-		2021\_02\_15\_23\_02\_59\_\_lha\_10000\_10000 & 1.979902827996221,   &   \\
-		2021\_02\_16\_12\_14\_35\_\_lha\_10000\_10000 & 1.9862572273156929,  &   \\
-		2021\_02\_16\_17\_09\_12\_\_lha\_10000\_10000 & 1.9803491627710896,  &   \\
-		2021\_02\_16\_17\_30\_22\_\_lha\_10000\_10000 & 1.9800967468840343,  &   \\
-		2021\_02\_16\_18\_19\_12\_\_lha\_10000\_10000 & 2.0114318661907387,  &   \\
-		2021\_02\_16\_18\_34\_40\_\_lha\_10000\_10000 & 1.9957939506682272,  &   \\
-		Average                                       &                      &  
-	\end{tabular}
-\end{table}
+
 
 \newpage
 \section{Python Simulation of the Line Hitting Aggregation}
@@ -1220,6 +1203,69 @@ In this section we will present a simulation for the line hitting aggregation an
 \\Note that this software contains also a simulation for external DLA. This simulation doesn't claim to be mathematically precise, but it is good enough to play around and create images with it, and get a vague visual comparison of the two aggregation models. 
 
 \subsection{Images and Empirical Fractal Dimension}
+
+In this section we present what our simulations produce in terms of images and fractal dimension values. We are especially interested in the calculated fractal dimension value of the line hitting aggregation since we will argue in the next section that it is implemented as mathematcially defined and therefore will give a realistic approximation of its fractal dimension. We will run 10 times the line hitting aggregation with each 10000 particles. To also get an vague approximation for the fractal dimension of external DLA we will run 10 times the simulation of external DLA with each 2500 particles. We need to choose less particles for external DLA because of a much higher computing time. 
+
+In the git repository you will find every of the following realized simulations in the folder $\mathit{exports}$. Inside the folder you will find three types of files, one is the created image, one contains values of all particle coordinates and fractal dimension values and the third is a copy of the parameters file with which the simulation was preset. More on that you can find in the README file of the repository. The names of the folder and files will have a certain format to identify each simulation clearly. The folder name
+\begin{flalign*}
+	\text{2021\_02\_15\_22\_06\_50\_\_lha\_10000\_10000}
+\end{flalign*}
+indicates that the folder contains a realized LHA simulation with 10000 particles which was created at 15. February 2021 22:06:50. Analogously 
+\begin{flalign*}
+	\text{2021\_02\_17\_13\_09\_26\_\_dla\_2500\_2500}
+\end{flalign*}
+for a realized simulation of DLA. Note that the second of the two values (10000\_10000 resp. 2500\_2500) denotes the $\mathit{color\_generation\_size}$ and specifies how big one generation of a color shall be in the case that you chose more than one color to print the particles. This allows to visualize layers of the aggregation and produce beautiful rainbowlike colored realizations. Since for the simulation here we go for only a black particles color, this color generation size does not matter and we just set it the same value as the number of particles. More on that you can find in the README file of the repository. \\
+
+
+
+\begin{table} \label{lhasimulation}
+	\centering
+	\begin{tabular}{ll}
+		$\mathbf{Simulation\ name}$ 						  & $\mathbf{Calculated\ fractal\ dimension}$ \\
+		\hline	
+		2021\_02\_15\_22\_06\_50\_\_lha\_10000\_10000 & 1.9837036680852318  \\
+		2021\_02\_15\_22\_27\_53\_\_lha\_10000\_10000 & 1.9948632487588576  \\
+		2021\_02\_15\_22\_39\_40\_\_lha\_10000\_10000 & 1.9839811650839574  \\
+		2021\_02\_15\_22\_51\_51\_\_lha\_10000\_10000 & 1.9759741361922358  \\
+		2021\_02\_15\_23\_02\_59\_\_lha\_10000\_10000 & 1.979902827996221   \\
+		2021\_02\_16\_12\_14\_35\_\_lha\_10000\_10000 & 1.9862572273156929  \\
+		2021\_02\_16\_17\_09\_12\_\_lha\_10000\_10000 & 1.9803491627710896  \\
+		2021\_02\_16\_17\_30\_22\_\_lha\_10000\_10000 & 1.9800967468840343  \\
+		2021\_02\_16\_18\_19\_12\_\_lha\_10000\_10000 & 2.0114318661907387  \\
+		2021\_02\_16\_18\_34\_40\_\_lha\_10000\_10000 & 1.9957939506682272  \\
+		\hline
+		$\mathbf{Average}$ (rounded)  & $\mathbf{1.9872354}$            
+	\end{tabular}
+	\caption{Simulations of LHA (10000 particles each)}
+\end{table}
+
+\begin{table} 
+	\centering
+	\begin{tabular}{ll}
+		$\mathbf{Simulation\ name}$ 						  & $\mathbf{Calculated\ fractal\ dimension}$ \\
+		\hline	
+		2021\_02\_15\_22\_06\_50\_\_lha\_10000\_10000 & 1.9837036680852318 \\
+		2021\_02\_15\_22\_27\_53\_\_lha\_10000\_10000 & 1.9948632487588576 \\
+		2021\_02\_15\_22\_39\_40\_\_lha\_10000\_10000 & 1.9839811650839574 \\
+		2021\_02\_15\_22\_51\_51\_\_lha\_10000\_10000 & 1.9759741361922358 \\
+		2021\_02\_15\_23\_02\_59\_\_lha\_10000\_10000 & 1.979902827996221  \\
+		2021\_02\_16\_12\_14\_35\_\_lha\_10000\_10000 & 1.9862572273156929 \\
+		2021\_02\_16\_17\_09\_12\_\_lha\_10000\_10000 & 1.9803491627710896 \\
+		2021\_02\_16\_17\_30\_22\_\_lha\_10000\_10000 & 1.9800967468840343 \\
+		2021\_02\_16\_18\_19\_12\_\_lha\_10000\_10000 & 2.0114318661907387 \\
+		2021\_02\_16\_18\_34\_40\_\_lha\_10000\_10000 & 1.9957939506682272 \\
+		\hline
+		$\mathbf{Average}$ (rounded)  & $\mathbf{1.9872354}$         
+	\end{tabular}
+	\label{dlasimulation} 
+	\caption{Simulations of external DLA (2500 particles each)}
+\end{table}
+
+After having run the simulations we find values as shown in Table \ref{lhasimulation} for LHA and Table \ref{dlasimulation} for external DLA. Our simulations therefore approximate the fractal dimension of the line hitting aggregation with $\mathbf{1.9872354}$ and the fractal dimension of external DLA with $\mathbf{VALUE}$. Have a look on the images after the tables to get a visual comparison of the two aggregations. 
+
+
+
+
 
 \subsection{Code}
 In the following we will describe the code and claim that it is a precise implementation of LHA, excluding errors from python packages and machine calculation. In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, datetime, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of imports only these packages will have an effect on the mathematical preciseness of the realised process. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
