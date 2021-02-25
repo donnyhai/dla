@@ -4,7 +4,7 @@ Created on Fri Jan 25 14:19:52 2021
 
 @author: Tillmann Tristan Bosch
 
-Here basic geometrical features are provided which are needed in the simulation of the line hitting aggregate. 
+Here basic geometrical features are provided which are needed in the simulation of the line hitting aggregation. 
 """
 
 from math import sin, cos
