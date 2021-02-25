@@ -68,12 +68,15 @@ def create_parameters_file(filename, separator):
 def create_information(filename, aggregation):
     #convert complex numbers into vectors
     particles = [(particle.real, particle.imag) for particle in aggregation.particles]
+
+    information = {"time":                          current_time,
+                   "linear_reg_parameters":         aggregation.linear_regression_parameters,
+                   "last_fractal_dimension_value":  aggregation.fractal_dimension_values[-1],
+                   "particles":                     particles,
+                   "radius_list":                   aggregation.radius_list,
+                   "fractal_dimension_values":      aggregation.fractal_dimension_values
+                   }
     
-    information = {"time":                  current_time,
-                   "last_fractal_value":    aggregation.fractal_dimension_values[-1],
-                   "fractal_values":        aggregation.fractal_dimension_values,
-                   "particles":             particles
-                           }
     f = open(filename, "w+")
     json.dump(information, f)
     f.close()

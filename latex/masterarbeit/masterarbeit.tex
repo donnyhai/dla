@@ -58,6 +58,7 @@
 \newtheorem{remark}{Remark}[subsection]
 \newtheorem{pro}{Proof}
 \newtheorem{comment}{Comment}[subsection]
+\newtheorem{conjecture}{Conjecture}[subsection]
 
 
 \begin{document}
@@ -306,11 +307,11 @@ Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the euclidean
 \begin{flalign} \label{radius}
 	\rad(A) := \max_{x\in A} |x|,
 \end{flalign}
-we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define $\varepsilon_n:=\frac{1}{\EE[\rad(\E_n)]}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\EE[\rad(\E_n)]}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret by $\EE[\rad(\E_n)]$ up to a constant. The minimum number of boxes with size $1$ we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\EE[\rad(\E_n)]}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as
+we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define $\varepsilon_n:=\frac{1}{\EE[\rad(\E_n)]}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\EE[\rad(\E_n)]}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret by $\EE[\rad(\E_n)]$ up to a constant. That analogy makes even more sense if the cluster happens to be self-similar in some way looking at different sizes of it. The minimum number of boxes with size $1$ with which we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\EE[\rad(\E_n)]}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as
 \begin{flalign} \label{fractaldimension}
 	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}
 \end{flalign}
-Why we choose the limes inferior here we will see later. Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$, which is motivated by $\cite{fractalwinter}$ Part II page 98 and $\cite{lawler}$ 2.6 page 82. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\EE[\rad(\E_n)]$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\EE[\rad(\E_n)]^k$ for letting tend $n$ to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
+Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$, which is motivated by $\cite{fractalwinter}$ Part II page 98 and $\cite{lawler}$ 2.6 page 82. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\EE[\rad(\E_n)]$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\EE[\rad(\E_n)]^k$ for letting tend $n$ to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\EE [\rad(\E_n)] \leq cn^\alpha
 \end{flalign*}
@@ -346,10 +347,20 @@ and
 \begin{flalign*}
 	\frac{1}{d}\leq \alpha_f \leq 1
 \end{flalign*}
-for any incremental aggregation in $\Z^d$. 
+for any incremental aggregation in $\Z^d$. \\
 
+\begin{remark}
+	If we define the fractal dimension as in \ref{fractaldimension} we encounter the problem that when the cluster reaches some radius the first time in many instances there will still particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius. If the fractal dimension shall indicate a limit relation between how many particles of the final cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, our definition in \ref{fractaldimension} does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent which we state more clearly in the following conjecture. 
+\end{remark}
 
+\begin{conjecture}
+	Let $B_n$ be a ball of radius $n\in\N$ with center $0$ and with $\E_\infty \cap B_n$ denote the set of particles in $\E_\infty$ that lie in $B_n$. Note that $n-2 \leq \rad(\E_\infty \cap B_n)\leq n$. Then we have
+	\begin{flalign*}
+		d_f = \limsup_{n\to\infty} \frac{\ln(\EE |\E_\infty \cap B_n|)}{\ln(n)}
+	\end{flalign*}
+\end{conjecture}
 
+BILD
 
 \newpage
 \section{External Diffusion Limited Aggregation}

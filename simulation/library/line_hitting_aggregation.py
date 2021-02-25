@@ -10,19 +10,28 @@ This is a simulation of the line hitting aggregation. In the paper it is display
 #mathematical imports
 import random
 from math import pi, log #here log is the natural logarithm with base e
+import numpy as np
 
 import geometry as geom
 
 
 class Line_Hitting_Aggregation:
-    def __init__(self):
+    def __init__(self, cut_particles = [0, 100000]):
         
         self.particles = [0]
         self.boundary_set = self.get_neighbours(0)
         
-        self.cluster_radius = 0 #radius of the current cluster = maximum of all distances from 0 to the cluster points
-        
+        self.radius_list = [0] #list of all radii
+        self.cluster_radius = self.radius_list[-1] #radius of the current cluster = maximum of all distances from 0 to the cluster points
         self.fractal_dimension_values = [1.5] #start with one neutral value to have equal sizes of particles and fractal_dimension_values 
+        
+        """
+        For the two variables ln(radius at time n) and ln(number of particles) we will calculate the parameters (ln(c),alpha) of a simple 
+        linear regression ln(radius at time n) nearlyequal ln(c) + alpha * ln(number of particles).
+        cut_particles indicates how many particles shall be cut off, that means if the cluster size will be 2000 and we set 
+        cut_particles to 1000, the linear regression will only be caluclated for data pairs beginning at 1001 until 2000. 
+        """
+        self.cut_particles = cut_particles 
         
         self.missed_counter = 0
         
@@ -45,8 +54,10 @@ class Line_Hitting_Aggregation:
                     actualize cluster_radius, so the next random line can be chosen correct accordingly
                     """
                     self.particles.append(next_particle)
-                    self.actualize_boundary_set(next_particle)
-                    self.actualize_cluster_radius(next_particle)
+                    self.actualize_boundary_set()
+                    
+                    self.actualize_cluster_radius()
+                    self.radius_list.append(self.cluster_radius)
                     
                     self.add_fractal_dimension_value()
                     
@@ -55,19 +66,18 @@ class Line_Hitting_Aggregation:
                 else:
                     self.missed_counter += 1 #counts how often a random line missed the current cluster, as described in the paper
                     print("line missed cluster")
+                    
+        self.calculate_linear_regression_parameters()
+        
+        print("DONE")
         print("number of misses: " + str(self.missed_counter))
-    
     
     def add_fractal_dimension_value(self):
         radius = max(self.cluster_radius, 2)
-        '''
-        as long as the cluster is as small that the radius is equal to one, log(1) is zero and therefore creating a problem in the division below, 
-        therefore taking this max here avoids this problem for the short beginning of the process
-        '''
         value = log(len(self.particles))/log(radius)
         self.fractal_dimension_values.append(value)
-    
-    
+        
+        
     def get_random_line(self):
         
         """
@@ -127,12 +137,13 @@ class Line_Hitting_Aggregation:
         return boundary_hit_positions
         
 
-    def actualize_boundary_set(self, position):
+    def actualize_boundary_set(self):
         
         """ 
         suppose that position is part of the current boundary set and a particle
         comes to sit there now. therefore delete position of the current boundary set and add its empty neighbours to it
         """
+        position = self.particles[-1]
     
         self.boundary_set.remove(position)
         for neighbour in self.get_neighbours(position):
@@ -140,11 +151,8 @@ class Line_Hitting_Aggregation:
                 self.boundary_set.append(neighbour)
     
     
-    def actualize_cluster_radius(self, position):
-        new_radius = self.get_distance(position, 0)
-        if new_radius > self.cluster_radius:
-            self.cluster_radius = new_radius
-
+    def actualize_cluster_radius(self):
+        self.cluster_radius = max(self.cluster_radius, self.get_distance(self.particles[-1], 0))
     
     
     def get_neighbours(self, particle):
@@ -205,6 +213,35 @@ class Line_Hitting_Aggregation:
             else:
                 return x_0 < y_0
 
-
+    def calculate_linear_regression_parameters(self):
+        x_list = [log(x) for x in range(self.cut_particles + 1, len(self.particles) + 1)]
+        y_list = [log(x) for x in self.radius_list[self.cut_particles:]]
+        
+        if len(x_list) > 0:
+            params = np.polyfit(x_list, y_list, 1)
+            self.linear_regression_parameters = {"lnc": params[1], "alpha": params[0]}
+            return
+        
+        self.linear_regression_parameters = {"lnc": 0, "alpha": 0}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 

@@ -1,0 +1,14 @@
+{ 
+"aggregation": "lha",
+"cluster_size": 400, 
+"background_color": "FFFFFF",
+"particle_color": ["7FFF00", "7FFF00", "00FF00", "32CD32", "32CD32", "228B22", "008000", "008000", "006400",  "006400", "006400"],
+"color_generation_size": 100,
+"cut_particles_for_linear_regression": 200,
+"image_width": 300, 
+"image_height": 300
+}
+
+
+
+
