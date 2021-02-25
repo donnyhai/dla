@@ -1,5 +1,5 @@
 { 
-"aggregation": "dla",
+"aggregation": "lha",
 "cluster_size": 2500, 
 "background_color": "FFFFFF",
 "particle_color": ["000000"],

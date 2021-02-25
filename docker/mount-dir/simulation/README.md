@@ -14,7 +14,7 @@ University: 	Institute of Technology, Karlsruhe (KIT)
 
 open parameters.txt and enter values there. 
 
-aggregate:			    Enter "lha" to simulate the line hitting aggregate
+aggregation:			    Enter "lha" to simulate the line hitting aggregation
                         Enter "dla" to simulate external dla
 
 cluster_size: 			Enter an integer to specify how big the cluster shall get. At the end the cluster will contain exactly cluster_size points. 

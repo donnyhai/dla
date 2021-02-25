@@ -10,7 +10,7 @@ import json, shutil, os, time
 
 
 import create_data as cd
-import line_hitting_aggregate as lha
+import line_hitting_aggregation as lha
 import external_dla as dla
     
 
@@ -30,18 +30,18 @@ if __name__ == "__main__":
         data = json.load(json_file)
     
     #init process
-    if data["aggregate"] == "lha":
-        aggregate = lha.Line_Hitting_Aggregate()
-    elif data["aggregate"] == "dla":
-        aggregate = dla.External_DLA()        
+    if data["aggregation"] == "lha":
+        aggregation = lha.Line_Hitting_Aggregation()
+    elif data["aggregation"] == "dla":
+        aggregation = dla.External_DLA()        
     
     #run process and capture running time
     begin_time = time.time()
-    aggregate.run_process(data["cluster_size"] - 1)
+    aggregation.run_process(data["cluster_size"] - 1)
     print("running time: " + str(time.time() - begin_time) + " seconds")
     
     #create and export data (image, information, parameters)
-    cd.export_data(aggregate, data, separator)
+    cd.export_data(aggregation, data, separator)
 
 
 

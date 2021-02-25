@@ -44,7 +44,7 @@ class External_DLA:
             else:
                 position = random.choice(self.get_neighbours(position))
 
-            if isnear_counter == self.cluster_radius // 3:
+            if isnear_counter == self.cluster_radius // 2:
                 if not self.isNear(position):
                     position = self.get_random_start_position()
                     self.isnotnear_counter += 1
@@ -80,7 +80,7 @@ class External_DLA:
         self.minY, self.maxY = 0, 0
 
         # how far shall be the surround_circle be away of the outest particles?
-        self.helpSpaceDelta = 5
+        self.helpSpaceDelta = 12
         # this a circle closely around the cluster
         self.surround_circle = {
             "middlePoint": self.particles[0], "radius": self.helpSpaceDelta}
@@ -90,11 +90,9 @@ class External_DLA:
         self.minX, self.maxX = min(self.minX, x), max(self.maxX, x)
         self.minY, self.maxY = min(self.minY, y), max(self.maxY, y)
 
-        self.surround_circle["middlePoint"] = (
-            (self.minX + self.maxX) / 2) + ((self.minY + self.maxY) / 2) * 1j
+        self.surround_circle["middlePoint"] = (self.minX + self.maxX) / 2 + ((self.minY + self.maxY) / 2) * 1j
         dx, dy = self.maxX - self.minX, self.maxY - self.minY
-        self.surround_circle["radius"] = abs(
-            dx + dy * 1j) / 2 + self.helpSpaceDelta
+        self.surround_circle["radius"] = abs(dx + dy * 1j) / 2 + self.helpSpaceDelta
 
     def isNear(self, pos):
         return abs(pos) < self.surround_circle["radius"] + 5
