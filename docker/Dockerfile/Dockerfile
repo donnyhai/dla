@@ -11,3 +11,5 @@ RUN apt install vim -y
 
 ENV PATH="/usr/local/lib/python3.6/dist-packages:${PATH}"
 ENV PYTHONPATH="/usr/local/lib/python3.6/dist-packages:${PYTHONPATH}"
+
+RUN pip3 install pygame

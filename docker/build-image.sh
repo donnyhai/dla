@@ -1,1 +1,3 @@
-docker build -t dla:latest Dockerfile --network=host
+#docker build -t dla:latest Dockerfile
+
+podman build -t dla:latest Dockerfile
