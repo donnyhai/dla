@@ -17,9 +17,9 @@
 \contentsline {subsubsection}{\numberline {5.2.1}General results}{25}{subsubsection.5.2.1}%
 \contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{26}{subsubsection.5.2.2}%
 \contentsline {subsection}{\numberline {5.3}Definition}{33}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{34}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregation}{35}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Images and Empirical Fractal Dimension}{35}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Code}{37}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Outlook}{42}{section.7}%
+\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{35}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregation}{36}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Images and Empirical Fractal Dimension}{36}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Code}{38}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Outlook}{43}{section.7}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

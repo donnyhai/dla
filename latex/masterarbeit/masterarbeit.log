@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  25 FEB 2021 13:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  28 FEB 2021 01:41
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -1125,281 +1125,281 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 {equation.5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1177 	\end{flalign}
+l.1181 	\end{flalign}
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{equation.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1181 	\end{flalign}
-                      [34]
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1215
+l.1185 	\end{flalign}
+                      [34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 1226--1230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1215
+Underfull \hbox (badness 10000) in paragraph at lines 1226--1230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1215
+Underfull \hbox (badness 10000) in paragraph at lines 1226--1230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1227--1229
+Underfull \hbox (badness 10000) in paragraph at lines 1242--1244
 
  []
 
-[35]
+[36]
 
-Package caption Warning: \label without proper reference on input line 1232.
+Package caption Warning: \label without proper reference on input line 1247.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `lhasimulation' on page 36 undefined on input line 127
-5.
+LaTeX Warning: Reference `lhasimulation' on page 37 undefined on input line 129
+0.
 
 
-Package caption Warning: \label without proper reference on input line 1271.
+Package caption Warning: \label without proper reference on input line 1286.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `dlasimulation' on page 36 undefined on input line 127
-5.
+LaTeX Warning: Reference `dlasimulation' on page 37 undefined on input line 129
+0.
 
-<images/code-snippets/parameters.png, id=408, 239.39438pt x 124.96687pt>
+<images/code-snippets/parameters.png, id=414, 239.39438pt x 124.96687pt>
 File: images/code-snippets/parameters.png Graphic file (type png)
 <use images/code-snippets/parameters.png>
 Package pdftex.def Info: images/code-snippets/parameters.png  used on input lin
-e 1285.
+e 1300.
 (pdftex.def)             Requested size: 163.5239pt x 85.35826pt.
-<images/code-snippets/mainpy.png, id=409, 284.56313pt x 142.28156pt>
+<images/code-snippets/mainpy.png, id=415, 284.56313pt x 142.28156pt>
 File: images/code-snippets/mainpy.png Graphic file (type png)
 <use images/code-snippets/mainpy.png>
-Package pdftex.def Info: images/code-snippets/mainpy.png  used on input line 12
-91.
+Package pdftex.def Info: images/code-snippets/mainpy.png  used on input line 13
+06.
 (pdftex.def)             Requested size: 227.63344pt x 113.81102pt.
-<images/code-snippets/lhainit.png, id=410, 269.50688pt x 73.77562pt>
+<images/code-snippets/lhainit.png, id=416, 269.50688pt x 73.77562pt>
 File: images/code-snippets/lhainit.png Graphic file (type png)
 <use images/code-snippets/lhainit.png>
 Package pdftex.def Info: images/code-snippets/lhainit.png  used on input line 1
-295.
+310.
 (pdftex.def)             Requested size: 207.88281pt x 56.9055pt.
-<images/code-snippets/runprocess.png, id=414, 361.35pt x 188.95593pt>
+<images/code-snippets/runprocess.png, id=420, 361.35pt x 188.95593pt>
 File: images/code-snippets/runprocess.png Graphic file (type png)
 <use images/code-snippets/runprocess.png>
 Package pdftex.def Info: images/code-snippets/runprocess.png  used on input lin
-e 1300.
+e 1315.
 (pdftex.def)             Requested size: 288.38014pt x 150.79968pt.
-<images/code-snippets/randomline.png, id=417, 244.66406pt x 63.98906pt>
+<images/code-snippets/randomline.png, id=423, 244.66406pt x 63.98906pt>
 File: images/code-snippets/randomline.png Graphic file (type png)
 <use images/code-snippets/randomline.png>
 Package pdftex.def Info: images/code-snippets/randomline.png  used on input lin
-e 1305.
+e 1320.
 (pdftex.def)             Requested size: 195.8211pt x 51.21504pt.
-<images/code-snippets/linehitscluster.png, id=419, 412.54124pt x 64.74188pt>
+<images/code-snippets/linehitscluster.png, id=425, 412.54124pt x 64.74188pt>
 File: images/code-snippets/linehitscluster.png Graphic file (type png)
 <use images/code-snippets/linehitscluster.png>
 Package pdftex.def Info: images/code-snippets/linehitscluster.png  used on inpu
-t line 1310.
+t line 1325.
 (pdftex.def)             Requested size: 326.36354pt x 51.21504pt.
-<images/code-snippets/getsquare.png, id=420, 569.87906pt x 27.85406pt>
+<images/code-snippets/getsquare.png, id=426, 569.87906pt x 27.85406pt>
 File: images/code-snippets/getsquare.png Graphic file (type png)
 <use images/code-snippets/getsquare.png>
 Package pdftex.def Info: images/code-snippets/getsquare.png  used on input line
- 1314.
+ 1329.
 (pdftex.def)             Requested size: 465.70384pt x 22.76228pt.
-<images/code-snippets/nextparticle.png, id=423, 312.41719pt x 63.98906pt>
+<images/code-snippets/nextparticle.png, id=429, 312.41719pt x 63.98906pt>
 File: images/code-snippets/nextparticle.png Graphic file (type png)
 <use images/code-snippets/nextparticle.png>
 Package pdftex.def Info: images/code-snippets/nextparticle.png  used on input l
-ine 1319.
+ine 1334.
 (pdftex.def)             Requested size: 250.0485pt x 51.21504pt.
-<images/code-snippets/islower.png, id=424, 200.24812pt x 211.54031pt>
+<images/code-snippets/islower.png, id=430, 200.24812pt x 211.54031pt>
 File: images/code-snippets/islower.png Graphic file (type png)
 <use images/code-snippets/islower.png>
 Package pdftex.def Info: images/code-snippets/islower.png  used on input line 1
-323.
+338.
 (pdftex.def)             Requested size: 161.60732pt x 170.71652pt.
-<images/code-snippets/fractaldimension.png, id=426, 261.97874pt x 53.44969pt>
+<images/code-snippets/fractaldimension.png, id=432, 261.97874pt x 53.44969pt>
 File: images/code-snippets/fractaldimension.png Graphic file (type png)
 <use images/code-snippets/fractaldimension.png>
 Package pdftex.def Info: images/code-snippets/fractaldimension.png  used on inp
-ut line 1328.
+ut line 1343.
 (pdftex.def)             Requested size: 209.18753pt x 42.67912pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Overfull \hbox (17.57289pt too wide) in paragraph at lines 1282--1332
+Overfull \hbox (17.57289pt too wide) in paragraph at lines 1297--1347
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Overfull \hbox (18.35852pt too wide) in paragraph at lines 1282--1332
+Overfull \hbox (18.35852pt too wide) in paragraph at lines 1297--1347
 \T1/lmr/m/n/12 max-i-mum and then chooses uni-formly be-tween min-i-mum and max
 -i-mum with $[]$.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1347
 
  []
 
-[36] [37 <./images/code-snippets/parameters.png>] [38 <./images/code-snippets/m
+[37] [38 <./images/code-snippets/parameters.png>] [39 <./images/code-snippets/m
 ainpy.png> <./images/code-snippets/lhainit.png> <./images/code-snippets/runproc
-ess.png>] [39 <./images/code-snippets/randomline.png> <./images/code-snippets/l
-inehitscluster.png> <./images/code-snippets/getsquare.png>] [40 <./images/code-
+ess.png>] [40 <./images/code-snippets/randomline.png> <./images/code-snippets/l
+inehitscluster.png> <./images/code-snippets/getsquare.png>] [41 <./images/code-
 snippets/nextparticle.png> <./images/code-snippets/islower.png> <./images/code-
-snippets/fractaldimension.png>] [41]
-Underfull \hbox (badness 10000) in paragraph at lines 1336--1339
+snippets/fractaldimension.png>] [42]
+Underfull \hbox (badness 10000) in paragraph at lines 1351--1354
 
  []
 
-[42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 1412--1413
+[43] [44]
+Underfull \hbox (badness 10000) in paragraph at lines 1427--1428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1414--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1429--1431
 
  []
 
-[44] (masterarbeit.aux)
+[45] (masterarbeit.aux)
 Package rerunfilecheck Info: File `masterarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1408,10 +1408,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 13252 strings out of 479697
- 235915 string characters out of 2865232
+ 13256 strings out of 479697
+ 235949 string characters out of 2865232
  691967 words of memory out of 3000000
- 29857 multiletter control sequences out of 15000+200000
+ 29859 multiletter control sequences out of 15000+200000
  524831 words of font info for 107 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  106i,20n,111p,10609b,558s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1442,9 +1442,9 @@ sy10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (46 pages, 4684456 bytes).
+Output written on masterarbeit.pdf (47 pages, 4686979 bytes).
 PDF statistics:
- 647 PDF objects out of 1000 (max. 8388607)
- 150 named destinations out of 1000 (max. 500000)
+ 654 PDF objects out of 1000 (max. 8388607)
+ 152 named destinations out of 1000 (max. 500000)
  290 words of extra memory for PDF output out of 10000 (max. 10000000)
 

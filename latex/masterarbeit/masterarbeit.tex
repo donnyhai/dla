@@ -816,7 +816,7 @@ In the following we will look at a process which is the approach of a simple app
 	sq: \mathbb{Z}^2 \to \C_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i
 	\end{align}
 	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\C$ which is $p$ is the center of the square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\C$ respecting the context. This bijection also naturally defines a graph structure on $\C_{sq}$, which is two squares $s_1, s_2\in \C_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. 
-	\noindent For the following we say a line $g$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $g\cap sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). 
+	\noindent For the following we say a line $g$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $g\cap sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). For a set $A\in\mP_f$ define $sq(A) := \bigcup_{p\in A} sq(p)$. 
 	
 \end{definition}
 
@@ -1068,7 +1068,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
 	\end{flalign*}
 	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the by $\beta$ rotated line. \\
-	\\We will further show now, that $\mu$ is invariant in respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise as well. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
+	\\We will further show now, that $\mu$ is invariant with respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise as well. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
 	\begin{flalign*}
 		\mu(A+b) 
 		&= \int_\GG \1_{A+b}(g) \mu(dg) \\
@@ -1161,10 +1161,14 @@ For a set $A\in \mP_f$ we define
 \begin{flalign*}
 	conv(A):=conv(\bigcup_{p\in A} sq(p))
 \end{flalign*}
-and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. 
+and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. Remind the definition 
+\begin{flalign*}
+	[B] := \{g\in\G\ |\ g\cap B \neq \emptyset\}
+\end{flalign*}
+for Borel-sets $B\in\mathcal{B}^2$. 
 
 \begin{definition} \label{linehittingdistribution}
-	$\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mP_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
+	$\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mP_f$ and $K := conv(A)$. For $x\in\Z^2$ and $g\in \G$ define
 	\begin{flalign*} 
 		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
 	\end{flalign*}
@@ -1176,8 +1180,8 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 		\end{cases}
 	\end{flalign}
 	and
-	\begin{flalign}
-		\mu_A(x) := \frac{1}{\PP^K_\mu([A])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
+	\begin{flalign} \label{lhadist}
+		\mu_A(x) := \frac{1}{\PP^K_\mu([sq(A)])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
 	\end{flalign}
 	We quickly show that $\mu_A\in \mathcal{D}_A$. For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
 	\begin{flalign*}
@@ -1189,7 +1193,7 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 	\end{flalign*} 
 	and therefore 
 	\begin{flalign*}
-		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([A])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([A])}{\PP^K_\mu([A])} = 1. 
+		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([sq(A)])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([sq(A)])}{\PP^K_\mu([sq(A)])} = 1. 
 	\end{flalign*}
 	Hence, the family of distributions $(\mu_A)_{A\in \mP_f}$ defines an incremental aggregation. 
 \end{definition}
@@ -1197,8 +1201,19 @@ and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$.
 \begin{definition} $(\mathit{line\ hitting\ aggregation)}$ An incremental aggregation with the random line hitting distribution we call $\mathit{line\ hitting\ aggregation}$, short $\mathit{LHA}$. 
 \end{definition}
 
+\begin{remark} \label{rem1}
+	Since $sq$ produces closed squares it is easy to understand that for connected sets $A\in\mP_f$ we have $[sq(A)]=[conv(A)]$ and therefore $\PP^{conv(A)}_\mu([sq(A)]) = 1$. 
+\end{remark}
+
 \begin{remark}
-	Note, that the indicator function in (\ref{mu}) is well-defined, since a line $g$ chosen by the distribution $\PP^K_\mu$ certainly hits $K=conv(A)$ and it is easy to understand that $g$ hits $conv(A)$ if and only if $g$ hits $A$. 
+	If for a set $A\in\mP_f$ and $K:=conv(A)$ we have $[sq(A)]=[K]$, with remark \ref{rem1} we can rewrite (\ref{lhadist}) to get
+	\begin{flalign*}
+		\mu_A(x) &= \frac{1}{\PP^K_\mu([sq(A)])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) \\
+		&= \int_{[sq(x)]} \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) + \int_{\G\setminus [sq(x)]} \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) \\
+		&\leq \int_{[sq(x)]} 1 \ \PP^K_\mu(dg) + 0\\
+		&= \PP^K_\mu([sq(x)])
+	\end{flalign*}
+	for any $x\in A$. 
 \end{remark}
 
 \subsection{Fractal Dimension and Growth Rate of LHA}

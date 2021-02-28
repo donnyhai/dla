@@ -22,6 +22,7 @@
 %\numberwithin{equation}{section} 
 \numberwithin{equation}{subsection}
 
+
 \newcommand{\C}{\mathbb{C}} % komplexe
 \newcommand{\R}{\mathbb{R}} % reelle
 \newcommand{\Q}{\mathbb{Q}} % rationale
@@ -29,10 +30,15 @@
 \newcommand{\N}{\mathbb{N}} % natuerliche
 \newcommand{\PP}{\mathbb{P}} % Probability
 \newcommand{\E}{\mathcal{E}} % big Epsilon
+\newcommand{\EE}{\mathbb{E}} %Expectation value
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\1}{\mathbbm{1}}
 \newcommand{\G}{\mathcal{G}}
 \newcommand{\GG}{\mathfrak{G}}
+\newcommand{\mP}{\mathcal{P}}
+\newcommand{\rad}{\text{rad}}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
 
 \numberwithin{equation}{section}
 
@@ -372,6 +378,38 @@ From now on consider the case $d=2$ and $q=1$ which is looking at lines in the r
 \end{definition}
 
 
+
+
+\begin{definition} \label{linehittingdistribution}
+	$\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mP_f$ and $K := conv(A)\in \K^2$. For $x\in\Z^2$ and $g\in \G$ define
+	\begin{flalign*} 
+		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
+	\end{flalign*}
+	\begin{flalign} \label{mu}
+		\tilde \mu_A(x,g) := \gamma_A(g)
+		\begin{cases}
+			\1\{x\in \{\min(g\cap A),\max(g\cap A)\}\}, &\text{ if } g\cap A\neq \emptyset, \\
+			0, &\text{ if } g\cap A = \emptyset.
+		\end{cases}
+	\end{flalign}
+	and
+	\begin{flalign}
+		\mu_A(x) := \frac{1}{\PP^K_\mu([A])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
+	\end{flalign}
+	We quickly show that $\mu_A\in \mathcal{D}_A$. For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
+	\begin{flalign*}
+		\sum_{x\in A} \tilde \mu_A(x,g) = \begin{cases}
+			\frac{1}{2}2, \quad &|g\cap A| \geq 2, \\
+			1, \quad &|g\cap A| = 1, \\
+			0, \quad &|g\cap A| = 0.
+		\end{cases} \quad= \1\{g\cap A\neq \emptyset\}
+	\end{flalign*} 
+	and therefore 
+	\begin{flalign*}
+		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([A])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([A])}{\PP^K_\mu([A])} = 1. 
+	\end{flalign*}
+	Hence, the family of distributions $(\mu_A)_{A\in \mP_f}$ defines an incremental aggregation. 
+\end{definition}
 
 
 
