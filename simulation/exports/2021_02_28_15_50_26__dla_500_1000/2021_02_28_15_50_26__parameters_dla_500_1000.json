@@ -1,0 +1,14 @@
+{ 
+"aggregation": "dla",
+"cluster_size": 500, 
+"background_color": "FFFFFF",
+"particle_color": ["000000"],
+"color_generation_size": 1000,
+"fractal_calculation_range": [0.33, 0.67],
+"image_width": 300, 
+"image_height": 300
+}
+
+
+
+
