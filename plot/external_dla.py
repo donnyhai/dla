@@ -9,37 +9,37 @@ Here you find an implementation of external dla. Note that it is not claimed tha
 
 import cmath
 import random
-from math import log, pi
+from math import pi
+
+import incremental_aggregation as ia
 
 
-class External_DLA:
-
+class External_DLA(ia.Incremental_Aggregation):
     def __init__(self):
-        self.particles = [0]  # particles will be presented as complex numbers
-
-        self.cluster_radius = 0
-        self.fractal_dimension_values = [1.5] #start with one neutral value to have equal sizes of particles and fractal_dimension_values
+        super().__init__()
 
         self.init_surround_circle()
         self.isnotnear_counter = 0
         
+        
     def run_process(self, iterations):
-        for i in range(iterations):
-            new_position = self.do_particle_walk(self.get_random_start_position())
+        for k in range(iterations):
+            new_position = self.get_next_particle(self.get_random_start_position())
 
             self.particles.append(new_position)
-            self.actualize_cluster_radius(new_position)
+            self.actualize_cluster_radius()
+            self.actualize_boundary_set()
 
-            self.add_fractal_dimension_value()
             self.actualize_surround_circle()
 
-            print(i)
+            print(k)
         print("number of notnear: " + str(self.isnotnear_counter))
 
-    def do_particle_walk(self, position):
+
+    def get_next_particle(self, position):
         isnear_counter = 0
         while True:
-            if self.is_touching(position):
+            if position in self.boundary_set:
                 return position
             else:
                 position = random.choice(self.get_neighbours(position))
@@ -52,28 +52,13 @@ class External_DLA:
             else:
                 isnear_counter += 1
 
-    def actualize_cluster_radius(self, position):
-        new_radius = self.get_distance(position, 0)
-        if new_radius > self.cluster_radius:
-            self.cluster_radius = new_radius
-
-    def get_distance(self, x, y):
-        return abs(x - y)
-
-    def add_fractal_dimension_value(self):
-        radius = max(self.cluster_radius, 2)
-        '''
-        as long as the cluster is as small that the radius is equal to one, log(1) is zero and therefore creating a problem in the division below, 
-        therefore taking this max here avoids this problem for the short beginning of the process
-        '''
-        value = log(len(self.particles))/log(radius)
-        self.fractal_dimension_values.append(value)
-
+    
     # start position of the next random walk
     def get_random_start_position(self):
         radius = self.surround_circle["radius"]
         startpos = cmath.rect(radius, random.random() * 2 * pi)
         return int(startpos.real) + int(startpos.imag) * 1j
+
 
     def init_surround_circle(self):
         self.minX, self.maxX = 0, 0
@@ -85,6 +70,7 @@ class External_DLA:
         self.surround_circle = {
             "middlePoint": self.particles[0], "radius": self.helpSpaceDelta}
 
+
     def actualize_surround_circle(self):
         x, y = self.particles[-1].real, self.particles[-1].imag
         self.minX, self.maxX = min(self.minX, x), max(self.maxX, x)
@@ -94,15 +80,8 @@ class External_DLA:
         dx, dy = self.maxX - self.minX, self.maxY - self.minY
         self.surround_circle["radius"] = abs(dx + dy * 1j) / 2 + self.helpSpaceDelta
 
+
     def isNear(self, pos):
         return abs(pos) < self.surround_circle["radius"] + 5
 
-    def get_neighbours(self, position):
-        return [position + 1, position - 1, position + 1j, position - 1j]
-
-    def is_touching(self, particle):
-        for neighbour in self.get_neighbours(particle):
-            if neighbour in self.particles:
-                return True
-        return False
 

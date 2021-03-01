@@ -289,7 +289,7 @@ the set of distributions on $A$. Now we define incremental aggregation as follow
 
 
 
-\subsection{Notion of Fractal Dimension and Growth Rate}\label{notion}
+\subsection{Notion of Fractal Dimension and Growth Rate} \label{notion}
 
 \begin{figure}
 	\centering
@@ -362,55 +362,17 @@ for any incremental aggregation in $\Z^d$. \\
 
 BILD
 
-\newpage
-\section{External Diffusion Limited Aggregation}
+\subsection{A rigorous characterization of the fractal dimension}
 
-\subsection{Definition}
-
-External DLA is a model of an incremental aggregation as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
-
-\begin{definition} \label{harmonicmeasure}
-	$\mathit{(harmonic\ measure)}$ Let $A\subset\Z^d$. The hitting probability of $A$ is the function 
-	\begin{flalign*}
-		H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto H_A(x,y):=\PP_x(S_{T_A^+} = y).
-	\end{flalign*}
-	In literature you can find the same definition where $T_A$ is used instead of $T_A^+$. Since in the following for finite sets $A\in\mP^d_f$ the limit $|x| \to \infty$ of $H_A(x,y)$ is of interest, $T_A^+$ is chosen for convenience. In fact, for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
-	\begin{flalign*}
-		\bar H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto \bar H_A(x,y):=\PP_x(S_{T_A^+} = y\ |\ T_A^+<\infty), 
-	\end{flalign*} 
-	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}$ (Chapter $2$, Definition $2.1$) and in the same chapter it is proved, that for finite sets $A\in\mP^d_f$ the limit
-	\begin{flalign*}
-		\lim_{|x|\to\infty} \bar H_A(x,y) =: h_A(y) 
-	\end{flalign*}
-	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at \glqq $\text{infinity}$\grqq hits $A$ the first time at $y$.
-\end{definition}
-
-\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregation)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregation}$ (on $\Z^d$), short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregation with the family of harmonic measures $(h_A)_{A\in\mP^d_f}$ as distribution. 
-\end{definition}
-
-\begin{remark} \label{harmonicmeasure2}
-	If we look at the $2$-dimensional case, by Lemma $\autoref{recurrA}$, we have that $\PP_x(T_A^+<\infty) = 1$ for any $x\in\Z^2$, and therefore get $\bar H_A = H_A$. So in two dimensions the harmonic measure of $A\subset \Z^2$ can be written as 
-	\begin{flalign*}
-		h_A(y) = \lim_{|x|\to\infty} \PP_x(S_{T_A^+} = y), \quad y\in A. 
-	\end{flalign*}
-\end{remark}
-
-
-\subsection{Fractal Dimension and Growth Rate of External DLA in $\Z^2$}
-
-There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results on DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
+In this section we will proof a rigorous lower bound for the fractal dimension of an incremental aggregation if its distribution family $(\mu_A)_{\mP_f}$ satisfies a certain condition. Before coming to this statement we have to make some preparations in the following. We define two random functions
 \begin{flalign*}
-	d_f = \frac{d^2 + 1}{d+1}
+	r: \N \to [0,\infty),\quad n\mapsto \rad(\E_n)
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously proved results and we will see one of them in the following. First we will proof some lemmas. For that define two random functions
-	\begin{flalign*}
-		r: \N \to [0,\infty),\quad n\mapsto \rad(\E_n)
-	\end{flalign*}
-	and
-	\begin{flalign*}
-		T: [0,\infty) \to \N,\quad s\mapsto \min\{j\in\N\ |\ r(j)\geq s\}.
-	\end{flalign*}
-	Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in \ref{notion} (\ref{radius}). 
+and
+\begin{flalign*}
+	T: [0,\infty) \to \N,\quad s\mapsto \min\{j\in\N\ |\ r(j)\geq s\}.
+\end{flalign*}
+Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in \ref{notion} (\ref{radius}). 
 \begin{remark}\label{props}
 	It is easy to show that, for all $\omega\in\Omega$, $r(\omega)$ and $T(\omega)$ grow monotonously in $n\in\N$ resp. $s\in [0,\infty)$ and that for all $n\in\N$ and $s\in [0,\infty)$ we have $T(\omega)(r(\omega)(n)) \leq n$ and  $r(\omega)(T(\omega)(s)) \geq s$.
 \end{remark}
@@ -443,7 +405,7 @@ in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ pag
 	\begin{flalign*}
 		D_c := \{\omega \in\Omega\ |\ \exists N=N(\omega)\in\N: T(\omega)(as)\geq ch^{-1}(s) \text{ for all } s>N\}.
 	\end{flalign*}
-	 Then the following are equivalent:
+	Then the following are equivalent:
 	\begin{enumerate}
 		\item $\exists c>0: \PP(A_c) = 1$ 
 		\item $\exists c>0: \PP(D_c)=1$
@@ -514,6 +476,123 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 	\end{flalign*}
 \end{definition}
 
+\begin{definition}
+	For $y\in\Z^2$ let 
+	\begin{flalign*}
+		\Phi_y: \Z^2 \to \Z^2, x\mapsto x+y
+	\end{flalign*}
+	be a translation function on $\Z^2$. Then we call the family of distributions $(\mu_A)_{A\in\mP_f}$ $\mathit{translation}$ $\mathit{invariant}$ if and only if for all $y\in\Z^2$
+	\begin{flalign*}
+		\mu_A(z) = \mu_{\Phi_y(A)}(\Phi_y(z)) 
+	\end{flalign*}
+	for all $z\in A$ and $A\in\mP_f$. 
+\end{definition}
+
+\begin{lemma}
+	Let $q>0$ and $(\mu_A)_{A\in\mP_f}$ be translation invariant. Then if there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
+	\begin{flalign*}
+		\mu_A(0) \leq cr^{-q}, \quad \text{ for all } A\in\mP^0_r,
+	\end{flalign*}
+	then there also exists a constant $c>0$ such that for all $y\in\Z^2$ and $s,r\in [1,\infty)$ with $s\geq r$ we have
+	\begin{flalign*}
+		\mu_A(y) \leq cr^{-q}, \quad \text{ for all } A\in\mP^y_s.
+	\end{flalign*}
+\end{lemma}
+\begin{proof}
+	Let $y\in\Z^2$ and choose $s,r\in\ [1,\infty)$ with $s\geq r$. Then with the translation invariance of $(\mu_A)_{A\in\mP_f}$ we get 
+	\begin{flalign*}
+		\mu_A(0) = h_{\Phi_y(A)}(\Phi_y(0)) = h_{\Phi_y(A)}(y) \leq cs^{-q} \leq cr^{-q} \quad \text{ for all } A\in\mP^0_s, 
+	\end{flalign*}
+	and since $A\in\mP^0_s\ \Leftrightarrow\ \Phi_y(A) \in \mP^{\Phi_y(0)}_s$ we get
+	\begin{flalign*}
+		\mu_A(y) \leq cr^{-q} \quad \text{ for all } A\in\mP^y_s.
+	\end{flalign*}
+	Since $c$ was chosen independently of $y$, $s$ and $r$, this completes the proof. 
+\end{proof}
+
+At this point we are prepared to proof the following theorem. 
+
+\begin{theorem} \label{iatheorem}
+	Let $q>0$ and $(\mu_A)_{A\in\mP_f}$ be translation invariant. If there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
+	\begin{flalign*}
+		\mu_A(0) \leq cr^{-q} \quad \text{ for all } A\in\mP^0_r,
+	\end{flalign*}
+	then for the fractal dimension we have
+	\begin{flalign*}
+		d_f \geq 1 + q. 
+	\end{flalign*}
+\end{theorem}
+
+\begin{proof}
+	
+\end{proof}
+
+
+
+
+\newpage
+\section{External Diffusion Limited Aggregation}
+
+\subsection{Definition}
+
+External DLA is a model of an incremental aggregation as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
+
+\begin{definition} \label{harmonicmeasure}
+	$\mathit{(harmonic\ measure)}$ Let $A\subset\Z^d$. The hitting probability of $A$ is the function 
+	\begin{flalign*}
+		H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto H_A(x,y):=\PP_x(S_{T_A^+} = y).
+	\end{flalign*}
+	In literature you can find the same definition where $T_A$ is used instead of $T_A^+$. Since in the following for finite sets $A\in\mP^d_f$ the limit $|x| \to \infty$ of $H_A(x,y)$ is of interest, $T_A^+$ is chosen for convenience. In fact, for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
+	\begin{flalign*}
+		\bar H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto \bar H_A(x,y):=\PP_x(S_{T_A^+} = y\ |\ T_A^+<\infty), 
+	\end{flalign*} 
+	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}$ (Chapter $2$, Definition $2.1$) and in the same chapter it is proved, that for finite sets $A\in\mP^d_f$ the limit
+	\begin{flalign*}
+		\lim_{|x|\to\infty} \bar H_A(x,y) =: h_A(y) 
+	\end{flalign*}
+	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at \glqq $\text{infinity}$\grqq hits $A$ the first time at $y$.
+\end{definition}
+
+\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregation)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregation}$ (on $\Z^d$), short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregation with the family of harmonic measures $(h_A)_{A\in\mP^d_f}$ as distribution. 
+\end{definition}
+
+\begin{remark} \label{harmonicmeasure2}
+	If we look at the $2$-dimensional case, by Lemma $\autoref{recurrA}$, we have that $\PP_x(T_A^+<\infty) = 1$ for any $x\in\Z^2$, and therefore get $\bar H_A = H_A$. So in two dimensions the harmonic measure of $A\subset \Z^2$ can be written as 
+	\begin{flalign*}
+		h_A(y) = \lim_{|x|\to\infty} \PP_x(S_{T_A^+} = y), \quad y\in A. 
+	\end{flalign*}
+\end{remark}
+
+
+\subsection{Fractal Dimension and Growth Rate of External DLA in $\Z^2$}
+
+There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results on DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
+\begin{flalign*}
+	d_f = \frac{d^2 + 1}{d+1}
+\end{flalign*}
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). There are only few rigorously proved results and we will see one of them in the following. First we will proof some lemmas. 
+
+HIER
+
+\begin{lemma}
+	The familiy of harmonic measures $(h_A)_{A\in\mP_f}$ is translation invariant.
+\end{lemma}
+\begin{proof}
+	Let $y\in \Z^2$ and $A\in\mP_f$. Recall that in $\Z^2$ the harmonic measure of $A\subset\Z^2$ can be written as 
+	\begin{flalign*}
+		h_A(z) = \lim_{|x|\to \infty} \PP_x(S_{T_A^+} = z)
+	\end{flalign*}
+	for any $z\in A$ (see Remark \ref{harmonicmeasure2}). Since the distribution of random walks in $\Z^2$ is invariant under translation, we can conlude that
+	\begin{flalign*}
+		h_A(z) &= \lim_{|x|\to \infty} \PP_x(S_{T_A^+} = z) \\
+		&= \lim_{|x|\to \infty} \PP_{\Phi_y(x)}(S_{T_{\Phi_y(A)}^+} = \Phi_y(z)) \\
+		&= h_{\Phi_y(A)}(\Phi_y(z)) 
+	\end{flalign*}
+	for all $z\in A$.
+\end{proof}
+
+
+
 The following theorem gives a bound on the harmonic measure which will be used in the proof we present here for the growth rate of DLA. The theorem is proved in $\cite{lawler}$ in Theorem $2.5.2$ and we state it slightly differently here to generalize it easier afterwards. 
 
 \begin{theorem} \label{keytheorem}
@@ -566,7 +645,7 @@ The following theorem gives a bound on the harmonic measure which will be used i
 
 
 
-\begin{theorem}
+\begin{theorem} \label{dlatheorem}
 	For the fractal dimension of external DLA in $\Z^2$ as defined in section $\ref{notion}$ equation $(\ref{fractaldimension})$ we have
 	\begin{flalign}
 		d_f \geq \frac{3}{2}. 
@@ -1217,6 +1296,48 @@ for Borel-sets $B\in\mathcal{B}^2$.
 \end{remark}
 
 \subsection{Fractal Dimension and Growth Rate of LHA}
+
+In this section we will try to give an idea of the fractal dimension of the line hitting aggregation.
+
+\begin{conjecture} \label{lhaconjecture}
+	There exists a $c>0$ such that for all $r\geq 1$ we have 
+	\begin{flalign*}
+		\mu_A(0) \leq cr^{-1}, \quad \text{ for all } A\in\mP^0_r.
+	\end{flalign*}
+\end{conjecture}
+
+Similar to Proposition \ref{general} for which we used the translation invariance of the harmonic measure, we can use the translation invariance of the line hitting distribution and get the following. 
+
+\begin{lemma} \label{generallha}
+	There exists a $c>0$ such that for all $y\in\Z^2$ and $s,r\in [1,\infty)$ with $s\geq r$ we have 
+	\begin{flalign} 
+		\mu_A(y) \leq cr^{-1}, \quad \text{ for all } A\in\mP^y_s.
+	\end{flalign}
+\end{lemma}
+
+\begin{proof}
+	See proof at Proposition \ref{general} and use the translation invariance of the line hitting aggregation. 
+\end{proof}
+
+If Conjecture \ref{lhaconjecture} happens to be true, we can use similar techniques as in the proof of Theorem \ref{dlatheorem} to show that the fractal dimension of the line hitting aggregation is equal to 2. We will look at that in the following. 
+
+\begin{theorem}
+	For the fractal dimension of the line hitting aggregation we have
+	\begin{flalign*}
+		d_f = 2.
+	\end{flalign*}
+\end{theorem}
+
+ANKER
+
+\begin{proof}
+	We will show that $\alpha_f \leq \frac{1}{2}$, hence by \ref{notion} (\ref{fractaldim}) we have $d_f \geq 2$. Since $d_f \leq 2$ by \ref{notion} (\ref{trivialboundary}) we therefore get $d_f = 2$ which is what we want to show. \\
+	\\ So similar as in the proof of Theorem \ref{dlatheorem} we want to find a constant $c>0$ such that for 
+	\begin{flalign*}
+		D_c := \{\omega\in\Omega\ |\ T(\omega)(2n) \geq c n^2 \text{ for large }n \}
+	\end{flalign*}
+	we have $\PP(D_c) = 1$. 
+\end{proof}
 
 
 

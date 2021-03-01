@@ -10,6 +10,8 @@ Collect and export data like image, cluster information and process parameters.
 #systemic imports
 import pygame, json, sys, datetime, os, shutil
 
+import fractal_dimension as fd
+
 
 def format_time():
     time = datetime.datetime.now()
@@ -46,7 +48,7 @@ def export_data(aggregation, data, separator):
     
     #create exports
     create_pygame_image(filename_image, aggregation, data)
-    create_information(filename_information, aggregation)
+    create_information(filename_information, aggregation, data)
     create_parameters_file(filename_parameters, separator)
     
     #move exports into a folder
@@ -65,15 +67,25 @@ def create_parameters_file(filename, separator):
     os.rename(current_dir + separator + "parameters.json", current_dir + separator + filename)
     
     
-def create_information(filename, aggregation):
+def create_information(filename, aggregation, data):
     #convert complex numbers into vectors
     particles = [(particle.real, particle.imag) for particle in aggregation.particles]
     
-    information = {"time":                  current_time,
-                   "last_fractal_value":    aggregation.fractal_dimension_values[-1],
-                   "fractal_values":        aggregation.fractal_dimension_values,
-                   "particles":             particles
-                           }
+    #calculate fractal dimension values
+    fda1 = fd.fractal_dimension_approximation_1(particles, data["fractal_calculation_range"])
+    fda2 = fd.fractal_dimension_approximation_2(particles)
+
+    #collect all data in one dict
+    information = {"time":                          current_time,
+                   "linear_reg_parameters":         fda1["parameters"],
+                   "last_fractal_dimension_value":  fda2,
+                   "particles":                     particles
+                   }
+    
+    print("Linear regression parameters: " + str(information["linear_reg_parameters"]))
+    print("Last fractal dimension value: " + str(information["last_fractal_dimension_value"]))
+    
+    
     f = open(filename, "w+")
     json.dump(information, f)
     f.close()

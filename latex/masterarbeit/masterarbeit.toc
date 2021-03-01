@@ -8,18 +8,19 @@
 \contentsline {section}{\numberline {3}Incremental Aggregation}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Definition}{7}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Notion of Fractal Dimension and Growth Rate}{7}{subsection.3.2}%
-\contentsline {section}{\numberline {4}External Diffusion Limited Aggregation}{11}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Definition}{11}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Fractal Dimension and Growth Rate of External DLA in $\mathbb {Z}^2$}{11}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Line Hitting Aggregation}{22}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Motivation}{22}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Integral Geometry}{25}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}General results}{25}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{26}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Definition}{33}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{35}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregation}{36}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Images and Empirical Fractal Dimension}{36}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Code}{38}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Outlook}{43}{section.7}%
+\contentsline {subsection}{\numberline {3.3}A rigorous characterization of the fractal dimension}{10}{subsection.3.3}%
+\contentsline {section}{\numberline {4}External Diffusion Limited Aggregation}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Definition}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Fractal Dimension and Growth Rate of External DLA in $\mathbb {Z}^2$}{14}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Line Hitting Aggregation}{23}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Motivation}{23}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Integral Geometry}{26}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}General results}{26}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{27}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Definition}{34}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{36}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregation}{37}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Images and Empirical Fractal Dimension}{37}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Code}{39}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Outlook}{44}{section.7}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

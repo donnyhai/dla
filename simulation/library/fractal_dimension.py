@@ -5,8 +5,10 @@ Created on Thu Feb 25 16:08:41 2021
 @author: Tillmann Tristan Bosch
 """
 
+
 from numpy import polyfit
 from math import log
+
 
 #try to approximate "full" fractal dimension
 def fractal_dimension_approximation_1(particles, ratio_range = [0,1]):

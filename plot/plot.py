@@ -10,16 +10,57 @@ import numpy as np
 
 import json
 from math import log
+import pygame
 
 import fractal_dimension as fd
 
+
+def create_pygame_image(data):
+    pygame.init()
+    pygame.display.init()
+    surface = pygame.display.set_mode((300, 300))
+    
+    particles = [x[0] + x[1] * 1j for x in data["particles"]]
+    radius = max([abs(x) for x in particles])
+    
+    background_color = convert_hex_to_vector("ffffff")
+    particle_color = convert_hex_to_vector("000000")
+    
+    #surface = pygame.Surface((300, 300))
+    surface.fill(background_color)
+    offset = surface.get_width() // 2 + (surface.get_height() // 2) * 1j
+    
+    for i in range(len(particles)):
+        render_atom = particles[i] + offset
+        surface.set_at((int(render_atom.real), int(render_atom.imag)), particle_color) 
+        
+    low_radius = radius * 0.2
+    high_radius = radius * 0.75
+    circle_color = convert_hex_to_vector("ff0000")
+    
+    pygame.draw.circle(surface, circle_color, (offset.real, offset.imag), low_radius, width = 2)
+    pygame.draw.circle(surface, circle_color, (offset.real, offset.imag), high_radius, width = 2)
+    
+    while True:
+        pygame.display.flip()
+
+
+def convert_hex_to_vector(hexa):
+    def hex_to_int(letter):
+        return int(letter, 16)
+    r = 16 * hex_to_int(hexa[0]) + hex_to_int(hexa[1])
+    g = 16 * hex_to_int(hexa[2]) + hex_to_int(hexa[3])
+    b = 16 * hex_to_int(hexa[4]) + hex_to_int(hexa[5])
+    return (r,g,b)
 
 if __name__ == "__main__":
     
     
     #read parameters.json    
-    with open("data19.json") as json_file:
+    with open("data16.json") as json_file:
         data = json.load(json_file)
+        
+    create_pygame_image(data)
     
     """
     N = 1000
@@ -29,10 +70,12 @@ if __name__ == "__main__":
     y_val = [log(x) for x in data["radius_list"][cut:]]
     
     param = np.polyfit(x_val, y_val, 1)
-    """
+    
     
     fda = fd.fractal_dimension_approximation_1(data["particles"], [1/6, 4/6])
     print(fda)
+    
+    
     lin = [1,2,3,4,5,6,7,8,9,10,11]
     
     x_list = fda["x_list"]
@@ -40,7 +83,15 @@ if __name__ == "__main__":
     params = fda["parameters"]
     
     plt.plot(x_list, y_list, "o")
+    
+    
     plt.plot(lin, [params[1] + params[0] * x for x in lin], color="red", linewidth = 2)
+    
+    plt.scatter( 0 , 0 , s=10000 ,  facecolors='none', edgecolors='blue' ) 
+    
+    
+    
+    
     plt.ylabel("ln(r(n))")
     plt.xlabel("ln(n), 800 < n <= 1000")
     
@@ -49,4 +100,7 @@ if __name__ == "__main__":
     
     plt.show()
     
-    print(1/fda["parameters"][0])
+    """
+    
+    
+    
