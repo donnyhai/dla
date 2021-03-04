@@ -17,10 +17,10 @@
 \contentsline {subsection}{\numberline {5.2}Integral Geometry}{25}{subsection.5.2}%
 \contentsline {subsubsection}{\numberline {5.2.1}General results}{25}{subsubsection.5.2.1}%
 \contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{26}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Definition}{33}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}Definition}{34}{subsection.5.3}%
 \contentsline {subsection}{\numberline {5.4}Fractal Dimension and Growth Rate of LHA}{35}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregation}{36}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Code}{36}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Images and Empirical Fractal Dimension}{40}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Outlook}{44}{section.7}%
+\contentsline {section}{\numberline {6}Python Simulation of the Line Hitting Aggregation}{37}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Code}{37}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Images and Empirical Fractal Dimension}{41}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Outlook}{45}{section.7}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

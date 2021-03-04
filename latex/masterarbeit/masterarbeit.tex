@@ -73,7 +73,7 @@
    Masterthesis
     \vspace*{2cm}
 
-    {\huge Fractal dimension of Incremental Aggregations}\\
+    {\huge Incremental Aggregations}\\
     \vspace*{2.5cm}
 
     Tillmann Tristan Bosch
@@ -301,7 +301,7 @@ Properties of an incremental aggregation obviously base strongly on the properti
 	Remind that $\bar A = A \cup \partial A$. This definition shall capture the idea that aggregations which arise from particles moving from \glqq outside\grqq\ to the current cluster and getting stuck where they hit the cluster the first time, cannot move into the cluster without passing its boundary. For both incremental aggregations we discuss in this paper this will be the case. 
 \end{definition}
 
-\begin{definition}
+\begin{definition} \label{translinv}
 	For $y\in\Z^2$ let 
 	\begin{flalign*}
 		\Phi_y: \Z^2 \to \Z^2, x\mapsto x+y
@@ -785,7 +785,7 @@ There is not yet a rigorous proof on the exact fractal dimension of external DLA
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). We will proof in the following an a.s. lower bound for the fractal dimension of extern DLA. We will first prepare everything to able to use theorem \ref{iatheorem}. 
+in $\Z^d$ which seems to agree fairly well with simulations ($\cite{lawler}$ page 83). We will proof in the following an a.s. lower bound for the fractal dimension of extern DLA. We will first prepare everything to use theorem \ref{iatheorem}. 
 
 \begin{lemma}
 	The familiy of harmonic measures $(h_A)_{A\in\mP_f}$ is translation invariant.
@@ -973,7 +973,7 @@ and
 \begin{flalign*}
 	s_\alpha : = -\sin(\alpha) + \cos(\alpha)i
 \end{flalign*}
-be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $2$-dimensional $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
 \begin{flalign*}
 	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
 \end{flalign*}
@@ -1143,6 +1143,26 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	where in $(+)$ we used the translation and rotation invariance of the Lebesgue measure. This completes the proof.
 \end{proof}
 
+\begin{example} \label{exp1}
+	Choose $K:=B_r\in \mathcal{K}^2$ the ball with radius $r>0$ and center $0$, then
+	\begin{flalign*}
+		\mu([K]) = {\lambda_2}_{|\Phi} \circ \chi^{-1} (B_r) = {\lambda_2}_{|\Phi}([0,\pi) \times [-r,r]) = 2\pi r.
+	\end{flalign*}
+\end{example}
+
+\begin{example} \label{exp2}
+	Now choose $K:=[0,r] \times \{0\}\in \mathcal{K}^2$ an interval of length $r>0$, then
+	\begin{flalign*}
+		\mu([K]) &= {\lambda_2}_{|\Phi} \circ \chi^{-1} ([K]) \\
+		&= \int_{\Phi}\ \1_{\chi^{-1}([K])}(\alpha, p)\ \lambda_2(\text{d}(\alpha, p)) \\
+		&= \int_0^\pi \int_{-\infty}^{\infty} \1_{\chi^{-1}([K])}(\alpha, p)\ \text{d} p\ \text{d}\alpha \\
+		&= \int_0^{\frac{\pi}{2}} \int_{0}^{r\cos(\alpha)} 1\ \text{d} p\ \text{d}\alpha + \int_{\frac{\pi}{2}}^\pi \int_{-r\cos(\pi - \alpha)}^0 1\ \text{d}p\ \text{d}\alpha\\
+		&=\int_0^{\frac{\pi}{2}} r\cos(\alpha)\ \text{d}\alpha + \int_{\frac{\pi}{2}}^\pi r\cos(\pi - \alpha)\ \text{d}\alpha\\
+		&=r(\sin(\frac{\pi}{2}) - \sin(\pi - \pi) + \sin(\pi - \frac{\pi}{2})) \\
+		&= r(1-0+1) =2r.
+	\end{flalign*}
+\end{example}
+
 By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
 \begin{flalign*}
 	\PP^K_\mu(A) := \frac{\mu( A\cap [K])}{\mu([K])},\quad A\in \GG.
@@ -1241,12 +1261,8 @@ for Borel-sets $B\in\mathcal{B}^2$.
 \begin{definition} $(\mathit{line\ hitting\ aggregation)}$ An incremental aggregation with the random line hitting distribution we call $\mathit{line\ hitting\ aggregation}$, short $\mathit{LHA}$. 
 \end{definition}
 
-\begin{remark} \label{rem1}
-	Let $A\in\mP_f$. Since $sq$ produces closed squares it is easy to understand that if $sq(A)$ is path connected then $[sq(A)]=[conv(A)]$ and therefore $\PP^{conv(A)}_\mu([sq(A)]) = 1$. 
-\end{remark}
-
-\begin{remark}
-	If for a set $A\in\mP_f$ and $K:=conv(A)$ we have $[sq(A)]=[K]$, then with remark \ref{rem1} we can rewrite (\ref{lhadist}) to get
+\begin{remark} \label{easy}
+	Let $A\in\mP_f$. If $A$ is connected then with $K:=conv(A)$ we have $[sq(A)]=[K]$, leading to $\PP^K_\mu([sq(A)]) = 1$. Therefore we get 
 	\begin{flalign*}
 		\mu_A(x) &= \frac{1}{\PP^K_\mu([sq(A)])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) \\
 		&= \int_{[sq(x)]} \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) + \int_{\G\setminus [sq(x)]} \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) \\
@@ -1260,44 +1276,41 @@ for Borel-sets $B\in\mathcal{B}^2$.
 
 In this section we will try to give an idea of the fractal dimension of the line hitting aggregation.
 
-\begin{conjecture} \label{lhaconjecture}
-	There exists a $c>0$ such that for all $r\geq 1$ we have 
+\begin{theorem} \label{lhaconjecture}
+	There exists a $c>0$ such that for all $r\in [1,\infty)$ we have 
 	\begin{flalign*}
 		\mu_A(0) \leq cr^{-1}, \quad \text{ for all } A\in\mP^0_r.
-	\end{flalign*}
-\end{conjecture}
-
-Similar to Proposition \ref{general} for which we used the translation invariance of the harmonic measure, we can use the translation invariance of the line hitting distribution and get the following. 
-
-\begin{lemma} \label{generallha}
-	There exists a $c>0$ such that for all $y\in\Z^2$ and $s,r\in [1,\infty)$ with $s\geq r$ we have 
-	\begin{flalign} 
-		\mu_A(y) \leq cr^{-1}, \quad \text{ for all } A\in\mP^y_s.
-	\end{flalign}
-\end{lemma}
-
-\begin{proof}
-	See proof at Proposition \ref{general} and use the translation invariance of the line hitting aggregation. 
-\end{proof}
-
-If Conjecture \ref{lhaconjecture} happens to be true, we can use similar techniques as in the proof of Theorem \ref{dlatheorem} to show that the fractal dimension of the line hitting aggregation is equal to 2. We will look at that in the following. 
-
-\begin{theorem}
-	For the fractal dimension of the line hitting aggregation we have
-	\begin{flalign*}
-		d_f = 2.
 	\end{flalign*}
 \end{theorem}
 
 \begin{proof}
-	We will show that $\alpha_f \leq \frac{1}{2}$, hence by \ref{notion} (\ref{fractaldim}) we have $d_f \geq 2$. Since $d_f \leq 2$ by \ref{notion} (\ref{trivialboundary}) we therefore get $d_f = 2$ which is what we want to show. \\
-	\\ So similar as in the proof of Theorem \ref{dlatheorem} we want to find a constant $c>0$ such that for 
+	Let $r\geq 1$, $A\in\mP^0_r$ and $K:=conv(A)$. Since $A$ is connected we can use remark \ref{easy} and the examples \ref{exp1} and \ref{exp2} to get
 	\begin{flalign*}
-		D_c := \{\omega\in\Omega\ |\ T(\omega)(2n) \geq c n^2 \text{ for large }n \}
+		\mu_A(0) &\leq \PP^K_\mu([sq(0)]) \\
+		&= \frac{\mu([sq(0)])}{\mu([K])} \\
+		&\leq \frac{\mu([B_1])}{\mu([[0,r] \times \{0\}])} \\
+		&= \frac{2\pi}{2r} \\
+		&= \pi r^{-1}.
 	\end{flalign*}
-	we have $\PP(D_c) = 1$. 
+	Note that $sq(0)\subset B_1$. Note also that we used that since $K$ is convex and has at least radius $r$ as a set in $\R^2$ it certainly contains a line segment of length $r$, and since $\mu$ is translation and rotation invariant we can here choose the segment $[0,r] \times \{0\}$ and state $[0,r] \times \{0\} \subset K$ without loss of generality. Since choosing $c:=\pi$ is not depening on $r$ or $A$ this completes the proof. 
 \end{proof}
 
+We are therefore prepared to proof the following theorem.
+
+\begin{theorem}
+	For the fractal dimension of the line hitting aggregation we have
+	\begin{flalign*}
+		d_f = 2\quad \text{a.s.}
+	\end{flalign*}
+\end{theorem}
+
+\begin{proof}
+	It is not difficult to proof that the line hitting distribution is translation invariant and an outside distribution, just like the harmonic measure in external DLA. Remind the definitions \ref{translinv} and \ref{outsidedist}. Together with theorem \ref{lhaconjecture} we can therefore use theorem \ref{iatheorem} and choose $q=1$ to get
+	\begin{flalign*}
+		d_f \geq 1+1 = 2 \quad \text{a.s.}.
+	\end{flalign*}
+	Since $d_f\leq 2$ a.s. by chapter \ref{notion} (\ref{trivialboundary}) we therefore get $d_f=2$ a.s..
+\end{proof}
 
 
 

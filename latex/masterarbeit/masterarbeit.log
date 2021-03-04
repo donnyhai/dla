@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  4 MAR 2021 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  4 MAR 2021 20:28
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -1155,355 +1155,327 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 {equation.5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1221 	\end{flalign}
+l.1241 	\end{flalign}
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{equation.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1225 	\end{flalign}
-                     
-Overfull \hbox (0.37215pt too wide) in paragraph at lines 1245--1246
-\T1/lmr/m/n/12 that if $\OML/lmm/m/it/12 sq\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\
-OT1/lmr/m/n/12 )$ \T1/lmr/m/n/12 is path con-nected then $\OT1/lmr/m/n/12 [\OML
-/lmm/m/it/12 sq\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 )] = [\OML/lm
-m/m/it/12 conv\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 )]$ \T1/lmr/m/
-n/12 and there-fore $\U/msb/m/n/12 P[]\OT1/lmr/m/n/12 ([\OML/lmm/m/it/12 sq\OT1
-/lmr/m/n/12 (\OML/lmm/m/it/12 A\OT1/lmr/m/n/12 )]) =
- []
-
-[34]
-
-LaTeX Warning: Reference `general' on page 35 undefined on input line 1270.
-
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5.1}
-) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1276 	\end{flalign}
-                     
-
-LaTeX Warning: Reference `general' on page 35 undefined on input line 1280.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1293--1295
-
- []
-
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 1306--1310
+l.1245 	\end{flalign}
+                      [34] [35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 1319--1323
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1306--1310
+Underfull \hbox (badness 10000) in paragraph at lines 1319--1323
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1306--1310
+Underfull \hbox (badness 10000) in paragraph at lines 1319--1323
 
  []
 
-<images/code-snippets/parameters.png, id=420, 255.95625pt x 140.77594pt>
+<images/code-snippets/parameters.png, id=424, 255.95625pt x 140.77594pt>
 File: images/code-snippets/parameters.png Graphic file (type png)
 <use images/code-snippets/parameters.png>
 Package pdftex.def Info: images/code-snippets/parameters.png  used on input lin
-e 1317.
+e 1330.
 (pdftex.def)             Requested size: 172.2709pt x 94.74773pt.
-<images/code-snippets/mainpy.png, id=421, 402.75468pt x 168.63pt>
+<images/code-snippets/mainpy.png, id=425, 402.75468pt x 168.63pt>
 File: images/code-snippets/mainpy.png Graphic file (type png)
 <use images/code-snippets/mainpy.png>
 Package pdftex.def Info: images/code-snippets/mainpy.png  used on input line 13
-23.
+36.
 (pdftex.def)             Requested size: 316.67934pt x 132.58994pt.
-<images/code-snippets/initia.png, id=422, 270.25969pt x 63.23625pt>
+<images/code-snippets/initia.png, id=426, 270.25969pt x 63.23625pt>
 File: images/code-snippets/initia.png Graphic file (type png)
 <use images/code-snippets/initia.png>
 Package pdftex.def Info: images/code-snippets/initia.png  used on input line 13
-27.
+40.
 (pdftex.def)             Requested size: 218.88852pt x 51.21504pt.
-<images/code-snippets/lhainit.png, id=423, 316.93407pt x 40.65187pt>
+<images/code-snippets/lhainit.png, id=427, 316.93407pt x 40.65187pt>
 File: images/code-snippets/lhainit.png Graphic file (type png)
 <use images/code-snippets/lhainit.png>
 Package pdftex.def Info: images/code-snippets/lhainit.png  used on input line 1
-329.
+342.
 (pdftex.def)             Requested size: 244.0158pt x 31.2982pt.
-<images/code-snippets/runprocess.png, id=425, 362.85562pt x 176.91093pt>
+<images/code-snippets/runprocess.png, id=429, 362.85562pt x 176.91093pt>
 File: images/code-snippets/runprocess.png Graphic file (type png)
 <use images/code-snippets/runprocess.png>
 Package pdftex.def Info: images/code-snippets/runprocess.png  used on input lin
-e 1334.
+e 1347.
 (pdftex.def)             Requested size: 291.79642pt x 142.26378pt.
-<images/code-snippets/randomline.png, id=428, 244.66406pt x 63.98906pt>
+<images/code-snippets/randomline.png, id=432, 244.66406pt x 63.98906pt>
 File: images/code-snippets/randomline.png Graphic file (type png)
 <use images/code-snippets/randomline.png>
 Package pdftex.def Info: images/code-snippets/randomline.png  used on input lin
-e 1339.
+e 1352.
 (pdftex.def)             Requested size: 195.8211pt x 51.21504pt.
-<images/code-snippets/linehitscluster.png, id=430, 412.54124pt x 64.74188pt>
+<images/code-snippets/linehitscluster.png, id=434, 412.54124pt x 64.74188pt>
 File: images/code-snippets/linehitscluster.png Graphic file (type png)
 <use images/code-snippets/linehitscluster.png>
 Package pdftex.def Info: images/code-snippets/linehitscluster.png  used on inpu
-t line 1344.
+t line 1357.
 (pdftex.def)             Requested size: 326.36354pt x 51.21504pt.
-<images/code-snippets/getsquare.png, id=431, 569.87906pt x 27.85406pt>
+<images/code-snippets/getsquare.png, id=435, 569.87906pt x 27.85406pt>
 File: images/code-snippets/getsquare.png Graphic file (type png)
 <use images/code-snippets/getsquare.png>
 Package pdftex.def Info: images/code-snippets/getsquare.png  used on input line
- 1348.
+ 1361.
 (pdftex.def)             Requested size: 465.70384pt x 22.76228pt.
-<images/code-snippets/nextparticle.png, id=434, 312.41719pt x 63.98906pt>
+<images/code-snippets/nextparticle.png, id=438, 312.41719pt x 63.98906pt>
 File: images/code-snippets/nextparticle.png Graphic file (type png)
 <use images/code-snippets/nextparticle.png>
 Package pdftex.def Info: images/code-snippets/nextparticle.png  used on input l
-ine 1353.
+ine 1366.
 (pdftex.def)             Requested size: 250.0485pt x 51.21504pt.
-<images/code-snippets/islower.png, id=435, 200.24812pt x 211.54031pt>
+<images/code-snippets/islower.png, id=439, 200.24812pt x 211.54031pt>
 File: images/code-snippets/islower.png Graphic file (type png)
 <use images/code-snippets/islower.png>
 Package pdftex.def Info: images/code-snippets/islower.png  used on input line 1
-357.
+370.
 (pdftex.def)             Requested size: 161.60732pt x 170.71652pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Overfull \hbox (17.57289pt too wide) in paragraph at lines 1314--1361
+Overfull \hbox (17.57289pt too wide) in paragraph at lines 1327--1374
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1314--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1374
 
  []
 
-[36] [37 <./images/code-snippets/parameters.png> <./images/code-snippets/mainpy
-.png> <./images/code-snippets/initia.png>] [38 <./images/code-snippets/lhainit.
+[37] [38 <./images/code-snippets/parameters.png> <./images/code-snippets/mainpy
+.png> <./images/code-snippets/initia.png>] [39 <./images/code-snippets/lhainit.
 png> <./images/code-snippets/runprocess.png> <./images/code-snippets/randomline
-.png>] [39 <./images/code-snippets/linehitscluster.png> <./images/code-snippets
+.png>] [40 <./images/code-snippets/linehitscluster.png> <./images/code-snippets
 /getsquare.png> <./images/code-snippets/nextparticle.png> <./images/code-snippe
 ts/islower.png>]
-<images/fractal_range/5.png, id=461, 189.70876pt x 181.42781pt>
+<images/fractal_range/5.png, id=465, 189.70876pt x 181.42781pt>
 File: images/fractal_range/5.png Graphic file (type png)
 <use images/fractal_range/5.png>
-Package pdftex.def Info: images/fractal_range/5.png  used on input line 1392.
+Package pdftex.def Info: images/fractal_range/5.png  used on input line 1405.
 (pdftex.def)             Requested size: 178.5115pt x 170.71652pt.
-<images/fractal_range/1.PNG, id=462, 175.40532pt x 164.86594pt>
+<images/fractal_range/1.PNG, id=466, 175.40532pt x 164.86594pt>
 File: images/fractal_range/1.PNG Graphic file (type png)
 <use images/fractal_range/1.PNG>
-Package pdftex.def Info: images/fractal_range/1.PNG  used on input line 1398.
+Package pdftex.def Info: images/fractal_range/1.PNG  used on input line 1411.
 (pdftex.def)             Requested size: 138.9195pt x 130.58224pt.
-<images/fractal_range/4.PNG, id=463, 173.14688pt x 176.15813pt>
+<images/fractal_range/4.PNG, id=467, 173.14688pt x 176.15813pt>
 File: images/fractal_range/4.PNG Graphic file (type png)
 <use images/fractal_range/4.PNG>
-Package pdftex.def Info: images/fractal_range/4.PNG  used on input line 1401.
+Package pdftex.def Info: images/fractal_range/4.PNG  used on input line 1414.
 (pdftex.def)             Requested size: 138.9195pt x 141.33794pt.
-<images/fractal_range/2.PNG, id=464, 179.92218pt x 176.15813pt>
+<images/fractal_range/2.PNG, id=468, 179.92218pt x 176.15813pt>
 File: images/fractal_range/2.PNG Graphic file (type png)
 <use images/fractal_range/2.PNG>
-Package pdftex.def Info: images/fractal_range/2.PNG  used on input line 1404.
+Package pdftex.def Info: images/fractal_range/2.PNG  used on input line 1417.
 (pdftex.def)             Requested size: 138.9195pt x 136.02385pt.
-<images/code-snippets/fractalnew.png, id=467, 517.935pt x 245.41687pt>
+<images/code-snippets/fractalnew.png, id=471, 517.935pt x 245.41687pt>
 File: images/code-snippets/fractalnew.png Graphic file (type png)
 <use images/code-snippets/fractalnew.png>
 Package pdftex.def Info: images/code-snippets/fractalnew.png  used on input lin
-e 1413.
+e 1426.
 (pdftex.def)             Requested size: 450.3706pt x 213.39566pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1410--1417
+Underfull \hbox (badness 10000) in paragraph at lines 1423--1430
 
  []
 
 
-Overfull \hbox (2.23965pt too wide) in paragraph at lines 1410--1417
+Overfull \hbox (2.23965pt too wide) in paragraph at lines 1423--1430
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1410--1417
+Underfull \hbox (badness 10000) in paragraph at lines 1423--1430
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1410--1417
+Underfull \hbox (badness 10000) in paragraph at lines 1423--1430
 
  []
 
-[40] [41 <./images/fractal_range/5.png> <./images/fractal_range/1.PNG> <./image
+[41] [42 <./images/fractal_range/5.png> <./images/fractal_range/1.PNG> <./image
 s/fractal_range/4.PNG> <./images/fractal_range/2.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 1423--1425
+Underfull \hbox (badness 10000) in paragraph at lines 1436--1438
 
  []
 
-[42 <./images/code-snippets/fractalnew.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1428
+[43 <./images/code-snippets/fractalnew.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1441
 
  []
 
 
-Package caption Warning: \label without proper reference on input line 1441.
+Package caption Warning: \label without proper reference on input line 1454.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `lhasimulation' on page 43 undefined on input line 148
-4.
+LaTeX Warning: Reference `lhasimulation' on page 44 undefined on input line 149
+7.
 
 
-Package caption Warning: \label without proper reference on input line 1480.
+Package caption Warning: \label without proper reference on input line 1493.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `dlasimulation' on page 43 undefined on input line 148
-4.
+LaTeX Warning: Reference `dlasimulation' on page 44 undefined on input line 149
+7.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1484--1487
-
- []
-
-[43]
-Underfull \hbox (badness 10000) in paragraph at lines 1493--1496
+Underfull \hbox (badness 10000) in paragraph at lines 1497--1500
 
  []
 
-[44] [45]
-Underfull \hbox (badness 10000) in paragraph at lines 1569--1570
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 1506--1509
+
+ []
+
+[45] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 1582--1583
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1571--1573
+Underfull \hbox (badness 10000) in paragraph at lines 1584--1586
 
  []
 
-[46] (masterarbeit.aux)
+[47] (masterarbeit.aux)
 Package rerunfilecheck Info: File `masterarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1512,10 +1484,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 13308 strings out of 479697
- 236990 string characters out of 2865232
+ 13310 strings out of 479697
+ 236999 string characters out of 2865232
  687967 words of memory out of 3000000
- 29896 multiletter control sequences out of 15000+200000
+ 29897 multiletter control sequences out of 15000+200000
  524831 words of font info for 107 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  106i,20n,111p,10609b,558s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1546,9 +1518,9 @@ sy10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (48 pages, 4736184 bytes).
+Output written on masterarbeit.pdf (49 pages, 4738151 bytes).
 PDF statistics:
- 695 PDF objects out of 1000 (max. 8388607)
- 160 named destinations out of 1000 (max. 500000)
+ 700 PDF objects out of 1000 (max. 8388607)
+ 161 named destinations out of 1000 (max. 500000)
  323 words of extra memory for PDF output out of 10000 (max. 10000000)
 
