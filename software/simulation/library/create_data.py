@@ -73,13 +73,15 @@ def create_information(filename, aggregation, data, runtime):
     
     #calculate fractal dimension values
     fda1 = fd.fractal_dimension_approximation_1(particles, data["fractal_calculation_range"])
-    fda2 = fd.fractal_dimension_approximation_2(particles)
+    fda2 = fd.last_fractal_dimension_value(particles)
+    fda3 = fd.volumina_ratio(particles, data["fractal_calculation_range"])
 
     #collect all data in one dict
     information = {"time":                          current_time,
                    "runtime":                       runtime,
                    "linear_reg_parameters":         fda1["parameters"],
                    "last_fractal_dimension_value":  fda2,
+                   "volumina_ratio":                fda3,
                    "particles":                     particles
                    }
     

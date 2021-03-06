@@ -195,7 +195,7 @@ and the closure $\bar A$ of $A$ as
 \end{flalign*}
 Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
 
-\subsection{Random Walks}
+\subsection{Random walks}
 
 \begin{definition}
 	 For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. A family $(S_n)_{n\in \mathbb{N}_0}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ a.s. and 
@@ -261,7 +261,7 @@ After having introduced some basics we will in the next chapter turn our focus t
 
 
 \newpage
-\section{Incremental Aggregation}
+\section{Incremental aggregation}
 
 \subsection{Definition}
 
@@ -315,7 +315,7 @@ Properties of an incremental aggregation obviously base strongly on the properti
 
 
 
-\subsection{Notion of Fractal Dimension and Growth Rate} \label{notion}
+\subsection{Notion of fractal dimension and growth rate} \label{notion}
 
 \begin{figure}
 	\centering
@@ -746,7 +746,7 @@ At this point we are prepared to proof the following theorem.
 
 
 \newpage
-\section{External Diffusion Limited Aggregation}
+\section{External diffusion limited aggregation}
 
 \subsection{Definition}
 
@@ -779,7 +779,7 @@ External DLA is a model of an incremental aggregation as defined above using a v
 \end{remark}
 
 
-\subsection{Fractal Dimension and Growth Rate of External DLA in $\Z^2$}
+\subsection{Fractal dimension and growth rate of external DLA in $\Z^2$}
 
 There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results on DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions ($\cite{lawler}$ page 83). There is also a theory that predicts 
 \begin{flalign*}
@@ -839,7 +839,7 @@ In the next chapter we will look at another incremental aggregation which distri
 
 
 \newpage
-\section{Line Hitting Aggregation} \label{lha}
+\section{Line hitting aggregation} \label{lha}
 
 \subsection{Motivation}
 
@@ -927,7 +927,7 @@ For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g\cap A\neq \emptyset$ t
 
 
 
-\subsection{Integral Geometry}
+\subsection{Exkurs: Integral geometry}
 
 In the next section we want to define an approximation for External DLA. This approximation will be an incremental aggregation for which distribution definition we need some concepts and results from Integral Geometry which we will discuss and develop in this section. In the process we want to define we will want to choose a random line out of all lines which intersect with the current cluster of the aggregation. This random choosing is not obvious since most of the time the cluster will be strongly non symmetric and it is even less obvious how to actually get a realization of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the plane and a reasonable way of choosing parameters randomly. \\
 
@@ -1272,7 +1272,7 @@ for Borel-sets $B\in\mathcal{B}^2$.
 	for any $x\in A$. 
 \end{remark}
 
-\subsection{Fractal Dimension and Growth Rate of LHA}
+\subsection{Fractal dimension and growth rate of LHA in $\Z^2$}
 
 In this section we will try to give an idea of the fractal dimension of the line hitting aggregation.
 
@@ -1297,7 +1297,7 @@ In this section we will try to give an idea of the fractal dimension of the line
 
 We are therefore prepared to proof the following theorem.
 
-\begin{theorem}
+\begin{theorem} \label{2theorem}
 	For the fractal dimension of the line hitting aggregation we have
 	\begin{flalign*}
 		d_f = 2\quad \text{a.s.}
@@ -1315,7 +1315,7 @@ We are therefore prepared to proof the following theorem.
 
 
 \newpage
-\section{Python Simulation of the Line Hitting Aggregation}
+\section{Python simulations} \label{simulation}
 In this section we will present a simulation for the line hitting aggregation and approximate its fractal dimension empirically. The simulation is written in $\mathit{python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
 \\LINK \\
 \\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in this code. Every value in $\C$ with integer components can be represented by squares as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realizations of LHA as close as possible to its mathematical definition. \\
@@ -1325,11 +1325,13 @@ In this section we will present a simulation for the line hitting aggregation an
 
 \subsection{Code}
 In the following we will describe the code and claim that it is a precise implementation of LHA, excluding errors from python packages and machine calculation. In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, datetime, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of import packages only these packages will have an effect on the mathematical preciseness of the realised process. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
-\\When using the software you will have the possibility to enter some parameters in the $\mathit{parameters.json}$ file which include colorings of background and particle pixels, how many particles you want the cluster to have at the end and how big the created image shall be. With  (more on that you can find in the README file). An example of this file looks like this:\\
+\\When using the software you will have the possibility to enter some parameters in the $\mathit{parameters.json}$ file which include colorings of background and particle pixels, how many particles you want the cluster to have at the end and how big the created image shall be. An example of this file looks like this:\\
 \\
 \includegraphics[height=3.33cm]{images/code-snippets/parameters.png} \\
 \\
-If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing information about the creation time, fractal dimension values and a list of all particle coordinates for potential later use. \\
+The value $\mathit{color\_generation\_size}$ specifies how big one generation of a color shall be in the case that you chose more than one color to print the particles. This allows to visualize layers of the aggregation and produce beautiful rainbowlike colored realizations. Since for the simulation here we go for only black particle color, the color generation size does not have any effect in this case. With the $\mathit{fractal\_calculation\_range}$ you can have influence on how the approximation of the fractal dimension shall be calculated, more on that later. You can find more about setting parameters in the README file of the repository. \\
+
+\noindent If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing information about the creation time, fractal dimension values and a list of all particle coordinates for potential later use. \\
 \\We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there you will find comments or other irrelevant differences, which we leave away here. \\
 \\The main executed python file $\mathit{main.py}$ looks like this:\\
 \\
@@ -1373,40 +1375,40 @@ which implements the total ordered relation on all squares which got hit by the 
 \\After having realised the next particle, values like the particle set, the boundary set and the cluster radius get actualized and the next iteration starts.
 
 
-\subsection{Images and Empirical Fractal Dimension}
+\subsection{Empirical fractal dimension of LHA}
 
-In this section we present what our simulations produce in terms of images and fractal dimension values. It is not trivial on how to create a senseful approximation for the fractal dimension. If we go back to the definition of the fractal dimension 
+In this section we present what our simulations produce in terms of images and fractal dimension values. Since by theorem \ref{2theorem} we already know that the fractal dimension of the line hitting aggregation is $2$, our approximation for the fractal dimension here have the purpose to give an idea of the convergence behaviour against the value $2$. First it is not trivial how to create a senseful approximation for the fractal dimension. If we go back to the definition 
 \begin{flalign*}
-	d_f = \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\EE[\rad(\E_n)])}
+	d_f = \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}
 \end{flalign*}
 we can go with the ansatz that 
 \begin{flalign*}
-	\EE[\rad(\E_n)] \approx c n^{\frac{1}{d_f}}
+	\rad(\E_n) \approx c n^{\frac{1}{d_f}}
 \end{flalign*}
 for some constant $c>0$ and therefore get 
 \begin{flalign} \label{linearplot}
-	\ln(\EE[\rad(\E_n)]) \approx \frac{1}{d_f} \ln(n) + \ln(c). 
+	\ln(\rad(\E_n)) \approx \frac{1}{d_f} \ln(n) + \ln(c). 
 \end{flalign}
-We therefore could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\EE[\rad(\E_n)])$ for $n\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters and have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. To get more stable parameters it might make sense to come back to conjecture \ref{fullclusters} 
+We therefore could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\rad(\E_n))$ for a range of values $n\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters and have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. To get more stable parameters it might make sense to come back to conjecture \ref{fullclusters} 
 \begin{flalign*}
-	d_f = \limsup_{n\to\infty} \frac{\ln(\EE |\E_\infty \cap B_n|)}{\ln(n)}
+	d_f = \limsup_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)}
 \end{flalign*}
 where with the ansatz
-\begin{flalign*}
-	 \EE |\E_\infty \cap B_n| \approx c n^{d_f}
-\end{flalign*}
+\begin{flalign} \label{ansatz}
+	 |\E_\infty \cap B_n| \approx c n^{d_f}
+\end{flalign}
 for some constant $c>0$ we would get 
 \begin{flalign} \label{newlinreg}
-	\ln(\EE |\E_\infty \cap B_n|) \approx d_f \ln(n) + \ln(c). 
+	\ln(|\E_\infty \cap B_n|) \approx d_f \ln(n) + \ln(c). 
 \end{flalign}
 
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	\includegraphics[height=6cm]{images/fractal_range/5.png}
 	\caption{Cluster not \glqq filled up\grqq\ to its radius} \label{notfilled}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
 	\begin{subfigure}[b]{.31\textwidth}
 		\includegraphics[width=1\linewidth]{images/fractal_range/1.PNG}
 	\end{subfigure}
@@ -1420,13 +1422,12 @@ for some constant $c>0$ we would get
 	\label{filledup}
 \end{figure}
 
-Remind that $\E_\infty \cap B_n$ is the set of all particles in the final cluster $\E_\infty$ which lie in the ball of radius $n$ with center $0$ $B_n$. Since it is not possible to realize $\E_\infty$ we have to go with a approximation here. What we want is to compare the particle count of \glqq filled up\grqq\ clusters at radius $n$. If you we have a look at \autoref{filledup} we see that in a certain range of radii $n$ the clusters $\E_\infty \cap B_n$ seem to be fairly filled up to their radius. This range of radii is what can be specified in the $\mathit{parameters.json}$ file in the $\mathit{fractal\_calculation\_range}$ field (see in the git repository). We found that it makes sense to not start the observation at $0$ but a bit higher like $0.2$ to avoid distorted values of the beginning of the process. On the other side we found empirically that 0.75 seems to be fair upper ratio where the cluster in most cases seems to be fairly filled up to that radius. \\
-So all in all we will look at radii $n$ in the specified range and count all particles of the cluster which have lower radius than an, which shall be a approximation of $|\E_\infty \cap B_n|$. After that we calculate the linear regression parameters of the logarithmized values as in (\ref{newlinreg}) which happens in the following method:\\
+Remind that $\E_\infty \cap B_n$ is the set of all particles in the final cluster $\E_\infty$ which lie in $B_n$ the ball of radius $n$ with center $0$. Since it is not possible to realize $\E_\infty$ we have to go with a approximation here. What we want is to compare the particle count of \glqq filled up\grqq\ clusters at radius $n$. If we have a look at \autoref{filledup} we see that in a certain range of radii $n$ the clusters $\E_\infty \cap B_n$ seem to be fairly filled up to their radius. This range of radii is what can be specified in the $\mathit{parameters.json}$ file in the $\mathit{fractal\_calculation\_range}$ field (see in the git repository). If $r$ is the radius of the cluster we found that it makes sense to not start the observation at $0$ but a bit higher like $0.2 * r$ to avoid distorted values occuring by the beginning of the process. On the other side we found empirically that $0.75 * r$ seems to be a fair upper ratio where the clusters in most cases seem to be fairly filled up to that radius. \\
+\\So all in all we will look at radii $n$ in the specified range $[0.2*r, 0.75*r]$ and count all particles of the cluster which lie in $B_n$, which shall be an approximation of $|\E_\infty \cap B_n|$. After that we calculate the linear regression parameters $\bar d_f$ and $\bar \ln(c)$ of the logarithmized values as in (\ref{newlinreg}) which happens in the following method:\\
 \\
 \includegraphics[height=7.5cm]{images/code-snippets/fractalnew.png} \\
 \\
-In the following we show the results of our simulations. We have run the line hitting aggregation 10 times with 100000 particles each, and we have also run our external DLA simulation 10 times with 5000 particles each. We iterated external DLA much less times because of a much higher computing time. \\
-\\In the git repository you will find every of the following realized simulations in the folder $\mathit{exports}$. Inside a folder you will find three types of files, one is the created image, one contains values of all particle coordinates and fractal dimension values and the third is a copy of the parameters file with which the simulation was preset. More on that you can find in the README file of the repository. The names of the folder and files will have a certain format to identify each simulation clearly. The folder name
+You will find every of the following realized simulations in the folder $\mathit{exports}$ of the git repository. Inside a folder you will find three types of files, one is the created image, one contains values of all particle coordinates and fractal dimension values and the third is a copy of the parameters file with which the simulation was preset. More on that you can find in the README file of the repository. The names of the folder and files will have a certain format to identify each simulation clearly. The folder name
 \begin{flalign*}
 	\text{2021\_03\_02\_02\_37\_54\_\_lha\_100000}
 \end{flalign*}
@@ -1434,78 +1435,150 @@ indicates that the folder contains a realized LHA simulation with 100000 particl
 \begin{flalign*}
 	\text{2021\_03\_02\_11\_02\_25\_\_dla\_5000}
 \end{flalign*}
-for a realized simulation of DLA. Note that the second of the two values (10000\_10000 resp. 2500\_2500) denotes the $\mathit{color\_generation\_size}$ and specifies how big one generation of a color shall be in the case that you chose more than one color to print the particles. This allows to visualize layers of the aggregation and produce beautiful rainbowlike colored realizations. Since for the simulation here we go for only a black particles color, this color generation size does not matter and we just set it the same value as the number of particles. More on that you can find in the README file of the repository. \\
+for a realized simulation of DLA. For the following observation we have run the line hitting aggregation from 10000 to 100000 twice at each 10000 step which makes 20 simulations in total. The simulations have calculated the values in \autoref{lhasimulation}. A plot of the values you can find in \autoref{plot}. 
 
-ANKER
-OLD\\
-
-
-
-
-
-
-
-We are especially interested in the calculated fractal dimension value of the line hitting aggregation since we will argue in the next section that it is implemented as mathematcially defined and therefore will give a realistic approximation of its fractal dimension. We will run 10 times the line hitting aggregation with each 10000 particles. To also get an vague approximation for the fractal dimension of external DLA we will run 10 times the simulation of external DLA with each 2500 particles. We need to choose less particles for external DLA because of a much higher computing time. 
-
-
-
-
-
-\begin{table} \label{lhasimulation}
+\begin{table}[t]
 	\centering
-	\begin{tabular}{ll}
-		$\mathbf{Simulation\ name}$ 						  & $\mathbf{Calculated\ fractal\ dimension}$ \\
-		\hline	
-		2021\_02\_15\_22\_06\_50\_\_lha\_10000\_10000 & 1.9837036680852318  \\
-		2021\_02\_15\_22\_27\_53\_\_lha\_10000\_10000 & 1.9948632487588576  \\
-		2021\_02\_15\_22\_39\_40\_\_lha\_10000\_10000 & 1.9839811650839574  \\
-		2021\_02\_15\_22\_51\_51\_\_lha\_10000\_10000 & 1.9759741361922358  \\
-		2021\_02\_15\_23\_02\_59\_\_lha\_10000\_10000 & 1.979902827996221   \\
-		2021\_02\_16\_12\_14\_35\_\_lha\_10000\_10000 & 1.9862572273156929  \\
-		2021\_02\_16\_17\_09\_12\_\_lha\_10000\_10000 & 1.9803491627710896  \\
-		2021\_02\_16\_17\_30\_22\_\_lha\_10000\_10000 & 1.9800967468840343  \\
-		2021\_02\_16\_18\_19\_12\_\_lha\_10000\_10000 & 2.0114318661907387  \\
-		2021\_02\_16\_18\_34\_40\_\_lha\_10000\_10000 & 1.9957939506682272  \\
+	\begin{tabular}{llll}
+		$\mathbf{Simulation\ name}$                       & $d_f$   & $\ln(c)$   & $v_{lha}$\\
 		\hline
-		$\mathbf{Average}$ (rounded)  & $\mathbf{1.9872354}$            
+		2021\_03\_04\_09\_40\_51\_\_lha\_10000  & 1.8601 & 0.8083 & 0.4198\\
+		2021\_03\_04\_10\_05\_53\_\_lha\_10000  & 1.8679 & 0.7847 & 0.4222\\
+		2021\_03\_04\_11\_53\_34\_\_lha\_20000  & 1.9135 & 0.5899 & 0.4006\\
+		2021\_03\_04\_12\_35\_01\_\_lha\_20000  & 1.9273 & 0.5265 & 0.3976\\
+		2021\_03\_04\_13\_54\_14\_\_lha\_30000  & 1.9071 & 0.6370 & 0.4016\\
+		2021\_03\_04\_14\_49\_08\_\_lha\_30000  & 1.9191 & 0.5734 & 0.3965\\
+		2021\_03\_04\_15\_56\_37\_\_lha\_40000  & 1.9518 & 0.4164 & 0.3885\\
+		2021\_03\_04\_18\_00\_02\_\_lha\_40000  & 1.9173 & 0.5874 & 0.3941\\
+		2021\_03\_04\_15\_58\_28\_\_lha\_50000  & 1.9311 & 0.5127 & 0.3863\\
+		2021\_03\_04\_18\_00\_18\_\_lha\_50000  & 1.9381 & 0.4664 & 0.3811\\
+		2021\_03\_04\_12\_35\_20\_\_lha\_60000  & 1.9283 & 0.5328 & 0.3868\\
+		2021\_03\_04\_09\_42\_12\_\_lha\_60000  & 1.9187 & 0.5771 & 0.3861\\
+		2021\_03\_04\_09\_42\_36\_\_lha\_70000  & 1.9257 & 0.5467 & 0.3853\\
+		2021\_03\_04\_13\_43\_38\_\_lha\_70000  & 1.9184 & 0.5707 & 0.3812\\
+		2021\_03\_04\_09\_42\_56\_\_lha\_80000  & 1.9135 & 0.6230 & 0.3906\\
+		2021\_03\_04\_14\_49\_16\_\_lha\_80000  & 1.9463 & 0.4352 & 0.3788\\
+		2021\_03\_04\_16\_30\_00\_\_lha\_90000  & 1.9420 & 0.4632 & 0.3805\\
+		2021\_03\_04\_09\_43\_16\_\_lha\_90000  & 1.9344 & 0.5083 & 0.3834\\
+		2021\_03\_03\_21\_23\_50\_\_lha\_100000 & 1.9065 & 0.6421 & 0.3805\\
+		2021\_03\_03\_21\_23\_47\_\_lha\_100000 & 1.9344 & 0.4989 & 0.3782
 	\end{tabular}
-	\caption{Simulations of LHA (10000 particles each)}
+	\caption{LHA Simulations (10000 - 100000 particles)}
+	\label{lhasimulation}
 \end{table}
 
-\begin{table} 
+\begin{figure}[h]
 	\centering
-	\begin{tabular}{ll}
-		$\mathbf{Simulation\ name}$ 						  & $\mathbf{Calculated\ fractal\ dimension}$ \\
-		\hline	
-		2021\_02\_15\_22\_06\_50\_\_lha\_10000\_10000 & 1.9837036680852318 \\
-		2021\_02\_15\_22\_27\_53\_\_lha\_10000\_10000 & 1.9948632487588576 \\
-		2021\_02\_15\_22\_39\_40\_\_lha\_10000\_10000 & 1.9839811650839574 \\
-		2021\_02\_15\_22\_51\_51\_\_lha\_10000\_10000 & 1.9759741361922358 \\
-		2021\_02\_15\_23\_02\_59\_\_lha\_10000\_10000 & 1.979902827996221  \\
-		2021\_02\_16\_12\_14\_35\_\_lha\_10000\_10000 & 1.9862572273156929 \\
-		2021\_02\_16\_17\_09\_12\_\_lha\_10000\_10000 & 1.9803491627710896 \\
-		2021\_02\_16\_17\_30\_22\_\_lha\_10000\_10000 & 1.9800967468840343 \\
-		2021\_02\_16\_18\_19\_12\_\_lha\_10000\_10000 & 2.0114318661907387 \\
-		2021\_02\_16\_18\_34\_40\_\_lha\_10000\_10000 & 1.9957939506682272 \\
-		\hline
-		$\mathbf{Average}$ (rounded)  & $\mathbf{1.9872354}$         
-	\end{tabular}
-	\label{dlasimulation} 
-	\caption{Simulations of external DLA (2500 particles each)}
-\end{table}
+	\begin{subfigure}[b]{.45\textwidth}
+		\includegraphics[width=1\linewidth]{images/lhaplot.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{.45\textwidth}
+		\includegraphics[width=1\linewidth]{images/volumeplot.png}
+	\end{subfigure}
+ \caption{Linear regression parameters and volumina ratio of LHA}
+ \label{plot}
+\end{figure}
 
-After having run the simulations we find values as shown in Table \ref{lhasimulation} for LHA and Table \ref{dlasimulation} for external DLA. Our simulations therefore approximate the fractal dimension of the line hitting aggregation with $\mathbf{1.9872354}$ and the fractal dimension of external DLA with $\mathbf{VALUE}$. Have a look on the images after the tables to get a visual comparison of the two aggregations.  \\
-\\
-\cite{ballistic}[test 100 - 232]
+
+The plot indicates a rather slow convergence of the impirical dimension values to the final value $2$. Something similar was guessed by \cite{ballistic}. For a further empirical study on this convergence behaviour more data has to be created which we don't follow further in this paper. \\
+\\Another interesting value to calculate is the following. Since we know that the fractal dimension for LHA is $2$, we can rewrite (\ref{ansatz}) to get
+\begin{flalign} \label{ansatz2}
+	|\E_\infty \cap B_n| \approx c n^2 
+\end{flalign}
+which can be transformed to
+\begin{flalign*}
+	\frac{c}{\pi} \approx \frac{|\E_\infty \cap B_n|}{\pi n^2}.
+\end{flalign*}
+We can see that $\frac{c}{\pi}$ describes the relation between the volume of the cluster in the ball $B_n$ and the volume of the ball $B_n$ itself. If we look at
+\begin{flalign} \label{newlinreg2}
+	\ln(|\E_\infty \cap B_n|) \approx 2 \ln(n) + \ln(c). 
+\end{flalign}
+we can, similar to linear regression, calculate an in the sense of minimal quadratic error optimal estimator $\hat c$ for $\ln(c)$ which satisfies
+\begin{flalign*}
+	\hat c = \underset{c\in\R}{\text{argmin}} \sum_{n = a}^{b} (\ln(|\E_\infty \cap B_n|) - (2 \ln(n) + c))^2,
+\end{flalign*}
+where $a := \min ([0.2r, 0.75r] \cap \N)$ and $b:=\max ([0.2r, 0.75r] \cap \N)$. It is not difficult to show that $\hat c$ can be calculated by
+\begin{flalign*}
+	\hat c = \frac{1}{b-a+1} \sum_{n = a}^{b} \ln(|\E_\infty \cap B_n|) - 2 \ln(n). 
+\end{flalign*}
+We can then calculate back the volume ratio $v_{lha}$ with
+\begin{flalign*}
+	v_{lha} := \frac{e^{\hat c}}{\pi}.
+\end{flalign*}
+In \autoref{lhasimulation} you can find the values for $v_{lha}$ which got calculated by our simulations. \autoref{plot} indicates that the volumina ratio decreases with higher particle numbers and possibly start to stabilize at around $v_{lha} \approx 0.38$. Anyway for better empirics we would need more data which again may be part of another work. 
+
+
+
+\newpage
+\subsection{Images}
+In the following we present some of the realized images of our LHA and external DLA simulations. 
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_03_12_25_49__image_dla_5000.png}
+		\caption{2021\_03\_03\_12\_25\_49\_\_image\_dla\_5000.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_06_00_23_38__image_lha_5000.png}
+		\caption{2021\_03\_06\_00\_23\_38\_\_image\_lha\_5000.png}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_03_19_58_26__image_dla_10000.png}
+		\caption{2021\_03\_03\_19\_58\_26\_\_image\_dla\_10000.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_05_23_28_53__image_lha_10000.png}
+		\caption{2021\_03\_05\_23\_28\_53\_\_image\_lha\_10000.png}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}[]{0.72\textwidth}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_03_21_23_47__image_lha_100000.png}
+		\caption{2021\_03\_03\_21\_23\_47\_\_image\_lha\_100000.png} 
+	\end{subfigure}
+	\begin{subfigure}[]{0.72\textwidth}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_04_00_42_19__image_lha_200000.png}
+		\caption{2021\_03\_04\_00\_42\_19\_\_image\_lha\_200000.png} 
+	\end{subfigure}
+\end{figure}
+
+
+
+
+
+
+
 
 
 
 \newpage
 
-\section{Outlook}
-In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of defining a fractal dimension for such discrete clusters. We have looked at two such incremental aggregations, the external diffusion limited aggregation and the line hitting aggregation, and have proved a rigorous result for the fractal dimension of external DLA.\\ 
-CONTINUE\\
-\\I hope that I have raised interest in the topic of incremental aggregations with this paper. I feel delighted to watch at the beautiful realizations of the aggregations and I hope the reader can feel similar looking at them and realizing images him- and herself. 
+\section{Review}
+In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of defining a fractal dimension for such discrete clusters. We then moved our attention to $\Z^2$ and found for this case in theorem \ref{iatheorem} a condition for proving a lower bound of the fractal dimension. We where able to apply this theorem for both incremental aggregations we looked at in this paper, external diffusion limited aggregation (external DLA) and the line hitting aggregation (LHA). For external DLA we found a lower bound of 
+\begin{flalign*}
+	d_f^{dla} \geq \frac{3}{2}\quad\text{a.s.}
+\end{flalign*}
+and for the line hitting aggregation we were even able to find the exact dimension, which is
+\begin{flalign*}
+	d_f^{lha} = 2 \quad\text{a.s.}.
+\end{flalign*}
+In the last chapter we provided simulations for both incremental aggregations. Especially the one for LHA was tried to be implemented as close to its mathematical definition as possible. \\
+\\All in all did we here only touch the properties of incremental aggregations. The most known incremental aggregation you can find in literature is probably external DLA, but the general definition here in this paper provides a door into looking for other interesting incremental aggregations aswell. \\
+\\I hope that I could raise interest in this topic through my work in this paper and I invite the reader to play around with the code I provided in a github repository (see at the beginning of chapter \ref{simulation}). I feel delighted to watch at the beautiful realizations of the aggregations and I hope the reader can feel similar looking at them and realizing images him- and herself. 
+
+
+
+
+
+
+
 
 \newpage
 
@@ -1577,12 +1650,12 @@ https://modernistcuisinegallery.com/
 \vspace*{8cm}
 
 
-\section*{Erklärung}
+\section*{Declaration}
 
-Hiermit versichere ich, dass ich diese Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt, die wörtlich oder inhaltlich übernommenen Stellen als solche kenntlich gemacht und die Satzung des Karlsruher Instituts für Technologie zur Sicherung guter wissenschaftlicher Praxis in der jeweils gültigen Fassung beachtet habe. \\[2ex] 
+Herewith I assure that I created this paper self-reliant and on my own and that I did not use any material in this paper that I have not mentioned. The sources and contents I used in this paper I clearly labeled as such. I assure that I respected the statute for good and scientifical practice in the most current version of the Institute of Technology Karlsruhe, Germany.\\[2ex] 
 
 \noindent
-Karlsruhe, den 10. März 2020\\[5ex] 
+Karlsruhe, den 08. März 2021\\[5ex] 
 
 \end{document}
 

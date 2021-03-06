@@ -20,6 +20,7 @@ def create_pygame_image(data):
     pygame.display.init()
     surface = pygame.display.set_mode((300, 300))
     
+    
     particles = [x[0] + x[1] * 1j for x in data["particles"]]
     radius = max([abs(x) for x in particles])
     
@@ -42,6 +43,19 @@ def create_pygame_image(data):
     #pygame.draw.circle(surface, circle_color, (offset.real, offset.imag), high_radius, width = 2)
     pygame.draw.circle(surface, circle_color, (offset.real, offset.imag), radius +3, width = 2)
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     while True:
         pygame.display.flip()
 
@@ -56,12 +70,61 @@ def convert_hex_to_vector(hexa):
 
 if __name__ == "__main__":
     
-    
+    """
     #read parameters.json    
     with open("data16.json") as json_file:
         data = json.load(json_file)
         
     create_pygame_image(data)
+    """
+    
+    
+    """
+    y_val = [1.8601, 1.8679,
+              1.9135, 1.9273,
+              1.9071, 1.9191,
+              1.9518, 1.9173,
+              1.9311, 1.9381,
+              1.9283, 1.9187,
+              1.9257, 1.9184,
+              1.9135, 1.9463,
+              1.9420, 1.9344,
+              1.9065, 1.9344]
+    """
+    y_val = [0.4198, 0.4222, 
+              0.4006, 0.3976,
+              0.4016, 0.3965,
+              0.3885, 0.3941,
+              0.3863, 0.3811,
+              0.3868, 0.3861,
+              0.3853, 0.3812,
+              0.3906, 0.3788,
+              0.3805, 0.3834,
+              0.3805, 0.3782]
+    x_val = [10000, 10000,
+             20000, 20000,
+             30000, 30000,
+             40000, 40000,
+             50000, 50000,
+             60000, 60000,
+             70000, 70000,
+             80000, 80000,
+             90000, 90000,
+             100000, 100000]
+    
+    plt.plot(x_val, y_val, "o")
+    #plt.scatter( 0 , 0 , s=10000 ,  facecolors='none', edgecolors='blue' )
+    
+    plt.ylabel("volume ratio v_lha")
+    plt.xlabel("particles")
+    
+    plt.xlim([0, 110000])
+    plt.ylim([0.35, 0.45])
+    
+    plt.show()
+    
+
+    
     
     """
     N = 1000
