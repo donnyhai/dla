@@ -1,27 +1,27 @@
 \babel@toc {american}{}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
-\contentsline {section}{\numberline {2}Preliminaries}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Symbols}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Expressions}{4}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Graphs}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Random walks}{5}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Incremental aggregation}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Definition}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Notion of fractal dimension and growth rate}{8}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}A rigorous characterization of the fractal dimension}{11}{subsection.3.3}%
-\contentsline {section}{\numberline {4}External diffusion limited aggregation}{20}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Definition}{20}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Fractal dimension and growth rate of external DLA in $\mathbb {Z}^2$}{20}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Line hitting aggregation}{22}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Motivation}{22}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Exkurs: Integral geometry}{25}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}General results}{25}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{26}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Definition}{34}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Fractal dimension and growth rate of LHA in $\mathbb {Z}^2$}{35}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Python simulations}{37}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Code}{37}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Empirical fractal dimension of LHA}{41}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Images}{46}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Review}{48}{section.7}%
+\contentsline {section}{\numberline {2}Preliminaries}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Symbols}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Expressions}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Graphs}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Random walks}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Incremental aggregation}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Definition}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Notion of fractal dimension and growth rate}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}A rigorous characterization for the fractal dimension}{12}{subsection.3.3}%
+\contentsline {section}{\numberline {4}External diffusion limited aggregation}{21}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Definition}{21}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Fractal dimension and growth rate of external DLA in $\mathbb {Z}^2$}{21}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Line hitting aggregation}{23}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Motivation}{23}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Exkurs: Integral geometry}{26}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}General results}{26}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{27}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Definition}{35}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Fractal dimension and growth rate of LHA in $\mathbb {Z}^2$}{36}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Python simulations}{38}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Code}{38}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Empirical fractal dimension of LHA}{42}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Images}{47}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Review}{49}{section.7}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
