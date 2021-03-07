@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  6 MAR 2021 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.17)  7 MAR 2021 23:23
 entering extended mode
 **./masterarbeit.tex
 (masterarbeit.tex
@@ -881,12 +881,12 @@ been already used, duplicate ignored
                    \relax 
 l.117 	
         [2]
-<images/display.jpg, id=94, 4183.63pt x 3693.8pt>
+<images/display.jpg, id=98, 4183.63pt x 3693.8pt>
 File: images/display.jpg Graphic file (type jpg)
 <use images/display.jpg>
 Package pdftex.def Info: images/display.jpg  used on input line 123.
 (pdftex.def)             Requested size: 189.55858pt x 167.34108pt.
-<images/display2.jpg, id=95, 2320.67pt x 1581.91pt>
+<images/display2.jpg, id=99, 2320.67pt x 1581.91pt>
 File: images/display2.jpg Graphic file (type jpg)
 <use images/display2.jpg>
 Package pdftex.def Info: images/display2.jpg  used on input line 127.
@@ -896,12 +896,12 @@ Package pdftex.def Info: images/display2.jpg  used on input line 127.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 134.
 
-<images/snowflake.jpg, id=96, 803.0pt x 602.25pt>
+<images/snowflake.jpg, id=100, 803.0pt x 602.25pt>
 File: images/snowflake.jpg Graphic file (type jpg)
 <use images/snowflake.jpg>
 Package pdftex.def Info: images/snowflake.jpg  used on input line 137.
 (pdftex.def)             Requested size: 201.65755pt x 151.24216pt.
-<images/glass-break.jpg, id=99, 1284.8pt x 855.195pt>
+<images/glass-break.jpg, id=103, 1284.8pt x 855.195pt>
 File: images/glass-break.jpg Graphic file (type jpg)
 <use images/glass-break.jpg>
 Package pdftex.def Info: images/glass-break.jpg  used on input line 141.
@@ -913,15 +913,15 @@ Overfull \hbox (25.34587pt too wide) detected at line 174
  []
 
 [5] [6] [7] [8]
-<images/geogebra-images/neuseeland-squares.png, id=152, 2028.07687pt x 814.5431
+<images/geogebra-images/neuseeland-squares.png, id=153, 2028.07687pt x 814.5431
 2pt>
 File: images/geogebra-images/neuseeland-squares.png Graphic file (type png)
 <use images/geogebra-images/neuseeland-squares.png>
 Package pdftex.def Info: images/geogebra-images/neuseeland-squares.png  used on
- input line 323.
+ input line 339.
 (pdftex.def)             Requested size: 460.47531pt x 184.9429pt.
 
-Overfull \hbox (12.34436pt too wide) in paragraph at lines 323--324
+Overfull \hbox (12.34436pt too wide) in paragraph at lines 339--340
  [][] 
  []
 
@@ -929,10 +929,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.330 \end{flalign}
-                    [9 <./images/geogebra-images/neuseeland-squares.png>]
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 376--378
+l.346 \end{flalign}
+                    [9] [10 <./images/geogebra-images/neuseeland-squares.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 392--394
 
  []
 
@@ -940,24 +939,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 376--378
 (name{equation.3.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.561 	\end{flalign}
+l.577 	\end{flalign}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{equation.3.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.573 	\end{flalign}
+l.589 	\end{flalign}
                     
-Underfull \hbox (badness 10000) in paragraph at lines 573--575
+Underfull \hbox (badness 10000) in paragraph at lines 589--591
 
- []
-
-
-Overfull \hbox (5.727pt too wide) detected at line 583
-[]
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 595--598
+Overfull \hbox (5.85066pt too wide) detected at line 599
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 611--614
 
  []
 
@@ -965,109 +964,109 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3.3}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.604 	\end{flalign}
-                    
-Underfull \hbox (badness 10000) in paragraph at lines 612--615
+l.620 	\end{flalign}
+                     [16]
+Underfull \hbox (badness 10000) in paragraph at lines 628--631
 
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 647--650
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--665
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.3.4}
-) has been already used, duplicate ignored
+[17]pdfTeX warning (ext4): destination with the same identifier (name{equation.
+3.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.656 	\end{flalign}
-                     [17]pdfTeX warning (ext4): destination with the same ident
+l.671 	\end{flalign}
+                     [18]pdfTeX warning (ext4): destination with the same ident
 ifier (name{equation.3.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.693 	\end{flalign}
-                     [18]
-Underfull \hbox (badness 10000) in paragraph at lines 709--712
+l.708 	\end{flalign}
+                    
+Underfull \hbox (badness 10000) in paragraph at lines 724--727
 
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 718--722
+Underfull \hbox (badness 10000) in paragraph at lines 733--737
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 718--722
+Underfull \hbox (badness 10000) in paragraph at lines 733--737
 
  []
 
 [20]
-Overfull \hbox (44.98445pt too wide) in paragraph at lines 772--773
-[]\T1/lmr/bx/n/12 Definition 4.1.2. $[]$ $[]$ $[]$
+
+Package hyperref Warning: No autoref name for `lemma' on input line 792.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 799.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 799.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 799.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 799.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 799.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 799.
+
+[21] [22] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 863--865
+
  []
 
 
-Package hyperref Warning: No autoref name for `lemma' on input line 776.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 880.
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 783.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 783.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 783.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 783.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 783.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 783.
-
-[21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 847--849
-
- []
-
-<images/geogebra-images/line-hit-squares.png, id=298, 535.33333pt x 370.27222pt
+<images/geogebra-images/line-hit-squares.png, id=306, 535.33333pt x 370.27222pt
 >
 File: images/geogebra-images/line-hit-squares.png Graphic file (type png)
 <use images/geogebra-images/line-hit-squares.png>
 Package pdftex.def Info: images/geogebra-images/line-hit-squares.png  used on i
-nput line 866.
-(pdftex.def)             Requested size: 411.3829pt x 284.52756pt.
-<images/geogebra-images/line-hit-A.png, id=300, 643.35312pt x 466.43102pt>
+nput line 883.
+(pdftex.def)             Requested size: 219.58662pt x 151.88039pt.
+<images/geogebra-images/line-hit-A.png, id=308, 643.35312pt x 466.43102pt>
 File: images/geogebra-images/line-hit-A.png Graphic file (type png)
 <use images/geogebra-images/line-hit-A.png>
 Package pdftex.def Info: images/geogebra-images/line-hit-A.png  used on input l
-ine 868.
-(pdftex.def)             Requested size: 392.46446pt x 284.52756pt.
+ine 886.
+(pdftex.def)             Requested size: 219.58662pt x 159.19652pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 879--882
-
- []
-
-[23] [24 <./images/geogebra-images/line-hit-squares.png> <./images/geogebra-ima
-ges/line-hit-A.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 911--918
+Underfull \hbox (badness 10000) in paragraph at lines 899--902
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 911--918
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 931--938
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 911--918
+Underfull \hbox (badness 10000) in paragraph at lines 931--938
 
  []
 
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 933--934
+
+Underfull \hbox (badness 10000) in paragraph at lines 931--938
+
+ []
+
+[25 <./images/geogebra-images/line-hit-squares.png> <./images/geogebra-images/l
+ine-hit-A.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 953--954
 
  []
 
@@ -1075,328 +1074,328 @@ Underfull \hbox (badness 10000) in paragraph at lines 933--934
 5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.960 	\end{flalign}
+l.980 	\end{flalign}
                     
-Underfull \hbox (badness 10000) in paragraph at lines 964--965
+Underfull \hbox (badness 10000) in paragraph at lines 984--985
 
  []
 
-<images/geogebra-images/line-param.png, id=332, 283.04178pt x 205.20529pt>
+[27]
+<images/geogebra-images/line-param.png, id=343, 283.04178pt x 205.20529pt>
 File: images/geogebra-images/line-param.png Graphic file (type png)
 <use images/geogebra-images/line-param.png>
 Package pdftex.def Info: images/geogebra-images/line-param.png  used on input l
-ine 984.
+ine 1004.
 (pdftex.def)             Requested size: 392.48108pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--988
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1008
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+euf on input line 990
-.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 101
+0.
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-[27]
-
-Package hyperref Warning: No autoref name for `lemma' on input line 1021.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1021--1026
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1021--1026
-
- []
-
 [28 <./images/geogebra-images/line-param.png>]
-<images/geogebra-images/circle-part-S.png, id=351, 426.79134pt x 309.42372pt>
+
+Package hyperref Warning: No autoref name for `lemma' on input line 1041.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1041--1046
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1041--1046
+
+ []
+
+<images/geogebra-images/circle-part-S.png, id=353, 426.79134pt x 309.42372pt>
 File: images/geogebra-images/circle-part-S.png Graphic file (type png)
 <use images/geogebra-images/circle-part-S.png>
 Package pdftex.def Info: images/geogebra-images/circle-part-S.png  used on inpu
-t line 1040.
+t line 1060.
 (pdftex.def)             Requested size: 392.47046pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1044--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1071
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1044--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1071
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1044--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1071
 
  []
 
-[29]
-<images/geogebra-images/T.png, id=360, 223.51546pt x 162.0487pt>
+[29] [30 <./images/geogebra-images/circle-part-S.png>]
+<images/geogebra-images/T.png, id=368, 223.51546pt x 162.0487pt>
 File: images/geogebra-images/T.png Graphic file (type png)
 <use images/geogebra-images/T.png>
-Package pdftex.def Info: images/geogebra-images/T.png  used on input line 1059.
+Package pdftex.def Info: images/geogebra-images/T.png  used on input line 1079.
 
 (pdftex.def)             Requested size: 392.49141pt x 284.52756pt.
- [30 <./images/geogebra-images/circle-part-S.png>]pdfTeX warning (ext4): destin
-ation with the same identifier (name{equation.5.2}) has been already used, dupl
-icate ignored
+ [31 <./images/geogebra-images/T.png>]pdfTeX warning (ext4): destination with t
+he same identifier (name{equation.5.2}) has been already used, duplicate ignore
+d
 <to be read again> 
                    \relax 
-l.1083 	\end{flalign}
-                      [31 <./images/geogebra-images/T.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1110--1113
+l.1103 	\end{flalign}
+                     
+Underfull \hbox (badness 10000) in paragraph at lines 1130--1133
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 112
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 114
 6.
 (C:\Users\donnykong\AppData\Local\Programs\MiKTeX\tex/latex/bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-[32] [33] [34]pdfTeX warning (ext4): destination with the same identifier (name
-{equation.5.1}) has been already used, duplicate ignored
+[32] [33] [34] [35]pdfTeX warning (ext4): destination with the same identifier 
+(name{equation.5.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1242 	\end{flalign}
+l.1262 	\end{flalign}
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{equation.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1246 	\end{flalign}
-                      [35]
+l.1266 	\end{flalign}
+                     
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1276.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 1276.
+(hyperref)                removing `math shift' on input line 1296.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1276.
+(hyperref)                removing `superscript' on input line 1296.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1296.
 
 [36] [37]
-Underfull \hbox (badness 10000) in paragraph at lines 1320--1324
+Underfull \hbox (badness 10000) in paragraph at lines 1340--1344
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1320--1324
+Underfull \hbox (badness 10000) in paragraph at lines 1340--1344
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1320--1324
+Underfull \hbox (badness 10000) in paragraph at lines 1340--1344
 
  []
 
-<images/code-snippets/parameters.png, id=433, 255.95625pt x 140.77594pt>
+<images/code-snippets/parameters.png, id=436, 255.95625pt x 140.77594pt>
 File: images/code-snippets/parameters.png Graphic file (type png)
 <use images/code-snippets/parameters.png>
 Package pdftex.def Info: images/code-snippets/parameters.png  used on input lin
-e 1331.
+e 1351.
 (pdftex.def)             Requested size: 172.2709pt x 94.74773pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1328--1334
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1328--1334
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1328--1334
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1328--1334
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1354
 
  []
 
 [38]
-<images/code-snippets/mainpy.png, id=438, 402.75468pt x 168.63pt>
+<images/code-snippets/mainpy.png, id=441, 402.75468pt x 168.63pt>
 File: images/code-snippets/mainpy.png Graphic file (type png)
 <use images/code-snippets/mainpy.png>
 Package pdftex.def Info: images/code-snippets/mainpy.png  used on input line 13
-39.
+59.
 (pdftex.def)             Requested size: 316.67934pt x 132.58994pt.
-<images/code-snippets/initia.png, id=439, 270.25969pt x 63.23625pt>
+<images/code-snippets/initia.png, id=442, 270.25969pt x 63.23625pt>
 File: images/code-snippets/initia.png Graphic file (type png)
 <use images/code-snippets/initia.png>
 Package pdftex.def Info: images/code-snippets/initia.png  used on input line 13
-43.
+63.
 (pdftex.def)             Requested size: 218.88852pt x 51.21504pt.
-<images/code-snippets/lhainit.png, id=440, 316.93407pt x 40.65187pt>
+<images/code-snippets/lhainit.png, id=443, 316.93407pt x 40.65187pt>
 File: images/code-snippets/lhainit.png Graphic file (type png)
 <use images/code-snippets/lhainit.png>
 Package pdftex.def Info: images/code-snippets/lhainit.png  used on input line 1
-345.
+365.
 (pdftex.def)             Requested size: 244.0158pt x 31.2982pt.
-<images/code-snippets/runprocess.png, id=442, 362.85562pt x 176.91093pt>
+<images/code-snippets/runprocess.png, id=445, 362.85562pt x 176.91093pt>
 File: images/code-snippets/runprocess.png Graphic file (type png)
 <use images/code-snippets/runprocess.png>
 Package pdftex.def Info: images/code-snippets/runprocess.png  used on input lin
-e 1350.
+e 1370.
 (pdftex.def)             Requested size: 291.79642pt x 142.26378pt.
-<images/code-snippets/randomline.png, id=445, 244.66406pt x 63.98906pt>
+<images/code-snippets/randomline.png, id=448, 244.66406pt x 63.98906pt>
 File: images/code-snippets/randomline.png Graphic file (type png)
 <use images/code-snippets/randomline.png>
 Package pdftex.def Info: images/code-snippets/randomline.png  used on input lin
-e 1355.
+e 1375.
 (pdftex.def)             Requested size: 195.8211pt x 51.21504pt.
-<images/code-snippets/linehitscluster.png, id=447, 412.54124pt x 64.74188pt>
+<images/code-snippets/linehitscluster.png, id=450, 412.54124pt x 64.74188pt>
 File: images/code-snippets/linehitscluster.png Graphic file (type png)
 <use images/code-snippets/linehitscluster.png>
 Package pdftex.def Info: images/code-snippets/linehitscluster.png  used on inpu
-t line 1360.
+t line 1380.
 (pdftex.def)             Requested size: 326.36354pt x 51.21504pt.
-<images/code-snippets/getsquare.png, id=448, 569.87906pt x 27.85406pt>
+<images/code-snippets/getsquare.png, id=451, 569.87906pt x 27.85406pt>
 File: images/code-snippets/getsquare.png Graphic file (type png)
 <use images/code-snippets/getsquare.png>
 Package pdftex.def Info: images/code-snippets/getsquare.png  used on input line
- 1364.
+ 1384.
 (pdftex.def)             Requested size: 465.70384pt x 22.76228pt.
-<images/code-snippets/nextparticle.png, id=451, 312.41719pt x 63.98906pt>
+<images/code-snippets/nextparticle.png, id=454, 312.41719pt x 63.98906pt>
 File: images/code-snippets/nextparticle.png Graphic file (type png)
 <use images/code-snippets/nextparticle.png>
 Package pdftex.def Info: images/code-snippets/nextparticle.png  used on input l
-ine 1369.
+ine 1389.
 (pdftex.def)             Requested size: 250.0485pt x 51.21504pt.
-<images/code-snippets/islower.png, id=452, 200.24812pt x 211.54031pt>
+<images/code-snippets/islower.png, id=455, 200.24812pt x 211.54031pt>
 File: images/code-snippets/islower.png Graphic file (type png)
 <use images/code-snippets/islower.png>
 Package pdftex.def Info: images/code-snippets/islower.png  used on input line 1
-373.
+393.
 (pdftex.def)             Requested size: 161.60732pt x 170.71652pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Overfull \hbox (17.57289pt too wide) in paragraph at lines 1335--1377
+Overfull \hbox (17.57289pt too wide) in paragraph at lines 1355--1397
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1397
 
  []
 
@@ -1406,165 +1405,165 @@ Underfull \hbox (badness 10000) in paragraph at lines 1335--1377
 .png> <./images/code-snippets/linehitscluster.png> <./images/code-snippets/gets
 quare.png> <./images/code-snippets/nextparticle.png>] [42 <./images/code-snippe
 ts/islower.png>]
-<images/fractal_range/5.png, id=481, 189.70876pt x 181.42781pt>
+<images/fractal_range/5.png, id=484, 189.70876pt x 181.42781pt>
 File: images/fractal_range/5.png Graphic file (type png)
 <use images/fractal_range/5.png>
-Package pdftex.def Info: images/fractal_range/5.png  used on input line 1408.
+Package pdftex.def Info: images/fractal_range/5.png  used on input line 1428.
 (pdftex.def)             Requested size: 178.5115pt x 170.71652pt.
-<images/fractal_range/1.PNG, id=482, 175.40532pt x 164.86594pt>
+<images/fractal_range/1.PNG, id=485, 175.40532pt x 164.86594pt>
 File: images/fractal_range/1.PNG Graphic file (type png)
 <use images/fractal_range/1.PNG>
-Package pdftex.def Info: images/fractal_range/1.PNG  used on input line 1414.
+Package pdftex.def Info: images/fractal_range/1.PNG  used on input line 1434.
 (pdftex.def)             Requested size: 138.9195pt x 130.58224pt.
-<images/fractal_range/4.PNG, id=483, 173.14688pt x 176.15813pt>
+<images/fractal_range/4.PNG, id=486, 173.14688pt x 176.15813pt>
 File: images/fractal_range/4.PNG Graphic file (type png)
 <use images/fractal_range/4.PNG>
-Package pdftex.def Info: images/fractal_range/4.PNG  used on input line 1417.
+Package pdftex.def Info: images/fractal_range/4.PNG  used on input line 1437.
 (pdftex.def)             Requested size: 138.9195pt x 141.33794pt.
-<images/fractal_range/2.PNG, id=484, 179.92218pt x 176.15813pt>
+<images/fractal_range/2.PNG, id=487, 179.92218pt x 176.15813pt>
 File: images/fractal_range/2.PNG Graphic file (type png)
 <use images/fractal_range/2.PNG>
-Package pdftex.def Info: images/fractal_range/2.PNG  used on input line 1420.
+Package pdftex.def Info: images/fractal_range/2.PNG  used on input line 1440.
 (pdftex.def)             Requested size: 138.9195pt x 136.02385pt.
-<images/code-snippets/fractalnew.png, id=487, 517.935pt x 245.41687pt>
+<images/code-snippets/fractalnew.png, id=490, 517.935pt x 245.41687pt>
 File: images/code-snippets/fractalnew.png Graphic file (type png)
 <use images/code-snippets/fractalnew.png>
 Package pdftex.def Info: images/code-snippets/fractalnew.png  used on input lin
-e 1429.
+e 1449.
 (pdftex.def)             Requested size: 450.3706pt x 213.39566pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1432
+Underfull \hbox (badness 10000) in paragraph at lines 1446--1452
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1432
+Underfull \hbox (badness 10000) in paragraph at lines 1446--1452
 
  []
 
 
-Overfull \hbox (2.23965pt too wide) in paragraph at lines 1426--1432
+Overfull \hbox (2.23965pt too wide) in paragraph at lines 1446--1452
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1432
+Underfull \hbox (badness 10000) in paragraph at lines 1446--1452
 
  []
 
 [43 <./images/fractal_range/5.png> <./images/fractal_range/1.PNG> <./images/fra
 ctal_range/4.PNG> <./images/fractal_range/2.PNG>] [44 <./images/code-snippets/f
 ractalnew.png>]
-<images/lhaplot.png, id=507, 462.528pt x 346.896pt>
+<images/lhaplot.png, id=510, 462.528pt x 346.896pt>
 File: images/lhaplot.png Graphic file (type png)
 <use images/lhaplot.png>
-Package pdftex.def Info: images/lhaplot.png  used on input line 1474.
+Package pdftex.def Info: images/lhaplot.png  used on input line 1494.
 (pdftex.def)             Requested size: 201.65755pt x 151.24258pt.
-<images/volumeplot.png, id=508, 462.528pt x 346.896pt>
+<images/volumeplot.png, id=511, 462.528pt x 346.896pt>
 File: images/volumeplot.png Graphic file (type png)
 <use images/volumeplot.png>
-Package pdftex.def Info: images/volumeplot.png  used on input line 1477.
+Package pdftex.def Info: images/volumeplot.png  used on input line 1497.
 (pdftex.def)             Requested size: 201.65755pt x 151.24258pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1484--1486
+Underfull \hbox (badness 10000) in paragraph at lines 1504--1506
 
  []
 
 [45] [46 <./images/lhaplot.png> <./images/volumeplot.png>]
-<images/ia/2021_03_03_12_25_49__image_dla_5000.png, id=527, 401.5pt x 401.5pt>
+<images/ia/2021_03_03_12_25_49__image_dla_5000.png, id=530, 401.5pt x 401.5pt>
 File: images/ia/2021_03_03_12_25_49__image_dla_5000.png Graphic file (type png)
 
 <use images/ia/2021_03_03_12_25_49__image_dla_5000.png>
 Package pdftex.def Info: images/ia/2021_03_03_12_25_49__image_dla_5000.png  use
-d on input line 1520.
+d on input line 1540.
 (pdftex.def)             Requested size: 219.58662pt x 219.59427pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1521--1521
+Underfull \hbox (badness 10000) in paragraph at lines 1541--1541
 [][]|\T1/lmr/m/n/10.95 2021_03_03_12_25_49__im-
  []
 
-<images/ia/2021_03_06_00_23_38__image_lha_5000.png, id=528, 401.5pt x 401.5pt>
+<images/ia/2021_03_06_00_23_38__image_lha_5000.png, id=531, 401.5pt x 401.5pt>
 File: images/ia/2021_03_06_00_23_38__image_lha_5000.png Graphic file (type png)
 
 <use images/ia/2021_03_06_00_23_38__image_lha_5000.png>
 Package pdftex.def Info: images/ia/2021_03_06_00_23_38__image_lha_5000.png  use
-d on input line 1524.
+d on input line 1544.
 (pdftex.def)             Requested size: 219.58662pt x 219.59427pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1525--1525
+Underfull \hbox (badness 10000) in paragraph at lines 1545--1545
 [][]|\T1/lmr/m/n/10.95 2021_03_06_00_23_38__im-
  []
 
-<images/ia/2021_03_03_19_58_26__image_dla_10000.png, id=529, 501.875pt x 501.87
+<images/ia/2021_03_03_19_58_26__image_dla_10000.png, id=532, 501.875pt x 501.87
 5pt>
 File: images/ia/2021_03_03_19_58_26__image_dla_10000.png Graphic file (type png
 )
 <use images/ia/2021_03_03_19_58_26__image_dla_10000.png>
 Package pdftex.def Info: images/ia/2021_03_03_19_58_26__image_dla_10000.png  us
-ed on input line 1532.
+ed on input line 1552.
 (pdftex.def)             Requested size: 219.58662pt x 219.59274pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1533--1533
+Underfull \hbox (badness 10000) in paragraph at lines 1553--1553
 [][]|\T1/lmr/m/n/10.95 2021_03_03_19_58_26__im-
  []
 
-<images/ia/2021_03_05_23_28_53__image_lha_10000.png, id=530, 401.5pt x 401.5pt>
+<images/ia/2021_03_05_23_28_53__image_lha_10000.png, id=533, 401.5pt x 401.5pt>
 
 File: images/ia/2021_03_05_23_28_53__image_lha_10000.png Graphic file (type png
 )
 <use images/ia/2021_03_05_23_28_53__image_lha_10000.png>
 Package pdftex.def Info: images/ia/2021_03_05_23_28_53__image_lha_10000.png  us
-ed on input line 1536.
+ed on input line 1556.
 (pdftex.def)             Requested size: 219.58662pt x 219.59427pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1537--1537
+Underfull \hbox (badness 10000) in paragraph at lines 1557--1557
 [][]|\T1/lmr/m/n/10.95 2021_03_05_23_28_53__im-
  []
 
-<images/ia/2021_03_03_21_23_47__image_lha_100000.png, id=531, 1003.75pt x 1003.
+<images/ia/2021_03_03_21_23_47__image_lha_100000.png, id=534, 1003.75pt x 1003.
 75pt>
 File: images/ia/2021_03_03_21_23_47__image_lha_100000.png Graphic file (type pn
 g)
 <use images/ia/2021_03_03_21_23_47__image_lha_100000.png>
 Package pdftex.def Info: images/ia/2021_03_03_21_23_47__image_lha_100000.png  u
-sed on input line 1544.
+sed on input line 1564.
 (pdftex.def)             Requested size: 322.65483pt x 322.66158pt.
-<images/ia/2021_03_04_00_42_19__image_lha_200000.png, id=532, 874.01532pt x 819
+<images/ia/2021_03_04_00_42_19__image_lha_200000.png, id=535, 874.01532pt x 819
 .8128pt>
 File: images/ia/2021_03_04_00_42_19__image_lha_200000.png Graphic file (type pn
 g)
 <use images/ia/2021_03_04_00_42_19__image_lha_200000.png>
 Package pdftex.def Info: images/ia/2021_03_04_00_42_19__image_lha_200000.png  u
-sed on input line 1548.
+sed on input line 1568.
 (pdftex.def)             Requested size: 322.65483pt x 302.63797pt.
 
-LaTeX Warning: Float too large for page by 29.99953pt on input line 1551.
+LaTeX Warning: Float too large for page by 29.99953pt on input line 1571.
 
 [47 <./images/ia/2021_03_03_12_25_49__image_dla_5000.png (PNG copy)> <./images/
 ia/2021_03_06_00_23_38__image_lha_5000.png (PNG copy)> <./images/ia/2021_03_03_
 19_58_26__image_dla_10000.png (PNG copy)> <./images/ia/2021_03_05_23_28_53__ima
 ge_lha_10000.png (PNG copy)>] [48 <./images/ia/2021_03_03_21_23_47__image_lha_1
 00000.png (PNG copy)> <./images/ia/2021_03_04_00_42_19__image_lha_200000.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1572--1576
+Underfull \hbox (badness 10000) in paragraph at lines 1592--1596
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1572--1576
+Underfull \hbox (badness 10000) in paragraph at lines 1592--1596
 
  []
 
 [49] [50]
-Underfull \hbox (badness 10000) in paragraph at lines 1661--1662
+Underfull \hbox (badness 10000) in paragraph at lines 1680--1681
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1663--1665
+Underfull \hbox (badness 10000) in paragraph at lines 1682--1684
 
  []
 
@@ -1573,9 +1572,9 @@ Package rerunfilecheck Info: File `masterarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 13386 strings out of 479697
- 239401 string characters out of 2865232
- 687967 words of memory out of 3000000
+ 13387 strings out of 479697
+ 239403 string characters out of 2865232
+ 688967 words of memory out of 3000000
  29950 multiletter control sequences out of 15000+200000
  525934 words of font info for 113 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1607,9 +1606,9 @@ sy10.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
 m/lmsy6.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/lm/lmsy8.pfb><C:/Users/donnykong/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb>
-Output written on masterarbeit.pdf (53 pages, 5006616 bytes).
+Output written on masterarbeit.pdf (53 pages, 5008705 bytes).
 PDF statistics:
- 749 PDF objects out of 1000 (max. 8388607)
- 173 named destinations out of 1000 (max. 500000)
- 371 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 754 PDF objects out of 1000 (max. 8388607)
+ 174 named destinations out of 1000 (max. 500000)
+ 379 words of extra memory for PDF output out of 10000 (max. 10000000)
 

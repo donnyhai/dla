@@ -107,11 +107,11 @@
 \section{Introduction}
 	In mathematics and physics there are objects which may naturally awaken the interest of any human being, mathematican and non-mathematician, just by their natural visual appearance - and clusterings of particles or clusterlike occurences like snowflakes or broken glasses are one example of them. Looking at \autoref{radio} we find a clusterlike formed occurence in the radio screen of a car which might have arisen by the breaking of a crystal fluid in the screen. Other examples are cracking of solid glass (\autoref{other} (b)), processes like bacterial colonies or electrodeposition and also more symmetrical examples as the formation of snowflake crystals (\autoref{other} (a)). \\
 	
-	\noindent One way of describing such processes is through clusters which get formed by random point by point aggregation. If we draw our attention to the two-dimensional lattice $\Z^2$ and consider one particle in the origin $(0,0)$, we can let a cluster grow by adding new particles one by one, always on the boundary of the current cluster. What we get is a random growth of a connected clusterlike set of which we then can think about its fractal dimension, how quick it grows and many other properties, and produce beautiful realizations. \\
+	\noindent One way of describing such processes is through clusters which get formed by random point by point aggregation. If for some natural number $d\in\N$ we draw our attention to the $d$-dimensional lattice $\Z^d$ and consider one particle in the origin $(0,0)$, we can let a cluster grow by adding new particles one by one, always on the boundary of the current cluster. What we get is a random growth of a connected clusterlike set of which we then can think about its fractal dimension, how quick it grows and many other properties, and produce beautiful realizations. \\
 	
 	\noindent In this paper we will look at two ways of letting grow such clusters and simulate them with python at the end to produce visuals and some empirical values. We will call such point by point growing clusters $\mathit{incremental\ aggregations}$ and present the two models briefly here:\\
 
-	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$ was initially introduced by $\mathit{Witten}$ $\mathit{and}$ $\mathit{Sander}$ \cite{wittensander} in 1983. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Indeed random walks on  $\Z^2$ are recurrent and therefore every random walk starting at some point reaches any other point in finite time with probability 1. Despite this very simple definition there are only few rigorously proved results on this process of which one we present here about a lower bound on its fractal dimension. In two dimensions the fractal dimension of any incremental aggregation lies in between 1 and 2 and here we prove an almost sure lower bound of 1.5. Empirical studies calculate a value around 1.7 to 1.8 (see \cite{vicsek} and \cite{magnetic}).  \\
+	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$ was initially introduced by \cite[Witten and Sander, 1983]{wittensander}. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Despite this simple definition there are only few rigorously proved results on this process. In $d$ dimensions the fractal dimension of any incremental aggregation lies in between 1 and $d$ and here we prove an almost sure lower bound of 1.5 in $\Z^2$. Empirical studies calculate a value around 1.7 to 1.8 in $\Z^2$ (see \cite{vicsek} and \cite{magnetic}).  \\
 	
 	\noindent $\mathbf{Line\ Hitting\ Aggregation}$ is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which are chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So one way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA and therefore have a higher fractal dimension which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they guess a fractal dimension of 2 for their ballistic model and here we will actually be able to prove this result for the ballistic model we define in this paper. \\
 	
@@ -162,8 +162,8 @@ Let $d\in \N$ and $q\in \{0,\dots,d\}$.
 	&\mathcal{B}^d,\quad \text{$d$-dimensional Borel-$\sigma$-algebra of $\R^d$} \\
 	&\K^d,\quad \text{the set of convex and compact sets in }\R^d\\
 	&B_d(x,r) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
-	&B_r := B_2(r,0) \\
-	&S_{d-1}(r,x) = \partial B_d(r,x),\quad  \text{the $(d-1)$-dimensional surface of the $d$-dimensional ball}\\
+	&B_r := B_2(0,r) \\
+	&S_{d-1}(x,r) = \partial B_d(x,r),\quad  \text{the $(d-1)$-dimensional surface of the $d$-dimensional ball}\\
 	&A(d,q),\quad \text{the set of q-dimensional affine subspaces of }\R^d \\
 	&\mathcal{A}(d,q),\quad  \text{the $\sigma$-algebra of } A(d,q), \text{ as constructed later in the paper} \\
 	&\G := A(2,1),\quad  \text{the set of lines in the real plane}\\
@@ -182,30 +182,30 @@ Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability sp
 
 \subsection{Graphs} \label{zgraph}
 
-Let $d\in \N$. We will be interested in the undirected graph $(\mathbb{Z}^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \mathbb{Z}^d$ form an edge (e.q. $\{x,y\}\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \mathbb{Z}^d$ its set of $\mathit{neighbours}$ is defined as 
+Let $d\in \N$. We will be interested in the undirected graph $(\Z^d, E)$ with its canonical graph structure, which is two vertices (or points) $x=(x_1,\dots,x_d),y=(y_1,\dots,y_d)\in \Z^d$ form an edge (e.q. $\{x,y\}\in E$) if and only if there exists exactly one $i\in \{1,\dots, d\}$ such that $|x_i - y_i| = 1$ and $x_j = y_j$ for all $j\neq i$. For a point $x\in \Z^d$ its set of $\mathit{neighbours}$ is defined as 
 \begin{align*}
-	N(x) := \{y\in \mathbb{Z}^d\ |\ \{x,y\}\in E\}.
+	N(x) := \{y\in \Z^d\ |\ \{x,y\}\in E\}.
 \end{align*}
-For a set $A\subset \mathbb{Z}^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as 
+For a set $A\subset \Z^d$ the $\mathit{outer\ boundary}\ \partial A$ of $A$ is defined as 
 \begin{align*}
-	\partial A := \{y\in \mathbb{Z}^d\setminus A\ |\ \exists x\in A:\ \{x,y\}	\in E\}
+	\partial A := \{y\in \Z^d\setminus A\ |\ \exists x\in A:\ \{x,y\}	\in E\}
 \end{align*}
 and the closure $\bar A$ of $A$ as 
 \begin{flalign*}
 	\bar A := A\cup \partial A.
 \end{flalign*}
-Instead of $(\mathbb{Z}^d, E)$ we will write $\mathbb{Z}^d$ from now on. 
+Instead of $(\Z^d, E)$ we will write $\Z^d$ from now on. 
 
 \subsection{Random walks}
 
 \begin{definition}
-	 For our space of interest $\mathbb{Z}^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\mathbb{Z}^d$. A family $(S_n)_{n\in \mathbb{N}_0}$ of measurable functions $S_n: \Omega \to \mathbb{Z}^d$ is called a $\mathit{random\ walk\ on}\ \mathbb{Z}^d$ $\mathit{(starting\ at}\ x\in \mathbb{Z}^d)$ if and only if $S_0=x$ a.s. and 
+	 For our space of interest $\Z^d$ we will always use the discrete $\sigma$-algebra which is the power set of $\Z^d$. A family $(S_n)_{n\in \mathbb{N}_0}$ of measurable functions $S_n: \Omega \to \Z^d$ is called a $\mathit{random\ walk\ on}\ \Z^d$ $\mathit{(starting\ at}\ x\in \Z^d)$ if and only if $S_0=x$ a.s. and 
 	
 	\begin{align*}
 		\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = \frac{1}{|N(z)|} = \frac{1}{2d},\quad \text{ for all }  y\in N(z) \text{ and } z\in \Z^d.
 	\end{align*}
 	
-	\noindent Note that $|N(z)| = 2d$ for all $z\in \mathbb{Z}^d$ since every point has two neighbours in the direction of every dimensional component. We can therefore conclude easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. For $x,y\in\Z^d$ we introduce the short notation
+	\noindent Note that $|N(z)| = 2d$ for all $z\in \Z^d$ since every point has two neighbours in the direction of every dimensional component. We can therefore conclude easily that $\mathbb{P}(S_n = y\ |\ S_{n-1} = z) = 0$ for all $y\notin N(z)$ and $z\in \Z^d$. For $x,y\in\Z^d$ we introduce the short notation
 	\begin{flalign*}
 		\PP_x(S_n=y) := \PP(S_n = y\ |\ S_0 = x). 
 	\end{flalign*}
@@ -238,7 +238,7 @@ So a random walk can be understood as a particle starting from some point $x$ an
 	A random walk on $\Z^d$ is recurrent if $d\leq 2$ and transient if $d\geq 3$. 
 \end{lemma}
 \begin{proof}
-	Proofs of this result are presented in $\cite{henze}$ Satz $5.1$ or $\cite{markov}$ Korollar $2.6.6$. 
+	Proofs of this result are presented in \cite[Satz 5.1]{henze} or \cite[Korollar 2.6.6]{markov}. 
 \end{proof}
 
 \begin{lemma} \label{recurrA}
@@ -250,7 +250,7 @@ So a random walk can be understood as a particle starting from some point $x$ an
 \end{lemma}
 
 \begin{proof}
-	The direction $(ii)$ to $(i)$ is clear. For the other direction choose $x\in\Z^2$ and $A\subset \Z^2$. We know that in general for any point $y\in\Z^2$ we have $\PP_x(T_y^+<\infty) > 0$ for a random walk in $\Z^d$ for any dimension $d\in\N$. By Lemma \ref{recurr} we know that a random walk on $\Z^2$ is recurrent. For that case it is proved  in \cite{markov} Satz $2.6.9$ that for $y\in\Z^2$ even $\PP_x(T_y^+<\infty) = 1$ holds. If we choose $y\in A$ we get
+	The direction $(ii)$ to $(i)$ is clear. For the other direction choose $x\in\Z^2$ and $A\subset \Z^2$. We know that in general for any point $y\in\Z^2$ we have $\PP_x(T_y^+<\infty) > 0$ for a random walk in $\Z^d$ for any dimension $d\in\N$. By Lemma \ref{recurr} we know that a random walk on $\Z^2$ is recurrent. For that case it is proved  in \cite[Satz 2.6.9]{markov} that for $y\in\Z^2$ even $\PP_x(T_y^+<\infty) = 1$ holds. If we choose $y\in A$ we get
 	\begin{flalign*}
 		1 = \PP_x(T_y^+<\infty) \leq \PP_x(T_A^+<\infty),
 	\end{flalign*}
@@ -266,32 +266,48 @@ After having introduced some basics we will turn our focus in the next chapter t
 
 \subsection{Definition}
 
-In this paper we will look at stochastic processes on the set of finite subsets of $\mathbb{Z}^2$, where we start with the one point set $\{0\}$ and incrementally add a point of the outer boundary of the current cluster according to some distribution. What we get is a randomly, point by point growing connected cluster which we will call $\mathit{incremental\ aggregation}$. Define 
+In this paper we will look at stochastic processes on the set of finite subsets of $\Z^d$, where we start with the one point set $\{0\}$ and incrementally add a point of the boundary of the current cluster according to some distribution. Note that with $0$ with will denote the zero vector. What we get is a randomly point by point growing connected cluster which we will call $\mathit{incremental\ aggregation}$. Define 
 \begin{flalign*}
-	\mP_f := \{A\subset \mathbb{Z}^2\ |\ \text{A is finite}\}, 
+	\mP^d_f := \{A\subset \Z^d\ |\ \text{A is finite}\}
 \end{flalign*}
-the set of finite subsets of $\mathbb{Z}^2$. Furthermore we will be interested in distributions on those sets, so for $A\in \mP_f$ we define 
+the set of finite subsets of $\Z^d$. Furthermore we will be interested in distributions on those sets, so for $A\in \mP^d_f$ we define 
 \begin{flalign*}
-	\mathcal{D}_A:= \{\mu: \mathbb{Z}^2\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}, 
+	\mathcal{D}_A:= \{\mu: \Z^d\to [0,1]\ |\ \mu(y) = 0 \text{ for all } y\notin A\ \text{and}\ \sum_{y\in A} \mu(y) = 1 \}
 \end{flalign*}
-the set of distributions on $A$. Now we define incremental aggregation as follows.  
+the set of distributions on $A$. For $\mP^d_f$ we consider the discrete $\sigma$-algebra and call a measurable function
+\begin{flalign*}
+	F:\Omega\to \mP^d_f
+\end{flalign*}
+a $\mathit{random}$ $\mathit{finite\ set}$. Further for $A\in\mP^d_f$ we call a measurable function
+\begin{flalign*}
+	y_A:\Omega\to \Z^d
+\end{flalign*}
+a $\mathit{random}$ $\mathit{point}$ $\mathit{in\ A}$ if $\PP(y_A = y) = 0$ is satisfied for all $y\notin A$. Now we define incremental aggregation as follows.  
 
 \begin{definition} \label{incrementalaggregation}
-	Let $\mu=(\mu_A)_{A\in \mP_f}$ be a family of distributions, therefore $\mu_A\in \mathcal{D}_A$ for all $A\in \mP_f$. An $\mathit{incremental\ aggregation\ (with\ distribution\ \mu)}$ is a stochastic process $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\mathbb{Z}^2$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mP_f$ with distribution
+	Let $\mu=(\mu_A)_{A\in \mP^d_f}$ be a family of distributions, therefore $\mu_A\in \mathcal{D}_A$ for all $A\in \mP^d_f$. An $\mathit{incremental\ aggregation\ (with\ distribution\ \mu)}$ is a family of random finite sets $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\Z^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mP^d_f$ with distribution
 	\begin{align}
-		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y),\quad y\in \mathbb{Z}^2.
+		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y)\quad \text{for }y\in \Z^d.
 	\end{align}
-	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$ and the limit cluster as $\E_\infty := \bigcup_{n\in\N} \E_n$. This defines a Markov chain whose state space is the set of finite and connected subsets of $\Z^2$. 
+	We then define $\mathcal{E}_{n+1} := \mathcal{E}_n \cup \{y_{n+1}\}$ and the limit cluster as $\E_\infty := \bigcup_{n\in\N} \E_n$. This naturally defines a Markov chain. 
 \end{definition} 
 
-\begin{remark} \label{orderindependence}
-	It is worth to mention that the distribution of a new added point $y_{n+1}$ is not depending on the order of how previous points where added to the cluster since the functions $\mu_A$ only look at the boundary of the current cluster and therefore do not consider any information about orderings of cluster points. 
+\begin{remark}
+	We want to quickly argument here that all $\E_n$ are indeed measurable functions. $\E_1 = \{0\}$ is constant and therefore measurable. It is not difficult to show that for $A\in\mP^d_f$ we have
+	\begin{flalign*}
+		\E_{n+1}^{-1}(A) = \bigcup_{y\in A} \E_n^{-1}(A\setminus \{y\}) \cap y_{n+1}^{-1}(\{y\})
+	\end{flalign*}
+	for any $n\in\N$ and we can therefore conclude the measurability for all $\E_n$ by induction. 
 \end{remark}
 
-Properties of an incremental aggregation obviously base strongly on the properties of its distribution $\mu$. We prepare some additional definitions for such distributions here which we will use lateron. 
+\begin{remark} \label{orderindependence}
+	It is worth to mention that since incremental aggregations are Markov chains the distribution of a new added point $y_{n+1}$ is not depending on the order of how previous points where added to the cluster.
+\end{remark}
+
+Properties of an incremental aggregation obviously base strongly on the properties of its distribution $\mu$. In the following we prepare some additional definitions which we will use later on. 
 
 \begin{definition} \label{outsidedist}
-	We call a distribution family $(\mu_A)_{A\in \mP_f}$ an $\mathit{outside\ distribution}$ if and only if for all connected sets $A\in\mP_f$ we have that 
+	We call a distribution family $(\mu_A)_{A\in \mP^d_f}$ an $\mathit{outside\ distribution}$ if and only if for all connected sets $A\in\mP^d_f$ we have that 
 	\begin{flalign*}
 		\mu_{\bar A} (x) = 
 		\begin{cases}
@@ -299,19 +315,19 @@ Properties of an incremental aggregation obviously base strongly on the properti
 			0, \quad &x\in A.
 		\end{cases}
 	\end{flalign*}
-	Remind that $\bar A = A \cup \partial A$. This definition shall capture the idea that aggregations which arise from particles moving from \glqq outside\grqq\ to the current cluster and getting stuck where they hit the cluster the first time, cannot move into the cluster without passing its boundary. For both incremental aggregations we discuss in this paper this will be the case. 
+	Remind that $\bar A = A \cup \partial A$. This definition shall capture the idea that particles coming from \glqq outside\grqq\ to a set $\bar A$ shall not be able to move into the \glqq inside\grqq\ $A$ of that set without passing its boundary $\partial A$ first. For both incremental aggregations we discuss in this paper this will be the case. 
 \end{definition}
 
 \begin{definition} \label{translinv}
-	For $y\in\Z^2$ let 
+	For $y\in\Z^d$ let 
 	\begin{flalign*}
-		\Phi_y: \Z^2 \to \Z^2, x\mapsto x+y
+		\Phi_y: \Z^d \to \Z^d, x\mapsto x+y
 	\end{flalign*}
-	be a translation function on $\Z^2$. Then we call the family of distributions $(\mu_A)_{A\in\mP_f}$ $\mathit{translation}$ $\mathit{invariant}$ if and only if for all $y\in\Z^2$
+	be a translation function on $\Z^d$. Then we call the family of distributions $(\mu_A)_{A\in\mP^d_f}$ $\mathit{translation}$ $\mathit{invariant}$ if and only if for all $y\in\Z^d$
 	\begin{flalign*}
 		\mu_A(z) = \mu_{\Phi_y(A)}(\Phi_y(z)) 
 	\end{flalign*}
-	for all $z\in A$ and $A\in\mP_f$. 
+	for all $z\in A$ and $A\in\mP^d_f$. 
 \end{definition}
 
 
@@ -324,21 +340,21 @@ Properties of an incremental aggregation obviously base strongly on the properti
 	\caption{Box-covering of New Zealands outer cost with decreasing box sizes $\varepsilon$} \label{neuseeland}
 \end{figure}
 
-The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. The following definition is motivated by \cite{hausdorff} page 160. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the so called $\mathit{box\text{-}dimension\ d_b}$ is a constant such that $N(\varepsilon)$ grows as fast as $\varepsilon^{-d_b}$ for letting $\varepsilon$ tend to zero, so 
+The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. The following definition is motivated by \cite[Page 160]{hausdorff}. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the so called $\mathit{box\text{-}dimension\ d_b}$ is a constant such that $N(\varepsilon)$ grows as fast as $\varepsilon^{-d_b}$ for letting $\varepsilon$ tend to zero, so 
 \begin{flalign} \label{boxdimension}
 	d_b := - \lim_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\varepsilon)}. 
 \end{flalign} 
 
-This definition makes sense in many contexts, for example is the box-dimension of straight line segments $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique square since the cluster is living on the grid $\Z^2$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
+This definition makes sense in many contexts, for example is the box-dimension of straight line segments $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique box of side length 1 since the cluster is living on the grid $\Z^d$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
 Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the euclidean norm) as 
 \begin{flalign} \label{radius}
 	\rad(A) := \max_{x\in A} |x|,
 \end{flalign}
-we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define random variables  $\varepsilon_n:=\frac{1}{\rad(\E_n)}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\rad(\E_n)}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret by $\EE[\rad(\E_n)]$ up to a constant. That analogy makes even more sense if the cluster happens to be self-similar in some way looking at different sizes of it. The minimum number of boxes with size $1$ with which we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\rad(\E_n)}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as the random variable 
+we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define random variables  $\varepsilon_n:=\frac{1}{\rad(\E_n)}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\rad(\E_n)}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret as $\rad(\E_n)$. That analogy makes even more sense if the cluster happens to be self-similar in some way looking at different sizes of it. The minimum number of boxes with size $1$ with which we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\rad(\E_n)}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as the random variable 
 \begin{flalign} \label{fractaldimension}
 	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}
 \end{flalign}
-Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the $d$-dimensional ball $B_d(0,m)$ of radius $m\geq 0$, which is motivated by $\cite{fractalwinter}$ Part II page 98 and $\cite{lawler}$ 2.6 page 82. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\rad(\E_n)$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\rad(\E_n)^k$ for letting tend $n$ to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
+Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the ball $B_d(0,m)$ with radius $m\geq 0$ and center $0$, which is motivated by \cite[Page 83]{lawler}. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\rad(\E_n)$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\rad(\E_n)^k$ for letting tend $n$ to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\rad(\E_n) \leq cn^\alpha
 \end{flalign*}
@@ -346,7 +362,7 @@ for large $n$. Rewriting this we come to the equivalent inequality
 \begin{flalign*}
 	\frac{\ln(\rad(\E_n))}{\ln(n)} - \frac{\ln(c)}{\ln(n)} \leq \alpha
 \end{flalign*}
-for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregation as the smallest value satisfying this inequality, so
+for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregation as the smallest value satisfying this inequality, so the random variable
 \begin{flalign} \label{growthrate}
 	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\rad(\E_n))}{ln(n)}.
 \end{flalign}
@@ -354,7 +370,7 @@ We therefore simply get that
 \begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f} \quad \text{a.s.},
 \end{flalign}
-which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in total motivates choosing the limes inferior in the definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ for all $n\in\N$ a.s., we get 
+which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in total motivates choosing the limes inferior in the definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ a.s. for all $n\in\N$, we get 
 \begin{flalign*}
 	\alpha_f \leq 1\quad \text{a.s.} 
 \end{flalign*}
@@ -362,7 +378,7 @@ and therefore
 \begin{flalign*}
 	d_f \geq 1 \quad \text{a.s.}
 \end{flalign*}
-In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points as well, so there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ for all $n\in\N$ a.s.. Hence
+In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points as well, so there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ a.s. for all $n\in\N$. Hence
 \begin{flalign*}
 	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d \quad \text{a.s.}.
 \end{flalign*}
@@ -377,19 +393,19 @@ and
 for any incremental aggregation in $\Z^d$. \\
 
 \begin{remark}
-	If we define the fractal dimension as in \ref{fractaldimension} we encounter the problem that when the cluster reaches some radius the first time in many instances there will still particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius. If the fractal dimension shall indicate a limit relation between how many particles of the final cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, our definition in \ref{fractaldimension} does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent which we state more clearly in the following conjecture. 
+	If we define the fractal dimension as in (\ref{fractaldimension}) we encounter the problem that when the cluster reaches some radius the first time in many instances there will still particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius. If the fractal dimension shall indicate a limit relation between how many particles of the final cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, our definition in (\ref{fractaldimension}) does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent which we state more clearly in the following conjecture which is also motivated by \cite[Part II Page 98]{fractalwinter}. 
 \end{remark}
 
 \begin{conjecture} \label{fullclusters}
-	Let $B_n$ be a ball of radius $n\in\N$ with center $0$ and with $\E_\infty \cap B_n$ denote the set of particles in $\E_\infty$ that lie in $B_n$. Note that $n-2 \leq \rad(\E_\infty \cap B_n)\leq n$ a.s.. Then we have
+	Let $B_n$ be a ball of radius $n\in\N$ with center $0$ and with $\E_\infty \cap B_n$ denote the set of particles in $\E_\infty$ that lie in $B_n$. Note that $n-2 \leq \rad(\E_\infty \cap B_n)\leq n$ a.s. for all $n\in\N$. Then we have
 	\begin{flalign*}
-		d_f = \liminf_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)} \quad \text{a.s.}
+		d_f = \liminf_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)} \quad \text{a.s.}.
 	\end{flalign*}
 \end{conjecture}
 
 \subsection{A rigorous characterization for the fractal dimension}
 
-In this section we will proof a almost sure lower bound for the fractal dimension of an incremental aggregation if its distribution family $(\mu_A)_{A\in\mP_f}$ satisfies some conditions. Before coming to this statement we have to make some preparations in the following. We define two random functions
+In this section we will proof an almost sure lower bound for the fractal dimension of an incremental aggregation if its distribution family $(\mu_A)_{A\in\mP^d_f}$ satisfies some conditions. Before coming to this statement we have to make some preparations in the following. We define two random functions
 \begin{flalign*}
 	r: \N \to [0,\infty),\quad n\mapsto \rad(\E_n)
 \end{flalign*}
@@ -399,7 +415,7 @@ and
 \end{flalign*}
 Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in \ref{notion} (\ref{radius}). 
 \begin{remark}\label{props}
-	It is easy to show that, for all $\omega\in\Omega$, $r(\omega)$ and $T(\omega)$ grow monotonously in $n\in\N$ resp. $s\in [0,\infty)$ and that for all $n\in\N$ and $s\in [0,\infty)$ we have $T(\omega)(r(\omega)(n)) \leq n$ and  $r(\omega)(T(\omega)(s)) \geq s$.
+	It is easy to show that for all $\omega\in\Omega$ the functions $r(\omega)$ and $T(\omega)$ are increasing in $n\in\N$ resp. $s\in [0,\infty)$ and that for all $n\in\N$ and $s\in [0,\infty)$ we have $T(\omega)(r(\omega)(n)) \leq n$ and  $r(\omega)(T(\omega)(s)) \geq s$.
 \end{remark}
 
 \begin{lemma} \label{rtinfty}
@@ -418,7 +434,7 @@ Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in 
 	\begin{flalign*}
 		r(\omega)(2N)\geq n. 
 	\end{flalign*}
-	Therefore for all $\omega\in\Omega$ and any $n\in\N$ we can find a $M\in\N$ such that $r(\omega)(M)\geq n$, and since $r(\omega)$ grows monotonously we get $r(\omega)(n) \to\infty \text{ for } n\to\infty$ for all $\omega\in\Omega$. Very similarly we can argue for $T$. 
+	Therefore for all $\omega\in\Omega$ and any $n\in\N$ we can find a $M\in\N$ such that $r(\omega)(M)\geq n$, and since $r(\omega)$ is increasing we get $r(\omega)(n) \to\infty \text{ for } n\to\infty$ for all $\omega\in\Omega$. Very similarly we can argue for $T$. 
 \end{proof}
 
 \begin{lemma} \label{randt}
@@ -440,7 +456,7 @@ Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in 
 \begin{proof} 
 	$\Rightarrow$: 
 	
-	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ grows monotonously. Hence we can write $\tilde c h^{-1}(r(\omega)(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in D_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ decreases monotonously. We therefore get $A_c\subset D_{\tilde c h^{-1}(a)}$, hence $\PP(D_{\tilde c h^{-1}(a)}) = 1$.\\
+	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ is increasing. Hence we can write $\tilde c h^{-1}(r(\omega)(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(\omega)(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in D_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ is decreasing. We therefore get $A_c\subset D_{\tilde c h^{-1}(a)}$, hence $\PP(D_{\tilde c h^{-1}(a)}) = 1$.\\
 	$\Leftarrow$: 
 	The proof for this direction works analogously and needs Lemma \ref{rtinfty} as well.
 \end{proof}
@@ -495,7 +511,7 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 \end{proof}
 
 \begin{definition}
-	For $x\in\Z^2$ and $r\in [1,\infty)$ define 
+	For $x\in\Z^d$ and $r\in [1,\infty)$ define 
 	\begin{flalign*}
 		{\mP}^x_r := \{ A\in{\mP}_f\ |\ x\in A, r=\max_{y\in A} |x-y| \text{ and } A \text{ is connected}\}.
 	\end{flalign*}
@@ -504,17 +520,17 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 
 
 \begin{lemma} \label{mugeneral}
-	Let $q>0$ and $(\mu_A)_{A\in\mP_f}$ be translation invariant. Then if there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
+	Let $q>0$ and $(\mu_A)_{A\in\mP^d_f}$ be translation invariant. Then if there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
 	\begin{flalign*}
 		\mu_A(0) \leq cr^{-q}, \quad \text{ for all } A\in\mP^0_r,
 	\end{flalign*}
-	then there also exists a constant $c>0$ such that for all $y\in\Z^2$ and $s,r\in [1,\infty)$ with $s\geq r$ we have
+	then there also exists a constant $c>0$ such that for all $y\in\Z^d$ and $s,r\in [1,\infty)$ with $s\geq r$ we have
 	\begin{flalign*}
 		\mu_A(y) \leq cr^{-q}, \quad \text{ for all } A\in\mP^y_s.
 	\end{flalign*}
 \end{lemma}
 \begin{proof}
-	Let $y\in\Z^2$ and choose $s,r\in\ [1,\infty)$ with $s\geq r$. Then with the translation invariance of $(\mu_A)_{A\in\mP_f}$ we get 
+	Let $y\in\Z^d$ and choose $s,r\in\ [1,\infty)$ with $s\geq r$. Then with the translation invariance of $(\mu_A)_{A\in\mP^d_f}$ we get 
 	\begin{flalign*}
 		\mu_A(0) = h_{\Phi_y(A)}(\Phi_y(0)) = h_{\Phi_y(A)}(y) \leq cs^{-q} \leq cr^{-q} \quad \text{ for all } A\in\mP^0_s, 
 	\end{flalign*}
@@ -528,24 +544,24 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 At this point we are prepared to proof the following theorem. 
 
 \begin{theorem} \label{iatheorem}
-	Let $q>0$ and $(\mu_A)_{A\in\mP_f}$ be a translation invariant outside distribution. If there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
+	Let $q>0$ and $(\mu_A)_{A\in\mP^d_f}$ be a translation invariant outside distribution. If there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
 	\begin{flalign*}
 		\mu_A(0) \leq cr^{-q} \quad \text{ for all } A\in\mP^0_r,
 	\end{flalign*}
 	then for the fractal dimension we have
 	\begin{flalign*}
-		d_f \geq 1 + q\quad \text{a.s.}
+		d_f \geq 1 + q\quad \text{a.s.}.
 	\end{flalign*}
 \end{theorem}
 
 \begin{proof}
 	By section \ref{notion} equation (\ref{fractaldim}) we have
 	\begin{flalign*}
-		d_f = \frac{1}{\alpha_f}\quad \text{a.s.},
+		d_f = \frac{1}{\alpha_f}\quad \text{a.s.}
 	\end{flalign*}
 	where $\alpha_f$ is the growth rate as defined in section $\ref{notion}$ equation $(\ref{growthrate})$, and we will therefore show that
 	\begin{flalign*}
-		\alpha_f \leq \frac{1}{1+q}\quad \text{a.s.}
+		\alpha_f \leq \frac{1}{1+q}\quad \text{a.s.}.
 	\end{flalign*}
 	For $c>0$ define 
 	\begin{flalign*}
@@ -561,7 +577,7 @@ At this point we are prepared to proof the following theorem.
 	\end{flalign}
 	then we have
 	\begin{flalign*}
-		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\rad(\E_n))}{\ln(n)} \leq \limsup_{n\to\infty} \frac{\ln(cn^{\frac{1}{1+q}})}{\ln(n)} =\frac{1}{1+q} \quad \text{a.s.}
+		\alpha_f &= \limsup_{n\to\infty} \frac{\ln(\rad(\E_n))}{\ln(n)} \leq \limsup_{n\to\infty} \frac{\ln(cn^{\frac{1}{1+q}})}{\ln(n)} =\frac{1}{1+q} \quad \text{a.s.}.
 	\end{flalign*}
 	If we choose
 	\begin{flalign*}
@@ -573,13 +589,13 @@ At this point we are prepared to proof the following theorem.
 	\end{flalign}
 	Note that $h$ is bijective, multiplicative and increasing.\\
 	
-	So now we will try to find a constant $c>0$ such that (\ref{lambda2}) holds. For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to Definition $\ref{incrementalaggregation}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined later on. For $n\in\N$ let $\tilde m_n := \beta n^{1+q}$ and define 
+	So now we will try to find a constant $c>0$ such that (\ref{lambda2}) holds. For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to definition $\ref{incrementalaggregation}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined later on. For $n\in\N$ let $\tilde m_n := \beta n^{1+q}$ and define 
 	\begin{flalign*}
 		V_n := \{\omega\in\Omega\ |\ T(\omega)(2n) < \tilde m_n\}. 
 	\end{flalign*}
-	Further define the set of all possible random walk paths of length $n$ with starting point in the set $\tilde B_n := \{x\in\Z^2\ |\ n \leq |x| < n+1\}$ by
+	Further define the set of all possible random walk paths of length $n$ with starting point in the set $\tilde B_n := \{x\in\Z^d\ |\ n \leq |x| < n+1\}$ by
 	\begin{flalign*}
-		Z_n := \{[z] := (z_1, \dots, z_n)\in (\Z^2)^n \ |\ z_1\in \tilde B_n, z_i\in N(z_{i-1}) \text{ for } i\geq 2\text{ and }z_i\neq z_j \text{ for }i\neq j\}. 
+		Z_n := \{[z] := (z_1, \dots, z_n)\in (\Z^d)^n \ |\ z_1\in \tilde B_n, z_i\in N(z_{i-1}) \text{ for } i\geq 2\text{ and }z_i\neq z_j \text{ for }i\neq j\}. 
 	\end{flalign*}
 	For $[z]\in Z_n$ define the events 
 	\begin{flalign*}
@@ -589,7 +605,7 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	With $\tilde B_n$ we mean the \glqq the boundary\grqq\ of $B_n$ the ball with radius $n$ and center $0$. We will quickly prove that 
+	With $\tilde B_n$ we mean the \glqq the boundary\grqq\ of $B_n$, the ball with center $0$ and radius $n$. We will quickly prove that 
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
@@ -620,15 +636,14 @@ At this point we are prepared to proof the following theorem.
 	\end{flalign*}
 	so $\tau_i$ is either the index $j$ such that the $j$-th added point is $z_i$, or infinity if the final cluster $\E_\infty$ doesn't contain $z_i$. $\tau_i$ is measurable because for $j\in\N$ we have 
 	\begin{flalign*}
-		\tau_i^{-1}(j) = \{y_j = z_i\} = y_j^{-1}(z_i) \in \mathcal{F}
+		\tau_i^{-1}(j) = \{y_j = z_i\} \in \mathcal{F}
 	\end{flalign*}
 	and for $j=\infty$ we have
 	\begin{flalign*}
 		\tau_i^{-1}(\infty) &= \{z_i\notin\E_\infty=\bigcup_{k\in\N} \E_k\} \\
 		&= \{z_i\notin \E_k\text{ for all } k\in\N\} \\
 		&= \bigcap_{k\in\N} \{z_i\notin \E_k\} \\
-		&= \bigcap_{k\in\N} \bigcap_{l=1}^{k} \{y_l \neq z_i\} \\
-		&=\bigcap_{k\in\N} \bigcap_{l=1}^{k} y_l^{-1}(\Z^2\setminus \{z_i\}) \in\mathcal{F}.
+		&= \bigcap_{k\in\N} \bigcap_{l=1}^{k} \{y_l \neq z_i\}  \in\mathcal{F}.
 	\end{flalign*}
 	Further for $i\in \{1,\dots,n-1\}$ we define waiting times
 	\begin{flalign*}
@@ -654,7 +669,7 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign} \label{geom2}
 		p_n := c_1 n^{-q}
 	\end{flalign}
-	for some constant $c_1>0$, which is the same constant for all $i\in \{1,\dots,n-1\}$ and for all $n\in\N$. We want to use Lemma \ref{mugeneral} here, for which we need to create terms where the distribution $\mu$ appears. For that we need probabilities where we condition on a given cluster which we will develop now. We first define some helpful sets. For $m\in\N$ define 
+	for some constant $c_1>0$ which is the same constant for all $i\in \{1,\dots,n-1\}$ and for all $n\in\N$. We want to use Lemma \ref{mugeneral} here for which we need to create terms where the distribution $\mu$ appears. For that we need probabilities where we condition on a given cluster which we will develop now. We first define some helpful sets. For $m\in\N$ define 
 	\begin{flalign*}
 		C_m := \{\E_m(\omega)\ |\ \omega\in\Omega\}
 	\end{flalign*} 
@@ -699,7 +714,7 @@ At this point we are prepared to proof the following theorem.
 		&\geq 1 - cn^{-q} \\
 		&=(1 - cn^{-q})^1. 
 	\end{flalign*} 
-	where we used that $\mu$ is an outside distribution. Note that we can use Lemma \ref{mugeneral} because $\rad(\overline{\E\cup\{z_i\}}) \geq n$ since $z_1\in\E\cup\{z_i\}$ as we conditioned on $U_{[z]}^i$. Note that the harmonic measure doesn't care about the order of how points where added to form the current cluster, as mentioned in Remark \ref{orderindependence}. Note that by Lemma \ref{mugeneral} the chosen $c$ has a strong universal property such that it doesn't depend on $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. Now let the statement be true for some $k=l$. Then again by Lemma \ref{mugeneral} there exists a $c>0$ such that 
+	where we used that $\mu$ is an outside distribution. Note that we can use Lemma \ref{mugeneral} because $\rad(\overline{\E\cup\{z_i\}}) \geq n$ since $z_1\in\E\cup\{z_i\}$ as we conditioned on $U_{[z]}^i$. Note that the harmonic measure doesn't care about the order of how points where added to form the current cluster as mentioned in remark \ref{orderindependence}. Note that by lemma \ref{mugeneral} the chosen $c$ has a strong universal property such that it doesn't depend on $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. Now let the statement be true for some $k=l$. Then again by Lemma \ref{mugeneral} there exists a $c>0$ such that 
 	\begin{flalign*} 
 		\PP(\sigma_i > l+1\ |\ \Gamma_{ij}) &= \PP(\sigma_i > l, y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}) \\
 		&= \PP(\sigma_i>l\ |\ \Gamma_{ij}) \PP(y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}, \sigma_i>l) \\
@@ -720,23 +735,23 @@ At this point we are prepared to proof the following theorem.
 	We therefore have shown what we stated in (\ref{geom2}). \\
 	\\Note again that we needed the constant $c_1$ to not depend on any $j$, $m$ or $\E$ which it does not by its universal property given by Lemma \ref{mugeneral}. The universality is so strong that it does not even depend on $i\in \{1,\dots,n-1\}$ or $n\in\N$.\\
 	
-	We now continue to show (\ref{borelcantelli2}). Choose $\beta$ such that $3e^2\beta c_1 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ we get $\tilde m_n = \frac{an}{p_n}$ and with $Y:=\sum_{i=1}^{n-1} \sigma_i$ we can use Lemma \ref{geometric} to get
+	We now continue to show (\ref{borelcantelli2}). Choose $\beta$ such that $2d\beta c_1e^2 < 1$ und choose $N\in\N$ such that $\beta c_1 \geq 2p_n$ for all $n>N$. If we then define $a:=\beta c_1$ we get $\tilde m_n = \frac{an}{p_n}$ and with $Y:=\sum_{i=1}^{n-1} \sigma_i$ we can use Lemma \ref{geometric} to get
 	\begin{flalign*}
-		\PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \PP(\tau_{n} - \tau_1 \leq \tilde m_n\ |\ U_{[z]}^n) = \PP(Y \leq \frac{an}{p_n}\ |\ U_{[z]}^n) \leq \frac{1}{a} (e^2a)^{n}
+		\PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \PP(\tau_{n} - \tau_1 \leq \tilde m_n\ |\ U_{[z]}^n) = \PP(Y \leq \frac{an}{p_n}\ |\ U_{[z]}^n) \leq \frac{1}{a} (ae^2)^{n}
 	\end{flalign*}
 	for all $n>N$. Since $W_n([z]) \subset \{\tau_{n} \leq \tilde m_n\} \cap U_{[z]}^n$ we get
 	\begin{flalign*}
-		\PP(W_n([z])) \leq \PP(W_n([z])\ |\ U_{[z]}^n) \leq \PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \frac{1}{a} (e^2a)^{n}
+		\PP(W_n([z])) \leq \PP(W_n([z])\ |\ U_{[z]}^n) \leq \PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \frac{1}{a} (ae^2)^{n}
 	\end{flalign*}
-	for all $n>N$. Counting the elements in $Z_n$ we have less than or equal to $c_2n$ points in $\tilde B_n$ for some constant $c_2>0$ as starting points and at most $3^{n-1}$ possibilities for the next $n-1$ steps of a path of length $n$ (note that for $[z]\in Z_n$ we have by definition that $z_i\neq z_j$ for $i\neq j$ and therefore for a path going back where it came from is not possible). So $|Z_n| \leq c_2n3^{n-1}$ and therefore
+	for all $n>N$. Counting the elements in $Z_n$ we have less than or equal to $c_2n$ points in $\tilde B_n$ for some constant $c_2>0$ as starting points and at most $(2d)^{n-1}$ possibilities for the next $n-1$ steps for a path of length $n$. So $|Z_n| \leq c_2n(2d)^{n-1}$ and therefore
 	\begin{flalign*}
-		\PP(W_n)\leq \sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n3^{n-1} \frac{1}{a} (e^2a)^{n} = \frac{c_2}{3a}  n(3e^2a)^{n} \quad \text{ for all } n>N
+		\PP(W_n)\leq \sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n(2d)^{n-1} \frac{1}{a} (ae^2)^{n} = \frac{c_2}{2da}  n(2dae^2)^{n} \quad \text{ for all } n>N
 	\end{flalign*} 
 	and finally
 	\begin{flalign*}
-		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} \frac{c_2}{3\beta c_1}  n(3e^2\beta c_1)^{n} =: r_\beta. 
+		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} \frac{c_2}{2d\beta c_1}  n(2d\beta c_1e^2)^{n} =: r_\beta. 
 	\end{flalign*}
-	Now note again, that $c_1$, $c_2$ and $\beta$ are not depending on $n$. Since $\beta$ was chosen such that $4e^2\beta c_1<1$, $r_\beta$ is finite and therefore in total we get
+	Now note again, that $c_1$, $c_2$ and $\beta$ are not depending on $n$. Since $\beta$ was chosen such that $2d\beta c_1e^2<1$, $r_\beta$ is finite and therefore in total we get
 	\begin{flalign*}
 		\sum_{n\in\N} \PP(W_n) < \infty, 
 	\end{flalign*}
@@ -751,45 +766,46 @@ At this point we are prepared to proof the following theorem.
 
 \subsection{Definition}
 
-External DLA is a model of an incremental aggregation as defined above using a very natural family of distributions, called the $\mathit{harmonic\ measures}$. 
+The following model of an incremental aggregation uses a very natural family of distributions called the $\mathit{harmonic\ measures}$. The idea is to let a new particle start a random walk from \glqq far away\grqq\ and let it stick at the cluster where it hits it the first time. In a physical context this can be understood as diffusion of particles sticking and forming a cluster based on random movements. This incremental aggregation is called $\mathit{external}$ $\mathit{diffusion}$ $\mathit{limited}$ $\mathit{aggregation}$ and we define its distribution in the following which is motivated by \cite[Chapter 2, definition 2.1]{lawler}. 
 
 \begin{definition} \label{harmonicmeasure}
 	$\mathit{(harmonic\ measure)}$ Let $A\subset\Z^d$. The hitting probability of $A$ is the function 
 	\begin{flalign*}
 		H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto H_A(x,y):=\PP_x(S_{T_A^+} = y).
 	\end{flalign*}
-	In fact, for a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
+	For a fixed element $x\in\Z^d$ the function $H_A(x,\cdot)$ defines a measure on $A$ with total mass $\PP_x(T_A^+<\infty)$ and it can be adapted to a probability measure by conditioning the random walk to hit $A$ in finite time. Define
 	\begin{flalign*}
 		\bar H_A: \Z^d \times A \to [0,1],\quad (x,y) \mapsto \bar H_A(x,y):=\PP_x(S_{T_A^+} = y\ |\ T_A^+<\infty), 
 	\end{flalign*} 
-	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. Indeed this definition is motivated by $\cite{lawler}$ (Chapter $2$, Definition $2.1$) and in the same chapter it is proved, that for finite sets $A\in\mP^d_f$ the limit
+	so for fixed $x\in\Z^d$ the function $\bar H_A(x,\cdot)$ defines a probability measure on $A$. In \cite[Theorem 2.1.3]{lawler} it is proved, that for finite sets $A\in\mP^d_f$ the limit
 	\begin{flalign*}
 		\lim_{|x|\to\infty} \bar H_A(x,y) =: h_A(y) 
 	\end{flalign*}
 	exists for each $y\in A$. The function $h_A: A\to [0,1]$ is called the $\mathit{harmonic\ measure\ of\ A}$. For an element $y\in A$, $h_A$ can be interpreted as the probability that a random walk starting at \glqq $\text{infinity}$\grqq\ hits $A$ the first time at $y$.
 \end{definition}
 
-\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregation)}$ $\mathit{External\ diffusion\ limited}$ $\mathit{aggregation}$ (on $\Z^d$), short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregation with the family of harmonic measures $(h_A)_{A\in\mP^d_f}$ as distribution. 
+\begin{definition} $\mathit{(external\ diffusion\ limited\ aggregation)}$\\
+	 $\mathit{External}$ $\mathit{diffusion}$ $\mathit{limited}$ $\mathit{aggregation}$ (in $\Z^d$), short $\mathit{external\ DLA}$ or just $\mathit{DLA}$, is an incremental aggregation with the family of harmonic measures $(h_A)_{A\in\mP^d_f}$ as distribution. 
 \end{definition}
 
 \begin{remark} \label{harmonicmeasure2}
 	If we look at the $2$-dimensional case, by Lemma $\autoref{recurrA}$, we have that $\PP_x(T_A^+<\infty) = 1$ for any $x\in\Z^2$, and therefore get $\bar H_A = H_A$. So in two dimensions the harmonic measure of $A\subset \Z^2$ can be written as 
 	\begin{flalign*}
-		h_A(y) = \lim_{|x|\to\infty} \PP_x(S_{T_A^+} = y), \quad y\in A. 
+		h_A(y) = \lim_{|x|\to\infty} \PP_x(S_{T_A^+} = y) \quad \text{for }y\in A. 
 	\end{flalign*}
 \end{remark}
 
 
 \subsection{Fractal dimension and growth rate of external DLA in $\Z^2$}
 
-There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results on DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context, and empirically they find a fractal dimension of around $1.8$. Other simulations seem to suggest a value a little less than 1.7 for $d_f$ in two dimensions (\cite{vicsek}). There is also a theory that predicts 
+There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results for external DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context and empirically they find a fractal dimension of around $1.8$. There is also a theory that predicts 
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations. That and further empirical studies you can find in \cite{vicsek}. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA. For that we will use  theorem \ref{iatheorem}. 
+in $\Z^d$ which seems to agree fairly well with simulations which you can find in \cite{vicsek}. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA for which we will use theorem \ref{iatheorem}. Remind that $\mP_f := \mP_f^2$. 
 
 \begin{lemma}
-	The familiy of harmonic measures $(h_A)_{A\in\mP_f}$ is translation invariant.
+	The familiy of harmonic measures $(h_A)_{A\in\mP_f}$ in $\Z^2$ is translation invariant.
 \end{lemma}
 \begin{proof}
 	Let $y\in \Z^2$ and $A\in\mP_f$. Recall that in $\Z^2$ the harmonic measure of $A\subset\Z^2$ can be written as 
@@ -806,29 +822,29 @@ in $\Z^d$ which seems to agree fairly well with simulations. That and further em
 \end{proof}
 
 \begin{theorem} \label{keytheorem}
-	There exists a constant $c>0$ such that for all $r\in [1,\infty)$
+	In $\Z^2$ there exists a constant $c>0$ such that for all $r\in [1,\infty)$
 	\begin{flalign*}
 		h_A(0) \leq cr^{-\frac{1}{2}} \quad \text{ for all } A\in\mP^0_r.
 	\end{flalign*}
 \end{theorem}
 \begin{proof}
-	If $A\in\mP^0_r$ then $0\in A$ and $r=\rad(A)$ and for that case the proof is presented for all dimensions $d\in \N$ in $\cite{lawler}$ Theorem $2.5.2$. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
+	If $A\in\mP^0_r$ then $0\in A$ and $r=\rad(A)$ and for that case there is a proof presented for all dimensions $d\in \N$ in \cite[Theorem 2.5.2]{lawler}. The proof is very technical and requires various results of other theorems and lemmas which are also to find in $\cite{lawler}$. 
 \end{proof}
 
 \begin{theorem} \label{dlatheorem}
 	For the fractal dimension of external DLA in $\Z^2$ as defined in section $\ref{notion}$ equation $(\ref{fractaldimension})$ we have
 	\begin{flalign}
-		d_f \geq \frac{3}{2} \quad \text{a.s.}
+		d_f \geq \frac{3}{2} \quad \text{a.s.}.
 	\end{flalign}	
 \end{theorem}
 \begin{proof}
 	We have shown that the harmonic measure is translation invariant and it is not difficult to understand that the harmonic measure is an outside distribution as defined in definition \ref{outsidedist}. Together with theorem \ref{keytheorem} we can therefore use theorem \ref{iatheorem} with $q = \frac{1}{2}$ to conclude that 
 	\begin{flalign*}
-		d_f \geq 1 + \frac{1}{2} = \frac{3}{2}\quad \text{a.s.}
+		d_f \geq 1 + \frac{1}{2} = \frac{3}{2}\quad \text{a.s.}.
 	\end{flalign*}
 \end{proof}
 
-We have shown a lower bound of $1.5$ for the fractal dimension of external DLA here. In the next chapter we will look at another incremental aggregation which distribution works much simpler than the harmonic measure. We will therefore be able to calculate the fractal dimension of the next incremental aggregation exactly. 
+We have therefore shown a lower bound of $1.5$ for the fractal dimension of external DLA in two dimensions. In the next chapter we will look at another incremental aggregation which distribution works much simpler than the harmonic measure. In two dimensions we will therefore even be able to calculate its exact fractal dimension.
 
 
 
@@ -844,39 +860,43 @@ We have shown a lower bound of $1.5$ for the fractal dimension of external DLA h
 
 \subsection{Motivation}
 
-In the following we will look at a process which is the approach of a simple approximation of external DLA on $\mathbb{Z}^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. A very similar approach was done by $\cite{ballistic}$ as a so called ballistic model, where they let particles move on straight lines to the cluster, but just from a small amount of directions. Our approach here extends this idea, as we will try to choose a random direction out of all directions in the plane in a most senseful fair way. Anyway we will see, that empirically we find similar results for the fractal dimension of this cluster as in $\cite{ballistic}$. \\
-\\Obviously in most cases particles cannot move completely straight on $\mathbb{Z}^2$. Therefore we will consider points in $\mathbb{Z}^2$ as the centers of unit squares in $\R^2$ and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider a line hitting a point in $\mathbb{Z}^2$ if and only if it intersects with its unit square as defined in the following. Note that we identify $\R^2$ with $\C$ here. 
+In the following we will look at a process with another simple idea for its distribution. For this process we will in this paper only consider the $2$-dimensional case $\Z^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. A very similar approach was done by $\cite{ballistic}$ as a so called ballistic model, where they let particles move on straight lines to the cluster, but just from a small range of directions. Our approach here extends this idea, as we will try to choose a random direction out of all directions in the plane. The difficulty here is to argue that this random choosing happens in a senseful and fair way considering the asymmetry of a already formed cluster. Anyway we will see that the fractal dimension of $2$ which is guessed in \cite{ballistic} for their ballistic model matches the one we will prove rigorously for our one. \\
+\\Obviously in most cases particles cannot move completely straight on $\Z^2$. Therefore we will consider points in $\Z^2$ as the centers of unit squares in $\R^2$ and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider a line hitting a point in $\Z^2$ if and only if it intersects with its unit square as defined in the following. Note that we identify $\R^2$ with $\C$ here. Also remind that $\mP_f$ is the set of finite subsets of $\Z^2$ and $\G$ is the set of lines in the plane. 
 
 \begin{definition} \label{squares}
 	Define 
 	\begin{align}
-		\C_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i \subset \C\ |\ k,l \in \mathbb{Z}\}, 
+		\C_{sq} := \{[k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i \subset \C\ |\ k,l \in \Z\}, 
 	\end{align} 
 	note that $\C = \bigcup_{s\in \C_{sq}} s$. The canonical function
 	\begin{align}
-	sq: \mathbb{Z}^2 \to \C_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i
+	sq: \Z^2 \to \C_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i
 	\end{align}
-	is bijective and intuitively identifies points in $\mathbb{Z}^2$ with squares in $\C$ which is $p$ is the center of the square $sq(p)$ for all $p\in \mathbb{Z}^2$. In the following when using a point $p\in \mathbb{Z}^2$ it will reference the point in $\mathbb{Z}^2$ or the corresponding square in $\C$ respecting the context. This bijection also naturally defines a graph structure on $\C_{sq}$, which is two squares $s_1, s_2\in \C_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\mathbb{Z}^2$. 
-	\noindent For the following we say a line $g$ $hits$ a point $p\in \mathbb{Z}^2$ if and only if $g\cap sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). For a set $A\in\mP_f$ define $sq(A) := \bigcup_{p\in A} sq(p)$. 
+	is bijective and intuitively identifies points in $\Z^2$ with squares in $\C$ which is $p$ is the center of the square $sq(p)$ for all $p\in \Z^2$. In the following when using a point $p\in \Z^2$ it will reference the point in $\Z^2$ or the corresponding square in $\C$ respecting the context. This bijection also naturally defines a graph structure on $\C_{sq}$, which is two squares $s_1, s_2\in \C_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\Z^2$. 
+	\noindent For the following we say a line $g$ $hits$ a point $p\in \Z^2$ if and only if $g\cap sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). For a set $A\in\mP_f$ define $sq(A) := \bigcup_{p\in A} sq(p)$. 
 	
 \end{definition}
 
-\begin{figure}
+\begin{figure}[]
 	\centering
-	\includegraphics[height=10cm]{images/geogebra-images/line-hit-squares.png}
-	\caption{$g$ hits squares around points} \label{linesquares}
-	\includegraphics[height=10cm]{images/geogebra-images/line-hit-A.png}
-	\caption{$g$ hits squares in $A$} \label{linesquaresA}
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[width=1\linewidth]{images/geogebra-images/line-hit-squares.png}
+	\end{subfigure}
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[width=1\linewidth]{images/geogebra-images/line-hit-A.png}
+	\end{subfigure}
+	\caption{Line hitting squares}
+	\label{linesquares}
 \end{figure}
 
 \begin{definition} \label{ghitA}
-	Let $g=g_{\alpha,p}\in \G$ and $A\in \mP_f$. We define 
+	Let $g\in \G$ and $A\in \mP_f$. We define 
 	
 	\begin{align*}
 		g\cap A := \{ p\in A\ |\ g \text{ hits } p\}
 	\end{align*}
 	
-	which is the subset of all points in $A$ which are hit by $g$ (see $\autoref{linesquaresA}$). For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mP_f$ with $g\cap A \neq\emptyset$. We choose two points $x,y\in g\cap A$ and split the definition of the relation $\triangleleft$ into four cases, depending on whether the line $g$ goes from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis and parallel to the $y$-axis. Denote the real part of $x$ with $\re(x)$ and the imaginary one with $\im(x)$. \\
+	which is the subset of all points in $A$ which are hit by $g$ (see $\autoref{linesquares}$). For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mP_f$ with $g\cap A \neq\emptyset$. We choose two points $x,y\in g\cap A$ and split the definition of the relation $\triangleleft$ into four cases, depending on whether the line $g$ goes from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis or parallel to the $y$-axis. Denote the real part of $x$ with $\re(x)$ and the imaginary part with $\im(x)$. \\
 	\\
 	$\mathit{Case}\ 1:\quad g\ \text{ is parallel to the x-axis}\quad (\Leftrightarrow\quad \alpha = \frac{\pi}{2})$
 	\begin{align*}
@@ -902,7 +922,7 @@ In the following we will look at a process which is the approach of a simple app
 	\im(x) > \im(y), & \text{ if } \re(x) = \re(y).
 	\end{cases}
 	\end{align*}\\
-	It is easy to see that this relation on $g\cap A$ is well-defined. In the following we will prove that this relation is strictly and totally ordered. 
+	It is easy to calculate that this defines a well-defined relation on $g\cap A$. In the following we will prove that this relation is strict and totally ordered. 
 \end{definition}
 
 \begin{lemma}
@@ -920,7 +940,7 @@ For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g\cap A\neq \emptyset$ t
 \end{lemma}
 
 \begin{remark}
-	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when \glqq entering \grqq $A$ and where it hits last when \glqq leaving \grqq $A$. What we want to do next is to choose a line randomly out of all lines which hit the current cluster. This is isn`t an obvious task and we will have to develop a most fair underlying distribution on lines in the next section where we will touch basic aspects of Integral Geometry. 
+	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when \glqq entering \grqq $A$ and where it hits last when \glqq leaving\grqq\ $A$. What we want to do next is to choose a line randomly out of all lines which hit the current cluster. This is isn`t an obvious task and we will have to develop a most fair underlying distribution on lines in the next section where we will touch basic aspects of Integral Geometry. 
 \end{remark}
 
 
@@ -956,9 +976,9 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 \begin{theorem} \label{uniqmeas}
 	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
 	\begin{flalign}
-		\mu_q(A_{B_d(1,0)}) = \kappa_{d-q}, 
+		\mu_q(A_{B_d(0,1)}) = \kappa_{d-q}, 
 	\end{flalign}
-	where $\kappa_n := \lambda_n(B_n(1,0))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
+	where $\kappa_n := \lambda_n(B_n(0,1))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
 \end{theorem}
 \begin{proof}
 	\cite{stoch1} Theorem 4.26 \\ \\ MAKE PROOF CLEARER
@@ -1625,7 +1645,6 @@ J. Gonzalez-Gutierrez, J. L. Carrillo-Estrada and J. C. Ruiz-Suarez
 Egbert Brieskorn
 \emph{Felix Hausdorff zum Gedächtnis, Band I, vieweg Verlag}
 1996
-page 160
 
 \bibitem{markov}
 Prof. Dr. Stefan Tappe
@@ -1653,10 +1672,10 @@ Tamás Vicsek
   
 \thispagestyle{empty}
 
-\vspace*{8cm}
+\vspace{8cm}
 
 
-\section*{Declaration}
+\section{Declaration}
 
 Herewith I assure that I created this paper self-reliant and on my own and that I did not use any material in this paper that I have not mentioned. The sources and contents I used in this paper I clearly labeled as such. I assure that I respected the statute for good and scientifical practice in the most current version of the Institute of Technology Karlsruhe, Germany.\\[2ex] 
 
