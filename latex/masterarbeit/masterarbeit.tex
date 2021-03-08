@@ -23,7 +23,7 @@
 \setlength{\topmargin}{-15mm}	   
                   
 %\numberwithin{equation}{section} 
-\numberwithin{equation}{subsection}
+%\numberwithin{equation}{subsection}
 
 \newcommand{\C}{\mathbb{C}} % komplexe
 \newcommand{\R}{\mathbb{R}} % reelle
@@ -44,7 +44,7 @@
 
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
-\numberwithin{equation}{section}
+%\numberwithin{equation}{section}
 
 \theoremstyle{definition}
 \newtheorem{example}{Example}[subsection]
@@ -59,6 +59,9 @@
 \newtheorem{pro}{Proof}
 \newtheorem{comment}{Comment}[subsection]
 \newtheorem{conjecture}{Conjecture}[subsection]
+
+\numberwithin{equation}{section}
+
 
 
 \begin{document}
@@ -153,7 +156,7 @@
 
 \section{Preliminaries} \label{prelim}
 
-\subsection{Symbols}
+\subsection{Symbols} \label{symbols}
 Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
 \begin{flalign*}
 	&\N = \{1,2,3,\dots\},\quad \text{the set of natural numbers (without 0)}\\
@@ -168,7 +171,7 @@ Let $d\in \N$ and $q\in \{0,\dots,d\}$.
 	&\mathcal{A}(d,q),\quad  \text{the $\sigma$-algebra of } A(d,q), \text{ as constructed later in the paper} \\
 	&\G := A(2,1),\quad  \text{the set of lines in the real plane}\\
 	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\},\quad \text{identify }SO_2 = \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
-	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d,b\in \R^d\},\quad  \text{the set of euclidean motions} \\
+	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d,b\in \R^d\},\quad  \text{the set of Euclidean motions} \\
 	&\mP^d_f,\quad \text{the set of finite subsets of $\Z^d$} \\
 	&\mP_f := \mP^2_f 
 \end{flalign*}
@@ -315,7 +318,7 @@ Properties of an incremental aggregation obviously base strongly on the properti
 			0, \quad &x\in A.
 		\end{cases}
 	\end{flalign*}
-	Remind that $\bar A = A \cup \partial A$. This definition shall capture the idea that particles coming from \glqq outside\grqq\ to a set $\bar A$ shall not be able to move into the \glqq inside\grqq\ $A$ of that set without passing its boundary $\partial A$ first. For both incremental aggregations we discuss in this paper this will be the case. 
+	Recall that $\bar A = A \cup \partial A$. This definition shall capture the idea that particles coming from \glqq outside\grqq\ to a set $\bar A$ shall not be able to move into the \glqq inside\grqq\ $A$ of that set without passing its boundary $\partial A$ first. For both incremental aggregations we discuss in this paper this will be the case. 
 \end{definition}
 
 \begin{definition} \label{translinv}
@@ -340,21 +343,20 @@ Properties of an incremental aggregation obviously base strongly on the properti
 	\caption{Box-covering of New Zealands outer cost with decreasing box sizes $\varepsilon$} \label{neuseeland}
 \end{figure}
 
-The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the cost line of New Zealand (see \autoref{neuseeland}) would be to look at the limit relation between the minimum number of boxes (squares) which we need to cover the cost line and the side length of these boxes. The following definition is motivated by \cite[Page 160]{hausdorff}. If for $\varepsilon>0$ $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the cost line, then the so called $\mathit{box\text{-}dimension\ d_b}$ is a constant such that $N(\varepsilon)$ grows as fast as $\varepsilon^{-d_b}$ for letting $\varepsilon$ tend to zero, so 
+The notion of fractal dimension is usually used for sets with uncountable cardinality like continuous curves or surfaces. One way of defining a fractal dimension for curves like for example the coast line of New Zealand (see \autoref{neuseeland}) would be to look at the asymptotic relation between the minimal number of grid boxes (squares) which we need to cover the cost line and the side length of these boxes. The following definition is motivated by \cite[Page 160]{hausdorff}. If, for $\varepsilon>0$, $N(\varepsilon)$ is the mininum number of boxes with side length $\varepsilon$ which we need to cover the coast line, then the so called $\mathit{box\ dimension\ d_b}$ is roughly the constant such that $N(\varepsilon)$ grows like $\varepsilon^{-d_b}$ as $\varepsilon$ tends to zero, so 
 \begin{flalign} \label{boxdimension}
-	d_b := - \lim_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\varepsilon)}. 
+	d_b := - \liminf_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\varepsilon)}.
 \end{flalign} 
-
-This definition makes sense in many contexts, for example is the box-dimension of straight line segments $1$ and of squares $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique box of side length 1 since the cluster is living on the grid $\Z^d$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes with which we cover our set of interest, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
-Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the euclidean norm) as 
+This definition makes sense in many contexts, for example the box-dimension of straight line segments is $1$ and of squares is $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with locally finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique box of side length 1 since the cluster is living on the grid $\Z^d$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes which we cover our set of interest with, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
+Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the Euclidean norm) by 
 \begin{flalign} \label{radius}
 	\rad(A) := \max_{x\in A} |x|,
 \end{flalign}
-we therefore can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define random variables  $\varepsilon_n:=\frac{1}{\rad(\E_n)}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\rad(\E_n)}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret as $\rad(\E_n)$. That analogy makes even more sense if the cluster happens to be self-similar in some way looking at different sizes of it. The minimum number of boxes with size $1$ with which we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\rad(\E_n)}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as the random variable 
+we can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define random variables  $\varepsilon_n:=\frac{1}{\rad(\E_n)}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\rad(\E_n)}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret by $\rad(\E_n)$. The number of boxes with size $1$ which we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\rad(\E_n)}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as the random variable 
 \begin{flalign} \label{fractaldimension}
-	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}
+	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}.
 \end{flalign}
-Another way of tackling the intuition for a fractal dimension of discrete sets is by considering subsets of the ball $B_d(0,m)$ with radius $m\geq 0$ and center $0$, which is motivated by \cite[Page 83]{lawler}. If we take a finite subset $M$ of that ball, we could assign it the dimension $k$ if its cardinality is of order $m^k$. If we apply the same argument to the clusters $\E_n$ and balls with radius $\rad(\E_n)$ for all $n\in\N$, we get that the dimension of $\E_\infty$ could be interpreted as a constant $k$ which fulfills that $n=|\E_n|$ grows as fast as $\rad(\E_n)^k$ for letting tend $n$ to infinity. We therefore get the same definition as in (\ref{fractaldimension}). This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
+This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\rad(\E_n) \leq cn^\alpha
 \end{flalign*}
@@ -364,13 +366,13 @@ for large $n$. Rewriting this we come to the equivalent inequality
 \end{flalign*}
 for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregation as the smallest value satisfying this inequality, so the random variable
 \begin{flalign} \label{growthrate}
-	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\rad(\E_n))}{ln(n)}.
+	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\rad(\E_n))}{\ln(n)}.
 \end{flalign}
 We therefore simply get that 
 \begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f} \quad \text{a.s.},
 \end{flalign}
-which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in total motivates choosing the limes inferior in the definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ a.s. for all $n\in\N$, we get 
+which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in motivates choosing the limes inferior in the definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ a.s. for all $n\in\N$, we get 
 \begin{flalign*}
 	\alpha_f \leq 1\quad \text{a.s.} 
 \end{flalign*}
@@ -378,11 +380,11 @@ and therefore
 \begin{flalign*}
 	d_f \geq 1 \quad \text{a.s.}
 \end{flalign*}
-In $\Z^d$ for some $d\in\N$ we can fill the cube with center $0$ and side length $n$ with an order of $n^{\frac{1}{d}}$ points. Therefore we can fill the ball of radius $n$ with an order of $n^{\frac{1}{d}}$ points as well, so there is a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ a.s. for all $n\in\N$. Hence
+In $\Z^d$ we can fill the cube with center $0$ and side length $n^{\frac{1}{d}}$ with an order of $n$ points. Therefore we can fill a ball with radius $n^{\frac{1}{d}}$ with an order of $n$ points as well, and since $|\E_n|=n$ there exists a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ a.s. for all $n\in\N$. Hence
 \begin{flalign*}
 	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d \quad \text{a.s.}.
 \end{flalign*}
-So in total we get the trivial boundaries
+So in total we get the trivial bounds
 \begin{flalign}\label{trivialboundary}
 	1\leq d_f \leq d \quad \text{a.s.}
 \end{flalign}
@@ -392,12 +394,23 @@ and
 \end{flalign*}
 for any incremental aggregation in $\Z^d$. \\
 
-\begin{remark}
-	If we define the fractal dimension as in (\ref{fractaldimension}) we encounter the problem that when the cluster reaches some radius the first time in many instances there will still particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius. If the fractal dimension shall indicate a limit relation between how many particles of the final cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, our definition in (\ref{fractaldimension}) does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent which we state more clearly in the following conjecture which is also motivated by \cite[Part II Page 98]{fractalwinter}. 
+\begin{remark} \label{altdim}
+	Another way of tackling the intuition for a fractal dimension for discrete locally finite sets is the following which is motivated by \cite[Part II Page 98]{fractalwinter} and \cite[Page 83]{lawler}. Let $M\subset \R^d$ be a locally finite set. Let $n\in\N$ and $B_n$ be the ball or radius $n$ and center $0$. We could assign $M$ the dimension $d_M$ if its cardinality $|M\cap B_n|$ inside the ball $B_n$ is of order $n^{d_M}$ for large $n$, so we could define
+	\begin{flalign*}
+		d_M := \liminf_{n\to\infty} \frac{\ln(|M \cap B_n|)}{\ln(n)}. 
+	\end{flalign*}
+	If we apply that definition to our final cluster $\E_\infty$ it is not clear whether this definition is equivalent to (\ref{fractaldimension}). If we define the fractal dimension as in (\ref{fractaldimension}) we encounter the problem that when the cluster reaches some radius for the first time, then in many instances in the subsequent steps there will particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius (see \autoref{notfilled}). If the fractal dimension shall indicate an asymptotic relation between how many particles of the final cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, the definition in (\ref{fractaldimension}) does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent which we state more clearly in the following conjecture. \\
+	
 \end{remark}
 
+\begin{figure}[]
+	\centering
+	\includegraphics[height=6cm]{images/fractal_range/5.png}
+	\caption{Cluster not \glqq filled up\grqq\ to its radius} \label{notfilled}
+\end{figure}
+
 \begin{conjecture} \label{fullclusters}
-	Let $B_n$ be a ball of radius $n\in\N$ with center $0$ and with $\E_\infty \cap B_n$ denote the set of particles in $\E_\infty$ that lie in $B_n$. Note that $n-2 \leq \rad(\E_\infty \cap B_n)\leq n$ a.s. for all $n\in\N$. Then we have
+	Let $B_n$ be a ball of radius $n\in\N$ with center $0$ and with $\E_\infty \cap B_n$ denote the set of particles in $\E_\infty$ that lie in $B_n$. Then we have
 	\begin{flalign*}
 		d_f = \liminf_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)} \quad \text{a.s.}.
 	\end{flalign*}
@@ -413,7 +426,7 @@ and
 \begin{flalign*}
 	T: [0,\infty) \to \N,\quad s\mapsto \min\{j\in\N\ |\ r(j)\geq s\}.
 \end{flalign*}
-Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in \ref{notion} (\ref{radius}). 
+Recall that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in (\ref{radius}). 
 \begin{remark}\label{props}
 	It is easy to show that for all $\omega\in\Omega$ the functions $r(\omega)$ and $T(\omega)$ are increasing in $n\in\N$ resp. $s\in [0,\infty)$ and that for all $n\in\N$ and $s\in [0,\infty)$ we have $T(\omega)(r(\omega)(n)) \leq n$ and  $r(\omega)(T(\omega)(s)) \geq s$.
 \end{remark}
@@ -454,9 +467,7 @@ Remind that $\rad(\E_n)$ is the radius of the cluster at time $n$ as defined in 
 \end{lemma}
 
 \begin{proof} 
-	$\Rightarrow$: 
-	
-	Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ is increasing. Hence we can write $\tilde c h^{-1}(r(\omega)(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(\omega)(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in D_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ is decreasing. We therefore get $A_c\subset D_{\tilde c h^{-1}(a)}$, hence $\PP(D_{\tilde c h^{-1}(a)}) = 1$.\\
+	$\Rightarrow$: Choose $c>0$ such that $\PP(A_c)=1$. Take $\omega\in A_c$ and choose $N\in\N$ such that $r(\omega)(n)\leq ch(n)$ for all $n>N$. Hence there exists $\tilde c>0$ such that $\tilde ch^{-1}(r(\omega)(n))\leq n$ for all $n>N$. By Lemma \ref{rtinfty} we can choose $M\in\N$ big enough such that $T(\omega)(aM) > N$, hence $T(\omega)(as)\geq T(\omega)(aM) > N$ for all $s>M$ since $T(\omega)$ is increasing. Hence we can write $\tilde c h^{-1}(r(\omega)(T(\omega)(as))) \leq T(\omega)(as)$ for all $s>M$ and since $r(\omega)(T(\omega)(as))\leq as$ we finally get $\tilde c h^{-1}(a)h^{-1}(s)=\tilde ch^{-1}(as) \leq T(\omega)(as)$ for all $s>M$, hence $\omega \in D_{\tilde c h^{-1}(a)}$, where we used the multiplicativity of $h$ and that $h^{-1}$ is decreasing. We therefore get $A_c\subset D_{\tilde c h^{-1}(a)}$, hence $\PP(D_{\tilde c h^{-1}(a)}) = 1$.\\
 	$\Leftarrow$: 
 	The proof for this direction works analogously and needs Lemma \ref{rtinfty} as well.
 \end{proof}
@@ -520,13 +531,13 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 
 
 \begin{lemma} \label{mugeneral}
-	Let $q>0$ and $(\mu_A)_{A\in\mP^d_f}$ be translation invariant. Then if there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
+	Let $q>0$ and $(\mu_A)_{A\in\mP^d_f}$ be translation invariant. If there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
 	\begin{flalign*}
 		\mu_A(0) \leq cr^{-q}, \quad \text{ for all } A\in\mP^0_r,
 	\end{flalign*}
-	then there also exists a constant $c>0$ such that for all $y\in\Z^d$ and $s,r\in [1,\infty)$ with $s\geq r$ we have
+	then there also exists a constant $\tilde c>0$ such that for all $y\in\Z^d$ and $s,r\in [1,\infty)$ with $s\geq r$ we have
 	\begin{flalign*}
-		\mu_A(y) \leq cr^{-q}, \quad \text{ for all } A\in\mP^y_s.
+		\mu_A(y) \leq \tilde cr^{-q}, \quad \text{ for all } A\in\mP^y_s.
 	\end{flalign*}
 \end{lemma}
 \begin{proof}
@@ -544,9 +555,9 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 At this point we are prepared to proof the following theorem. 
 
 \begin{theorem} \label{iatheorem}
-	Let $q>0$ and $(\mu_A)_{A\in\mP^d_f}$ be a translation invariant outside distribution. If there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
+	Let $q>0$ and $(\mu_A)_{A\in\mP^d_f}$ be a translation invariant outside distribution. If there exists a constant $C>0$ such that for all $r\in [1,\infty)$ we have
 	\begin{flalign*}
-		\mu_A(0) \leq cr^{-q} \quad \text{ for all } A\in\mP^0_r,
+		\mu_A(0) \leq Cr^{-q} \quad \text{ for all } A\in\mP^0_r,
 	\end{flalign*}
 	then for the fractal dimension we have
 	\begin{flalign*}
@@ -555,11 +566,11 @@ At this point we are prepared to proof the following theorem.
 \end{theorem}
 
 \begin{proof}
-	By section \ref{notion} equation (\ref{fractaldim}) we have
+	By (\ref{fractaldim}) we have
 	\begin{flalign*}
 		d_f = \frac{1}{\alpha_f}\quad \text{a.s.}
 	\end{flalign*}
-	where $\alpha_f$ is the growth rate as defined in section $\ref{notion}$ equation $(\ref{growthrate})$, and we will therefore show that
+	where $\alpha_f$ is the growth rate as defined in section (\ref{growthrate}), and we will therefore show that
 	\begin{flalign*}
 		\alpha_f \leq \frac{1}{1+q}\quad \text{a.s.}.
 	\end{flalign*}
@@ -583,7 +594,7 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign*}
 		h: [0,\infty) \to [0,\infty), x\mapsto x^{\frac{1}{1+q}},  
 	\end{flalign*}
-	and $a=2$, then by Lemma \ref{randt} we can show (\ref{2Ac}) if we find a constant $c>0$ such that 
+	and $a=2$, then, by Lemma \ref{randt}, we can show (\ref{2Ac}) if we find a constant $c>0$ such that 
 	\begin{flalign} \label{lambda2}
 		\PP(D_c) = 1. 
 	\end{flalign}
@@ -610,7 +621,7 @@ At this point we are prepared to proof the following theorem.
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
 	Let $n\in\N$ and $\omega \in V_n$, then $T(\omega)(2n) < \tilde m_n$. For $m_n:=\max\{j\in\N\ |\ j\leq \tilde m_n\}$ we therefore have $T(\omega)(2n)\leq m_n$, hence $\rad(\E_{m_n}(\omega)) \geq 2n$. Therefore, since $\E_{m_n}(\omega)$ is connected, there must exist indices $j_1 <\dots < j_n$ such that $[z_0] := (y_{j_1}(\omega),\dots, y_{j_n}(\omega))\in Z_n$ and $[z_0]\subset \E_{m_n}(\omega)$, since $\max_{x\in [z_0]} |x| \leq 2n$. Therefore $j_n \leq m_n\leq\tilde m_n$ and therefore $\omega \in W_n([z_0]) \subset W_n$ which proofs the inclusion.\\ 
-	\\ For a sequence of events $(A_n)_{n\in\N}$ remind that
+	\\ For a sequence of events $(A_n)_{n\in\N}$ recall that
 	\begin{flalign*}
 		\limsup_{n\to\infty} A_n := \bigcap_{n\in\N} \bigcup_{i\geq n} A_i = \{\omega\in\Omega\ |\ \omega \in A_n \text{ for infinitely many } n\in\N\}.
 	\end{flalign*}
@@ -706,23 +717,23 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign} \label{induc2}
 		\PP(\sigma_i > k\ |\ \Gamma_{ij}) \geq (1-c_1n^{-q})^k
 	\end{flalign}
-	for all $k\in\N$, which we prove by induction. For $k=1$ by Lemma \ref{mugeneral} there exists a $c>0$ such that 
+	for all $k\in\N$, which we prove by induction. For $k=1$ by Lemma \ref{mugeneral} there exists a $\tilde C>0$ such that 
 	\begin{flalign*}
 		\PP(\sigma_i > 1\ |\ \Gamma_{ij}) &\geq \PP(y_{j+1} \neq z_{i+1}\ |\ \Gamma_{ij}) \\
 		&= 1 - \mu_{\partial(\E\cup \{z_i\})}(z_{i+1}) \\
 		&= 1 - \mu_{\overline{\E\cup \{z_i\}}}(z_{i+1}) \\
-		&\geq 1 - cn^{-q} \\
-		&=(1 - cn^{-q})^1. 
+		&\geq 1 - \tilde Cn^{-q} \\
+		&=(1 - \tilde Cn^{-q})^1. 
 	\end{flalign*} 
-	where we used that $\mu$ is an outside distribution. Note that we can use Lemma \ref{mugeneral} because $\rad(\overline{\E\cup\{z_i\}}) \geq n$ since $z_1\in\E\cup\{z_i\}$ as we conditioned on $U_{[z]}^i$. Note that the harmonic measure doesn't care about the order of how points where added to form the current cluster as mentioned in remark \ref{orderindependence}. Note that by lemma \ref{mugeneral} the chosen $c$ has a strong universal property such that it doesn't depend on $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. Now let the statement be true for some $k=l$. Then again by Lemma \ref{mugeneral} there exists a $c>0$ such that 
+	where we used that $\mu$ is an outside distribution. Note that we can use Lemma \ref{mugeneral} because $\rad(\overline{\E\cup\{z_i\}}) \geq n$ since $z_1\in\E\cup\{z_i\}$ as we conditioned on $U_{[z]}^i$. Note that the harmonic measure doesn't care about the order of how points where added to form the current cluster as mentioned in remark \ref{orderindependence}. Note that by lemma \ref{mugeneral} the chosen $\tilde C$ has a strong universal property such that it doesn't depend on $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. Now let the statement be true for some $k=l$. Then again by Lemma \ref{mugeneral} we have
 	\begin{flalign*} 
 		\PP(\sigma_i > l+1\ |\ \Gamma_{ij}) &= \PP(\sigma_i > l, y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}) \\
 		&= \PP(\sigma_i>l\ |\ \Gamma_{ij}) \PP(y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}, \sigma_i>l) \\
-		&\overset{(+)}{\geq} (1-cn^{-q})^l \PP(y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}, \sigma_i>l) \\
-		&\overset{(++)}{\geq} (1-cn^{-q})^l(1-cn^{-q}) \\
-		&= (1-cn^{-q})^{l+1},
+		&\overset{(+)}{\geq} (1-\tilde Cn^{-q})^l \PP(y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}, \sigma_i>l) \\
+		&\overset{(++)}{\geq} (1-\tilde Cn^{-q})^l(1-\tilde Cn^{-q}) \\
+		&= (1-\tilde Cn^{-q})^{l+1},
 	\end{flalign*}
-	where in $(+)$ we used the induction assumption. In order to show $(++)$ we would need to split the probability with the law of total probability by conditioning on all clusters such that $\Gamma_{ij}$ is fulfilled and the next $l$ added points are not equal to $z_{i+1}$. We would then have the same inequality as in the induction beginning using Lemma \ref{mugeneral} and reput together the conditioned probabilites to get this inequality here. Same as in the induction beginning we have now found a constant $c_1>0$ such that (\ref{induc2}) holds for all $k\in\N$ and this constant $c_1$ is independent of $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. \\
+	where in $(+)$ we used the induction assumption. In order to show $(++)$ we would need to split the probability with the law of total probability by conditioning on all clusters such that $\Gamma_{ij}$ is fulfilled and the next $l$ added points are not equal to $z_{i+1}$. We would then have the same inequality as in the induction beginning using Lemma \ref{mugeneral} and reput together the conditioned probabilites to get this inequality here. With $c_1:=\tilde C$ we have therefore found a constant such that (\ref{induc2}) holds for all $k\in\N$ and this constant $c_1$ is independent of $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. \\
 	\\Since $\{\tau_i=j\}\cap U_{[z]}^i \subset \bigcup_{m_i\leq m} \bigcup_{\E\in E_m^i}  \{\E_{j-1}=\E\}$ by construction of $E_m^i$ and $m_i$ we can use Lemma \ref{totalprob} and get for $n_i\leq j \leq\infty$ 
 	\begin{flalign*}
 		\PP(\sigma_i > k\ |\ \tau_i=j,U_{[z]}^i) \geq (1-c_1n^{-q})^k
@@ -802,7 +813,7 @@ There is not yet a rigorous proof on the exact fractal dimension of external DLA
 \begin{flalign*}
 	d_f = \frac{d^2 + 1}{d+1}
 \end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations which you can find in \cite{vicsek}. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA for which we will use theorem \ref{iatheorem}. Remind that $\mP_f := \mP_f^2$. 
+in $\Z^d$ which seems to agree fairly well with simulations which you can find in \cite{vicsek}. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA for which we will use theorem \ref{iatheorem}. Recall that $\mP_f := \mP_f^2$. 
 
 \begin{lemma}
 	The familiy of harmonic measures $(h_A)_{A\in\mP_f}$ in $\Z^2$ is translation invariant.
@@ -860,8 +871,8 @@ We have therefore shown a lower bound of $1.5$ for the fractal dimension of exte
 
 \subsection{Motivation}
 
-In the following we will look at a process with another simple idea for its distribution. For this process we will in this paper only consider the $2$-dimensional case $\Z^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. A very similar approach was done by $\cite{ballistic}$ as a so called ballistic model, where they let particles move on straight lines to the cluster, but just from a small range of directions. Our approach here extends this idea, as we will try to choose a random direction out of all directions in the plane. The difficulty here is to argue that this random choosing happens in a senseful and fair way considering the asymmetry of a already formed cluster. Anyway we will see that the fractal dimension of $2$ which is guessed in \cite{ballistic} for their ballistic model matches the one we will prove rigorously for our one. \\
-\\Obviously in most cases particles cannot move completely straight on $\Z^2$. Therefore we will consider points in $\Z^2$ as the centers of unit squares in $\R^2$ and let the particles move on straight lines in the full plane $\mathbb{R}^2$. We consider a line hitting a point in $\Z^2$ if and only if it intersects with its unit square as defined in the following. Note that we identify $\R^2$ with $\C$ here. Also remind that $\mP_f$ is the set of finite subsets of $\Z^2$ and $\G$ is the set of lines in the plane. 
+In the following we will look at a process with another simple idea for its distribution. For this process we will in this paper only consider the $2$-dimensional case $\Z^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. A similar approach can be found in $\cite{ballistic}$ as a so called ballistic model, where they let particles move on straight lines to the cluster, but just from a small range of directions. Our approach here extends this idea, as we will try to choose a random direction out of all directions in the plane. The difficulty here is to argue that this random choosing happens in a senseful and fair way considering the asymmetry of an already formed cluster. Anyway we will see that the fractal dimension of $2$ which is guessed in \cite{ballistic} for their ballistic model matches the one we will prove rigorously here. \\
+\\Obviously in most cases particles cannot move completely straight on $\Z^2$. Therefore we will consider points in $\Z^2$ as the centers of unit squares in $\R^2$ and let the particles move along straight lines in the plane $\mathbb{R}^2$. We consider a line hitting a point in $\Z^2$ if and only if it intersects its unit square as defined in the following. Note that we identify $\R^2$ with $\C$ here. Also recall that $\mP_f$ is the set of finite subsets of $\Z^2$ and $\G$ is the set of lines in the plane. 
 
 \begin{definition} \label{squares}
 	Define 
@@ -873,9 +884,32 @@ In the following we will look at a process with another simple idea for its dist
 	sq: \Z^2 \to \C_{sq},\quad (k,l)\to [k - \frac{1}{2}, k + \frac{1}{2}] + [l- \frac{1}{2}, l + \frac{1}{2}]i
 	\end{align}
 	is bijective and intuitively identifies points in $\Z^2$ with squares in $\C$ which is $p$ is the center of the square $sq(p)$ for all $p\in \Z^2$. In the following when using a point $p\in \Z^2$ it will reference the point in $\Z^2$ or the corresponding square in $\C$ respecting the context. This bijection also naturally defines a graph structure on $\C_{sq}$, which is two squares $s_1, s_2\in \C_{sq}$ form an edge if and only if $sq^{-1}(s_1)$ and $sq^{-1}(s_2)$ form an edge in $\Z^2$. 
-	\noindent For the following we say a line $g$ $hits$ a point $p\in \Z^2$ if and only if $g\cap sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). For a set $A\in\mP_f$ define $sq(A) := \bigcup_{p\in A} sq(p)$. 
-	
+	\noindent For the following we say a line $g$ $hits$ a point $p\in \Z^2$ if and only if $g\cap sq(p) \neq \emptyset$ (see in $\autoref{linesquares}$). For a set $A\in\mP_f$ define $sq(A) := \bigcup_{p\in A} sq(p)$. In the following we discuss a parametrisation of lines which is completely motivated by \cite[2.1.1]{sackmann}. 
 \end{definition}
+	
+\begin{definition} \label{linedef}
+		We denote this set of lines by $\G$. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $\langle\cdot,\cdot\rangle$ be the standard scalar product on $\R^2$, respectively used for values in $\C$ as we identify $\R^2$ with $\C$ as $\R$-vector spaces. Let 
+		\begin{flalign*}
+			e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i
+		\end{flalign*}
+		and 
+		\begin{flalign*}
+			s_\alpha : = -\sin(\alpha) + \cos(\alpha)i
+		\end{flalign*}
+		be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $2$-dimensional $\R$-vector space, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that for every line $g\in\G$ there is a unique pair of $(\alpha, p)$ such that $g=g_{\alpha,p}$. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
+		\begin{flalign*}
+			\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
+		\end{flalign*}
+		We take the trace $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ of the Borel-$\sigma$-algebra on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection.
+\end{definition}
+
+	\begin{figure}
+		\centering
+		\includegraphics[height=10cm]{images/geogebra-images/line-param.png}
+		\caption{Line parameters $\alpha$ and $p$} \label{lineparam}
+	\end{figure}
+	
+
 
 \begin{figure}[]
 	\centering
@@ -890,12 +924,11 @@ In the following we will look at a process with another simple idea for its dist
 \end{figure}
 
 \begin{definition} \label{ghitA}
-	Let $g\in \G$ and $A\in \mP_f$. We define 
+	Let $g=g_{\alpha,p}\in \G$ and $A\in \mP_f$. For the context in this chapter we define 
 	
 	\begin{align*}
-		g\cap A := \{ p\in A\ |\ g \text{ hits } p\}
+		g\cap A := \{ p\in A\ |\ g \cap sq(p)\neq \emptyset\}
 	\end{align*}
-	
 	which is the subset of all points in $A$ which are hit by $g$ (see $\autoref{linesquares}$). For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mP_f$ with $g\cap A \neq\emptyset$. We choose two points $x,y\in g\cap A$ and split the definition of the relation $\triangleleft$ into four cases, depending on whether the line $g$ goes from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis or parallel to the $y$-axis. Denote the real part of $x$ with $\re(x)$ and the imaginary part with $\im(x)$. \\
 	\\
 	$\mathit{Case}\ 1:\quad g\ \text{ is parallel to the x-axis}\quad (\Leftrightarrow\quad \alpha = \frac{\pi}{2})$
@@ -922,25 +955,25 @@ In the following we will look at a process with another simple idea for its dist
 	\im(x) > \im(y), & \text{ if } \re(x) = \re(y).
 	\end{cases}
 	\end{align*}\\
-	It is easy to calculate that this defines a well-defined relation on $g\cap A$. In the following we will prove that this relation is strict and totally ordered. 
+	It is easy to calculate that this defines a well-defined relation on $g\cap A$. In the following we will prove that this relation is totally ordered. 
 \end{definition}
 
 \begin{lemma}
-For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
-	\begin{proof}
-		We will only proove the case where $g$ is going from left-bottom to right-top, which is $\mathit{Case}\ 3$ of the definition. In this case we have $\alpha\in (\frac{\pi}{2},\pi)$. Note, that the proof for $\mathit{Case\ }4$ will work very similar and in the case of $g$ being parallel to one of the axes ($\mathit{Case\ }1$ or $2$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $\alpha\in (\frac{\pi}{2},\pi)$. \\
-		\\
-		$\mathit{Antisymmetry:}$ For antisymmetry let $x \triangleleft y$ and $y \triangleleft x$. Suppose $\re(x)\neq \re(y)$, then $\re(x) < \re(y)$ and $\re(y) < \re(x)$, a contradiction because of the total order $<$ in $\mathbb{R}$. So $\re(x) = \re(y)$. But then we have $\im(x) < \im(y)$ and $\im(y) < \im(x)$ and therefore also $\im(x) = \im(y)$, hence $x=y$. \\
-		\\
-		$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $\re(x) \neq \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) < \re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $\re(x)\neq \re(y)$ and $\re(y) = \re(z)$ we get $\re(x) < \re(y) = \re(z)$, therefore $x \triangleleft z$. In case $\re(x) = \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) = \re(y) < \re(z)$, similar as the last case. In the last case $\re(x) = \re(y) = \re(z)$ we get $\im(x) < \im(y)$ and $\im(y) < \im(z)$ and again by transitivity of $<$ we get $\im(x) < \im(z)$, hence $x \triangleleft z$ again. \\
-		\\
-		$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $\re(x) \neq \re(y)$ or $\re(x) = \re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
-	 
-	\end{proof}
+	For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
 \end{lemma}
 
+\begin{proof}
+	We will only prove the case where $g$ is going from left-bottom to right-top, which is $\mathit{Case}\ 3$ of the definition. In this case we have $\alpha\in (\frac{\pi}{2},\pi)$. Note, that the proof for $\mathit{Case\ }4$ will work very similar and in the case of $g$ being parallel to one of the axes ($\mathit{Case\ }1$ or $2$), all properties for a totally ordered relation follow directly from the totally ordered relation $<$ on $\mathbb{R}$. So let $\alpha\in (\frac{\pi}{2},\pi)$. \\
+	\\
+	$\mathit{Antisymmetry:}$ For antisymmetry let $x \triangleleft y$ and $y \triangleleft x$. Suppose $\re(x)\neq \re(y)$, then $\re(x) < \re(y)$ and $\re(y) < \re(x)$, a contradiction because of the total order $<$ in $\mathbb{R}$. So $\re(x) = \re(y)$. But then we have $\im(x) < \im(y)$ and $\im(y) < \im(x)$ and therefore also $\im(x) = \im(y)$, hence $x=y$. \\
+	\\
+	$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $\re(x) \neq \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) < \re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $\re(x)\neq \re(y)$ and $\re(y) = \re(z)$ we get $\re(x) < \re(y) = \re(z)$, therefore $x \triangleleft z$. In case $\re(x) = \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) = \re(y) < \re(z)$, similar as the last case. In the last case $\re(x) = \re(y) = \re(z)$ we get $\im(x) < \im(y)$ and $\im(y) < \im(z)$ and again by transitivity of $<$ we get $\im(x) < \im(z)$, hence $x \triangleleft z$ again. \\
+	\\
+	$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $\re(x) \neq \re(y)$ or $\re(x) = \re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
+\end{proof}
+
 \begin{remark}
-	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where in $A$ the line $g$ hits first when \glqq entering \grqq $A$ and where it hits last when \glqq leaving\grqq\ $A$. What we want to do next is to choose a line randomly out of all lines which hit the current cluster. This is isn`t an obvious task and we will have to develop a most fair underlying distribution on lines in the next section where we will touch basic aspects of Integral Geometry. 
+	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where the line $g$ hits $A$ first and where it hits $A$ last. What we want to do next is to choose a line randomly and fair out of all lines which hit the current cluster. This is isn't obvious and we will have to develop and argue a most fair underlying distribution on lines in the next section where we will touch basic aspects of Integral Geometry. 
 \end{remark}
 
 
@@ -948,15 +981,14 @@ For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g\cap A\neq \emptyset$ t
 
 
 
-\subsection{Exkurs: Integral geometry}
 
-In the next section we want to define an approximation for External DLA. This approximation will be an incremental aggregation for which distribution definition we need some concepts and results from Integral Geometry which we will discuss and develop in this section. In the process we want to define we will want to choose a random line out of all lines which intersect with the current cluster of the aggregation. This random choosing is not obvious since most of the time the cluster will be strongly non symmetric and it is even less obvious how to actually get a realization of a random line when simulating with Python. In our case we are looking for a parametrisation of lines in the plane and a reasonable way of choosing parameters randomly. \\
+\subsection{Excursion: Integral geometry}
 
-We will introduce a possible solution for this problem first through the abstract and general concepts of integral geometry and later through a simple parametrisation for the case of lines in the plane which goes hand in hand with the general result.
+In the next section we want to define an incremental aggregation for which distribution we need some concepts and results from integral geometry. We will want to fairly choose a random line out of all lines which intersect the current cluster. It is not obvious how to choose a line in a fair way since most of the time the cluster will be strongly non symmetric. We will introduce a possible solution for this problem first through the abstract and general concepts of integral geometry and later through the parametrisation of lines as defined in \ref{linedef} for the $2$-dimensional case which goes hand in hand with the general result.
 
 \subsubsection{General results}
 
-In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimensional affine subspaces where $q\in \{0,\dots,d\}$, short $q$-flats in $\R^d$. The set of $q$-flats in $\R^d$ is denoted by $A(d,q)$. Later we will be interested in choosing random lines in the real plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. 
+Let $d\in\N$ and $q\in \{0,\dots,d\}$. In the general context we are in $\R^d$ and consider $q$-dimensional affine subspaces, short $q$-flats. The set of $q$-flats in $\R^d$ we denote with $A(d,q)$. Later we will be interested in choosing random lines in the plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. Recall that we denote the set of convex and compact subsets of $\R^d$ with $\K^d$. Also recall that with $G_d$ we denote the set of all Euclidean motions (more at \ref{symbols}).
 
 \begin{definition}
 	For $B\in \mathcal{B}^d$ define 
@@ -966,7 +998,7 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 	If the context is clear, we will only write $[B]$ instead of $[B]_{d,q}$. 
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{generalsigma}
 	The $\sigma$-algebra $\mathcal{A}(d,q)$ on $A(d,q)$ is defined by
 	\begin{flalign*}
 		\mathcal{A}(d,q) := \sigma(\{ [K]\ |\ K\in \K^d\}).
@@ -974,9 +1006,9 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 \end{definition}
 
 \begin{theorem} \label{uniqmeas}
-	On $A(d,q)$ there exists a unique $G_d$-invariant Radon measure $\mu_q$ such that
+	On $A(d,q)$ there exists an unique $G_d$-invariant Radon measure $\mu_q$ such that
 	\begin{flalign}
-		\mu_q(A_{B_d(0,1)}) = \kappa_{d-q}, 
+		\mu_q([B_d(0,1)]) = \kappa_{d-q}, 
 	\end{flalign}
 	where $\kappa_n := \lambda_n(B_n(0,1))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
 \end{theorem}
@@ -986,28 +1018,7 @@ In the general context we are in $\R^d$ for $d\in \N$ and consider $q$-dimension
 
 \subsubsection{Construction in the plane: Isotropic lines}
 
-For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We denote this set of lines by $\G$. The following construction in this chapter is completely motivated by \cite{sackmann} 2.1.1. Firstly we propose a parametrisation of lines which works as follows. Every line can be uniquely determined by an angle $\alpha\in [0,\pi)$ and a real number $p\in \R$. Let $\langle\cdot,\cdot\rangle$ be the standard scalar product on $\R^2$, respectively used for values in $\C$ as we identify $\R^2$ with $\C$ as $\R$-vectorspaces. Let 
-\begin{flalign*}
-	e_\alpha := e^{\alpha i} = \cos(\alpha) + \sin(\alpha)i
-\end{flalign*}
-and 
-\begin{flalign*}
-	s_\alpha : = -\sin(\alpha) + \cos(\alpha)i
-\end{flalign*}
-be the unit vectors $1$ and $i$ rotated by $\alpha$ counterclockwise. Lets consider the representation $x = \langle x,e_\alpha\rangle e_\alpha + \langle x,s_\alpha\rangle s_\alpha$ for $x\in \C$. Since $e_\alpha$ and $s_\alpha$ form a base of $\C$ as a $2$-dimensional $\R$-vectorspace, the parameters $\langle x,e_\alpha\rangle$ and $\langle x, s_\alpha\rangle$ are unique for each $x$. It thus is easy to realize that $g_{\alpha,p} := \{x\in \C\ |\ \langle x,e_\alpha\rangle  = p\}$ defines a line (compare with $\autoref{lineparam}$) and that every line has a unique pair of $\alpha$ and $p$ for such a representation. In words, $g_{\alpha,p}$ contains all points which have length $p$ in direction of $e_\alpha$. With $\Phi := [0,\pi) \times \R$ this naturally defines a bijection
-\begin{flalign*}
-	\chi: \Phi \to \G, \quad (\alpha,p) \mapsto g_{\alpha,p}. 
-\end{flalign*}
-\\
-\begin{figure}
-	\centering
-	\includegraphics[height=10cm]{images/geogebra-images/line-param.png}
-	\caption{Line parameters $\alpha$ and $p$} \label{lineparam}
-\end{figure}
-\\
-
-
-We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \cap \Phi$ on $\Phi$ and define the $\sigma$-algebra $\GG$ on $\G$ by $\GG := \chi(\mathcal{B}_\Phi)$. This works well since $\chi$ is a bijection. We want to show in the following that this way of defining a $\sigma$-algebra on $\G$ makes sense as it is indeed equivalent to the general context as defined above. To do that it is convenient to use a special generator set for the Borel-$\sigma$-algebra $\mathcal{B}_\Phi$. 
+For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We want to show in the following that the way we defined a $\sigma$-algebra on $\G$ in definition \ref{linedef} is equivalent to the general definition in \ref{generalsigma}. To do that it is convenient to use a special generator set for the Borel-$\sigma$-algebra $\mathcal{B}_\Phi$. 
 
 \begin{lemma} \label{generators}
 	Define 
@@ -1039,9 +1050,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 \end{lemma}
 \begin{proof}
 	We will consider generators of these $\sigma$-algebras. By Lemma $\autoref{generators}$ we know that $\sigma(\mathcal{R}) = \mathcal{B}_\Phi$ and since $\chi$ is a bijection, we have $\chi(\sigma (\mathcal{R})) = \sigma (\chi(\mathcal{R}))$ and finally $\GG = \sigma(\chi(\mathcal{R}))$. For $\tilde A := \{[K]\ |\ K\in \K^2\}$ we have by definition $\mathcal{A}(2,1) = \sigma(\tilde A)$. \\
-	%
 	\\ \indent $\subset$: Let $K\in\K^2$. We will show that $\chi^{-1}([K])$ is a closed set in $\Phi$. If that is the case we have $\chi^{-1}([K])\in\mathcal{B}_\Phi$, therefore $[K] \in\chi(\mathcal{B}_\Phi) = \GG$ and finally $\mathcal{A}(2,1) = \sigma(\tilde A)\subset\GG$. To show that $\chi^{-1}([K])$ is closed let $(\alpha_0,p_0)\in \Phi\setminus \chi^{-1}([K])$. Then $\chi(\alpha_0,p_0) \notin [K]$ and therefore $\chi(\alpha_0,p_0) \cap K= \emptyset$. Since $K$ is closed we can find small values $\tilde\alpha,\tilde p > 0$ such that $\chi(\alpha,p) \cap K = \emptyset$ for all $(\alpha,p)\in [\alpha_0, \alpha_0 + \tilde\alpha] \times [p_0, p_0 + \tilde p] =: R$. Hence we have $ R\subset \Phi \setminus \chi^{-1}([K])$, so $\Phi \setminus \chi^{-1}([K])$ is open. Hence $\chi^{-1}([K])$ is closed. \\
-	%
 	\\ \indent $\supset$: For this inclusion we will show that $\chi(R)\in\mathcal{A}(2,1)$ for all $R\in\mathcal{R}$. First let $R = [\alpha,\beta]\times(0,b]\in\mathcal{R}_+$ for some $b>0$. Define 
 	\begin{flalign*}
 		S:= \{pe_\gamma \in \C\ |\ (\gamma,p)\in R\}
@@ -1093,11 +1102,11 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	$\mu$ is locally finite and $G_2$-invariant. 
 \end{lemma}
 \begin{proof}
-	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $[K]\subset A_{B_r}$ and
+	Let $K\in \K^2$ and since $K$ is compact choose $r> 0$ such that $K\subset B_r$. Then we have $[K]\subset [B_r]$ and
 	\begin{flalign*}
-		\mu([K]) \leq \mu(A_{B_r}) = {\lambda_2}_{|\Phi} (\chi^{-1}(A_{B_r})) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
+		\mu([K]) \leq \mu([B_r]) = {\lambda_2}_{|\Phi} (\chi^{-1}([B_r])) = {\lambda_2}_{|\Phi}([0,\pi)\times [-r,r]) = 2\pi r < \infty, 
 	\end{flalign*}
-	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that means euclidean motion invariant, we must show it is translation and rotation invariant. First we clarify what exactly translation and rotation mean for lines. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
+	hence $\mu$ is locally finite. To show that $\mu$ is $G_2$-invariant, that is Euclidean motion invariant, we must show it is translation and rotation invariant. First we clarify what exactly translation and rotation mean for lines. We denote $x\ modulo\ r$ as $(x)_r$. For $b\in\C$ and $\beta\in[0,2\pi)$ we define 
 	\begin{flalign} \label{motion}
 		T_b:\ &\Phi \to \Phi,\quad (\alpha,p) \mapsto (\alpha,p+\langle e_\alpha, b\rangle)
 	\end{flalign}
@@ -1112,7 +1121,7 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 			-1,\ \gamma\in [\pi,2\pi)
 		\end{cases}.
 	\end{flalign*}
-	It is easy to see that both functions all well-defined. $T_b$ defines a translation by $b$ and $D_\beta$ a rotation by $\beta$. Lets proof that first. Let $(\alpha,p)\in \Phi$, then 
+	It is easy to see that both functions are well-defined. The parameter transformation $T_b$ defines a translation by $b$ of the corresponding line, and analogously $D_\beta$ a rotation by $\beta$. We prove that quickyl here. Let $(\alpha,p)\in \Phi$, then 
 	\begin{flalign*}
 		x\in \chi(\alpha,p)+b &\Leftrightarrow x-b\in \chi(\alpha,p) \\ 
 		&\Leftrightarrow \langle e_\alpha, x-b\rangle = p \\ 
@@ -1120,27 +1129,27 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 		&\Leftrightarrow x\in \chi(\alpha, p + \langle e_\alpha, b\rangle) \\
 		&\Leftrightarrow x\in \chi(T_b(\alpha, p))
 	\end{flalign*}
-	and therefore $\chi(\alpha,p) + b = \chi(T_b(\alpha, p))$. Hence $T_b(\alpha,p)$ are indeed the parameters for the by $b$ translated line. For the rotation lets devide it into two cases. First let $(\alpha+\beta)_{2\pi} \in [0,\pi)$, then $\delta((\alpha+\beta)_{2\pi}) = 1$ and $(\alpha+\beta)_\pi = \alpha+\beta$ and therefore 
+	and therefore $\chi(\alpha,p) + b = \chi(T_b(\alpha, p))$. Hence $T_b(\alpha,p)$ are indeed the parameters of the line translated by $b$. For the rotation we look at two cases. First let $(\alpha+\beta)_{2\pi} \in [0,\pi)$, then $\delta((\alpha+\beta)_{2\pi}) = 1$ and $(\alpha+\beta)_\pi = \alpha+\beta$ and therefore 
 	\begin{flalign*}
 		D_\beta(\alpha,p) = (\alpha+\beta,p).
 	\end{flalign*} 
-	In the second case with $(\alpha+\beta)_{2\pi} \in [\pi,2\pi)$ we have $\delta((\alpha+\beta)_{2\pi}) = -1$ and $(\alpha+\beta)_\pi = \alpha+\beta - \pi$ and therefore
+	For the second case let $(\alpha+\beta)_{2\pi} \in [\pi,2\pi)$, then we have $\delta((\alpha+\beta)_{2\pi}) = -1$ and $(\alpha+\beta)_\pi = \alpha+\beta - \pi$ and therefore
 	\begin{flalign*}
 		D_\beta(\alpha,p) = (\alpha + \beta - \pi, -p).
 	\end{flalign*}
-	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the by $\beta$ rotated line. \\
-	\\We will further show now, that $\mu$ is invariant with respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise as well. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For a translation we get 
+	In the second case we have to carefully understand the parametrisation of $\G$, but finally we can see that $D_\beta(\alpha,p)$ are indeed the parameters of the line rotated by $\beta$. \\
+	\\We will further show now, that $\mu$ is invariant with respect to both these functions. Let $A\in \GG$, $b\in \C$ and $\nu_\beta\in SO_2$ for some $\beta\in[0,2\pi)$. We will understand $A+b = \{g+b\in \G\ |\ g\in A\}$ and $\nu_\beta A = \{\nu_\beta g\in \G\ |\ g\in A\}$ pointwise, and $g+b = \{x+b\ |\ x\in g\}$ and $\nu_\beta g=\{\nu_\beta x\ |\ x\in g\}$ pointwise as well. We furthermore define $A_p := \{\alpha\in[0,\pi)\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ and $A_\alpha := \{p\in \R\ |\ (\alpha,p)\in \chi^{-1}(A)\}$ for $(\alpha,p)\in \Phi$. For the translation by $b$ we get 
 	\begin{flalign*}
 		\mu(A+b) 
 		&= \int_\GG \1_{A+b}(g) \mu(dg) \\
 		&= \int_\GG \1_A(g-b) \mu(dg) \\
 		&= \int_\GG \1_A(g-b) {\lambda_2}_{|\Phi}(\chi^{-1}(dg)) \\
 		&= \int_{\chi^{-1}(\GG)} \1_{\chi^{-1}(A)}(\chi^{-1}(g-b)) {\lambda_2}_{|\Phi}(d(\chi^{-1}(g))) \\
-		&\overset{(\ref{motion})}{=} \int_\Phi \1_{\chi^{-1}(A)}(\alpha,p-\langle e_\alpha, b\rangle) {\lambda_2}_{|\Phi}(d(\alpha,p)) \\ 
-		&= \int_0^\pi \int_\R \1_{A_\alpha}(p-\langle e_\alpha, b\rangle) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
-		&= \int_0^\pi \int_\R \1_{A_\alpha +\langle e_\alpha, b\rangle}(p) {\lambda_1}(dp){{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&\overset{(\ref{motion})}{=} \int_\Phi \1_{\chi^{-1}(A)}(\alpha,p-\langle e_\alpha, b\rangle) {\lambda_2}(d(\alpha,p)) \\ 
+		&= \int_0^\pi \int_\R \1_{A_\alpha}(p-\langle e_\alpha, b\rangle) {\lambda_1}(dp){\lambda_1}(d\alpha) \\ 
+		&= \int_0^\pi \int_\R \1_{A_\alpha +\langle e_\alpha, b\rangle}(p) {\lambda_1}(dp)\lambda_1(d\alpha) \\ 
 		&= \int_0^\pi \lambda_1(A_\alpha +\langle e_\alpha, b\rangle) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
-		&\overset{(+)}= \int_0^\pi \lambda_1(A_\alpha) {{\lambda_1}_{|[0,\pi)}}(d\alpha) \\ 
+		&\overset{(+)}= \int_0^\pi \lambda_1(A_\alpha) \lambda_1(d\alpha) \\ 
 		&= \dots \\
 		&= \mu(A),
 	\end{flalign*}
@@ -1165,14 +1174,14 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 \end{proof}
 
 \begin{example} \label{exp1}
-	Choose $K:=B_r\in \mathcal{K}^2$ the ball with radius $r>0$ and center $0$, then
+	Choose $K:=B_r\in \mathcal{K}^2$ to be the ball with radius $r>0$ and center $0$. Then
 	\begin{flalign*}
-		\mu([K]) = {\lambda_2}_{|\Phi} \circ \chi^{-1} (B_r) = {\lambda_2}_{|\Phi}([0,\pi) \times [-r,r]) = 2\pi r.
+		\mu([K]) = {\lambda_2}_{|\Phi} \circ \chi^{-1} ([B_r]) = {\lambda_2}_{|\Phi}([0,\pi) \times [-r,r]) = 2\pi r.
 	\end{flalign*}
 \end{example}
 
 \begin{example} \label{exp2}
-	Now choose $K:=[0,r] \times \{0\}\in \mathcal{K}^2$ an interval of length $r>0$, then
+	Now choose $K:=[0,r] \times \{0\}\in \mathcal{K}^2$ to be a segment of length $r>0$. Then
 	\begin{flalign*}
 		\mu([K]) &= {\lambda_2}_{|\Phi} \circ \chi^{-1} ([K]) \\
 		&= \int_{\Phi}\ \1_{\chi^{-1}([K])}(\alpha, p)\ \lambda_2(\text{d}(\alpha, p)) \\
@@ -1184,10 +1193,11 @@ We take the subspace Borel-$\sigma$-algebra $\mathcal{B}_\Phi:= \mathcal{B}^2 \c
 	\end{flalign*}
 \end{example}
 
-By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean motion invariant measure on $\G$. Since it is locally finite, for $K\in \K^2$ we can define a probability measure on $\G$ by
+By theorem \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only Euclidean motion invariant measure on $\G$. Since it is locally finite, we can define for any $K\in \K^2$ a probability measure on $\G$ by
 \begin{flalign*}
 	\PP^K_\mu(A) := \frac{\mu( A\cap [K])}{\mu([K])},\quad A\in \GG.
 \end{flalign*}
+For $A\in \GG$ this describes the probability that a random line which hits $K$ lies in $A$. 
 
 \begin{definition} \label{isotropic}
 	Let $K\in\K^2$. A random line $g:\Omega \to \G$ is called $K$-$\mathit{isotropic}$ if 
@@ -1212,7 +1222,7 @@ By \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only euclidean moti
 	\end{flalign*}
 \end{proof}
 
-If we choose a simple convex set such as $K=B_r$ the ball around the origin with radius $r$ then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
+If we choose a simple convex set such as $K=B_r$, the ball around the origin with radius $r$, then choosing random $K$-isotropic lines becomes a very intuitive and easy realizable task as the following lemma shows.
 
 \begin{lemma} \label{chi}
 	Let $K=B_r\in\K^2$ and let $(\alpha,p)$ be uniformly distributed in $\tilde \Phi:=[0,\pi)\times [-r,r]=\chi^{-1}([K])\subset \Phi$. Then $\chi(\alpha,p)$ is a random $K$-isotropic line. 
@@ -1226,7 +1236,7 @@ If we choose a simple convex set such as $K=B_r$ the ball around the origin with
 \end{proof}
 
 \begin{remark} \label{choosekiso}
-	Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that its distribution is equal to trying to realize $K$-isotropic lines directly. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$ a ball with a big enough radius such that it contains $K$, then realizing $B$-isotropic lines comes by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. This gives the base to define a new incremental aggregation in the next section which tries to approximate external DLA. 
+	Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that it is a realization of a $K$-isotropic line. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$, a ball with a big enough radius such that it contains $K$, then a $B$-isotropic line is realized by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$, respectively. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. But note that $K$ has to be convex for this construction. This gives the base to define a new incremental aggregation in the next section.
 \end{remark}
 
 
@@ -1242,7 +1252,7 @@ For a set $A\in \mP_f$ we define
 \begin{flalign*}
 	conv(A):=conv(\bigcup_{p\in A} sq(p))
 \end{flalign*}
-and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. Remind the definition 
+and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. Recall the definition 
 \begin{flalign*}
 	[B] := \{g\in\G\ |\ g\cap B \neq \emptyset\}
 \end{flalign*}
@@ -1326,7 +1336,7 @@ We are therefore prepared to proof the following theorem.
 \end{theorem}
 
 \begin{proof}
-	It is not difficult to proof that the line hitting distribution is translation invariant and an outside distribution, just like the harmonic measure in external DLA. Remind the definitions \ref{translinv} and \ref{outsidedist}. Together with theorem \ref{lhaconjecture} we can therefore use theorem \ref{iatheorem} and choose $q=1$ to get
+	It is not difficult to proof that the line hitting distribution is translation invariant and an outside distribution, just like the harmonic measure in external DLA. Recall the definitions \ref{translinv} and \ref{outsidedist}. Together with theorem \ref{lhaconjecture} we can therefore use theorem \ref{iatheorem} and choose $q=1$ to get
 	\begin{flalign*}
 		d_f \geq 1+1 = 2 \quad \text{a.s.}.
 	\end{flalign*}
@@ -1410,7 +1420,7 @@ for some constant $c>0$ and therefore get
 \begin{flalign} \label{linearplot}
 	\ln(\rad(\E_n)) \approx \frac{1}{d_f} \ln(n) + \ln(c). 
 \end{flalign}
-We therefore could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\rad(\E_n))$ for a range of values $n\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters and have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. To get more stable parameters it might make sense to come back to conjecture \ref{fullclusters} 
+We therefore could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\rad(\E_n))$ for a range of values $n\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters and have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} and the discussion in remark \ref{altdim} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. To get more stable parameters it might make sense to come back to conjecture \ref{fullclusters} 
 \begin{flalign*}
 	d_f = \limsup_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)}
 \end{flalign*}
@@ -1422,12 +1432,6 @@ for some constant $c>0$ we would get
 \begin{flalign} \label{newlinreg}
 	\ln(|\E_\infty \cap B_n|) \approx d_f \ln(n) + \ln(c). 
 \end{flalign}
-
-\begin{figure}[t]
-	\centering
-	\includegraphics[height=6cm]{images/fractal_range/5.png}
-	\caption{Cluster not \glqq filled up\grqq\ to its radius} \label{notfilled}
-\end{figure}
 
 \begin{figure}[t]
 	\begin{subfigure}[b]{.31\textwidth}
@@ -1443,8 +1447,8 @@ for some constant $c>0$ we would get
 	\label{filledup}
 \end{figure}
 
-Remind that $\E_\infty \cap B_n$ is the set of all particles in the final cluster $\E_\infty$ which lie in $B_n$ the ball of radius $n$ with center $0$. Since it is not possible to realize $\E_\infty$ we have to go with a approximation here. What we want is to compare the particle count of \glqq filled up\grqq\ clusters at radius $n$. If we have a look at \autoref{filledup} we see that in a certain range of radii $n$ the clusters $\E_\infty \cap B_n$ seem to be fairly filled up to their radius. This range of radii is what can be specified in the $\mathit{parameters.json}$ file in the $\mathit{fractal\_calculation\_range}$ field (see in the git repository). If $r$ is the radius of the cluster we found that it makes sense to not start the observation at $0$ but a bit higher like $0.2r$ to avoid distorted values occuring by the beginning of the process. On the other side we found empirically that $0.75r$ seems to be a fair upper ratio where the clusters in most cases seem to be fairly filled up to that radius. \\
-\\So all in all we will look at radii $n$ in the specified range $[0.2r, 0.75r]$ and count all particles of the cluster which lie in $B_n$, which shall be an approximation of $|\E_\infty \cap B_n|$. After that we calculate the linear regression parameters $\bar d_f$ and $\bar \ln(c)$ of the logarithmized values as in (\ref{newlinreg}) which happens in the following method:\\
+Recall that $\E_\infty \cap B_n$ is the set of all particles in the final cluster $\E_\infty$ which lie in $B_n$ the ball of radius $n$ with center $0$. Since it is not possible to realize $\E_\infty$ we have to go with a approximation here. What we want is to compare the particle count of \glqq filled up\grqq\ clusters at radius $n$. If we have a look at \autoref{filledup} we see that in a certain range of radii $n$ the clusters $\E_\infty \cap B_n$ seem to be fairly filled up to their radius. This range of radii is what can be specified in the $\mathit{parameters.json}$ file in the $\mathit{fractal\_calculation\_range}$ field (see in the git repository). If $r$ is the radius of the cluster we found that it makes sense to not start the observation at $0$ but a bit higher like $0.2r$ to avoid distorted values occuring by the beginning of the process. On the other side we found empirically that $0.75r$ seems to be a fair upper ratio where the clusters in most cases seem to be fairly filled up. \\
+\\So all in all we will look at radii $n$ in the specified range $[0.2r, 0.75r]$ and count all particles of the cluster which lie in $B_n$, which shall be an approximation of $|\E_\infty \cap B_n|$. After that we calculate the linear regression parameters $\hat d_f$ and $\hat \ln(c)$ of the logarithmized values as in (\ref{newlinreg}) which happens in the following method:\\
 \\
 \includegraphics[height=7.5cm]{images/code-snippets/fractalnew.png} \\
 \\
@@ -1532,7 +1536,7 @@ In \autoref{lhasimulation} you can find the values for $v_{lha}$ which got calcu
 
 \newpage
 \subsection{Images}
-In the following we present some of the realized images of our LHA and external DLA simulations. 
+In the following we present some of the realized images of our LHA and external DLA simulations. More can be found in the repository in the folder $\mathit{exports}$.
 
 \begin{figure}[h!]
 	\centering
