@@ -18,6 +18,7 @@
 \usepackage{textcomp}
 \usepackage{enumitem}
 \usepackage{lmodern}
+\usepackage{fancyvrb}
 
 % Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
 \setlength{\topmargin}{-15mm}	   
@@ -73,7 +74,7 @@
     \vspace*{2cm} 
 \begin{center} \large 
     
-   Masterthesis
+   	Masterthesis
     \vspace*{2cm}
 
     {\huge Incremental Aggregations}\\
@@ -82,7 +83,7 @@
     Tillmann Tristan Bosch
     \vspace*{1.5cm}
 
-    10. March 2020
+    9. March 2021
     \vspace*{3.5cm}
 
 
@@ -114,7 +115,7 @@
 	
 	\noindent In this paper we will look at two ways of letting grow such clusters and simulate them with python at the end to produce visuals and some empirical values. We will call such point by point growing clusters $\mathit{incremental\ aggregations}$ and present the two models briefly here:\\
 
-	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$ was initially introduced by \cite[Witten and Sander, 1983]{wittensander}. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Despite this simple definition there are only few rigorously proved results on this process. In $d$ dimensions the fractal dimension of any incremental aggregation lies in between 1 and $d$ and here we prove an almost sure lower bound of 1.5 in $\Z^2$. Empirical studies calculate a value around 1.7 to 1.8 in $\Z^2$ (see \cite{vicsek} and \cite{magnetic}).  \\
+	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$ was initially introduced by \cite[Witten and Sander, 1983]{wittensander}. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Despite this simple definition there are only few rigorously proved results on this process. In $d$ dimensions the fractal dimension of any incremental aggregation lies in between 1 and $d$ and here we prove an almost sure lower bound of 1.5 in $\Z^2$. Empirical studies calculate a value around 1.7 to 1.8 in $\Z^2$ (see for example \cite{magnetic}).  \\
 	
 	\noindent $\mathbf{Line\ Hitting\ Aggregation}$ is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which are chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So one way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA and therefore have a higher fractal dimension which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they guess a fractal dimension of 2 for their ballistic model and here we will actually be able to prove this result for the ballistic model we define in this paper. \\
 	
@@ -123,28 +124,30 @@
 \begin{figure}[p]
 	\centering
 	\begin{subfigure}[b]{.47\textwidth}
-		\includegraphics[width=.9\linewidth]{images/display.jpg} 
+		\includegraphics[height=6cm]{images/display.jpg} 
 		\caption{light on} 
 	\end{subfigure}
 	\begin{subfigure}[b]{.47\textwidth}
-		\includegraphics[width=.9\linewidth]{images/display2.jpg}
+		\includegraphics[height=5cm]{images/display2.jpg}
 		\caption{light off} 
 	\end{subfigure}
-	\caption{Cluster appearance in the radio screen of a car}
+	\caption{Cluster appearance in the radio screen of a car, \cite{own}}
 	\label{radio}
 \end{figure}
+
+\vspace*{\fill}
 
 \begin{figure}[]
 	\centering
 	\begin{subfigure}[b]{.45\textwidth}
-		\includegraphics[width=1\linewidth]{images/snowflake.jpg}
-		\caption{Real snowflake crystal, see at \cite{snowflake}} 
+		\includegraphics[height=6cm]{images/snowflake.png}
+		\caption{Snowflake crystals} 
 	\end{subfigure}
-	\begin{subfigure}[b]{.48\textwidth}
-		\includegraphics[width=.8\linewidth]{images/glass-break.jpg}
+	\begin{subfigure}[b]{.52\textwidth}
+		\includegraphics[height=5cm]{images/glass-break.jpg}
 		\caption{Cracked glass} 
 	\end{subfigure}
-	\caption{Other examples}
+	\caption{More examples of clusterlike formations, \cite{unsplash}}
 	\label{other}
 \end{figure}
 
@@ -170,7 +173,8 @@ Let $d\in \N$ and $q\in \{0,\dots,d\}$.
 	&A(d,q),\quad \text{the set of q-dimensional affine subspaces of }\R^d \\
 	&\mathcal{A}(d,q),\quad  \text{the $\sigma$-algebra of } A(d,q), \text{ as constructed later in the paper} \\
 	&\G := A(2,1),\quad  \text{the set of lines in the real plane}\\
-	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\},\quad \text{identify }SO_2 = \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
+	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\}\\
+	&SO_2 := \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
 	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d,b\in \R^d\},\quad  \text{the set of Euclidean motions} \\
 	&\mP^d_f,\quad \text{the set of finite subsets of $\Z^d$} \\
 	&\mP_f := \mP^2_f 
@@ -267,7 +271,7 @@ After having introduced some basics we will turn our focus in the next chapter t
 \newpage
 \section{Incremental aggregation}
 
-\subsection{Definition}
+\subsection{Definition} \label{iadef}
 
 In this paper we will look at stochastic processes on the set of finite subsets of $\Z^d$, where we start with the one point set $\{0\}$ and incrementally add a point of the boundary of the current cluster according to some distribution. Note that with $0$ with will denote the zero vector. What we get is a randomly point by point growing connected cluster which we will call $\mathit{incremental\ aggregation}$. Define 
 \begin{flalign*}
@@ -347,7 +351,7 @@ The notion of fractal dimension is usually used for sets with uncountable cardin
 \begin{flalign} \label{boxdimension}
 	d_b := - \liminf_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\varepsilon)}.
 \end{flalign} 
-This definition makes sense in many contexts, for example the box-dimension of straight line segments is $1$ and of squares is $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with locally finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique box of side length 1 since the cluster is living on the grid $\Z^d$. We will precise that in chapter \ref{lha}. So instead of decreasing the sizes of the boxes which we cover our set of interest with, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
+This definition makes sense in many contexts, for example the box-dimension of straight line segments is $1$ and of squares is $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with locally finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique box of side length 1 since the cluster is living on the grid $\Z^d$. We will precise that in Chapter \ref{lha}. So instead of decreasing the sizes of the boxes which we cover our set of interest with, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
 Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the Euclidean norm) by 
 \begin{flalign} \label{radius}
 	\rad(A) := \max_{x\in A} |x|,
@@ -372,7 +376,7 @@ We therefore simply get that
 \begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f} \quad \text{a.s.},
 \end{flalign}
-which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in motivates choosing the limes inferior in the definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ a.s. for all $n\in\N$, we get 
+which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in motivates choosing the limes inferior in the Definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ a.s. for all $n\in\N$, we get 
 \begin{flalign*}
 	\alpha_f \leq 1\quad \text{a.s.} 
 \end{flalign*}
@@ -395,11 +399,11 @@ and
 for any incremental aggregation in $\Z^d$. \\
 
 \begin{remark} \label{altdim}
-	Another way of tackling the intuition for a fractal dimension for discrete locally finite sets is the following which is motivated by \cite[Part II Page 98]{fractalwinter} and \cite[Page 83]{lawler}. Let $M\subset \R^d$ be a locally finite set. Let $n\in\N$ and $B_n$ be the ball or radius $n$ and center $0$. We could assign $M$ the dimension $d_M$ if its cardinality $|M\cap B_n|$ inside the ball $B_n$ is of order $n^{d_M}$ for large $n$, so we could define
-	\begin{flalign*}
+	Another way of tackling the intuition for a fractal dimension for locally finite sets is the following which is motivated by \cite[Part II, Section 1, Page 98]{fractalwinter} and \cite[Page 83]{lawler}. Let $M\subset \R^d$ be a locally finite set. Let $n\in\N$ and $B_n$ be the ball with radius $n$ and center $0$. We could interpret the fractal dimension $d_M$ of $M$ as a value such that the cardinality $|M\cap B_n|$ of $M$ inside the ball $B_n$ is rougly of order $n^{d_M}$ for large $n$, so 
+	\begin{flalign} \label{newdef}
 		d_M := \liminf_{n\to\infty} \frac{\ln(|M \cap B_n|)}{\ln(n)}. 
-	\end{flalign*}
-	If we apply that definition to our final cluster $\E_\infty$ it is not clear whether this definition is equivalent to (\ref{fractaldimension}). If we define the fractal dimension as in (\ref{fractaldimension}) we encounter the problem that when the cluster reaches some radius for the first time, then in many instances in the subsequent steps there will particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius (see \autoref{notfilled}). If the fractal dimension shall indicate an asymptotic relation between how many particles of the final cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, the definition in (\ref{fractaldimension}) does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent which we state more clearly in the following conjecture. \\
+	\end{flalign}
+	If we apply that definition to our limit cluster $\E_\infty$ it is not clear whether this definition is equivalent to (\ref{fractaldimension}). If we define the fractal dimension as in (\ref{fractaldimension}) we encounter the problem that when the cluster reaches some radius for the first time, then in many instances in the subsequent steps there will particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius (see \autoref{notfilled}). If the fractal dimension shall indicate an asymptotic relation between how many particles of the limit cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, the definition in (\ref{fractaldimension}) does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent. If the distribution family $\mu$ doesn't favorize outer lying particles for the next aggregation too much, creating long arms and therefore magnifying the problem we are talking about here is rather unprobable. Compared to the size of the cluster, arms will rather decrease in size which lets deminish the difference of Definitions (\ref{fractaldimension}) and (\ref{newdef}) which we state more clearly in the following conjecture. \\
 	
 \end{remark}
 
@@ -524,7 +528,7 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 \begin{definition}
 	For $x\in\Z^d$ and $r\in [1,\infty)$ define 
 	\begin{flalign*}
-		{\mP}^x_r := \{ A\in{\mP}_f\ |\ x\in A, r=\max_{y\in A} |x-y| \text{ and } A \text{ is connected}\}.
+		{\mP}^x_r := \{ A\in{\mP}^d_f\ |\ x\in A, r=\max_{y\in A} |x-y| \text{ and } A \text{ is connected}\}.
 	\end{flalign*}
 \end{definition}
 
@@ -533,11 +537,11 @@ The following lemma gives a tool to handle conditioned probabilites and will be 
 \begin{lemma} \label{mugeneral}
 	Let $q>0$ and $(\mu_A)_{A\in\mP^d_f}$ be translation invariant. If there exists a constant $c>0$ such that for all $r\in [1,\infty)$ we have
 	\begin{flalign*}
-		\mu_A(0) \leq cr^{-q}, \quad \text{ for all } A\in\mP^0_r,
+		\mu_A(0) \leq cr^{-q} \quad \text{ for all } A\in\mP^0_r,
 	\end{flalign*}
 	then there also exists a constant $\tilde c>0$ such that for all $y\in\Z^d$ and $s,r\in [1,\infty)$ with $s\geq r$ we have
 	\begin{flalign*}
-		\mu_A(y) \leq \tilde cr^{-q}, \quad \text{ for all } A\in\mP^y_s.
+		\mu_A(y) \leq \tilde cr^{-q} \quad \text{ for all } A\in\mP^y_s.
 	\end{flalign*}
 \end{lemma}
 \begin{proof}
@@ -570,7 +574,7 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign*}
 		d_f = \frac{1}{\alpha_f}\quad \text{a.s.}
 	\end{flalign*}
-	where $\alpha_f$ is the growth rate as defined in section (\ref{growthrate}), and we will therefore show that
+	where $\alpha_f$ is the growth rate as defined in Section (\ref{growthrate}), and we will therefore show that
 	\begin{flalign*}
 		\alpha_f \leq \frac{1}{1+q}\quad \text{a.s.}.
 	\end{flalign*}
@@ -600,7 +604,7 @@ At this point we are prepared to proof the following theorem.
 	\end{flalign}
 	Note that $h$ is bijective, multiplicative and increasing.\\
 	
-	So now we will try to find a constant $c>0$ such that (\ref{lambda2}) holds. For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to definition $\ref{incrementalaggregation}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined later on. For $n\in\N$ let $\tilde m_n := \beta n^{1+q}$ and define 
+	So now we will try to find a constant $c>0$ such that (\ref{lambda2}) holds. For $n\in\N$ write $\E_n = \{y_1,\dots,y_n\}$ according to Definition $\ref{incrementalaggregation}$, where $y_j$ is the $j$-th point added to the cluster. Let $\beta > 0$ which will be determined later on. For $n\in\N$ let $\tilde m_n := \beta n^{1+q}$ and define 
 	\begin{flalign*}
 		V_n := \{\omega\in\Omega\ |\ T(\omega)(2n) < \tilde m_n\}. 
 	\end{flalign*}
@@ -645,7 +649,7 @@ At this point we are prepared to proof the following theorem.
 			z_i \notin \E_\infty(\omega),\ &j = \infty,
 		\end{cases}
 	\end{flalign*}
-	so $\tau_i$ is either the index $j$ such that the $j$-th added point is $z_i$, or infinity if the final cluster $\E_\infty$ doesn't contain $z_i$. $\tau_i$ is measurable because for $j\in\N$ we have 
+	so $\tau_i$ is either the index $j$ such that the $j$-th added point is $z_i$, or infinity if the limit cluster $\E_\infty$ doesn't contain $z_i$. $\tau_i$ is measurable because for $j\in\N$ we have 
 	\begin{flalign*}
 		\tau_i^{-1}(j) = \{y_j = z_i\} \in \mathcal{F}
 	\end{flalign*}
@@ -725,7 +729,7 @@ At this point we are prepared to proof the following theorem.
 		&\geq 1 - \tilde Cn^{-q} \\
 		&=(1 - \tilde Cn^{-q})^1. 
 	\end{flalign*} 
-	where we used that $\mu$ is an outside distribution. Note that we can use Lemma \ref{mugeneral} because $\rad(\overline{\E\cup\{z_i\}}) \geq n$ since $z_1\in\E\cup\{z_i\}$ as we conditioned on $U_{[z]}^i$. Note that the harmonic measure doesn't care about the order of how points where added to form the current cluster as mentioned in remark \ref{orderindependence}. Note that by lemma \ref{mugeneral} the chosen $\tilde C$ has a strong universal property such that it doesn't depend on $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. Now let the statement be true for some $k=l$. Then again by Lemma \ref{mugeneral} we have
+	where we used that $\mu$ is an outside distribution. Note that we can use Lemma \ref{mugeneral} because $\rad(\overline{\E\cup\{z_i\}}) \geq n$ since $z_1\in\E\cup\{z_i\}$ as we conditioned on $U_{[z]}^i$. Note that the harmonic measure doesn't care about the order of how points where added to form the current cluster as mentioned in Remark \ref{orderindependence}. Note that by Lemma \ref{mugeneral} the chosen $\tilde C$ has a strong universal property such that it doesn't depend on $n_i\leq j <\infty$, $m_i\leq m$ or $\E\in E_m$. Now let the statement be true for some $k=l$. Then again by Lemma \ref{mugeneral} we have
 	\begin{flalign*} 
 		\PP(\sigma_i > l+1\ |\ \Gamma_{ij}) &= \PP(\sigma_i > l, y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}) \\
 		&= \PP(\sigma_i>l\ |\ \Gamma_{ij}) \PP(y_{l+1} \neq z_{i+1}\ |\ \Gamma_{ij}, \sigma_i>l) \\
@@ -809,11 +813,7 @@ The following model of an incremental aggregation uses a very natural family of 
 
 \subsection{Fractal dimension and growth rate of external DLA in $\Z^2$}
 
-There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results for external DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context and empirically they find a fractal dimension of around $1.8$. There is also a theory that predicts 
-\begin{flalign*}
-	d_f = \frac{d^2 + 1}{d+1}
-\end{flalign*}
-in $\Z^d$ which seems to agree fairly well with simulations which you can find in \cite{vicsek}. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA for which we will use theorem \ref{iatheorem}. Recall that $\mP_f := \mP_f^2$. 
+There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results for external DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context and empirically they find a fractal dimension of around $1.8$. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA for which we will use Theorem \ref{iatheorem}. Recall that $\mP_f := \mP_f^2$. 
 
 \begin{lemma}
 	The familiy of harmonic measures $(h_A)_{A\in\mP_f}$ in $\Z^2$ is translation invariant.
@@ -843,13 +843,13 @@ in $\Z^d$ which seems to agree fairly well with simulations which you can find i
 \end{proof}
 
 \begin{theorem} \label{dlatheorem}
-	For the fractal dimension of external DLA in $\Z^2$ as defined in section $\ref{notion}$ equation $(\ref{fractaldimension})$ we have
+	For the fractal dimension of external DLA in $\Z^2$ as defined in $(\ref{fractaldimension})$ we have
 	\begin{flalign}
 		d_f \geq \frac{3}{2} \quad \text{a.s.}.
 	\end{flalign}	
 \end{theorem}
 \begin{proof}
-	We have shown that the harmonic measure is translation invariant and it is not difficult to understand that the harmonic measure is an outside distribution as defined in definition \ref{outsidedist}. Together with theorem \ref{keytheorem} we can therefore use theorem \ref{iatheorem} with $q = \frac{1}{2}$ to conclude that 
+	We have shown that the harmonic measure is translation invariant and it is not difficult to understand that the harmonic measure is an outside distribution as defined in Definition \ref{outsidedist}. Together with Theorem \ref{keytheorem} we can therefore use Theorem \ref{iatheorem} with $q = \frac{1}{2}$ to conclude that 
 	\begin{flalign*}
 		d_f \geq 1 + \frac{1}{2} = \frac{3}{2}\quad \text{a.s.}.
 	\end{flalign*}
@@ -871,7 +871,7 @@ We have therefore shown a lower bound of $1.5$ for the fractal dimension of exte
 
 \subsection{Motivation}
 
-In the following we will look at a process with another simple idea for its distribution. For this process we will in this paper only consider the $2$-dimensional case $\Z^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. A similar approach can be found in $\cite{ballistic}$ as a so called ballistic model, where they let particles move on straight lines to the cluster, but just from a small range of directions. Our approach here extends this idea, as we will try to choose a random direction out of all directions in the plane. The difficulty here is to argue that this random choosing happens in a senseful and fair way considering the asymmetry of an already formed cluster. Anyway we will see that the fractal dimension of $2$ which is guessed in \cite{ballistic} for their ballistic model matches the one we will prove rigorously here. \\
+In the following we will look at a process with another simple idea for its distribution. For this process we will consider the $2$-dimensional case $\Z^2$. The idea is to let particles move on straight lines coming from infinity and add them to the cluster where they hit it. A similar approach can be found in $\cite{ballistic}$ as a so called ballistic model, where they let particles move on straight lines to the cluster, but just from a small range of directions. Our approach here extends this idea, as we will try to choose a random direction out of all directions in the plane. The difficulty here is to argue that this random choosing happens in a senseful and fair way considering the asymmetry of an already formed cluster. Anyway we will see that the fractal dimension of $2$ which is guessed in \cite{ballistic} for their ballistic model matches the one we will prove rigorously here. \\
 \\Obviously in most cases particles cannot move completely straight on $\Z^2$. Therefore we will consider points in $\Z^2$ as the centers of unit squares in $\R^2$ and let the particles move along straight lines in the plane $\mathbb{R}^2$. We consider a line hitting a point in $\Z^2$ if and only if it intersects its unit square as defined in the following. Note that we identify $\R^2$ with $\C$ here. Also recall that $\mP_f$ is the set of finite subsets of $\Z^2$ and $\G$ is the set of lines in the plane. 
 
 \begin{definition} \label{squares}
@@ -924,12 +924,11 @@ In the following we will look at a process with another simple idea for its dist
 \end{figure}
 
 \begin{definition} \label{ghitA}
-	Let $g=g_{\alpha,p}\in \G$ and $A\in \mP_f$. For the context in this chapter we define 
-	
+	Let $g=g_{\alpha,p}\in \G$ and $A\in \mP_f$. We define
 	\begin{align*}
-		g\cap A := \{ p\in A\ |\ g \cap sq(p)\neq \emptyset\}
+		g^A := \{ p\in A\ |\ g \cap sq(p)\neq \emptyset\}
 	\end{align*}
-	which is the subset of all points in $A$ which are hit by $g$ (see $\autoref{linesquares}$). For the following we suppose $g\cap A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g\cap A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mP_f$ with $g\cap A \neq\emptyset$. We choose two points $x,y\in g\cap A$ and split the definition of the relation $\triangleleft$ into four cases, depending on whether the line $g$ goes from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis or parallel to the $y$-axis. Denote the real part of $x$ with $\re(x)$ and the imaginary part with $\im(x)$. \\
+	which is the subset of all points in $A$ which are hit by $g$ (see $\autoref{linesquares}$). For the following we suppose $g^A \neq \emptyset$. We will define a total ordered relation $\triangleleft$ on $g^A$ which shall be defined equivalently for all $g\in \G$ and $A\in\mP_f$ with $g^A \neq\emptyset$. We choose two points $x,y\in g^A$ and split the definition of the relation $\triangleleft$ into four cases, depending on whether the line $g$ goes from left-bottom to right-top, left-top to right-bottom, parallel to the $x$-axis or parallel to the $y$-axis. Denote the real part of $x$ with $\re(x)$ and the imaginary part with $\im(x)$. \\
 	\\
 	$\mathit{Case}\ 1:\quad g\ \text{ is parallel to the x-axis}\quad (\Leftrightarrow\quad \alpha = \frac{\pi}{2})$
 	\begin{align*}
@@ -955,11 +954,11 @@ In the following we will look at a process with another simple idea for its dist
 	\im(x) > \im(y), & \text{ if } \re(x) = \re(y).
 	\end{cases}
 	\end{align*}\\
-	It is easy to calculate that this defines a well-defined relation on $g\cap A$. In the following we will prove that this relation is totally ordered. 
+	It is easy to calculate that this defines a well-defined relation on $g^A$. In the following we will prove that this relation is totally ordered. 
 \end{definition}
 
 \begin{lemma}
-	For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g\cap A\neq \emptyset$ the relation $\triangleleft$ on $g\cap A$ is totally ordered. 
+	For a line $g=g_{\alpha,p}\in\G$ and $A\in \mP_f$ with $g^A\neq \emptyset$ the relation $\triangleleft$ on $g^A$ is totally ordered. 
 \end{lemma}
 
 \begin{proof}
@@ -969,22 +968,17 @@ In the following we will look at a process with another simple idea for its dist
 	\\
 	$\mathit{Transitivity:}$ For transitivity let $x \triangleleft y$ and $y \triangleleft z$. We find four cases. In case $\re(x) \neq \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) < \re(z)$ by transitivity of $<$, hence $x \triangleleft z$. In case $\re(x)\neq \re(y)$ and $\re(y) = \re(z)$ we get $\re(x) < \re(y) = \re(z)$, therefore $x \triangleleft z$. In case $\re(x) = \re(y)$ and $\re(y) \neq \re(z)$ we get $\re(x) = \re(y) < \re(z)$, similar as the last case. In the last case $\re(x) = \re(y) = \re(z)$ we get $\im(x) < \im(y)$ and $\im(y) < \im(z)$ and again by transitivity of $<$ we get $\im(x) < \im(z)$, hence $x \triangleleft z$ again. \\
 	\\
-	$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g\cap A$ we have either $\re(x) \neq \re(y)$ or $\re(x) = \re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
+	$\mathit{Connexity:}$ Connexity is given since for any two points $x,y\in g^A$ we have either $\re(x) \neq \re(y)$ or $\re(x) = \re(y)$ and therefore either $x\triangleleft y$ or $y\triangleleft x$.
 \end{proof}
 
 \begin{remark}
-	The relation $\triangleleft$ on $g\cap A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g\cap A$ with respect to $\triangleleft$. To clarify, we define $\min (g\cap A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g\cap A,x\neq x_0$, analogously $\max(g\cap A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where the line $g$ hits $A$ first and where it hits $A$ last. What we want to do next is to choose a line randomly and fair out of all lines which hit the current cluster. This is isn't obvious and we will have to develop and argue a most fair underlying distribution on lines in the next section where we will touch basic aspects of Integral Geometry. 
+	The relation $\triangleleft$ on $g^A$ basically orders the hitting points of $g$ with $A$ from left to right (or bottom to top in case of a line parallel to the $y$-axis). This order allows us to identify the outermost hitting points which are the minimum and maximum of $g^A$ with respect to $\triangleleft$. To clarify, we define $\min_\triangleleft (g^A) := x_0$ if and only if $x_0 \triangleleft x$ for all $x\in g^A,x\neq x_0$, analogously $\max_\triangleleft(g^A)$. This means when moving on $g$ facing $A$ coming from infinity this order allows to know where the line $g$ hits $A$ first and where it hits $A$ last. What we want to do next is to choose a line randomly and fair out of all lines which hit the current cluster. This is isn't obvious and we will have to develop and argue a most fair underlying distribution on lines in the next section where we will touch basic aspects of Integral Geometry. 
 \end{remark}
-
-
-
-
-
 
 
 \subsection{Excursion: Integral geometry}
 
-In the next section we want to define an incremental aggregation for which distribution we need some concepts and results from integral geometry. We will want to fairly choose a random line out of all lines which intersect the current cluster. It is not obvious how to choose a line in a fair way since most of the time the cluster will be strongly non symmetric. We will introduce a possible solution for this problem first through the abstract and general concepts of integral geometry and later through the parametrisation of lines as defined in \ref{linedef} for the $2$-dimensional case which goes hand in hand with the general result.
+In the next section we want to define an incremental aggregation for which distribution we need some concepts and results from integral geometry. We will want to fairly choose a random line out of all lines which intersect the current cluster. It is not obvious how to choose a line in a fair way since most of the time the cluster will be strongly non symmetric. We will introduce a possible solution for this problem through the parametrisation of lines as defined in \ref{linedef} for the $2$-dimensional case which goes hand in hand with a more general result of integral geometry which we will touch first.
 
 \subsubsection{General results}
 
@@ -1005,20 +999,17 @@ Let $d\in\N$ and $q\in \{0,\dots,d\}$. In the general context we are in $\R^d$ a
 	\end{flalign*} 
 \end{definition}
 
-\begin{theorem} \label{uniqmeas}
-	On $A(d,q)$ there exists an unique $G_d$-invariant Radon measure $\mu_q$ such that
+\begin{remark} \label{uniqmeas}
+	It can be shown that on $A(d,q)$ there exists an unique $G_d$-invariant Radon measure $\mu_q$ such that 
 	\begin{flalign}
 		\mu_q([B_d(0,1)]) = \kappa_{d-q}, 
 	\end{flalign}
-	where $\kappa_n := \lambda_n(B_n(0,1))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$, and $\kappa_0:=1$.
-\end{theorem}
-\begin{proof}
-	\cite{stoch1} Theorem 4.26 \\ \\ MAKE PROOF CLEARER
-\end{proof}
+	where $\kappa_n := \lambda_n(B_n(0,1))$ is the $n$-dimensional Lebesque meausure of the $n$-dimensional unit ball for $n\in \N$ and $\kappa_0:=1$. We won't argue that further here. For more information see at \cite{stoch1}. 
+\end{remark}
 
 \subsubsection{Construction in the plane: Isotropic lines}
 
-For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We want to show in the following that the way we defined a $\sigma$-algebra on $\G$ in definition \ref{linedef} is equivalent to the general definition in \ref{generalsigma}. To do that it is convenient to use a special generator set for the Borel-$\sigma$-algebra $\mathcal{B}_\Phi$. 
+For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We want to show in the following that the way we defined a $\sigma$-algebra on $\G$ in Definition \ref{linedef} is equivalent to the general Definition \ref{generalsigma}. To do that it is convenient to use a special generator set for the Borel-$\sigma$-algebra $\mathcal{B}_\Phi$. 
 
 \begin{lemma} \label{generators}
 	Define 
@@ -1098,7 +1089,7 @@ For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We want
 	We define the measure $\mu := {\lambda_2}_{|\Phi} \circ \chi^{-1}$ on $(\G,\GG)$ where ${\lambda_2}_{|\Phi}$ is the $2$-dimensional Lebesgue measure restricted to $\Phi$. We say a measure $\nu$ on $(\G,\GG)$ is locally finite if for any $K\in \K^2$ we have $\nu([K])<\infty$. 
 \end{definition}
 
-\begin{lemma}
+\begin{lemma} \label{invariant}
 	$\mu$ is locally finite and $G_2$-invariant. 
 \end{lemma}
 \begin{proof}
@@ -1193,7 +1184,7 @@ For our special case we choose $d=2$ and $q=1$, thus lines in the plane. We want
 	\end{flalign*}
 \end{example}
 
-By theorem \ref{uniqmeas} we know that $\mu$ is, up to a factor, the only Euclidean motion invariant measure on $\G$. Since it is locally finite, we can define for any $K\in \K^2$ a probability measure on $\G$ by
+In Remark \ref{uniqmeas} we have mentioned that it can be shown that $\mu$ is, up to a factor, the only Euclidean motion invariant measure on $\G$. Even without presenting the proof here, being locally finite and Euclidean motion invariant as we have shown it in Lemma \ref{invariant} gives $\mu$ very strong properties which we would expect of a senseful and fair measure on lines. Since it is locally finite, we can therefore for any $K\in \K^2$ define a probability measure on $\G$ by
 \begin{flalign*}
 	\PP^K_\mu(A) := \frac{\mu( A\cap [K])}{\mu([K])},\quad A\in \GG.
 \end{flalign*}
@@ -1236,7 +1227,7 @@ If we choose a simple convex set such as $K=B_r$, the ball around the origin wit
 \end{proof}
 
 \begin{remark} \label{choosekiso}
-	Both lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that it is a realization of a $K$-isotropic line. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$, a ball with a big enough radius such that it contains $K$, then a $B$-isotropic line is realized by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$, respectively. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. But note that $K$ has to be convex for this construction. This gives the base to define a new incremental aggregation in the next section.
+	Both Lemmas \ref{circ} and \ref{chi} give a help for realizing $K$-isotropic lines for complicated sets $K$. Lemma \ref{circ} tells us that we if we are looking for a $K$-isotropic line, we can actually take a convex, compact set $B$ which contains $K$ and realize $B$-isotropic lines. If we realize such a line and it happens that it intersects $K$, we know that it is a realization of a $K$-isotropic line. And how to realize $B$-isotropic lines? Lemma \ref{chi} tells us that if we choose $B=B_r$, a ball with a big enough radius such that it contains $K$, then a $B$-isotropic line is realized by choosing the line parameters $\alpha $ and $p$ uniformly in $[0,\pi)$ and $[-r,r]$, respectively. Finally we have a practicable process of choosing random $K$-isotropic lines, even if $K$ happens to be very asymmetric and complicated. But note that $K$ has to be convex for this construction. This gives the base to define a new incremental aggregation in the next section.
 \end{remark}
 
 
@@ -1244,56 +1235,62 @@ If we choose a simple convex set such as $K=B_r$, the ball around the origin wit
 
 \subsection{Definition}
 
-We are now able to choose a line randomly out of all lines hitting a cluster in a fair and agreeable way, which are $K$-isotropic lines as presented in Definition \ref{isotropic}. All in all we have realized the mathematical structure to define the incremental aggregation as we have planned it in the motivation in the beginning of this chapter. Recall that for a bounded subset $A\subset \C$ the convex hull $conv(A)$ of $A$ is defined to be the smallest convex set containing $A$, formally 
+We are now able to choose a line randomly out of all lines hitting a cluster in a fair and agreeable way, which are $K$-isotropic lines as presented in Definition \ref{isotropic}. All in all we have realized the mathematical structure to define the incremental aggregation as we have planned it in the motivation in the beginning of this chapter. Recall that for a bounded subset $B\subset \C$ the convex hull $\text{conv}(B)$ of $A$ is defined to be the smallest convex set containing $B$, formally 
 \begin{flalign*}
-	conv(A) := \bigcap_{A\subset K\in \K^2} K \in \K^2. 
+	\text{conv}(B) := \bigcap_{B\subset K\in \K^2} K \in \K^2. 
 \end{flalign*}
-For a set $A\in \mP_f$ we define 
-\begin{flalign*}
-	conv(A):=conv(\bigcup_{p\in A} sq(p))
-\end{flalign*}
-and since $\bigcup_{p\in A} sq(p)$ is a bounded set we have $conv(A)\in \K^2$. Recall the definition 
+Recall also the definition 
 \begin{flalign*}
 	[B] := \{g\in\G\ |\ g\cap B \neq \emptyset\}
 \end{flalign*}
-for Borel-sets $B\in\mathcal{B}^2$. 
+for Borel sets $B\in\mathcal{B}^2$ and
+\begin{flalign*}
+	g^A := \{p\in A\ |\ g\cap sq(p) \neq\emptyset\}
+\end{flalign*} 
+for $A\in\mP_f$. 
 
 \begin{definition} \label{linehittingdistribution}
-	$\mathit{(random\ line\ hitting\ distribution)}$ Let $A\in \mP_f$ and $K := conv(A)$. For $x\in\Z^2$ and $g\in \G$ define
+	$\mathit{(Random\ line\ hitting\ distribution)}$ Let $A\in \mP_f$ and $K := \text{conv}(sq(A))$. For $x\in\Z^2$ and $g\in \G$ define
 	\begin{flalign*} 
-		\gamma_A(g) := \frac{1}{2}\1\{|g\cap A| \geq 2\} + \1\{|g\cap A| = 1\},
+		\gamma_A(g) := \begin{cases}
+			0,\quad &\text{if }|g^A| = 0,\\
+			1,\quad &\text{if }|g^A| = 1,\\
+			\frac{1}{2},\quad &\text{if }|g^A| \geq 2,
+		\end{cases}
 	\end{flalign*}
+and
 	\begin{flalign} \label{mu}
-		\tilde \mu_A(x,g) := \gamma_A(g)
+		\tilde \mu_A(x,g) := 
 		\begin{cases}
-			\1\{x\in \{\min(g\cap A),\max(g\cap A)\}\}, &\text{ if } g\cap A\neq \emptyset, \\
-			0, &\text{ if } g\cap A = \emptyset.
+			\gamma_A(g), &\text{if } g^A\neq \emptyset\text{ and } x\in \{\min_\triangleleft(g^A),\max_\triangleleft(g^A)\}, \\
+			0, &\text{else}.
 		\end{cases}
 	\end{flalign}
-	and
+	For fixed $A\in\mP_f$ and $g\in\G$, $\tilde \mu_A(x,g)$ assigns probabilities for each value $x\in A$ which is $0$ if $g^A$ is empty, also $0$ if $x$ is not minimum or maximum of $g^A$, $\frac{1}{2}$ if $x$ is minimum or maximum and those two values are different and finally $1$ if $x$ is minimum and maximum, thus $g^A=\{x\}$. We then define the following distribution on $A$ by 
 	\begin{flalign} \label{lhadist}
 		\mu_A(x) := \frac{1}{\PP^K_\mu([sq(A)])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
 	\end{flalign}
-	We quickly show that $\mu_A\in \mathcal{D}_A$. For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
+	We quickly show that $\mu_A\in \mathcal{D}_A$ (recall Definition \ref{iadef}). For all $x\in \Z^2\setminus A$ and $g\in \G$ we have $\tilde \mu_A(x,g) = 0$ and therefore $\mu_A(x) = 0$. Furthermore for all $g\in \G$ we have
 	\begin{flalign*}
-		\sum_{x\in A} \tilde \mu_A(x,g) = \begin{cases}
-			\frac{1}{2}2, \quad &|g\cap A| \geq 2, \\
-			1, \quad &|g\cap A| = 1, \\
-			0, \quad &|g\cap A| = 0.
-		\end{cases} \quad= \1\{g\cap A\neq \emptyset\}
+		\sum_{x\in A} \tilde \mu_A(x,g) &= \begin{cases}
+			0, \quad &|g^A| = 0, \\
+			1, \quad &|g^A| = 1, \\
+			\frac{1}{2}2, \quad &|g^A| \geq 2.
+		\end{cases} \\
+	&= \1_{[sq(A)]}(g)
 	\end{flalign*} 
 	and therefore 
 	\begin{flalign*}
-		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([sq(A)])}\ \int_\G \1\{g\cap A\neq \emptyset\}\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([sq(A)])}{\PP^K_\mu([sq(A)])} = 1. 
+		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([sq(A)])}\ \int_\G \1_{[sq(A)]}(g)\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([sq(A)])}{\PP^K_\mu([sq(A)])} = 1. 
 	\end{flalign*}
 	Hence, the family of distributions $(\mu_A)_{A\in \mP_f}$ defines an incremental aggregation. 
 \end{definition}
 
-\begin{definition} $(\mathit{line\ hitting\ aggregation)}$ An incremental aggregation with the random line hitting distribution we call $\mathit{line\ hitting\ aggregation}$, short $\mathit{LHA}$. 
+\begin{definition} $(\mathit{Line\ hitting\ aggregation)}$ An incremental aggregation with the random line hitting distribution we call $\mathit{line\ hitting\ aggregation}$, short $\mathit{LHA}$. 
 \end{definition}
 
 \begin{remark} \label{easy}
-	Let $A\in\mP_f$. If $A$ is connected then with $K:=conv(A)$ we have $[sq(A)]=[K]$, leading to $\PP^K_\mu([sq(A)]) = 1$. Therefore we get 
+	Let $A\in\mP_f$. If $A$ is connected as a subgraph of $\Z^2$ then with $K:=\text{conv}(sq(A))$ it is easy to see that $[sq(A)]=[K]$, leading to $\PP^K_\mu([sq(A)]) = 1$. Therefore we get 
 	\begin{flalign*}
 		\mu_A(x) &= \frac{1}{\PP^K_\mu([sq(A)])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) \\
 		&= \int_{[sq(x)]} \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) + \int_{\G\setminus [sq(x)]} \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg) \\
@@ -1315,7 +1312,7 @@ In this section we will try to give an idea of the fractal dimension of the line
 \end{theorem}
 
 \begin{proof}
-	Let $r\geq 1$, $A\in\mP^0_r$ and $K:=conv(A)$. Since $A$ is connected we can use remark \ref{easy} and the examples \ref{exp1} and \ref{exp2} to get
+	Let $r\geq 1$, $A\in\mP^0_r$ and $K:=\text{conv}(sq(A))$. Since $A$ is connected we can use Remark \ref{easy} and the Examples \ref{exp1} and \ref{exp2} to get
 	\begin{flalign*}
 		\mu_A(0) &\leq \PP^K_\mu([sq(0)]) \\
 		&= \frac{\mu([sq(0)])}{\mu([K])} \\
@@ -1323,7 +1320,7 @@ In this section we will try to give an idea of the fractal dimension of the line
 		&= \frac{2\pi}{2r} \\
 		&= \pi r^{-1}.
 	\end{flalign*}
-	Note that $sq(0)\subset B_1$. Note also that we used that since $K$ is convex and has at least radius $r$ as a set in $\R^2$ it certainly contains a line segment of length $r$, and since $\mu$ is translation and rotation invariant we can here choose the segment $[0,r] \times \{0\}$ and state $[0,r] \times \{0\} \subset K$ without loss of generality. Since choosing $c:=\pi$ is not depening on $r$ or $A$ this completes the proof. 
+	Note that $sq(0)\subset B_1$. We used that since $K$ is convex and has at least radius $r$ as a set in $\C$ it certainly contains a line segment of length $r$, and, since $\mu$ is translation and rotation invariant, we can choose the segment $[0,r] \times \{0\}$ for the computation of the denominator. Since choosing $c:=\pi$ does not depend on $r$ or $A$ this completes the proof. 
 \end{proof}
 
 We are therefore prepared to proof the following theorem.
@@ -1336,64 +1333,64 @@ We are therefore prepared to proof the following theorem.
 \end{theorem}
 
 \begin{proof}
-	It is not difficult to proof that the line hitting distribution is translation invariant and an outside distribution, just like the harmonic measure in external DLA. Recall the definitions \ref{translinv} and \ref{outsidedist}. Together with theorem \ref{lhaconjecture} we can therefore use theorem \ref{iatheorem} and choose $q=1$ to get
+	It is not difficult to proof that the line hitting distribution is translation invariant and an outside distribution, just like the harmonic measure in external DLA. Recall the Definitions \ref{translinv} and \ref{outsidedist}. Together with Theorem \ref{lhaconjecture} we can therefore use Theorem \ref{iatheorem} and choose $q=1$ to get
 	\begin{flalign*}
 		d_f \geq 1+1 = 2 \quad \text{a.s.}.
 	\end{flalign*}
-	Since $d_f\leq 2$ a.s. by chapter \ref{notion} (\ref{trivialboundary}) we therefore get $d_f=2$ a.s..
+	Since $d_f\leq 2$ a.s. by (\ref{trivialboundary}) we therefore get $d_f=2$ a.s..
 \end{proof}
 
 
 
 \newpage
 \section{Python simulations} \label{simulation}
-In this section we will present a simulation for the line hitting aggregation and approximate its fractal dimension empirically. The simulation is written in $\mathit{python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
-\\LINK \\
-\\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in this code. Every value in $\C$ with integer components can be represented by squares as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realizations of LHA as close as possible to its mathematical definition. \\
+In this section we will present a simulation for the line hitting aggregation. The simulation is written in $\mathit{python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
+\\\textbf{https://github.com/tillmanntristanbosch/incremental-aggregations.git} \\
+\\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in this code. Every value in $\C$ with integer components can be represented by a square as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realizations of LHA as close as possible to its mathematical definition. \\
 \\Note that this software also contains a simulation for external DLA. This simulation doesn't claim to be implemented very close to its mathematical definition, but it is good enough to play around and create images with it, and get a vague visual comparison of the two aggregation models. 
 
 
 
 \subsection{Code}
-In the following we will describe the code and claim that it is a precise implementation of LHA, excluding errors from python packages and machine calculation. In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, datetime, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of import packages only these packages will have an effect on the mathematical preciseness of the realised process. Other than that every calculations preciseness is bounded to some extent by the preciseness of machine calculation. We will ignore a study on that in this simulation. \\
-\\When using the software you will have the possibility to enter some parameters in the $\mathit{parameters.json}$ file which include colorings of background and particle pixels, how many particles you want the cluster to have at the end and how big the created image shall be. An example of this file looks like this:\\
+In the following we will describe the code and claim that it is a precise implementation of LHA, excluding errors from python packages and machine calculation. In the simulation we are using imports for systemic purposes (\textbf{pygame, sys, json, time, datetime, os, shutil}) and for mathematical purposes (\textbf{random, math.sin, math.cos, math.pi, math.log}). Only the imports for mathematical purposes are used for the calculation of a realization of LHA. So on the side of import packages only these packages will have an effect on the mathematical precision of the realized process. Other than that every calculations precision is bounded to some extent by the precision of machine calculation. We will ignore a study on that in this simulation. \\
+\\When using the software we will have the possibility to enter some parameters in the $\mathit{parameters.json}$ file which include colorings of background and particle pixels, how many particles we want the cluster to have at the end and how big the created image shall be. An example of this file looks like this:\\
 \\
 \includegraphics[height=3.33cm]{images/code-snippets/parameters.png} \\
 \\
-The value $\mathit{color\_generation\_size}$ specifies how big one generation of a color shall be in the case that you chose more than one color to print the particles. This allows to visualize layers of the aggregation and produce beautiful rainbowlike colored realizations. Since for the simulation here we go for only black particle color, the color generation size does not have any effect in this case. With the $\mathit{fractal\_calculation\_range}$ you can have influence on how the approximation of the fractal dimension shall be calculated, more on that later. You can find more about setting parameters in the README file of the repository. \\
+The value $\mathit{color\_generation\_size}$ specifies how big one generation of a color shall be in the case that we choose more than one color to print the particles. So if we for example enter the values $["000000","\text{ff0000}","\text{ffffff}"]$ for $"particle\_color"$ and $100$ for $"color\_generation\_size"$, then the first 100 particles will be printed in color $"000000"$ (black), the next 100 in $"\text{ff}0000"$ (red), the next in $"\text{ffffff}"$ (white) and the next again in black, and so on. This allows to visualize layers of the aggregation and produce beautiful rainbowlike colored realizations. Since for the simulation here we only use black particle color, the color generation size does not have any effect in this case. With the $\mathit{fractal\_calculation\_range}$ we can have influence on how the approximation of the fractal dimension shall be calculated, more on that later. We can find more about setting parameters in the README file of the repository. \\
 
-\noindent If correct parameters are set, you can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing information about the creation time, fractal dimension values and a list of all particle coordinates for potential later use. \\
-\\We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there you will find comments or other irrelevant differences, which we leave away here. \\
+\noindent If correct parameters are set, we can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing information about the creation time, fractal dimension values and a list of all particle coordinates for potential later use. \\
+\\We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there we will find comments or other irrelevant differences, which we leave away here. \\
 \\The main executed python file $\mathit{main.py}$ looks like this:\\
 \\
 \includegraphics[height=4.66cm]{images/code-snippets/mainpy.png} \\
 \\
-Note again that you can also run an external DLA simulation but we do not claim that it is mathematically precise and therefore won't argument that in this paper. The parameters in $\mathit{parameters.json}$ are read and depending on which process (LHA or DLA) shall be simulated, the according object gets initiated and its $\mathit{run\_process}$ method gets executed. Both classes $\mathit{Line\_Hitting\_Aggregation}$ and $\mathit{External\_DLA}$ base on the class $\mathit{Incremental\_Aggregation}$. So the full init of LHA looks like: \\
+Note again that we can also run an external DLA simulation but we do not claim that it is mathematically precise and therefore we do not discuss it here. The parameters in $\mathit{parameters.json}$ are read and depending on which process (LHA or DLA) shall be simulated, the according object gets initiated and its $\mathit{run\_process}$ method gets executed. Both classes $\mathit{Line\_Hitting\_Aggregation}$ and $\mathit{External\_DLA}$ base on the class $\mathit{Incremental\_Aggregation}$. So the full initialization of LHA looks like: \\
 \\
 \includegraphics[height=1.8cm]{images/code-snippets/initia.png} \\
 \\
 \includegraphics[height=1.1cm]{images/code-snippets/lhainit.png} \\
 \\
-We init the particle set $\mathit{particles}$ as a set containg $0$, init the boundary set which in every iteration of the process will contain all neighbours of all particles in the particle set and set the initial cluster radius to $0$. As neighbours we only consider the neighbour coordinates up, down, left and right as defined in \ref{zgraph}. \\
-\\After initializing a $\mathit{Line\_Hitting\_Aggregation}$ object the method $\mathit{run\_process}$ gets executed, which looks like the following: \\
+We initialize the particle set $\mathit{particles}$ as a set containing $0$, initialize the boundary set which in every iteration of the process will contain all neighbours of all particles in the particle set that are not in the particle set themselves and set the initial cluster radius to $0$. As neighbours we only consider graph neighbours (up, down, left and right) as defined in \ref{zgraph}. \\
+\\After initializing a $\mathit{Line\_Hitting\_Aggregation}$ object the method $\mathit{run\_process}$ gets executed, which reads as follows: \\
 \\
 \includegraphics[height=5cm]{images/code-snippets/runprocess.png} \\
 \\
-This method will directly run a loop with $\mathit{data["cluster\_size"] - 1}$ iterations. In each iteration exactly one particle will be added to the particle set, so at the end we end up with exactly $\mathit{data["cluster\_size"]}$ particles since we started with one particle. \\
-\\If we call $K$ the current cluster it is now important to understand again, how choosing random $K$-isotropic lines works. In \ref{choosekiso} we have argumented that a $K$-isotropic line can be realized by considering a circle $B$ which contains the current cluster $K$ and choose a $B$-isotropic line which intersects with the circle. If it happens that this line intersects with $K$, by \ref{circ} we know that we have realised a random $K$-isotropic line. The method $\mathit{get\_random\_line}$ \\
+This method will directly run a loop with $\mathit{data["cluster\_size"] - 1}$ iterations. In each iteration exactly one particle will be added to the particle set, so that we end up with exactly $\mathit{data["cluster\_size"]}$ particles since we started with one particle. \\
+\\If we call $K$ the current cluster it is now important to recall again, how choosing random $K$-isotropic lines works. In \ref{choosekiso} we have argued that a $K$-isotropic line can be realized by considering a ball $B$ which contains the current cluster $K$ and choose a $B$-isotropic line. If it happens that this line intersects with $K$ then, by \ref{circ}, we know that we have realized a random $K$-isotropic line. The method $\mathit{get\_random\_line}$ \\
 \\
 \includegraphics[height=1.8cm]{images/code-snippets/randomline.png} \\
 \\
-produces uniformly chosen line parameters, and using $\mathit{cluster\_radius + 2}$ here ensures that the line is hitting a surrounding circle $B$. The method $\mathit{random.random()}$ produces an uniformly chosen value in $[0,1)$. The fact that $\mathit{random.random()}$ cannot choose the value $1$ doesn't disturb the distribution of the line since $\{1\}$ is a zero set for the $2$-dimensional Lebesque-measure. By \ref{chi}, choosing these line parameters uniformly indeed realises a random $B$-isotropic line. \\
-\\The method $\mathit{line\_hits\_cluster}$ \\
+produces a uniformly chosen pair of line parameters$(\alpha,p)$, and using $\mathit{cluster\_radius + 2}$ here ensures that the resulting ball $B$ does contain the cluster. The method $\mathit{random.random()}$ produces an uniformly chosen value in $[0,1)$. The fact that $\mathit{random.random()}$ cannot choose the value $1$ doesn't disturb the distribution of the line since $\{1\}$ is a zero set for the $1$-dimensional Lebesgue-measure. By \ref{chi}, choosing these line parameters uniformly indeed realizes a random $B$-isotropic line. \\
+\\After having realized a $B$-isotropic line by choosing its line parameters as described above, we want to check whether the line hits the cluster or not which is implemented in the method $\mathit{line\_hits\_cluster}$. \\
 \\
 \includegraphics[height=1.8cm]{images/code-snippets/linehitscluster.png} \\
 \\
-bases on the method $\mathit{intersects\_with\_polygon}$ which evaluates whether a line intersects with a given polygon or not (the implemented geometry classes $\mathit{Line}$ and $\mathit{Polygon}$ you can find in the file $\mathit{geometry.py}$). Here the polygon is a square given by the method \\
+This method bases on the method $\mathit{intersects\_with\_polygon}$ which evaluates whether a line intersects with a given general polygon or not (the implemented geometry classes $\mathit{Line}$ and $\mathit{Polygon}$ we can find in the file $\mathit{geometry.py}$). Here the polygon is a square given by the method \\
 \\
 \includegraphics[height=0.8cm]{images/code-snippets/getsquare.png} \\
 \\
-which in total implements the definitions \ref{squares} and \ref{ghitA}. \\
+which implements the Definitions \ref{squares} and \ref{ghitA}. \\
 \\If the condition is satisfied that a chosen line hits the cluster, we enter the if-condition and then choose the next particle with the method $\mathit{get\_next\_particle}$\\
 \\
 \includegraphics[height=1.8cm]{images/code-snippets/nextparticle.png} \\
@@ -1402,17 +1399,18 @@ which first collects all particle squares in the boundary set which are hit by t
 \\
 \includegraphics[height=6cm]{images/code-snippets/islower.png} \\
 \\
-which implements the total ordered relation on all squares which got hit by the line as defined in \ref{ghitA}. Minimum and maximum are then canonically calculated with respect to this relation. \\
-\\After having realised the next particle, values like the particle set, the boundary set and the cluster radius get actualized and the next iteration starts.
+which implements the totally ordered relation on all squares which got hit by the line as defined in \ref{ghitA}. Minimum and maximum are then canonically calculated with respect to this relation. \\
+\\After having realized the next particle, values like the particle set, the boundary set and the cluster radius get updated and the next iteration starts. When all iterations are calculated, data like the image, the informations file and a copy of the parameters file are created which can be found in the folder $\mathit{exports}$. In the image file we can see the process printed in the colors we have specified in the parameters file. In the information file we can find date and time when the simulation was run, the running time of the simulation in seconds, the linear regression parameters, the last fractal dimension value and volume ratio as described in the next section, and finally the whole list of particles of the process for later use. \\
+\\In the next section we look at some empirical values of LHA. 
 
 
-\subsection{Empirical fractal dimension of LHA}
+\subsection{Empirical values of LHA}
 
-In this section we present what our simulations produce in terms of images and fractal dimension values. Since by theorem \ref{2theorem} we already know that the fractal dimension of the line hitting aggregation is $2$, our approximation for the fractal dimension here have the purpose to give an idea of the convergence behaviour against the value $2$. First it is not trivial how to create a senseful approximation for the fractal dimension. If we go back to the definition 
+In this section we present what our simulations produce in terms of images and fractal dimension values. Since by Theorem \ref{2theorem} we already know that the fractal dimension of the line hitting aggregation is $2$, our approximation for the fractal dimension here has the purpose to give an idea of the convergence behaviour towards the value $2$. First it is worth to mention that it is not trivial to create a senseful approximation for the fractal dimension. If we go back to the definition 
 \begin{flalign*}
 	d_f = \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}
 \end{flalign*}
-we can go with the ansatz that 
+we can start with the ansatz that 
 \begin{flalign*}
 	\rad(\E_n) \approx c n^{\frac{1}{d_f}}
 \end{flalign*}
@@ -1420,17 +1418,17 @@ for some constant $c>0$ and therefore get
 \begin{flalign} \label{linearplot}
 	\ln(\rad(\E_n)) \approx \frac{1}{d_f} \ln(n) + \ln(c). 
 \end{flalign}
-We therefore could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\rad(\E_n))$ for a range of values $n\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters and have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} and the discussion in remark \ref{altdim} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. To get more stable parameters it might make sense to come back to conjecture \ref{fullclusters} 
+Therefore we could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\rad(\E_n))$ for a range of values $n\in\{1,\dots,m\}$, $m\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters as functions of the maximum value $m$. We have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} and the discussion in Remark \ref{altdim} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. To get more stable parameters it might make sense to come back to Conjecture \ref{fullclusters} that 
 \begin{flalign*}
-	d_f = \limsup_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)}
+	d_f = \limsup_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)}.
 \end{flalign*}
-where with the ansatz
+With the ansatz
 \begin{flalign} \label{ansatz}
-	 |\E_\infty \cap B_n| \approx c n^{d_f}
+	 |\E_\infty \cap B_n| \approx c_1 n^{d_f}
 \end{flalign}
-for some constant $c>0$ we would get 
+for some constant $c_1>0$ we would get 
 \begin{flalign} \label{newlinreg}
-	\ln(|\E_\infty \cap B_n|) \approx d_f \ln(n) + \ln(c). 
+	\ln(|\E_\infty \cap B_n|) \approx d_f \ln(n) + \ln(c_1). 
 \end{flalign}
 
 \begin{figure}[t]
@@ -1447,12 +1445,12 @@ for some constant $c>0$ we would get
 	\label{filledup}
 \end{figure}
 
-Recall that $\E_\infty \cap B_n$ is the set of all particles in the final cluster $\E_\infty$ which lie in $B_n$ the ball of radius $n$ with center $0$. Since it is not possible to realize $\E_\infty$ we have to go with a approximation here. What we want is to compare the particle count of \glqq filled up\grqq\ clusters at radius $n$. If we have a look at \autoref{filledup} we see that in a certain range of radii $n$ the clusters $\E_\infty \cap B_n$ seem to be fairly filled up to their radius. This range of radii is what can be specified in the $\mathit{parameters.json}$ file in the $\mathit{fractal\_calculation\_range}$ field (see in the git repository). If $r$ is the radius of the cluster we found that it makes sense to not start the observation at $0$ but a bit higher like $0.2r$ to avoid distorted values occuring by the beginning of the process. On the other side we found empirically that $0.75r$ seems to be a fair upper ratio where the clusters in most cases seem to be fairly filled up. \\
-\\So all in all we will look at radii $n$ in the specified range $[0.2r, 0.75r]$ and count all particles of the cluster which lie in $B_n$, which shall be an approximation of $|\E_\infty \cap B_n|$. After that we calculate the linear regression parameters $\hat d_f$ and $\hat \ln(c)$ of the logarithmized values as in (\ref{newlinreg}) which happens in the following method:\\
+Recall that $\E_\infty \cap B_n$ is the set of all particles of the limit cluster $\E_\infty$ which lie in $B_n$, the ball with radius $n$ and center $0$. Since it is not possible to realize $\E_\infty$, we have to use an approximation here. What we want to compare is the particle number of \glqq filled up\grqq\ clusters with their radius. If we have a look at \autoref{filledup} and let $r$ be the radius of the cluster in the figure, then we can see that in a certain range of radii $n\in[ar,br]$ with values $0\leq a< b \leq 1$ the clusters $\E_\infty \cap B_n$ seem to be fairly filled up (this range is described with the two red circles). This range of radii is what can be specified in the $\mathit{parameters.json}$ file in the $\mathit{fractal\_calculation\_range}$ field (see in the git repository). We found that it makes sense to not start the observation at $0$ but a bit higher like $a=0.2$ to avoid distorted values occuring by the beginning of the process. On the other side we found empirically that $b=0.75$ seems to be a fair upper ratio where the clusters in most cases seem to be fairly filled up. Note that in the parameters file we should enter the values $a$ and $b$, not $ar$ and $br$. So a correct setting would be $[0.2,0.75]$.  \\
+\\So all in all we will look at radii in the specified range $n\in[0.2r, 0.75r]$ and count all particles of the cluster which lie in $B_n$, which shall be an approximation of $|\E_\infty \cap B_n|$. After that we calculate the linear regression parameters $\hat d_f$ and $\hat c_1$ for $d_f$ and $\ln(c_1)$, respectively, as described in (\ref{newlinreg}) which happens in the following method:\\
 \\
 \includegraphics[height=7.5cm]{images/code-snippets/fractalnew.png} \\
 \\
-You will find every of the following realized simulations in the folder $\mathit{exports}$ of the git repository. Inside a folder you will find three types of files, one is the created image, one contains values of all particle coordinates and fractal dimension values and the third is a copy of the parameters file with which the simulation was preset. More on that you can find in the README file of the repository. The names of the folder and files will have a certain format to identify each simulation clearly. The folder name
+We will find every of the following realized simulations in the folder $\mathit{exports}$ of the git repository. Inside a folder we will find three types of files, one is the created image, one contains information about the process as described at the end of the last section and the third is a copy of the parameters file the simulation was preset with. More on that we can find in the README file of the repository. The names of the folder and files will have a certain format to identify each simulation clearly. The folder name
 \begin{flalign*}
 	\text{2021\_03\_02\_02\_37\_54\_\_lha\_100000}
 \end{flalign*}
@@ -1460,12 +1458,12 @@ indicates that the folder contains a realized LHA simulation with 100000 particl
 \begin{flalign*}
 	\text{2021\_03\_02\_11\_02\_25\_\_dla\_5000}
 \end{flalign*}
-for a realized simulation of DLA. For the following observation we have run the line hitting aggregation from 10000 to 100000 twice at each 10000 step which makes 20 simulations in total. The simulations have calculated the values in \autoref{lhasimulation}. A plot of the values you can find in \autoref{plot}. 
+is the folder of a realized simulation of DLA. For the following observation we have run the line hitting aggregation from 10000 to 100000 twice at each 10000 step which makes 20 simulations in total. The simulations have produced the values in \autoref{lhasimulation}. A plot of the values can be found in \autoref{plot}. The plot indicates a rather slow convergence of the empirical dimension values towards the theoretical value $2$. Something similar was guessed by \cite{ballistic}. For a further empirical study on this convergence behaviour more simulations would be necessary. \\
 
 \begin{table}[t]
 	\centering
 	\begin{tabular}{llll}
-		$\mathbf{Simulation\ name}$                       & $d_f$   & $\ln(c)$   & $v_{lha}$\\
+		$\mathbf{Simulation\ name}$                       & $\hat d_f\ (d_f)$   & $\hat c_1\ (\ln(c_1))$   & $\hat c_v\ (c_v)$\\
 		\hline
 		2021\_03\_04\_09\_40\_51\_\_lha\_10000  & 1.8601 & 0.8083 & 0.4198\\
 		2021\_03\_04\_10\_05\_53\_\_lha\_10000  & 1.8679 & 0.7847 & 0.4222\\
@@ -1500,37 +1498,39 @@ for a realized simulation of DLA. For the following observation we have run the 
 	\begin{subfigure}[b]{.45\textwidth}
 		\includegraphics[width=1\linewidth]{images/volumeplot.png}
 	\end{subfigure}
- \caption{Linear regression parameters and volumina ratio of LHA}
+ \caption{Linear regression parameters and volume ratio of LHA}
  \label{plot}
 \end{figure}
 
-
-The plot indicates a rather slow convergence of the impirical dimension values to the final value $2$. Something similar was guessed by \cite{ballistic}. For a further empirical study on this convergence behaviour more data has to be created which we don't follow further in this paper. \\
-\\Another interesting value to calculate is the following. Since we know that the fractal dimension for LHA is $2$, we can rewrite (\ref{ansatz}) to get
+Another interesting value to calculate is the following. Since we know that the fractal dimension for LHA is $2$, we can rewrite (\ref{ansatz}) to get
 \begin{flalign} \label{ansatz2}
-	|\E_\infty \cap B_n| \approx c n^2 
+	|\E_\infty \cap B_n| \approx c_2 n^2 
 \end{flalign}
-which can be transformed to
+for some constant $c_2>0$ which can be transformed to
 \begin{flalign*}
-	\frac{c}{\pi} \approx \frac{|\E_\infty \cap B_n|}{\pi n^2}.
+	\frac{c_2}{\pi} \approx \frac{|\E_\infty \cap B_n|}{\pi n^2}.
 \end{flalign*}
-We can see that $\frac{c}{\pi}$ describes the relation between the volume of the cluster in the ball $B_n$ and the volume of the ball $B_n$ itself. If we look at
+We can see that $\frac{c_2}{\pi}$ describes the relation between the volume of the cluster in the ball $B_n$ and the volume of the ball $B_n$ itself. Hence $\frac{c_2}{\pi}$ can be interpreted as the $\mathit{volume}$ $\mathit{fraction}$ of the limit cluster $\E_\infty$ which can be formally defined as
+\begin{flalign*}
+	c_v := \lim_{n\to\infty} \frac{|\E_\infty \cap B_n|}{\pi n^2},
+\end{flalign*}
+if the limit exists. If we look at the ansatz
 \begin{flalign} \label{newlinreg2}
-	\ln(|\E_\infty \cap B_n|) \approx 2 \ln(n) + \ln(c). 
+	\ln(|\E_\infty \cap B_n|) \approx 2 \ln(n) + \ln(c_2)
 \end{flalign}
-we can, similar to linear regression, calculate an in the sense of minimal quadratic error optimal estimator $\hat c$ for $\ln(c)$ which satisfies
+similar to linear regression we can calculate an in the sense of a minimal quadratic error optimal estimator $\hat c_2$ for $\ln(c_2)$ which satisfies
 \begin{flalign*}
-	\hat c = \underset{c\in\R}{\text{argmin}} \sum_{n = a}^{b} (\ln(|\E_\infty \cap B_n|) - (2 \ln(n) + c))^2,
+	\hat c_2 = \underset{c\in\R}{\text{argmin}} \sum_{n = m_1}^{m_2} (\ln(|\E_\infty \cap B_n|) - (2 \ln(n) + c))^2,
 \end{flalign*}
-where $a := \min ([0.2r, 0.75r] \cap \N)$ and $b:=\max ([0.2r, 0.75r] \cap \N)$. It is not difficult to show that $\hat c$ can be calculated by
+where $m_1 := \min ([0.2r, 0.75r] \cap \N)$ and $m_2:=\max ([0.2r, 0.75r] \cap \N)$. It is not difficult to show that $\hat c_2$ is given by
 \begin{flalign*}
-	\hat c = \frac{1}{b-a+1} \sum_{n = a}^{b} \ln(|\E_\infty \cap B_n|) - 2 \ln(n). 
+	\hat c_2 = \frac{1}{m_2-m_1+1} \sum_{n = m_1}^{m_2} \ln(|\E_\infty \cap B_n|) - 2 \ln(n). 
 \end{flalign*}
-We can then calculate back the volume ratio $v_{lha}$ with
+We can then obtain an estimator $\hat c_v$ for the volume ratio $c_v$ via
 \begin{flalign*}
-	v_{lha} := \frac{e^{\hat c}}{\pi}.
+	\hat c_v := \frac{e^{\hat c_2}}{\pi}.
 \end{flalign*}
-In \autoref{lhasimulation} you can find the values for $v_{lha}$ which got calculated by our simulations. \autoref{plot} indicates that the volumina ratio decreases with higher particle numbers and possibly start to stabilize at around $v_{lha} \approx 0.38$. Anyway for better empirics we would need more data which again may be part of another work. 
+In \autoref{lhasimulation} we can find the values for $\hat c_v$ which have been produced by our simulations. \autoref{plot} indicates that the volume ratio decreases as the number of particles grows and possibly starts to stabilize at around $c_v \approx 0.38$. For a further study on the volume ratio again more simulations would be necessary. 
 
 
 
@@ -1575,8 +1575,33 @@ In the following we present some of the realized images of our LHA and external 
 \end{figure}
 
 
+\newpage
 
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[height=8cm]{images/ia/2021_03_03_21_23_50___100000__10000__8923.png}
+		\caption{2021\_03\_03\_21\_23\_50\_\_lha\_100000, green, color generation size of 10000}
+	\end{subfigure}
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[height=8cm]{images/ia/2021_03_04_15_58_28___50000__5000__5250.png}
+		\caption{2021\_03\_04\_15\_58\_28\_\_lha\_50000, rising blue, color generation size of 5000}
+	\end{subfigure}
+\end{figure}
 
+\vspace*{\fill}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[height=8cm]{images/ia/2021_03_03_19_59_39___10000__2000__7448.png}
+		\caption{2021\_03\_03\_19\_59\_39\_\_dla\_10000, five colors , color generation size of 2000}
+	\end{subfigure}
+	\begin{subfigure}[b]{.49\textwidth}
+		\includegraphics[height=8cm]{images/ia/2021_03_04_00_42_19___200000__10000__6945.png}
+		\caption{2021\_03\_04\_00\_42\_19\_\_lha\_200000, dual color, color generation size of 10000}
+	\end{subfigure}
+\end{figure}
 
 
 
@@ -1586,7 +1611,7 @@ In the following we present some of the realized images of our LHA and external 
 \newpage
 
 \section{Review}
-In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of defining a fractal dimension for such discrete clusters. We then moved our attention to $\Z^2$ and found for this case in theorem \ref{iatheorem} a condition for proving a lower bound of the fractal dimension. We where able to apply this theorem for both incremental aggregations we looked at in this paper, external diffusion limited aggregation (external DLA) and the line hitting aggregation (LHA). For external DLA we found a lower bound of 
+In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of a fractal dimension for such discrete clusters. We then moved our attention to $\Z^2$ and found for this case in Theorem \ref{iatheorem} a condition for proving a lower bound of the fractal dimension. We where able to apply this theorem for both incremental aggregations we looked at in this paper, external diffusion limited aggregation (external DLA) and the line hitting aggregation (LHA). For external DLA we found a lower bound of 
 \begin{flalign*}
 	d_f^{dla} \geq \frac{3}{2}\quad\text{a.s.}
 \end{flalign*}
@@ -1594,9 +1619,9 @@ and for the line hitting aggregation we were even able to find the exact dimensi
 \begin{flalign*}
 	d_f^{lha} = 2 \quad\text{a.s.}.
 \end{flalign*}
-In the last chapter we provided simulations for both incremental aggregations. Especially the one for LHA was tried to be implemented as close to its mathematical definition as possible. \\
-\\All in all did we here only touch the properties of incremental aggregations. The most known incremental aggregation you can find in literature is probably external DLA, but the general definition here in this paper provides a door into looking for other interesting incremental aggregations aswell. \\
-\\I hope that I could raise interest in this topic through my work in this paper and I invite the reader to play around with the code I provided in a github repository (see at the beginning of chapter \ref{simulation}). I feel delighted to watch at the beautiful realizations of the aggregations and I hope the reader can feel similar looking at them and realizing images him- and herself. 
+In the last chapter we provided simulations for both incremental aggregations. Especially the one for LHA was implemented as close to its mathematical definition as possible. \\
+\\All in all did we here only touch the properties of incremental aggregations. The most known incremental aggregation we can find in literature is probably external DLA, but the general definition here in this paper opens a door to other interesting incremental aggregations. \\
+\\I hope that I could raise interest in this topic through my work in this paper and I invite the reader to play around with the code I provided in a github repository (see at the beginning of Chapter \ref{simulation}). I feel delighted to watch at the beautiful realizations of the aggregations and I hope the reader can feel similar looking at them and realizing images him- and herself. 
 
 
 
@@ -1611,64 +1636,58 @@ In the last chapter we provided simulations for both incremental aggregations. E
 \thispagestyle{empty}
 
 \bibitem{wittensander}
-T. A. Witten and L. M. Sander
-\emph{Diffusion-limited aggregation}.
-1983
-
-\bibitem{stoch1}
-Daniel Hug, Günter Last, Steffen Winter.
-\emph{Stochastic Geometry, 	Lecture Notes (summer term 2020)}.
-Institute of Technology, Karlsruhe, 2020
-
-\bibitem{sackmann}
-Franz Sackmann. 
-\emph{Zufällige Geraden, Staatsexamensarbeit}.
-University Karlsruhe (TH), Karlsruhe, 2007
-
-\bibitem{lawler}
-Gregory F. Lawler
-\emph{Intersections of Random Walks}.
-University of Chicago, 1996
-
-\bibitem{henze}
-Norbert Henze
-\emph{Irrfahrten - Faszination der Random Walks}
-Institute of Technology, Karlsruhe, 2018
-
-\bibitem{fractalwinter}
-Uta Freiberg, Ben Hambly, Michael Hinz and Steffen Winter
-\emph{Fractal Geometry and Stochastics VI}
-2020
-
-\bibitem{magnetic}
-J. Gonzalez-Gutierrez, J. L. Carrillo-Estrada and J. C. Ruiz-Suarez
-\emph{Aggregation and dendritic growth in a magnetic granular system}
-2013
+T. A. Witten and L. M. Sander: \emph{Diffusion-limited aggregation}, 1983\\
+DOI: https://doi.org/10.1103/PhysRevB.27.5686\\
+Download: 09.03.2021
 
 \bibitem{hausdorff}
-Egbert Brieskorn
-\emph{Felix Hausdorff zum Gedächtnis, Band I, vieweg Verlag}
-1996
+Egbert Brieskorn: \emph{Felix Hausdorff zum Gedächtnis I}, vieweg, 1996\\
+DOI: 10.1007/978-3-322-80276-7\\
+Download: 09.03.2021
 
-\bibitem{markov}
-Prof. Dr. Stefan Tappe
-\emph{Markov-Ketten, lecture script summer semester 2018}
-Abteilung für Mathematische Stochastik, Albert-Ludwigs-Universität Freiburg
+\bibitem{lawler}
+Gregory F. Lawler: \emph{Intersections of Random Walks}, Birkhäuser, 1996
 
 \bibitem{ballistic}
-D. Bensimon, B. Shraiman and S. Liang
-\emph{On the ballistic model of aggregation}
-Physics Letter, University of Chicago
-1984
+D. Bensimon, B. Shraiman and S. Liang: \emph{On the ballistic model of aggregation}, 1984\\
+DOI: https://doi.org/10.1016/0375-9601(84)90701-1\\
+Download: 09.03.2021
 
-\bibitem{snowflake}
-https://modernistcuisinegallery.com/
+\bibitem{magnetic}
+J. Gonzalez-Gutierrez, J. L. Carrillo-Estrada and J. C. Ruiz-Suarez: \emph{Aggregation and dendritic growth in a magnetic granular system}, 2013\\
+DOI: 10.1088/1742-5468/2013/12/P12015\\
+Download: 09.03.2021
 
-\bibitem{vicsek}
-Tamás Vicsek
-\emph{Fractal growth phenomena}
-1989
+\bibitem{sackmann}
+Franz Sackmann: \emph{Zufällige Geraden}, 2007\\
+Staatsexamensarbeit at University Karlsruhe (TH)
 
+\bibitem{fractalwinter}
+Ecaterina Sava-Huss, Uta Freiberg, Ben Hambly, Michael Hinz and Steffen Winter: \emph{Fractal Geometry and Stochastics VI}, Preprint 2020\\
+Download: 09.03.2021
+\begin{Verbatim}[fontsize=\small]
+https://www.math.kit.edu/stoch/~winter/seite/pub/media/fgs6book_draft.pdf
+\end{Verbatim}
+
+\bibitem{markov}
+Prof. Dr. Stefan Tappe: \emph{Markov-Ketten}, 2018\\
+Lecture at Albert-Ludwigs-Universität Freiburg\\
+Download: 09.03.2021
+\begin{Verbatim}[fontsize=\tiny]
+https://www.stochastik.uni-freiburg.de/lehre/ss-2018/vorlesung-markov-ketten-ss-2018/markov_ketten_ss_2018.pdf
+\end{Verbatim}
+
+\bibitem{henze}
+Norbert Henze: \emph{Irrfahrten - Faszination der Random Walks}, Springer Spektrum, 2. Auflage, 2018
+
+\bibitem{stoch1}
+Rolf Schneider, Wolfgang Weil: \emph{Stochastic and integral geometry}. Springer, Berlin, Heidelberg, 2008
+
+\bibitem{own}
+Photographs made by the author of this paper, Tillmann Tristan Bosch
+
+\bibitem{unsplash}
+Free license images from www.unsplash.com
 
 \end{thebibliography}
 
@@ -1684,7 +1703,10 @@ Tamás Vicsek
 Herewith I assure that I created this paper self-reliant and on my own and that I did not use any material in this paper that I have not mentioned. The sources and contents I used in this paper I clearly labeled as such. I assure that I respected the statute for good and scientifical practice in the most current version of the Institute of Technology Karlsruhe, Germany.\\[2ex] 
 
 \noindent
-Karlsruhe, den 08. März 2021\\[5ex] 
+Karlsruhe, 9. March 2021\\[5ex] 
 
+\vspace*{\fill}
+
+This work is created with \LaTeX\ and apart of the photographs all graphics in this work are created with Geogebra (https://www.geogebra.org/calculator) or Python package $\mathit{pygame}$. 
 \end{document}
 
