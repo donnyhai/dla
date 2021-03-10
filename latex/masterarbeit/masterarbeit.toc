@@ -7,22 +7,22 @@
 \contentsline {subsection}{\numberline {2.4}Random walks}{6}{subsection.2.4}%
 \contentsline {section}{\numberline {3}Incremental aggregation}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Definition}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Notion of fractal dimension and growth rate}{9}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}A rigorous characterization for the fractal dimension}{13}{subsection.3.3}%
-\contentsline {section}{\numberline {4}External diffusion limited aggregation}{22}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Definition}{22}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Fractal dimension and growth rate of external DLA in $\mathbb {Z}^2$}{22}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Line hitting aggregation}{24}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Motivation}{24}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Excursion: Integral geometry}{27}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}General results}{28}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{28}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Definition}{35}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Fractal dimension and growth rate of LHA in $\mathbb {Z}^2$}{37}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Python simulations}{38}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Code}{38}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Empirical values of LHA}{42}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Images}{47}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Review}{50}{section.7}%
-\contentsline {section}{\numberline {8}Declaration}{52}{section.8}%
+\contentsline {subsection}{\numberline {3.2}Notion of fractal dimension and growth rate}{11}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}A rigorous characterization for the fractal dimension}{15}{subsection.3.3}%
+\contentsline {section}{\numberline {4}External diffusion limited aggregation}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Definition}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Fractal dimension and growth rate of external DLA in $\mathbb {Z}^2$}{24}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Line hitting aggregation}{26}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Motivation}{26}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Excursion: Integral geometry}{29}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}General results}{30}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Construction in the plane: Isotropic lines}{30}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Definition}{37}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Fractal dimension and growth rate of LHA in $\mathbb {Z}^2$}{39}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Python simulations}{40}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Code}{40}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Empirical values of LHA}{44}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Images}{49}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Review}{53}{section.7}%
+\contentsline {section}{\numberline {8}Declaration}{55}{section.8}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

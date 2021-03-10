@@ -1,0 +1,72 @@
+GENERAL KEYWORDS: Progress in wavelet analysis and applications
+
+
+
+Sava-Huss Paper Resultate:
+obere Schranke für Wachstumsgeschwindigkeit von r(E_n) in Z^d
+N(n)>Cn^(d-1) Anzahl Partikel in B_n in Z^d
+H_n number of holes tends to infinity a.s. in Z^2
+properties of walks on Z
+questions: 
+E[r(E_n)] of order n^(1/d)?
+distribution of ends of E_inf on Z^d?
+-> external DLA in a wedge of Z^d
+Zylinder-Graphen
+
+
+
+MR1917996
+Multifractal structure of the harmonic measure of diffusion-limited aggregates.
+physics
+2002 PDF DOWNLOADED
+
+MR1909232
+How to grow isotropic on-lattice diffusion-limited aggregates.
+2002 PDF DOWNLOADED
+
+MR2212061
+noise reduction, aggregate probabilities (e.g. P = (neighbourswithparticles/totalneighbours)^2)
+Is it really possible to grow isotropic on-lattice diffusion-limited aggregates?
+2006 PDF DOWNLOADED
+
+MR3729626
+One-dimensional long-range diffusion-limited aggregation III—The limit aggregate
+2017 PDF DOWNLOADED
+
+Zbl 07206380
+Stabilization of DLA in a wedge
+We consider Diffusion Limited Aggregation (DLA) in a two-dimensional wedge. We prove that if the angle of the wedge is smaller than π/4, there is some a>2 such that almost surely, 
+for all R large enough, after time Ra all new particles attached to the DLA will be at distance larger than R from the origin.
+2020 PDF DOWNLOADED
+
+Zbl 0647.60090
+random walk dimension comparing with fractal dimension of DLA (d_w = d_f + 1)
+1986 PDF DOWNLOADED
+
+Zbl 0925.82171
+scaling a model of witten-sander-type
+Summary: We try to prove rigorously that the perimeter of the large Witten-Sander cluster does not scale as the square root of its area, by making a forced comparison with the ill-posed 
+Hele-Shaw problem of fluid dynamics. The attempt is not completely successful; nevertheless some interesting consequences of the comparison are derived.
+1992 PDF DOWNLOADED
+
+Zbl 0726.92030
+description of geometric structures of aggregates. comparing DLA and cluster-cluster aggregation model and proposing adjustments to both models
+1987 ONLY BOOK
+
+Zbl 0879.28018 
+Summary: Fourier and wavelet transforms of fractal objects show specific scaling properties from which fractal dimensions may be deduced. When applied to Witten and Sander aggregates, 
+these two techniques, in their optical and numerical versions, give conflicting results. We describe and hopefully explain these contradictions.
+1993 ONLY BOOK
+
+Zbl 0882.28007
+Summary: We use the wavelet transform microscope to explore the intricate geometry of fractal aggregates. We show that the statistical self-similarity of Witten and Sander diffusion 
+limited aggregates (DLA) is related to the existence of a predominant structural five-fold symmetry. We report on the discovery of Fibonacci sequences in the DLA morphology with a 
+branching ratio which converges to the golden mean.
+1993 ONLY BOOK
+
+
+
+
+
+
+

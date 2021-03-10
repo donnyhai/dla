@@ -115,9 +115,9 @@
 	
 	\noindent In this paper we will look at two ways of letting grow such clusters and simulate them with python at the end to produce visuals and some empirical values. We will call such point by point growing clusters $\mathit{incremental\ aggregations}$ and present the two models briefly here:\\
 
-	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$ was initially introduced by \cite[Witten and Sander, 1983]{wittensander}. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Despite this simple definition there are only few rigorously proved results on this process. In $d$ dimensions the fractal dimension of any incremental aggregation lies in between 1 and $d$ and here we prove an almost sure lower bound of 1.5 in $\Z^2$. Empirical studies calculate a value around 1.7 to 1.8 in $\Z^2$ (see for example \cite{magnetic}).  \\
+	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$, short external DLA, was initially introduced by \cite[Witten and Sander, 1983]{wittensander}. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Despite this simple definition there are only few rigorously proved results on this process. In Chapter \ref{notion} we will introduce the notion of a fractal dimension of incremental aggregations. In $d$ dimensions the fractal dimension of any incremental aggregation lies in between 1 and $d$ and here we prove an almost sure lower bound of 1.5 in $\Z^2$. Empirical studies calculate a value around 1.7 to 1.8 in $\Z^2$ (see for example \cite{magnetic}).  \\
 	
-	\noindent $\mathbf{Line\ Hitting\ Aggregation}$ is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which are chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So one way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA and therefore have a higher fractal dimension which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they guess a fractal dimension of 2 for their ballistic model and here we will actually be able to prove this result for the ballistic model we define in this paper. \\
+	\noindent $\mathbf{Line\ Hitting\ Aggregation}$, short LHA, is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which are chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So one way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA and therefore have a higher fractal dimension which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they guess a fractal dimension of 2 for their ballistic model and here we will actually be able to prove this result for the ballistic model we define in this paper. \\
 	
 	\noindent We will first draw our attention to the general definition of incremental aggregations and a notion of their fractal dimension. We will then present a general relationship between the distribution family of an incremental aggregation and a lower bound for its fractal dimension. We will then turn our attention to the two models we discuss in this paper, first external DLA and the line hitting aggregation in the chaper after. We the help of the general theorem for incremental aggregations we will prove an lower bound for external DLA and even an exact result for line hitting aggregation. At the end we will present simulations for both aggregations of which only the one for the line hitting aggregation shall satisfy the claim of being implemented as close to its mathematical definition as possible. At the end we especially hope the reader to relate with the processes and enjoy the created images.
 	
@@ -160,22 +160,16 @@
 \section{Preliminaries} \label{prelim}
 
 \subsection{Symbols} \label{symbols}
-Let $d\in \N$ and $q\in \{0,\dots,d\}$. 
+Define the natural numbers $\N = \{1,2,3,\dots\}$, let $d\in \N$ and $q\in \{0,\dots,d\}$. 
 \begin{flalign*}
-	&\N = \{1,2,3,\dots\},\quad \text{the set of natural numbers (without 0)}\\
-	&\N_0 = \N\cup\{0\}\\
-	&\N^\infty = \N \cup \{\infty\}\\
 	&\mathcal{B}^d,\quad \text{$d$-dimensional Borel-$\sigma$-algebra of $\R^d$} \\
 	&\K^d,\quad \text{the set of convex and compact sets in }\R^d\\
 	&B_d(x,r) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
 	&B_r := B_2(0,r) \\
-	&S_{d-1}(x,r) = \partial B_d(x,r),\quad  \text{the $(d-1)$-dimensional surface of the $d$-dimensional ball}\\
-	&A(d,q),\quad \text{the set of q-dimensional affine subspaces of }\R^d \\
-	&\mathcal{A}(d,q),\quad  \text{the $\sigma$-algebra of } A(d,q), \text{ as constructed later in the paper} \\
-	&\G := A(2,1),\quad  \text{the set of lines in the real plane}\\
+	&\G,\quad  \text{the set of lines in the plane}\\
 	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\}\\
 	&SO_2 := \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
-	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d,b\in \R^d\},\quad  \text{the set of Euclidean motions} \\
+	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d\text{ and }b\in \R^d\},\quad  \text{Euclidean motions} \\
 	&\mP^d_f,\quad \text{the set of finite subsets of $\Z^d$} \\
 	&\mP_f := \mP^2_f 
 \end{flalign*}
@@ -184,7 +178,7 @@ Let $d\in \N$ and $q\in \{0,\dots,d\}$.
 
 \subsection{Expressions}
 
-Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that \glqq $A \text{ holds }\mathbb{P}\text{-a.s.}$\grqq, or short \glqq$ A\text{ holds } \text{a.s.}$\grqq ($A$ holds almost surely). Another short expression we will use is that if for a set of logical statements $(A_t)_{t\in I}$ with $I\in\{\N,\R\}$ we say \glqq $A_t$ holds for large $t$\grqq\ it shall mean that there exists a $T\in I$ such that $A_t$ holds for all $t>T$. Here we mean that a logical statement holds if and only if the statement is true. 
+Throughout the paper let  $(\Omega,\mathcal{F}, \mathbb{P})$ be a probability space. If for $A\in \mathcal{F}$ we have $\mathbb{P}(A)=1$ we will say that \glqq $A \text{ holds }\mathbb{P}\text{-a.s.}$\grqq, or short \glqq$ A\text{ holds } \text{a.s.}$\grqq\ ($A$ holds almost surely). Another short expression we will use is that if for a set of logical statements $(A_t)_{t\in I}$ with $I\in\{\N,\R\}$ we say \glqq $A_t$ holds for large $t$\grqq\ it shall mean that there exists a $T\in I$ such that $A_t$ holds for all $t>T$. Here we mean that a logical statement holds if and only if the statement is true. 
 
 
 \subsection{Graphs} \label{zgraph}
@@ -222,12 +216,10 @@ So a random walk can be understood as a particle starting from some point $x$ an
 
 \begin{definition}
 	Let $A\subset \Z^d$. We define the $hitting\ times$ of A by
-	
-	\begin{align*}
+	\begin{flalign*}
 		T_A := \min \{n\geq 0\ |\ S_n\in A\}\text{ and } T^+_A := \min \{n\geq 1\ |\ S_n\in A\}, 
-	\end{align*}
-	
-	\noindent and $T_y:= T_{\{y\}}$ and $T^+_y:= T^+_{\{y\}}$ for $y\in \Z^d$.
+	\end{flalign*}
+	and $T_y:= T_{\{y\}}$ and $T^+_y:= T^+_{\{y\}}$ for $y\in \Z^d$. We allow $T_A=\infty$ and $T_A^+=\infty$ if $A$ never gets hit. 
 \end{definition}
 
 \begin{definition}
@@ -337,6 +329,94 @@ Properties of an incremental aggregation obviously base strongly on the properti
 	for all $z\in A$ and $A\in\mP^d_f$. 
 \end{definition}
 
+As a last result before coming to the next section we want to prove an useful result here. 
+
+\begin{theorem} \label{limexists}
+	For each $\omega\in\Omega$ the limit
+	\begin{flalign*}
+		\lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n(\omega)))}
+	\end{flalign*}
+	exists. 
+\end{theorem}
+
+\begin{proof}
+	Let $\omega\in\Omega$, define $r_n := \rad(\E_n(\omega))$ and let $N\in\N$ such that $r_n>\sqrt{d}$ for all $n>N$ which exists by Lemma \ref{rtinfty}. For $n>N$ define
+	\begin{flalign*}
+		a_n := \frac{\ln(n)}{\ln(r_n)}.
+	\end{flalign*}
+	Further define
+	\begin{flalign*}
+		M := \{m>N\ |\ r_{m+1} > r_m\}
+	\end{flalign*}
+	and write $M=\{m_1, m_2, \dots\}$ with $m_i<m_j$ for $i<j$. By Lemma \ref{rtinfty} we know that $|M|=\infty$. For $i\in\N$ we further define
+	\begin{flalign*}
+		B_i := \frac{\ln(m_{i+1})}{\ln(r_{m_{i+1}})}
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		C_i := \frac{\ln(m_i)}{\ln(r_{m_i}) + \ln(2)}. 
+	\end{flalign*}
+	Let $i\in\N$ and $n\in\{m_i + 1,\dots,m_{i+1}\}$. Note that on $\{m_i + 1,\dots,m_{i+1}\}$ the sequence $(a_n)$ is increasing since its denominator $\ln(r_n)$ is constant on that set. We therefore get
+	\begin{flalign*}
+		a_n \leq B_i
+	\end{flalign*}
+	and 
+	\begin{flalign*}
+		a_n \geq \frac{\ln(m_i + 1)}{\ln(r_{m_i + 1})} \geq  \frac{\ln(m_i)}{\ln(r_{m_i} + \sqrt{d})} \geq \frac{\ln(m_i)}{\ln(2r_{m_i})} = C_i. 
+	\end{flalign*}
+	We used here that $r_{m_i + 1}\leq r_{m_i} + \sqrt{d}$ since adding one particle can increase the radius maximally by the diagonal of a $d$-dimensional box which is $\sqrt{d}$. Since $m_i>N$ we also used that $r_{m_i}>\sqrt{d}$ by definition of $N$. If we define sequences $(b_n)_{n>N}$ and $(c_n)_{n>N}$ by
+	\begin{flalign*}
+		b_n := \sum_{i=1}^{\infty} B_i\ \1_{\{m_i + 1,\dots,m_{i+1}\}}(n)
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		c_n := \sum_{i=1}^{\infty} C_i\ \1_{\{m_i + 1,\dots,m_{i+1}\}}(n)
+	\end{flalign*}
+	for $n>m_1$, then we simply get that
+	\begin{flalign*}
+		c_n \leq a_n \leq b_n
+	\end{flalign*}
+	for all $n>m_1$. Since $(B_i)_{i\in\N}$ is a subsequence of $(a_n)_{n>N}$ and $a_n\leq b_n$ for all $n>m_1$, we get
+	\begin{flalign*}
+		\limsup_{n\to\infty} a_n = \limsup_{n\to\infty} b_n = \limsup_{i\to\infty} B_i. 
+	\end{flalign*}
+	Since 
+	\begin{flalign*}
+		\frac{1}{B_i} \leq \frac{1}{C_{i+1}} = \frac{1}{B_i} + \frac{\ln(2)}{\ln(m_i)}
+	\end{flalign*}
+	for all $i\in\N$ by definition of $B_i$ and $C_i$, we also get that
+	\begin{flalign*}
+		\limsup_{n\to\infty} c_n = \limsup_{i\to\infty} C_i = \liminf_{i\to\infty} \frac{1}{C_i} = \liminf_{i\to\infty} \frac{1}{B_i} = \limsup_{i\to\infty} B_i = \limsup_{n\to\infty} a_n.
+	\end{flalign*}
+	But since $a_n\geq c_n$ for all $n>m_1$ we get that 
+	\begin{flalign*}
+		\liminf_{n\to\infty} a_n \geq \limsup_{n\to\infty} c_n = \limsup_{n\to\infty} a_n
+	\end{flalign*}
+	and therefore 
+	\begin{flalign*}
+		\liminf_{n\to\infty} a_n = \limsup_{n\to\infty} a_n
+	\end{flalign*}
+	which completes the proof.
+\end{proof}
+
+\begin{remark} \label{trivialboundary2}
+	We quickly show some trivial bounds for the limit of the last theorem. Let $\omega\in\Omega$ and define 
+	\begin{flalign*}
+		L := \lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n(\omega)))}.
+	\end{flalign*}
+	Then since $\rad(\E_n(\omega))\leq n$ we get
+	\begin{flalign*}
+		L \geq \lim_{n\to\infty} \frac{\ln(n)}{\ln(n)} = 1.
+	\end{flalign*}
+	In $\Z^d$ we can fill the cube with center $0$ and side length $n^{\frac{1}{d}}$ with an order of $n$ points. Therefore we can fill a ball with radius $n^{\frac{1}{d}}$ with an order of $n$ points as well, and since $|\E_n(\omega)|=n$ there exists a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n(\omega))$. Note that $c$ does not depend on $n$ or $\omega$. Hence
+	\begin{flalign*}
+		L \leq \lim_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d.
+	\end{flalign*}
+	Hence we get the trivial bounds
+	\begin{flalign*}
+		1\leq L \leq d.
+	\end{flalign*}
+\end{remark}
 
 
 \subsection{Notion of fractal dimension and growth rate} \label{notion}
@@ -351,16 +431,16 @@ The notion of fractal dimension is usually used for sets with uncountable cardin
 \begin{flalign} \label{boxdimension}
 	d_b := - \liminf_{\varepsilon\to 0} \frac{\ln(N(\varepsilon))}{\ln(\varepsilon)}.
 \end{flalign} 
-This definition makes sense in many contexts, for example the box-dimension of straight line segments is $1$ and of squares is $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with locally finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at is that each point of the cluster can actually be interpreted and identified with a unique box of side length 1 since the cluster is living on the grid $\Z^d$. We will precise that in Chapter \ref{lha}. So instead of decreasing the sizes of the boxes which we cover our set of interest with, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
+This definition makes sense in many contexts, for example the box-dimension of straight line segments is $1$ and of squares is $2$ and so on, so in those cases equal to the topological dimension. As with incremental aggregations we are dealing with locally finite point sets, this approach of defining a fractal dimension for our clusters is not senseful. It is not difficult to show, that the box-dimension of any finite set is $0$. A helpful detail about the situation with finite sets as the ones we are looking at, is that each point of the cluster can actually be interpreted and identified with a unique box of side length 1 since the cluster is living on the grid $\Z^d$. We will precise that in Chapter \ref{lha}. So instead of decreasing the sizes of the boxes which we cover our set of interest with, we leave the size of the boxes constant and increase the size of our set by adding points and looking at the limit cluster $\E_\infty$. 
 Defining the radius of a finite set $A\in \mP^d_f$ (with $|\cdot|$ the Euclidean norm) by 
 \begin{flalign} \label{radius}
 	\rad(A) := \max_{x\in A} |x|,
 \end{flalign}
 we can identify the relation between the geometrical sizes of the boxes and the cluster as follows. For $n\in\N$ define random variables  $\varepsilon_n:=\frac{1}{\rad(\E_n)}$. Before $\varepsilon_n$ would have expressed the geometrical relation between one box and the whole cluster which we describe now by the fraction $\frac{1}{\rad(\E_n)}$ since a box size is now constantly $1$ and the clusters geometrical size we can interpret by $\rad(\E_n)$. The number of boxes with size $1$ which we need to cover $\E_n$ is always $n$, so $N(\varepsilon_n)=n$ for all $n\in\N$ and therefore we can rewrite the definition of the box-dimension (\ref{boxdimension}) by replacing $\varepsilon_n$ with $\frac{1}{\rad(\E_n)}$ and define the $\mathit{(discrete)\ fractal\ dimension}$ of $\E_\infty$ as the random variable 
 \begin{flalign} \label{fractaldimension}
-	d_f := \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}.
+	d_f := \lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))},
 \end{flalign}
-This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
+which is well-defined by Theorem \ref{limexists}. This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\rad(\E_n) \leq cn^\alpha
 \end{flalign*}
@@ -370,42 +450,70 @@ for large $n$. Rewriting this we come to the equivalent inequality
 \end{flalign*}
 for large $n$ and we could finally define the growth rate $\alpha_f$ of an incremental aggregation as the smallest value satisfying this inequality, so the random variable
 \begin{flalign} \label{growthrate}
-	\alpha_f := \limsup_{n\to\infty} \frac{\ln(\rad(\E_n))}{\ln(n)}.
+	\alpha_f := \lim_{n\to\infty} \frac{\ln(\rad(\E_n))}{\ln(n)}
 \end{flalign}
-We therefore simply get that 
+which is aswell well-defined by Theorem \ref{limexists}. We therefore simply get
 \begin{flalign} \label{fractaldim}
-	d_f = \frac{1}{\alpha_f} \quad \text{a.s.},
+	d_f = \frac{1}{\alpha_f},\quad\text{pointwise}. 
 \end{flalign}
-which includes the cases $d_f=\infty$ or $\alpha_f=\infty$ ($\frac{1}{0}:= \infty)$, which in motivates choosing the limes inferior in the Definition (\ref{fractaldimension}). Since $\rad(\E_n) \leq n$ a.s. for all $n\in\N$, we get 
-\begin{flalign*}
-	\alpha_f \leq 1\quad \text{a.s.} 
-\end{flalign*}
-and therefore 
-\begin{flalign*}
-	d_f \geq 1 \quad \text{a.s.}
-\end{flalign*}
-In $\Z^d$ we can fill the cube with center $0$ and side length $n^{\frac{1}{d}}$ with an order of $n$ points. Therefore we can fill a ball with radius $n^{\frac{1}{d}}$ with an order of $n$ points as well, and since $|\E_n|=n$ there exists a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n)$ a.s. for all $n\in\N$. Hence
-\begin{flalign*}
-	d_f \leq \liminf_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d \quad \text{a.s.}.
-\end{flalign*}
-So in total we get the trivial bounds
-\begin{flalign}\label{trivialboundary}
-	1\leq d_f \leq d \quad \text{a.s.}
+In Remark \ref{trivialboundary2} we have shown trivial bounds for the fractal dimension
+\begin{flalign}
+	1\leq d_f \leq d,\quad\text{pointwise},
 \end{flalign}
-and
+which leads to trivial bounds for the growth rate
 \begin{flalign*}
-	\frac{1}{d}\leq \alpha_f \leq 1 \quad \text{a.s.}
+	\frac{1}{d}\leq \alpha_f \leq 1,\quad\text{pointwise},
 \end{flalign*}
-for any incremental aggregation in $\Z^d$. \\
+for any incremental aggregation in $\Z^d$. 
+
 
 \begin{remark} \label{altdim}
 	Another way of tackling the intuition for a fractal dimension for locally finite sets is the following which is motivated by \cite[Part II, Section 1, Page 98]{fractalwinter} and \cite[Page 83]{lawler}. Let $M\subset \R^d$ be a locally finite set. Let $n\in\N$ and $B_n$ be the ball with radius $n$ and center $0$. We could interpret the fractal dimension $d_M$ of $M$ as a value such that the cardinality $|M\cap B_n|$ of $M$ inside the ball $B_n$ is rougly of order $n^{d_M}$ for large $n$, so 
 	\begin{flalign} \label{newdef}
 		d_M := \liminf_{n\to\infty} \frac{\ln(|M \cap B_n|)}{\ln(n)}. 
 	\end{flalign}
-	If we apply that definition to our limit cluster $\E_\infty$ it is not clear whether this definition is equivalent to (\ref{fractaldimension}). If we define the fractal dimension as in (\ref{fractaldimension}) we encounter the problem that when the cluster reaches some radius for the first time, then in many instances in the subsequent steps there will particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius (see \autoref{notfilled}). If the fractal dimension shall indicate an asymptotic relation between how many particles of the limit cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, the definition in (\ref{fractaldimension}) does not reflect that directly. Nevertheless it seems to make sense that these two situations are equivalent. If the distribution family $\mu$ doesn't favorize outer lying particles for the next aggregation too much, creating long arms and therefore magnifying the problem we are talking about here is rather unprobable. Compared to the size of the cluster, arms will rather decrease in size which lets deminish the difference of Definitions (\ref{fractaldimension}) and (\ref{newdef}) which we state more clearly in the following conjecture. \\
-	
+	If we apply that definition to our limit cluster $\E_\infty$ it is not clear whether this definition is equivalent to (\ref{fractaldimension}). If we define the fractal dimension as in (\ref{fractaldimension}) we encounter the problem that when the cluster reaches some radius for the first time, then in many instances in the subsequent steps there will particles be added to the cluster without increasing its radius, so to say \glqq $\text{filling}$\grqq\ the cluster up to that radius (see \autoref{notfilled}). If the fractal dimension shall indicate an asymptotic relation between how many particles of the limit cluster $\E_\infty$ lie in a ball of a radius letting the radius tend to infinity, the definition in (\ref{fractaldimension}) does not reflect that directly. In the following we give an alternative definition for the fractal dimension.
 \end{remark}
+
+\begin{definition} \label{fullclusters}
+	Let $B_n$ be a ball of radius $n\in\N$ with center $0$ and with $\E_\infty \cap B_n$ denote the set of particles in $\E_\infty$ that lie in $B_n$. We define
+	\begin{flalign*}
+		\underline{d}_\infty := \liminf_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)},
+	\end{flalign*}
+	\begin{flalign*}
+		\overline{d}_\infty := \limsup_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)}
+	\end{flalign*}
+	and 
+	\begin{flalign*}
+		d_\infty := \lim_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)},
+	\end{flalign*}
+	if the limit exists. Similar to $d_f$ we have trivial bounds
+	\begin{flalign*}
+		1 \leq \underline{d}_\infty \leq \overline{d}_\infty \leq d,\quad\text{pointwise}.
+	\end{flalign*}
+\end{definition}
+
+As in Theorem \ref{limexists} it might be possible to show that the limit $d_\infty$ indeed exists. It seems to make sense that these two situations are equivalent if the distribution family $\mu$ doesn't favorize outer lying particles for the next aggregation too much. If it does, the creation of long arms would become more probable increasing the difference between the definitions of $d_f$ and $d_\infty$. If it doesn't, arms will rather decrease in size compared to the size of the cluster which in turn closes the gap in between the definitions of $d_f$ and $d_\infty$. Anyway we find a rigorous inequality in the following. \\
+
+\begin{lemma} \label{smaller}
+	We have 
+	\begin{flalign*}
+		d_f \leq \underline{d}_\infty, \quad\text{pointwise}.
+	\end{flalign*}
+\end{lemma}
+
+\begin{proof}
+	Let $\omega\in\Omega$. Then for all $n\in\N$ we have $\E_n(\omega)\subset \E_\infty(\omega)$ and therefore
+	\begin{flalign*}
+		n=|\E_n(\omega)| \leq |\E_\infty(\omega) \cap B_{\rad(\E_n(\omega))}|.
+	\end{flalign*}
+	This leads to
+	\begin{flalign*}
+		d_f(\omega) &= \lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n(\omega)))} \leq \liminf_{n\to\infty} \frac{|\E_\infty(\omega) \cap B_{\rad(\E_n(\omega))}|}{\ln(\rad(\E_n(\omega)))} \\
+		&= \liminf_{k\to\infty} \frac{|\E_\infty(\omega) \cap B_{k}|}{\ln(k)} = \underline{d}_\infty(\omega)
+	\end{flalign*}
+	where we used that for every $k\in\N$ there exists a $n\in\N$ such that $\rad(\E_n(\omega)) = k$. This completes the proof. 
+\end{proof}
 
 \begin{figure}[]
 	\centering
@@ -413,12 +521,19 @@ for any incremental aggregation in $\Z^d$. \\
 	\caption{Cluster not \glqq filled up\grqq\ to its radius} \label{notfilled}
 \end{figure}
 
-\begin{conjecture} \label{fullclusters}
-	Let $B_n$ be a ball of radius $n\in\N$ with center $0$ and with $\E_\infty \cap B_n$ denote the set of particles in $\E_\infty$ that lie in $B_n$. Then we have
-	\begin{flalign*}
-		d_f = \liminf_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)} \quad \text{a.s.}.
-	\end{flalign*}
-\end{conjecture}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{A rigorous characterization for the fractal dimension}
 
@@ -642,7 +757,7 @@ At this point we are prepared to proof the following theorem.
 		(\limsup_{n\to\infty} V_n)^C = \{\omega\in\Omega\ |\ \exists N\in\N \text{ s.t. } \omega\in V_n^C \text{ for all }n>N\}= D_\beta
 	\end{flalign*}
 	we can then conclude that $\PP(D_\beta) = 1$ and have finished the proof. So we want to show $(\ref{borelcantelli2})$. \\
-	\\For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ we define random variables
+	\\Define $\N^\infty := \N\cup\{\infty\}$. For $n\in \N$, $[z]\in Z_n$ and $i\in \{1,\dots,n\}$ we define random variables
 	\begin{flalign*}
 		\tau_i:\Omega \to \N^\infty, \tau_i(\omega) = j :\Leftrightarrow \begin{cases}
 			y_j(\omega) = z_i,\ &j<\infty, \\
@@ -1337,9 +1452,13 @@ We are therefore prepared to proof the following theorem.
 	\begin{flalign*}
 		d_f \geq 1+1 = 2 \quad \text{a.s.}.
 	\end{flalign*}
-	Since $d_f\leq 2$ a.s. by (\ref{trivialboundary}) we therefore get $d_f=2$ a.s..
+	Since $d_f\leq 2$ a.s. by \ref{trivialboundary2} we therefore get $d_f=2$ a.s..
 \end{proof}
 
+
+\begin{remark} \label{finfty}
+	With Lemma \ref{smaller} we can conclude that for the line hitting aggregation we have $d_f=d_\infty$. Recall the definition of $d_\infty$ at \ref{fullclusters}
+\end{remark}
 
 
 \newpage
@@ -1408,7 +1527,7 @@ which implements the totally ordered relation on all squares which got hit by th
 
 In this section we present what our simulations produce in terms of images and fractal dimension values. Since by Theorem \ref{2theorem} we already know that the fractal dimension of the line hitting aggregation is $2$, our approximation for the fractal dimension here has the purpose to give an idea of the convergence behaviour towards the value $2$. First it is worth to mention that it is not trivial to create a senseful approximation for the fractal dimension. If we go back to the definition 
 \begin{flalign*}
-	d_f = \liminf_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}
+	d_f = \lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}
 \end{flalign*}
 we can start with the ansatz that 
 \begin{flalign*}
@@ -1418,9 +1537,11 @@ for some constant $c>0$ and therefore get
 \begin{flalign} \label{linearplot}
 	\ln(\rad(\E_n)) \approx \frac{1}{d_f} \ln(n) + \ln(c). 
 \end{flalign}
-Therefore we could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\rad(\E_n))$ for a range of values $n\in\{1,\dots,m\}$, $m\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters as functions of the maximum value $m$. We have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} and the discussion in Remark \ref{altdim} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. To get more stable parameters it might make sense to come back to Conjecture \ref{fullclusters} that 
+Therefore we could be looking for the parameters $\frac{1}{d_f}$ and $\ln(c)$ of a linear regression of the two values $\ln(n)$ and $\ln(\rad(\E_n))$ for a range of values $n\in\{1,\dots,m\}$, $m\in\N$. In the range of up to 100000 particles we have noticed a strong instability of these parameters as functions of the maximum value $m$. We have come to the conclusion that for calculating approximations it is problematic that the radius of a cluster always stays constant for the time that new particles get added to the cluster where they don't increase the radius. Compare with \autoref{notfilled} and the discussion in Remark \ref{altdim} to see that this cluster is not yet \glqq filled up\grqq\ to its radius which creates something like a stair function in the linear plot of \ref{linearplot}. \\
+
+\noindent To get more stable parameters it makes sense to come back to Remark \ref{finfty} and write
 \begin{flalign*}
-	d_f = \limsup_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)}.
+	d_f = d_\infty = \lim_{n\to\infty} \frac{\ln(|\E_\infty \cap B_n|)}{\ln(n)}.
 \end{flalign*}
 With the ansatz
 \begin{flalign} \label{ansatz}
@@ -1603,6 +1724,20 @@ In the following we present some of the realized images of our LHA and external 
 	\end{subfigure}
 \end{figure}
 
+
+
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}[]{0.72\textwidth}
+		%\includegraphics[width=1\linewidth]{images/ia/2021_03_03_21_23_47__image_lha_100000 - colored.png}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_04_15_58_28__lha_50000_colored.png}
+		\caption{2021\_03\_04\_15\_58\_28\_\_lha\_50000 colored from outside} 
+	\end{subfigure}
+	\begin{subfigure}[]{0.72\textwidth}
+		\includegraphics[width=1\linewidth]{images/ia/2021_03_04_00_42_19__lha_200000_colored.png}
+		\caption{2021\_03\_04\_00\_42\_19\_\_lha\_200000 colored from outside} 
+	\end{subfigure}
+\end{figure}
 
 
 
