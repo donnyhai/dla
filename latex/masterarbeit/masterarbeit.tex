@@ -19,6 +19,7 @@
 \usepackage{enumitem}
 \usepackage{lmodern}
 \usepackage{fancyvrb}
+\usepackage{longtable}
 
 % Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
 \setlength{\topmargin}{-15mm}	   
@@ -77,7 +78,7 @@
    	Masterthesis
     \vspace*{2cm}
 
-    {\huge Incremental Aggregations}\\
+    {\huge Fractal Dimension of Incremental Aggregations}\\
     \vspace*{2.5cm}
 
     Tillmann Tristan Bosch
@@ -111,15 +112,15 @@
 \section{Introduction}
 	In mathematics and physics there are objects which may naturally awaken the interest of any human being, mathematican and non-mathematician, just by their natural visual appearance - and clusterings of particles or clusterlike occurences like snowflakes or broken glasses are one example of them. Looking at \autoref{radio} we find a clusterlike formed occurence in the radio screen of a car which might have arisen by the breaking of a crystal fluid in the screen. Other examples are cracking of solid glass (\autoref{other} (b)), processes like bacterial colonies or electrodeposition and also more symmetrical examples as the formation of snowflake crystals (\autoref{other} (a)). \\
 	
-	\noindent One way of describing such processes is through clusters which get formed by random point by point aggregation. If for some natural number $d\in\N$ we draw our attention to the $d$-dimensional lattice $\Z^d$ and consider one particle in the origin $(0,0)$, we can let a cluster grow by adding new particles one by one, always on the boundary of the current cluster. What we get is a random growth of a connected clusterlike set of which we then can think about its fractal dimension, how quick it grows and many other properties, and produce beautiful realizations. \\
+	\noindent One way of describing such processes is through clusters which get formed by random point by point aggregation. If for some natural number $d\in\N$ we draw our attention to the $d$-dimensional lattice $\Z^d$ and consider one particle in the origin $(0,\dots,0)$, we can let a cluster grow by adding new particles one by one, always on the boundary of the current cluster. What we get is a random growth of a connected clusterlike set of which we then can think about the notion of dimension, how quick it grows and many other properties, and produce beautiful realizations. \\
 	
-	\noindent In this paper we will look at two ways of letting grow such clusters and simulate them with python at the end to produce visuals and some empirical values. We will call such point by point growing clusters $\mathit{incremental\ aggregations}$ and present the two models briefly here:\\
+	\noindent In this paper we will look at two ways of letting grow such clusters and simulate them with python at the end to produce visuals and some empirical values. We will call such point by point growing clusters $\mathit{incremental\ aggregations}$ and present the two models briefly in the following.\\
 
 	\noindent $\mathbf{External\ Diffusion\ Limited\ Aggregation}$, short external DLA, was initially introduced by \cite[Witten and Sander, 1983]{wittensander}. In this model of incremental aggregation of particles, each new particle starts a random walk from infinity and when it hits the current cluster for the first time, it sticks at the place where it hit the cluster. Despite this simple definition there are only few rigorously proved results on this process. In Chapter \ref{notion} we will introduce the notion of a fractal dimension of incremental aggregations. In $d$ dimensions the fractal dimension of any incremental aggregation lies in between 1 and $d$ and here we prove an almost sure lower bound of 1.5 in $\Z^2$. Empirical studies calculate a value around 1.7 to 1.8 in $\Z^2$ (see for example \cite{magnetic}).  \\
 	
-	\noindent $\mathbf{Line\ Hitting\ Aggregation}$, short LHA, is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which are chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So one way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA and therefore have a higher fractal dimension which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they guess a fractal dimension of 2 for their ballistic model and here we will actually be able to prove this result for the ballistic model we define in this paper. \\
+	\noindent $\mathbf{Line\ Hitting\ Aggregation}$, short LHA, is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which are chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So one way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they guess a fractal dimension of 2 for their ballistic model and here we will actually be able to prove this result. \\
 	
-	\noindent We will first draw our attention to the general definition of incremental aggregations and a notion of their fractal dimension. We will then present a general relationship between the distribution family of an incremental aggregation and a lower bound for its fractal dimension. We will then turn our attention to the two models we discuss in this paper, first external DLA and the line hitting aggregation in the chaper after. We the help of the general theorem for incremental aggregations we will prove an lower bound for external DLA and even an exact result for line hitting aggregation. At the end we will present simulations for both aggregations of which only the one for the line hitting aggregation shall satisfy the claim of being implemented as close to its mathematical definition as possible. At the end we especially hope the reader to relate with the processes and enjoy the created images.
+	\noindent We will first draw our attention to the general definition of incremental aggregations and a notion of their fractal dimension. We will then present a general relationship between the distribution family of an incremental aggregation and a lower bound for its fractal dimension. We will then turn our attention to the two models we discuss in this paper, first external DLA and line hitting aggregation in the chaper after. With the help of the general theorem for incremental aggregations we will prove a lower bound for external DLA and even an exact result for line hitting aggregation. At the end we will present simulations for both aggregations of which only the one for line hitting aggregation shall satisfy the claim of being implemented as close to its mathematical definition as possible. At the end we especially hope the reader to relate with the processes and enjoy the created images.
 	
 \begin{figure}[p]
 	\centering
@@ -161,18 +162,19 @@
 
 \subsection{Symbols} \label{symbols}
 Define the natural numbers $\N = \{1,2,3,\dots\}$, let $d\in \N$ and $q\in \{0,\dots,d\}$. 
-\begin{flalign*}
-	&\mathcal{B}^d,\quad \text{$d$-dimensional Borel-$\sigma$-algebra of $\R^d$} \\
-	&\K^d,\quad \text{the set of convex and compact sets in }\R^d\\
-	&B_d(x,r) = \{y\in \R^d\ |\ |x-y| \leq r\},\quad  \text{the $d$-dimensional closed ball of radius $r$ around $x$}\\
-	&B_r := B_2(0,r) \\
-	&\G,\quad  \text{the set of lines in the plane}\\
-	&SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\}\\
-	&SO_2 := \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\} \\
-	&G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d\text{ and }b\in \R^d\},\quad  \text{Euclidean motions} \\
-	&\mP^d_f,\quad \text{the set of finite subsets of $\Z^d$} \\
-	&\mP_f := \mP^2_f 
-\end{flalign*}
+
+\begin{longtable}{p{3.8cm}p{12.4cm}ll}
+	$\mathcal{B}^d$ & $d$-dimensional Borel-$\sigma$-algebra of $\R^d$\\
+	$\K^d$ & the set of convex and compact sets in $\R^d$\\
+	$B_d(x,r)$ & $B_d(x,r) = \{y\in \R^d\ |\ |x-y| \leq r\}$, the $d$-dimensional closed ball of radius $r$ around $x$\\
+	$B_r$ & $B_r := B_2(0,r)$\\
+	$\G$ & the set of lines in the plane\\
+	$SO_d$ & $SO_d := \{\nu \in \R^{d\times d}\ |\ \nu \nu^\top = I_d \text{ and } \det \nu = 1\}$\\
+	$SO_2$ & $SO_2 := \{\nu_\beta := e^{i\beta} \in \C\ |\ \beta\in [0,2\pi)\}$\\
+	$G_d$ & $G_d := \{\varphi: \R^d \to \R^d, x\mapsto \nu x+b\ |\ \nu \in SO_d\text{ and }b\in \R^d\}$, the set of Euclidean motions\\
+	$\mP^d_f$ & the set of finite subsets of $\Z^d$\\
+	$\mP_f$ & $\mP_f := \mP^2_f$
+\end{longtable}
 
 \noindent Note that we will always identify $\R^2$ with $\C$ ($(a,b)\leftrightarrow a+bi$) for a more convenient notation. 
 
@@ -265,7 +267,7 @@ After having introduced some basics we will turn our focus in the next chapter t
 
 \subsection{Definition} \label{iadef}
 
-In this paper we will look at stochastic processes on the set of finite subsets of $\Z^d$, where we start with the one point set $\{0\}$ and incrementally add a point of the boundary of the current cluster according to some distribution. Note that with $0$ with will denote the zero vector. What we get is a randomly point by point growing connected cluster which we will call $\mathit{incremental\ aggregation}$. Define 
+In this paper we will look at stochastic processes on the set of finite subsets of $\Z^d$, where we start with the one point set $\{0\}$ and incrementally add a point of the boundary of the current cluster according to some distribution. Note that with $0$ we denote the zero vector $(0,\dots,0)$. What we get is a randomly point by point growing connected cluster which we will call $\mathit{incremental\ aggregation}$. Define 
 \begin{flalign*}
 	\mP^d_f := \{A\subset \Z^d\ |\ \text{A is finite}\}
 \end{flalign*}
@@ -284,7 +286,7 @@ a $\mathit{random}$ $\mathit{finite\ set}$. Further for $A\in\mP^d_f$ we call a 
 a $\mathit{random}$ $\mathit{point}$ $\mathit{in\ A}$ if $\PP(y_A = y) = 0$ is satisfied for all $y\notin A$. Now we define incremental aggregation as follows.  
 
 \begin{definition} \label{incrementalaggregation}
-	Let $\mu=(\mu_A)_{A\in \mP^d_f}$ be a family of distributions, therefore $\mu_A\in \mathcal{D}_A$ for all $A\in \mP^d_f$. An $\mathit{incremental\ aggregation\ (with\ distribution\ \mu)}$ is a family of random finite sets $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\Z^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mP^d_f$ with distribution
+	Let $\mu:=(\mu_A)_{A\in \mP^d_f}$ be a family of distributions, therefore $\mu_A\in \mathcal{D}_A$ for all $A\in \mP^d_f$. An $\mathit{incremental\ aggregation\ (with\ distribution\ \mu)}$ is a family of random finite sets $(\mathcal{E}_n)_{n\in{\mathbb{N}}}$ which evolves as follows. The process starts with one point $\mathcal{E}_1 = \{0\}$ (define $y_1 :=0$) at the origin of $\Z^d$. Knowing the process $\mathcal{E}_n$ at time $n$, let $y_{n+1}$ be a random point in $\partial \mathcal{E}_n\in \mP^d_f$ with distribution
 	\begin{align}
 		\mathbb{P}(y_{n+1} = y\ |\ \mathcal{E}_n) := \mu_{\partial \mathcal{E}_n}(y)\quad \text{for }y\in \Z^d.
 	\end{align}
@@ -331,16 +333,16 @@ Properties of an incremental aggregation obviously base strongly on the properti
 
 As a last result before coming to the next section we want to prove an useful result here. 
 
-\begin{theorem} \label{limexists}
+\begin{proposition} \label{limexists}
 	For each $\omega\in\Omega$ the limit
 	\begin{flalign*}
 		\lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n(\omega)))}
 	\end{flalign*}
 	exists. 
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-	Let $\omega\in\Omega$, define $r_n := \rad(\E_n(\omega))$ and let $N\in\N$ such that $r_n>\sqrt{d}$ for all $n>N$ which exists by Lemma \ref{rtinfty}. For $n>N$ define
+	Let $\omega\in\Omega$, define $r_n := \rad(\E_n(\omega))$ for all $n\in\N$ and let $N\in\N$ such that $r_n>\sqrt{d}$ for all $n>N$ which exists by Lemma \ref{rtinfty}. For $n>N$ define
 	\begin{flalign*}
 		a_n := \frac{\ln(n)}{\ln(r_n)}.
 	\end{flalign*}
@@ -364,7 +366,7 @@ As a last result before coming to the next section we want to prove an useful re
 	\begin{flalign*}
 		a_n \geq \frac{\ln(m_i + 1)}{\ln(r_{m_i + 1})} \geq  \frac{\ln(m_i)}{\ln(r_{m_i} + \sqrt{d})} \geq \frac{\ln(m_i)}{\ln(2r_{m_i})} = C_i. 
 	\end{flalign*}
-	We used here that $r_{m_i + 1}\leq r_{m_i} + \sqrt{d}$ since adding one particle can increase the radius maximally by the diagonal of a $d$-dimensional box which is $\sqrt{d}$. Since $m_i>N$ we also used that $r_{m_i}>\sqrt{d}$ by definition of $N$. If we define sequences $(b_n)_{n>N}$ and $(c_n)_{n>N}$ by
+	We used here that $r_{m_i + 1}\leq r_{m_i} + \sqrt{d}$ since adding one particle can increase the radius maximally by the diagonal of a $d$-dimensional box which is $\sqrt{d}$. Since $m_i>N$ we also used that $r_{m_i}>\sqrt{d}$ by definition of $N$. If we define sequences $(b_n)_{n>m_1}$ and $(c_n)_{n>m_1}$ by
 	\begin{flalign*}
 		b_n := \sum_{i=1}^{\infty} B_i\ \1_{\{m_i + 1,\dots,m_{i+1}\}}(n)
 	\end{flalign*}
@@ -376,9 +378,17 @@ As a last result before coming to the next section we want to prove an useful re
 	\begin{flalign*}
 		c_n \leq a_n \leq b_n
 	\end{flalign*}
-	for all $n>m_1$. Since $(B_i)_{i\in\N}$ is a subsequence of $(a_n)_{n>N}$ and $a_n\leq b_n$ for all $n>m_1$, we get
+	for all $n>m_1$. Note that 
 	\begin{flalign*}
-		\limsup_{n\to\infty} a_n = \limsup_{n\to\infty} b_n = \limsup_{i\to\infty} B_i. 
+		\limsup_{n\to\infty} b_n = \limsup_{i\to\infty} B_i
+	\end{flalign*}
+	and
+	\begin{flalign*}
+		\limsup_{n\to\infty} c_n = \limsup_{i\to\infty} C_i.
+	\end{flalign*}
+	Since $(B_i)_{i\in\N}$ is a subsequence of $(a_n)_{n>N}$ and $a_n\leq b_n$ for all $n>m_1$, we get
+	\begin{flalign*}
+		\limsup_{n\to\infty} a_n = \limsup_{n\to\infty} b_n. 
 	\end{flalign*}
 	Since 
 	\begin{flalign*}
@@ -394,9 +404,13 @@ As a last result before coming to the next section we want to prove an useful re
 	\end{flalign*}
 	and therefore 
 	\begin{flalign*}
-		\liminf_{n\to\infty} a_n = \limsup_{n\to\infty} a_n
+		\liminf_{n\to\infty} a_n = \limsup_{n\to\infty} a_n. 
 	\end{flalign*}
-	which completes the proof.
+	In $\Z^d$ we can fill the cube with center $0$ and side length $n^{\frac{1}{d}}$ with an order of $n$ points. Therefore we can fill a ball with radius $n^{\frac{1}{d}}$ with an order of $n$ points as well, and since $|\E_n(\omega)|=n$ there exists a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n(\omega))$. Note that $c$ does not depend on $n$ or $\omega$. Hence
+	\begin{flalign*}
+		\limsup_{n\to\infty} a_n \leq \limsup_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d.
+	\end{flalign*}
+	Therefore $\limsup_{n\to\infty} a_n <\infty$ which completes the proof.
 \end{proof}
 
 \begin{remark} \label{trivialboundary2}
@@ -408,11 +422,11 @@ As a last result before coming to the next section we want to prove an useful re
 	\begin{flalign*}
 		L \geq \lim_{n\to\infty} \frac{\ln(n)}{\ln(n)} = 1.
 	\end{flalign*}
-	In $\Z^d$ we can fill the cube with center $0$ and side length $n^{\frac{1}{d}}$ with an order of $n$ points. Therefore we can fill a ball with radius $n^{\frac{1}{d}}$ with an order of $n$ points as well, and since $|\E_n(\omega)|=n$ there exists a constant $c>0$ such that $cn^{\frac{1}{d}} \leq \rad(\E_n(\omega))$. Note that $c$ does not depend on $n$ or $\omega$. Hence
+	By an argument we can find in the proof of Proposition \ref{limexists} we get that 
 	\begin{flalign*}
-		L \leq \lim_{n\to\infty} \frac{\ln(n)}{\ln(cn^{\frac{1}{d}})} = d.
+		L \leq  d,
 	\end{flalign*}
-	Hence we get the trivial bounds
+	leading to the trivial bounds
 	\begin{flalign*}
 		1\leq L \leq d.
 	\end{flalign*}
@@ -440,7 +454,7 @@ we can identify the relation between the geometrical sizes of the boxes and the 
 \begin{flalign} \label{fractaldimension}
 	d_f := \lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))},
 \end{flalign}
-which is well-defined by Theorem \ref{limexists}. This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
+which is well-defined by Proposition \ref{limexists}. This way of defining a fractal dimension for incremental aggregations strongly correlates with the growth rate of the aggregation which shall indicate how the radius of the cluster evolves while increasing the particle number. We can define the growth rate by looking for the smallest exponent $\alpha$ such that there exists a constant $c>0$ with 
 \begin{flalign*}
 	\rad(\E_n) \leq cn^\alpha
 \end{flalign*}
@@ -452,7 +466,7 @@ for large $n$ and we could finally define the growth rate $\alpha_f$ of an incre
 \begin{flalign} \label{growthrate}
 	\alpha_f := \lim_{n\to\infty} \frac{\ln(\rad(\E_n))}{\ln(n)}
 \end{flalign}
-which is aswell well-defined by Theorem \ref{limexists}. We therefore simply get
+which is aswell well-defined by Proposition \ref{limexists}. We therefore simply get
 \begin{flalign} \label{fractaldim}
 	d_f = \frac{1}{\alpha_f},\quad\text{pointwise}. 
 \end{flalign}
@@ -468,7 +482,7 @@ for any incremental aggregation in $\Z^d$.
 
 
 \begin{remark} \label{altdim}
-	Another way of tackling the intuition for a fractal dimension for locally finite sets is the following which is motivated by \cite[Part II, Section 1, Page 98]{fractalwinter} and \cite[Page 83]{lawler}. Let $M\subset \R^d$ be a locally finite set. Let $n\in\N$ and $B_n$ be the ball with radius $n$ and center $0$. We could interpret the fractal dimension $d_M$ of $M$ as a value such that the cardinality $|M\cap B_n|$ of $M$ inside the ball $B_n$ is rougly of order $n^{d_M}$ for large $n$, so 
+	Another way of tackling the intuition for a fractal dimension for locally finite sets is the following which is motivated by \cite[Section 1.3, Page 2]{heydenreich} and \cite[Page 83]{lawler}. Let $M\subset \R^d$ be a locally finite set. Let $n\in\N$ and $B_n$ be the ball with radius $n$ and center $0$. We could interpret the fractal dimension $d_M$ of $M$ as a value such that the cardinality $|M\cap B_n|$ of $M$ inside the ball $B_n$ is rougly of order $n^{d_M}$ for large $n$, so 
 	\begin{flalign} \label{newdef}
 		d_M := \liminf_{n\to\infty} \frac{\ln(|M \cap B_n|)}{\ln(n)}. 
 	\end{flalign}
@@ -493,7 +507,7 @@ for any incremental aggregation in $\Z^d$.
 	\end{flalign*}
 \end{definition}
 
-As in Theorem \ref{limexists} it might be possible to show that the limit $d_\infty$ indeed exists. It seems to make sense that these two situations are equivalent if the distribution family $\mu$ doesn't favorize outer lying particles for the next aggregation too much. If it does, the creation of long arms would become more probable increasing the difference between the definitions of $d_f$ and $d_\infty$. If it doesn't, arms will rather decrease in size compared to the size of the cluster which in turn closes the gap in between the definitions of $d_f$ and $d_\infty$. Anyway we find a rigorous inequality in the following. \\
+As for $d_f$ in Proposition \ref{limexists} it might be possible to show that the limit $d_\infty$ indeed exists. It seems to make sense that these two situations are equivalent if the distribution family $\mu$ doesn't favorize outer lying particles for the next aggregation too much. If it does, the creation of long arms would become more probable increasing the difference between the definitions of $d_f$ and $d_\infty$. If it doesn't, arms will rather decrease in size compared to the size of the cluster which in turn closes the gap in between the definitions of $d_f$ and $d_\infty$. Anyway we find a rigorous inequality in the following. \\
 
 \begin{lemma} \label{smaller}
 	We have 
@@ -689,11 +703,11 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign*}
 		d_f = \frac{1}{\alpha_f}\quad \text{a.s.}
 	\end{flalign*}
-	where $\alpha_f$ is the growth rate as defined in Section (\ref{growthrate}), and we will therefore show that
+	where $\alpha_f$ is the growth rate as defined in (\ref{growthrate}). We therefore complete the proof if we show
 	\begin{flalign*}
 		\alpha_f \leq \frac{1}{1+q}\quad \text{a.s.}.
 	\end{flalign*}
-	For $c>0$ define 
+	For any $c>0$ define 
 	\begin{flalign*}
 		A_c := \{\omega\in\Omega\ |\ \rad(\E_n(\omega)) \leq cn^{\frac{1}{1+q}} \text{ for large }n\}
 	\end{flalign*}
@@ -727,7 +741,7 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign*}
 		Z_n := \{[z] := (z_1, \dots, z_n)\in (\Z^d)^n \ |\ z_1\in \tilde B_n, z_i\in N(z_{i-1}) \text{ for } i\geq 2\text{ and }z_i\neq z_j \text{ for }i\neq j\}. 
 	\end{flalign*}
-	For $[z]\in Z_n$ define the events 
+	With $\tilde B_n$ we mean the \glqq the boundary\grqq\ of $B_n$, the ball with center $0$ and radius $n$. For $[z]\in Z_n$ define the events 
 	\begin{flalign*}
 		W_n([z]) := \{\omega\in\Omega\ |\ \exists j_1< \dots < j_n \leq \tilde m_n \ \text{ such that } y_{j_i}(\omega)  = z_i \text{ for all } i\in\{1,\dots,n\} \}
 	\end{flalign*}
@@ -735,7 +749,7 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign*}
 		W_n := \bigcup_{[z] \in Z_n} W_n([z]). 
 	\end{flalign*}
-	With $\tilde B_n$ we mean the \glqq the boundary\grqq\ of $B_n$, the ball with center $0$ and radius $n$. We will quickly prove that 
+	We will quickly prove that 
 	\begin{flalign*}
 		V_n \subset W_n \text{ for all } n\in\N.
 	\end{flalign*}
@@ -873,15 +887,19 @@ At this point we are prepared to proof the following theorem.
 	\begin{flalign*}
 		\PP(W_n([z])) \leq \PP(W_n([z])\ |\ U_{[z]}^n) \leq \PP(\tau_{n} \leq \tilde m_n\ |\ U_{[z]}^n) \leq \frac{1}{a} (ae^2)^{n}
 	\end{flalign*}
-	for all $n>N$. Counting the elements in $Z_n$ we have less than or equal to $c_2n$ points in $\tilde B_n$ for some constant $c_2>0$ as starting points and at most $(2d)^{n-1}$ possibilities for the next $n-1$ steps for a path of length $n$. So $|Z_n| \leq c_2n(2d)^{n-1}$ and therefore
+	for all $n>N$. Counting the elements in $Z_n$ we have less than or equal to $c_2n^{d-1}$ points in $\tilde B_n$ for some constant $c_2>0$ as starting points and at most $(2d)^{n-1}$ possibilities for the next $n-1$ steps for a path of length $n$. So $|Z_n| \leq c_2n^{d-1}(2d)^{n-1}$ and therefore
 	\begin{flalign*}
-		\PP(W_n)\leq \sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n(2d)^{n-1} \frac{1}{a} (ae^2)^{n} = \frac{c_2}{2da}  n(2dae^2)^{n} \quad \text{ for all } n>N
+		\PP(W_n)\leq \sum_{[z]\in Z_n} \PP(W_n([z])) \leq c_2n^{d-1}(2d)^{n-1} \frac{1}{a} (ae^2)^{n} = \frac{c_2}{2da}  n^{d-1}(2dae^2)^{n} \quad \text{ for all } n>N
 	\end{flalign*} 
 	and finally
 	\begin{flalign*}
-		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} \frac{c_2}{2d\beta c_1}  n(2d\beta c_1e^2)^{n} =: r_\beta. 
+		\sum_{n>N} \PP(W_n) \leq \sum_{n>N} \frac{c_2}{2d\beta c_1}  n^{d-1}(2d\beta c_1e^2)^{n} =: r_\beta. 
 	\end{flalign*}
-	Now note again, that $c_1$, $c_2$ and $\beta$ are not depending on $n$. Since $\beta$ was chosen such that $2d\beta c_1e^2<1$, $r_\beta$ is finite and therefore in total we get
+	Now note again, that $c_1$, $c_2$ and $\beta$ are not depending on $n$. Since $\beta$ was chosen such that $2d\beta c_1e^2<1$, $r_\beta$ is finite by the root test since
+	\begin{flalign*}
+		\limsup_{n\to\infty} \sqrt[n]{|n^{d-1}(2d\beta c_1e^2)^{n}|} = 2d\beta c_1e^2 (\limsup_{n\to\infty} \sqrt[n]{n})^{d-1} = 2d\beta c_1e^2 < 1.
+	\end{flalign*}
+	Therefore in total we get
 	\begin{flalign*}
 		\sum_{n\in\N} \PP(W_n) < \infty, 
 	\end{flalign*}
@@ -928,7 +946,7 @@ The following model of an incremental aggregation uses a very natural family of 
 
 \subsection{Fractal dimension and growth rate of external DLA in $\Z^2$}
 
-There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results for external DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context and empirically they find a fractal dimension of around $1.8$. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA for which we will use Theorem \ref{iatheorem}. Recall that $\mP_f := \mP_f^2$. 
+There is not yet a rigorous proof on the exact fractal dimension of external DLA. There are rather few rigorously proved results and it seems that it is very hard to prove such results for external DLA. Looking at computer simulations of DLA in $\Z^2$ it seems that the clusters are relatively sparse and they appear to have a noninteger fractal dimension. In $\cite{magnetic}$ DLA is observed in a magnetic aggregation context and empirically they find a fractal dimension of around $1.8$. We will proof in the following an almost sure lower bound for the fractal dimension of external DLA for which we will use Theorem \ref{iatheorem}. Recall that $\mP_f := \mP_f^2 = \{A\subset \Z^2\ |\ A\text{ is finite}\}$. 
 
 \begin{lemma}
 	The familiy of harmonic measures $(h_A)_{A\in\mP_f}$ in $\Z^2$ is translation invariant.
@@ -970,7 +988,7 @@ There is not yet a rigorous proof on the exact fractal dimension of external DLA
 	\end{flalign*}
 \end{proof}
 
-We have therefore shown a lower bound of $1.5$ for the fractal dimension of external DLA in two dimensions. In the next chapter we will look at another incremental aggregation which distribution works much simpler than the harmonic measure. In two dimensions we will therefore even be able to calculate its exact fractal dimension.
+We have therefore shown a lower bound of $1.5$ for the fractal dimension of external DLA in two dimensions. In the next chapter we will look at another incremental aggregation which distribution works much simpler than the harmonic measure. In two dimensions we will be able to calculate its fractal dimension exactly.
 
 
 
@@ -1417,7 +1435,7 @@ and
 
 \subsection{Fractal dimension and growth rate of LHA in $\Z^2$}
 
-In this section we will try to give an idea of the fractal dimension of the line hitting aggregation.
+In this section we will try to give an idea of the fractal dimension of line hitting aggregation.
 
 \begin{theorem} \label{lhaconjecture}
 	There exists a $c>0$ such that for all $r\in [1,\infty)$ we have 
@@ -1441,29 +1459,30 @@ In this section we will try to give an idea of the fractal dimension of the line
 We are therefore prepared to proof the following theorem.
 
 \begin{theorem} \label{2theorem}
-	For the fractal dimension of the line hitting aggregation we have
+	For the fractal dimension of line hitting aggregation we have
 	\begin{flalign*}
 		d_f = 2\quad \text{a.s.}
 	\end{flalign*}
 \end{theorem}
 
 \begin{proof}
-	It is not difficult to proof that the line hitting distribution is translation invariant and an outside distribution, just like the harmonic measure in external DLA. Recall the Definitions \ref{translinv} and \ref{outsidedist}. Together with Theorem \ref{lhaconjecture} we can therefore use Theorem \ref{iatheorem} and choose $q=1$ to get
+	It is not difficult to proof that line hitting distribution is translation invariant and an outside distribution, just like the harmonic measure in external DLA. Recall the Definitions \ref{translinv} and \ref{outsidedist}. Together with Theorem \ref{lhaconjecture} we can therefore use Theorem \ref{iatheorem} and choose $q=1$ to get
 	\begin{flalign*}
 		d_f \geq 1+1 = 2 \quad \text{a.s.}.
 	\end{flalign*}
 	Since $d_f\leq 2$ a.s. by \ref{trivialboundary2} we therefore get $d_f=2$ a.s..
 \end{proof}
 
-
 \begin{remark} \label{finfty}
-	With Lemma \ref{smaller} we can conclude that for the line hitting aggregation we have $d_f=d_\infty$. Recall the definition of $d_\infty$ at \ref{fullclusters}
+	With Lemma \ref{smaller} we can conclude that for line hitting aggregation we have $d_f=d_\infty$. Recall the definition of $d_\infty$ at \ref{fullclusters}
 \end{remark}
+
+We have shown that the fractal dimension of LHA is $2$, thus maximal and equal to the dimension of the space the process is living in. This opens the question whether this is the case also for higher dimensions if we define an analogon of LHA in higher dimensions. We won't discuss this in this paper. At this point we are finished with the mathematical discussion of the two incremental aggregations external DLA and LHA. In the next chapter we draw our attention to the simulations of the processes and show images of realizations. 
 
 
 \newpage
 \section{Python simulations} \label{simulation}
-In this section we will present a simulation for the line hitting aggregation. The simulation is written in $\mathit{python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
+In this section we will present a simulation for line hitting aggregation. The simulation is written in $\mathit{python}$ and images are created with $\mathit{pygame}$. If you want to check and try the code yourself, feel welcomed to checkout this repository on github:\\
 \\\textbf{https://github.com/tillmanntristanbosch/incremental-aggregations.git} \\
 \\Each vertex in $\Z^2$ can be naturally identified with values in $\C$ and is represented in this way in this code. Every value in $\C$ with integer components can be represented by a square as presented in Definition $\ref{squares}$, and each square will be represented by exactly one pixel on a monitor screen, so every picture created by the simulation consists of pixels each naturally representing exactly one vertex in $\Z^2$. The aim of this simulation is to create realizations of LHA as close as possible to its mathematical definition. \\
 \\Note that this software also contains a simulation for external DLA. This simulation doesn't claim to be implemented very close to its mathematical definition, but it is good enough to play around and create images with it, and get a vague visual comparison of the two aggregation models. 
@@ -1476,7 +1495,7 @@ In the following we will describe the code and claim that it is a precise implem
 \\
 \includegraphics[height=3.33cm]{images/code-snippets/parameters.png} \\
 \\
-The value $\mathit{color\_generation\_size}$ specifies how big one generation of a color shall be in the case that we choose more than one color to print the particles. So if we for example enter the values $["000000","\text{ff0000}","\text{ffffff}"]$ for $"particle\_color"$ and $100$ for $"color\_generation\_size"$, then the first 100 particles will be printed in color $"000000"$ (black), the next 100 in $"\text{ff}0000"$ (red), the next in $"\text{ffffff}"$ (white) and the next again in black, and so on. This allows to visualize layers of the aggregation and produce beautiful rainbowlike colored realizations. Since for the simulation here we only use black particle color, the color generation size does not have any effect in this case. With the $\mathit{fractal\_calculation\_range}$ we can have influence on how the approximation of the fractal dimension shall be calculated, more on that later. We can find more about setting parameters in the README file of the repository. \\
+The value $\mathit{color\_generation\_size}$ specifies how big one generation of a color shall be in the case that we choose more than one color to print the particles. So if we for example enter the values $["000000","\text{ff0000}","\text{ffffff}"]$ for $"particle\_color"$ and $100$ for $"color\_generation\_size"$, then the first 100 particles will be printed in color $"000000"$ (black), the next 100 in $"\text{ff}0000"$ (red), the next in $"\text{ffffff}"$ (white) and the next back again in black, and so on. This allows to visualize layers of the aggregation and produce beautiful rainbowlike colored realizations. Since for the simulation here we only use black particle color, the color generation size does not have any effect in this case. With the $\mathit{fractal\_calculation\_range}$ we can have influence on how the approximation of the fractal dimension shall be calculated, more on that later. We can find more about setting parameters in the README file of the repository. \\
 
 \noindent If correct parameters are set, we can run a shell script which in turn will run a single python file $\mathit{main.py}$ which reads the entered parameters and executes first the mathematical process which needs the mathematical imports and second the data creation of the calculated process which needs the systemic imports as described above. The created data will contain an image of the created cluster, a json file with the parameters saved for later lookup and another json file containing information about the creation time, fractal dimension values and a list of all particle coordinates for potential later use. \\
 \\We will have a look now on what happens on the mathematical side. We will show code directly here to make things clearer. Note that in the original code here and there we will find comments or other irrelevant differences, which we leave away here. \\
@@ -1525,7 +1544,7 @@ which implements the totally ordered relation on all squares which got hit by th
 
 \subsection{Empirical values of LHA}
 
-In this section we present what our simulations produce in terms of images and fractal dimension values. Since by Theorem \ref{2theorem} we already know that the fractal dimension of the line hitting aggregation is $2$, our approximation for the fractal dimension here has the purpose to give an idea of the convergence behaviour towards the value $2$. First it is worth to mention that it is not trivial to create a senseful approximation for the fractal dimension. If we go back to the definition 
+In this section we present what our simulations produce in terms of images and fractal dimension values. Since by Theorem \ref{2theorem} we already know that the fractal dimension of line hitting aggregation is $2$, our approximation for the fractal dimension here has the purpose to give an idea of the convergence behaviour towards the value $2$. First it is worth to mention that it is not trivial to create a senseful approximation for the fractal dimension. If we go back to the definition 
 \begin{flalign*}
 	d_f = \lim_{n\to\infty} \frac{\ln(n)}{\ln(\rad(\E_n))}
 \end{flalign*}
@@ -1579,7 +1598,7 @@ indicates that the folder contains a realized LHA simulation with 100000 particl
 \begin{flalign*}
 	\text{2021\_03\_02\_11\_02\_25\_\_dla\_5000}
 \end{flalign*}
-is the folder of a realized simulation of DLA. For the following observation we have run the line hitting aggregation from 10000 to 100000 twice at each 10000 step which makes 20 simulations in total. The simulations have produced the values in \autoref{lhasimulation}. A plot of the values can be found in \autoref{plot}. The plot indicates a rather slow convergence of the empirical dimension values towards the theoretical value $2$. Something similar was guessed by \cite{ballistic}. For a further empirical study on this convergence behaviour more simulations would be necessary. \\
+is the folder of a realized simulation of DLA. For the following observation we have run line hitting aggregation from 10000 to 100000 twice at each 10000 step which makes 20 simulations in total. The simulations have produced the values in \autoref{lhasimulation}. A plot of the values can be found in \autoref{plot}. The plot indicates a rather slow convergence of the empirical dimension values towards the theoretical value $2$. Something similar was guessed by \cite{ballistic}. For a further empirical study on this convergence behaviour more simulations would be necessary. \\
 
 \begin{table}[t]
 	\centering
@@ -1746,17 +1765,17 @@ In the following we present some of the realized images of our LHA and external 
 \newpage
 
 \section{Review}
-In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of a fractal dimension for such discrete clusters. We then moved our attention to $\Z^2$ and found for this case in Theorem \ref{iatheorem} a condition for proving a lower bound of the fractal dimension. We where able to apply this theorem for both incremental aggregations we looked at in this paper, external diffusion limited aggregation (external DLA) and the line hitting aggregation (LHA). For external DLA we found a lower bound of 
+In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of a fractal dimension of such discrete random clusters. In Theorem \ref{iatheorem} we found a condition for proving a lower bound of the fractal dimension. We where able to apply this theorem for the $2$-dimensional case $\Z^2$ of both incremental aggregations we looked at in this paper, external diffusion limited aggregation (external DLA) and line hitting aggregation (LHA). In $\Z^2$, for external DLA we found a lower bound of 
 \begin{flalign*}
 	d_f^{dla} \geq \frac{3}{2}\quad\text{a.s.}
 \end{flalign*}
-and for the line hitting aggregation we were even able to find the exact dimension, which is
+and for line hitting aggregation we were even able to find the exact dimension, which is
 \begin{flalign*}
 	d_f^{lha} = 2 \quad\text{a.s.}.
 \end{flalign*}
 In the last chapter we provided simulations for both incremental aggregations. Especially the one for LHA was implemented as close to its mathematical definition as possible. \\
-\\All in all did we here only touch the properties of incremental aggregations. The most known incremental aggregation we can find in literature is probably external DLA, but the general definition here in this paper opens a door to other interesting incremental aggregations. \\
-\\I hope that I could raise interest in this topic through my work in this paper and I invite the reader to play around with the code I provided in a github repository (see at the beginning of Chapter \ref{simulation}). I feel delighted to watch at the beautiful realizations of the aggregations and I hope the reader can feel similar looking at them and realizing images him- and herself. 
+\\All in all did we here only touch the properties of incremental aggregations. The most known such model we can find in literature is probably external DLA, but the general definition here in this paper opens a door to other interesting incremental aggregations. \\
+\\I hope that I could raise interest in this topic through my work in this paper and I invite the reader to play around with the code I provided in a github repository (see at the beginning of Chapter \ref{simulation}). I feel delighted when looking at the beautiful realizations of the aggregations. I hope the reader can feel similar when watching at them and when realizing images him- and herself. 
 
 
 
@@ -1771,52 +1790,37 @@ In the last chapter we provided simulations for both incremental aggregations. E
 \thispagestyle{empty}
 
 \bibitem{wittensander}
-T. A. Witten and L. M. Sander: \emph{Diffusion-limited aggregation}, 1983\\
-DOI: https://doi.org/10.1103/PhysRevB.27.5686\\
-Download: 09.03.2021
+Witten, T. A., and Sander, L. M. (1983). Diffusion-limited aggregation. Physical review B, 27(9), 5686. DOI: 10.1103/PhysRevB.27.5686
 
 \bibitem{hausdorff}
-Egbert Brieskorn: \emph{Felix Hausdorff zum Gedächtnis I}, vieweg, 1996\\
-DOI: 10.1007/978-3-322-80276-7\\
-Download: 09.03.2021
+Brieskorn, E. (Ed.). (2013). Felix Hausdorff zum Gedächtnis: Band I: Aspekte seines Werkes (Vol. 1). Springer-Verlag. DOI: 10.1007/978-3-322-80276-7
 
 \bibitem{lawler}
-Gregory F. Lawler: \emph{Intersections of Random Walks}, Birkhäuser, 1996
+Lawler, G. F. (2013). Intersections of random walks. Birkhäuser, Springer Science and Business Media. DOI: DOI 10.1007/978-1-4614-5972-9
 
 \bibitem{ballistic}
-D. Bensimon, B. Shraiman and S. Liang: \emph{On the ballistic model of aggregation}, 1984\\
-DOI: https://doi.org/10.1016/0375-9601(84)90701-1\\
-Download: 09.03.2021
+Bensimon, D., Shraiman, B., and Liang, S. (1984). On the ballistic model of aggregation. Physics Letters A, 102(5-6), 238-240. DOI: 10.1016/0375-9601(84)90701-1
 
 \bibitem{magnetic}
-J. Gonzalez-Gutierrez, J. L. Carrillo-Estrada and J. C. Ruiz-Suarez: \emph{Aggregation and dendritic growth in a magnetic granular system}, 2013\\
-DOI: 10.1088/1742-5468/2013/12/P12015\\
-Download: 09.03.2021
+González-Gutiérrez, J., Carrillo-Estrada, J. L., and Ruiz-Suárez, J. C. (2013). Aggregation and dendritic growth in a magnetic granular system. Journal of Statistical Mechanics: Theory and Experiment, 2013(12), P12015. DOI: 10.1088/1742-5468/2013/12/P12015
 
 \bibitem{sackmann}
-Franz Sackmann: \emph{Zufällige Geraden}, 2007\\
-Staatsexamensarbeit at University Karlsruhe (TH)
+Franz Sackmann. (2007). Zufällige Geraden. Staatsexamensarbeit at University Karlsruhe (TH)
 
-\bibitem{fractalwinter}
-Ecaterina Sava-Huss, Uta Freiberg, Ben Hambly, Michael Hinz and Steffen Winter: \emph{Fractal Geometry and Stochastics VI}, Preprint 2020\\
-Download: 09.03.2021
-\begin{Verbatim}[fontsize=\small]
-https://www.math.kit.edu/stoch/~winter/seite/pub/media/fgs6book_draft.pdf
-\end{Verbatim}
+\bibitem{heydenreich}
+Heydenreich, M. (2019). Fractal dimension of discrete sets and percolation. arXiv preprint arXiv:1911.01765.
 
 \bibitem{markov}
-Prof. Dr. Stefan Tappe: \emph{Markov-Ketten}, 2018\\
-Lecture at Albert-Ludwigs-Universität Freiburg\\
-Download: 09.03.2021
+Prof. Dr. Stefan Tappe. (2018). Markov-Ketten. Lecture at Albert-Ludwigs-Universität Freiburg. Download: 09.03.2021. Link: 
 \begin{Verbatim}[fontsize=\tiny]
 https://www.stochastik.uni-freiburg.de/lehre/ss-2018/vorlesung-markov-ketten-ss-2018/markov_ketten_ss_2018.pdf
 \end{Verbatim}
 
 \bibitem{henze}
-Norbert Henze: \emph{Irrfahrten - Faszination der Random Walks}, Springer Spektrum, 2. Auflage, 2018
+Norbert Henze. (2018). Irrfahrten – Faszination der Random Walks (Vol. 2). Springer Spektrum. 
 
 \bibitem{stoch1}
-Rolf Schneider, Wolfgang Weil: \emph{Stochastic and integral geometry}. Springer, Berlin, Heidelberg, 2008
+Schneider, R., and Weil, W. (2008). Stochastic and integral geometry. Springer Science and Business Media.
 
 \bibitem{own}
 Photographs made by the author of this paper, Tillmann Tristan Bosch
