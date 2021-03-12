@@ -44,6 +44,7 @@
 \newcommand{\re}{\text{Re}}
 \newcommand{\im}{\text{Im}}
 
+
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
 %\numberwithin{equation}{section}
@@ -106,7 +107,8 @@
 
 \setcounter{page}{1}
 
-
+\newpage
+\phantom \\
 \newpage
 
 \section{Introduction}
@@ -120,16 +122,16 @@
 	
 	\noindent $\mathbf{Line\ Hitting\ Aggregation}$, short LHA, is a ballistic model similar to the attempts of \cite{ballistic}, but is introduced in its idea here by the author of this paper. In this model new particles do not approach the current cluster on a random walk but on straight lines which are chosen randomly before. The difficulty here is to find a fair measure on choosing random lines which hit the current cluster, where we base on already existing results from integral theory. So one way of understanding this process is by shooting new particles from randomly, fairly chosen directions to the cluster and let them stick where they hit the cluster the first time. It seems that such formed clusters are denser than external DLA which we empirically find to be true in the last chapter of this paper. In \cite{ballistic} they guess a fractal dimension of 2 for their ballistic model and here we will actually be able to prove this result. \\
 	
-	\noindent We will first draw our attention to the general definition of incremental aggregations and a notion of their fractal dimension. We will then present a general relationship between the distribution family of an incremental aggregation and a lower bound for its fractal dimension. We will then turn our attention to the two models we discuss in this paper, first external DLA and line hitting aggregation in the chaper after. With the help of the general theorem for incremental aggregations we will prove a lower bound for external DLA and even an exact result for line hitting aggregation. At the end we will present simulations for both aggregations of which only the one for line hitting aggregation shall satisfy the claim of being implemented as close to its mathematical definition as possible. At the end we especially hope the reader to relate with the processes and enjoy the created images.
+	\noindent We will first draw our attention to the general definition of incremental aggregations and a notion of their fractal dimension. We will then present a general relationship between the distribution family of an incremental aggregation and a lower bound for its fractal dimension. We will then turn our attention to the two models we discuss in this paper, first external DLA and line hitting aggregation in the chaper after. With the help of the general theorem for incremental aggregations we will prove a lower bound for external DLA and even an exact result for line hitting aggregation. At the end we will present simulations for both aggregations of which only the one for line hitting aggregation shall satisfy the claim of being implemented as close to its mathematical definition as possible. At the end we especially hope the reader to relate with the processes and enjoy the created images.\\
 	
-\begin{figure}[p]
+\begin{figure}[h!]
 	\centering
 	\begin{subfigure}[b]{.47\textwidth}
-		\includegraphics[height=6cm]{images/display.jpg} 
+		\centerline{\includegraphics[height=5cm]{images/display.jpg}}
 		\caption{light on} 
 	\end{subfigure}
 	\begin{subfigure}[b]{.47\textwidth}
-		\includegraphics[height=5cm]{images/display2.jpg}
+		\centerline{\includegraphics[height=5cm]{images/display2.jpg}}
 		\caption{light off} 
 	\end{subfigure}
 	\caption{Cluster appearance in the radio screen of a car, \cite{own}}
@@ -138,24 +140,19 @@
 
 \vspace*{\fill}
 
-\begin{figure}[]
+\begin{figure}[h!]
 	\centering
 	\begin{subfigure}[b]{.45\textwidth}
-		\includegraphics[height=6cm]{images/snowflake.png}
+		\centerline{\includegraphics[height=5cm]{images/snowflake.png}}
 		\caption{Snowflake crystals} 
 	\end{subfigure}
 	\begin{subfigure}[b]{.52\textwidth}
-		\includegraphics[height=5cm]{images/glass-break.jpg}
+		\centerline{\includegraphics[height=5cm]{images/glass-break.jpg}}
 		\caption{Cracked glass} 
 	\end{subfigure}
 	\caption{More examples of clusterlike formations, \cite{unsplash}}
 	\label{other}
 \end{figure}
-
-
-
-
-\newpage
 
 
 \section{Preliminaries} \label{prelim}
@@ -261,7 +258,8 @@ So a random walk can be understood as a particle starting from some point $x$ an
 After having introduced some basics we will turn our focus in the next chapter to the main definition of stochastic processes we will discuss in this paper. 
 
 
-
+\newpage
+\phantom \\
 \newpage
 \section{Incremental aggregation}
 
@@ -549,7 +547,7 @@ As for $d_f$ in Proposition \ref{limexists} it might be possible to show that th
 
 
 
-\subsection{A rigorous characterization for the fractal dimension}
+\subsection{A rigorous result on the fractal dimension}
 
 In this section we will proof an almost sure lower bound for the fractal dimension of an incremental aggregation if its distribution family $(\mu_A)_{A\in\mP^d_f}$ satisfies some conditions. Before coming to this statement we have to make some preparations in the following. We define two random functions
 \begin{flalign*}
@@ -908,7 +906,8 @@ At this point we are prepared to proof the following theorem.
 
 
 
-
+\newpage
+\phantom \\
 \newpage
 \section{External diffusion limited aggregation}
 
@@ -1115,7 +1114,7 @@ In the next section we want to define an incremental aggregation for which distr
 
 \subsubsection{General results}
 
-Let $d\in\N$ and $q\in \{0,\dots,d\}$. In the general context we are in $\R^d$ and consider $q$-dimensional affine subspaces, short $q$-flats. The set of $q$-flats in $\R^d$ we denote with $A(d,q)$. Later we will be interested in choosing random lines in the plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. Recall that we denote the set of convex and compact subsets of $\R^d$ with $\K^d$. Also recall that with $G_d$ we denote the set of all Euclidean motions (more at \ref{symbols}).
+Let $d\in\N$ and $q\in \{0,\dots,d\}$. In the general context we are in $\R^d$ and consider $q$-dimensional affine subspaces, short $q$-flats. The set of $q$-flats in $\R^d$ we denote with $A(d,q)$. Later we will be interested in choosing random lines in the plane (i.e. $1$-flats in $\R^2$). In order to get a probability measure on some set of $q$-flats, we first need a measure and a $\sigma$-algebra on $A(d,q)$ in total. Recall that we denote the set of convex and compact subsets of $\R^d$ with $\K^d$. Also recall that with $G_d$ we denote the set of all Euclidean motions (as defined in \ref{symbols}).
 
 \begin{definition}
 	For $B\in \mathcal{B}^d$ define 
@@ -1376,11 +1375,11 @@ Recall also the definition
 \begin{flalign*}
 	[B] := \{g\in\G\ |\ g\cap B \neq \emptyset\}
 \end{flalign*}
-for Borel sets $B\in\mathcal{B}^2$ and
+for Borel sets $B\in\mathcal{B}^2$, 
 \begin{flalign*}
 	g^A := \{p\in A\ |\ g\cap sq(p) \neq\emptyset\}
 \end{flalign*} 
-for $A\in\mP_f$. 
+for $A\in\mP_f$ and the definition in \ref{ghitA} of the relation $\triangleleft$ on nonempty sets $g^A$. 
 
 \begin{definition} \label{linehittingdistribution}
 	$\mathit{(Random\ line\ hitting\ distribution)}$ Let $A\in \mP_f$ and $K := \text{conv}(sq(A))$. For $x\in\Z^2$ and $g\in \G$ define
@@ -1399,7 +1398,7 @@ and
 			0, &\text{else}.
 		\end{cases}
 	\end{flalign}
-	For fixed $A\in\mP_f$ and $g\in\G$, $\tilde \mu_A(x,g)$ assigns probabilities for each value $x\in A$ which is $0$ if $g^A$ is empty, also $0$ if $x$ is not minimum or maximum of $g^A$, $\frac{1}{2}$ if $x$ is minimum or maximum and those two values are different and finally $1$ if $x$ is minimum and maximum, thus $g^A=\{x\}$. We then define the following distribution on $A$ by 
+	For fixed $A\in\mP_f$ and $g\in\G$, $\tilde \mu_A(x,g)$ assigns probabilities for each value $x\in A$ which is $0$ if $g^A$ is empty, also $0$ if $x$ is not minimum or maximum of $g^A$, $\frac{1}{2}$ if $x$ is minimum or maximum and those two values are different, and finally $1$ if $x$ is minimum and maximum, thus $g^A=\{x\}$. We then define the following distribution function on $A$ by 
 	\begin{flalign} \label{lhadist}
 		\mu_A(x) := \frac{1}{\PP^K_\mu([sq(A)])} \int_\G \ \tilde \mu_A(x,g) \ \PP^K_\mu(dg).
 	\end{flalign}
@@ -1408,7 +1407,7 @@ and
 		\sum_{x\in A} \tilde \mu_A(x,g) &= \begin{cases}
 			0, \quad &|g^A| = 0, \\
 			1, \quad &|g^A| = 1, \\
-			\frac{1}{2}2, \quad &|g^A| \geq 2.
+			2\frac{1}{2}, \quad &|g^A| \geq 2.
 		\end{cases} \\
 	&= \1_{[sq(A)]}(g)
 	\end{flalign*} 
@@ -1416,7 +1415,7 @@ and
 	\begin{flalign*}
 		\sum_{x\in A} \mu_A(x) = \frac{1}{\PP^K_\mu([sq(A)])}\ \int_\G \1_{[sq(A)]}(g)\ \PP^K_\mu(dg) = \frac{\PP^K_\mu([sq(A)])}{\PP^K_\mu([sq(A)])} = 1. 
 	\end{flalign*}
-	Hence, the family of distributions $(\mu_A)_{A\in \mP_f}$ defines an incremental aggregation. 
+	Hence, the family of distributions $(\mu_A)_{A\in \mP_f}$ defines an incremental aggregation in $\Z^2$. 
 \end{definition}
 
 \begin{definition} $(\mathit{Line\ hitting\ aggregation)}$ An incremental aggregation with the random line hitting distribution we call $\mathit{line\ hitting\ aggregation}$, short $\mathit{LHA}$. 
@@ -1673,7 +1672,8 @@ We can then obtain an estimator $\hat c_v$ for the volume ratio $c_v$ via
 In \autoref{lhasimulation} we can find the values for $\hat c_v$ which have been produced by our simulations. \autoref{plot} indicates that the volume ratio decreases as the number of particles grows and possibly starts to stabilize at around $c_v \approx 0.38$. For a further study on the volume ratio again more simulations would be necessary. 
 
 
-
+\newpage
+\phantom \\
 \newpage
 \subsection{Images}
 In the following we present some of the realized images of our LHA and external DLA simulations. More can be found in the repository in the folder $\mathit{exports}$.
@@ -1681,11 +1681,13 @@ In the following we present some of the realized images of our LHA and external 
 \begin{figure}[h!]
 	\centering
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_03_12_25_49__image_dla_5000.png}
+		\centerline{\includegraphics[height=7cm]{images/ia/2021_03_03_12_25_49__image_dla_5000.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_03\_12\_25\_49\_\_image\_dla\_5000.png}
 	\end{subfigure}
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_06_00_23_38__image_lha_5000.png}
+		\centerline{\includegraphics[height=7cm]{images/ia/2021_03_06_00_23_38__image_lha_5000.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_06\_00\_23\_38\_\_image\_lha\_5000.png}
 	\end{subfigure}
 \end{figure}
@@ -1693,25 +1695,52 @@ In the following we present some of the realized images of our LHA and external 
 \begin{figure}[h!]
 	\centering
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_03_19_58_26__image_dla_10000.png}
+		\centerline{\includegraphics[height=8.75cm]{images/ia/2021_03_03_19_58_26__image_dla_10000.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_03\_19\_58\_26\_\_image\_dla\_10000.png}
 	\end{subfigure}
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_05_23_28_53__image_lha_10000.png}
+		\centerline{\includegraphics[height=7cm]{images/ia/2021_03_05_23_28_53__image_lha_10000.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_05\_23\_28\_53\_\_image\_lha\_10000.png}
 	\end{subfigure}
 \end{figure}
 
 \begin{figure}[p]
 	\centering
-	\begin{subfigure}[]{0.72\textwidth}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_03_21_23_47__image_lha_100000.png}
-		\caption{2021\_03\_03\_21\_23\_47\_\_image\_lha\_100000.png} 
+	\begin{subfigure}[]{0.48\textwidth}
+		\centerline{\includegraphics[height=9.5cm]{images/ia/2021_03_04_10_05_53__image_lha_10000.png}}
+		\captionsetup{labelformat=empty}
+		\caption{2021\_03\_04\_10\_05\_53\_\_image\_lha\_10000.png} 
 	\end{subfigure}
-	\begin{subfigure}[]{0.72\textwidth}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_04_00_42_19__image_lha_200000.png}
-		\caption{2021\_03\_04\_00\_42\_19\_\_image\_lha\_200000.png} 
+	\begin{subfigure}[]{0.48\textwidth}
+		\centerline{\includegraphics[height=9.5cm]{images/ia/2021_03_04_11_53_34__image_lha_20000.png}}
+		\captionsetup{labelformat=empty}
+		\caption{2021\_03\_04\_11\_53\_34\_\_image\_lha\_20000.png} 
 	\end{subfigure}
+\end{figure}
+
+\begin{figure}[]
+	\centering
+	\begin{subfigure}[]{0.48\textwidth}
+		\centerline{\includegraphics[height=9.5cm]{images/ia/2021_03_04_18_00_02__image_lha_40000.png}}
+		\captionsetup{labelformat=empty}
+		\caption{2021\_03\_04\_18\_00\_02\_\_image\_lha\_40000.png} 
+	\end{subfigure}
+	\begin{subfigure}[]{0.48\textwidth}
+		\centerline{\includegraphics[height=9.5cm]{images/ia/2021_03_04_09_42_56__image_lha_80000.png}}
+		\captionsetup{labelformat=empty}
+		\caption{2021\_03\_04\_09\_42\_56\_\_image\_lha\_80000.png} 
+	\end{subfigure}
+\end{figure}
+
+
+
+\begin{figure}[p]
+	\centering
+	\centerline{\includegraphics[height=21cm]{images/ia/2021_03_04_00_42_19__image_lha_200000.png}}
+	\captionsetup{labelformat=empty}
+	\caption{2021\_03\_04\_00\_42\_19\_\_image\_lha\_200000.png}
 \end{figure}
 
 
@@ -1720,11 +1749,13 @@ In the following we present some of the realized images of our LHA and external 
 \begin{figure}[h!]
 	\centering
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[height=8cm]{images/ia/2021_03_03_21_23_50___100000__10000__8923.png}
+		\centerline{\includegraphics[height=8cm]{images/ia/2021_03_03_21_23_50___100000__10000__8923.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_03\_21\_23\_50\_\_lha\_100000, green, color generation size of 10000}
 	\end{subfigure}
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[height=8cm]{images/ia/2021_03_04_15_58_28___50000__5000__5250.png}
+		\centerline{\includegraphics[height=8cm]{images/ia/2021_03_04_15_58_28___50000__5000__5250.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_04\_15\_58\_28\_\_lha\_50000, rising blue, color generation size of 5000}
 	\end{subfigure}
 \end{figure}
@@ -1734,12 +1765,14 @@ In the following we present some of the realized images of our LHA and external 
 \begin{figure}[h!]
 	\centering
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[height=8cm]{images/ia/2021_03_03_19_59_39___10000__2000__7448.png}
-		\caption{2021\_03\_03\_19\_59\_39\_\_dla\_10000, five colors , color generation size of 2000}
+		\centerline{\includegraphics[height=8cm]{images/ia/2021_03_03_19_59_39___10000__2000__7448.png}}
+		\captionsetup{labelformat=empty}
+		\caption{2021\_03\_03\_19\_59\_39\_\_dla\_10000, \\five colors , color generation size of 2000}
 	\end{subfigure}
 	\begin{subfigure}[b]{.49\textwidth}
-		\includegraphics[height=8cm]{images/ia/2021_03_04_00_42_19___200000__10000__6945.png}
-		\caption{2021\_03\_04\_00\_42\_19\_\_lha\_200000, dual color, color generation size of 10000}
+		\centerline{\includegraphics[height=8cm]{images/ia/2021_03_04_00_42_19___200000__10000__6945.png}}
+		\captionsetup{labelformat=empty}
+		\caption{2021\_03\_04\_00\_42\_19\_\_lha\_200000, \\dual color, color generation size of 10000}
 	\end{subfigure}
 \end{figure}
 
@@ -1747,13 +1780,15 @@ In the following we present some of the realized images of our LHA and external 
 
 \begin{figure}[p]
 	\centering
-	\begin{subfigure}[]{0.72\textwidth}
+	\begin{subfigure}[]{0.77\textwidth}
 		%\includegraphics[width=1\linewidth]{images/ia/2021_03_03_21_23_47__image_lha_100000 - colored.png}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_04_15_58_28__lha_50000_colored.png}
+		\centerline{\includegraphics[width=1\linewidth]{images/ia/2021_03_04_15_58_28__lha_50000_colored.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_04\_15\_58\_28\_\_lha\_50000 colored from outside} 
 	\end{subfigure}
-	\begin{subfigure}[]{0.72\textwidth}
-		\includegraphics[width=1\linewidth]{images/ia/2021_03_04_00_42_19__lha_200000_colored.png}
+	\begin{subfigure}[]{0.77\textwidth}
+		\centerline{\includegraphics[width=1\linewidth]{images/ia/2021_03_04_00_42_19__lha_200000_colored.png}}
+		\captionsetup{labelformat=empty}
 		\caption{2021\_03\_04\_00\_42\_19\_\_lha\_200000 colored from outside} 
 	\end{subfigure}
 \end{figure}
@@ -1761,11 +1796,12 @@ In the following we present some of the realized images of our LHA and external 
 
 
 
-
+\newpage
+\phantom \\
 \newpage
 
 \section{Review}
-In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of a fractal dimension of such discrete random clusters. In Theorem \ref{iatheorem} we found a condition for proving a lower bound of the fractal dimension. We where able to apply this theorem for the $2$-dimensional case $\Z^2$ of both incremental aggregations we looked at in this paper, external diffusion limited aggregation (external DLA) and line hitting aggregation (LHA). In $\Z^2$, for external DLA we found a lower bound of 
+In this paper we have looked at a general definition of incremental aggregations in $\Z^d$ and the notion of a fractal dimension of such discrete random clusters. In Theorem \ref{iatheorem} we found a condition for proving a lower bound of the fractal dimension. We where able to apply this theorem for the $2$-dimensional case of both incremental aggregations we looked at in this paper, external diffusion limited aggregation (external DLA) and line hitting aggregation (LHA). In $\Z^2$, for external DLA we found a lower bound of 
 \begin{flalign*}
 	d_f^{dla} \geq \frac{3}{2}\quad\text{a.s.}
 \end{flalign*}
@@ -1782,9 +1818,15 @@ In the last chapter we provided simulations for both incremental aggregations. E
 
 
 
-
-
 \newpage
+\thispagestyle{empty}
+\phantom \\
+\newpage
+
+\section{References}
+
+\begingroup
+\renewcommand{\section}[2]{}%
 
 \begin{thebibliography}{biblio}
 \thispagestyle{empty}
@@ -1829,7 +1871,11 @@ Photographs made by the author of this paper, Tillmann Tristan Bosch
 Free license images from www.unsplash.com
 
 \end{thebibliography}
+\endgroup
 
+\newpage
+\thispagestyle{empty}
+\phantom \\
 \newpage
   
 \thispagestyle{empty}
@@ -1843,6 +1889,12 @@ Herewith I assure that I created this paper self-reliant and on my own and that 
 
 \noindent
 Karlsruhe, 9. March 2021\\[5ex] 
+\\
+\\
+\\
+\\
+\\
+Tillmann Tristan Bosch
 
 \vspace*{\fill}
 
